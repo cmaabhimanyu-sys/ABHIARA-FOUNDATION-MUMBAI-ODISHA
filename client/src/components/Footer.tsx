@@ -58,6 +58,7 @@ export default function Footer() {
                 { href: "/programs", label: "Programs" },
                 { href: "/csr-partners", label: "CSR Partners" },
                 { href: "/activities", label: "Activities" },
+                { href: "/team", label: "Team" },
                 { href: "/contact", label: "Contact" },
               ].map((link) => (
                 <li key={link.href}>

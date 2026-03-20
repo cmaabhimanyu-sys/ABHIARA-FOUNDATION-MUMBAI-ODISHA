@@ -14,6 +14,7 @@ const Programs = lazy(() => import("./pages/Programs"));
 const CSRPartners = lazy(() => import("./pages/CSRPartners"));
 const Activities = lazy(() => import("./pages/Activities"));
 const Contact = lazy(() => import("./pages/Contact"));
+const Team = lazy(() => import("./pages/Team"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -39,6 +40,7 @@ function Router() {
         <Route path="/csr-partners" component={CSRPartners} />
         <Route path="/activities" component={Activities} />
         <Route path="/contact" component={Contact} />
+        <Route path="/team" component={Team} />
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
       </Switch>

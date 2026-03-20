@@ -23,3 +23,7 @@
 - [x] Create new Vision page with full 5-year plan, milestones, and 2039 Aradhana Trustee goal
 - [x] Add Vision tab to Navbar, Footer, and App.tsx routing
 - [x] Remove real photos from Activities page to fix deployment timeout
+- [x] Add 3 real photos to Activities page (uploaded to CDN)
+- [x] Create Team page with board members and advisors
+- [x] Add Team tab to Navbar, Footer, and App.tsx routing
+- [ ] Guide user on binding abhiarafoundation.org custom domain

@@ -187,6 +187,69 @@ export default function Activities() {
         </div>
       </section>
 
+      {/* ===== PHOTO GALLERY ===== */}
+      <section className="py-12 md:py-16 bg-[#06101F]">
+        <div className="container">
+          <AnimatedSection className="text-center mb-10">
+            <p className="section-label mb-3">FROM THE FIELD</p>
+            <h2 className="font-serif text-2xl md:text-3xl font-bold text-white mb-2">
+              Moments That <span className="text-[#C9A84C]">Matter</span>
+            </h2>
+            <div className="gradient-rule mx-auto" />
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit-1_c836b920.jpeg",
+                alt: "Visiting Hope is Life Old Age Home",
+                caption: "Old Age Home Visit — Hope is Life",
+                cat: "Elderly Care",
+              },
+              {
+                src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit-2_76a48a25.jpeg",
+                alt: "Distributing essentials to elderly residents",
+                caption: "Distributing Essentials to Elders",
+                cat: "Elderly Care",
+              },
+              {
+                src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-children-1_48cccd6f.jpeg",
+                alt: "Book donation to tribal children in Odisha",
+                caption: "Book Donation — Tribal Children, Odisha",
+                cat: "Education",
+              },
+            ].map((photo, i) => (
+              <AnimatedSection key={i} delay={i * 0.1}>
+                <div className="group relative overflow-hidden rounded-lg border border-white/[0.06]">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-4 bg-[#0A1628]/80 backdrop-blur-sm">
+                    <span
+                      className={`inline-block font-mono text-[8px] tracking-[0.15em] uppercase px-2 py-0.5 rounded-sm mb-2 ${
+                        photo.cat === "Elderly Care"
+                          ? "bg-[#C9A84C]/10 text-[#C9A84C]"
+                          : "bg-[#1A7F8E]/10 text-[#1A7F8E]"
+                      }`}
+                    >
+                      {photo.cat}
+                    </span>
+                    <p className="font-sans text-[13px] text-white/70 leading-snug">
+                      {photo.caption}
+                    </p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== FILTER TABS ===== */}
       <section className="py-4 bg-[#06101F] border-y border-white/[0.06] sticky top-16 md:top-20 z-30">
         <div className="container flex items-center justify-center gap-3 md:gap-4">
