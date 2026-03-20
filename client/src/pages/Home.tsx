@@ -449,43 +449,33 @@ export default function Home() {
             </p>
           </AnimatedSection>
 
-          {/* Photo Grid — 6 featured photos */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 mb-12">
+          {/* Activity Highlights */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
             {[
-              { img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/activity-01_e25fc6d2.jpeg", cat: "Elderly Care", caption: "Visiting Hope is Life Old Age Home" },
-              { img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/activity-12_ce6cf0ec.jpeg", cat: "Education", caption: "Book donation to tribal students" },
-              { img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/activity-03_c1b7e8f1.jpeg", cat: "Elderly Care", caption: "Care packages for senior citizens" },
-              { img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/activity-14_07602990.jpeg", cat: "Education", caption: "Learning materials for tribal children" },
-              { img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/activity-06_d47bcf53.jpeg", cat: "Elderly Care", caption: "Spending time with elderly residents" },
-              { img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/activity-16_bfc24c7f.jpeg", cat: "Education", caption: "Community outreach with tribal families" },
+              { cat: "Elderly Care", title: "Old Age Home Visits", desc: "Distributing essentials and spending quality time with elderly residents in Mumbai" },
+              { cat: "Education", title: "Book Donations", desc: "Providing books and study materials to tribal students across Odisha" },
+              { cat: "Elderly Care", title: "Companion Network", desc: "Pairing volunteers with elderly residents for regular visits and emotional support" },
+              { cat: "Education", title: "Community Outreach", desc: "Engaging with tribal families to understand and bridge educational gaps" },
             ].map((item, i) => (
               <AnimatedSection key={i} delay={i * 0.06}>
-                <div className="group relative overflow-hidden rounded-lg border border-white/[0.06] aspect-[4/3]">
-                  <img
-                    src={item.img}
-                    alt={item.caption}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/90 via-[#0A1628]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <span className={`inline-block font-mono text-[8px] tracking-[0.15em] uppercase px-2 py-0.5 rounded-sm mb-2 ${item.cat === 'Elderly Care' ? 'bg-[#1A7F8E]/30 text-[#1A7F8E]' : 'bg-[#C9A84C]/20 text-[#C9A84C]'}`}>
-                      {item.cat}
-                    </span>
-                    <p className="font-sans text-[13px] text-white/80 leading-snug">{item.caption}</p>
-                  </div>
+                <div className="glass-card p-6 h-full">
+                  <span className={`inline-block font-mono text-[8px] tracking-[0.15em] uppercase px-2 py-0.5 rounded-sm mb-3 ${item.cat === 'Elderly Care' ? 'bg-[#C9A84C]/10 text-[#C9A84C]' : 'bg-[#1A7F8E]/10 text-[#1A7F8E]'}`}>
+                    {item.cat}
+                  </span>
+                  <h3 className="font-serif text-lg font-bold text-white mb-2">{item.title}</h3>
+                  <p className="font-sans text-[13px] text-white/55 leading-relaxed">{item.desc}</p>
                 </div>
               </AnimatedSection>
             ))}
           </div>
 
-          {/* CTA to full gallery */}
+          {/* CTA to activities page */}
           <AnimatedSection className="text-center">
             <Link
               href="/activities"
               className="inline-flex items-center gap-2 px-8 py-3 border border-[#C9A84C]/40 text-[#C9A84C] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#C9A84C]/10 transition-colors"
             >
-              VIEW ALL 19 PHOTOS <ArrowRight size={12} />
+              VIEW ALL ACTIVITIES <ArrowRight size={12} />
             </Link>
           </AnimatedSection>
         </div>

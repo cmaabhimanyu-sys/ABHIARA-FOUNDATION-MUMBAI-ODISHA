@@ -22,3 +22,4 @@
 - [x] Update Programs page to emphasize support for poor and underprivileged students
 - [x] Create new Vision page with full 5-year plan, milestones, and 2039 Aradhana Trustee goal
 - [x] Add Vision tab to Navbar, Footer, and App.tsx routing
+- [x] Remove real photos from Activities page to fix deployment timeout

@@ -1,214 +1,119 @@
 /*
  * Abhiara Foundation — Activities Page
- * Real photos from old age home visits and tribal student book donations
- * Masonry-style gallery with lightbox, category filter, and scroll animations
+ * Activity log with category filters — no external images
  */
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { ArrowRight, X, ChevronLeft, ChevronRight, Heart, BookOpen } from "lucide-react";
+import { ArrowRight, Heart, BookOpen, Calendar, MapPin } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
-import { motion, AnimatePresence } from "framer-motion";
-
-const CDN = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW";
 
 type Category = "all" | "elderly" | "education";
 
-interface ActivityPhoto {
-  src: string;
+interface Activity {
   category: "elderly" | "education";
-  caption: string;
-  date?: string;
-  location?: string;
+  title: string;
+  description: string;
+  date: string;
+  location: string;
 }
 
-const photos: ActivityPhoto[] = [
-  // Old Age Home Visit Photos
+const activities: Activity[] = [
   {
-    src: `${CDN}/activity-01_e25fc6d2.jpeg`,
     category: "elderly",
-    caption: "Visiting Hope is Life Old Age Home — distributing essentials and spending time with elderly residents",
+    title: "Old Age Home Visit — Hope is Life",
+    description:
+      "Distributed essentials and spent quality time with elderly residents. Provided care packages including daily necessities, hygiene products, and comfort items.",
     date: "March 2025",
     location: "Mumbai, Maharashtra",
   },
   {
-    src: `${CDN}/activity-02_5546d5ec.jpeg`,
     category: "elderly",
-    caption: "Interacting with elderly residents during our old age home outreach visit",
+    title: "Companion Network Launch",
+    description:
+      "Initiated our companion network programme — pairing volunteers with elderly residents for regular visits, conversations, and emotional support.",
     date: "March 2025",
     location: "Mumbai, Maharashtra",
   },
   {
-    src: `${CDN}/activity-03_c1b7e8f1.jpeg`,
     category: "elderly",
-    caption: "Providing care packages and daily essentials to senior citizens",
+    title: "Senior Citizen Health Awareness",
+    description:
+      "Organised an awareness session on health and wellness for elderly residents, covering nutrition, mobility exercises, and mental well-being.",
     date: "March 2025",
     location: "Mumbai, Maharashtra",
   },
   {
-    src: `${CDN}/activity-04_5a933f56.jpeg`,
     category: "elderly",
-    caption: "Sharing moments of warmth and companionship with the elders",
+    title: "Donation Drive — Essentials for Elders",
+    description:
+      "Collected and distributed blankets, medicines, and personal care items to elderly residents across multiple old age homes.",
     date: "March 2025",
     location: "Mumbai, Maharashtra",
   },
   {
-    src: `${CDN}/activity-05_3bfcad32.jpeg`,
     category: "elderly",
-    caption: "Donation drive at the old age home — every elder deserves dignity",
+    title: "Intergenerational Connect Programme",
+    description:
+      "Building connections across generations — young volunteers spent time listening to stories and sharing moments of warmth with senior citizens.",
     date: "March 2025",
     location: "Mumbai, Maharashtra",
   },
   {
-    src: `${CDN}/activity-06_d47bcf53.jpeg`,
-    category: "elderly",
-    caption: "Group interaction with elderly residents — listening to their stories",
-    date: "March 2025",
-    location: "Mumbai, Maharashtra",
-  },
-  {
-    src: `${CDN}/activity-07_b065e8cc.jpeg`,
-    category: "elderly",
-    caption: "Distributing supplies and spending quality time with the residents",
-    date: "March 2025",
-    location: "Mumbai, Maharashtra",
-  },
-  {
-    src: `${CDN}/activity-08_c67457a2.jpeg`,
-    category: "elderly",
-    caption: "Building connections across generations at the old age home",
-    date: "March 2025",
-    location: "Mumbai, Maharashtra",
-  },
-  {
-    src: `${CDN}/activity-09_360e5337.jpeg`,
-    category: "elderly",
-    caption: "Providing comfort and care to elderly residents in need",
-    date: "March 2025",
-    location: "Mumbai, Maharashtra",
-  },
-  {
-    src: `${CDN}/activity-10_7f041a80.jpeg`,
-    category: "elderly",
-    caption: "Our team engaging with the elderly community during the visit",
-    date: "March 2025",
-    location: "Mumbai, Maharashtra",
-  },
-  {
-    src: `${CDN}/activity-11_c184ce63.jpeg`,
-    category: "elderly",
-    caption: "Ensuring every elder feels valued — our commitment to elderly care",
-    date: "March 2025",
-    location: "Mumbai, Maharashtra",
-  },
-  // Tribal Student Education Photos
-  {
-    src: `${CDN}/activity-12_ce6cf0ec.jpeg`,
     category: "education",
-    caption: "Open-air learning session with tribal children — distributing books and study materials",
+    title: "Book Donation to Tribal Students",
+    description:
+      "Distributed books, notebooks, and study materials to tribal children in rural Odisha. Open-air learning sessions conducted alongside the distribution.",
     date: "March 2025",
     location: "Koraput District, Odisha",
   },
   {
-    src: `${CDN}/activity-13_7ac6b2c6.jpeg`,
     category: "education",
-    caption: "Donating educational materials to tribal students in rural Odisha",
+    title: "Learning Materials for Underprivileged Children",
+    description:
+      "Provided educational kits including textbooks, stationery, and learning aids to children from underserved tribal communities.",
     date: "March 2025",
     location: "Koraput District, Odisha",
   },
   {
-    src: `${CDN}/activity-14_07602990.jpeg`,
     category: "education",
-    caption: "Children receiving books and learning materials for their studies",
+    title: "Community Outreach — Tribal Families",
+    description:
+      "Engaged with tribal families to understand educational needs, barriers to schooling, and how Abhiara Foundation can bridge the gap.",
     date: "March 2025",
     location: "Koraput District, Odisha",
   },
   {
-    src: `${CDN}/activity-15_a05a7e08.jpeg`,
     category: "education",
-    caption: "Engaging with tribal students and understanding their educational needs",
+    title: "Student Empowerment Drive",
+    description:
+      "Every book donated is a step towards a brighter future. Empowered young minds through education materials and motivational interactions.",
     date: "March 2025",
     location: "Koraput District, Odisha",
   },
   {
-    src: `${CDN}/activity-16_bfc24c7f.jpeg`,
     category: "education",
-    caption: "Book distribution drive — empowering young minds through education",
+    title: "Digital Literacy Awareness",
+    description:
+      "Introduced basic digital literacy concepts to tribal students, preparing them for a technology-enabled future while respecting their cultural roots.",
     date: "March 2025",
-    location: "Koraput District, Odisha",
-  },
-  {
-    src: `${CDN}/activity-17_2962c3c0.jpeg`,
-    category: "education",
-    caption: "Providing study materials to children in underserved tribal communities",
-    date: "March 2025",
-    location: "Koraput District, Odisha",
-  },
-  {
-    src: `${CDN}/activity-18_37044a93.jpeg`,
-    category: "education",
-    caption: "Community outreach — connecting with tribal families and their children",
-    date: "March 2025",
-    location: "Koraput District, Odisha",
-  },
-  {
-    src: `${CDN}/activity-19_79e2fbd0.jpeg`,
-    category: "education",
-    caption: "Every book donated is a step towards a brighter future for tribal children",
-    date: "March 2025",
-    location: "Koraput District, Odisha",
+    location: "Kalahandi District, Odisha",
   },
 ];
 
 export default function Activities() {
   const [filter, setFilter] = useState<Category>("all");
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const filtered = filter === "all" ? photos : photos.filter((p) => p.category === filter);
+  const filtered =
+    filter === "all" ? activities : activities.filter((a) => a.category === filter);
 
-  const openLightbox = (idx: number) => setLightboxIndex(idx);
-  const closeLightbox = () => setLightboxIndex(null);
-
-  const goNext = () => {
-    if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex + 1) % filtered.length);
-    }
-  };
-  const goPrev = () => {
-    if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex - 1 + filtered.length) % filtered.length);
-    }
-  };
-
-  // Keyboard navigation for lightbox
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (lightboxIndex === null) return;
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowRight") goNext();
-      if (e.key === "ArrowLeft") goPrev();
-    };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [lightboxIndex, filtered.length]);
-
-  // Lock body scroll when lightbox is open
-  useEffect(() => {
-    if (lightboxIndex !== null) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => { document.body.style.overflow = ""; };
-  }, [lightboxIndex]);
-
-  const elderlyCount = photos.filter((p) => p.category === "elderly").length;
-  const educationCount = photos.filter((p) => p.category === "education").length;
+  const elderlyCount = activities.filter((a) => a.category === "elderly").length;
+  const educationCount = activities.filter((a) => a.category === "education").length;
 
   return (
     <div className="min-h-screen bg-[#0A1628]">
@@ -236,7 +141,7 @@ export default function Activities() {
             <div className="gradient-rule mx-auto mb-6" />
             <p className="font-sans text-[15px] text-white/60 max-w-2xl mx-auto leading-relaxed">
               Real moments from the field — visiting old age homes, donating books and materials
-              to tribal students, and building connections that matter. Every photo here is a
+              to tribal students, and building connections that matter. Every activity here is a
               testament to our commitment to action over words.
             </p>
           </AnimatedSection>
@@ -247,27 +152,33 @@ export default function Activities() {
               <div className="glass-card px-6 py-4 flex items-center gap-3">
                 <Heart size={20} className="text-[#C9A84C]" />
                 <div className="text-left">
-                  <p className="font-serif text-2xl font-bold text-[#C9A84C]">{elderlyCount}</p>
+                  <p className="font-serif text-2xl font-bold text-[#C9A84C]">
+                    {elderlyCount}
+                  </p>
                   <p className="font-mono text-[9px] tracking-wider uppercase text-white/50">
-                    Elderly Care Photos
+                    Elderly Care Activities
                   </p>
                 </div>
               </div>
               <div className="glass-card px-6 py-4 flex items-center gap-3">
                 <BookOpen size={20} className="text-[#1A7F8E]" />
                 <div className="text-left">
-                  <p className="font-serif text-2xl font-bold text-[#1A7F8E]">{educationCount}</p>
+                  <p className="font-serif text-2xl font-bold text-[#1A7F8E]">
+                    {educationCount}
+                  </p>
                   <p className="font-mono text-[9px] tracking-wider uppercase text-white/50">
-                    Education Photos
+                    Education Activities
                   </p>
                 </div>
               </div>
               <div className="glass-card px-6 py-4 flex items-center gap-3">
                 <span className="text-[#C9A84C] text-lg">✦</span>
                 <div className="text-left">
-                  <p className="font-serif text-2xl font-bold text-white">{photos.length}</p>
+                  <p className="font-serif text-2xl font-bold text-white">
+                    {activities.length}
+                  </p>
                   <p className="font-mono text-[9px] tracking-wider uppercase text-white/50">
-                    Total Moments
+                    Total Activities
                   </p>
                 </div>
               </div>
@@ -279,11 +190,13 @@ export default function Activities() {
       {/* ===== FILTER TABS ===== */}
       <section className="py-4 bg-[#06101F] border-y border-white/[0.06] sticky top-16 md:top-20 z-30">
         <div className="container flex items-center justify-center gap-3 md:gap-4">
-          {([
-            { key: "all", label: "All Activities", count: photos.length },
-            { key: "elderly", label: "Elderly Care", count: elderlyCount },
-            { key: "education", label: "Education", count: educationCount },
-          ] as { key: Category; label: string; count: number }[]).map((tab) => (
+          {(
+            [
+              { key: "all", label: "All Activities", count: activities.length },
+              { key: "elderly", label: "Elderly Care", count: elderlyCount },
+              { key: "education", label: "Education", count: educationCount },
+            ] as { key: Category; label: string; count: number }[]
+          ).map((tab) => (
             <button
               key={tab.key}
               onClick={() => setFilter(tab.key)}
@@ -302,9 +215,9 @@ export default function Activities() {
         </div>
       </section>
 
-      {/* ===== PHOTO GALLERY ===== */}
+      {/* ===== ACTIVITY LIST ===== */}
       <section className="py-16 md:py-24 bg-[#080F1C]">
-        <div className="container">
+        <div className="container max-w-4xl">
           {/* Category Header */}
           {filter !== "all" && (
             <AnimatedSection className="mb-12">
@@ -318,61 +231,80 @@ export default function Activities() {
                   <h2 className="font-serif text-2xl font-bold text-white mb-2">
                     {filter === "elderly"
                       ? "Elderly Care — Old Age Home Visits"
-                      : "Education — Tribal Student Book Donations"}
+                      : "Education — Tribal Student Support"}
                   </h2>
                   <p className="font-sans text-[14px] text-white/55 leading-relaxed">
                     {filter === "elderly"
                       ? "Our team regularly visits old age homes to provide essentials, companionship, and dignity to elderly residents who need it most. Every visit is a reminder that no one should age alone."
-                      : "We travel to tribal villages in Odisha to donate books, notebooks, and learning materials to children who deserve the same opportunities as everyone else. Education is the bridge from remote to remarkable."}
+                      : "We travel to tribal villages across Odisha to donate books, notebooks, and learning materials to children who deserve the same opportunities as everyone else. Education is the bridge from remote to remarkable."}
                   </p>
                 </div>
               </div>
             </AnimatedSection>
           )}
 
-          {/* Masonry Grid */}
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-5">
-            {filtered.map((photo, idx) => (
-              <AnimatedSection key={photo.src} delay={Math.min(idx * 0.04, 0.4)}>
+          {/* Activity Cards */}
+          <div className="space-y-5">
+            {filtered.map((activity, idx) => (
+              <AnimatedSection key={`${activity.title}-${idx}`} delay={Math.min(idx * 0.05, 0.3)}>
                 <div
-                  className="break-inside-avoid mb-4 md:mb-5 group cursor-pointer relative overflow-hidden rounded-lg border border-white/[0.06]"
-                  onClick={() => openLightbox(idx)}
+                  className={`glass-card${activity.category === "elderly" ? "-gold" : ""} p-6 md:p-8 hover:border-${activity.category === "elderly" ? "[#C9A84C]" : "[#1A7F8E]"}/30 transition-all duration-300`}
                 >
-                  <img
-                    src={photo.src}
-                    alt={photo.caption}
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/90 via-[#0A1628]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                    <span
-                      className={`font-mono text-[9px] tracking-wider uppercase mb-2 ${
-                        photo.category === "elderly" ? "text-[#C9A84C]" : "text-[#1A7F8E]"
+                  <div className="flex items-start gap-4">
+                    {/* Icon */}
+                    <div
+                      className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 ${
+                        activity.category === "elderly"
+                          ? "bg-[#C9A84C]/10"
+                          : "bg-[#1A7F8E]/10"
                       }`}
                     >
-                      {photo.category === "elderly" ? "✦ Elderly Care" : "✦ Education"}
-                    </span>
-                    <p className="font-sans text-[13px] text-white/80 leading-relaxed line-clamp-2">
-                      {photo.caption}
-                    </p>
-                    {(photo.date || photo.location) && (
-                      <p className="font-mono text-[8px] tracking-wider uppercase text-white/40 mt-2">
-                        {photo.date}{photo.date && photo.location && " \u00B7 "}{photo.location}
+                      {activity.category === "elderly" ? (
+                        <Heart
+                          size={22}
+                          className="text-[#C9A84C]"
+                        />
+                      ) : (
+                        <BookOpen
+                          size={22}
+                          className="text-[#1A7F8E]"
+                        />
+                      )}
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <span
+                          className={`font-mono text-[9px] tracking-wider uppercase px-2 py-0.5 rounded-sm ${
+                            activity.category === "elderly"
+                              ? "bg-[#C9A84C]/10 text-[#C9A84C]"
+                              : "bg-[#1A7F8E]/10 text-[#1A7F8E]"
+                          }`}
+                        >
+                          {activity.category === "elderly" ? "Elderly Care" : "Education"}
+                        </span>
+                      </div>
+
+                      <h3 className="font-serif text-lg md:text-xl font-bold text-white mb-2">
+                        {activity.title}
+                      </h3>
+
+                      <p className="font-sans text-[14px] text-white/55 leading-relaxed mb-4">
+                        {activity.description}
                       </p>
-                    )}
-                  </div>
-                  {/* Category badge */}
-                  <div className="absolute top-3 right-3">
-                    <span
-                      className={`font-mono text-[8px] tracking-wider uppercase px-2 py-1 backdrop-blur-sm rounded-sm ${
-                        photo.category === "elderly"
-                          ? "bg-[#C9A84C]/20 text-[#C9A84C]"
-                          : "bg-[#1A7F8E]/20 text-[#1A7F8E]"
-                      }`}
-                    >
-                      {photo.category === "elderly" ? "Elderly Care" : "Education"}
-                    </span>
+
+                      <div className="flex flex-wrap items-center gap-4">
+                        <span className="flex items-center gap-1.5 font-mono text-[9px] tracking-wider uppercase text-white/40">
+                          <Calendar size={12} />
+                          {activity.date}
+                        </span>
+                        <span className="flex items-center gap-1.5 font-mono text-[9px] tracking-wider uppercase text-white/40">
+                          <MapPin size={12} />
+                          {activity.location}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </AnimatedSection>
@@ -381,7 +313,7 @@ export default function Activities() {
 
           {filtered.length === 0 && (
             <div className="text-center py-20">
-              <p className="font-sans text-white/40">No photos in this category yet.</p>
+              <p className="font-sans text-white/40">No activities in this category yet.</p>
             </div>
           )}
         </div>
@@ -412,94 +344,6 @@ export default function Activities() {
       </section>
 
       <Footer />
-
-      {/* ===== LIGHTBOX ===== */}
-      <AnimatePresence>
-        {lightboxIndex !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] bg-[#0A1628]/95 backdrop-blur-xl flex items-center justify-center"
-            onClick={closeLightbox}
-          >
-            {/* Close button */}
-            <button
-              onClick={closeLightbox}
-              className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 flex items-center justify-center text-white/70 hover:text-white transition-colors z-10"
-              aria-label="Close lightbox"
-            >
-              <X size={24} />
-            </button>
-
-            {/* Previous */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                goPrev();
-              }}
-              className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-white/50 hover:text-white bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-all z-10"
-              aria-label="Previous photo"
-            >
-              <ChevronLeft size={24} />
-            </button>
-
-            {/* Next */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                goNext();
-              }}
-              className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-white/50 hover:text-white bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-all z-10"
-              aria-label="Next photo"
-            >
-              <ChevronRight size={24} />
-            </button>
-
-            {/* Image */}
-            <motion.div
-              key={lightboxIndex}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-              className="max-w-[90vw] max-h-[80vh] flex flex-col items-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img
-                src={filtered[lightboxIndex].src}
-                alt={filtered[lightboxIndex].caption}
-                className="max-w-full max-h-[70vh] object-contain rounded-lg"
-              />
-              <div className="mt-4 text-center max-w-xl">
-                <span
-                  className={`font-mono text-[9px] tracking-wider uppercase ${
-                    filtered[lightboxIndex].category === "elderly"
-                      ? "text-[#C9A84C]"
-                      : "text-[#1A7F8E]"
-                  }`}
-                >
-                  {filtered[lightboxIndex].category === "elderly"
-                    ? "✦ Elderly Care"
-                    : "✦ Education"}
-                </span>
-                <p className="font-sans text-[14px] text-white/70 leading-relaxed mt-2">
-                  {filtered[lightboxIndex].caption}
-                </p>
-                {(filtered[lightboxIndex].date || filtered[lightboxIndex].location) && (
-                  <p className="font-mono text-[9px] text-white/40 mt-2">
-                    {filtered[lightboxIndex].date}{filtered[lightboxIndex].date && filtered[lightboxIndex].location && " \u00B7 "}{filtered[lightboxIndex].location}
-                  </p>
-                )}
-                <p className="font-mono text-[9px] text-white/30 mt-2">
-                  {lightboxIndex + 1} / {filtered.length}
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
