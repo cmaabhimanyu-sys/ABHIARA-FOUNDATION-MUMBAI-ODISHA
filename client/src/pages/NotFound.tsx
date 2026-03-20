@@ -1,49 +1,48 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle, Home } from "lucide-react";
-import { useLocation } from "wouter";
+/*
+ * Abhiara Foundation — 404 Page
+ * Design: "Dawn Breaking" — Navy background with gold accents
+ */
+import { Link } from "wouter";
+import { Home, ArrowLeft } from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function NotFound() {
-  const [, setLocation] = useLocation();
-
-  const handleGoHome = () => {
-    setLocation("/");
-  };
-
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
-      <Card className="w-full max-w-lg mx-4 shadow-lg border-0 bg-white/80 backdrop-blur-sm">
-        <CardContent className="pt-8 pb-8 text-center">
-          <div className="flex justify-center mb-6">
-            <div className="relative">
-              <div className="absolute inset-0 bg-red-100 rounded-full animate-pulse" />
-              <AlertCircle className="relative h-16 w-16 text-red-500" />
-            </div>
-          </div>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
 
-          <h1 className="text-4xl font-bold text-slate-900 mb-2">404</h1>
+      <main className="flex-1 flex items-center justify-center bg-navy relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-gold/5 blur-[120px] pointer-events-none" />
 
-          <h2 className="text-xl font-semibold text-slate-700 mb-4">
-            Page Not Found
-          </h2>
-
-          <p className="text-slate-600 mb-8 leading-relaxed">
-            Sorry, the page you are looking for doesn't exist.
-            <br />
-            It may have been moved or deleted.
+        <div className="relative z-10 container text-center py-32">
+          <p className="font-serif text-[120px] md:text-[180px] font-bold text-gold/15 leading-none select-none">
+            404
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button
-              onClick={handleGoHome}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+          <h1 className="font-serif text-3xl md:text-4xl font-bold text-white -mt-8 mb-4">
+            Page Not Found
+          </h1>
+          <p className="font-sans text-white/60 max-w-md mx-auto mb-8 leading-relaxed">
+            The page you are looking for does not exist. It may have been moved, or the link may be incorrect.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/"
+              className="px-6 py-3 bg-gold text-navy font-sans font-bold text-sm tracking-wide uppercase rounded-sm hover:bg-gold-light transition-colors flex items-center gap-2"
             >
-              <Home className="w-4 h-4 mr-2" />
-              Go Home
-            </Button>
+              <Home size={16} /> Go Home
+            </Link>
+            <Link
+              href="/contact"
+              className="px-6 py-3 border border-white/20 text-white/70 font-sans font-bold text-sm tracking-wide uppercase rounded-sm hover:border-gold/50 hover:text-gold transition-colors flex items-center gap-2"
+            >
+              <ArrowLeft size={16} /> Contact Us
+            </Link>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </main>
+
+      <Footer />
     </div>
   );
 }
