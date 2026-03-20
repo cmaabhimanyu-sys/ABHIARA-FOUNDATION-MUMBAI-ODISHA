@@ -192,7 +192,7 @@ export default function OurStory() {
               "Remote to Metro Mumbai was my journey. Abhiara Foundation is my promise — that the next child from the village has a path."
             </blockquote>
             <p className="font-sans text-sm tracking-widest uppercase text-gold">
-              Abhimanyu Mallik &middot; Founder &middot; CMA
+              Abhimanyu Mallik &middot; Founder
             </p>
             <div className="w-16 h-0.5 bg-gold mx-auto mt-8" />
           </AnimatedSection>

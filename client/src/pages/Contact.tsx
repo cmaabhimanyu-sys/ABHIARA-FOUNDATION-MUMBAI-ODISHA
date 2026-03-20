@@ -5,7 +5,7 @@
  */
 import { useState } from "react";
 import { Link } from "wouter";
-import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook, Send, Heart, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Instagram, Twitter, Send, Heart, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -187,7 +187,7 @@ export default function Contact() {
                 <div className="p-6 bg-white/5 border border-gold/20 rounded-lg">
                   <p className="font-sans text-xs tracking-[0.3em] uppercase text-gold mb-3">Founder</p>
                   <h3 className="font-serif text-xl font-bold text-white mb-1">Abhimanyu Mallik</h3>
-                  <p className="font-sans text-sm text-white/50 mb-4">CMA &middot; Mumbai, Maharashtra</p>
+                  <p className="font-sans text-sm text-white/50 mb-4">Mumbai, Maharashtra</p>
                   <div className="space-y-3">
                     <a href="mailto:founder@abhiarafoundation.org" className="flex items-center gap-3 text-sm text-white/60 hover:text-gold transition-colors">
                       <Mail size={16} className="text-teal shrink-0" />
@@ -223,14 +223,14 @@ export default function Contact() {
                 <div className="p-6 bg-white/5 border border-white/10 rounded-lg">
                   <p className="font-sans text-xs tracking-[0.3em] uppercase text-gold mb-3">Connect</p>
                   <div className="flex gap-3">
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-gold hover:border-gold transition-colors">
+                    <a href="https://www.linkedin.com/in/abhimanyu-mallik/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-gold hover:border-gold transition-colors">
                       <Linkedin size={18} />
                     </a>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-gold hover:border-gold transition-colors">
-                      <Instagram size={18} />
+                    <a href="https://x.com/abhimanyumalli7?s=11" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-gold hover:border-gold transition-colors">
+                      <Twitter size={18} />
                     </a>
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-gold hover:border-gold transition-colors">
-                      <Facebook size={18} />
+                    <a href="https://www.instagram.com/cma.abhimanyu?igsh=MTVsaXNic2VqeDVicg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-gold hover:border-gold transition-colors">
+                      <Instagram size={18} />
                     </a>
                   </div>
                 </div>

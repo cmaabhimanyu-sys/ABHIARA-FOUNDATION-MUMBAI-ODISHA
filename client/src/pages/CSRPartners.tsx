@@ -84,8 +84,8 @@ export default function CSRPartners() {
               },
               {
                 icon: Award,
-                title: "CMA-Qualified Founder",
-                description: "Abhimanyu Mallik is a qualified Cost & Management Accountant. All filings self-managed.",
+                title: "Qualified Founder",
+                description: "Abhimanyu Mallik brings professional financial expertise. All filings self-managed.",
                 color: "text-gold",
                 bg: "bg-gold/10",
                 border: "border-gold/20",
