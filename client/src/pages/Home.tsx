@@ -48,7 +48,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-8"
           >
-            SECTION 8 COMPANY &middot; NGO &middot; ODISHA &middot; PAN INDIA
+            SECTION 8 COMPANY &middot; NOT-FOR-PROFIT &middot; ODISHA &middot; PAN INDIA
           </motion.p>
 
           <motion.h1

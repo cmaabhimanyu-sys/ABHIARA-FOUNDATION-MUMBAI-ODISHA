@@ -15,3 +15,4 @@
 - [x] Social links updated (LinkedIn, X/Twitter, Instagram)
 - [x] Remove scrolling announcement ticker bar from homepage
 - [x] Update coverage text: "All of Odisha and other states" across all pages
+- [x] Replace "NGO" with "NOT-FOR-PROFIT" in hero subtitle on homepage
