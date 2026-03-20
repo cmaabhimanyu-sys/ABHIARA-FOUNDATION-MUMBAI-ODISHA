@@ -2,6 +2,20 @@ import { describe, expect, it, vi } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
 
+// Mock the database functions so tests don't depend on a live DB connection
+vi.mock("./db", () => ({
+  getDb: vi.fn().mockResolvedValue(null),
+  upsertUser: vi.fn(),
+  getUserByOpenId: vi.fn(),
+  addNewsletterSubscriber: vi.fn().mockResolvedValue({ success: true }),
+  createContactInquiry: vi.fn().mockResolvedValue({ success: true }),
+}));
+
+// Mock the notification function so it doesn't make real HTTP calls
+vi.mock("./_core/notification", () => ({
+  notifyOwner: vi.fn().mockResolvedValue(true),
+}));
+
 function createPublicContext(): TrpcContext {
   return {
     user: null,

@@ -19,6 +19,8 @@ interface ActivityPhoto {
   src: string;
   category: "elderly" | "education";
   caption: string;
+  date?: string;
+  location?: string;
 }
 
 const photos: ActivityPhoto[] = [
@@ -27,97 +29,135 @@ const photos: ActivityPhoto[] = [
     src: `${CDN}/activity-01_e25fc6d2.jpeg`,
     category: "elderly",
     caption: "Visiting Hope is Life Old Age Home — distributing essentials and spending time with elderly residents",
+    date: "March 2025",
+    location: "Mumbai, Maharashtra",
   },
   {
     src: `${CDN}/activity-02_5546d5ec.jpeg`,
     category: "elderly",
     caption: "Interacting with elderly residents during our old age home outreach visit",
+    date: "March 2025",
+    location: "Mumbai, Maharashtra",
   },
   {
     src: `${CDN}/activity-03_c1b7e8f1.jpeg`,
     category: "elderly",
     caption: "Providing care packages and daily essentials to senior citizens",
+    date: "March 2025",
+    location: "Mumbai, Maharashtra",
   },
   {
     src: `${CDN}/activity-04_5a933f56.jpeg`,
     category: "elderly",
     caption: "Sharing moments of warmth and companionship with the elders",
+    date: "March 2025",
+    location: "Mumbai, Maharashtra",
   },
   {
     src: `${CDN}/activity-05_3bfcad32.jpeg`,
     category: "elderly",
     caption: "Donation drive at the old age home — every elder deserves dignity",
+    date: "March 2025",
+    location: "Mumbai, Maharashtra",
   },
   {
     src: `${CDN}/activity-06_d47bcf53.jpeg`,
     category: "elderly",
     caption: "Group interaction with elderly residents — listening to their stories",
+    date: "March 2025",
+    location: "Mumbai, Maharashtra",
   },
   {
     src: `${CDN}/activity-07_b065e8cc.jpeg`,
     category: "elderly",
     caption: "Distributing supplies and spending quality time with the residents",
+    date: "March 2025",
+    location: "Mumbai, Maharashtra",
   },
   {
     src: `${CDN}/activity-08_c67457a2.jpeg`,
     category: "elderly",
     caption: "Building connections across generations at the old age home",
+    date: "March 2025",
+    location: "Mumbai, Maharashtra",
   },
   {
     src: `${CDN}/activity-09_360e5337.jpeg`,
     category: "elderly",
     caption: "Providing comfort and care to elderly residents in need",
+    date: "March 2025",
+    location: "Mumbai, Maharashtra",
   },
   {
     src: `${CDN}/activity-10_7f041a80.jpeg`,
     category: "elderly",
     caption: "Our team engaging with the elderly community during the visit",
+    date: "March 2025",
+    location: "Mumbai, Maharashtra",
   },
   {
     src: `${CDN}/activity-11_c184ce63.jpeg`,
     category: "elderly",
     caption: "Ensuring every elder feels valued — our commitment to elderly care",
+    date: "March 2025",
+    location: "Mumbai, Maharashtra",
   },
   // Tribal Student Education Photos
   {
     src: `${CDN}/activity-12_ce6cf0ec.jpeg`,
     category: "education",
     caption: "Open-air learning session with tribal children — distributing books and study materials",
+    date: "March 2025",
+    location: "Koraput District, Odisha",
   },
   {
     src: `${CDN}/activity-13_7ac6b2c6.jpeg`,
     category: "education",
     caption: "Donating educational materials to tribal students in rural Odisha",
+    date: "March 2025",
+    location: "Koraput District, Odisha",
   },
   {
     src: `${CDN}/activity-14_07602990.jpeg`,
     category: "education",
     caption: "Children receiving books and learning materials for their studies",
+    date: "March 2025",
+    location: "Koraput District, Odisha",
   },
   {
     src: `${CDN}/activity-15_a05a7e08.jpeg`,
     category: "education",
     caption: "Engaging with tribal students and understanding their educational needs",
+    date: "March 2025",
+    location: "Koraput District, Odisha",
   },
   {
     src: `${CDN}/activity-16_bfc24c7f.jpeg`,
     category: "education",
     caption: "Book distribution drive — empowering young minds through education",
+    date: "March 2025",
+    location: "Koraput District, Odisha",
   },
   {
     src: `${CDN}/activity-17_2962c3c0.jpeg`,
     category: "education",
     caption: "Providing study materials to children in underserved tribal communities",
+    date: "March 2025",
+    location: "Koraput District, Odisha",
   },
   {
     src: `${CDN}/activity-18_37044a93.jpeg`,
     category: "education",
     caption: "Community outreach — connecting with tribal families and their children",
+    date: "March 2025",
+    location: "Koraput District, Odisha",
   },
   {
     src: `${CDN}/activity-19_79e2fbd0.jpeg`,
     category: "education",
     caption: "Every book donated is a step towards a brighter future for tribal children",
+    date: "March 2025",
+    location: "Koraput District, Odisha",
   },
 ];
 
@@ -316,6 +356,11 @@ export default function Activities() {
                     <p className="font-sans text-[13px] text-white/80 leading-relaxed line-clamp-2">
                       {photo.caption}
                     </p>
+                    {(photo.date || photo.location) && (
+                      <p className="font-mono text-[8px] tracking-wider uppercase text-white/40 mt-2">
+                        {photo.date}{photo.date && photo.location && " \u00B7 "}{photo.location}
+                      </p>
+                    )}
                   </div>
                   {/* Category badge */}
                   <div className="absolute top-3 right-3">
@@ -442,6 +487,11 @@ export default function Activities() {
                 <p className="font-sans text-[14px] text-white/70 leading-relaxed mt-2">
                   {filtered[lightboxIndex].caption}
                 </p>
+                {(filtered[lightboxIndex].date || filtered[lightboxIndex].location) && (
+                  <p className="font-mono text-[9px] text-white/40 mt-2">
+                    {filtered[lightboxIndex].date}{filtered[lightboxIndex].date && filtered[lightboxIndex].location && " \u00B7 "}{filtered[lightboxIndex].location}
+                  </p>
+                )}
                 <p className="font-mono text-[9px] text-white/30 mt-2">
                   {lightboxIndex + 1} / {filtered.length}
                 </p>
