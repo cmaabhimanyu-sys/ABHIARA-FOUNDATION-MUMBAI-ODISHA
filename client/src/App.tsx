@@ -9,6 +9,7 @@ import OurStory from "./pages/OurStory";
 import Programs from "./pages/Programs";
 import CSRPartners from "./pages/CSRPartners";
 import Contact from "./pages/Contact";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 function Router() {
   return (
@@ -27,10 +28,11 @@ function Router() {
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="light">
+      <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
           <Router />
+          <WhatsAppButton />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

@@ -1,111 +1,113 @@
 /*
- * Abhiara Foundation — CSR Partners Page
- * Design: "Dawn Breaking" — Institutional credibility with warm gold accents
- * Schedule VII alignment, credentials, partnership model
+ * Abhiara Foundation — CSR Partners V2.0
+ * 7 Sections: Hero, Why Partner, Budget Transparency, Schedule VII,
+ * Target Companies, Transparency Pledge, CTA
  */
+import { useEffect } from "react";
 import { Link } from "wouter";
-import { Shield, FileCheck, BarChart3, Users, CheckCircle2, ArrowRight, Building2, Award, Briefcase, FileText } from "lucide-react";
+import {
+  ArrowRight, Shield, FileText, BarChart3, Building2,
+  CheckCircle2, Eye, Clock, Users, Briefcase, Award, FileCheck
+} from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+
+function BudgetBar({ label, amount, pct, color }: { label: string; amount: string; pct: number; color: string }) {
+  return (
+    <div className="mb-5">
+      <div className="flex justify-between mb-1.5">
+        <span className="font-sans text-[13px] text-white/70">{label}</span>
+        <span className="font-mono text-[11px] text-white/50">{amount}</span>
+      </div>
+      <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: `${pct}%` }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="h-full rounded-full"
+          style={{ background: color }}
+        />
+      </div>
+    </div>
+  );
+}
 
 export default function CSRPartners() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#0A1628]">
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-center justify-center bg-navy overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy via-[#0d1f38] to-navy" />
-        <div className="absolute top-1/3 left-1/3 w-[400px] h-[400px] rounded-full bg-gold/5 blur-[120px] pointer-events-none" />
+      {/* ===== S1: HERO ===== */}
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0A1628] via-[#0d1f38] to-[#0A1628]" />
+        <div className="absolute top-1/3 left-1/4 w-[300px] h-[300px] rounded-full bg-[#C9A84C]/5 blur-[100px] pointer-events-none" />
 
-        <div className="relative z-10 container text-center pt-24">
+        <div className="relative z-10 container text-center pt-24 pb-16">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-sans text-xs tracking-[0.4em] uppercase text-gold mb-4"
+            className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-6"
           >
-            CSR Partnership
+            CSR PARTNERSHIP
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="font-serif text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6"
+            className="heading-xl text-white mb-4"
           >
-            Your CSR Spend —<br />
-            <span className="text-gold">Accountable &amp; Impactful</span>
+            Your CSR. <span className="text-[#C9A84C]">Our Ground.</span>
           </motion.h1>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="gradient-rule mx-auto mb-6"
+          />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="font-sans text-lg text-white/60 max-w-2xl mx-auto"
+            className="font-sans text-[15px] text-white/60 max-w-xl mx-auto"
           >
-            We are not asking for charity. We offer a CSR delivery engine — compliant, credible, accountable.
+            End-to-end CSR implementation. Schedule VII compliant. Monthly reporting. Audited utilisation. Real impact — documented, verified, and co-branded.
           </motion.p>
         </div>
       </section>
 
-      {/* Why Trust Abhiara */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-navy to-[#0d1f38]">
+      {/* ===== S2: WHY PARTNER WITH US ===== */}
+      <section className="py-20 md:py-28 bg-[#080F1C]">
         <div className="container">
-          <AnimatedSection className="text-center mb-16">
-            <p className="font-sans text-xs tracking-[0.4em] uppercase text-teal mb-4">
-              Credentials
-            </p>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Why Trust <span className="text-gold">Abhiara</span>
+          <AnimatedSection className="text-center mb-14">
+            <p className="section-label mb-4">WHY ABHIARA</p>
+            <h2 className="heading-lg text-white mb-4">
+              Why Partner <span className="text-[#C9A84C]">With Us</span>
             </h2>
+            <div className="gradient-rule mx-auto" />
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
-              {
-                icon: Shield,
-                title: "Section 8 Company",
-                description: "Limited by Guarantee under Companies Act, 2013. No profit distribution. Institutional governance.",
-                color: "text-gold",
-                bg: "bg-gold/10",
-                border: "border-gold/20",
-              },
-              {
-                icon: FileCheck,
-                title: "12A + 80G Registered",
-                description: "Income tax exemptions for the foundation and tax benefits for donors. Fully compliant.",
-                color: "text-teal",
-                bg: "bg-teal/10",
-                border: "border-teal/20",
-              },
-              {
-                icon: Award,
-                title: "Qualified Founder",
-                description: "Abhimanyu Mallik brings professional financial expertise. All filings self-managed.",
-                color: "text-gold",
-                bg: "bg-gold/10",
-                border: "border-gold/20",
-              },
-              {
-                icon: BarChart3,
-                title: "Monthly Reporting",
-                description: "Transparent impact reports with site visits, co-branded documentation, and social media recognition.",
-                color: "text-teal",
-                bg: "bg-teal/10",
-                border: "border-teal/20",
-              },
-            ].map((item, i) => (
-              <AnimatedSection key={item.title} delay={i * 0.1}>
-                <div className={`p-6 rounded-lg border ${item.border} bg-white/5 backdrop-blur-sm h-full hover:bg-white/8 transition-colors`}>
-                  <div className={`w-12 h-12 rounded-full ${item.bg} flex items-center justify-center mb-4`}>
-                    <item.icon size={22} className={item.color} />
+              { icon: Shield, title: "Section 8 Company", desc: "Registered under Companies Act 2013. Limited by Guarantee. CIN in progress." },
+              { icon: FileCheck, title: "Schedule VII Aligned", desc: "All programmes map directly to Schedule VII categories for CSR compliance." },
+              { icon: BarChart3, title: "Monthly Reports", desc: "Detailed progress reports with photo documentation and beneficiary data." },
+              { icon: Eye, title: "Full Transparency", desc: "Audited utilisation statements. Open books. No hidden costs." },
+              { icon: Award, title: "CMA-Led Finance", desc: "Founder is a qualified Cost & Management Accountant. Finance-first governance." },
+              { icon: Users, title: "Ground Presence", desc: "Direct operations in Koraput, Kalahandi, and Rayagada districts of Odisha." },
+            ].map((card, i) => (
+              <AnimatedSection key={card.title} delay={i * 0.08}>
+                <div className="glass-card p-6 h-full">
+                  <div className="w-10 h-10 mb-4 rounded-full bg-[#C9A84C]/10 flex items-center justify-center">
+                    <card.icon size={20} className="text-[#C9A84C]" />
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-white mb-3">{item.title}</h3>
-                  <p className="font-sans text-sm text-white/60 leading-relaxed">{item.description}</p>
+                  <h3 className="font-serif text-lg font-bold text-white mb-2">{card.title}</h3>
+                  <p className="font-sans text-[13px] text-white/50 leading-relaxed">{card.desc}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -113,99 +115,171 @@ export default function CSRPartners() {
         </div>
       </section>
 
-      {/* Schedule VII Alignment */}
-      <section className="py-20 md:py-28 bg-[#0d1f38]">
+      {/* ===== S3: BUDGET TRANSPARENCY ===== */}
+      <section className="py-20 md:py-28 bg-[#0A1628]">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <AnimatedSection direction="left">
-              <p className="font-sans text-xs tracking-[0.4em] uppercase text-gold mb-4">
-                Compliance
-              </p>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-6">
-                Schedule VII <span className="text-teal">Alignment</span>
+              <p className="section-label mb-4">BUDGET TRANSPARENCY</p>
+              <h2 className="heading-lg text-white mb-4">
+                Year 1 Budget: <span className="text-[#C9A84C]">₹30,00,000</span>
               </h2>
-              <p className="font-sans text-white/70 leading-relaxed mb-8">
-                Every programme at Abhiara Foundation is mapped to Schedule VII of the Companies Act, 2013. This ensures your CSR spend is fully compliant and eligible for reporting.
+              <div className="gradient-rule mb-8" />
+              <p className="font-sans text-[15px] text-white/60 leading-relaxed mb-8">
+                Every rupee is accounted for. Our budget is public, audited, and available for review by any CSR partner.
               </p>
 
-              <div className="space-y-4">
-                {[
-                  { clause: "Clause (i)", desc: "Eradicating hunger, poverty — promoting education", program: "Education Pillar" },
-                  { clause: "Clause (ii)", desc: "Promoting healthcare including preventive healthcare", program: "Elderly Care Pillar" },
-                  { clause: "Clause (x)", desc: "Rural development projects", program: "All Pillars" },
-                  { clause: "Clause (xi)", desc: "Slum area development", program: "Community Impact" },
-                ].map((item) => (
-                  <div key={item.clause} className="flex items-start gap-4 p-4 bg-white/5 border border-gold/10 rounded-lg">
-                    <CheckCircle2 size={18} className="text-gold mt-0.5 shrink-0" />
-                    <div>
-                      <p className="font-sans text-sm font-bold text-white">{item.clause}: <span className="font-normal text-white/70">{item.desc}</span></p>
-                      <p className="font-sans text-xs text-teal mt-1">Mapped to: {item.program}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <BudgetBar label="Education Programme" amount="₹12,00,000" pct={40} color="#C9A84C" />
+              <BudgetBar label="Elderly Care Programme" amount="₹6,00,000" pct={20} color="#1A7F8E" />
+              <BudgetBar label="Operations & Admin" amount="₹4,50,000" pct={15} color="#C9A84C" />
+              <BudgetBar label="Vidyapeeth Corpus" amount="₹4,50,000" pct={15} color="#1A7F8E" />
+              <BudgetBar label="Emergency & Contingency" amount="₹3,00,000" pct={10} color="#C9A84C" />
             </AnimatedSection>
 
             <AnimatedSection direction="right">
-              <p className="font-sans text-xs tracking-[0.4em] uppercase text-teal mb-4">
-                Partnership Model
-              </p>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-6">
-                How We <span className="text-gold">Work Together</span>
-              </h2>
-
-              <div className="space-y-6">
-                {[
-                  { step: "01", title: "Discovery Meeting", desc: "We understand your CSR goals, budget, and preferred focus areas." },
-                  { step: "02", title: "Project Design", desc: "We design a custom CSR project aligned with Schedule VII and your brand." },
-                  { step: "03", title: "Implementation", desc: "On-ground execution with local teams, regular site visits, and photo documentation." },
-                  { step: "04", title: "Monthly Reports", desc: "Detailed impact reports with metrics, photos, beneficiary stories, and compliance documentation." },
-                  { step: "05", title: "Co-Branded Impact", desc: "Social media recognition, co-branded reports, and annual impact documentation for your stakeholders." },
-                ].map((item) => (
-                  <div key={item.step} className="flex items-start gap-5">
-                    <span className="font-serif text-3xl font-bold text-gold/30 shrink-0 leading-none">{item.step}</span>
-                    <div>
-                      <h4 className="font-sans text-sm font-bold text-white mb-1">{item.title}</h4>
-                      <p className="font-sans text-sm text-white/60 leading-relaxed">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
+              <div className="glass-card-gold p-8">
+                <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-4">CSR DELIVERABLES</p>
+                <ul className="space-y-4">
+                  {[
+                    "Project proposal with detailed budget and timeline",
+                    "Monthly progress reports with photo documentation",
+                    "Quarterly audited utilisation statements",
+                    "Annual impact report with beneficiary data",
+                    "Co-branded CSR documentation for annual reports",
+                    "Site visits arranged for CSR team verification",
+                    "Named programme options (e.g., 'XYZ Corp Scholarship')",
+                    "Board-level presentation of impact outcomes",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CheckCircle2 size={16} className="text-[#C9A84C] mt-0.5 shrink-0" />
+                      <span className="font-sans text-[14px] text-white/60">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </AnimatedSection>
           </div>
         </div>
       </section>
 
-      {/* The Ask */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-[#0d1f38] to-[#0f2540] overflow-hidden">
+      {/* ===== S4: SCHEDULE VII ALIGNMENT ===== */}
+      <section className="py-20 md:py-28 bg-[#06101F]">
         <div className="container">
-          <AnimatedSection className="max-w-3xl mx-auto text-center">
-            <div className="w-16 h-0.5 bg-gold mx-auto mb-8" />
-            <p className="font-sans text-xs tracking-[0.4em] uppercase text-teal mb-6">The Ask</p>
-            <blockquote className="font-serif text-xl md:text-2xl lg:text-3xl text-white/90 leading-relaxed italic mb-8">
-              "We are not asking for charity. We offer a CSR delivery engine — compliant, credible, accountable."
-            </blockquote>
-            <div className="w-16 h-0.5 bg-gold mx-auto mb-8" />
+          <AnimatedSection className="text-center mb-14">
+            <p className="section-label mb-4">COMPLIANCE</p>
+            <h2 className="heading-lg text-white mb-4">
+              Schedule VII <span className="text-[#C9A84C]">Alignment</span>
+            </h2>
+            <div className="gradient-rule mx-auto mb-6" />
+            <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
+              Every programme maps directly to Companies Act Schedule VII categories.
+            </p>
           </AnimatedSection>
 
-          <AnimatedSection delay={0.2} className="max-w-3xl mx-auto">
-            <div className="p-8 bg-white/5 border border-gold/20 rounded-lg">
-              <h3 className="font-serif text-2xl font-bold text-white mb-6 text-center">
-                Year 1 CSR Ask: <span className="text-gold">Rs 30,00,000</span>
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <AnimatedSection delay={0.1}>
+            <div className="max-w-4xl mx-auto overflow-x-auto">
+              <table className="w-full text-left">
+                <thead>
+                  <tr className="border-b border-white/10">
+                    <th className="font-mono text-[10px] tracking-wider uppercase text-[#1A7F8E] py-3 pr-4">Programme</th>
+                    <th className="font-mono text-[10px] tracking-wider uppercase text-[#1A7F8E] py-3 pr-4">Schedule VII Category</th>
+                    <th className="font-mono text-[10px] tracking-wider uppercase text-[#1A7F8E] py-3 pr-4">SDG</th>
+                    <th className="font-mono text-[10px] tracking-wider uppercase text-[#1A7F8E] py-3">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { prog: "Education", cat: "(ii) Promoting education", sdg: "SDG 4", status: "Active" },
+                    { prog: "Elderly Care", cat: "(i) Eradicating hunger, poverty", sdg: "SDG 3", status: "Active" },
+                    { prog: "CSR Impact", cat: "(x) Rural development", sdg: "SDG 10, 11", status: "Active" },
+                    { prog: "Vidyapeeth", cat: "(ii) Promoting education", sdg: "SDG 4", status: "Planned" },
+                  ].map((row) => (
+                    <tr key={row.prog} className="border-b border-white/[0.06]">
+                      <td className="font-sans text-[14px] text-white/70 py-4 pr-4">{row.prog}</td>
+                      <td className="font-sans text-[13px] text-white/50 py-4 pr-4">{row.cat}</td>
+                      <td className="py-4 pr-4">
+                        <span className="font-mono text-[9px] tracking-wider uppercase bg-[#1A7F8E]/15 text-[#1A7F8E] px-2 py-1 rounded-sm">{row.sdg}</span>
+                      </td>
+                      <td className="py-4">
+                        <span className={`font-mono text-[9px] tracking-wider uppercase px-2 py-1 rounded-sm ${
+                          row.status === "Active" ? "bg-[#C9A84C]/15 text-[#C9A84C]" : "bg-white/10 text-white/40"
+                        }`}>{row.status}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ===== S5: TARGET COMPANIES ===== */}
+      <section className="py-20 md:py-28 bg-[#080F1C]">
+        <div className="container">
+          <AnimatedSection className="text-center mb-14">
+            <p className="section-label mb-4">PARTNERSHIP TARGETS</p>
+            <h2 className="heading-lg text-white mb-4">
+              Companies We <span className="text-[#C9A84C]">Want to Work With</span>
+            </h2>
+            <div className="gradient-rule mx-auto mb-6" />
+            <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
+              We are actively seeking CSR partnerships with companies that share our vision for tribal Odisha.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
+            {[
+              "Tata Group", "Infosys", "Wipro", "HDFC Bank", "Reliance",
+              "Mahindra", "Adani Foundation", "JSW", "Vedanta", "NTPC",
+            ].map((company, i) => (
+              <AnimatedSection key={company} delay={i * 0.04}>
+                <div className="glass-card p-4 text-center hover:border-[#C9A84C]/30 transition-colors">
+                  <Building2 size={20} className="text-[#C9A84C]/40 mx-auto mb-2" />
+                  <p className="font-sans text-[13px] text-white/60">{company}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection delay={0.5} className="mt-8 text-center">
+            <p className="font-sans text-[13px] text-white/40 italic">
+              These are aspirational targets. We welcome partnerships with companies of all sizes.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ===== S6: TRANSPARENCY PLEDGE ===== */}
+      <section className="py-20 md:py-28 bg-[#0A1628]">
+        <div className="container max-w-3xl">
+          <AnimatedSection className="text-center mb-14">
+            <p className="section-label mb-4">OUR PLEDGE</p>
+            <h2 className="heading-lg text-white mb-4">
+              Transparency <span className="text-[#C9A84C]">Pledge</span>
+            </h2>
+            <div className="gradient-rule mx-auto" />
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <div className="glass-card-gold p-8 md:p-10 text-center">
+              <p className="font-serif text-xl md:text-2xl italic text-white/80 leading-relaxed mb-8">
+                "Every rupee you invest through Abhiara Foundation will be tracked, documented, and reported. We do not believe in black boxes. We believe in open books."
+              </p>
+              <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C] mb-8">
+                — Abhimanyu Mallik &middot; Founder
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-[#C9A84C]/15">
                 {[
-                  { icon: Briefcase, label: "Education", amount: "Rs 12L (40%)" },
-                  { icon: Building2, label: "Digital Centres", amount: "Rs 9L (30%)" },
-                  { icon: Users, label: "Elderly Care", amount: "Rs 6L (20%)" },
-                  { icon: FileText, label: "Operations", amount: "Rs 3L (10%)" },
+                  { icon: Eye, label: "Open Books", desc: "Full financial transparency" },
+                  { icon: Clock, label: "Monthly Reports", desc: "Regular progress updates" },
+                  { icon: Shield, label: "Audited Accounts", desc: "Independent audit trail" },
                 ].map((item) => (
-                  <div key={item.label} className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
-                    <item.icon size={18} className="text-gold shrink-0" />
-                    <div>
-                      <p className="font-sans text-sm font-bold text-white">{item.label}</p>
-                      <p className="font-sans text-xs text-white/50">{item.amount}</p>
-                    </div>
+                  <div key={item.label} className="text-center">
+                    <item.icon size={24} className="text-[#C9A84C] mx-auto mb-2" />
+                    <p className="font-sans text-sm font-semibold text-white">{item.label}</p>
+                    <p className="font-mono text-[9px] tracking-wider text-white/40">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -214,48 +288,29 @@ export default function CSRPartners() {
         </div>
       </section>
 
-      {/* Target Companies */}
-      <section className="py-16 md:py-20 bg-[#0f2540]">
-        <div className="container">
-          <AnimatedSection className="text-center mb-10">
-            <p className="font-sans text-xs tracking-[0.4em] uppercase text-teal mb-4">Target Partners</p>
-            <h2 className="font-serif text-2xl md:text-3xl font-bold text-white">
-              CSR Leaders in <span className="text-gold">Odisha</span>
-            </h2>
-          </AnimatedSection>
-
-          <AnimatedSection>
-            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-              {["NALCO", "ONGC", "Tata Steel", "Coal India"].map((company) => (
-                <div key={company} className="px-8 py-4 border border-white/10 rounded-lg bg-white/5">
-                  <p className="font-sans text-lg font-bold text-white/60 tracking-wider">{company}</p>
-                </div>
-              ))}
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Closing CTA */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-[#0f2540] to-cream overflow-hidden">
+      {/* ===== S7: CTA ===== */}
+      <section className="py-16 md:py-20 bg-[#C9A84C]">
         <div className="container text-center">
           <AnimatedSection>
-            <blockquote className="font-serif text-xl md:text-2xl lg:text-3xl text-white/90 italic max-w-3xl mx-auto mb-8 leading-relaxed">
-              "When you partner with us, you are not writing a cheque. You are lighting a ray of hope in a child's eye."
-            </blockquote>
+            <h2 className="font-serif font-bold text-[#0A1628] mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 44px)" }}>
+              Let's build impact together.
+            </h2>
+            <p className="font-sans text-[15px] text-[#0A1628]/70 max-w-xl mx-auto mb-8">
+              Reach out to discuss how your CSR budget can create measurable, documented impact in tribal Odisha.
+            </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/contact"
-                className="px-8 py-3.5 bg-gold text-navy font-sans font-bold text-sm tracking-wide uppercase rounded-sm hover:bg-gold-light transition-colors"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-[#0A1628] text-[#C9A84C] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#06101F] transition-colors"
               >
-                Book a Meeting <ArrowRight size={14} className="inline ml-2" />
+                CONTACT US <ArrowRight size={12} />
               </Link>
-              <Link
-                href="/contact"
-                className="px-8 py-3.5 border border-teal/50 text-teal font-sans font-bold text-sm tracking-wide uppercase rounded-sm hover:bg-teal/10 transition-colors"
+              <a
+                href="mailto:founder@abhiarafoundation.org"
+                className="inline-flex items-center gap-2 px-8 py-3 border border-[#0A1628]/30 text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#0A1628]/10 transition-colors"
               >
-                Download CSR Deck
-              </Link>
+                EMAIL FOUNDER <ArrowRight size={12} />
+              </a>
             </div>
           </AnimatedSection>
         </div>

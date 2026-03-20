@@ -1,5 +1,9 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+/*
+ * AnimatedSection V2.0
+ * IntersectionObserver fade-up: opacity 0→1, translateY 24px→0, 0.65s ease
+ * Stagger: 0.08s increments
+ */
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 interface AnimatedSectionProps {
@@ -16,13 +20,13 @@ export default function AnimatedSection({
   direction = "up",
 }: AnimatedSectionProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
 
   const variants = {
     hidden: {
       opacity: 0,
-      y: direction === "up" ? 40 : 0,
-      x: direction === "left" ? -40 : direction === "right" ? 40 : 0,
+      y: direction === "up" ? 24 : 0,
+      x: direction === "left" ? -24 : direction === "right" ? 24 : 0,
     },
     visible: {
       opacity: 1,
@@ -37,7 +41,7 @@ export default function AnimatedSection({
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={variants}
-      transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.65, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={className}
     >
       {children}
