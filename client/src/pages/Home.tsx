@@ -386,11 +386,11 @@ export default function Home() {
             <AnimatedSection direction="left">
               <div className="space-y-0">
                 {[
-                  { phase: "Phase 1", years: "Year 1–2", desc: "Build corpus · Register · Launch programme" },
-                  { phase: "Phase 2", years: "Year 2–3", desc: "Land in Koraput / Kalahandi / Rayagada" },
-                  { phase: "Phase 3", years: "Year 3–4", desc: "Construction begins · CBSE affiliation" },
-                  { phase: "Phase 4", years: "Year 4–5", desc: "First batch enrolled" },
-                  { phase: "Phase 5", years: "Year 5+", desc: "Aradhana becomes Trustee at age 18" },
+                  { phase: "Phase 1", years: "2025–2026", desc: "Build corpus · Register · Launch education & elderly care programmes" },
+                  { phase: "Phase 2", years: "2027", desc: "Acquire land in tribal Odisha · Begin CBSE affiliation" },
+                  { phase: "Phase 3", years: "2028", desc: "Construction begins · Recruit founding faculty" },
+                  { phase: "Phase 4", years: "2029–2030", desc: "Abhiara Vidyapeeth opens · First batch enrolled" },
+                  { phase: "Phase 5", years: "2039", desc: "Aradhana turns 18 · Becomes youngest Trustee" },
                 ].map((item, i) => (
                   <div key={item.phase} className="flex gap-4">
                     <div className="flex flex-col items-center">
@@ -417,7 +417,7 @@ export default function Home() {
                 </p>
                 <div className="mt-8 pt-6 border-t border-[#C9A84C]/15">
                   <p className="font-sans text-[14px] text-white/50 italic">
-                    "When Aradhana turns 18, she becomes the youngest trustee of Abhiara Foundation."
+                    "When Aradhana turns 18 in 2039, she becomes the youngest trustee of Abhiara Foundation."
                   </p>
                 </div>
               </div>

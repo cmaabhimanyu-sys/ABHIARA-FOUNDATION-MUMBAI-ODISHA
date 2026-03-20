@@ -10,6 +10,7 @@ import Programs from "./pages/Programs";
 import CSRPartners from "./pages/CSRPartners";
 import Contact from "./pages/Contact";
 import Activities from "./pages/Activities";
+import Vision from "./pages/Vision";
 import WhatsAppButton from "./components/WhatsAppButton";
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -17,6 +18,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/our-story" component={OurStory} />
+      <Route path="/vision" component={Vision} />
       <Route path="/programs" component={Programs} />
       <Route path="/csr-partners" component={CSRPartners} />
       <Route path="/activities" component={Activities} />

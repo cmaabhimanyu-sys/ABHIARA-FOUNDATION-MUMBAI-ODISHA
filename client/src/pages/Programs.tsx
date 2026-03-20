@@ -108,7 +108,7 @@ export default function Programs() {
               </div>
               <h2 className="heading-lg text-white mb-6">Education</h2>
               <p className="font-sans text-[15px] text-white/60 leading-relaxed mb-6">
-                Scholarships, digital learning centres, and study kits for underprivileged students across all of Odisha and expanding to other states across India.
+                Scholarships, digital learning centres, and study kits for poor and underprivileged students from tribal and rural families. We believe no child should be denied education because of geography or poverty. Covering all of Odisha and expanding across India.
               </p>
 
               {/* Metrics */}
@@ -131,7 +131,7 @@ export default function Programs() {
               <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-3">WHAT WE PROVIDE</p>
               <ul className="space-y-2 mb-6">
                 {[
-                  "Full and partial scholarships for Class 8–12 students",
+                  "Full and partial scholarships for poor and underprivileged Class 8–12 students",
                   "Digital learning centres with tablets and internet",
                   "Study kits — books, stationery, school bags",
                   "After-school tutoring and mentorship",

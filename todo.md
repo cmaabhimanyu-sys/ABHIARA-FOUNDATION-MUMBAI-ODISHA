@@ -16,3 +16,9 @@
 - [x] Remove scrolling announcement ticker bar from homepage
 - [x] Update coverage text: "All of Odisha and other states" across all pages
 - [x] Replace "NGO" with "NOT-FOR-PROFIT" in hero subtitle on homepage
+- [x] Update Vidyapeeth timeline: school within 5 years, Aradhana becomes Trustee at age 18 by 2039
+- [x] Update plan references across pages: Support underprivileged students, Education, Elderly Care, CSR Implementation
+- [x] Update Our Story page with founder's 5-year plan and 2039 milestone
+- [x] Update Programs page to emphasize support for poor and underprivileged students
+- [x] Create new Vision page with full 5-year plan, milestones, and 2039 Aradhana Trustee goal
+- [x] Add Vision tab to Navbar, Footer, and App.tsx routing

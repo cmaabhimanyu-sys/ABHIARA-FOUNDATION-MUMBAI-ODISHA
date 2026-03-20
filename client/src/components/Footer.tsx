@@ -54,6 +54,7 @@ export default function Footer() {
               {[
                 { href: "/", label: "Home" },
                 { href: "/our-story", label: "Our Story" },
+                { href: "/vision", label: "Vision" },
                 { href: "/programs", label: "Programs" },
                 { href: "/csr-partners", label: "CSR Partners" },
                 { href: "/activities", label: "Activities" },

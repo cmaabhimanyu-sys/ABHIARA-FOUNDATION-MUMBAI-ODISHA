@@ -143,6 +143,10 @@ export default function OurStory() {
                 label: "The Foundation",
                 text: "Abhiara Foundation is not charity. It is a structural intervention. It is the bridge I wish someone had built for me. It is the school I wish existed in my village. It is the elder care programme I wish my grandparents had access to.",
               },
+              {
+                label: "The Plan",
+                text: "Our plan is clear: support poor and underprivileged students through education, care for the elderly with dignity, implement CSR projects that create real impact, and build Abhiara Vidyapeeth — a full school in tribal Odisha — within 5 years. By 2039, when Aradhana turns 18, she becomes the youngest trustee of this foundation. That is the promise.",
+              },
             ].map((block, i) => (
               <AnimatedSection key={block.label} delay={i * 0.08}>
                 <div className="border-l-2 border-[#C9A84C]/30 pl-6 hover:border-[#C9A84C] transition-colors">
@@ -167,7 +171,7 @@ export default function OurStory() {
           <AnimatedSection delay={0.5} className="mt-8">
             <div className="glass-card p-8 text-center">
               <p className="font-serif text-lg italic text-white/60 leading-relaxed">
-                "Aradhana does not yet fully understand what this means. But one day she will read about it. And when she does, her father wants her to know that her name — her light — was the reason this foundation exists."
+                "Aradhana does not yet fully understand what this means. But one day — in 2039, when she turns 18 — she will become the youngest trustee of Abhiara Foundation. And when she reads about this journey, her father wants her to know that her name — her light — was the reason this foundation exists."
               </p>
             </div>
           </AnimatedSection>
