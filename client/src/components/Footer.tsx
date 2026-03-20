@@ -14,13 +14,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Brand Column */}
           <div>
-            <div className="mb-5">
-              <h3 className="font-serif text-2xl font-bold tracking-[0.15em] text-white">
-                ABHIARA
-              </h3>
-              <p className="font-mono text-[9px] tracking-[0.25em] text-[#C9A84C] font-bold uppercase">
-                FOUNDATION
-              </p>
+            <div className="mb-5 flex items-center gap-3">
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/aaf-logo-concept-3-DYGWPrtD3n9D2RUbi4xCrD.png"
+                alt="Abhiara Foundation Logo"
+                className="h-12 w-auto"
+              />
+              <div>
+                <h3 className="font-serif text-2xl font-bold tracking-[0.15em] text-white">
+                  ABHIARA
+                </h3>
+                <p className="font-mono text-[9px] tracking-[0.25em] text-[#C9A84C] font-bold uppercase">
+                  FOUNDATION
+                </p>
+              </div>
             </div>
             <p className="font-sans text-sm text-white/50 mb-2">
               Fearless Ray of Light

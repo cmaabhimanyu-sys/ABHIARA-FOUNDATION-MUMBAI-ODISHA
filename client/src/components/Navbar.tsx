@@ -44,13 +44,20 @@ export default function Navbar() {
       >
         <div className="container flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex flex-col leading-none group">
-            <span className="font-serif text-xl md:text-2xl font-bold tracking-[0.15em] text-white group-hover:text-[#C9A84C] transition-colors">
-              ABHIARA
-            </span>
-            <span className="font-mono text-[8px] md:text-[9px] tracking-[0.25em] text-[#C9A84C] font-bold uppercase">
-              FOUNDATION
-            </span>
+          <Link href="/" className="flex items-center gap-3 group">
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/aaf-logo-concept-3-DYGWPrtD3n9D2RUbi4xCrD.png"
+              alt="Abhiara Foundation Logo"
+              className="h-10 md:h-12 w-auto"
+            />
+            <div className="flex flex-col leading-none">
+              <span className="font-serif text-lg md:text-xl font-bold tracking-[0.15em] text-white group-hover:text-[#C9A84C] transition-colors">
+                ABHIARA
+              </span>
+              <span className="font-mono text-[7px] md:text-[8px] tracking-[0.25em] text-[#C9A84C] font-bold uppercase">
+                FOUNDATION
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
