@@ -10,8 +10,8 @@ import Programs from "./pages/Programs";
 import CSRPartners from "./pages/CSRPartners";
 import Contact from "./pages/Contact";
 import WhatsAppButton from "./components/WhatsAppButton";
-
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path="/" component={Home} />

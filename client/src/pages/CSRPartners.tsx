@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { Link } from "wouter";
 import {
   ArrowRight, Shield, FileText, BarChart3, Building2,
-  CheckCircle2, Eye, Clock, Users, Briefcase, Award, FileCheck
+  CheckCircle2, Eye, Clock, Users, Briefcase, Award, FileCheck, Download
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -306,10 +306,12 @@ export default function CSRPartners() {
                 CONTACT US <ArrowRight size={12} />
               </Link>
               <a
-                href="mailto:founder@abhiarafoundation.org"
+                href="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/Abhiara_Foundation_CSR_Proposal_2025_763a1de5.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-3 border border-[#0A1628]/30 text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#0A1628]/10 transition-colors"
               >
-                EMAIL FOUNDER <ArrowRight size={12} />
+                <Download size={12} /> DOWNLOAD CSR PROPOSAL
               </a>
             </div>
           </AnimatedSection>

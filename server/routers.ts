@@ -1,0 +1,59 @@
+import { COOKIE_NAME } from "@shared/const";
+import { getSessionCookieOptions } from "./_core/cookies";
+import { systemRouter } from "./_core/systemRouter";
+import { publicProcedure, router } from "./_core/trpc";
+import { addNewsletterSubscriber, createContactInquiry } from "./db";
+import { notifyOwner } from "./_core/notification";
+import { z } from "zod";
+
+export const appRouter = router({
+  system: systemRouter,
+  auth: router({
+    me: publicProcedure.query(opts => opts.ctx.user),
+    logout: publicProcedure.mutation(({ ctx }) => {
+      const cookieOptions = getSessionCookieOptions(ctx.req);
+      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
+      return {
+        success: true,
+      } as const;
+    }),
+  }),
+
+  newsletter: router({
+    subscribe: publicProcedure
+      .input(z.object({ email: z.string().email() }))
+      .mutation(async ({ input }) => {
+        const result = await addNewsletterSubscriber(input.email);
+        // Notify owner about new subscriber
+        await notifyOwner({
+          title: "New Newsletter Subscriber",
+          content: `New email subscription: ${input.email}`,
+        }).catch(() => {}); // Don't fail if notification fails
+        return result;
+      }),
+  }),
+
+  contact: router({
+    submit: publicProcedure
+      .input(
+        z.object({
+          name: z.string().min(1, "Name is required"),
+          email: z.string().email("Valid email is required"),
+          subject: z.string().optional(),
+          message: z.string().min(1, "Message is required"),
+          type: z.enum(["general", "csr_partnership", "volunteer", "media"]).default("general"),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const result = await createContactInquiry(input);
+        // Notify owner about new inquiry
+        await notifyOwner({
+          title: `New Contact: ${input.type === "csr_partnership" ? "CSR Partnership" : input.type}`,
+          content: `From: ${input.name} (${input.email})\nSubject: ${input.subject || "N/A"}\nMessage: ${input.message}`,
+        }).catch(() => {});
+        return result;
+      }),
+  }),
+});
+
+export type AppRouter = typeof appRouter;

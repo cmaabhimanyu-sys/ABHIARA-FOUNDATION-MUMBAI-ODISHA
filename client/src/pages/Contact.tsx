@@ -2,26 +2,69 @@
  * Abhiara Foundation — Contact V2.0
  * 4 Sections: Hero, Contact Grid (Prompt Boxes + Info), Newsletter, CTA
  * NO donation buttons. All CTAs → email or contact.
+ * Newsletter connected to backend via tRPC.
  */
 import { useState, useEffect } from "react";
-import { Mail, MapPin, Linkedin, Instagram, Twitter, Send, ArrowRight, MessageCircle } from "lucide-react";
+import { Mail, MapPin, Linkedin, Instagram, Twitter, Send, ArrowRight, MessageCircle, Loader2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import { trpc } from "@/lib/trpc";
 
 export default function Contact() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   const [email, setEmail] = useState("");
 
+  const newsletterMutation = trpc.newsletter.subscribe.useMutation({
+    onSuccess: () => {
+      toast.success("Thank you for subscribing!", {
+        description: "You will receive updates from Abhiara Foundation.",
+      });
+      setEmail("");
+    },
+    onError: (error) => {
+      toast.error("Subscription failed", {
+        description: error.message || "Please try again later.",
+      });
+    },
+  });
+
   const handleNewsletter = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Thank you for subscribing!", {
-      description: "You will receive updates from Abhiara Foundation.",
-    });
-    setEmail("");
+    if (!email.trim()) return;
+    newsletterMutation.mutate({ email: email.trim() });
+  };
+
+  // Contact form state
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+    type: "general" as "general" | "csr_partnership" | "volunteer" | "media",
+  });
+
+  const contactMutation = trpc.contact.submit.useMutation({
+    onSuccess: () => {
+      toast.success("Message sent!", {
+        description: "We will get back to you soon.",
+      });
+      setContactForm({ name: "", email: "", subject: "", message: "", type: "general" });
+    },
+    onError: (error) => {
+      toast.error("Failed to send message", {
+        description: error.message || "Please try again later.",
+      });
+    },
+  });
+
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!contactForm.name.trim() || !contactForm.email.trim() || !contactForm.message.trim()) return;
+    contactMutation.mutate(contactForm);
   };
 
   return (
@@ -72,7 +115,7 @@ export default function Contact() {
       <section className="py-20 md:py-28 bg-[#080F1C]">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
-            {/* Prompt Boxes */}
+            {/* Left: Contact Form + Prompt Boxes */}
             <AnimatedSection direction="left" className="lg:col-span-3">
               <p className="section-label mb-4">HOW CAN WE HELP?</p>
               <h2 className="heading-md text-white mb-8">
@@ -120,18 +163,65 @@ export default function Contact() {
                 ))}
               </div>
 
-              {/* Direct Email */}
-              <div className="glass-card-gold p-6">
-                <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-3">DIRECT TO FOUNDER</p>
-                <a
-                  href="mailto:founder@abhiarafoundation.org"
-                  className="font-sans text-[15px] text-[#C9A84C] hover:underline"
-                >
-                  founder@abhiarafoundation.org
-                </a>
-                <p className="font-sans text-[13px] text-white/40 mt-1">
-                  For partnership discussions, board inquiries, or direct communication.
-                </p>
+              {/* Contact Form */}
+              <div className="glass-card-gold p-6 md:p-8">
+                <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-4">SEND US A MESSAGE</p>
+                <form onSubmit={handleContactSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input
+                      type="text"
+                      required
+                      value={contactForm.name}
+                      onChange={(e) => setContactForm(prev => ({ ...prev, name: e.target.value }))}
+                      className="px-4 py-3 bg-white/5 border border-white/15 rounded-sm text-white font-sans text-sm placeholder:text-white/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
+                      placeholder="Your Name"
+                    />
+                    <input
+                      type="email"
+                      required
+                      value={contactForm.email}
+                      onChange={(e) => setContactForm(prev => ({ ...prev, email: e.target.value }))}
+                      className="px-4 py-3 bg-white/5 border border-white/15 rounded-sm text-white font-sans text-sm placeholder:text-white/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
+                      placeholder="Your Email"
+                    />
+                  </div>
+                  <select
+                    value={contactForm.type}
+                    onChange={(e) => setContactForm(prev => ({ ...prev, type: e.target.value as typeof contactForm.type }))}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-sm text-white font-sans text-sm focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
+                  >
+                    <option value="general" className="bg-[#0A1628]">General Inquiry</option>
+                    <option value="csr_partnership" className="bg-[#0A1628]">CSR Partnership</option>
+                    <option value="volunteer" className="bg-[#0A1628]">Volunteering</option>
+                    <option value="media" className="bg-[#0A1628]">Media & Press</option>
+                  </select>
+                  <input
+                    type="text"
+                    value={contactForm.subject}
+                    onChange={(e) => setContactForm(prev => ({ ...prev, subject: e.target.value }))}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-sm text-white font-sans text-sm placeholder:text-white/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
+                    placeholder="Subject (optional)"
+                  />
+                  <textarea
+                    required
+                    rows={4}
+                    value={contactForm.message}
+                    onChange={(e) => setContactForm(prev => ({ ...prev, message: e.target.value }))}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-sm text-white font-sans text-sm placeholder:text-white/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors resize-none"
+                    placeholder="Your message..."
+                  />
+                  <button
+                    type="submit"
+                    disabled={contactMutation.isPending}
+                    className="px-8 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors flex items-center gap-2 disabled:opacity-50"
+                  >
+                    {contactMutation.isPending ? (
+                      <><Loader2 size={12} className="animate-spin" /> SENDING...</>
+                    ) : (
+                      <><Send size={12} /> SEND MESSAGE</>
+                    )}
+                  </button>
+                </form>
               </div>
             </AnimatedSection>
 
@@ -152,7 +242,7 @@ export default function Contact() {
                       <Mail size={14} className="text-[#1A7F8E] shrink-0" />
                       info@abhiarafoundation.org
                     </a>
-                    <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[13px] text-white/60 hover:text-[#C9A84C] transition-colors">
+                    <a href="https://wa.me/919938938321" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[13px] text-white/60 hover:text-[#C9A84C] transition-colors">
                       <MessageCircle size={14} className="text-[#1A7F8E] shrink-0" />
                       WhatsApp
                     </a>
@@ -223,9 +313,14 @@ export default function Contact() {
               />
               <button
                 type="submit"
-                className="px-6 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors flex items-center justify-center gap-2"
+                disabled={newsletterMutation.isPending}
+                className="px-6 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
               >
-                <Send size={12} /> SUBSCRIBE
+                {newsletterMutation.isPending ? (
+                  <><Loader2 size={12} className="animate-spin" /> SUBSCRIBING...</>
+                ) : (
+                  <><Send size={12} /> SUBSCRIBE</>
+                )}
               </button>
             </form>
           </AnimatedSection>
