@@ -99,7 +99,7 @@ export default function CSRPartners() {
               { icon: BarChart3, title: "Monthly Reports", desc: "Detailed progress reports with photo documentation and beneficiary data." },
               { icon: Eye, title: "Full Transparency", desc: "Audited utilisation statements. Open books. No hidden costs." },
               { icon: Award, title: "CMA-Led Finance", desc: "Founder is a qualified Cost & Management Accountant. Finance-first governance." },
-              { icon: Users, title: "Ground Presence", desc: "Direct operations in Koraput, Kalahandi, and Rayagada districts of Odisha." },
+              { icon: Users, title: "Ground Presence", desc: "Direct operations across all of Odisha and expanding to other states across India." },
             ].map((card, i) => (
               <AnimatedSection key={card.title} delay={i * 0.08}>
                 <div className="glass-card p-6 h-full">
@@ -224,7 +224,7 @@ export default function CSRPartners() {
             </h2>
             <div className="gradient-rule mx-auto mb-6" />
             <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
-              We are actively seeking CSR partnerships with companies that share our vision for tribal Odisha.
+              We are actively seeking CSR partnerships with companies that share our vision for Odisha and beyond.
             </p>
           </AnimatedSection>
 

@@ -108,7 +108,7 @@ export default function Programs() {
               </div>
               <h2 className="heading-lg text-white mb-6">Education</h2>
               <p className="font-sans text-[15px] text-white/60 leading-relaxed mb-6">
-                Scholarships, digital learning centres, and study kits for underprivileged students across tribal districts of Odisha — Koraput, Kalahandi, and Rayagada.
+                Scholarships, digital learning centres, and study kits for underprivileged students across all of Odisha and expanding to other states across India.
               </p>
 
               {/* Metrics */}
@@ -116,7 +116,7 @@ export default function Programs() {
                 {[
                   { icon: GraduationCap, label: "500 Students", sub: "Year 1 Target" },
                   { icon: Building2, label: "3 Centres", sub: "Digital Learning" },
-                  { icon: MapPin, label: "Tribal Odisha", sub: "3 Districts" },
+                  { icon: MapPin, label: "Pan India", sub: "Odisha & Beyond" },
                   { icon: Target, label: "₹12L", sub: "Scholarship Fund" },
                 ].map((item) => (
                   <div key={item.label} className="glass-card-gold p-3">

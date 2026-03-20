@@ -264,7 +264,7 @@ export default function Contact() {
                       <MapPin size={14} className="text-[#1A7F8E] mt-0.5 shrink-0" />
                       <div>
                         <p className="font-sans text-sm font-semibold text-white">Operations</p>
-                        <p className="font-sans text-[13px] text-white/40">Odisha, India<br />Koraput &middot; Kalahandi &middot; Rayagada</p>
+                        <p className="font-sans text-[13px] text-white/40">All of Odisha & Other States<br />Expanding Across India</p>
                       </div>
                     </div>
                   </div>

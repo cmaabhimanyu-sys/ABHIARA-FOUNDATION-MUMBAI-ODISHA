@@ -1,6 +1,6 @@
 /*
  * Abhiara Foundation — Home Page V2.0
- * 9 Sections: Announcement Bar, Hero, Trust Bar, Three Pillars,
+ * 8 Sections: Hero, Trust Bar, Three Pillars,
  * ABHI+ARA Name, Founder Story Teaser, Vidyapeeth Teaser, Activities Preview, Contact CTA
  * NO donation buttons. All CTAs → Contact or relevant pages.
  */
@@ -24,23 +24,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#0A1628]">
-      {/* ===== S1: ANNOUNCEMENT BAR ===== */}
-      <div className="bg-[#C9A84C] py-2 overflow-hidden">
-        <div className="flex animate-[scroll_30s_linear_infinite] whitespace-nowrap">
-          {[...Array(3)].map((_, i) => (
-            <span key={i} className="font-mono text-[10px] text-[#0A1628] tracking-wider mx-8">
-              ✦ SECTION 8 COMPANY REGISTRATION IN PROGRESS &nbsp;&middot;&nbsp; BASED IN MUMBAI &nbsp;&middot;&nbsp; OPERATING ACROSS ODISHA &nbsp;&nbsp;&nbsp;&nbsp;
-            </span>
-          ))}
-        </div>
-        <style>{`
-          @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-33.33%); }
-          }
-        `}</style>
-      </div>
-
       <Navbar />
 
       {/* ===== S2: HERO ===== */}
@@ -65,7 +48,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-8"
           >
-            SECTION 8 COMPANY &middot; NGO &middot; ODISHA &middot; INDIA
+            SECTION 8 COMPANY &middot; NGO &middot; ODISHA &middot; PAN INDIA
           </motion.p>
 
           <motion.h1
@@ -138,7 +121,7 @@ export default function Home() {
               { value: 500, suffix: "+", label: "Students Targeted" },
               { value: 200, suffix: "+", label: "Elders Supported" },
               { prefix: "₹", value: 30, suffix: "L", label: "CSR Target FY26" },
-              { value: 3, suffix: "", label: "Districts in Odisha" },
+              { value: 30, suffix: "+", label: "Districts Across India" },
             ].map((stat) => (
               <div key={stat.label} className="glass-card p-4 text-center">
                 <p className="font-serif text-2xl md:text-3xl font-bold text-[#C9A84C]">
@@ -195,7 +178,7 @@ export default function Home() {
             </h2>
             <div className="gradient-rule mx-auto mb-6" />
             <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
-              Rooted in Odisha. Scalable across India.
+              Covering all of Odisha and expanding across other states.
             </p>
           </AnimatedSection>
 
@@ -205,8 +188,8 @@ export default function Home() {
                 icon: GraduationCap,
                 sdg: "SDG 4",
                 title: "Education",
-                data: "500 Children · 3 Districts · Year 1",
-                body: "Digital learning centres, scholarship support for Class 8–12 students, and early childhood readiness programmes across Koraput, Kalahandi, and Rayagada districts.",
+                data: "500 Children · All Odisha & Beyond · Year 1",
+                body: "Digital learning centres, scholarship support for Class 8–12 students, and early childhood readiness programmes across all of Odisha and expanding to other states.",
                 img: EDUCATION_IMG,
                 cta: { label: "See Programme", href: "/programs" },
                 accent: "gold",
@@ -215,8 +198,8 @@ export default function Home() {
                 icon: HeartHandshake,
                 sdg: "SDG 3",
                 title: "Elderly Care",
-                data: "200 Elders · Mumbai + Odisha · Year 1",
-                body: "Companion networks, quarterly health camps, and legal aid support for pension and property rights. Urban Mumbai outreach and rural Odisha village visits.",
+                data: "200 Elders · Mumbai + Odisha & Beyond · Year 1",
+                body: "Companion networks, quarterly health camps, and legal aid support for pension and property rights. Urban Mumbai outreach, rural Odisha village visits, and expanding to other states.",
                 img: ELDERLY_IMG,
                 cta: { label: "See Programme", href: "/programs" },
                 accent: "teal",
@@ -354,7 +337,7 @@ export default function Home() {
                 {[
                   "Founder: Abhimanyu Mallik",
                   "Section 8 · Limited by Guarantee",
-                  "Koraput · Kalahandi · Rayagada",
+                  "All Odisha & Other States",
                   "IFC-ready",
                 ].map((chip) => (
                   <span key={chip} className="font-mono text-[9px] tracking-wider uppercase text-white/50 px-3 py-1.5 border border-white/10 rounded-sm">
@@ -516,7 +499,7 @@ export default function Home() {
               Ready to make an impact?
             </h2>
             <p className="font-sans text-[15px] text-[#0A1628]/70 max-w-2xl mx-auto leading-relaxed mb-8">
-              Whether you are a corporate looking for a credible CSR implementation partner, an individual who believes geography should not be destiny, or an institution that wants to invest in tribal Odisha — we want to hear from you.
+              Whether you are a corporate looking for a credible CSR implementation partner, an individual who believes geography should not be destiny, or an institution that wants to invest in Odisha and beyond — we want to hear from you.
             </p>
             <Link
               href="/contact"
