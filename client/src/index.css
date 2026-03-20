@@ -41,55 +41,58 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Abhiara brand colors in OKLCH */
-  --color-navy: oklch(0.18 0.03 260);
-  --color-navy-light: oklch(0.25 0.03 260);
-  --color-gold: oklch(0.75 0.12 80);
-  --color-gold-light: oklch(0.85 0.08 80);
-  --color-gold-dark: oklch(0.65 0.12 80);
-  --color-teal: oklch(0.55 0.1 195);
-  --color-teal-light: oklch(0.7 0.08 195);
-  --color-teal-dark: oklch(0.45 0.1 195);
-  --color-cream: oklch(0.97 0.01 80);
+  /* Abhiara exact brand colors */
+  --color-navy: #0A1628;
+  --color-navy-mid: #080F1C;
+  --color-navy-dark: #06101F;
+  --color-navy-darkest: #040C18;
+  --color-gold: #C9A84C;
+  --color-gold-dark: #B8942A;
+  --color-gold-light: #D4BA6A;
+  --color-teal: #1A7F8E;
+  --color-teal-dark: #145E6A;
+  --color-teal-light: #22A0B3;
 
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Lato', system-ui, sans-serif;
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.5rem;
-  --background: oklch(0.98 0.005 80);
-  --foreground: oklch(0.18 0.03 260);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.03 260);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.03 260);
-  --primary: oklch(0.55 0.1 195);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0.01 80);
-  --secondary-foreground: oklch(0.3 0.03 260);
-  --muted: oklch(0.95 0.005 80);
-  --muted-foreground: oklch(0.5 0.02 260);
-  --accent: oklch(0.75 0.12 80);
-  --accent-foreground: oklch(0.18 0.03 260);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.9 0.01 80);
-  --input: oklch(0.9 0.01 80);
-  --ring: oklch(0.75 0.12 80);
-  --chart-1: oklch(0.55 0.1 195);
-  --chart-2: oklch(0.75 0.12 80);
-  --chart-3: oklch(0.18 0.03 260);
-  --chart-4: oklch(0.7 0.08 195);
-  --chart-5: oklch(0.65 0.12 80);
-  --sidebar: oklch(0.18 0.03 260);
-  --sidebar-foreground: oklch(0.95 0.005 80);
-  --sidebar-primary: oklch(0.75 0.12 80);
-  --sidebar-primary-foreground: oklch(0.18 0.03 260);
-  --sidebar-accent: oklch(0.25 0.03 260);
-  --sidebar-accent-foreground: oklch(0.95 0.005 80);
-  --sidebar-border: oklch(0.3 0.03 260);
-  --sidebar-ring: oklch(0.75 0.12 80);
+  --radius: 0.375rem;
+  --background: #0A1628;
+  --foreground: rgba(255, 255, 255, 0.85);
+  --card: rgba(255, 255, 255, 0.04);
+  --card-foreground: rgba(255, 255, 255, 0.85);
+  --popover: #0A1628;
+  --popover-foreground: rgba(255, 255, 255, 0.85);
+  --primary: #C9A84C;
+  --primary-foreground: #0A1628;
+  --secondary: rgba(255, 255, 255, 0.04);
+  --secondary-foreground: rgba(255, 255, 255, 0.60);
+  --muted: #080F1C;
+  --muted-foreground: rgba(255, 255, 255, 0.40);
+  --accent: #1A7F8E;
+  --accent-foreground: #FFFFFF;
+  --destructive: #dc2626;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(255, 255, 255, 0.09);
+  --input: rgba(255, 255, 255, 0.09);
+  --ring: #C9A84C;
+  --chart-1: #C9A84C;
+  --chart-2: #1A7F8E;
+  --chart-3: #080F1C;
+  --chart-4: #145E6A;
+  --chart-5: #B8942A;
+  --sidebar: #040C18;
+  --sidebar-foreground: rgba(255, 255, 255, 0.85);
+  --sidebar-primary: #C9A84C;
+  --sidebar-primary-foreground: #0A1628;
+  --sidebar-accent: #080F1C;
+  --sidebar-accent-foreground: rgba(255, 255, 255, 0.85);
+  --sidebar-border: rgba(255, 255, 255, 0.09);
+  --sidebar-ring: #C9A84C;
 }
 
 @layer base {
@@ -97,12 +100,17 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.85;
+    color: rgba(255, 255, 255, 0.60);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-serif);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: #FFFFFF;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -145,6 +153,45 @@
       max-width: 1280px;
     }
   }
+
+  /* Glass morphism card */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 6px;
+  }
+
+  /* Gold themed glass card */
+  .glass-card-gold {
+    background: rgba(201, 168, 76, 0.06);
+    border: 1px solid rgba(201, 168, 76, 0.22);
+    border-radius: 6px;
+  }
+
+  /* Teal themed glass card */
+  .glass-card-teal {
+    background: rgba(26, 127, 142, 0.06);
+    border: 1px solid rgba(26, 127, 142, 0.22);
+    border-radius: 6px;
+  }
+
+  /* Section label style */
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #1A7F8E;
+  }
+
+  /* Gradient rule */
+  .gradient-rule {
+    height: 2px;
+    background: linear-gradient(90deg, #C9A84C, #1A7F8E);
+    border-radius: 2px;
+    width: 60px;
+    margin: 1.25rem 0;
+  }
 }
 
 /* Smooth scrolling */
@@ -154,15 +201,25 @@ html {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: oklch(0.18 0.03 260);
+  background: #0A1628;
 }
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.75 0.12 80);
-  border-radius: 4px;
+  background: #C9A84C;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.65 0.12 80);
+  background: #B8942A;
+}
+
+/* Selection highlight */
+::selection {
+  background: rgba(201, 168, 76, 0.30);
+  color: #FFFFFF;
+}
+::-moz-selection {
+  background: rgba(201, 168, 76, 0.30);
+  color: #FFFFFF;
 }
