@@ -147,26 +147,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ===== S3: TRUST BAR ===== */}
-      <section className="bg-[#06101F] py-4 overflow-hidden border-y border-white/[0.06]">
-        <div className="flex animate-[scroll_40s_linear_infinite] whitespace-nowrap">
-          {[...Array(3)].map((_, i) => (
-            <div key={i} className="flex items-center gap-8 mx-8">
-              {[
-                "Section 8 Company · Limited by Guarantee",
-                "CMA-Led Finance & Compliance",
-                "SDG 3 · 4 · 10 · 11",
-                "Schedule VII CSR Implementation",
-                "Founded March 2025 · Mumbai",
-              ].map((text) => (
-                <span key={text} className="font-mono text-[10px] tracking-wider uppercase text-white/40 flex items-center gap-3">
-                  <span className="text-[#C9A84C]">✦</span> {text}
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
+
 
       {/* ===== S4: THREE PILLARS ===== */}
       <section className="py-20 md:py-28 bg-[#080F1C]">
