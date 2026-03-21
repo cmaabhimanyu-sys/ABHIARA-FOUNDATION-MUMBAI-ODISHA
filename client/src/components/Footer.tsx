@@ -60,6 +60,7 @@ export default function Footer() {
                 { href: "/activities", label: "Activities" },
                 { href: "/team", label: "Team" },
                 { href: "/contact", label: "Contact" },
+                { href: "/donate", label: "Donate" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="font-sans text-sm text-white/50 hover:text-[#C9A84C] transition-colors">

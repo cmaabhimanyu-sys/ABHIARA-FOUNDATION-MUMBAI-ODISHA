@@ -28,3 +28,5 @@
 - [x] Add Team tab to Navbar, Footer, and App.tsx routing
 - [ ] Guide user on binding abhiarafoundation.org custom domain
 - [x] Fix Vercel build failure — pnpm ignoring build scripts for @tailwindcss/oxide and esbuild
+- [x] Fix Donate page code error (missing opening anchor tag) and add to website
+- [x] Add Donate route to App.tsx and navigation

@@ -18,6 +18,7 @@ const navLinks = [
   { href: "/activities", label: "Activities" },
   { href: "/team", label: "Team" },
   { href: "/contact", label: "Contact" },
+  { href: "/donate", label: "Donate" },
 ];
 
 export default function Navbar() {
