@@ -27,3 +27,4 @@
 - [x] Create Team page with board members and advisors
 - [x] Add Team tab to Navbar, Footer, and App.tsx routing
 - [ ] Guide user on binding abhiarafoundation.org custom domain
+- [x] Fix Vercel build failure — pnpm ignoring build scripts for @tailwindcss/oxide and esbuild
