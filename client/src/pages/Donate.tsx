@@ -38,6 +38,47 @@ export default function Donate() {
             </div>
           </div>
 
+          {/* 12A/80G Trust Badge */}
+          <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 mb-8">
+            <div className="flex flex-col items-center text-center">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-full bg-[#C9A84C]/20 border border-[#C9A84C]/40 flex items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>
+                </div>
+                <div className="w-12 h-12 rounded-full bg-[#1A7F8E]/20 border border-[#1A7F8E]/40 flex items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A7F8E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                  </svg>
+                </div>
+              </div>
+              <h3 className="text-white text-lg font-semibold mb-2">Tax Exemption Status</h3>
+              <div className="flex flex-wrap items-center justify-center gap-3 mb-4">
+                <span className="bg-[#C9A84C]/20 text-[#C9A84C] text-xs font-mono tracking-wider uppercase px-3 py-1.5 rounded-full border border-[#C9A84C]/30">
+                  12A Registration
+                </span>
+                <span className="bg-[#1A7F8E]/20 text-[#1A7F8E] text-xs font-mono tracking-wider uppercase px-3 py-1.5 rounded-full border border-[#1A7F8E]/30">
+                  80G Certification
+                </span>
+              </div>
+              <p className="text-white/60 text-sm leading-relaxed max-w-md">
+                Abhiara Foundation is a Section 8 Company registered under the Companies Act 2013. 
+                <strong className="text-[#C9A84C]">12A and 80G registrations are currently in progress.</strong> Once approved, 
+                all eligible donations will qualify for income tax deductions under Section 80G of the Income Tax Act.
+              </p>
+              <div className="mt-4 flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-[#C9A84C] animate-pulse" />
+                <span className="text-[#C9A84C]/70 text-xs font-mono tracking-wider uppercase">Registration In Progress</span>
+              </div>
+            </div>
+          </div>
+
           <div className="bg-red-950/40 border border-red-500/30 rounded-2xl p-8 text-left space-y-4">
             <h3 className="text-red-400 font-semibold text-lg text-center mb-4">Important Notice</h3>
             <div className="flex gap-3">
