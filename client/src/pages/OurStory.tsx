@@ -268,7 +268,7 @@ export default function OurStory() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {[
-              { icon: Shield, title: "Section 8 Company", desc: "Limited by Guarantee under Companies Act 2013. Section 8 registration complete." },
+              { icon: Shield, title: "Section 8 Company", desc: "Registration pending under Companies Act 2013. Limited by Guarantee. All compliance documentation prepared." },
               { icon: BookOpen, title: "Audited Reports", desc: "Annual audited financial statements. Quarterly utilisation reports for CSR partners." },
               { icon: Scale, title: "Schedule VII", desc: "All programmes aligned to Companies Act Schedule VII for CSR compliance." },
               { icon: Users, title: "Independent Board", desc: "Governance structure with independent directors and advisory council." },

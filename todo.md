@@ -116,3 +116,17 @@
 - [x] Fix #9: Fix Programs.tsx progress bars (replaced with target status labels)
 - [x] Fix #10: Add Puri elderly care visits alongside Mumbai
 - [x] Fix #11: Update navigation for merged Activities page
+- [x] Fix CSR Implementation: mark as "Not Started Yet" across all pages (keep AI photo as future target visual)
+- [x] Fix Old Age Home visit date: change to October 2025 across all pages
+- [x] Fix Book distribution date: change to November 2025 across all pages
+- [x] TRUTH CLEANUP: Remove all fake activities — keep only 2 real events (Old Age Home Oct 2025 Puri + Book Distribution Nov 2025 Kendrapara)
+- [x] TRUTH CLEANUP: Update real stats everywhere: 50+ students, 40+ elders, 2 activities completed
+- [x] TRUTH CLEANUP: Add target stats: 500+ students, 200+ elders, 10 activities (target 2026)
+- [x] TRUTH CLEANUP: Section 8 registration → "Pending" everywhere
+- [x] TRUTH CLEANUP: CSR Implementation → "Not Started Yet" everywhere
+- [x] TRUTH CLEANUP: Remove fake blog posts — keep only Old Age Home visit + Book distribution
+- [x] TRUTH CLEANUP: Remove fake gallery images for events that didn't happen
+- [x] TRUTH CLEANUP: Update Home page stats and pillar cards
+- [x] TRUTH CLEANUP: Update Programs page — CSR not started
+- [x] TRUTH CLEANUP: Update CSRPartners page — not started yet
+- [x] TRUTH CLEANUP: Update OurStory, Vision pages — Section 8 pending

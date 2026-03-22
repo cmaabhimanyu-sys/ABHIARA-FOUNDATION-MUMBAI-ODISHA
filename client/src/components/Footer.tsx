@@ -114,14 +114,14 @@ export default function Footer() {
         {/* Governance Trust Line */}
         <div className="border-t border-white/10 pt-4 mt-4 text-center">
           <p className="text-white/30 text-xs leading-relaxed max-w-2xl mx-auto">
-            Abhiara Foundation is a Section 8 Not-for-Profit Company. No property, asset, or income can be personally claimed by the founder, family, or any individual. Every contribution is legally protected and mission-bound.
+            Abhiara Foundation is a Section 8 Not-for-Profit Company (registration pending). No property, asset, or income can be personally claimed by the founder, family, or any individual. Every contribution will be legally protected and mission-bound.
           </p>
         </div>
 
         {/* Bottom Bar */}
         <div className="pt-6 border-t border-white/[0.06] text-center">
           <p className="font-mono text-[9px] tracking-wider text-white/35">
-            <span className="text-[#C9A84C] mr-1">⊕</span> &copy; {new Date().getFullYear()} Abhiara Foundation &middot; Section 8 Company &middot; Raisar, Tulasi Kshetra, Kendrapara, Odisha &middot; Pan India
+            <span className="text-[#C9A84C] mr-1">⊕</span> &copy; {new Date().getFullYear()} Abhiara Foundation &middot; Section 8 (Registration Pending) &middot; Raisar, Tulasi Kshetra, Kendrapara, Odisha &middot; Pan India
           </p>
         </div>
 

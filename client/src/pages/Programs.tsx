@@ -121,10 +121,10 @@ export default function Programs() {
               {/* Metrics */}
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  { icon: GraduationCap, label: "500 Students", sub: "Year 1 Target" },
-                  { icon: Building2, label: "3 Centres", sub: "Digital Learning" },
-                  { icon: MapPin, label: "Pan India", sub: "Odisha & Beyond" },
-                  { icon: Target, label: "₹12L", sub: "Scholarship Fund" },
+                  { icon: GraduationCap, label: "50+ Students", sub: "Reached So Far" },
+                  { icon: Target, label: "500+", sub: "Target 2026" },
+                  { icon: MapPin, label: "Kendrapara", sub: "Odisha" },
+                  { icon: Calendar, label: "Nov 2025", sub: "Book Distribution" },
                 ].map((item) => (
                   <div key={item.label} className="glass-card-gold p-3">
                     <item.icon size={16} className="text-[#C9A84C] mb-1.5" />
@@ -186,10 +186,10 @@ export default function Programs() {
 
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  { icon: Users, label: "200 Elders", sub: "Year 1 Target" },
-                  { icon: Calendar, label: "4 Camps", sub: "Quarterly Health" },
-                  { icon: Heart, label: "Companion", sub: "Support Network" },
-                  { icon: Target, label: "₹6L", sub: "Care Budget" },
+                  { icon: Users, label: "40+ Elders", sub: "Visited So Far" },
+                  { icon: Target, label: "200+", sub: "Target 2026" },
+                  { icon: MapPin, label: "Puri", sub: "Odisha" },
+                  { icon: Calendar, label: "Oct 2025", sub: "Old Age Home Visit" },
                 ].map((item) => (
                   <div key={item.label} className="glass-card-teal p-3">
                     <item.icon size={16} className="text-[#1A7F8E] mb-1.5" />
@@ -216,7 +216,7 @@ export default function Programs() {
               </ul>
 
               <TargetBar label="Elder Enrolment" status="Year 1 Target" color="#1A7F8E" />
-              <TargetBar label="Health Camp Planning" status="Quarterly" color="#C9A84C" />
+              <TargetBar label="Health Camp Planning" status="Target 2026" color="#C9A84C" />
 
               <Link
                 href="/contact"
@@ -240,8 +240,7 @@ export default function Programs() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/60 to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3">
                    <p className="font-mono text-[9px] tracking-[0.15em] uppercase text-white/80 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-sm inline-block">
-                       Abhiara Foundation's first elder care visit — Hope is Life Old Age Home, Puri, Odisha · February 2025
-                     </p>
+                   Abhiara Foundation's first elder care visit \u2014 Hope is Life Old Age Home, Puri, Odisha \u00b7 October 2025                </p>
                   </div>
                 </div>
               </div>
@@ -280,10 +279,10 @@ export default function Programs() {
 
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  { icon: Handshake, label: "2 Projects", sub: "Year 1 Target" },
-                  { icon: Target, label: "₹30L", sub: "Total Mobilised" },
-                  { icon: Building2, label: "Schedule VII", sub: "Fully Compliant" },
-                  { icon: Calendar, label: "Monthly", sub: "Impact Reports" },
+                  { icon: Handshake, label: "Not Started", sub: "Planned for 2026" },
+                  { icon: Target, label: "\u20b930L", sub: "Target FY 2026" },
+                  { icon: Building2, label: "Schedule VII", sub: "Compliant Framework" },
+                  { icon: Calendar, label: "Seeking", sub: "Corporate Partners" },
                 ].map((item) => (
                   <div key={item.label} className="glass-card-gold p-3">
                     <item.icon size={16} className="text-[#C9A84C] mb-1.5" />

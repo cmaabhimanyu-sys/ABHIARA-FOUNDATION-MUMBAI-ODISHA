@@ -97,12 +97,12 @@ export default function Donate() {
               Most NGOs ask you to trust the founder. We ask you to trust the structure.
             </p>
             <p className="text-white/60 text-sm leading-relaxed max-w-xl mx-auto">
-              As a Section 8 Company, no property, asset, or income of Abhiara Foundation can be personally claimed — by the founder, family, or any individual. Your donation is legally protected and mission-bound.
+              As a Section 8 Company (registration pending), no property, asset, or income of Abhiara Foundation can be personally claimed — by the founder, family, or any individual. Your donation will be legally protected and mission-bound.
             </p>
           </div>
 
           <p className="text-white/40 text-xs mt-8">
-            Abhiara Foundation · Section 8 Company · Not-for-Profit · Odisha · Pan India
+            Abhiara Foundation · Section 8 Company (Registration Pending) · Not-for-Profit · Odisha · Pan India
           </p>
         </div>
       </section>

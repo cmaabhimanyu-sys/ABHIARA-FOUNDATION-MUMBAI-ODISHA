@@ -15,7 +15,7 @@ import SEO from "@/components/SEO";
 type GalleryImage = {
   src: string;
   alt: string;
-  category: "education" | "elderly" | "community";
+  category: "education" | "elderly";
   caption: string;
   location: string;
 };
@@ -64,11 +64,11 @@ const CATEGORIES = [
   { key: "all", label: "All", icon: Camera },
   { key: "education", label: "Education", icon: GraduationCap },
   { key: "elderly", label: "Elderly Care", icon: HeartHandshake },
-  { key: "community", label: "Community", icon: Users },
+
 ] as const;
 
 export default function ImpactGallery() {
-  const [filter, setFilter] = useState<"all" | "education" | "elderly" | "community">("all");
+  const [filter, setFilter] = useState<"all" | "education" | "elderly">("all");
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   useEffect(() => {
@@ -124,10 +124,10 @@ export default function ImpactGallery() {
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             {[
-              { value: "500+", label: "Children Targeted · Year 1" },
-              { value: "200+", label: "Elders Targeted · Year 1" },
-              { value: "3", label: "Districts · Odisha" },
-              { value: "10", label: "Activities Completed" },
+              { value: "50+", label: "Students Reached So Far" },
+              { value: "40+", label: "Elders Visited So Far" },
+              { value: "2", label: "Districts \u00b7 Odisha" },
+              { value: "2", label: "Activities Completed" },
             ].map((stat) => (
               <div key={stat.label}>
                 <p className="font-serif text-2xl font-bold text-[#C9A84C]">{stat.value}</p>

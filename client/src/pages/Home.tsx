@@ -54,7 +54,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-8"
           >
-            SECTION 8 COMPANY &middot; NOT-FOR-PROFIT &middot; ODISHA &middot; PAN INDIA
+            SECTION 8 REGISTRATION PENDING &middot; NOT-FOR-PROFIT &middot; ODISHA &middot; PAN INDIA
           </motion.p>
 
           <motion.h1
@@ -142,10 +142,10 @@ export default function Home() {
             className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto"
           >
             {[
-              { value: 50, suffix: "+", label: "Students Supported" },
-              { value: 25, suffix: "+", label: "Elderly Families Enrolled" },
-              { value: 500, suffix: "+", label: "Students Target 2027" },
-              { value: 3, suffix: "", label: "Districts in Odisha" },
+              { value: 50, suffix: "+", label: "Students Reached" },
+              { value: 40, suffix: "+", label: "Elders Visited" },
+              { value: 2, suffix: "", label: "Activities Completed" },
+              { value: 500, suffix: "+", label: "Students · Target 2026" },
             ].map((stat) => (
               <div key={stat.label} className="glass-card p-4 text-center">
                 <p className="font-serif text-2xl md:text-3xl font-bold text-[#C9A84C]">
@@ -228,14 +228,14 @@ export default function Home() {
               <div className="glass-card-gold p-8 text-center h-full relative overflow-hidden">
                 <div className="absolute top-3 right-3">
                   <span className="font-mono text-[9px] tracking-wider uppercase bg-[#C9A84C]/10 text-[#C9A84C] px-2 py-1 rounded-sm">
-                    Target 2027
+                    Target 2026
                   </span>
                 </div>
                 <p className="font-serif text-5xl md:text-6xl font-bold text-[#C9A84C] mb-2">
                   <CounterAnimation end={500} suffix="+" />
                 </p>
                 <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/70 mb-3">
-                  Students by 2027
+                  Students · Target 2026
                 </p>
                 <p className="font-sans text-[13px] text-white/45 leading-relaxed">
                   Our goal: 500+ students across Odisha with digital learning centres and scholarship support.
@@ -286,8 +286,8 @@ export default function Home() {
                 icon: GraduationCap,
                 sdg: "SDG 4",
                 title: "Education",
-                data: "500 Children · All Odisha & Beyond · Year 1",
-                body: "Real moments from the field — distributing books, conducting open-air learning sessions, and empowering tribal children across Odisha.",
+                data: "50+ Students Reached \u00b7 Target: 500+ in 2026",
+                body: "In November 2025, we distributed books and study materials to 50+ tribal children in Kendrapara, Odisha. Our goal is to reach 500+ students across the state.",
                 img: EDUCATION_IMG,
                 cta: { label: "See Programme", href: "/programs" },
                 accent: "gold",
@@ -296,8 +296,8 @@ export default function Home() {
                 icon: HeartHandshake,
                 sdg: "SDG 3",
                 title: "Elderly Care",
-                data: "200 Elders · Puri, Odisha & Beyond · Year 1",
-                body: "Visiting old age homes, distributing essentials, and spending time with elderly residents who need companionship and care.",
+                data: "40+ Elders Visited \u00b7 Target: 200+ in 2026",
+                body: "In October 2025, we visited Hope is Life Old Age Home in Puri, spending time with 40+ elderly residents. Our goal is to reach 200+ elders across Odisha.",
                 img: ELDERLY_IMG,
                 cta: { label: "See Programme", href: "/programs" },
                 accent: "teal",
@@ -306,8 +306,8 @@ export default function Home() {
                 icon: Building2,
                 sdg: "SDG 10 + 11",
                 title: "CSR Implementation",
-                data: "₹30L Target · Schedule VII · Year 1",
-                body: "End-to-end CSR project implementation for corporates with monthly impact reports and audited utilisation statements.",
+                data: "Not Started Yet \u00b7 Planned for 2026",
+                body: "We are planning end-to-end CSR project implementation for corporates under Schedule VII. This programme has not started yet \u2014 we are actively seeking partners.",
                 img: COMMUNITY_IMG,
                 cta: { label: "Partner With Us", href: "/csr-partners" },
                 accent: "gold",
@@ -432,10 +432,8 @@ export default function Home() {
           {/* Activity Highlights */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
             {[
-              { cat: "Elderly Care", title: "Old Age Home Visits", desc: "Distributing essentials and spending quality time with elderly residents in Puri, Odisha" },
-              { cat: "Education", title: "Book Donations", desc: "Providing books and study materials to tribal students across Odisha" },
-              { cat: "Elderly Care", title: "Companion Network", desc: "Pairing volunteers with elderly residents for regular visits and emotional support" },
-              { cat: "Education", title: "Community Outreach", desc: "Engaging with tribal families to understand and bridge educational gaps" },
+              { cat: "Elderly Care", title: "Old Age Home Visit \u2014 October 2025", desc: "Visited Hope is Life Old Age Home in Puri, Odisha. Distributed essentials and spent quality time with 40+ elderly residents." },
+              { cat: "Education", title: "Book Distribution \u2014 November 2025", desc: "Distributed books and study materials to 50+ tribal children in Kendrapara, Odisha. Spent time with students and families." },
             ].map((item, i) => (
               <AnimatedSection key={i} delay={i * 0.06}>
                 <div className="glass-card p-6 h-full">

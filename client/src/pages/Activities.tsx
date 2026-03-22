@@ -51,83 +51,19 @@ const activities: Activity[] = [
     category: "elderly",
     title: "Old Age Home Visit — Hope is Life",
     description:
-      "Distributed essentials and spent quality time with elderly residents. Provided care packages including daily necessities, hygiene products, and comfort items.",
-    date: "February 2025",
-    location: "Puri, Odisha",
-    highlight: true,
-  },
-  {
-    category: "elderly",
-    title: "Companion Network Launch",
-    description:
-      "Initiated our companion network programme — pairing volunteers with elderly residents for regular visits, conversations, and emotional support.",
-    date: "April 2025",
-    location: "Puri, Odisha",
-  },
-  {
-    category: "elderly",
-    title: "Senior Citizen Health Awareness",
-    description:
-      "Organised an awareness session on health and wellness for elderly residents, covering nutrition, mobility exercises, and mental well-being.",
-    date: "May 2025",
-    location: "Puri, Odisha",
-  },
-  {
-    category: "elderly",
-    title: "Donation Drive — Essentials for Elders",
-    description:
-      "Collected and distributed blankets, medicines, and personal care items to elderly residents across old age homes in Puri.",
-    date: "January 2025",
-    location: "Puri, Odisha",
-  },
-  {
-    category: "elderly",
-    title: "Intergenerational Connect Programme",
-    description:
-      "Building connections across generations — young volunteers spent time listening to stories and sharing moments of warmth with senior citizens.",
-    date: "April 2025",
-    location: "Puri, Odisha",
-  },
-  {
-    category: "education",
-    title: "Book Donation to Tribal Students",
-    description:
-      "Distributed books, notebooks, and study materials to tribal children in rural Odisha. Open-air learning sessions conducted alongside the distribution.",
+      "Visited Hope is Life Old Age Home in Puri. Distributed essentials and spent quality time with 40+ elderly residents — listening to their stories, providing care packages, and understanding the gaps in elderly support systems.",
     date: "October 2025",
-    location: "Kendrapara, Odisha",
+    location: "Puri, Odisha",
     highlight: true,
   },
   {
     category: "education",
-    title: "Learning Materials for Underprivileged Children",
+    title: "Book Distribution to Tribal Students",
     description:
-      "Provided educational kits including textbooks, stationery, and learning aids to children from underserved tribal communities.",
+      "Distributed books, notebooks, and study materials to 50+ tribal children in Kendrapara, Odisha. Conducted open-air learning sessions alongside the distribution — because education should not wait for four walls.",
     date: "November 2025",
     location: "Kendrapara, Odisha",
-  },
-  {
-    category: "education",
-    title: "Community Outreach — Tribal Families",
-    description:
-      "Engaged with tribal families to understand educational needs, barriers to schooling, and how Abhiara Foundation can bridge the gap.",
-    date: "December 2025",
-    location: "Kendrapara, Odisha",
-  },
-  {
-    category: "education",
-    title: "Student Empowerment Drive",
-    description:
-      "Every book donated is a step towards a brighter future. Empowered young minds through education materials and motivational interactions.",
-    date: "January 2026",
-    location: "Kendrapara, Odisha",
-  },
-  {
-    category: "education",
-    title: "Digital Literacy Awareness",
-    description:
-      "Introduced basic digital literacy concepts to tribal students, preparing them for a technology-enabled future while respecting their cultural roots.",
-    date: "February 2026",
-    location: "Kendrapara, Odisha",
+    highlight: true,
   },
 ];
 
@@ -137,7 +73,7 @@ const activities: Activity[] = [
 type GalleryImage = {
   src: string;
   alt: string;
-  category: "education" | "elderly" | "community";
+  category: "education" | "elderly";
   caption: string;
   location: string;
 };
@@ -215,14 +151,14 @@ const BLOG_POSTS: BlogPost[] = [
     id: "hope-is-life-old-age-home-visit",
     title: "A Day of Warmth at Hope is Life Old Age Home",
     excerpt:
-      "Our first elderly care visit in Puri — spending time with residents, listening to their stories, and understanding the gaps in elderly support systems.",
+      "Our first elderly care visit in Puri, Odisha — spending time with 40+ residents, listening to their stories, and understanding the gaps in elderly support systems.",
     content: [
-      "On a warm afternoon in Puri, Odisha, the Abhiara Foundation team visited Hope is Life Old Age Home — our first formal elderly care outreach. What began as a planned visit quickly became an emotional experience that reinforced why this work matters.",
-      "We spent hours with the residents, many of whom had been living there for years. Some had families who visited occasionally; others had none. The common thread was loneliness — a quiet, persistent companion that no amount of physical care could address.",
+      "In October 2025, the Abhiara Foundation team visited Hope is Life Old Age Home in Puri, Odisha — our first formal elderly care outreach. What began as a planned visit quickly became an emotional experience that reinforced why this work matters.",
+      "We spent hours with over 40 residents, many of whom had been living there for years. Some had families who visited occasionally; others had none. The common thread was loneliness — a quiet, persistent companion that no amount of physical care could address.",
       "Our team distributed essential supplies, sat with residents for extended conversations, and documented the specific needs of the facility. The visit revealed critical gaps in companionship, legal awareness about pension rights, and access to regular health check-ups.",
-      "This visit has directly shaped our elderly care programme design — we are now building a companion network model that pairs regular volunteers with specific residents for sustained, meaningful relationships rather than one-time visits.",
+      "This visit has directly shaped our elderly care programme design — we are now planning a companion network model that pairs regular volunteers with specific residents for sustained, meaningful relationships rather than one-time visits.",
     ],
-    date: "2025-02-15",
+    date: "2025-10-15",
     category: "elderly-care",
     location: "Puri, Odisha",
     readTime: "4 min read",
@@ -232,17 +168,17 @@ const BLOG_POSTS: BlogPost[] = [
     featured: true,
   },
   {
-    id: "kendrapara-education-session",
+    id: "kendrapara-book-distribution",
     title: "Books, Dreams, and Open Skies in Kendrapara",
     excerpt:
-      "Our education team conducted an open-air learning session with tribal children in Kendrapara district — donating books and materials to students who walk miles to study.",
+      "Our team distributed books and study materials to 50+ tribal children in Kendrapara district — and spent time with students who walk miles to study.",
     content: [
-      "The Kendrapara district of Odisha has pockets of educationally underserved communities. When our team arrived at the village, we were greeted by children who had walked over 3 kilometres from neighbouring hamlets, eager to learn.",
-      "We conducted an open-air session under the shade of a large banyan tree — there were no classrooms, no desks, no digital screens. Just books, notebooks, pencils, and the boundless curiosity of children who refuse to let geography define their future.",
-      "The team distributed educational materials including textbooks, notebooks, geometry sets, and storybooks in both Odia and English. We also conducted interactive sessions on basic science concepts using everyday objects — making learning tangible and exciting.",
+      "In November 2025, the Abhiara Foundation team travelled to Kendrapara district in Odisha to distribute books and educational materials to tribal children in underserved communities.",
+      "When we arrived at the village, we were greeted by children who had walked over 3 kilometres from neighbouring hamlets, eager to learn. We conducted an open-air session under the shade of a large banyan tree — there were no classrooms, no desks, no digital screens. Just books, notebooks, pencils, and the boundless curiosity of children who refuse to let geography define their future.",
+      "The team distributed educational materials including textbooks, notebooks, geometry sets, and storybooks in both Odia and English to over 50 students. We also conducted interactive sessions on basic science concepts using everyday objects — making learning tangible and exciting.",
       "What struck us most was the determination of these children. Many of them are first-generation learners in their families. Their parents — farmers, daily wage workers — understand that education is the only bridge to a different life. This visit confirmed our commitment to establishing permanent learning centres in the region.",
     ],
-    date: "2025-10-20",
+    date: "2025-11-10",
     category: "education",
     location: "Kendrapara, Odisha",
     readTime: "5 min read",
@@ -250,102 +186,6 @@ const BLOG_POSTS: BlogPost[] = [
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-village-session_60ea6065.jpeg",
     tags: ["Education", "Kendrapara", "Tribal Children", "SDG 4"],
     featured: true,
-  },
-  {
-    id: "elderly-care-companion-programme",
-    title: "Building Companion Networks for the Elderly",
-    excerpt:
-      "Moving beyond one-time visits — our companion network model pairs volunteers with elderly residents for sustained, meaningful relationships.",
-    content: [
-      "After our initial visits to old age homes in Puri, one insight became overwhelmingly clear: the elderly do not just need supplies or medical check-ups. They need consistent human connection — someone who shows up, listens, and remembers their name.",
-      "The Abhiara Companion Network is our answer to this need. We are building a structured programme that pairs trained volunteers with specific elderly residents. Each volunteer commits to at least two visits per month, maintaining a relationship log and flagging any health or emotional concerns to our coordination team.",
-      "The programme is currently in its pilot phase with old age homes in Puri, Odisha. Early feedback from both residents and volunteers has been deeply encouraging — residents report feeling 'seen' again, while volunteers describe the experience as transformative.",
-      "Our goal is to scale this model to 200 elders across Odisha by the end of Year 1, with quarterly health camps and legal aid support integrated into the companion visits.",
-    ],
-    date: "2025-03-01",
-    category: "elderly-care",
-    location: "Puri, Odisha",
-    readTime: "4 min read",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit-1_c836b920.jpeg",
-    tags: ["Elderly Care", "Companion Network", "Volunteer", "SDG 3"],
-  },
-  {
-    id: "section-8-registration-journey",
-    title: "From Idea to Institution: Our Section 8 Registration",
-    excerpt:
-      "The story behind Abhiara Foundation's formal registration as a Section 8 Company — what it means, why it matters, and how it protects every contribution.",
-    content: [
-      "In March 2025, Abhiara Foundation was formally incorporated as a Section 8 Company under the Companies Act, 2013. This was not just a legal formality — it was a deliberate choice that reflects our commitment to transparency, accountability, and the protection of every rupee contributed to our mission.",
-      "A Section 8 Company is a not-for-profit entity where no property, asset, or income can be personally claimed by the founder, family, or any individual. Profits must be reinvested into the organisation's objectives. This structure provides the highest level of governance and donor protection available under Indian law.",
-      "The registration process involved months of documentation, legal consultations, and compliance work. As a CMA (Cost and Management Accountant), our founder Abhimanyu Mallik personally oversaw the financial structuring to ensure every compliance requirement was met from day one.",
-      "With this registration complete, Abhiara Foundation is now eligible to receive CSR funds under Schedule VII of the Companies Act, accept domestic and international donations, and issue tax exemption certificates under Section 80G (application in progress).",
-    ],
-    date: "2025-03-15",
-    category: "news",
-    location: "Mumbai, Maharashtra",
-    readTime: "3 min read",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/community-impact-JqLQdk8SYBsopiModUvtKZ.webp",
-    tags: ["Section 8", "Registration", "Governance", "Compliance"],
-    featured: true,
-  },
-  {
-    id: "education-materials-donation-drive",
-    title: "Equipping Classrooms: Our First Education Material Drive",
-    excerpt:
-      "Collecting and distributing textbooks, notebooks, and learning kits to tribal students in Kendrapara, Odisha.",
-    content: [
-      "Education without materials is like a river without water — the path exists, but nothing flows. Our first education material drive was designed to address the most basic barrier to learning in rural Odisha: the lack of books, notebooks, and writing instruments.",
-      "Working with local community leaders and school teachers in Kendrapara district, we identified over 200 students in Classes 5 through 10 who were studying with shared textbooks or, in some cases, no textbooks at all.",
-      "The drive collected and distributed over 500 textbooks, 1,000 notebooks, geometry sets, colour pencils, and storybooks. Each student received a personalised learning kit packed by our volunteer team.",
-      "Beyond materials, we also conducted brief orientation sessions with parents — explaining the importance of consistent attendance, the scholarship opportunities available for Class 8+ students, and how to reach our team for ongoing support.",
-    ],
-    date: "2025-10-01",
-    category: "education",
-    location: "Kendrapara, Odisha",
-    readTime: "4 min read",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-children-1_48cccd6f.jpeg",
-    tags: ["Education", "Material Drive", "Kendrapara", "SDG 4"],
-  },
-  {
-    id: "csr-partnership-model-launch",
-    title: "Launching Our CSR Partnership Model",
-    excerpt:
-      "How Abhiara Foundation is building a transparent, impact-verified CSR implementation framework for corporate partners under Schedule VII.",
-    content: [
-      "Corporate Social Responsibility is not charity — it is a strategic investment in the communities that sustain business ecosystems. At Abhiara Foundation, we have designed our CSR partnership model to treat every corporate partner as a co-creator of impact, not just a funder.",
-      "Our model offers end-to-end CSR project implementation: from needs assessment and programme design to execution, monitoring, and audited utilisation statements. Every project is mapped to specific SDG targets and Companies Act Schedule VII categories.",
-      "Key differentiators of our approach include monthly impact reports with photographic evidence, quarterly financial utilisation statements audited by our CMA-led finance team, co-branded impact documentation for partner CSR reports, and direct field visit opportunities for partner teams.",
-      "We are targeting ₹30 lakh in CSR partnerships for FY 2025-26, with projects spanning education infrastructure, elderly care programmes, and community development initiatives across Odisha.",
-    ],
-    date: "2025-03-10",
-    category: "csr",
-    location: "Pan India",
-    readTime: "4 min read",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hero-dawn-PUfjxrVLdG8a3bgPJiAovi.webp",
-    tags: ["CSR", "Partnership", "Schedule VII", "SDG 10"],
-  },
-  {
-    id: "elderly-care-health-camp-puri",
-    title: "First Health Camp for Elderly Residents in Puri",
-    excerpt:
-      "Organising a health screening camp at an old age home in Puri — blood pressure checks, basic diagnostics, and connecting residents with follow-up care.",
-    content: [
-      "Health is often the first thing that deteriorates in institutional elderly care — not because of neglect, but because of limited resources and the sheer volume of needs. Our first health camp was designed to bridge this gap with targeted, actionable health interventions.",
-      "Working with volunteer medical professionals, we conducted blood pressure screenings, basic blood sugar tests, vision checks, and mobility assessments for 35 elderly residents at an old age home in Puri, Odisha.",
-      "The results were eye-opening: over 60% of residents had unmanaged hypertension, nearly half had undiagnosed vision impairment, and several needed immediate referrals for specialist care. We coordinated with local hospitals to ensure follow-up appointments were scheduled.",
-      "This camp has become the template for our quarterly health intervention model. We aim to conduct four such camps per year at each partner facility, building a longitudinal health record for every resident we serve.",
-    ],
-    date: "2025-02-20",
-    category: "elderly-care",
-    location: "Puri, Odisha",
-    readTime: "4 min read",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit-2_76a48a25.jpeg",
-    tags: ["Elderly Care", "Health Camp", "Puri", "SDG 3"],
   },
 ];
 
@@ -705,10 +545,10 @@ function GalleryTab() {
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             {[
-              { value: "500+", label: "Children Targeted · Year 1" },
-              { value: "200+", label: "Elders Targeted · Year 1" },
-              { value: "3", label: "Districts · Odisha" },
-              { value: "10", label: "Activities Completed" },
+              { value: "50+", label: "Students Reached \u00b7 So Far" },
+              { value: "40+", label: "Elders Visited \u00b7 So Far" },
+              { value: "2", label: "Activities Completed" },
+              { value: "500+", label: "Students \u00b7 Target 2026" },
             ].map((stat) => (
               <div key={stat.label}>
                 <p className="font-serif text-2xl font-bold text-[#C9A84C]">{stat.value}</p>

@@ -99,7 +99,7 @@ export default function CSRPartners() {
             </h2>
             <div className="w-16 h-0.5 bg-gradient-to-r from-[#C9A84C] to-[#1A7F8E] mx-auto mb-6"/>
             <p className="text-white/70 text-base leading-relaxed max-w-2xl mx-auto">
-              As a Section 8 Company, no property, asset, or income of Abhiara Foundation can be personally claimed — by the founder, family, or any individual. Your Schedule VII investment is legally protected and mission-bound.
+              As a Section 8 Company (registration pending), no property, asset, or income of Abhiara Foundation can be personally claimed — by the founder, family, or any individual. Your Schedule VII investment will be legally protected and mission-bound.
             </p>
           </div>
         </div>
@@ -118,7 +118,7 @@ export default function CSRPartners() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
-              { icon: Shield, title: "Section 8 Company", desc: "Registered under Companies Act 2013. Limited by Guarantee. Section 8 registration complete." },
+              { icon: Shield, title: "Section 8 Company", desc: "Registration pending under Companies Act 2013. Limited by Guarantee. All compliance documentation prepared." },
               { icon: FileCheck, title: "Schedule VII Aligned", desc: "All programmes map directly to Schedule VII categories for CSR compliance." },
               { icon: BarChart3, title: "Monthly Reports", desc: "Detailed progress reports with photo documentation and beneficiary data." },
               { icon: Eye, title: "Full Transparency", desc: "Audited utilisation statements. Open books. No hidden costs." },
@@ -213,9 +213,9 @@ export default function CSRPartners() {
                 </thead>
                 <tbody>
                   {[
-                    { prog: "Education", cat: "(ii) Promoting education", sdg: "SDG 4", status: "Active" },
-                    { prog: "Elderly Care", cat: "(i) Eradicating hunger, poverty", sdg: "SDG 3", status: "Active" },
-                    { prog: "CSR Impact", cat: "(x) Rural development", sdg: "SDG 10, 11", status: "Active" },
+                    { prog: "Education", cat: "(ii) Promoting education", sdg: "SDG 4", status: "2 Activities Done" },
+                    { prog: "Elderly Care", cat: "(i) Eradicating hunger, poverty", sdg: "SDG 3", status: "1 Visit Done" },
+                    { prog: "CSR Impact", cat: "(x) Rural development", sdg: "SDG 10, 11", status: "Not Started" },
                     { prog: "Vidyapeeth", cat: "(ii) Promoting education", sdg: "SDG 4", status: "Planned" },
                   ].map((row) => (
                     <tr key={row.prog} className="border-b border-white/[0.06]">
