@@ -598,48 +598,7 @@ function BeTheChangeSection() {
 
 /* ===== BIRTHDAY WITH PURPOSE SECTION ===== */
 function BirthdayWithPurposeSection() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    birthdayDate: "",
-    celebrationType: "" as "" | "students" | "elderly" | "community" | "other",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [isPending, setIsPending] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.celebrationType) return;
-
-    const typeLabels: Record<string, string> = {
-      students: "With Students — Visit a school, bring books",
-      elderly: "With The Elderly — Visit an old age home",
-      community: "In The Community — Plant trees, clean a space",
-      other: "Other — Custom idea",
-    };
-
-    const message = [
-      `*Birthday With Purpose — Registration*`,
-      ``,
-      `*Name:* ${formData.fullName}`,
-      `*Email:* ${formData.email}`,
-      `*Phone:* ${formData.phone}`,
-      `*Birthday Date:* ${formData.birthdayDate}`,
-      `*Celebration Type:* ${typeLabels[formData.celebrationType] || formData.celebrationType}`,
-      formData.message ? `*Message:* ${formData.message}` : "",
-      ``,
-      `_Sent from abhiarafoundation.org_`,
-    ].filter(Boolean).join("%0a");
-
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
-    window.open(whatsappUrl, "_blank");
-
-    setSubmitted(true);
-    setFormData({ fullName: "", email: "", phone: "", birthdayDate: "", celebrationType: "", message: "" });
-    toast.success("Redirecting to WhatsApp...");
-  };
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi! I'd like to register my birthday with Abhiara Foundation's #BirthdayWithPurpose movement. Please share the details.")}`;
 
   return (
     <section className="py-16 bg-[#0A1628]">
@@ -700,107 +659,23 @@ function BirthdayWithPurposeSection() {
           </p>
         </div>
 
-        {/* ===== BIRTHDAY REGISTRATION FORM ===== */}
-        {submitted ? (
-          <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 text-center mb-8">
-            <p className="text-3xl mb-4">{"\uD83C\uDF82"}</p>
-            <h3 className="text-[#C9A84C] text-2xl font-bold mb-3">Birthday Registered!</h3>
-            <p className="text-white/70 text-base leading-relaxed">
-              Thank you for choosing to celebrate with purpose. The Abhiara Foundation team will connect with you before your special day.
-            </p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="bg-white/5 border border-[#C9A84C]/30 rounded-2xl p-8 text-left mb-8">
-            <h3 className="text-[#C9A84C] text-xl font-bold mb-6 text-center">Register My Birthday</h3>
-
-            <div className="mb-6">
-              <label className="text-white/70 text-sm font-medium mb-2 block">Full Name *</label>
-              <input
-                type="text"
-                required
-                placeholder="Your full name"
-                value={formData.fullName}
-                onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#C9A84C] transition-all"
-              />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label className="text-white/70 text-sm font-medium mb-2 block">Email Address *</label>
-                <input
-                  type="email"
-                  required
-                  placeholder="your@email.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#C9A84C] transition-all"
-                />
-              </div>
-              <div>
-                <label className="text-white/70 text-sm font-medium mb-2 block">Phone Number *</label>
-                <input
-                  type="tel"
-                  required
-                  placeholder="+91 XXXXX XXXXX"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#C9A84C] transition-all"
-                />
-              </div>
-            </div>
-
-            <div className="mb-6">
-              <label className="text-white/70 text-sm font-medium mb-2 block">Birthday Date *</label>
-              <input
-                type="date"
-                required
-                value={formData.birthdayDate}
-                onChange={(e) => setFormData({ ...formData, birthdayDate: e.target.value })}
-                className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#C9A84C] transition-all [color-scheme:dark]"
-              />
-            </div>
-
-            <div className="mb-6">
-              <label className="text-white/70 text-sm font-medium mb-2 block">How would you like to celebrate? *</label>
-              <select
-                required
-                value={formData.celebrationType}
-                onChange={(e) => setFormData({ ...formData, celebrationType: e.target.value as typeof formData.celebrationType })}
-                className="w-full bg-[#0A1628] border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#C9A84C] transition-all"
-              >
-                <option value="">Select celebration type</option>
-                <option value="students">With Students — Visit a school, bring books</option>
-                <option value="elderly">With The Elderly — Visit an old age home</option>
-                <option value="community">In The Community — Plant trees, clean a space</option>
-                <option value="other">Other — I have my own idea</option>
-              </select>
-            </div>
-
-            <div className="mb-8">
-              <label className="text-white/70 text-sm font-medium mb-2 block">Additional Message (optional)</label>
-              <textarea
-                placeholder="Tell us about your birthday plans, preferred location, number of guests, or any special requests..."
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                rows={3}
-                className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#C9A84C] transition-all resize-none"
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={isPending}
-              className="w-full bg-[#C9A84C] hover:bg-[#B8943E] text-[#0A1628] font-bold py-4 rounded-xl transition-all duration-300 text-base uppercase tracking-wider disabled:opacity-50"
-            >
-              Register My Birthday via WhatsApp \u2192
-            </button>
-          </form>
-        )}
-
-        <p className="text-white/30 text-xs mb-6 leading-relaxed max-w-xl mx-auto">
-          Your information will never be shared publicly or with third parties. Used only by Abhiara Foundation team to plan your celebration.
-        </p>
+        {/* ===== WHATSAPP REGISTER BUTTON ===== */}
+        <div className="mb-10">
+          <p className="text-white/70 text-base mb-6">
+            Ready to celebrate your birthday with purpose? Reach out to us on WhatsApp!
+          </p>
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 text-lg shadow-lg hover:shadow-xl hover:scale-105"
+          >
+            <svg viewBox="0 0 32 32" className="w-7 h-7 fill-current" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.004 0h-.008C7.174 0 0 7.176 0 16c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.907 15.907 0 0016.004 32C24.826 32 32 24.822 32 16S24.826 0 16.004 0zm9.342 22.616c-.39 1.1-1.932 2.014-3.168 2.28-.846.18-1.95.324-5.67-1.218-4.762-1.974-7.826-6.81-8.064-7.124-.23-.314-1.928-2.566-1.928-4.894 0-2.328 1.22-3.47 1.654-3.944.39-.428 1.036-.624 1.654-.624.2 0 .38.01.54.018.474.02.712.048 1.024.792.39.93 1.338 3.258 1.454 3.496.118.238.236.556.078.87-.15.322-.282.466-.52.738-.238.272-.464.48-.702.774-.218.258-.464.534-.196 1.008.268.466 1.192 1.966 2.56 3.184 1.758 1.564 3.24 2.05 3.7 2.278.474.238.75.198 1.024-.118.282-.324 1.204-1.4 1.526-1.882.314-.474.636-.394 1.072-.236.44.158 2.762 1.302 3.236 1.54.474.238.788.354.906.554.116.2.116 1.16-.274 2.26z"/>
+            </svg>
+            Register My Birthday on WhatsApp
+          </a>
+        </div>
 
         <p className="text-white/30 text-sm leading-relaxed">
           Share your celebration with the world<br />

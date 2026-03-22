@@ -60,3 +60,6 @@
 - [x] Add Birthday registration form (similar to Be The Change) in Activities page with FormSubmit.co
 - [x] Replace Be The Change form submission with WhatsApp redirect to +91 9938938321
 - [x] Replace Birthday registration form submission with WhatsApp redirect to +91 9938938321
+- [x] Replace Birthday registration form with just a WhatsApp icon/button (no form needed)
+- [x] Update Aradhana's birth year from 2021 to 2019 across all pages
+- [x] Update Aradhana's trustee milestone year from 2039 to 2037 across all pages

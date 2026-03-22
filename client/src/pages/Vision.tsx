@@ -1,7 +1,7 @@
 /*
  * Abhiara Foundation — Vision Page
  * The founder's complete plan: Education, Elderly Care, CSR Implementation,
- * Abhiara Vidyapeeth within 5 years, Aradhana becomes Trustee at age 18 by 2039.
+ * Abhiara Vidyapeeth within 5 years, Aradhana becomes Trustee at age 18 by 2037.
  */
 import { useEffect } from "react";
 import { Link } from "wouter";
@@ -55,7 +55,7 @@ export default function Vision() {
               A clear, time-bound plan to support poor and underprivileged
               students, care for the elderly, implement CSR projects at scale,
               build Abhiara Vidyapeeth within 5 years, and pass the torch to
-              Aradhana by 2039.
+              Aradhana by 2037.
             </p>
           </AnimatedSection>
         </div>
@@ -116,8 +116,8 @@ export default function Vision() {
               {
                 icon: Crown,
                 title: "Aradhana — Future Trustee",
-                desc: "By 2039, Aradhana turns 18 and becomes the youngest trustee of Abhiara Foundation — carrying forward the legacy of fearless light.",
-                sdg: "2039",
+                desc: "By 2037, Aradhana turns 18 and becomes the youngest trustee of Abhiara Foundation — carrying forward the legacy of fearless light.",
+                sdg: "2037",
                 accent: "teal",
               },
             ].map((pillar, i) => (
@@ -157,7 +157,7 @@ export default function Vision() {
           <AnimatedSection className="text-center mb-16">
             <p className="section-label mb-4">MASTER TIMELINE</p>
             <h2 className="heading-xl text-white mb-4">
-              2025 <span className="text-[#C9A84C]">→</span> 2039
+              2025 <span className="text-[#C9A84C]">→</span> 2037
             </h2>
             <div className="gradient-rule mx-auto mb-6" />
             <p className="font-sans text-[15px] text-white/60 max-w-xl mx-auto">
@@ -233,7 +233,7 @@ export default function Vision() {
                 active: false,
               },
               {
-                year: "2039",
+                year: "2037",
                 title: "Aradhana Becomes Trustee",
                 icon: Crown,
                 items: [
@@ -300,13 +300,13 @@ export default function Vision() {
         </div>
       </section>
 
-      {/* ===== ARADHANA 2039 HIGHLIGHT ===== */}
+      {/* ===== ARADHANA 2037 HIGHLIGHT ===== */}
       <section className="py-20 md:py-28 bg-[#06101F]">
         <div className="container">
           <AnimatedSection>
             <div className="max-w-3xl mx-auto glass-card-gold p-8 md:p-12 text-center">
               <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-6">
-                THE PROMISE &middot; 2039
+                THE PROMISE &middot; 2037
               </p>
               <Crown size={40} className="text-[#C9A84C] mx-auto mb-6" />
               <h2
@@ -317,7 +317,7 @@ export default function Vision() {
                 <span className="text-[#C9A84C]">Trustee</span>
               </h2>
               <p className="font-sans text-[16px] text-white/60 leading-relaxed mb-8 max-w-xl mx-auto">
-                When Aradhana turns 18 in 2039, she becomes the youngest trustee
+                When Aradhana turns 18 in 2037, she becomes the youngest trustee
                 of Abhiara Foundation. The foundation that bears her name — ARA,
                 a ray of sacred light — will be hers to lead. A father's courage
                 meets a daughter's destiny.
@@ -325,7 +325,7 @@ export default function Vision() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                 <div className="glass-card p-4 text-center">
                   <p className="font-serif text-2xl font-bold text-[#C9A84C]">
-                    2021
+                    2019
                   </p>
                   <p className="font-mono text-[9px] tracking-wider uppercase text-white/50 mt-1">
                     Aradhana Born
@@ -341,7 +341,7 @@ export default function Vision() {
                 </div>
                 <div className="glass-card p-4 text-center">
                   <p className="font-serif text-2xl font-bold text-[#C9A84C]">
-                    2039
+                    2037
                   </p>
                   <p className="font-mono text-[9px] tracking-wider uppercase text-white/50 mt-1">
                     Becomes Trustee
