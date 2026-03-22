@@ -29,8 +29,11 @@ export default function Footer() {
                 </p>
               </div>
             </div>
-            <p className="font-sans text-sm text-white/50 mb-2">
+            <p className="font-sans text-sm text-white/50 mb-1">
               Fearless Ray of Light
+            </p>
+            <p className="font-sans text-[12px] text-white/35 leading-relaxed">
+              Education for children. Dignity for the elderly. Built from the village up.
             </p>
             <div className="flex gap-3 mt-5">
               <a href="https://www.linkedin.com/in/abhimanyu-mallik/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-[#C9A84C] hover:border-[#C9A84C] transition-colors">
@@ -59,8 +62,7 @@ export default function Footer() {
                 { href: "/csr-partners", label: "CSR Partners" },
                 { href: "/activities", label: "Activities" },
                 { href: "/team", label: "Team" },
-                { href: "/contact", label: "Contact" },
-                { href: "/donate", label: "Donate" },
+                { href: "/contact", label: "Get In Touch" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="font-sans text-sm text-white/50 hover:text-[#C9A84C] transition-colors">
@@ -91,13 +93,8 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               <li>
-                <a href="mailto:founder@abhiarafoundation.org" className="font-sans text-sm text-white/50 hover:text-[#C9A84C] transition-colors">
-                  founder@abhiarafoundation.org
-                </a>
-              </li>
-              <li>
-                <a href="mailto:info@abhiarafoundation.org" className="font-sans text-sm text-white/50 hover:text-[#C9A84C] transition-colors">
-                  info@abhiarafoundation.org
+                <a href="https://www.linkedin.com/in/abhimanyu-mallik/" target="_blank" rel="noopener noreferrer" className="font-sans text-sm text-white/50 hover:text-[#C9A84C] transition-colors">
+                  LinkedIn — Abhimanyu Mallik
                 </a>
               </li>
               <li className="font-sans text-sm text-white/50">
@@ -109,8 +106,8 @@ export default function Footer() {
 
         {/* Manifesto Quote */}
         <div className="mt-16 mb-12 text-center">
-          <p className="font-serif text-xl md:text-2xl italic text-white/40 max-w-2xl mx-auto">
-            "Village to Mumbai. And back — through purpose."
+          <p className="font-serif text-xl md:text-2xl italic text-[#C9A84C] max-w-2xl mx-auto">
+            "Raisar to Mumbai. And back — through purpose."
           </p>
         </div>
 
@@ -120,9 +117,14 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Abhiara Foundation &middot; Section 8 Company &middot; Limited by Guarantee &middot; Companies Act 2013 &middot; CIN: Pending
           </p>
           <p className="font-mono text-[9px] tracking-wider text-white/35">
-            abhiarafoundation.org &middot; abhiarafoundation.com
+            <span className="text-[#C9A84C] mr-2">⊕</span>Abhiara Foundation &middot; Section 8 Company &middot; Not-for-Profit &middot; Raisar, Tulasi Kshetra, Kendrapara, Odisha &middot; Pan India
           </p>
         </div>
+
+        {/* Vibe Coding Credit */}
+        <p className="text-center text-[#C9A84C] text-xs mt-4 font-mono tracking-widest">
+          BUILT WITH VIBE CODING BY ABHIMANYU MALLIK
+        </p>
       </div>
     </footer>
   );

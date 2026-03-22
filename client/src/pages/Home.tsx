@@ -64,10 +64,10 @@ export default function Home() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="font-serif italic text-[22px] md:text-[28px] text-[#C9A84C] tracking-wide mb-6"
+            className="font-serif text-2xl md:text-3xl italic text-[#C9A84C]/80 mb-6"
           >
             Fearless Ray of Light
           </motion.p>
@@ -75,12 +75,21 @@ export default function Home() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="font-sans text-[18px] text-white/60 max-w-[560px] mx-auto leading-relaxed mb-10"
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="font-sans text-[18px] text-white/60 max-w-[560px] mx-auto leading-relaxed mb-4"
           >
             Every child from a remote village deserves a fearless path.
             Every elder deserves dignity in their final years.
             We are building that path — village by village, district by district, life by life.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="font-mono text-[11px] tracking-[0.12em] uppercase text-[#C9A84C]/70 max-w-[560px] mx-auto mb-10"
+          >
+            Education for children. Dignity for the elderly. Built from the village up.
           </motion.p>
 
           {/* Manifesto Quote Block */}
@@ -127,10 +136,10 @@ export default function Home() {
             className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto"
           >
             {[
-              { value: 500, suffix: "+", label: "Students Targeted" },
-              { value: 200, suffix: "+", label: "Elders Supported" },
-              { prefix: "₹", value: 30, suffix: "L", label: "CSR Target FY26" },
-              { value: 30, suffix: "+", label: "Districts Across India" },
+              { value: 50, suffix: "+", label: "Students Supported" },
+              { value: 25, suffix: "+", label: "Elderly Families Enrolled" },
+              { value: 500, suffix: "+", label: "Students Target 2027" },
+              { value: 3, suffix: "", label: "Districts in Odisha" },
             ].map((stat) => (
               <div key={stat.label} className="glass-card p-4 text-center">
                 <p className="font-serif text-2xl md:text-3xl font-bold text-[#C9A84C]">
@@ -157,6 +166,85 @@ export default function Home() {
       </section>
 
 
+
+      {/* ===== IMPACT COUNTER ===== */}
+      <section className="py-16 md:py-24 bg-[#0A1628] relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='%23C9A84C' stroke-width='0.5'/%3E%3C/svg%3E")`,
+          backgroundSize: "60px 60px",
+        }} />
+        <div className="container relative z-10">
+          <AnimatedSection className="text-center mb-12">
+            <p className="section-label mb-4">EARLY IMPACT</p>
+            <h2 className="heading-xl text-white mb-4">
+              Small Numbers. <span className="text-[#C9A84C]">Real Lives.</span>
+            </h2>
+            <div className="gradient-rule mx-auto mb-6" />
+            <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
+              We are in our founding year. Every number here is a real child, a real elder, a real family.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {/* Students Supported */}
+            <AnimatedSection delay={0}>
+              <div className="glass-card-gold p-8 text-center h-full">
+                <p className="font-serif text-5xl md:text-6xl font-bold text-[#C9A84C] mb-2">
+                  <CounterAnimation end={50} suffix="+" />
+                </p>
+                <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/70 mb-3">
+                  Students Supported
+                </p>
+                <p className="font-sans text-[13px] text-white/45 leading-relaxed">
+                  Children from remote villages in Kendrapara, Cuttack, and other districts of Odisha receiving educational support.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            {/* Elderly Families */}
+            <AnimatedSection delay={0.1}>
+              <div className="glass-card p-8 text-center h-full">
+                <p className="font-serif text-5xl md:text-6xl font-bold text-[#1A7F8E] mb-2">
+                  <CounterAnimation end={25} suffix="+" />
+                </p>
+                <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/70 mb-3">
+                  Elderly Families Enrolled
+                </p>
+                <p className="font-sans text-[13px] text-white/45 leading-relaxed">
+                  Senior citizens and their families receiving companion support, health camps, and legal aid.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            {/* 2027 Target */}
+            <AnimatedSection delay={0.2}>
+              <div className="glass-card-gold p-8 text-center h-full relative overflow-hidden">
+                <div className="absolute top-3 right-3">
+                  <span className="font-mono text-[9px] tracking-wider uppercase bg-[#C9A84C]/10 text-[#C9A84C] px-2 py-1 rounded-sm">
+                    Target 2027
+                  </span>
+                </div>
+                <p className="font-serif text-5xl md:text-6xl font-bold text-[#C9A84C] mb-2">
+                  <CounterAnimation end={500} suffix="+" />
+                </p>
+                <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/70 mb-3">
+                  Students by 2027
+                </p>
+                <p className="font-sans text-[13px] text-white/45 leading-relaxed">
+                  Our goal: 500+ students across Odisha with digital learning centres and scholarship support.
+                </p>
+              </div>
+            </AnimatedSection>
+          </div>
+
+          <AnimatedSection delay={0.3} className="text-center mt-10">
+            <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/30">
+              We don't inflate numbers. We earn them — one village at a time.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
 
       {/* ===== S4: THREE PILLARS ===== */}
       <section className="py-20 md:py-28 bg-[#080F1C]">
@@ -206,10 +294,10 @@ export default function Home() {
               },
             ].map((pillar, i) => (
               <AnimatedSection key={pillar.title} delay={i * 0.08}>
-                <div className={`glass-card${pillar.accent === "gold" ? "-gold" : ""} overflow-hidden h-full flex flex-col`}>
+                <div className={`group glass-card${pillar.accent === "gold" ? "-gold" : ""} overflow-hidden h-full flex flex-col`}>
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden">
-                    <img src={pillar.img} alt={pillar.title} className="w-full h-full object-cover" />
+                    <img src={pillar.img} alt={pillar.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] to-transparent" />
                     <div className="absolute bottom-3 left-4 flex items-center gap-2">
                       <pillar.icon size={18} className={pillar.accent === "gold" ? "text-[#C9A84C]" : "text-[#1A7F8E]"} />
@@ -316,7 +404,10 @@ export default function Home() {
               </h2>
               <div className="gradient-rule mb-8" />
               <p className="font-sans text-[15px] text-white/60 leading-relaxed mb-6">
-                I grew up in a small village in Odisha — where electricity was uncertain and the nearest school was a long walk. Today I am a professional in Mumbai. That journey — remote to metro — was not luck. It was access.
+                I was born in Raisar, a small village in Kendrapara district, Odisha — 754134. Electricity was uncertain. The nearest college was a long walk and a financial stretch. Today I am a professional in Mumbai. That journey — remote to metro — was not luck. It was access.
+              </p>
+              <p className="text-[#C9A84C] text-sm italic mt-4 mb-6">
+                Raisar, Kendrapara &middot; Tulasi Kshetra &middot; The sacred land that shaped everything
               </p>
               <p className="font-sans text-[15px] text-white/60 leading-relaxed mb-8">
                 Abhiara Foundation is my promise that the next child does not have to wait as long as I did.
@@ -345,13 +436,31 @@ export default function Home() {
             </AnimatedSection>
 
             <AnimatedSection direction="right">
-              {/* Journey image + quote card */}
-              <div className="relative">
-                <div className="rounded-lg overflow-hidden border border-white/10">
-                  <img src={JOURNEY_IMG} alt="Village to Mumbai journey" className="w-full h-auto" />
+              {/* Founder photo with gold glow + dark background blend */}
+              <div className="flex flex-col items-center">
+                <div
+                  className="relative w-64 h-64 md:w-72 md:h-72 rounded-xl overflow-hidden mx-auto bg-[#0A1628]"
+                  style={{ boxShadow: "0 0 40px #C9A84C40" }}
+                >
+                  <img
+                    src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/founder-abhimanyu-mallik_cfb3b1d3.png"
+                    alt="Abhimanyu Mallik, Founder of Abhiara Foundation, from Raisar, Kendrapara, Odisha"
+                    className="w-full h-full object-cover"
+                    style={{ mixBlendMode: "luminosity" }}
+                  />
+                  {/* Dark navy overlay to blend white/grey background */}
+                  <div className="absolute inset-0 bg-[#0A1628]/30 mix-blend-multiply pointer-events-none" />
+                  {/* Subtle vignette edges */}
+                  <div className="absolute inset-0 pointer-events-none" style={{ boxShadow: "inset 0 0 40px 10px #0A1628" }} />
                 </div>
-                <p className="font-serif text-sm italic text-white/40 text-center mt-4">
-                  Village to Mumbai. And back — through purpose.
+                <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C]/60 text-center mt-4">
+                  Abhimanyu Mallik &middot; Founder &middot; Raisar, Odisha &rarr; Mumbai
+                </p>
+                <div className="mt-6 rounded-lg overflow-hidden border border-white/10">
+                  <img src={JOURNEY_IMG} alt="Village to Mumbai journey" className="w-full h-auto" loading="lazy" />
+                </div>
+                <p className="font-serif text-sm italic text-white/40 text-center mt-3">
+                  Raisar to Mumbai. And back — through purpose.
                 </p>
               </div>
             </AnimatedSection>
@@ -380,7 +489,7 @@ export default function Home() {
                   { phase: "Phase 2", years: "2027", desc: "Acquire land in tribal Odisha · Begin CBSE affiliation" },
                   { phase: "Phase 3", years: "2028", desc: "Construction begins · Recruit founding faculty" },
                   { phase: "Phase 4", years: "2029–2030", desc: "Abhiara Vidyapeeth opens · First batch enrolled" },
-                  { phase: "Phase 5", years: "2039", desc: "Aradhana turns 18 · Becomes youngest Trustee" },
+                  { phase: "Phase 5", years: "2037", desc: "Aradhana turns 18 · Becomes youngest Trustee" },
                 ].map((item, i) => (
                   <div key={item.phase} className="flex gap-4">
                     <div className="flex flex-col items-center">
@@ -407,7 +516,7 @@ export default function Home() {
                 </p>
                 <div className="mt-8 pt-6 border-t border-[#C9A84C]/15">
                   <p className="font-sans text-[14px] text-white/50 italic">
-                    "When Aradhana turns 18 in 2039, she becomes the youngest trustee of Abhiara Foundation."
+                    "When Aradhana turns 18 in 2037, she becomes the youngest trustee of Abhiara Foundation."
                   </p>
                 </div>
               </div>

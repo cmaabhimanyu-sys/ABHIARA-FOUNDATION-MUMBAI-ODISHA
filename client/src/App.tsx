@@ -5,8 +5,8 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import WhatsAppButton from "./components/WhatsAppButton";
+import BackToTop from "./components/BackToTop";
 
-// Lazy load all pages for code splitting
 const Home = lazy(() => import("./pages/Home"));
 const OurStory = lazy(() => import("./pages/OurStory"));
 const Vision = lazy(() => import("./pages/Vision"));
@@ -22,7 +22,12 @@ function PageLoader() {
   return (
     <div className="min-h-screen bg-[#0A1628] flex items-center justify-center">
       <div className="text-center">
-        <div className="w-8 h-8 border-2 border-[#C9A84C] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+        <img
+          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/aaf-logo-concept-3-DYGWPrtD3n9D2RUbi4xCrD.png"
+          alt="Abhiara Foundation"
+          className="h-16 w-auto mx-auto mb-4 animate-pulse"
+        />
+        <div className="w-8 h-8 border-2 border-[#C9A84C] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
         <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/40">Loading</p>
       </div>
     </div>
@@ -30,7 +35,6 @@ function PageLoader() {
 }
 
 function Router() {
-  // make sure to consider if you need authentication for certain routes
   return (
     <Suspense fallback={<PageLoader />}>
       <Switch>
@@ -58,6 +62,7 @@ function App() {
           <Toaster />
           <Router />
           <WhatsAppButton />
+          <BackToTop />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

@@ -88,12 +88,23 @@ export default function Programs() {
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <AnimatedSection direction="left">
-              <div className="relative rounded-lg overflow-hidden">
-                <img src={EDUCATION_IMG} alt="Education program" className="w-full h-auto" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/40 to-transparent" />
-                <span className="absolute top-3 right-3 font-mono text-[9px] tracking-wider uppercase bg-black/40 backdrop-blur-sm px-2 py-1 text-white/70 rounded-sm">
-                  SDG 4
-                </span>
+              <div className="space-y-4">
+                <div className="relative rounded-lg overflow-hidden">
+                  <img src={EDUCATION_IMG} alt="Education program" className="w-full h-auto" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/40 to-transparent" />
+                  <span className="absolute top-3 right-3 font-mono text-[9px] tracking-wider uppercase bg-black/40 backdrop-blur-sm px-2 py-1 text-white/70 rounded-sm">
+                    SDG 4
+                  </span>
+                </div>
+                <div className="relative rounded-lg overflow-hidden">
+                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-village-session_60ea6065.jpeg" alt="Abhiara Foundation education session with village children in Odisha" className="w-full h-auto" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/60 to-transparent" />
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="font-mono text-[9px] tracking-[0.15em] uppercase text-white/80 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-sm inline-block">
+                      ON THE GROUND · VILLAGE EDUCATION SESSION
+                    </p>
+                  </div>
+                </div>
               </div>
             </AnimatedSection>
 
@@ -220,12 +231,23 @@ export default function Programs() {
             </AnimatedSection>
 
             <AnimatedSection direction="right" className="order-1 lg:order-2">
-              <div className="relative rounded-lg overflow-hidden">
-                <img src={ELDERLY_IMG} alt="Elderly care program" className="w-full h-auto" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/40 to-transparent" />
-                <span className="absolute top-3 right-3 font-mono text-[9px] tracking-wider uppercase bg-black/40 backdrop-blur-sm px-2 py-1 text-white/70 rounded-sm">
-                  SDG 3
-                </span>
+              <div className="space-y-4">
+                <div className="relative rounded-lg overflow-hidden">
+                  <img src={ELDERLY_IMG} alt="Elderly care program" className="w-full h-auto" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/40 to-transparent" />
+                  <span className="absolute top-3 right-3 font-mono text-[9px] tracking-wider uppercase bg-black/40 backdrop-blur-sm px-2 py-1 text-white/70 rounded-sm">
+                    SDG 3
+                  </span>
+                </div>
+                <div className="relative rounded-lg overflow-hidden">
+                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit_cbe9834b.jpeg" alt="Abhiara Foundation elderly care visit at Hope is Life Old Age Home" className="w-full h-auto" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/60 to-transparent" />
+                  <div className="absolute bottom-3 left-3 right-3">
+                   <p className="font-mono text-[9px] tracking-[0.15em] uppercase text-white/80 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-sm inline-block">
+                       Abhiara Foundation's first elder care visit — Hope is Life Old Age Home, Odisha · March 2026
+                     </p>
+                  </div>
+                </div>
               </div>
             </AnimatedSection>
           </div>

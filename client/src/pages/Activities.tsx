@@ -17,6 +17,7 @@ interface Activity {
   description: string;
   date: string;
   location: string;
+  highlight?: boolean;
 }
 
 const activities: Activity[] = [
@@ -27,6 +28,7 @@ const activities: Activity[] = [
       "Distributed essentials and spent quality time with elderly residents. Provided care packages including daily necessities, hygiene products, and comfort items.",
     date: "March 2025",
     location: "Mumbai, Maharashtra",
+    highlight: true,
   },
   {
     category: "elderly",
@@ -67,6 +69,7 @@ const activities: Activity[] = [
       "Distributed books, notebooks, and study materials to tribal children in rural Odisha. Open-air learning sessions conducted alongside the distribution.",
     date: "March 2025",
     location: "Koraput District, Odisha",
+    highlight: true,
   },
   {
     category: "education",
@@ -311,9 +314,17 @@ export default function Activities() {
             {filtered.map((activity, idx) => (
               <AnimatedSection key={`${activity.title}-${idx}`} delay={Math.min(idx * 0.05, 0.3)}>
                 <div
-                  className={`glass-card${activity.category === "elderly" ? "-gold" : ""} p-6 md:p-8 hover:border-${activity.category === "elderly" ? "[#C9A84C]" : "[#1A7F8E]"}/30 transition-all duration-300`}
+                  className={`glass-card${activity.category === "elderly" ? "-gold" : ""} p-6 md:p-8 transition-all duration-300 ${activity.highlight ? "ring-1 ring-white/[0.06]" : ""}`}
                 >
                   <div className="flex items-start gap-4">
+                    {/* Timeline dot + line */}
+                    <div className="hidden md:flex flex-col items-center">
+                      <div className={`w-3 h-3 rounded-full shrink-0 ${
+                        activity.category === "elderly" ? "bg-[#C9A84C]" : "bg-[#1A7F8E]"
+                      }`} />
+                      <div className="w-px h-full bg-white/10 min-h-[40px]" />
+                    </div>
+
                     {/* Icon */}
                     <div
                       className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 ${
@@ -347,6 +358,11 @@ export default function Activities() {
                         >
                           {activity.category === "elderly" ? "Elderly Care" : "Education"}
                         </span>
+                        {activity.highlight && (
+                          <span className="font-mono text-[8px] tracking-wider uppercase px-2 py-0.5 rounded-sm bg-white/5 text-white/40">
+                            Featured
+                          </span>
+                        )}
                       </div>
 
                       <h3 className="font-serif text-lg md:text-xl font-bold text-white mb-2">
