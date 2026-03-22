@@ -135,3 +135,5 @@
 - [x] SEO: Add canonical tag to index.html + dynamic per-page canonical via SEO.tsx
 - [ ] SEO: Submit sitemap in Google Search Console (user action needed)
 - [x] Add Connect section: LinkedIn (Abhimanyu Mallik - Founder), Email (info@abhiarafoundation.org), WhatsApp icon
+- [x] Fix: Email "contact us" not working on Contact page — switched to tRPC backend
+- [x] Add WhatsApp icon/link as primary contact method on Contact page
