@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { lazy, Suspense } from "react";
-import { Route, Switch } from "wouter";
+import { lazy, Suspense, useEffect } from "react";
+import { Route, Switch, useLocation, Redirect } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import WhatsAppButton from "./components/WhatsAppButton";
@@ -16,8 +16,6 @@ const Activities = lazy(() => import("./pages/Activities"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Team = lazy(() => import("./pages/Team"));
 const Donate = lazy(() => import("./pages/Donate"));
-const ImpactGallery = lazy(() => import("./pages/ImpactGallery"));
-const Blog = lazy(() => import("./pages/Blog"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -36,6 +34,23 @@ function PageLoader() {
   );
 }
 
+/* Redirect components for old routes */
+function GalleryRedirect() {
+  const [, setLocation] = useLocation();
+  useEffect(() => {
+    setLocation("/activities?tab=gallery");
+  }, []);
+  return <PageLoader />;
+}
+
+function BlogRedirect() {
+  const [, setLocation] = useLocation();
+  useEffect(() => {
+    setLocation("/activities?tab=updates");
+  }, []);
+  return <PageLoader />;
+}
+
 function Router() {
   return (
     <Suspense fallback={<PageLoader />}>
@@ -49,8 +64,9 @@ function Router() {
         <Route path="/contact" component={Contact} />
         <Route path="/team" component={Team} />
         <Route path="/donate" component={Donate} />
-        <Route path="/impact-gallery" component={ImpactGallery} />
-        <Route path="/blog" component={Blog} />
+        {/* Legacy routes redirect to unified Activities page */}
+        <Route path="/impact-gallery" component={GalleryRedirect} />
+        <Route path="/blog" component={BlogRedirect} />
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
       </Switch>

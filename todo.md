@@ -95,3 +95,24 @@
 - [x] Add Open Graph meta tags (og:image, og:title, og:description) to all 11 pages
 - [x] Add SEO component for dynamic meta tags per page (SEO.tsx created)
 - [x] Replace "Email to Us" option with WhatsApp icon for direct connect (Contact page)
+- [x] Fix Blog: assign distinct real photos to each of the 3 similar posts
+- [x] Fix Blog: update elderly care visit location to Puri, Odisha (not Mumbai)
+- [x] Fix Blog: update education post to October 2025, Kendrapara, Odisha (book distribution + time with students)
+- [x] Merge Activities, Gallery, and Blog into one unified page with 3 tabs
+- [x] Fix blog posts: elderly care → Puri Odisha, education → October 2025 Kendrapara, distinct photos
+- [x] Update navigation (Navbar + Footer) to single "Activities" link instead of 3 separate links
+- [x] Update App.tsx routes — redirect /gallery and /blog to /activities with correct tab
+- [x] Remove ABHI+ARA name meaning section from Home page (already on Our Story page)
+- [x] Home page: Replace Three Pillars section with real photos for visual impact instead of text-heavy cards
+- [x] Remove Founder Story Teaser section from Home page (already on Our Story page)
+- [x] Fix #1: Remove ABHI+ARA from Home (already done previously)
+- [x] Fix #2: Remove Founder Story Teaser from Home page (already removed)
+- [x] Fix #3: Merge Activities/Gallery/Blog into one unified tabbed page
+- [x] Fix #4: Reduce Truth of Life quote to only Home, Donate, OurStory (remove from Programs, CSRPartners, ImpactGallery, Blog)
+- [x] Fix #5: Update Old Age Home visit location from Mumbai to Puri, Odisha
+- [x] Fix #6: Update education book distribution to Kendrapara, Odisha, October 2025
+- [x] Fix #7: Update activity dates (not all March 2025)
+- [x] Fix #8: Fix duplicate blog images (same image on 2 posts)
+- [x] Fix #9: Fix Programs.tsx progress bars (replaced with target status labels)
+- [x] Fix #10: Add Puri elderly care visits alongside Mumbai
+- [x] Fix #11: Update navigation for merged Activities page

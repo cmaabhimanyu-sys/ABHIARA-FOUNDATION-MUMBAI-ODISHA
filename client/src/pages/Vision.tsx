@@ -101,7 +101,7 @@ export default function Vision() {
               {
                 icon: HeartHandshake,
                 title: "Elderly Care",
-                desc: "Companion networks, quarterly health camps, legal aid for pension and property rights. Urban Mumbai outreach and rural Odisha village visits.",
+                desc: "Companion networks, quarterly health camps, legal aid for pension and property rights. Old age home visits in Puri and rural Odisha village outreach.",
                 sdg: "SDG 3",
                 accent: "gold",
               },
@@ -178,11 +178,11 @@ export default function Vision() {
                 title: "Foundation Year",
                 icon: Landmark,
                 items: [
-                  "Section 8 Company registration (in progress)",
+                  "Section 8 Company registration complete",
                   "Launch education programme — 500 students targeted",
                   "Launch elderly care programme — 200 elders supported",
                   "First CSR partnerships — ₹30L target",
-                  "Begin operations in Koraput, Kalahandi, Rayagada",
+                  "Begin operations in Kendrapara, Odisha",
                 ],
                 active: true,
               },

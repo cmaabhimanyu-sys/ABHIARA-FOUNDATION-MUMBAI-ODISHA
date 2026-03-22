@@ -105,20 +105,6 @@ export default function CSRPartners() {
         </div>
       </section>
 
-      {/* ===== ABHIARA PROMISE ===== */}
-      <section className="py-12 bg-[#0A1628]">
-        <div className="container">
-          <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 text-center my-12 max-w-3xl mx-auto">
-            <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-6">Truth of Life</p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">"Who help today who needed.</p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">It returns to him.</p>
-            <p className="text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">Always but other way."</p>
-            <div className="w-12 h-0.5 bg-[#C9A84C] mx-auto my-4" />
-            <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
-          </div>
-        </div>
-      </section>
-
       {/* ===== S2: WHY PARTNER WITH US ===== */}
       <section className="py-20 md:py-28 bg-[#080F1C]">
         <div className="container">
@@ -132,7 +118,7 @@ export default function CSRPartners() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
-              { icon: Shield, title: "Section 8 Company", desc: "Registered under Companies Act 2013. Limited by Guarantee. CIN in progress." },
+              { icon: Shield, title: "Section 8 Company", desc: "Registered under Companies Act 2013. Limited by Guarantee. Section 8 registration complete." },
               { icon: FileCheck, title: "Schedule VII Aligned", desc: "All programmes map directly to Schedule VII categories for CSR compliance." },
               { icon: BarChart3, title: "Monthly Reports", desc: "Detailed progress reports with photo documentation and beneficiary data." },
               { icon: Eye, title: "Full Transparency", desc: "Audited utilisation statements. Open books. No hidden costs." },

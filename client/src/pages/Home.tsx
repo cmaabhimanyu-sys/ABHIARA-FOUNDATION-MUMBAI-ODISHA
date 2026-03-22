@@ -1,7 +1,7 @@
 /*
  * Abhiara Foundation — Home Page V2.0
- * 8 Sections: Hero, Trust Bar, Three Pillars,
- * ABHI+ARA Name, Founder Story Teaser, Vidyapeeth Teaser, Activities Preview, Contact CTA
+ * Sections: Hero, Trust Bar, Truth of Life, Three Pillars,
+ * Vidyapeeth Teaser, Activities Preview, Contact CTA
  * NO donation buttons. All CTAs → Contact or relevant pages.
  */
 import { useEffect, useRef, useState } from "react";
@@ -15,10 +15,9 @@ import { motion } from "framer-motion";
 import SEO from "@/components/SEO";
 
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hero-dawn-PUfjxrVLdG8a3bgPJiAovi.webp";
-const EDUCATION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-children-gGByyfoUfKLuHnK73a4QT3.webp";
-const ELDERLY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-8YsBCUCCz6K32KEwPWvjgq.webp";
-const COMMUNITY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/community-impact-JqLQdk8SYBsopiModUvtKZ.webp";
-const JOURNEY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/founder-journey-Xx6vnKWGMfZ6h3k4ufv5M9.webp";
+const EDUCATION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-village-session_60ea6065.jpeg";
+const ELDERLY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit-1_c836b920.jpeg";
+const COMMUNITY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit-2_76a48a25.jpeg";
 
 export default function Home() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -288,7 +287,7 @@ export default function Home() {
                 sdg: "SDG 4",
                 title: "Education",
                 data: "500 Children · All Odisha & Beyond · Year 1",
-                body: "Digital learning centres, scholarship support for Class 8–12 students, and early childhood readiness programmes across all of Odisha and expanding to other states.",
+                body: "Real moments from the field — distributing books, conducting open-air learning sessions, and empowering tribal children across Odisha.",
                 img: EDUCATION_IMG,
                 cta: { label: "See Programme", href: "/programs" },
                 accent: "gold",
@@ -297,8 +296,8 @@ export default function Home() {
                 icon: HeartHandshake,
                 sdg: "SDG 3",
                 title: "Elderly Care",
-                data: "200 Elders · Mumbai + Odisha & Beyond · Year 1",
-                body: "Companion networks, quarterly health camps, and legal aid support for pension and property rights. Urban Mumbai outreach, rural Odisha village visits, and expanding to other states.",
+                data: "200 Elders · Puri, Odisha & Beyond · Year 1",
+                body: "Visiting old age homes, distributing essentials, and spending time with elderly residents who need companionship and care.",
                 img: ELDERLY_IMG,
                 cta: { label: "See Programme", href: "/programs" },
                 accent: "teal",
@@ -308,7 +307,7 @@ export default function Home() {
                 sdg: "SDG 10 + 11",
                 title: "CSR Implementation",
                 data: "₹30L Target · Schedule VII · Year 1",
-                body: "End-to-end CSR project implementation for corporates. Monthly impact reports, audited utilisation statements, and full documentation under Companies Act Schedule VII.",
+                body: "End-to-end CSR project implementation for corporates with monthly impact reports and audited utilisation statements.",
                 img: COMMUNITY_IMG,
                 cta: { label: "Partner With Us", href: "/csr-partners" },
                 accent: "gold",
@@ -317,7 +316,7 @@ export default function Home() {
               <AnimatedSection key={pillar.title} delay={i * 0.08}>
                 <div className={`group glass-card${pillar.accent === "gold" ? "-gold" : ""} overflow-hidden h-full flex flex-col`}>
                   {/* Image */}
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-56 md:h-64 overflow-hidden">
                     <img src={pillar.img} alt={pillar.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] to-transparent" />
                     <div className="absolute bottom-3 left-4 flex items-center gap-2">
@@ -348,146 +347,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== S5: ABHI + ARA NAME MEANING ===== */}
-      <section className="py-20 md:py-28 bg-[#0A1628]">
-        <div className="container">
-          <AnimatedSection className="text-center mb-12">
-            <p className="section-label mb-4">THE NAME</p>
-            <h2 className="heading-xl text-white mb-4">ABHI + ARA</h2>
-            <div className="gradient-rule mx-auto" />
-          </AnimatedSection>
 
-          <AnimatedSection delay={0.1}>
-            <div className="max-w-4xl mx-auto glass-card-gold p-8 md:p-12">
-              <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-8 md:gap-6 items-start">
-                {/* ABHI */}
-                <div className="text-center md:text-left">
-                  <h3 className="font-serif text-4xl md:text-5xl font-bold text-white mb-2">ABHI</h3>
-                  <p className="font-serif text-2xl text-[#C9A84C]/60 mb-3">अभि</p>
-                  <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-3">
-                    Fearless &middot; Brave &middot; Dauntless
-                  </p>
-                  <p className="font-mono text-[10px] tracking-wider uppercase text-white/40 mb-4">
-                    From Abhimanyu — the founder
-                  </p>
-                  <p className="font-sans text-[14px] text-white/55 leading-relaxed">
-                    It took fearlessness to leave the village. To walk into a city that did not know your name. To build something from nothing.
-                  </p>
-                </div>
-
-                {/* Plus symbol */}
-                <div className="hidden md:flex items-center justify-center self-center">
-                  <span className="font-serif text-5xl font-bold text-[#C9A84C]">+</span>
-                </div>
-                <div className="md:hidden text-center">
-                  <span className="font-serif text-4xl font-bold text-[#C9A84C]">+</span>
-                </div>
-
-                {/* ARA */}
-                <div className="text-center md:text-right">
-                  <h3 className="font-serif text-4xl md:text-5xl font-bold text-white mb-2">ARA</h3>
-                  <p className="font-serif text-2xl text-[#C9A84C]/60 mb-3">आरा</p>
-                  <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-3">
-                    Ray of Sacred Light
-                  </p>
-                  <p className="font-mono text-[10px] tracking-wider uppercase text-white/40 mb-4">
-                    From Aradhana — the founder's daughter
-                  </p>
-                  <p className="font-sans text-[14px] text-white/55 leading-relaxed">
-                    She is the reason this foundation exists. She will one day lead it.
-                  </p>
-                </div>
-              </div>
-
-              {/* Combined meaning */}
-              <div className="mt-10 pt-8 border-t border-[#C9A84C]/15 text-center">
-                <p className="font-serif text-xl md:text-2xl italic text-[#C9A84C] mb-3">
-                  Together: A B H I A R A — A Fearless Ray of Light
-                </p>
-                <p className="font-serif text-lg italic text-white/50">
-                  "Where a father's courage meets a daughter's devotion."
-                </p>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* ===== S6: FOUNDER'S STORY TEASER ===== */}
-      <section className="py-20 md:py-28 bg-[#06101F]">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <AnimatedSection direction="left">
-              <p className="section-label mb-4">THE FOUNDER'S STORY</p>
-              <h2 className="heading-lg text-white mb-4">
-                A village in Odisha.<br />
-                <span className="text-[#C9A84C]">A city called Mumbai.</span>
-              </h2>
-              <div className="gradient-rule mb-8" />
-              <p className="font-sans text-[15px] text-white/60 leading-relaxed mb-6">
-                I was born in Raisar, a small village in Kendrapara district, Odisha — 754134. Electricity was uncertain. The nearest college was a long walk and a financial stretch. Today I am a professional in Mumbai. That journey — remote to metro — was not luck. It was access.
-              </p>
-              <p className="text-[#C9A84C] text-sm italic mt-4 mb-6">
-                Raisar, Kendrapara &middot; Tulasi Kshetra &middot; The sacred land that shaped everything
-              </p>
-              <p className="font-sans text-[15px] text-white/60 leading-relaxed mb-8">
-                Abhiara Foundation is my promise that the next child does not have to wait as long as I did.
-              </p>
-
-              {/* Info chips */}
-              <div className="flex flex-wrap gap-3 mb-8">
-                {[
-                  "Founder: Abhimanyu Mallik",
-                  "Section 8 · Limited by Guarantee",
-                  "All Odisha & Other States",
-                  "IFC-ready",
-                ].map((chip) => (
-                  <span key={chip} className="font-mono text-[9px] tracking-wider uppercase text-white/50 px-3 py-1.5 border border-white/10 rounded-sm">
-                    {chip}
-                  </span>
-                ))}
-              </div>
-
-              <Link
-                href="/our-story"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-[#1A7F8E]/50 text-[#1A7F8E] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#1A7F8E]/10 transition-colors"
-              >
-                READ THE FULL STORY <ArrowRight size={12} />
-              </Link>
-            </AnimatedSection>
-
-            <AnimatedSection direction="right">
-              {/* Founder photo with gold glow + dark background blend */}
-              <div className="flex flex-col items-center">
-                <div
-                  className="relative w-64 h-64 md:w-72 md:h-72 rounded-xl overflow-hidden mx-auto bg-[#0A1628]"
-                  style={{ boxShadow: "0 0 40px #C9A84C40" }}
-                >
-                  <img
-                    src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/founder-abhimanyu-mallik_cfb3b1d3.png"
-                    alt="Abhimanyu Mallik, Founder of Abhiara Foundation, from Raisar, Kendrapara, Odisha"
-                    className="w-full h-full object-cover"
-                    style={{ mixBlendMode: "luminosity" }}
-                  />
-                  {/* Dark navy overlay to blend white/grey background */}
-                  <div className="absolute inset-0 bg-[#0A1628]/30 mix-blend-multiply pointer-events-none" />
-                  {/* Subtle vignette edges */}
-                  <div className="absolute inset-0 pointer-events-none" style={{ boxShadow: "inset 0 0 40px 10px #0A1628" }} />
-                </div>
-                <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C]/60 text-center mt-4">
-                  Abhimanyu Mallik &middot; Founder &middot; Raisar, Odisha &rarr; Mumbai
-                </p>
-                <div className="mt-6 rounded-lg overflow-hidden border border-white/10">
-                  <img src={JOURNEY_IMG} alt="Village to Mumbai journey" className="w-full h-auto" loading="lazy" />
-                </div>
-                <p className="font-serif text-sm italic text-white/40 text-center mt-3">
-                  Raisar to Mumbai. And back — through purpose.
-                </p>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
 
       {/* ===== S7: ABHIARA VIDYAPEETH TEASER ===== */}
       <section className="py-20 md:py-28 bg-[#040C18]">
@@ -572,7 +432,7 @@ export default function Home() {
           {/* Activity Highlights */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
             {[
-              { cat: "Elderly Care", title: "Old Age Home Visits", desc: "Distributing essentials and spending quality time with elderly residents in Mumbai" },
+              { cat: "Elderly Care", title: "Old Age Home Visits", desc: "Distributing essentials and spending quality time with elderly residents in Puri, Odisha" },
               { cat: "Education", title: "Book Donations", desc: "Providing books and study materials to tribal students across Odisha" },
               { cat: "Elderly Care", title: "Companion Network", desc: "Pairing volunteers with elderly residents for regular visits and emotional support" },
               { cat: "Education", title: "Community Outreach", desc: "Engaging with tribal families to understand and bridge educational gaps" },

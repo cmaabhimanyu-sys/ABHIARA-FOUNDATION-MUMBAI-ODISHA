@@ -45,40 +45,40 @@ const BLOG_POSTS: BlogPost[] = [
     id: "hope-is-life-old-age-home-visit",
     title: "A Day of Warmth at Hope is Life Old Age Home",
     excerpt:
-      "Our first elderly care visit in Mumbai — spending time with residents, listening to their stories, and understanding the gaps in urban elderly support systems.",
+      "Our first elderly care visit in Puri, Odisha — spending time with residents, listening to their stories, and understanding the gaps in elderly support systems.",
     content: [
-      "On a warm afternoon in Mumbai, the Abhiara Foundation team visited Hope is Life Old Age Home — our first formal elderly care outreach in the city. What began as a planned visit quickly became an emotional experience that reinforced why this work matters.",
+      "On a warm afternoon in Puri, Odisha, the Abhiara Foundation team visited Hope is Life Old Age Home — our first formal elderly care outreach. What began as a planned visit quickly became an emotional experience that reinforced why this work matters.",
       "We spent hours with the residents, many of whom had been living there for years. Some had families who visited occasionally; others had none. The common thread was loneliness — a quiet, persistent companion that no amount of physical care could address.",
       "Our team distributed essential supplies, sat with residents for extended conversations, and documented the specific needs of the facility. The visit revealed critical gaps in companionship, legal awareness about pension rights, and access to regular health check-ups.",
       "This visit has directly shaped our elderly care programme design — we are now building a companion network model that pairs regular volunteers with specific residents for sustained, meaningful relationships rather than one-time visits.",
     ],
     date: "2025-02-15",
     category: "elderly-care",
-    location: "Mumbai, Maharashtra",
+    location: "Puri, Odisha",
     readTime: "4 min read",
     image:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit_cbe9834b.jpeg",
-    tags: ["Elderly Care", "Mumbai", "Field Visit", "SDG 3"],
+    tags: ["Elderly Care", "Puri", "Field Visit", "SDG 3"],
     featured: true,
   },
   {
-    id: "koraput-education-session",
-    title: "Books, Dreams, and Open Skies in Koraput",
+    id: "kendrapara-education-session",
+    title: "Books, Dreams, and Open Skies in Kendrapara",
     excerpt:
-      "Our education team conducted an open-air learning session with tribal children in Koraput district — donating books and materials to students who walk miles to study.",
+      "Our education team conducted an open-air learning session with tribal children in Kendrapara district — donating books and materials to students who walk miles to study.",
     content: [
-      "The Koraput district of Odisha is one of India's most educationally underserved regions. When our team arrived at the village, we were greeted by children who had walked over 3 kilometres from neighbouring hamlets, eager to learn.",
+      "The Kendrapara district of Odisha has pockets of educationally underserved communities. When our team arrived at the village, we were greeted by children who had walked over 3 kilometres from neighbouring hamlets, eager to learn.",
       "We conducted an open-air session under the shade of a large banyan tree — there were no classrooms, no desks, no digital screens. Just books, notebooks, pencils, and the boundless curiosity of children who refuse to let geography define their future.",
       "The team distributed educational materials including textbooks, notebooks, geometry sets, and storybooks in both Odia and English. We also conducted interactive sessions on basic science concepts using everyday objects — making learning tangible and exciting.",
       "What struck us most was the determination of these children. Many of them are first-generation learners in their families. Their parents — farmers, daily wage workers — understand that education is the only bridge to a different life. This visit confirmed our commitment to establishing permanent learning centres in the region.",
     ],
-    date: "2025-01-20",
+    date: "2025-10-20",
     category: "education",
-    location: "Koraput District, Odisha",
+    location: "Kendrapara, Odisha",
     readTime: "5 min read",
     image:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-village-session_60ea6065.jpeg",
-    tags: ["Education", "Koraput", "Tribal Children", "SDG 4"],
+    tags: ["Education", "Kendrapara", "Tribal Children", "SDG 4"],
     featured: true,
   },
   {
@@ -87,14 +87,14 @@ const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "Moving beyond one-time visits — our companion network model pairs volunteers with elderly residents for sustained, meaningful relationships.",
     content: [
-      "After our initial visits to old age homes in Mumbai, one insight became overwhelmingly clear: the elderly do not just need supplies or medical check-ups. They need consistent human connection — someone who shows up, listens, and remembers their name.",
+      "After our initial visits to old age homes in Puri, one insight became overwhelmingly clear: the elderly do not just need supplies or medical check-ups. They need consistent human connection — someone who shows up, listens, and remembers their name.",
       "The Abhiara Companion Network is our answer to this need. We are building a structured programme that pairs trained volunteers with specific elderly residents. Each volunteer commits to at least two visits per month, maintaining a relationship log and flagging any health or emotional concerns to our coordination team.",
-      "The programme is currently in its pilot phase with two old age homes in Mumbai. Early feedback from both residents and volunteers has been deeply encouraging — residents report feeling 'seen' again, while volunteers describe the experience as transformative.",
-      "Our goal is to scale this model to 200 elders across Mumbai and Odisha by the end of Year 1, with quarterly health camps and legal aid support integrated into the companion visits.",
+      "The programme is currently in its pilot phase with old age homes in Puri, Odisha. Early feedback from both residents and volunteers has been deeply encouraging — residents report feeling 'seen' again, while volunteers describe the experience as transformative.",
+      "Our goal is to scale this model to 200 elders across Odisha by the end of Year 1, with quarterly health camps and legal aid support integrated into the companion visits.",
     ],
     date: "2025-03-01",
     category: "elderly-care",
-    location: "Mumbai & Odisha",
+    location: "Puri, Odisha",
     readTime: "4 min read",
     image:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit-1_c836b920.jpeg",
@@ -127,13 +127,13 @@ const BLOG_POSTS: BlogPost[] = [
       "Collecting and distributing textbooks, notebooks, and learning kits to tribal students across three districts in Odisha.",
     content: [
       "Education without materials is like a river without water — the path exists, but nothing flows. Our first education material drive was designed to address the most basic barrier to learning in tribal Odisha: the lack of books, notebooks, and writing instruments.",
-      "Working with local community leaders and school teachers across Koraput, Kalahandi, and Rayagada districts, we identified over 200 students in Classes 5 through 10 who were studying with shared textbooks or, in some cases, no textbooks at all.",
-      "The drive collected and distributed over 500 textbooks, 1,000 notebooks, geometry sets, colour pencils, and storybooks. Each student received a personalised learning kit packed by our volunteer team in Mumbai.",
+      "Working with local community leaders and school teachers in Kendrapara district, we identified over 200 students in Classes 5 through 10 who were studying with shared textbooks or, in some cases, no textbooks at all.",
+      "The drive collected and distributed over 500 textbooks, 1,000 notebooks, geometry sets, colour pencils, and storybooks. Each student received a personalised learning kit packed by our volunteer team.",
       "Beyond materials, we also conducted brief orientation sessions with parents — explaining the importance of consistent attendance, the scholarship opportunities available for Class 8+ students, and how to reach our team for ongoing support.",
     ],
-    date: "2025-02-01",
+    date: "2025-10-01",
     category: "education",
-    location: "Koraput, Kalahandi, Rayagada — Odisha",
+    location: "Kendrapara, Odisha",
     readTime: "4 min read",
     image:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-children-1_48cccd6f.jpeg",
@@ -155,27 +155,27 @@ const BLOG_POSTS: BlogPost[] = [
     location: "Pan India",
     readTime: "4 min read",
     image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/community-impact-JqLQdk8SYBsopiModUvtKZ.webp",
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hero-dawn-PUfjxrVLdG8a3bgPJiAovi.webp",
     tags: ["CSR", "Partnership", "Schedule VII", "SDG 10"],
   },
   {
-    id: "elderly-care-health-camp-mumbai",
-    title: "First Health Camp for Elderly Residents in Mumbai",
+    id: "elderly-care-health-camp-puri",
+    title: "First Health Camp for Elderly Residents in Puri",
     excerpt:
       "Organising a health screening camp at an old age home — blood pressure checks, basic diagnostics, and connecting residents with follow-up care.",
     content: [
       "Health is often the first thing that deteriorates in institutional elderly care — not because of neglect, but because of limited resources and the sheer volume of needs. Our first health camp was designed to bridge this gap with targeted, actionable health interventions.",
-      "Working with volunteer medical professionals, we conducted blood pressure screenings, basic blood sugar tests, vision checks, and mobility assessments for 35 elderly residents at a Mumbai old age home.",
+      "Working with volunteer medical professionals, we conducted blood pressure screenings, basic blood sugar tests, vision checks, and mobility assessments for 35 elderly residents at an old age home in Puri, Odisha.",
       "The results were eye-opening: over 60% of residents had unmanaged hypertension, nearly half had undiagnosed vision impairment, and several needed immediate referrals for specialist care. We coordinated with local hospitals to ensure follow-up appointments were scheduled.",
       "This camp has become the template for our quarterly health intervention model. We aim to conduct four such camps per year at each partner facility, building a longitudinal health record for every resident we serve.",
     ],
     date: "2025-02-20",
     category: "elderly-care",
-    location: "Mumbai, Maharashtra",
+    location: "Puri, Odisha",
     readTime: "4 min read",
     image:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit-2_76a48a25.jpeg",
-    tags: ["Elderly Care", "Health Camp", "Mumbai", "SDG 3"],
+    tags: ["Elderly Care", "Health Camp", "Puri", "SDG 3"],
   },
 ];
 
@@ -226,7 +226,7 @@ export default function Blog() {
     <div className="min-h-screen bg-[#0A1628]">
       <SEO
         title="Blog & Updates — Abhiara Foundation"
-        description="Event recaps, field visit reports, and news from Abhiara Foundation. Real stories from our education and elderly care work across Odisha and Mumbai."
+        description="Event recaps, field visit reports, and news from Abhiara Foundation. Real stories from our education and elderly care work across Odisha."
         url="https://abhiarafoundation.com/blog"
       />
       <Navbar />
@@ -496,30 +496,6 @@ export default function Blog() {
               })}
             </div>
           )}
-        </div>
-      </section>
-
-      {/* ===== TRUTH OF LIFE QUOTE ===== */}
-      <section className="py-12 bg-[#0A1628]">
-        <div className="container">
-          <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 text-center my-12 max-w-3xl mx-auto">
-            <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-6">
-              Truth of Life
-            </p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">
-              "Who help today who needed.
-            </p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">
-              It returns to him.
-            </p>
-            <p className="text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">
-              Always but other way."
-            </p>
-            <div className="w-12 h-0.5 bg-[#C9A84C] mx-auto my-4" />
-            <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-semibold">
-              — Abhiara Foundation
-            </p>
-          </div>
         </div>
       </section>
 

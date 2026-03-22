@@ -16,23 +16,12 @@ const EDUCATION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/
 const ELDERLY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-8YsBCUCCz6K32KEwPWvjgq.webp";
 const COMMUNITY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/community-impact-JqLQdk8SYBsopiModUvtKZ.webp";
 
-function ProgressBar({ label, pct, color }: { label: string; pct: number; color: string }) {
+function TargetBar({ label, status, color }: { label: string; status: string; color: string }) {
   return (
-    <div className="mb-3">
-      <div className="flex justify-between mb-1">
-        <span className="font-mono text-[9px] tracking-wider uppercase text-white/50">{label}</span>
-        <span className="font-mono text-[9px] tracking-wider text-white/50">{pct}%</span>
-      </div>
-      <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${pct}%` }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="h-full rounded-full"
-          style={{ background: color }}
-        />
-      </div>
+    <div className="mb-3 flex items-center gap-3">
+      <div className="w-2 h-2 rounded-full" style={{ background: color }} />
+      <span className="font-mono text-[9px] tracking-wider uppercase text-white/50">{label}</span>
+      <span className="font-mono text-[9px] tracking-wider uppercase ml-auto" style={{ color }}>{status}</span>
     </div>
   );
 }
@@ -163,8 +152,8 @@ export default function Programs() {
               </ul>
 
               {/* Progress */}
-              <ProgressBar label="Scholarship Fund" pct={35} color="#C9A84C" />
-              <ProgressBar label="Centre Setup" pct={15} color="#1A7F8E" />
+              <TargetBar label="Scholarship Fund" status="Year 1 Target" color="#C9A84C" />
+              <TargetBar label="Centre Setup" status="Planning Phase" color="#1A7F8E" />
 
               <Link
                 href="/contact"
@@ -226,8 +215,8 @@ export default function Programs() {
                 ))}
               </ul>
 
-              <ProgressBar label="Elder Enrolment" pct={20} color="#1A7F8E" />
-              <ProgressBar label="Health Camp Planning" pct={30} color="#C9A84C" />
+              <TargetBar label="Elder Enrolment" status="Year 1 Target" color="#1A7F8E" />
+              <TargetBar label="Health Camp Planning" status="Quarterly" color="#C9A84C" />
 
               <Link
                 href="/contact"
@@ -251,26 +240,12 @@ export default function Programs() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/60 to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3">
                    <p className="font-mono text-[9px] tracking-[0.15em] uppercase text-white/80 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-sm inline-block">
-                       Abhiara Foundation's first elder care visit — Hope is Life Old Age Home, Odisha · March 2026
+                       Abhiara Foundation's first elder care visit — Hope is Life Old Age Home, Puri, Odisha · February 2025
                      </p>
                   </div>
                 </div>
               </div>
             </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== ABHIARA PROMISE ===== */}
-      <section className="py-12 bg-[#0A1628]">
-        <div className="container">
-          <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 text-center my-12 max-w-3xl mx-auto">
-            <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-6">Truth of Life</p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">"Who help today who needed.</p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">It returns to him.</p>
-            <p className="text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">Always but other way."</p>
-            <div className="w-12 h-0.5 bg-[#C9A84C] mx-auto my-4" />
-            <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
           </div>
         </div>
       </section>

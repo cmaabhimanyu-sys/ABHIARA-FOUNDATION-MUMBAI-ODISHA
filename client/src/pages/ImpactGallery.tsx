@@ -27,14 +27,14 @@ const GALLERY_IMAGES: GalleryImage[] = [
     alt: "Abhiara Foundation education session with village children in Odisha",
     category: "education",
     caption: "Book donation and open-air learning session with tribal children — because education should not wait for four walls.",
-    location: "Koraput District, Odisha",
+    location: "Kendrapara, Odisha",
   },
   {
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-children-1_48cccd6f.jpeg",
     alt: "Book donation to tribal children in Odisha",
     category: "education",
     caption: "Every book donated is a step towards a brighter future. Empowering young minds through education materials.",
-    location: "Koraput District, Odisha",
+    location: "Kendrapara, Odisha",
   },
   /* Elderly Care — Real Photos */
   {
@@ -42,21 +42,21 @@ const GALLERY_IMAGES: GalleryImage[] = [
     alt: "Abhiara Foundation elderly care visit at Hope is Life Old Age Home",
     category: "elderly",
     caption: "Our first elder care visit — Hope is Life Old Age Home. Listening, learning, and lending a hand.",
-    location: "Mumbai, Maharashtra",
+    location: "Puri, Odisha",
   },
   {
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit-1_c836b920.jpeg",
     alt: "Distributing essentials to elderly residents",
     category: "elderly",
     caption: "Distributing essentials and spending quality time with elders who have no one else to visit them.",
-    location: "Mumbai, Maharashtra",
+    location: "Puri, Odisha",
   },
   {
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit-2_76a48a25.jpeg",
     alt: "Elderly care visit — sharing warmth and care",
     category: "elderly",
     caption: "Warmth is not a luxury. It is a human need. We bring it, one visit at a time.",
-    location: "Mumbai, Maharashtra",
+    location: "Puri, Odisha",
   },
 ];
 
@@ -90,7 +90,7 @@ export default function ImpactGallery() {
     <div className="min-h-screen bg-[#0A1628]">
       <SEO
         title="Impact Gallery — Abhiara Foundation"
-        description="Visual stories from the field — real photos from education sessions, elderly care visits, and community development across Odisha and Mumbai."
+        description="Visual stories from the field — real photos from education sessions, elderly care visits, and community development across Odisha."
         url="https://abhiarafoundation.com/impact-gallery"
       />
       <Navbar />
@@ -113,7 +113,7 @@ export default function ImpactGallery() {
             </h1>
             <div className="w-16 h-[2px] bg-gradient-to-r from-[#C9A84C] to-[#1A7F8E] mx-auto mb-6" />
             <p className="font-sans text-[16px] text-white/60 max-w-xl mx-auto leading-relaxed">
-              Visual stories from our education sessions, elderly care visits, and community development work across Odisha and Mumbai.
+              Visual stories from our education sessions, elderly care visits, and community development work across Odisha.
             </p>
           </AnimatedSection>
         </div>
@@ -214,20 +214,6 @@ export default function ImpactGallery() {
               <p className="font-sans text-white/40">No images in this category yet.</p>
             </div>
           )}
-        </div>
-      </section>
-
-      {/* ===== TRUTH OF LIFE QUOTE ===== */}
-      <section className="py-12 bg-[#0A1628]">
-        <div className="container">
-          <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 text-center my-12 max-w-3xl mx-auto">
-            <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-6">Truth of Life</p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">"Who help today who needed.</p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">It returns to him.</p>
-            <p className="text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">Always but other way."</p>
-            <div className="w-12 h-0.5 bg-[#C9A84C] mx-auto my-4"/>
-            <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
-          </div>
         </div>
       </section>
 
