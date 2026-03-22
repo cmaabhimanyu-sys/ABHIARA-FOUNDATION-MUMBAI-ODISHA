@@ -230,7 +230,7 @@ export default function Activities() {
       <SEO
         title="Activities — Abhiara Foundation"
         description="Real activities from the field — elderly care visits in Puri, education sessions in Kendrapara, health camps, and community outreach across Odisha."
-        url="https://abhiarafoundation.org/activities"
+        url="https://abhiarafoundation.com/activities"
       />
       <Navbar />
 

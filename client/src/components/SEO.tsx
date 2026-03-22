@@ -42,6 +42,16 @@ function setNameMeta(name: string, content: string) {
   el.setAttribute("content", content);
 }
 
+function setCanonical(href: string) {
+  let el = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  if (!el) {
+    el = document.createElement("link");
+    el.setAttribute("rel", "canonical");
+    document.head.appendChild(el);
+  }
+  el.setAttribute("href", href);
+}
+
 export default function SEO({
   title = DEFAULTS.title,
   description = DEFAULTS.description,
@@ -52,6 +62,9 @@ export default function SEO({
   useEffect(() => {
     // Page title
     document.title = title;
+
+    // Canonical URL — tells Google which URL is the "real" one
+    setCanonical(url);
 
     // Standard meta
     setNameMeta("description", description);
@@ -74,6 +87,7 @@ export default function SEO({
     // Cleanup: restore defaults on unmount
     return () => {
       document.title = DEFAULTS.title;
+      setCanonical(DEFAULTS.url + "/");
       setNameMeta("description", DEFAULTS.description);
       setMeta("og:title", DEFAULTS.title);
       setMeta("og:description", DEFAULTS.description);

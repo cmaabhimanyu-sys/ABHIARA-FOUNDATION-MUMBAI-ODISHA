@@ -130,3 +130,7 @@
 - [x] TRUTH CLEANUP: Update Programs page — CSR not started
 - [x] TRUTH CLEANUP: Update CSRPartners page — not started yet
 - [x] TRUTH CLEANUP: Update OurStory, Vision pages — Section 8 pending
+- [x] SEO: Create sitemap.xml with all pages for Google indexing
+- [x] SEO: Update robots.txt to reference sitemap
+- [x] SEO: Add canonical tag to index.html + dynamic per-page canonical via SEO.tsx
+- [ ] SEO: Submit sitemap in Google Search Console (user action needed)
