@@ -57,3 +57,4 @@
 - [ ] Prepare Railway full-stack deployment guide
 - [x] Remove Donor Wall of Light section from Donate page and DonorWall page (can't update donor names each time)
 - [x] Set up FormSubmit.co so form submissions go directly to info@abhiarafoundation.org (no API key needed)
+- [x] Add Birthday registration form (similar to Be The Change) in Activities page with FormSubmit.co

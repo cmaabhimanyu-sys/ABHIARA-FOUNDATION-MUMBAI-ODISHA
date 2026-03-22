@@ -129,6 +129,30 @@ export async function submitVolunteerForm(data: {
   );
 }
 
+/**
+ * Submit birthday registration form
+ */
+export async function submitBirthdayForm(data: {
+  fullName: string;
+  email: string;
+  phone: string;
+  birthdayDate: string;
+  celebrationType: string;
+  message: string;
+}): Promise<SubmitResult> {
+  return submitForm(
+    {
+      "Full Name": data.fullName,
+      Email: data.email,
+      Phone: data.phone,
+      "Birthday Date": data.birthdayDate,
+      "Celebration Type": formatLabel(data.celebrationType),
+      Message: data.message || "No additional message",
+    },
+    `Birthday Registration — ${data.fullName} (${data.birthdayDate})`
+  );
+}
+
 /** Convert camelCase/snake_case keys to readable labels */
 function formatLabel(key: string): string {
   return key

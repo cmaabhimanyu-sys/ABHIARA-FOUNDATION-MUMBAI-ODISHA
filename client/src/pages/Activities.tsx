@@ -5,7 +5,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Heart, BookOpen, Calendar, MapPin } from "lucide-react";
-import { submitVolunteerForm } from "@/lib/formSubmit";
+import { submitVolunteerForm, submitBirthdayForm } from "@/lib/formSubmit";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -581,6 +581,35 @@ function BeTheChangeSection() {
 
 /* ===== BIRTHDAY WITH PURPOSE SECTION ===== */
 function BirthdayWithPurposeSection() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    birthdayDate: "",
+    celebrationType: "" as "" | "students" | "elderly" | "community" | "other",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [isPending, setIsPending] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.celebrationType) return;
+    setIsPending(true);
+    try {
+      const result = await submitBirthdayForm(formData);
+      if (result.success) {
+        setSubmitted(true);
+        setFormData({ fullName: "", email: "", phone: "", birthdayDate: "", celebrationType: "", message: "" });
+        toast.success(result.message);
+      }
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsPending(false);
+    }
+  };
+
   return (
     <section className="py-16 bg-[#0A1628]">
       <div className="container mx-auto px-6 max-w-3xl text-center">
@@ -640,14 +669,109 @@ function BirthdayWithPurposeSection() {
           </p>
         </div>
 
-        <Link
-          href="/contact"
-          className="inline-block bg-[#C9A84C] hover:bg-[#B8943E] text-[#0A1628] font-bold px-10 py-4 rounded-xl transition-all duration-300 uppercase tracking-wider"
-        >
-          Register My Birthday →
-        </Link>
+        {/* ===== BIRTHDAY REGISTRATION FORM ===== */}
+        {submitted ? (
+          <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 text-center mb-8">
+            <p className="text-3xl mb-4">{"\uD83C\uDF82"}</p>
+            <h3 className="text-[#C9A84C] text-2xl font-bold mb-3">Birthday Registered!</h3>
+            <p className="text-white/70 text-base leading-relaxed">
+              Thank you for choosing to celebrate with purpose. The Abhiara Foundation team will connect with you before your special day.
+            </p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="bg-white/5 border border-[#C9A84C]/30 rounded-2xl p-8 text-left mb-8">
+            <h3 className="text-[#C9A84C] text-xl font-bold mb-6 text-center">Register My Birthday</h3>
 
-        <p className="text-white/30 text-sm mt-8 leading-relaxed">
+            <div className="mb-6">
+              <label className="text-white/70 text-sm font-medium mb-2 block">Full Name *</label>
+              <input
+                type="text"
+                required
+                placeholder="Your full name"
+                value={formData.fullName}
+                onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#C9A84C] transition-all"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label className="text-white/70 text-sm font-medium mb-2 block">Email Address *</label>
+                <input
+                  type="email"
+                  required
+                  placeholder="your@email.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#C9A84C] transition-all"
+                />
+              </div>
+              <div>
+                <label className="text-white/70 text-sm font-medium mb-2 block">Phone Number *</label>
+                <input
+                  type="tel"
+                  required
+                  placeholder="+91 XXXXX XXXXX"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#C9A84C] transition-all"
+                />
+              </div>
+            </div>
+
+            <div className="mb-6">
+              <label className="text-white/70 text-sm font-medium mb-2 block">Birthday Date *</label>
+              <input
+                type="date"
+                required
+                value={formData.birthdayDate}
+                onChange={(e) => setFormData({ ...formData, birthdayDate: e.target.value })}
+                className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#C9A84C] transition-all [color-scheme:dark]"
+              />
+            </div>
+
+            <div className="mb-6">
+              <label className="text-white/70 text-sm font-medium mb-2 block">How would you like to celebrate? *</label>
+              <select
+                required
+                value={formData.celebrationType}
+                onChange={(e) => setFormData({ ...formData, celebrationType: e.target.value as typeof formData.celebrationType })}
+                className="w-full bg-[#0A1628] border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#C9A84C] transition-all"
+              >
+                <option value="">Select celebration type</option>
+                <option value="students">With Students — Visit a school, bring books</option>
+                <option value="elderly">With The Elderly — Visit an old age home</option>
+                <option value="community">In The Community — Plant trees, clean a space</option>
+                <option value="other">Other — I have my own idea</option>
+              </select>
+            </div>
+
+            <div className="mb-8">
+              <label className="text-white/70 text-sm font-medium mb-2 block">Additional Message (optional)</label>
+              <textarea
+                placeholder="Tell us about your birthday plans, preferred location, number of guests, or any special requests..."
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                rows={3}
+                className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#C9A84C] transition-all resize-none"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isPending}
+              className="w-full bg-[#C9A84C] hover:bg-[#B8943E] text-[#0A1628] font-bold py-4 rounded-xl transition-all duration-300 text-base uppercase tracking-wider disabled:opacity-50"
+            >
+              {isPending ? "Submitting..." : "Register My Birthday \u2192"}
+            </button>
+          </form>
+        )}
+
+        <p className="text-white/30 text-xs mb-6 leading-relaxed max-w-xl mx-auto">
+          Your information will never be shared publicly or with third parties. Used only by Abhiara Foundation team to plan your celebration.
+        </p>
+
+        <p className="text-white/30 text-sm leading-relaxed">
           Share your celebration with the world<br />
           <span className="text-[#C9A84C] font-semibold">
             #BirthdayWithPurpose · #YourBirthdaySomeoneFuture · #AbhiaraFoundation · #FearlessRayOfLight
