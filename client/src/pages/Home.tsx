@@ -246,6 +246,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== ABHIARA PROMISE ===== */}
+      <section className="py-12 bg-[#0A1628]">
+        <div className="container">
+          <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 text-center my-12 max-w-3xl mx-auto">
+            <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-6">The Abhiara Promise</p>
+            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">"Give today who needed.</p>
+            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">It returns.</p>
+            <p className="text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">Always but other way."</p>
+            <div className="w-12 h-0.5 bg-[#C9A84C] mx-auto my-4" />
+            <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
+          </div>
+        </div>
+      </section>
+
       {/* ===== S4: THREE PILLARS ===== */}
       <section className="py-20 md:py-28 bg-[#080F1C]">
         <div className="container">
