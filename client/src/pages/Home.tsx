@@ -66,7 +66,16 @@ export default function Home() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="font-serif italic text-[22px] md:text-[28px] text-[#C9A84C] tracking-wide mb-6"
+          >
+            Fearless Ray of Light
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
             className="font-sans text-[18px] text-white/60 max-w-[560px] mx-auto leading-relaxed mb-10"
           >
             Every child from a remote village deserves a fearless path.
