@@ -143,3 +143,4 @@
 - [x] Remove "Join the Newsletter" section from Contact page (only page with it)
 - [x] Change green CTA section background to teal gradient (from-[#1A7F8E] to-[#145E6A])
 - [x] Remove duplicate Contact/Get in Touch — removed Contact from nav links, kept GET IN TOUCH CTA button
+- [x] Add "Written by Abhimanyu Mallik" to Truth of Life quote attribution on Home and Donate (only 2 pages have the quote)

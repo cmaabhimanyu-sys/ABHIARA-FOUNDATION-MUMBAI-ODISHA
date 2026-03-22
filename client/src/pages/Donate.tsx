@@ -61,6 +61,7 @@ export default function Donate() {
             <p className="text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">Always but other way."</p>
             <div className="w-12 h-0.5 bg-[#C9A84C] mx-auto my-4" />
             <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
+            <p className="text-white/50 text-xs uppercase tracking-widest mt-1">Written by Abhimanyu Mallik</p>
           </div>
 
           <div className="bg-red-950/40 border border-red-500/30 rounded-2xl p-8 text-left space-y-4">
