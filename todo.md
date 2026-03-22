@@ -58,3 +58,5 @@
 - [x] Remove Donor Wall of Light section from Donate page and DonorWall page (can't update donor names each time)
 - [x] Set up FormSubmit.co so form submissions go directly to info@abhiarafoundation.org (no API key needed)
 - [x] Add Birthday registration form (similar to Be The Change) in Activities page with FormSubmit.co
+- [x] Replace Be The Change form submission with WhatsApp redirect to +91 9938938321
+- [x] Replace Birthday registration form submission with WhatsApp redirect to +91 9938938321

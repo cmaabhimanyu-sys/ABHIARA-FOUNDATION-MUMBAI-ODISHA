@@ -5,7 +5,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Heart, BookOpen, Calendar, MapPin } from "lucide-react";
-import { submitVolunteerForm, submitBirthdayForm } from "@/lib/formSubmit";
+// WhatsApp number for form submissions
+const WHATSAPP_NUMBER = "919938938321";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -448,22 +449,38 @@ function BeTheChangeSection() {
 
   const [isPending, setIsPending] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.areaOfInterest) return;
-    setIsPending(true);
-    try {
-      const result = await submitVolunteerForm(formData);
-      if (result.success) {
-        setSubmitted(true);
-        setFormData({ fullName: "", qualification: "", email: "", socialProfile: "", areaOfInterest: "" });
-        toast.success(result.message);
-      }
-    } catch {
-      toast.error("Something went wrong. Please try again.");
-    } finally {
-      setIsPending(false);
-    }
+
+    const areaLabels: Record<string, string> = {
+      education: "Education and Teaching",
+      eldercare: "Elderly Care",
+      csr: "CSR and Fundraising",
+      finance: "Finance and Compliance",
+      technology: "Technology and Digital",
+      fieldwork: "Field Work and Community",
+      other: "Other",
+    };
+
+    const message = [
+      `*Be The Change — Volunteer Application*`,
+      ``,
+      `*Name:* ${formData.fullName}`,
+      `*Qualification:* ${formData.qualification}`,
+      `*Email:* ${formData.email}`,
+      `*Social Profile:* ${formData.socialProfile}`,
+      `*Area of Interest:* ${areaLabels[formData.areaOfInterest] || formData.areaOfInterest}`,
+      ``,
+      `_Sent from abhiarafoundation.org_`,
+    ].join("%0a");
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+    window.open(whatsappUrl, "_blank");
+
+    setSubmitted(true);
+    setFormData({ fullName: "", qualification: "", email: "", socialProfile: "", areaOfInterest: "" });
+    toast.success("Redirecting to WhatsApp...");
   };
 
   return (
@@ -566,7 +583,7 @@ function BeTheChangeSection() {
               disabled={isPending}
               className="w-full bg-[#C9A84C] hover:bg-[#B8943E] text-[#0A1628] font-bold py-4 rounded-xl transition-all duration-300 text-base uppercase tracking-wider disabled:opacity-50"
             >
-              {isPending ? "Submitting..." : "Be The Change \u2192"}
+              Be The Change via WhatsApp \u2192
             </button>
           </form>
         )}
@@ -592,22 +609,36 @@ function BirthdayWithPurposeSection() {
   const [submitted, setSubmitted] = useState(false);
   const [isPending, setIsPending] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.celebrationType) return;
-    setIsPending(true);
-    try {
-      const result = await submitBirthdayForm(formData);
-      if (result.success) {
-        setSubmitted(true);
-        setFormData({ fullName: "", email: "", phone: "", birthdayDate: "", celebrationType: "", message: "" });
-        toast.success(result.message);
-      }
-    } catch {
-      toast.error("Something went wrong. Please try again.");
-    } finally {
-      setIsPending(false);
-    }
+
+    const typeLabels: Record<string, string> = {
+      students: "With Students — Visit a school, bring books",
+      elderly: "With The Elderly — Visit an old age home",
+      community: "In The Community — Plant trees, clean a space",
+      other: "Other — Custom idea",
+    };
+
+    const message = [
+      `*Birthday With Purpose — Registration*`,
+      ``,
+      `*Name:* ${formData.fullName}`,
+      `*Email:* ${formData.email}`,
+      `*Phone:* ${formData.phone}`,
+      `*Birthday Date:* ${formData.birthdayDate}`,
+      `*Celebration Type:* ${typeLabels[formData.celebrationType] || formData.celebrationType}`,
+      formData.message ? `*Message:* ${formData.message}` : "",
+      ``,
+      `_Sent from abhiarafoundation.org_`,
+    ].filter(Boolean).join("%0a");
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+    window.open(whatsappUrl, "_blank");
+
+    setSubmitted(true);
+    setFormData({ fullName: "", email: "", phone: "", birthdayDate: "", celebrationType: "", message: "" });
+    toast.success("Redirecting to WhatsApp...");
   };
 
   return (
@@ -762,7 +793,7 @@ function BirthdayWithPurposeSection() {
               disabled={isPending}
               className="w-full bg-[#C9A84C] hover:bg-[#B8943E] text-[#0A1628] font-bold py-4 rounded-xl transition-all duration-300 text-base uppercase tracking-wider disabled:opacity-50"
             >
-              {isPending ? "Submitting..." : "Register My Birthday \u2192"}
+              Register My Birthday via WhatsApp \u2192
             </button>
           </form>
         )}
