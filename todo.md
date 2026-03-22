@@ -144,3 +144,5 @@
 - [x] Change green CTA section background to teal gradient (from-[#1A7F8E] to-[#145E6A])
 - [x] Remove duplicate Contact/Get in Touch — removed Contact from nav links, kept GET IN TOUCH CTA button
 - [x] Add "Written by Abhimanyu Mallik" to Truth of Life quote attribution on Home and Donate (only 2 pages have the quote)
+- [x] Add Truth of Life quote with "Written by Abhimanyu Mallik" to Programs page
+- [x] Add Truth of Life quote with "Written by Abhimanyu Mallik" to CSRPartners page
