@@ -4,6 +4,7 @@
  * 4 Sections: Hero, Contact Grid (WhatsApp Prompt Boxes + Form + Info), Newsletter, CTA
  */
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { Mail, MapPin, Linkedin, Instagram, Twitter, Send, ArrowRight, Loader2, Phone } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -24,16 +25,14 @@ function WhatsAppIcon({ className = "" }: { className?: string }) {
 
 export default function Contact() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
+  const [, navigate] = useLocation();
 
   const [email, setEmail] = useState("");
 
   /* Newsletter via tRPC */
   const newsletterMutation = trpc.newsletter.subscribe.useMutation({
     onSuccess: () => {
-      toast.success("Thank you for subscribing!", {
-        description: "You will receive updates from Abhiara Foundation.",
-      });
-      setEmail("");
+      navigate(`/thank-you?type=newsletter`);
     },
     onError: () => {
       toast.error("Subscription failed", {
@@ -59,10 +58,8 @@ export default function Contact() {
 
   const contactMutation = trpc.contact.submit.useMutation({
     onSuccess: () => {
-      toast.success("Message sent!", {
-        description: "We will get back to you soon via WhatsApp or email.",
-      });
-      setContactForm({ name: "", email: "", subject: "", message: "", type: "general" });
+      const name = encodeURIComponent(contactForm.name.trim());
+      navigate(`/thank-you?type=contact&name=${name}`);
     },
     onError: () => {
       toast.error("Failed to send message", {

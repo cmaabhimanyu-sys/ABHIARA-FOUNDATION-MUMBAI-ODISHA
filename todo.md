@@ -137,3 +137,6 @@
 - [x] Add Connect section: LinkedIn (Abhimanyu Mallik - Founder), Email (info@abhiarafoundation.org), WhatsApp icon
 - [x] Fix: Email "contact us" not working on Contact page — switched to tRPC backend
 - [x] Add WhatsApp icon/link as primary contact method on Contact page
+- [x] Create ThankYou page component with Abhiara Foundation branding
+- [x] Register /thank-you route in App.tsx
+- [x] Redirect Contact form to /thank-you on successful submission
