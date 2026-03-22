@@ -25,6 +25,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 
 export default function Vision() {
   useEffect(() => {
@@ -33,6 +34,11 @@ export default function Vision() {
 
   return (
     <div className="min-h-screen bg-[#0A1628]">
+      <SEO
+        title="Vision 2037 — Abhiara Foundation"
+        description="Abhiara Foundation's 12-year roadmap to transform education and elderly care across India. By 2037, Aradhana becomes the youngest trustee."
+        url="https://abhiarafoundation.com/vision"
+      />
       <Navbar />
 
       {/* ===== HERO ===== */}

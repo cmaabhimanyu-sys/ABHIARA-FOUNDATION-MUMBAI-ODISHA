@@ -13,6 +13,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 
 function BudgetBar({ label, amount, pct, color }: { label: string; amount: string; pct: number; color: string }) {
   return (
@@ -40,6 +41,12 @@ export default function CSRPartners() {
 
   return (
     <div className="min-h-screen bg-[#0A1628]">
+      <SEO
+        title="CSR Partners — Abhiara Foundation"
+        description="Partner with Abhiara Foundation for transparent, impact-verified CSR implementation under Companies Act Schedule VII. Monthly reports, audited statements."
+        image="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/community-impact-JqLQdk8SYBsopiModUvtKZ.webp"
+        url="https://abhiarafoundation.com/csr-partners"
+      />
       <Navbar />
 
       {/* ===== S1: HERO ===== */}

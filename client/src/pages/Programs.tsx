@@ -10,6 +10,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 
 const EDUCATION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-children-gGByyfoUfKLuHnK73a4QT3.webp";
 const ELDERLY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-8YsBCUCCz6K32KEwPWvjgq.webp";
@@ -41,6 +42,12 @@ export default function Programs() {
 
   return (
     <div className="min-h-screen bg-[#0A1628]">
+      <SEO
+        title="Programs — Abhiara Foundation"
+        description="Education for underprivileged children, elderly care and companion networks, and CSR implementation under Schedule VII. Three pillars, one promise."
+        image="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-children-gGByyfoUfKLuHnK73a4QT3.webp"
+        url="https://abhiarafoundation.com/programs"
+      />
       <Navbar />
 
       {/* ===== S1: HERO ===== */}

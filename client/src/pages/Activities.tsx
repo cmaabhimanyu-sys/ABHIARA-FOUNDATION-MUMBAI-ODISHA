@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
+import SEO from "@/components/SEO";
 
 type Category = "all" | "elderly" | "education";
 
@@ -123,6 +124,11 @@ export default function Activities() {
 
   return (
     <div className="min-h-screen bg-[#0A1628]">
+      <SEO
+        title="Activities — Abhiara Foundation"
+        description="Real activities from the field — elderly care visits, education sessions, health camps, and community outreach across Odisha and Mumbai."
+        url="https://abhiarafoundation.com/activities"
+      />
       <Navbar />
 
       {/* ===== HERO ===== */}

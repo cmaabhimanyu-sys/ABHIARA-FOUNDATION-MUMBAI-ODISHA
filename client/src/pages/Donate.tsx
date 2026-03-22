@@ -1,11 +1,17 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 
 export default function Donate() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <div className="min-h-screen bg-[#0A1628]">
+      <SEO
+        title="Donate — Abhiara Foundation"
+        description="Support Abhiara Foundation's mission — education for children, dignity for the elderly. Every contribution is legally protected and mission-bound."
+        url="https://abhiarafoundation.com/donate"
+      />
       <Navbar />
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28">
         <div className="container mx-auto px-6 max-w-3xl text-center">

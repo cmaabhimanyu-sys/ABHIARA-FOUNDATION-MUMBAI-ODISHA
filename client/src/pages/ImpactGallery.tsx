@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "@/components/SEO";
 
 /* ── Image Data ── */
 type GalleryImage = {
@@ -87,6 +88,11 @@ export default function ImpactGallery() {
 
   return (
     <div className="min-h-screen bg-[#0A1628]">
+      <SEO
+        title="Impact Gallery — Abhiara Foundation"
+        description="Visual stories from the field — real photos from education sessions, elderly care visits, and community development across Odisha and Mumbai."
+        url="https://abhiarafoundation.com/impact-gallery"
+      />
       <Navbar />
 
       {/* ===== HERO ===== */}

@@ -12,6 +12,7 @@ import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import CounterAnimation from "@/components/CounterAnimation";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hero-dawn-PUfjxrVLdG8a3bgPJiAovi.webp";
 const EDUCATION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-children-gGByyfoUfKLuHnK73a4QT3.webp";
@@ -24,6 +25,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#0A1628]">
+      <SEO
+        title="Abhiara Foundation — Fearless Ray of Light"
+        description="Education for every child. Dignity for every elder. Founded by Abhimanyu Mallik in Raisar, Kendrapara, Odisha. Section 8 Not-for-Profit."
+        image="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hero-dawn-PUfjxrVLdG8a3bgPJiAovi.webp"
+        url="https://abhiarafoundation.com/"
+      />
       <Navbar />
 
       {/* ===== S2: HERO ===== */}

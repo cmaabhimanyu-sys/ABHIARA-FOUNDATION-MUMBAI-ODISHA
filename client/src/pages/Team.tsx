@@ -17,6 +17,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
+import SEO from "@/components/SEO";
 
 export default function Team() {
   useEffect(() => {
@@ -25,6 +26,12 @@ export default function Team() {
 
   return (
     <div className="min-h-screen bg-[#0A1628]">
+      <SEO
+        title="Our Team — Abhiara Foundation"
+        description="Meet the people behind Abhiara Foundation — Founder Abhimanyu Mallik, Legal Advisor Advocate Sujit Sahu, and the team building a fearless path."
+        image="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/founder-abhimanyu-mallik_cfb3b1d3.png"
+        url="https://abhiarafoundation.com/team"
+      />
       <Navbar />
 
       {/* ===== HERO ===== */}

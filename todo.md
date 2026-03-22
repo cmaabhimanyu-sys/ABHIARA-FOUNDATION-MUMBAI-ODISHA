@@ -90,3 +90,8 @@
 - [x] QA: Test all pages on desktop viewport (1280px+) — 10/10 PASS
 - [x] QA: Test all pages on mobile viewport (375px) — 10/10 PASS
 - [x] Fix any responsive design issues found — No issues found, all pages responsive
+- [x] Create Blog/Updates page with event recaps, field visit reports, and news (7 posts)
+- [x] Add Blog route to App.tsx and navigation (Navbar + Footer)
+- [x] Add Open Graph meta tags (og:image, og:title, og:description) to all 11 pages
+- [x] Add SEO component for dynamic meta tags per page (SEO.tsx created)
+- [x] Replace "Email to Us" option with WhatsApp icon for direct connect (Contact page)
