@@ -41,3 +41,6 @@
 - [x] Create DonorWall.tsx hidden page (accessible via link, not in main nav)
 - [x] Add DonorWall route to App.tsx
 - [x] Push to GitHub
+- [x] Fix: Published site showing raw source code — added Railway config (Vercel incompatible with full-stack server)
+- [x] Add Railway deployment configuration (Procfile, nixpacks.toml, env docs)
+- [x] Push deployment config to GitHub
