@@ -1,86 +1,78 @@
 /**
  * Form submission utility for Abhiara Foundation
- * 
- * Uses Web3Forms API when WEB3FORMS_KEY is configured,
- * otherwise falls back to mailto: links.
- * 
- * To get a Web3Forms key:
- * 1. Go to web3forms.com
- * 2. Enter info@abhiarafoundation.org
- * 3. Verify email → get access key
- * 4. Add VITE_WEB3FORMS_KEY env var on Vercel
+ *
+ * Uses FormSubmit.co — a free service that sends form data
+ * directly to info@abhiarafoundation.org with no API key needed.
+ *
+ * First submission triggers a one-time email verification from FormSubmit.co.
+ * After confirming, all future submissions go straight to your inbox.
  */
 
-const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || "";
-const FALLBACK_EMAIL = "info@abhiarafoundation.org";
+const TARGET_EMAIL = "info@abhiarafoundation.org";
+const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${TARGET_EMAIL}`;
 
-interface FormData {
+interface FormPayload {
   [key: string]: string;
 }
 
 interface SubmitResult {
   success: boolean;
-  method: "api" | "mailto";
   message: string;
 }
 
 /**
- * Submit form data via Web3Forms API or mailto fallback
+ * Submit form data via FormSubmit.co → delivers to info@abhiarafoundation.org
  */
 export async function submitForm(
-  data: FormData,
+  data: FormPayload,
   subject: string
 ): Promise<SubmitResult> {
-  // Try Web3Forms API first
-  if (WEB3FORMS_KEY) {
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: `[Abhiara Foundation] ${subject}`,
-          from_name: "Abhiara Foundation Website",
-          ...data,
-          // Honeypot spam protection
-          botcheck: "",
-        }),
-      });
+  try {
+    const response = await fetch(FORMSUBMIT_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        _subject: `[Abhiara Foundation] ${subject}`,
+        _template: "table",
+        _captcha: "false",
+        ...data,
+      }),
+    });
 
-      const result = await response.json();
+    const result = await response.json();
 
-      if (result.success) {
-        return {
-          success: true,
-          method: "api",
-          message: "Your message has been sent successfully!",
-        };
-      } else {
-        throw new Error(result.message || "Submission failed");
-      }
-    } catch (error) {
-      console.error("Web3Forms submission failed, falling back to mailto:", error);
-      // Fall through to mailto
+    if (result.success === "true" || result.success === true) {
+      return {
+        success: true,
+        message: "Your message has been sent successfully!",
+      };
+    } else {
+      throw new Error(result.message || "Submission failed");
     }
+  } catch (error) {
+    console.error("FormSubmit.co failed, opening mailto fallback:", error);
+
+    // Fallback: open mailto link
+    const body = Object.entries(data)
+      .filter(([, value]) => value)
+      .map(([key, value]) => `${key}: ${value}`)
+      .join("\n\n");
+
+    const mailtoUrl = `mailto:${TARGET_EMAIL}?subject=${encodeURIComponent(
+      `[Website] ${subject}`
+    )}&body=${encodeURIComponent(body)}`;
+
+    window.open(mailtoUrl, "_blank");
+
+    return {
+      success: true,
+      message:
+        "Your email client has been opened with the form details. Please click Send.",
+    };
   }
-
-  // Fallback: open mailto link
-  const body = Object.entries(data)
-    .filter(([key, value]) => value && key !== "botcheck")
-    .map(([key, value]) => `${formatLabel(key)}: ${value}`)
-    .join("\n\n");
-
-  const mailtoUrl = `mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent(
-    `[Website] ${subject}`
-  )}&body=${encodeURIComponent(body)}`;
-
-  window.open(mailtoUrl, "_blank");
-
-  return {
-    success: true,
-    method: "mailto",
-    message: "Your email client has been opened with the form details. Please click Send.",
-  };
 }
 
 /**
@@ -88,7 +80,7 @@ export async function submitForm(
  */
 export async function submitNewsletter(email: string): Promise<SubmitResult> {
   return submitForm(
-    { email, message: `New newsletter subscription from: ${email}` },
+    { Email: email, Message: `New newsletter subscription from: ${email}` },
     "Newsletter Subscription"
   );
 }
@@ -105,11 +97,11 @@ export async function submitContactForm(data: {
 }): Promise<SubmitResult> {
   return submitForm(
     {
-      name: data.name,
-      email: data.email,
-      type: formatLabel(data.type),
-      subject: data.subject || "General Inquiry",
-      message: data.message,
+      Name: data.name,
+      Email: data.email,
+      Type: formatLabel(data.type),
+      Subject: data.subject || "General Inquiry",
+      Message: data.message,
     },
     data.subject || `${formatLabel(data.type)} — ${data.name}`
   );
@@ -128,8 +120,8 @@ export async function submitVolunteerForm(data: {
   return submitForm(
     {
       "Full Name": data.fullName,
-      "Qualification": data.qualification,
-      "Email": data.email,
+      Qualification: data.qualification,
+      Email: data.email,
       "Social Profile": data.socialProfile,
       "Area of Interest": formatLabel(data.areaOfInterest),
     },

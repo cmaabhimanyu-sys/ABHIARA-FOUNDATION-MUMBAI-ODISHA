@@ -457,9 +457,7 @@ function BeTheChangeSection() {
       if (result.success) {
         setSubmitted(true);
         setFormData({ fullName: "", qualification: "", email: "", socialProfile: "", areaOfInterest: "" });
-        if (result.method === "mailto") {
-          toast.info(result.message);
-        }
+        toast.success(result.message);
       }
     } catch {
       toast.error("Something went wrong. Please try again.");

@@ -27,9 +27,7 @@ export default function Contact() {
       const result = await submitNewsletter(email.trim());
       if (result.success) {
         toast.success("Thank you for subscribing!", {
-          description: result.method === "api"
-            ? "You will receive updates from Abhiara Foundation."
-            : result.message,
+          description: "You will receive updates from Abhiara Foundation.",
         });
         setEmail("");
       }
@@ -60,9 +58,7 @@ export default function Contact() {
       const result = await submitContactForm(contactForm);
       if (result.success) {
         toast.success("Message sent!", {
-          description: result.method === "api"
-            ? "We will get back to you soon."
-            : result.message,
+          description: "We will get back to you soon.",
         });
         setContactForm({ name: "", email: "", subject: "", message: "", type: "general" });
       }
