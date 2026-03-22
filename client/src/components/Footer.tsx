@@ -61,6 +61,7 @@ export default function Footer() {
                 { href: "/programs", label: "Programs" },
                 { href: "/csr-partners", label: "CSR Partners" },
                 { href: "/activities", label: "Activities" },
+                { href: "/impact-gallery", label: "Impact Gallery" },
                 { href: "/team", label: "Team" },
                 { href: "/contact", label: "Get In Touch" },
               ].map((link) => (

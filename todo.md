@@ -81,3 +81,7 @@
 - [x] Add "Truth of Life" quote block to OurStory.tsx after founder's journey section
 - [x] Create CSR Proposal PDF and link it on CSRPartners page download button
 - [x] Set up Google Analytics tracking across all pages (G-PMZFM1Q315 added to index.html + built-in Manus analytics)
+- [x] Create floating Back to Top button component (already existed)
+- [x] Integrate Back to Top button globally across all pages (already in App.tsx)
+- [x] Create Impact Gallery page with education and elderly care photos
+- [x] Add Impact Gallery route to App.tsx and navigation (Navbar + Footer + App.tsx)
