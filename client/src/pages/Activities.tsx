@@ -5,7 +5,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Heart, BookOpen, Calendar, MapPin } from "lucide-react";
-import { trpc } from "@/lib/trpc";
+import { submitVolunteerForm } from "@/lib/formSubmit";
+import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -445,23 +446,26 @@ function BeTheChangeSection() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const submitMutation = trpc.volunteer.submit.useMutation({
-    onSuccess: () => {
-      setSubmitted(true);
-      setFormData({ fullName: "", qualification: "", email: "", socialProfile: "", areaOfInterest: "" });
-    },
-  });
+  const [isPending, setIsPending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.areaOfInterest) return;
-    submitMutation.mutate({
-      fullName: formData.fullName,
-      qualification: formData.qualification,
-      email: formData.email,
-      socialProfile: formData.socialProfile,
-      areaOfInterest: formData.areaOfInterest,
-    });
+    setIsPending(true);
+    try {
+      const result = await submitVolunteerForm(formData);
+      if (result.success) {
+        setSubmitted(true);
+        setFormData({ fullName: "", qualification: "", email: "", socialProfile: "", areaOfInterest: "" });
+        if (result.method === "mailto") {
+          toast.info(result.message);
+        }
+      }
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsPending(false);
+    }
   };
 
   return (
@@ -561,15 +565,11 @@ function BeTheChangeSection() {
 
             <button
               type="submit"
-              disabled={submitMutation.isPending}
+              disabled={isPending}
               className="w-full bg-[#C9A84C] hover:bg-[#B8943E] text-[#0A1628] font-bold py-4 rounded-xl transition-all duration-300 text-base uppercase tracking-wider disabled:opacity-50"
             >
-              {submitMutation.isPending ? "Submitting..." : "Be The Change →"}
+              {isPending ? "Submitting..." : "Be The Change \u2192"}
             </button>
-
-            {submitMutation.isError && (
-              <p className="text-red-400 text-sm mt-4 text-center">Something went wrong. Please try again.</p>
-            )}
           </form>
         )}
 

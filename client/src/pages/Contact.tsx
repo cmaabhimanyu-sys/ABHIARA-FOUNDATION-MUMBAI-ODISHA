@@ -2,7 +2,7 @@
  * Abhiara Foundation — Contact V2.0
  * 4 Sections: Hero, Contact Grid (Prompt Boxes + Info), Newsletter, CTA
  * NO donation buttons. All CTAs → email or contact.
- * Newsletter connected to backend via tRPC.
+ * Forms use Web3Forms API or mailto fallback (no backend required).
  */
 import { useState, useEffect } from "react";
 import { Mail, MapPin, Linkedin, Instagram, Twitter, Send, ArrowRight, MessageCircle, Loader2 } from "lucide-react";
@@ -11,31 +11,35 @@ import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
-import { trpc } from "@/lib/trpc";
+import { submitContactForm, submitNewsletter } from "@/lib/formSubmit";
 
 export default function Contact() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   const [email, setEmail] = useState("");
+  const [newsletterPending, setNewsletterPending] = useState(false);
 
-  const newsletterMutation = trpc.newsletter.subscribe.useMutation({
-    onSuccess: () => {
-      toast.success("Thank you for subscribing!", {
-        description: "You will receive updates from Abhiara Foundation.",
-      });
-      setEmail("");
-    },
-    onError: (error) => {
-      toast.error("Subscription failed", {
-        description: error.message || "Please try again later.",
-      });
-    },
-  });
-
-  const handleNewsletter = (e: React.FormEvent) => {
+  const handleNewsletter = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
-    newsletterMutation.mutate({ email: email.trim() });
+    setNewsletterPending(true);
+    try {
+      const result = await submitNewsletter(email.trim());
+      if (result.success) {
+        toast.success("Thank you for subscribing!", {
+          description: result.method === "api"
+            ? "You will receive updates from Abhiara Foundation."
+            : result.message,
+        });
+        setEmail("");
+      }
+    } catch {
+      toast.error("Subscription failed", {
+        description: "Please try again later.",
+      });
+    } finally {
+      setNewsletterPending(false);
+    }
   };
 
   // Contact form state
@@ -46,25 +50,29 @@ export default function Contact() {
     message: "",
     type: "general" as "general" | "csr_partnership" | "volunteer" | "media",
   });
+  const [contactPending, setContactPending] = useState(false);
 
-  const contactMutation = trpc.contact.submit.useMutation({
-    onSuccess: () => {
-      toast.success("Message sent!", {
-        description: "We will get back to you soon.",
-      });
-      setContactForm({ name: "", email: "", subject: "", message: "", type: "general" });
-    },
-    onError: (error) => {
-      toast.error("Failed to send message", {
-        description: error.message || "Please try again later.",
-      });
-    },
-  });
-
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!contactForm.name.trim() || !contactForm.email.trim() || !contactForm.message.trim()) return;
-    contactMutation.mutate(contactForm);
+    setContactPending(true);
+    try {
+      const result = await submitContactForm(contactForm);
+      if (result.success) {
+        toast.success("Message sent!", {
+          description: result.method === "api"
+            ? "We will get back to you soon."
+            : result.message,
+        });
+        setContactForm({ name: "", email: "", subject: "", message: "", type: "general" });
+      }
+    } catch {
+      toast.error("Failed to send message", {
+        description: "Please try again later.",
+      });
+    } finally {
+      setContactPending(false);
+    }
   };
 
   return (
@@ -212,10 +220,10 @@ export default function Contact() {
                   />
                   <button
                     type="submit"
-                    disabled={contactMutation.isPending}
+                    disabled={contactPending}
                     className="px-8 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors flex items-center gap-2 disabled:opacity-50"
                   >
-                    {contactMutation.isPending ? (
+                    {contactPending ? (
                       <><Loader2 size={12} className="animate-spin" /> SENDING...</>
                     ) : (
                       <><Send size={12} /> SEND MESSAGE</>
@@ -309,10 +317,10 @@ export default function Contact() {
               />
               <button
                 type="submit"
-                disabled={newsletterMutation.isPending}
+                disabled={newsletterPending}
                 className="px-6 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
               >
-                {newsletterMutation.isPending ? (
+                {newsletterPending ? (
                   <><Loader2 size={12} className="animate-spin" /> SUBSCRIBING...</>
                 ) : (
                   <><Send size={12} /> SUBSCRIBE</>

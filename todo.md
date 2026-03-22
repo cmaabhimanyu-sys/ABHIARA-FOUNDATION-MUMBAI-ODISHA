@@ -44,3 +44,15 @@
 - [x] Fix: Published site showing raw source code — added Railway config (Vercel incompatible with full-stack server)
 - [x] Add Railway deployment configuration (Procfile, nixpacks.toml, env docs)
 - [x] Push deployment config to GitHub
+- [x] URGENT: Redeploy on Vercel as static frontend (client-only build)
+- [x] Create new Vercel project with Root Directory: ./, Framework: Vite, Output: dist/public
+- [x] Add custom domains: abhiarafoundation.com and abhiarafoundation.org
+- [x] Verify all pages load correctly on Vercel
+- [x] Commit: "Redeployed on Vercel — Launch Day 22 March 2026"
+- [x] Replace Contact form with Web3Forms/mailto (client-side, no backend needed)
+- [x] Replace Newsletter subscription with Web3Forms/mailto
+- [x] Replace Volunteer Be The Change form with Web3Forms/mailto
+- [x] Test all forms work without backend on Vercel (build passes)
+- [ ] Push updated code to GitHub
+- [ ] Prepare Railway full-stack deployment guide
+- [x] Remove Donor Wall of Light section from Donate page and DonorWall page (can't update donor names each time)
