@@ -231,6 +231,20 @@ export default function OurStory() {
         </div>
       </section>
 
+      {/* ===== TRUTH OF LIFE ===== */}
+      <section className="py-12 bg-[#0A1628]">
+        <div className="container">
+          <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 text-center my-12 max-w-3xl mx-auto">
+            <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-6">Truth of Life</p>
+            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">"Who help today who needed.</p>
+            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">It returns to him.</p>
+            <p className="text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">Always but other way."</p>
+            <div className="w-12 h-0.5 bg-[#C9A84C] mx-auto my-4" />
+            <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
+          </div>
+        </div>
+      </section>
+
       {/* ===== S4: GOVERNANCE ===== */}
       <section className="py-20 md:py-28 bg-[#06101F]">
         <div className="container">

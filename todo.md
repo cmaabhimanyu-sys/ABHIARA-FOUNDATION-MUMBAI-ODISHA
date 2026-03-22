@@ -70,9 +70,14 @@
 - [x] QA: Verify Aradhana dates are correct (2019 birth, 2037 trustee) on all pages
 - [x] QA: Check mobile responsiveness
 - [x] Push final QA-verified code to GitHub
-- [ ] Generate PDF of all latest source code
+- [x] Generate PDF of all latest source code
 - [x] Add Abhiara Promise quote block to Home.tsx (after Impact Counter, before Three Pillars)
 - [x] Add Abhiara Promise quote block to Donate.tsx (above donation instructions, before Important Notice)
 - [x] Add Abhiara Promise quote block to Programs.tsx (after Education/Elderly cards)
 - [x] Add Abhiara Promise quote block to CSRPartners.tsx (after Governance Trust Lines)
-- [ ] Generate PDF of all latest source code
+- [x] Generate PDF of all latest source code
+- [x] Update quote block to "Truth of Life" on Home, Donate, Programs, CSRPartners
+- [x] Update CSRPartners.tsx quote block to "Truth of Life"
+- [x] Add "Truth of Life" quote block to OurStory.tsx after founder's journey section
+- [x] Create CSR Proposal PDF and link it on CSRPartners page download button
+- [x] Set up Google Analytics tracking across all pages (G-PMZFM1Q315 added to index.html + built-in Manus analytics)
