@@ -75,6 +75,16 @@ export default function Donate() {
             </div>
           </div>
 
+          <div className="bg-white/5 border border-[#C9A84C]/20 rounded-2xl p-8 text-center mt-6">
+            <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-3">Governance Promise</p>
+            <p className="text-white font-semibold text-base mb-3">
+              Most NGOs ask you to trust the founder. We ask you to trust the structure.
+            </p>
+            <p className="text-white/60 text-sm leading-relaxed max-w-xl mx-auto">
+              As a Section 8 Company, no property, asset, or income of Abhiara Foundation can be personally claimed — by the founder, family, or any individual. Your donation is legally protected and mission-bound.
+            </p>
+          </div>
+
           <p className="text-white/40 text-xs mt-8">
             Abhiara Foundation · Section 8 Company · Not-for-Profit · Odisha · Pan India
           </p>

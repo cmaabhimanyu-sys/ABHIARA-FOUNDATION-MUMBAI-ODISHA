@@ -111,6 +111,13 @@ export default function Footer() {
           </p>
         </div>
 
+        {/* Governance Trust Line */}
+        <div className="border-t border-white/10 pt-4 mt-4 text-center">
+          <p className="text-white/30 text-xs leading-relaxed max-w-2xl mx-auto">
+            Abhiara Foundation is a Section 8 Not-for-Profit Company. No property, asset, or income can be personally claimed by the founder, family, or any individual. Every contribution is legally protected and mission-bound.
+          </p>
+        </div>
+
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-mono text-[9px] tracking-wider text-white/35">

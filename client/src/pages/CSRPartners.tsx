@@ -81,6 +81,23 @@ export default function CSRPartners() {
         </div>
       </section>
 
+      {/* ===== GOVERNANCE PROMISE ===== */}
+      <section className="py-12 bg-[#0A1628]">
+        <div className="container">
+          <div className="bg-gradient-to-r from-[#0A1628] to-[#0D2B2B] border border-[#C9A84C]/30 rounded-2xl p-10 text-center mb-12">
+            <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-4">Governance Promise</p>
+            <h2 className="text-white text-3xl font-bold mb-6">
+              Most NGOs ask you to trust the founder.<br/>
+              <span className="text-[#C9A84C]">We ask you to trust the structure.</span>
+            </h2>
+            <div className="w-16 h-0.5 bg-gradient-to-r from-[#C9A84C] to-[#1A7F8E] mx-auto mb-6"/>
+            <p className="text-white/70 text-base leading-relaxed max-w-2xl mx-auto">
+              As a Section 8 Company, no property, asset, or income of Abhiara Foundation can be personally claimed — by the founder, family, or any individual. Your Schedule VII investment is legally protected and mission-bound.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ===== S2: WHY PARTNER WITH US ===== */}
       <section className="py-20 md:py-28 bg-[#080F1C]">
         <div className="container">
