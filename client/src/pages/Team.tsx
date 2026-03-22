@@ -191,118 +191,7 @@ export default function Team() {
         </div>
       </section>
 
-      {/* ===== OPERATIONS ON THE GROUND ===== */}
-      <section className="py-20 md:py-28 bg-[#0A1628]">
-        <div className="container">
-          <AnimatedSection className="text-center mb-14">
-            <p className="section-label mb-4">OPERATIONS</p>
-            <h2 className="heading-xl text-white mb-4">
-              On the <span className="text-[#C9A84C]">Ground</span>
-            </h2>
-            <div className="gradient-rule mx-auto mb-6" />
-            <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
-              The people who turn vision into action — on the ground, in the villages, every day.
-            </p>
-          </AnimatedSection>
-
-          <div className="max-w-md mx-auto">
-            <AnimatedSection delay={0}>
-              <div className="glass-card-gold p-8 h-full">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-full bg-[#C9A84C]/15 flex items-center justify-center shrink-0">
-                    <span className="font-serif text-2xl font-bold text-[#C9A84C]">MK</span>
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-xl font-bold text-white">
-                      Manoj Kumar Mallik
-                    </h3>
-                    <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C]">
-                      Operations &middot; On the Ground
-                    </p>
-                  </div>
-                </div>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center gap-2">
-                    <GraduationCap size={14} className="text-[#1A7F8E] shrink-0" />
-                    <span className="font-mono text-[10px] tracking-wider uppercase text-white/50">
-                      MBA in Finance
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Briefcase size={14} className="text-[#1A7F8E] shrink-0" />
-                    <span className="font-mono text-[10px] tracking-wider uppercase text-white/50">
-                      Field Operations &middot; Odisha
-                    </span>
-                  </div>
-                </div>
-
-                <p className="font-sans text-[14px] text-white/55 leading-relaxed mb-6">
-                  The foundation's presence on the ground in Odisha. Manoj Kumar Mallik leads field operations — coordinating with local communities, overseeing programme delivery, and ensuring that every initiative reaches the people it was built for.
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "MBA in Finance",
-                    "Field Operations",
-                    "Odisha",
-                  ].map((tag) => (
-                    <span key={tag} className="font-mono text-[9px] tracking-wider uppercase bg-[#C9A84C]/10 border border-[#C9A84C]/20 text-[#C9A84C]/70 px-3 py-1 rounded-sm">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== FUTURE LEADERSHIP ===== */}
-      <section className="py-20 md:py-28 bg-[#0A1628]">
-        <div className="container max-w-3xl">
-          <AnimatedSection>
-            <div className="glass-card-gold p-8 md:p-12 text-center">
-              <p className="section-label mb-4">FUTURE LEADERSHIP</p>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-2">
-                Aradhana Mallik
-              </h2>
-              <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C] mb-6">
-                Future Trustee · By 2037
-              </p>
-              <div className="gradient-rule mx-auto mb-8" />
-
-              <p className="font-sans text-[15px] text-white/60 leading-relaxed mb-6">
-                Aradhana is the reason this foundation exists. Her name — ARA — means "ray of
-                sacred light." When she turns 18, she will be offered the first right of
-                appointment as Director of Abhiara Foundation, becoming its youngest trustee.
-              </p>
-
-              <div className="flex flex-wrap justify-center gap-3 mb-8">
-                {[
-                  "Born 2019",
-                  "Foundation Named After Her",
-                  "AoA Succession Clause",
-                  "Trustee at 18 · By 2037",
-                ].map((tag) => (
-                  <span
-                    key={tag}
-                    className="font-mono text-[9px] tracking-wider uppercase text-white/50 px-3 py-1.5 border border-[#C9A84C]/20 rounded-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <p className="font-serif text-lg italic text-[#C9A84C]">
-                "Where a father's courage meets a daughter's devotion."
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* ===== ADVISORY BOARD (Placeholders) ===== */}
+      {/* ===== ADVISORY BOARD ===== */}
       <section className="py-20 md:py-28 bg-[#06101F]">
         <div className="container">
           <AnimatedSection className="text-center mb-14">
@@ -400,9 +289,9 @@ export default function Team() {
         </div>
       </section>
 
-      {/* ===== OPERATIONS & VOLUNTEERS ===== */}
+      {/* ===== OPERATIONS ON THE GROUND ===== */}
       <section className="py-20 md:py-28 bg-[#0A1628]">
-        <div className="container max-w-4xl">
+        <div className="container">
           <AnimatedSection className="text-center mb-14">
             <p className="section-label mb-4">OPERATIONS</p>
             <h2 className="heading-xl text-white mb-4">
@@ -410,12 +299,40 @@ export default function Team() {
             </h2>
             <div className="gradient-rule mx-auto mb-6" />
             <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
-              The dedicated individuals who drive our day-to-day operations and community outreach.
+              The people who turn vision into action — on the ground, in the villages, every day.
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-1 gap-6 max-w-md mx-auto">
-            <AnimatedSection>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            {/* Manoj Kumar Mallik */}
+            <AnimatedSection delay={0}>
+              <div className="glass-card-gold p-6 h-full text-center">
+                <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center bg-[#C9A84C]/15">
+                  <span className="font-serif text-2xl font-bold text-[#C9A84C]">MK</span>
+                </div>
+                <h3 className="font-serif text-lg font-bold text-white mb-1">
+                  Manoj Kumar Mallik
+                </h3>
+                <p className="font-mono text-[9px] tracking-[0.15em] uppercase mb-4 text-[#C9A84C]">
+                  Operations &middot; On the Ground
+                </p>
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <GraduationCap size={14} className="text-[#1A7F8E] shrink-0" />
+                  <span className="font-mono text-[10px] tracking-wider uppercase text-white/50">
+                    MBA in Finance
+                  </span>
+                </div>
+                <p className="font-sans text-[13px] text-white/45 leading-relaxed">
+                  The foundation's presence on the ground in Odisha. Manoj Kumar Mallik leads field operations — coordinating with local communities, overseeing programme delivery, and ensuring that every initiative reaches the people it was built for.
+                </p>
+                <p className="font-mono text-[9px] tracking-wider uppercase text-[#C9A84C]/60 mt-4">
+                  MBA in Finance &middot; Field Operations &middot; Odisha
+                </p>
+              </div>
+            </AnimatedSection>
+
+            {/* Amit Kumar Jena */}
+            <AnimatedSection delay={0.1}>
               <div className="glass-card p-6 h-full text-center">
                 <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center bg-[#C9A84C]/10">
                   <Users size={24} className="text-[#C9A84C]" />
@@ -424,10 +341,10 @@ export default function Team() {
                   Amit Kumar Jena
                 </h3>
                 <p className="font-mono text-[9px] tracking-[0.15em] uppercase mb-4 text-[#C9A84C]">
-                  Volunteer &middot; Operations Lead
+                  Volunteer &middot; CSR Global Operation
                 </p>
                 <p className="font-sans text-[13px] text-white/45 leading-relaxed">
-                  A committed volunteer and operations lead who supports Abhiara Foundation's on-ground activities, community coordination, and programme execution across Odisha.
+                  A committed volunteer and operations lead who supports Abhiara Foundation's on-ground activities, community coordination, and programme execution across global.
                 </p>
                 <p className="font-mono text-[9px] tracking-wider uppercase text-[#C9A84C]/60 mt-4">
                   Member &middot; Abhiara Foundation
@@ -435,6 +352,50 @@ export default function Team() {
               </div>
             </AnimatedSection>
           </div>
+        </div>
+      </section>
+
+      {/* ===== FUTURE LEADERSHIP ===== */}
+      <section className="py-20 md:py-28 bg-[#0A1628]">
+        <div className="container max-w-3xl">
+          <AnimatedSection>
+            <div className="glass-card-gold p-8 md:p-12 text-center">
+              <p className="section-label mb-4">FUTURE LEADERSHIP</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-2">
+                Aradhana Mallik
+              </h2>
+              <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C] mb-6">
+                Future Trustee · By 2037
+              </p>
+              <div className="gradient-rule mx-auto mb-8" />
+
+              <p className="font-sans text-[15px] text-white/60 leading-relaxed mb-6">
+                Aradhana is the reason this foundation exists. Her name — ARA — means "ray of
+                sacred light." When she turns 18, she will be offered the first right of
+                appointment as Director of Abhiara Foundation, becoming its youngest trustee.
+              </p>
+
+              <div className="flex flex-wrap justify-center gap-3 mb-8">
+                {[
+                  "Born 2019",
+                  "Foundation Named After Her",
+                  "AoA Succession Clause",
+                  "Trustee at 18 · By 2037",
+                ].map((tag) => (
+                  <span
+                    key={tag}
+                    className="font-mono text-[9px] tracking-wider uppercase text-white/50 px-3 py-1.5 border border-[#C9A84C]/20 rounded-sm"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <p className="font-serif text-lg italic text-[#C9A84C]">
+                "Where a father's courage meets a daughter's devotion."
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 

@@ -127,7 +127,7 @@ export default function Contact() {
                   {
                     title: "CSR Partnership",
                     desc: "Discuss how your CSR budget can create measurable impact in tribal Odisha.",
-                    email: "csr@abhiarafoundation.org",
+                    email: "info@abhiarafoundation.org",
                     subject: "CSR Partnership Inquiry",
                   },
                   {
@@ -139,13 +139,13 @@ export default function Contact() {
                   {
                     title: "Volunteering",
                     desc: "Join our ground team in Odisha or support remotely from anywhere.",
-                    email: "volunteer@abhiarafoundation.org",
+                    email: "info@abhiarafoundation.org",
                     subject: "Volunteering Interest",
                   },
                   {
                     title: "Media & Press",
                     desc: "Press inquiries, interviews, or coverage requests about Abhiara Foundation.",
-                    email: "media@abhiarafoundation.org",
+                    email: "info@abhiarafoundation.org",
                     subject: "Media Inquiry",
                   },
                 ].map((box) => (
@@ -234,10 +234,6 @@ export default function Contact() {
                   <h3 className="font-serif text-xl font-bold text-white mb-1">Abhimanyu Mallik</h3>
                   <p className="font-sans text-[13px] text-white/40 mb-4">Mumbai, Maharashtra</p>
                   <div className="space-y-3">
-                    <a href="mailto:founder@abhiarafoundation.org" className="flex items-center gap-3 text-[13px] text-white/60 hover:text-[#C9A84C] transition-colors">
-                      <Mail size={14} className="text-[#1A7F8E] shrink-0" />
-                      founder@abhiarafoundation.org
-                    </a>
                     <a href="mailto:info@abhiarafoundation.org" className="flex items-center gap-3 text-[13px] text-white/60 hover:text-[#C9A84C] transition-colors">
                       <Mail size={14} className="text-[#1A7F8E] shrink-0" />
                       info@abhiarafoundation.org
@@ -338,10 +334,10 @@ export default function Contact() {
               Your partnership, your time, your voice — it all matters. Let's build something meaningful together.
             </p>
             <a
-              href="mailto:founder@abhiarafoundation.org"
+              href="mailto:info@abhiarafoundation.org"
               className="inline-flex items-center gap-2 px-8 py-3 bg-[#0A1628] text-[#C9A84C] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#06101F] transition-colors"
             >
-              EMAIL THE FOUNDER <ArrowRight size={12} />
+              EMAIL US <ArrowRight size={12} />
             </a>
           </AnimatedSection>
         </div>
