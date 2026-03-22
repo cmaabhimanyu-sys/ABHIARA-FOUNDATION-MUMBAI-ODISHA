@@ -1,7 +1,7 @@
 /*
  * Abhiara Foundation — Contact V3.0
  * WhatsApp as primary contact. Contact form uses tRPC backend.
- * 4 Sections: Hero, Contact Grid (WhatsApp Prompt Boxes + Form + Info), Newsletter, CTA
+ * 3 Sections: Hero, Contact Grid (WhatsApp Prompt Boxes + Form + Info), CTA
  */
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
@@ -26,26 +26,6 @@ function WhatsAppIcon({ className = "" }: { className?: string }) {
 export default function Contact() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   const [, navigate] = useLocation();
-
-  const [email, setEmail] = useState("");
-
-  /* Newsletter via tRPC */
-  const newsletterMutation = trpc.newsletter.subscribe.useMutation({
-    onSuccess: () => {
-      navigate(`/thank-you?type=newsletter`);
-    },
-    onError: () => {
-      toast.error("Subscription failed", {
-        description: "Please try again later.",
-      });
-    },
-  });
-
-  const handleNewsletter = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email.trim()) return;
-    newsletterMutation.mutate({ email: email.trim() });
-  };
 
   /* Contact form via tRPC */
   const [contactForm, setContactForm] = useState({
@@ -342,44 +322,8 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ===== S3: NEWSLETTER ===== */}
-      <section className="py-16 md:py-20 bg-[#0A1628]">
-        <div className="container max-w-2xl text-center">
-          <AnimatedSection>
-            <p className="section-label mb-4">STAY UPDATED</p>
-            <h2 className="heading-md text-white mb-4">
-              Join the <span className="text-[#C9A84C]">Newsletter</span>
-            </h2>
-            <p className="font-sans text-[15px] text-white/50 mb-8">
-              Quarterly updates on our programmes, impact stories, and partnership opportunities. No spam. Unsubscribe anytime.
-            </p>
-            <form onSubmit={handleNewsletter} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-4 py-3 bg-white/5 border border-white/15 rounded-sm text-white font-sans text-sm placeholder:text-white/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
-                placeholder="your@email.com"
-              />
-              <button
-                type="submit"
-                disabled={newsletterMutation.isPending}
-                className="px-6 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
-              >
-                {newsletterMutation.isPending ? (
-                  <><Loader2 size={12} className="animate-spin" /> SUBSCRIBING...</>
-                ) : (
-                  <><Send size={12} /> SUBSCRIBE</>
-                )}
-              </button>
-            </form>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* ===== S4: CTA — WhatsApp ===== */}
-      <section className="py-16 md:py-20 bg-[#25D366]">
+      {/* ===== S3: CTA — WhatsApp ===== */}
+      <section className="py-16 md:py-20 bg-gradient-to-br from-[#1A7F8E] to-[#145E6A]">
         <div className="container text-center">
           <AnimatedSection>
             <h2 className="font-serif font-bold text-white mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 44px)" }}>
@@ -393,7 +337,7 @@ export default function Contact() {
                 href="https://wa.me/919938938321?text=Hello%20Abhiara%20Foundation%2C%20I%20would%20like%20to%20connect."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3 bg-white text-[#25D366] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-white/90 transition-colors"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors"
               >
                 <WhatsAppIcon className="w-4 h-4" /> MESSAGE ON WHATSAPP
               </a>

@@ -140,3 +140,6 @@
 - [x] Create ThankYou page component with Abhiara Foundation branding
 - [x] Register /thank-you route in App.tsx
 - [x] Redirect Contact form to /thank-you on successful submission
+- [x] Remove "Join the Newsletter" section from Contact page (only page with it)
+- [x] Change green CTA section background to teal gradient (from-[#1A7F8E] to-[#145E6A])
+- [x] Remove duplicate Contact/Get in Touch — removed Contact from nav links, kept GET IN TOUCH CTA button

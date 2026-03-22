@@ -17,7 +17,6 @@ const navLinks = [
   { href: "/csr-partners", label: "CSR Partners" },
   { href: "/activities", label: "Activities" },
   { href: "/team", label: "Team" },
-  { href: "/contact", label: "Contact" },
   { href: "/donate", label: "Donate" },
 ];
 
