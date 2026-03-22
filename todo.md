@@ -36,4 +36,8 @@
 - [x] Add volunteer.submit tRPC procedure with email notification
 - [x] Fix TypeScript error in Home.tsx (stat.prefix)
 - [x] Fix escaped unicode arrows in Activities page buttons
-- [ ] Fix: Site not working - diagnose and resolve
+- [x] Fix: Site not working - diagnosed (old version published, latest checkpoint deployed)
+- [x] Add Donor Wall of Light section to Donate page (above Footer)
+- [x] Create DonorWall.tsx hidden page (accessible via link, not in main nav)
+- [x] Add DonorWall route to App.tsx
+- [x] Push to GitHub
