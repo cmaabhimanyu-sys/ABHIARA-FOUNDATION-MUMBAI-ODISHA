@@ -70,91 +70,121 @@ export default function Team() {
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Abhimanyu Mallik */}
             <AnimatedSection delay={0}>
               <div className="glass-card-gold p-8 h-full">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-full bg-[#C9A84C]/15 flex items-center justify-center shrink-0">
-                    <span className="font-serif text-2xl font-bold text-[#C9A84C]">AM</span>
+                  <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-[#C9A84C]/30">
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/founder-abhimanyu-mallik_cfb3b1d3.png" alt="Abhimanyu Mallik" className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <h3 className="font-serif text-xl font-bold text-white">
                       Abhimanyu Mallik
                     </h3>
                     <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C]">
-                      Founder & Managing Director
+                      Founder & Managing Director · CMA
+                    </p>
+                  </div>
+                </div>
+
+                <p className="font-sans text-[14px] text-white/55 leading-relaxed mb-6">
+                  Born in Raisar, Kendrapara, Odisha — Abhimanyu's journey from a farming family to leading finance for one of India's most ambitious technology companies is the origin story of Abhiara Foundation itself. A Cost and Management Accountant by qualification, he brings institutional rigour, financial discipline, and strategic clarity to every aspect of the foundation's governance, compliance, and long-term vision. He believes that systems change lives — and that the most powerful thing a person can do with success is build the bridge they once needed.
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "CMA · Cost and Management Accountant",
+                    "Section 8 Compliance Lead",
+                    "MCA & IT Filings",
+                    "Raisar, Odisha → Mumbai",
+                  ].map((tag) => (
+                    <span key={tag} className="font-mono text-[9px] tracking-wider uppercase bg-[#C9A84C]/10 border border-[#C9A84C]/20 text-[#C9A84C]/70 px-3 py-1 rounded-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+
+            {/* Sujit Sahu */}
+            <AnimatedSection delay={0.1}>
+              <div className="glass-card p-8 h-full">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-[#1A7F8E]/30">
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/advocate-sujit-sahu_c5e63d2b.png" alt="Advocate Sujit Sahu" className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-xl font-bold text-white">
+                      Sujit Sahu
+                    </h3>
+                    <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#1A7F8E]">
+                      Independent Director
                     </p>
                   </div>
                 </div>
 
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-2">
-                    <GraduationCap size={14} className="text-[#1A7F8E] shrink-0" />
+                    <GraduationCap size={14} className="text-[#C9A84C] shrink-0" />
                     <span className="font-mono text-[10px] tracking-wider uppercase text-white/50">
-                      CMA (Cost & Management Accountant)
+                      LLB, MBA
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Briefcase size={14} className="text-[#1A7F8E] shrink-0" />
+                    <Scale size={14} className="text-[#C9A84C] shrink-0" />
                     <span className="font-mono text-[10px] tracking-wider uppercase text-white/50">
-                      Self-manages all MCA & IT filings
+                      Advocate, High Court of Odisha
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Scale size={14} className="text-[#1A7F8E] shrink-0" />
+                    <Shield size={14} className="text-[#C9A84C] shrink-0" />
                     <span className="font-mono text-[10px] tracking-wider uppercase text-white/50">
-                      Section 8 Compliance Lead
+                      Odisha Human Rights Commission Office
                     </span>
                   </div>
                 </div>
 
                 <p className="font-sans text-[14px] text-white/55 leading-relaxed">
-                  From a small village in Odisha to professional life in Mumbai — Abhimanyu's
-                  journey is the foundation's origin story. As a CMA-qualified professional, he
-                  brings institutional rigour to every aspect of governance, compliance, and
-                  financial accountability.
+                  A legal professional with deep expertise in constitutional law, human rights, and
+                  corporate governance. Mr. Sahu brings independent oversight and legal counsel to
+                  ensure the foundation operates with the highest standards of compliance and
+                  accountability.
                 </p>
               </div>
             </AnimatedSection>
 
             {/* Biswajita Mallik */}
-            <AnimatedSection delay={0.1}>
+            <AnimatedSection delay={0.2}>
               <div className="glass-card p-8 h-full">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-full bg-[#1A7F8E]/15 flex items-center justify-center shrink-0">
-                    <span className="font-serif text-2xl font-bold text-[#1A7F8E]">BM</span>
+                  <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-[#1A7F8E]/30">
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/biswajita_founder_style_maroon_6bcbce2c.webp" alt="Biswajita Mallik" className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <h3 className="font-serif text-xl font-bold text-white">
                       Biswajita Mallik
                     </h3>
                     <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#1A7F8E]">
-                      Co-Director
+                      Co-Founder &middot; Family & Community Pillar
                     </p>
                   </div>
                 </div>
 
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center gap-2">
-                    <Shield size={14} className="text-[#C9A84C] shrink-0" />
-                    <span className="font-mono text-[10px] tracking-wider uppercase text-white/50">
-                      Dual-Director Governance
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Users size={14} className="text-[#C9A84C] shrink-0" />
-                    <span className="font-mono text-[10px] tracking-wider uppercase text-white/50">
-                      Succession Layer — Continuity Assurance
-                    </span>
-                  </div>
-                </div>
-
-                <p className="font-sans text-[14px] text-white/55 leading-relaxed">
-                  Appointed as Co-Director at incorporation to ensure the foundation never
-                  becomes headless. Biswajita is integral to the dual-signature mandate and
-                  governance continuity of Abhiara Foundation.
+                <p className="font-sans text-[14px] text-white/55 leading-relaxed mb-6">
+                  The steady and unshakeable strength behind every chapter of the Abhiara journey. Biswajita's quiet conviction and unwavering support through every challenge is woven into the foundation's DNA.
                 </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Co-Founder",
+                    "Odisha",
+                  ].map((tag) => (
+                    <span key={tag} className="font-mono text-[9px] tracking-wider uppercase bg-[#1A7F8E]/10 border border-[#1A7F8E]/20 text-[#1A7F8E]/70 px-3 py-1 rounded-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </AnimatedSection>
           </div>
@@ -171,7 +201,7 @@ export default function Team() {
                 Aradhana Mallik
               </h2>
               <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C] mb-6">
-                Future Trustee · By 2039
+                Future Trustee · By 2037
               </p>
               <div className="gradient-rule mx-auto mb-8" />
 
@@ -183,10 +213,10 @@ export default function Team() {
 
               <div className="flex flex-wrap justify-center gap-3 mb-8">
                 {[
-                  "Born 2021",
+                  "Born 2019",
                   "Foundation Named After Her",
                   "AoA Succession Clause",
-                  "Trustee at 18 · By 2039",
+                  "Trustee at 18 · By 2037",
                 ].map((tag) => (
                   <span
                     key={tag}
@@ -223,20 +253,24 @@ export default function Team() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {[
               {
-                initials: "—",
-                name: "Advisory Member",
+                initials: "SJ",
+                name: "Sagar Jena",
                 role: "Education Advisor",
-                desc: "Guiding our education programmes, scholarship design, and Abhiara Vidyapeeth school vision.",
+                desc: "Founder of Ama Chatasali and rights activist. Mr. Jena brings grassroots advocacy experience and a deep commitment to educational equity and accountability in public institutions.",
                 icon: GraduationCap,
                 accent: "teal",
+                announced: true,
+                tagline: "Ama Chatasali · Rights Activist",
               },
               {
-                initials: "—",
-                name: "Advisory Member",
+                initials: "BP",
+                name: "Bharat Panigrahy",
                 role: "CSR & Compliance Advisor",
-                desc: "Supporting Schedule VII compliance, CSR partner engagement, and institutional governance.",
+                desc: "XLRI MBA with expertise in HR business partnering, governance, and strategic planning. Mr. Panigrahy brings corporate compliance rigour and institutional governance experience to Abhiara Foundation.",
                 icon: Shield,
                 accent: "gold",
+                announced: true,
+                tagline: "XLRI · HR Business Partner",
               },
               {
                 initials: "—",
@@ -265,7 +299,7 @@ export default function Team() {
                       }
                     />
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-white/30 mb-1">
+                  <h3 className={`font-serif text-lg font-bold mb-1 ${(advisor as any).announced ? 'text-white' : 'text-white/30'}`}>
                     {advisor.name}
                   </h3>
                   <p
@@ -280,12 +314,59 @@ export default function Team() {
                   <p className="font-sans text-[13px] text-white/45 leading-relaxed">
                     {advisor.desc}
                   </p>
-                  <p className="font-mono text-[9px] tracking-wider uppercase text-white/25 mt-4">
-                    Name to be announced
-                  </p>
+                  {!(advisor as any).announced && (
+                    <p className="font-mono text-[9px] tracking-wider uppercase text-white/25 mt-4">
+                      Name to be announced
+                    </p>
+                  )}
+                  {(advisor as any).announced && (advisor as any).tagline && (
+                    <p className={`font-mono text-[9px] tracking-wider uppercase mt-4 ${
+                      advisor.accent === "gold" ? "text-[#C9A84C]/60" : "text-[#1A7F8E]/60"
+                    }`}>
+                      {(advisor as any).tagline}
+                    </p>
+                  )}
                 </div>
               </AnimatedSection>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== OPERATIONS & VOLUNTEERS ===== */}
+      <section className="py-20 md:py-28 bg-[#0A1628]">
+        <div className="container max-w-4xl">
+          <AnimatedSection className="text-center mb-14">
+            <p className="section-label mb-4">OPERATIONS</p>
+            <h2 className="heading-xl text-white mb-4">
+              On the <span className="text-[#C9A84C]">Ground</span>
+            </h2>
+            <div className="gradient-rule mx-auto mb-6" />
+            <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
+              The dedicated individuals who drive our day-to-day operations and community outreach.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-6 max-w-md mx-auto">
+            <AnimatedSection>
+              <div className="glass-card p-6 h-full text-center">
+                <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center bg-[#C9A84C]/10">
+                  <Users size={24} className="text-[#C9A84C]" />
+                </div>
+                <h3 className="font-serif text-lg font-bold text-white mb-1">
+                  Amit Kumar Jena
+                </h3>
+                <p className="font-mono text-[9px] tracking-[0.15em] uppercase mb-4 text-[#C9A84C]">
+                  Volunteer &middot; Operations Lead
+                </p>
+                <p className="font-sans text-[13px] text-white/45 leading-relaxed">
+                  A committed volunteer and operations lead who supports Abhiara Foundation's on-ground activities, community coordination, and programme execution across Odisha.
+                </p>
+                <p className="font-mono text-[9px] tracking-wider uppercase text-[#C9A84C]/60 mt-4">
+                  Member &middot; Abhiara Foundation
+                </p>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -366,6 +447,26 @@ export default function Team() {
             >
               GET IN TOUCH <ArrowRight size={12} />
             </Link>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ===== ARADHANA PROMISE ===== */}
+      <section className="py-20 md:py-28 bg-[#C9A84C]/10 border-y border-[#C9A84C]/30">
+        <div className="container max-w-3xl text-center">
+          <AnimatedSection>
+            <p
+              className="font-serif font-bold text-white leading-[1.4]"
+              style={{ fontSize: "clamp(22px, 2.8vw, 34px)" }}
+            >
+              By 2037, Aradhana Mallik — daughter of Abhimanyu and Biswajita — turns 18 and becomes the youngest trustee of Abhiara Foundation.
+            </p>
+            <p
+              className="font-serif italic text-[#C9A84C] mt-6"
+              style={{ fontSize: "clamp(20px, 2.5vw, 32px)" }}
+            >
+              That is not a plan. That is a promise.
+            </p>
           </AnimatedSection>
         </div>
       </section>
