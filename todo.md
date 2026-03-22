@@ -63,3 +63,11 @@
 - [x] Replace Birthday registration form with just a WhatsApp icon/button (no form needed)
 - [x] Update Aradhana's birth year from 2021 to 2019 across all pages
 - [x] Update Aradhana's trustee milestone year from 2039 to 2037 across all pages
+- [x] QA: Build and TypeScript compilation check
+- [x] QA: Test all 9 pages via browser (Home, Our Story, Vision, Programs, CSR Partners, Activities, Team, Contact, Donate)
+- [x] QA: Verify all forms work (Contact, Newsletter, Be The Change, Birthday WhatsApp)
+- [x] QA: Verify all navigation links work
+- [x] QA: Verify Aradhana dates are correct (2019 birth, 2037 trustee) on all pages
+- [x] QA: Check mobile responsiveness
+- [ ] Push final QA-verified code to GitHub
+- [ ] Generate PDF of all latest source code
