@@ -191,6 +191,73 @@ export default function Team() {
         </div>
       </section>
 
+      {/* ===== OPERATIONS ON THE GROUND ===== */}
+      <section className="py-20 md:py-28 bg-[#0A1628]">
+        <div className="container">
+          <AnimatedSection className="text-center mb-14">
+            <p className="section-label mb-4">OPERATIONS</p>
+            <h2 className="heading-xl text-white mb-4">
+              On the <span className="text-[#C9A84C]">Ground</span>
+            </h2>
+            <div className="gradient-rule mx-auto mb-6" />
+            <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
+              The people who turn vision into action — on the ground, in the villages, every day.
+            </p>
+          </AnimatedSection>
+
+          <div className="max-w-md mx-auto">
+            <AnimatedSection delay={0}>
+              <div className="glass-card-gold p-8 h-full">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-full bg-[#C9A84C]/15 flex items-center justify-center shrink-0">
+                    <span className="font-serif text-2xl font-bold text-[#C9A84C]">MK</span>
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-xl font-bold text-white">
+                      Manoj Kumar Mallik
+                    </h3>
+                    <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C]">
+                      Operations &middot; On the Ground
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center gap-2">
+                    <GraduationCap size={14} className="text-[#1A7F8E] shrink-0" />
+                    <span className="font-mono text-[10px] tracking-wider uppercase text-white/50">
+                      MBA in Finance
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Briefcase size={14} className="text-[#1A7F8E] shrink-0" />
+                    <span className="font-mono text-[10px] tracking-wider uppercase text-white/50">
+                      Field Operations &middot; Odisha
+                    </span>
+                  </div>
+                </div>
+
+                <p className="font-sans text-[14px] text-white/55 leading-relaxed mb-6">
+                  The foundation's presence on the ground in Odisha. Manoj Kumar Mallik leads field operations — coordinating with local communities, overseeing programme delivery, and ensuring that every initiative reaches the people it was built for.
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "MBA in Finance",
+                    "Field Operations",
+                    "Odisha",
+                  ].map((tag) => (
+                    <span key={tag} className="font-mono text-[9px] tracking-wider uppercase bg-[#C9A84C]/10 border border-[#C9A84C]/20 text-[#C9A84C]/70 px-3 py-1 rounded-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
       {/* ===== FUTURE LEADERSHIP ===== */}
       <section className="py-20 md:py-28 bg-[#0A1628]">
         <div className="container max-w-3xl">
