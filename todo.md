@@ -30,3 +30,9 @@
 - [x] Fix Vercel build failure — pnpm ignoring build scripts for @tailwindcss/oxide and esbuild
 - [x] Fix Donate page code error (missing opening anchor tag) and add to website
 - [x] Add Donate route to App.tsx and navigation
+- [x] Add "Be The Change" volunteer form section to Activities page (with DB storage + owner notification)
+- [x] Add "Birthday With Purpose" movement section to Activities page
+- [x] Create volunteer_submissions database table
+- [x] Add volunteer.submit tRPC procedure with email notification
+- [x] Fix TypeScript error in Home.tsx (stat.prefix)
+- [x] Fix escaped unicode arrows in Activities page buttons

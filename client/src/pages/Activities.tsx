@@ -5,6 +5,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Heart, BookOpen, Calendar, MapPin } from "lucide-react";
+import { trpc } from "@/lib/trpc";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -422,7 +423,239 @@ export default function Activities() {
         </div>
       </section>
 
+      {/* ===== BE THE CHANGE — JOIN OUR TEAM ===== */}
+      <BeTheChangeSection />
+
+      {/* ===== BIRTHDAY WITH PURPOSE ===== */}
+      <BirthdayWithPurposeSection />
+
       <Footer />
     </div>
+  );
+}
+
+/* ===== BE THE CHANGE FORM SECTION ===== */
+function BeTheChangeSection() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    qualification: "",
+    email: "",
+    socialProfile: "",
+    areaOfInterest: "" as "" | "education" | "eldercare" | "csr" | "finance" | "technology" | "fieldwork" | "other",
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const submitMutation = trpc.volunteer.submit.useMutation({
+    onSuccess: () => {
+      setSubmitted(true);
+      setFormData({ fullName: "", qualification: "", email: "", socialProfile: "", areaOfInterest: "" });
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.areaOfInterest) return;
+    submitMutation.mutate({
+      fullName: formData.fullName,
+      qualification: formData.qualification,
+      email: formData.email,
+      socialProfile: formData.socialProfile,
+      areaOfInterest: formData.areaOfInterest,
+    });
+  };
+
+  return (
+    <section className="py-16 bg-[#0D2B2B]">
+      <div className="container mx-auto px-6 max-w-3xl text-center">
+        <p className="text-[#1A7F8E] uppercase tracking-widest text-sm font-semibold mb-4">
+          Join Our Team from Day 1
+        </p>
+        <h2 className="text-4xl font-bold text-white mb-4">
+          Be The <span className="text-[#C9A84C]">Change</span>
+        </h2>
+        <div className="w-16 h-0.5 bg-gradient-to-r from-[#C9A84C] to-[#1A7F8E] mx-auto mb-6" />
+        <p className="text-white/70 text-base leading-relaxed mb-10 max-w-2xl mx-auto">
+          We are looking for passionate individuals who believe that geography should not decide
+          destiny. Contribute your skills, time, or expertise to Abhiara Foundation — from anywhere in India.
+        </p>
+
+        {submitted ? (
+          <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 text-center">
+            <p className="text-3xl mb-4">✨</p>
+            <h3 className="text-[#C9A84C] text-2xl font-bold mb-3">Thank You for Joining!</h3>
+            <p className="text-white/70 text-base leading-relaxed">
+              Your submission has been received. The Abhiara Foundation team will connect with you soon.
+            </p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="bg-white/5 border border-[#C9A84C]/30 rounded-2xl p-8 text-left">
+            <div className="mb-6">
+              <label className="text-white/70 text-sm font-medium mb-2 block">Full Name *</label>
+              <input
+                type="text"
+                required
+                placeholder="Your full name"
+                value={formData.fullName}
+                onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#C9A84C] transition-all"
+              />
+            </div>
+
+            <div className="mb-6">
+              <label className="text-white/70 text-sm font-medium mb-2 block">Qualification *</label>
+              <input
+                type="text"
+                required
+                placeholder="e.g. B.Com, CMA, MBA, Teaching, Social Work"
+                value={formData.qualification}
+                onChange={(e) => setFormData({ ...formData, qualification: e.target.value })}
+                className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#C9A84C] transition-all"
+              />
+            </div>
+
+            <div className="mb-6">
+              <label className="text-white/70 text-sm font-medium mb-2 block">Email Address *</label>
+              <input
+                type="email"
+                required
+                placeholder="your@email.com"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#C9A84C] transition-all"
+              />
+            </div>
+
+            <div className="mb-6">
+              <label className="text-white/70 text-sm font-medium mb-2 block">LinkedIn or Social Media Profile *</label>
+              <input
+                type="url"
+                required
+                placeholder="linkedin.com/in/yourname or @yourinstagram"
+                value={formData.socialProfile}
+                onChange={(e) => setFormData({ ...formData, socialProfile: e.target.value })}
+                className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#C9A84C] transition-all"
+              />
+              <p className="text-white/30 text-xs mt-2">
+                Share your LinkedIn, Instagram, Facebook, or any public profile. This helps us understand your background and connect with you directly.
+              </p>
+            </div>
+
+            <div className="mb-8">
+              <label className="text-white/70 text-sm font-medium mb-2 block">Area of Interest *</label>
+              <select
+                required
+                value={formData.areaOfInterest}
+                onChange={(e) => setFormData({ ...formData, areaOfInterest: e.target.value as typeof formData.areaOfInterest })}
+                className="w-full bg-[#0A1628] border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#C9A84C] transition-all"
+              >
+                <option value="">Select your area</option>
+                <option value="education">Education and Teaching</option>
+                <option value="eldercare">Elderly Care</option>
+                <option value="csr">CSR and Fundraising</option>
+                <option value="finance">Finance and Compliance</option>
+                <option value="technology">Technology and Digital</option>
+                <option value="fieldwork">Field Work and Community</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <button
+              type="submit"
+              disabled={submitMutation.isPending}
+              className="w-full bg-[#C9A84C] hover:bg-[#B8943E] text-[#0A1628] font-bold py-4 rounded-xl transition-all duration-300 text-base uppercase tracking-wider disabled:opacity-50"
+            >
+              {submitMutation.isPending ? "Submitting..." : "Be The Change →"}
+            </button>
+
+            {submitMutation.isError && (
+              <p className="text-red-400 text-sm mt-4 text-center">Something went wrong. Please try again.</p>
+            )}
+          </form>
+        )}
+
+        <p className="text-white/30 text-xs mt-6 leading-relaxed max-w-xl mx-auto">
+          Your information will never be shared publicly or with third parties. Used only by Abhiara Foundation team to connect with you.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ===== BIRTHDAY WITH PURPOSE SECTION ===== */
+function BirthdayWithPurposeSection() {
+  return (
+    <section className="py-16 bg-[#0A1628]">
+      <div className="container mx-auto px-6 max-w-3xl text-center">
+        <p className="text-[#1A7F8E] uppercase tracking-widest text-sm font-semibold mb-4">
+          #BirthdayWithPurpose
+        </p>
+        <h2 className="text-4xl font-bold text-white mb-4">
+          Blow Out the Candles.<br />
+          <span className="text-[#C9A84C]">Light Up a Life.</span>
+        </h2>
+        <div className="w-16 h-0.5 bg-gradient-to-r from-[#C9A84C] to-[#1A7F8E] mx-auto mb-8" />
+        <p className="text-white font-semibold text-2xl leading-relaxed mb-4 max-w-2xl mx-auto">
+          Your birthday celebration. <span className="text-[#C9A84C]">Someone's future.</span>
+        </p>
+        <p className="text-white/60 text-base leading-relaxed mb-10 max-w-2xl mx-auto">
+          A big party is forgotten in a week. A child you helped is remembered forever.
+          This year — spend your birthday with underprivileged students, visit the elderly,
+          or lead a community activity. Skip the alcohol. Choose impact instead.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div className="bg-white/5 border border-[#C9A84C]/30 rounded-2xl p-6">
+            <div className="text-3xl mb-3">{"\uD83D\uDCDA"}</div>
+            <h3 className="text-[#C9A84C] font-semibold mb-3">With Students</h3>
+            <p className="text-white/50 text-sm leading-relaxed">
+              Visit a school. Bring books. Teach one thing. Leave a lasting memory.
+            </p>
+          </div>
+          <div className="bg-white/5 border border-[#C9A84C]/30 rounded-2xl p-6">
+            <div className="text-3xl mb-3">{"\uD83E\uDD1D"}</div>
+            <h3 className="text-[#C9A84C] font-semibold mb-3">With The Elderly</h3>
+            <p className="text-white/50 text-sm leading-relaxed">
+              Visit an old age home. Sit. Listen. Be present. Give the gift of time.
+            </p>
+          </div>
+          <div className="bg-white/5 border border-[#C9A84C]/30 rounded-2xl p-6">
+            <div className="text-3xl mb-3">{"\uD83C\uDF31"}</div>
+            <h3 className="text-[#C9A84C] font-semibold mb-3">In The Community</h3>
+            <p className="text-white/50 text-sm leading-relaxed">
+              Plant trees. Clean a space. Fund a child's education. Your birthday. Your legacy.
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 mb-10">
+          <p className="text-white font-semibold text-xl italic leading-relaxed mb-2">
+            "Your birthday celebration.
+          </p>
+          <p className="text-[#C9A84C] font-bold text-xl italic leading-relaxed mb-4">
+            Someone's future."
+          </p>
+          <p className="text-white/50 text-sm">
+            Celebrate your birthday by lighting up someone else's life.
+          </p>
+          <p className="text-[#C9A84C] text-xs mt-3 font-semibold">
+            — Abhiara Foundation · #BirthdayWithPurpose
+          </p>
+        </div>
+
+        <Link
+          href="/contact"
+          className="inline-block bg-[#C9A84C] hover:bg-[#B8943E] text-[#0A1628] font-bold px-10 py-4 rounded-xl transition-all duration-300 uppercase tracking-wider"
+        >
+          Register My Birthday →
+        </Link>
+
+        <p className="text-white/30 text-sm mt-8 leading-relaxed">
+          Share your celebration with the world<br />
+          <span className="text-[#C9A84C] font-semibold">
+            #BirthdayWithPurpose · #YourBirthdaySomeoneFuture · #AbhiaraFoundation · #FearlessRayOfLight
+          </span>
+        </p>
+      </div>
+    </section>
   );
 }

@@ -15,6 +15,13 @@
       "when": 1774021991202,
       "tag": "0001_neat_stryfe",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1774170945878,
+      "tag": "0002_salty_dreadnoughts",
+      "breakpoints": true
     }
   ]
 }

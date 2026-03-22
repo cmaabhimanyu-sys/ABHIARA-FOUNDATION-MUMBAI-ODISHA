@@ -2,7 +2,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
-import { addNewsletterSubscriber, createContactInquiry } from "./db";
+import { addNewsletterSubscriber, createContactInquiry, createVolunteerSubmission } from "./db";
 import { notifyOwner } from "./_core/notification";
 import { z } from "zod";
 
@@ -29,6 +29,28 @@ export const appRouter = router({
           title: "New Newsletter Subscriber",
           content: `New email subscription: ${input.email}`,
         }).catch(() => {}); // Don't fail if notification fails
+        return result;
+      }),
+  }),
+
+  volunteer: router({
+    submit: publicProcedure
+      .input(
+        z.object({
+          fullName: z.string().min(1, "Full name is required"),
+          qualification: z.string().min(1, "Qualification is required"),
+          email: z.string().email("Valid email is required"),
+          socialProfile: z.string().min(1, "Social profile is required"),
+          areaOfInterest: z.enum(["education", "eldercare", "csr", "finance", "technology", "fieldwork", "other"]),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const result = await createVolunteerSubmission(input);
+        // Notify owner about new volunteer submission
+        await notifyOwner({
+          title: "New Volunteer — Be The Change",
+          content: `Name: ${input.fullName}\nQualification: ${input.qualification}\nEmail: ${input.email}\nSocial Profile: ${input.socialProfile}\nArea of Interest: ${input.areaOfInterest}\nSubmitted: ${new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}`,
+        }).catch(() => {});
         return result;
       }),
   }),

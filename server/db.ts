@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, newsletterSubscribers, contactInquiries, InsertContactInquiry } from "../drizzle/schema";
+import { InsertUser, users, newsletterSubscribers, contactInquiries, InsertContactInquiry, volunteerSubmissions, InsertVolunteerSubmission } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -133,4 +133,19 @@ export async function getNewsletterSubscribers() {
   if (!db) return [];
 
   return db.select().from(newsletterSubscribers).orderBy(newsletterSubscribers.subscribedAt);
+}
+
+// ===== Volunteer Submissions (Be The Change) =====
+
+export async function createVolunteerSubmission(submission: InsertVolunteerSubmission) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  try {
+    await db.insert(volunteerSubmissions).values(submission);
+    return { success: true };
+  } catch (error) {
+    console.error("[Database] Failed to create volunteer submission:", error);
+    throw error;
+  }
 }

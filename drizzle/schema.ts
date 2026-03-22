@@ -54,3 +54,27 @@ export const contactInquiries = mysqlTable("contact_inquiries", {
 
 export type ContactInquiry = typeof contactInquiries.$inferSelect;
 export type InsertContactInquiry = typeof contactInquiries.$inferInsert;
+
+/**
+ * Be The Change — volunteer form submissions from the Activities page.
+ */
+export const volunteerSubmissions = mysqlTable("volunteer_submissions", {
+  id: int("id").autoincrement().primaryKey(),
+  fullName: varchar("fullName", { length: 255 }).notNull(),
+  qualification: varchar("qualification", { length: 500 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  socialProfile: varchar("socialProfile", { length: 500 }).notNull(),
+  areaOfInterest: mysqlEnum("areaOfInterest", [
+    "education",
+    "eldercare",
+    "csr",
+    "finance",
+    "technology",
+    "fieldwork",
+    "other",
+  ]).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type VolunteerSubmission = typeof volunteerSubmissions.$inferSelect;
+export type InsertVolunteerSubmission = typeof volunteerSubmissions.$inferInsert;

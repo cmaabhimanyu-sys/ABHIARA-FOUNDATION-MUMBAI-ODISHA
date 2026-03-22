@@ -143,7 +143,7 @@ export default function Home() {
             ].map((stat) => (
               <div key={stat.label} className="glass-card p-4 text-center">
                 <p className="font-serif text-2xl md:text-3xl font-bold text-[#C9A84C]">
-                  <CounterAnimation end={stat.value} prefix={stat.prefix || ""} suffix={stat.suffix} />
+                  <CounterAnimation end={stat.value} prefix="" suffix={stat.suffix} />
                 </p>
                 <p className="font-mono text-[9px] tracking-wider uppercase text-white/50 mt-1">
                   {stat.label}

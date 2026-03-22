@@ -119,12 +119,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-6 border-t border-white/[0.06] text-center">
           <p className="font-mono text-[9px] tracking-wider text-white/35">
-            &copy; {new Date().getFullYear()} Abhiara Foundation &middot; Section 8 Company &middot; Limited by Guarantee &middot; Companies Act 2013 &middot; CIN: Pending
-          </p>
-          <p className="font-mono text-[9px] tracking-wider text-white/35">
-            <span className="text-[#C9A84C] mr-2">⊕</span>Abhiara Foundation &middot; Section 8 Company &middot; Not-for-Profit &middot; Raisar, Tulasi Kshetra, Kendrapara, Odisha &middot; Pan India
+            <span className="text-[#C9A84C] mr-1">⊕</span> &copy; {new Date().getFullYear()} Abhiara Foundation &middot; Section 8 Company &middot; Raisar, Tulasi Kshetra, Kendrapara, Odisha &middot; Pan India
           </p>
         </div>
 
