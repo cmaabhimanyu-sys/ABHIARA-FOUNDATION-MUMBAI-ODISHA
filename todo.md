@@ -36,3 +36,4 @@
 - [x] Add volunteer.submit tRPC procedure with email notification
 - [x] Fix TypeScript error in Home.tsx (stat.prefix)
 - [x] Fix escaped unicode arrows in Activities page buttons
+- [ ] Fix: Site not working - diagnose and resolve
