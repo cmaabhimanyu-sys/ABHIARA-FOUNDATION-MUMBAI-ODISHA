@@ -85,3 +85,5 @@
 - [x] Integrate Back to Top button globally across all pages (already in App.tsx)
 - [x] Create Impact Gallery page with education and elderly care photos
 - [x] Add Impact Gallery route to App.tsx and navigation (Navbar + Footer + App.tsx)
+- [x] Remove AI-generated photos from Impact Gallery — use only real activity photos (5 real photos kept)
+- [x] Update Impact Gallery stats bar to reflect target numbers (500+ Children Targeted, 200+ Elders Targeted, 3 Districts, 10 Activities)

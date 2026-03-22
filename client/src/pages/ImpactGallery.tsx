@@ -20,99 +20,42 @@ type GalleryImage = {
 };
 
 const GALLERY_IMAGES: GalleryImage[] = [
-  /* Education */
+  /* Education — Real Photos */
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/gallery-education-classroom-Y7jxQ3mhPPUwgzyoeoXSMK.webp",
-    alt: "Children raising hands in a rural classroom in Odisha",
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-village-session_60ea6065.jpeg",
+    alt: "Abhiara Foundation education session with village children in Odisha",
     category: "education",
-    caption: "Eager hands, fearless futures — a classroom session in rural Odisha where every question is encouraged.",
+    caption: "Book donation and open-air learning session with tribal children — because education should not wait for four walls.",
     location: "Koraput District, Odisha",
   },
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/gallery-children-digital-learning-5bdaRX5Z2bZnMVrjs7UDUz.webp",
-    alt: "Village children discovering digital learning on a laptop",
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-children-1_48cccd6f.jpeg",
+    alt: "Book donation to tribal children in Odisha",
     category: "education",
-    caption: "First touch of the digital world — village children explore learning platforms at our community centre.",
-    location: "Rayagada District, Odisha",
+    caption: "Every book donated is a step towards a brighter future. Empowering young minds through education materials.",
+    location: "Koraput District, Odisha",
   },
-  {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-children-gGByyfoUfKLuHnK73a4QT3.webp",
-    alt: "Education programme children smiling",
-    category: "education",
-    caption: "The smile of a child who knows someone believes in them. That is the beginning of everything.",
-    location: "Kalahandi District, Odisha",
-  },
-  {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-village-session_60ea6065.jpeg",
-    alt: "Abhiara Foundation education session with village children",
-    category: "education",
-    caption: "An outdoor learning session under the open sky — because education should not wait for four walls.",
-    location: "Kendrapara District, Odisha",
-  },
-  /* Elderly Care */
-  {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/gallery-elderly-health-camp-ctXZmKKDBY2BHrPYAWY4DC.webp",
-    alt: "Doctor checking blood pressure of elderly woman at a village health camp",
-    category: "elderly",
-    caption: "Quarterly health camps bring medical care to those who cannot travel — dignity begins with access.",
-    location: "Rural Odisha",
-  },
-  {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/gallery-elderly-companion-kNdJvz3E92bdef3jyjmgYY.webp",
-    alt: "Young volunteer sitting with an elderly man on a village bench",
-    category: "elderly",
-    caption: "Companionship is care. A conversation, a shared afternoon — sometimes that is all it takes.",
-    location: "Kendrapara District, Odisha",
-  },
-  {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-8YsBCUCCz6K32KEwPWvjgq.webp",
-    alt: "Elderly care programme visit",
-    category: "elderly",
-    caption: "Every elder deserves to be seen, heard, and cared for — not as charity, but as a right.",
-    location: "Mumbai & Odisha",
-  },
+  /* Elderly Care — Real Photos */
   {
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit_cbe9834b.jpeg",
     alt: "Abhiara Foundation elderly care visit at Hope is Life Old Age Home",
     category: "elderly",
-    caption: "A visit to Hope is Life Old Age Home — listening, learning, and lending a hand.",
+    caption: "Our first elder care visit — Hope is Life Old Age Home. Listening, learning, and lending a hand.",
     location: "Mumbai, Maharashtra",
   },
   {
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit-1_c836b920.jpeg",
-    alt: "Elderly care visit — distributing essentials",
+    alt: "Distributing essentials to elderly residents",
     category: "elderly",
-    caption: "Distributing essentials and spending time with elders who have no one else to visit them.",
+    caption: "Distributing essentials and spending quality time with elders who have no one else to visit them.",
     location: "Mumbai, Maharashtra",
   },
   {
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit-2_76a48a25.jpeg",
-    alt: "Elderly care visit — sharing warmth",
+    alt: "Elderly care visit — sharing warmth and care",
     category: "elderly",
     caption: "Warmth is not a luxury. It is a human need. We bring it, one visit at a time.",
     location: "Mumbai, Maharashtra",
-  },
-  /* Community */
-  {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/gallery-community-gathering-3f68gb34r4nMtGR7DYMxDG.webp",
-    alt: "Community gathering under a banyan tree in rural Odisha",
-    category: "community",
-    caption: "Grassroots development starts with a conversation — a village gathering under the banyan tree.",
-    location: "Rural Odisha",
-  },
-  {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/community-impact-JqLQdk8SYBsopiModUvtKZ.webp",
-    alt: "Community impact and development",
-    category: "community",
-    caption: "Impact is not a number. It is a village that believes tomorrow can be different.",
-    location: "Odisha, India",
-  },
-  {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-children-1_48cccd6f.jpeg",
-    alt: "Children participating in community education activities",
-    category: "community",
-    caption: "When a community comes together for its children, the future writes itself.",
-    location: "Odisha, India",
   },
 ];
 
@@ -175,10 +118,10 @@ export default function ImpactGallery() {
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             {[
-              { value: "500+", label: "Children Reached" },
-              { value: "200+", label: "Elders Supported" },
-              { value: "3", label: "Districts Active" },
-              { value: "13+", label: "Field Visits" },
+              { value: "500+", label: "Children Targeted · Year 1" },
+              { value: "200+", label: "Elders Targeted · Year 1" },
+              { value: "3", label: "Districts · Odisha" },
+              { value: "10", label: "Activities Completed" },
             ].map((stat) => (
               <div key={stat.label}>
                 <p className="font-serif text-2xl font-bold text-[#C9A84C]">{stat.value}</p>
