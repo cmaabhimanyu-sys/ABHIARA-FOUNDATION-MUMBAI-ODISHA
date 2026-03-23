@@ -27,6 +27,20 @@ export default function Contact() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   const [, navigate] = useLocation();
 
+  // Fetch CMS settings for dynamic contact info
+  const { data: cmsSettings = [] } = trpc.cms.settings.list.useQuery();
+  const { data: cmsSocialLinks = [] } = trpc.cms.social.listActive.useQuery();
+  const getSetting = (key: string, fallback: string) => {
+    const s = cmsSettings.find((x: any) => x.settingKey === key);
+    return s ? s.settingValue : fallback;
+  };
+  const emailAddress = getSetting("email_address", "info@abhiarafoundation.org");
+  const whatsappNumber = getSetting("whatsapp_number", "919938938321");
+  const phoneDisplay = getSetting("phone_display", "+91 99389 38321");
+  const linkedInUrl = cmsSocialLinks.find((l: any) => l.platform.toLowerCase().includes("linkedin"))?.url || "https://www.linkedin.com/in/abhimanyu-mallik/";
+  const twitterUrl = cmsSocialLinks.find((l: any) => l.platform.toLowerCase().includes("twitter") || l.platform.toLowerCase().includes("x"))?.url || "https://x.com/abhimanyumalli7?s=11";
+  const instagramUrl = cmsSocialLinks.find((l: any) => l.platform.toLowerCase().includes("instagram"))?.url || "https://www.instagram.com/cma.abhimanyu";
+
   /* Contact form via tRPC */
   const [contactForm, setContactForm] = useState({
     name: "",
@@ -106,7 +120,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            href="https://wa.me/919938938321?text=Hello%20Abhiara%20Foundation%2C%20I%20would%20like%20to%20connect."
+            href={`https://wa.me/${whatsappNumber}?text=Hello%20Abhiara%20Foundation%2C%20I%20would%20like%20to%20connect.`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white font-mono text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#1DA851] transition-colors rounded-sm"
@@ -153,7 +167,7 @@ export default function Contact() {
                 ].map((box) => (
                   <a
                     key={box.title}
-                    href={`https://wa.me/919938938321?text=${encodeURIComponent(box.message)}`}
+                    href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(box.message)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="glass-card p-6 group hover:border-[#25D366]/30 transition-all block"
@@ -241,17 +255,17 @@ export default function Contact() {
                   <p className="font-sans text-[13px] text-white/40 mb-4">CMA · Mumbai, Maharashtra</p>
                   <div className="space-y-3">
                     {/* WhatsApp — Primary */}
-                    <a href="https://wa.me/919938938321" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[13px] text-[#25D366] hover:text-[#1DA851] transition-colors font-semibold">
+                    <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[13px] text-[#25D366] hover:text-[#1DA851] transition-colors font-semibold">
                       <WhatsAppIcon className="w-4 h-4 shrink-0" />
-                      +91 99389 38321
+                      {phoneDisplay}
                     </a>
                     {/* Email */}
-                    <a href="mailto:info@abhiarafoundation.org" className="flex items-center gap-3 text-[13px] text-white/60 hover:text-[#C9A84C] transition-colors">
+                    <a href={`mailto:${emailAddress}`} className="flex items-center gap-3 text-[13px] text-white/60 hover:text-[#C9A84C] transition-colors">
                       <Mail size={14} className="text-[#1A7F8E] shrink-0" />
-                      info@abhiarafoundation.org
+                      {emailAddress}
                     </a>
                     {/* LinkedIn */}
-                    <a href="https://www.linkedin.com/in/abhimanyu-mallik/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[13px] text-white/60 hover:text-[#C9A84C] transition-colors">
+                    <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[13px] text-white/60 hover:text-[#C9A84C] transition-colors">
                       <Linkedin size={14} className="text-[#1A7F8E] shrink-0" />
                       LinkedIn — Abhimanyu Mallik
                     </a>
@@ -260,7 +274,7 @@ export default function Contact() {
 
                 {/* WhatsApp Quick Message */}
                 <a
-                  href="https://wa.me/919938938321?text=Hello%20Abhiara%20Foundation%2C%20I%20would%20like%20to%20connect."
+                  href={`https://wa.me/${whatsappNumber}?text=Hello%20Abhiara%20Foundation%2C%20I%20would%20like%20to%20connect.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block glass-card p-6 group hover:border-[#25D366]/30 transition-all text-center"
@@ -302,16 +316,16 @@ export default function Contact() {
                 <div className="glass-card p-6">
                   <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#C9A84C] mb-3">CONNECT</p>
                   <div className="flex gap-3">
-                    <a href="https://wa.me/919938938321" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#25D366]/30 bg-[#25D366]/10 flex items-center justify-center text-[#25D366] hover:bg-[#25D366]/20 hover:border-[#25D366]/50 transition-colors">
+                    <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#25D366]/30 bg-[#25D366]/10 flex items-center justify-center text-[#25D366] hover:bg-[#25D366]/20 hover:border-[#25D366]/50 transition-colors">
                       <WhatsAppIcon className="w-[18px] h-[18px]" />
                     </a>
-                    <a href="https://www.linkedin.com/in/abhimanyu-mallik/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
+                    <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
                       <Linkedin size={18} />
                     </a>
-                    <a href="https://x.com/abhimanyumalli7?s=11" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
+                    <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
                       <Twitter size={18} />
                     </a>
-                    <a href="https://www.instagram.com/cma.abhimanyu?igsh=MTVsaXNic2VqeDVicg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
+                    <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
                       <Instagram size={18} />
                     </a>
                   </div>
@@ -334,7 +348,7 @@ export default function Contact() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://wa.me/919938938321?text=Hello%20Abhiara%20Foundation%2C%20I%20would%20like%20to%20connect."
+                href={`https://wa.me/${whatsappNumber}?text=Hello%20Abhiara%20Foundation%2C%20I%20would%20like%20to%20connect.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors"
@@ -342,7 +356,7 @@ export default function Contact() {
                 <WhatsAppIcon className="w-4 h-4" /> MESSAGE ON WHATSAPP
               </a>
               <a
-                href="mailto:info@abhiarafoundation.org"
+                href={`mailto:${emailAddress}`}
                 className="inline-flex items-center gap-2 px-8 py-3 border-2 border-white text-white font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-white/10 transition-colors"
               >
                 <Mail size={12} /> EMAIL US

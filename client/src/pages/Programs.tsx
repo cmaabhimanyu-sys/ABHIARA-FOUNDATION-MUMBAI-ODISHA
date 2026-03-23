@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
 import SEO from "@/components/SEO";
+import { trpc } from "@/lib/trpc";
 
 const EDUCATION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-children-gGByyfoUfKLuHnK73a4QT3.webp";
 const ELDERLY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-8YsBCUCCz6K32KEwPWvjgq.webp";
@@ -28,6 +29,13 @@ function TargetBar({ label, status, color }: { label: string; status: string; co
 
 export default function Programs() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  // Fetch CMS settings for dynamic content
+  const { data: cmsSettings = [] } = trpc.cms.settings.list.useQuery();
+  const getSetting = (key: string, fallback: string) => {
+    const s = cmsSettings.find((x: any) => x.settingKey === key);
+    return s ? s.settingValue : fallback;
+  };
 
   return (
     <div className="min-h-screen bg-[#0A1628]">
@@ -121,8 +129,8 @@ export default function Programs() {
               {/* Metrics */}
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  { icon: GraduationCap, label: "50+ Students", sub: "Reached So Far" },
-                  { icon: Target, label: "500+", sub: "Target 2026" },
+                  { icon: GraduationCap, label: `${getSetting("stat_students_reached", "50")}+ Students`, sub: "Reached So Far" },
+                  { icon: Target, label: `${getSetting("stat_students_target", "500")}+`, sub: "Target 2026" },
                   { icon: MapPin, label: "Kendrapara", sub: "Odisha" },
                   { icon: Calendar, label: "Nov 2025", sub: "Book Distribution" },
                 ].map((item) => (
@@ -186,8 +194,8 @@ export default function Programs() {
 
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  { icon: Users, label: "40+ Elders", sub: "Visited So Far" },
-                  { icon: Target, label: "200+", sub: "Target 2026" },
+                  { icon: Users, label: `${getSetting("stat_elders_visited", "40")}+ Elders`, sub: "Visited So Far" },
+                  { icon: Target, label: `${getSetting("stat_elders_target", "200")}+`, sub: "Target 2026" },
                   { icon: MapPin, label: "Puri", sub: "Odisha" },
                   { icon: Calendar, label: "Oct 2025", sub: "Old Age Home Visit" },
                 ].map((item) => (

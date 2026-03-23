@@ -28,12 +28,17 @@ export function registerOAuthRoutes(app: Express) {
         return;
       }
 
+      // Auto-promote specific admin emails
+      const ADMIN_EMAILS = ["info@abhiarafoundation.org", "abhimanyumallik@gofynd.com"];
+      const isAdmin = userInfo.email && ADMIN_EMAILS.includes(userInfo.email.toLowerCase());
+
       await db.upsertUser({
         openId: userInfo.openId,
         name: userInfo.name || null,
         email: userInfo.email ?? null,
         loginMethod: userInfo.loginMethod ?? userInfo.platform ?? null,
         lastSignedIn: new Date(),
+        ...(isAdmin ? { role: "admin" as const } : {}),
       });
 
       const sessionToken = await sdk.createSessionToken(userInfo.openId, {

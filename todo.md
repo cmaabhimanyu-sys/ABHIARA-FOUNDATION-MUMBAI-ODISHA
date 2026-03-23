@@ -167,3 +167,8 @@
 - [x] CMS: Dynamic Footer social links from CMS
 - [x] CMS: Dynamic Footer contact info from CMS settings
 - [x] CMS: Redirect /gallery and /blog to Activities page tabs
+- [x] Add alternative admin login — auto-promote info@abhiarafoundation.org to admin on login via Manus OAuth (supports Google login)
+- [x] Promote owner to admin role in database
+- [x] Seed CMS with existing activities, gallery photos, blog posts, stats, social links
+- [x] Make Programs page dynamic with CMS settings
+- [x] Make Contact page dynamic with CMS settings (phone, email, WhatsApp)
