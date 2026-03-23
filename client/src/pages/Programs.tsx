@@ -132,7 +132,7 @@ export default function Programs() {
                   { icon: GraduationCap, label: `${getSetting("stat_students_reached", "50")}+ Students`, sub: "Reached So Far" },
                   { icon: Target, label: `${getSetting("stat_students_target", "500")}+`, sub: "Target 2026" },
                   { icon: MapPin, label: "Kendrapara", sub: "Odisha" },
-                  { icon: Calendar, label: "Nov 2025", sub: "Book Distribution" },
+                  { icon: Calendar, label: "Mar 2026", sub: "Book Distribution" },
                 ].map((item) => (
                   <div key={item.label} className="light-card-gold p-3">
                     <item.icon size={16} className="text-[#C9A84C] mb-1.5" />
@@ -197,7 +197,7 @@ export default function Programs() {
                   { icon: Users, label: `${getSetting("stat_elders_visited", "40")}+ Elders`, sub: "Visited So Far" },
                   { icon: Target, label: `${getSetting("stat_elders_target", "200")}+`, sub: "Target 2026" },
                   { icon: MapPin, label: "Puri", sub: "Odisha" },
-                  { icon: Calendar, label: "Oct 2025", sub: "Old Age Home Visit" },
+                  { icon: Calendar, label: "Mar 2026", sub: "Old Age Home Visit" },
                 ].map((item) => (
                   <div key={item.label} className="glass-card-teal p-3">
                     <item.icon size={16} className="text-[#1A7F8E] mb-1.5" />
@@ -248,7 +248,7 @@ export default function Programs() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/60 to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3">
                    <p className="font-mono text-[9px] tracking-[0.15em] uppercase text-white/80 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-sm inline-block">
-                   Abhiara Foundation's first elder care visit \u2014 Hope is Life Old Age Home, Puri, Odisha \u00b7 October 2025                </p>
+                   Abhiara Foundation's elder care visit \u2014 Hope is Life Old Age Home, Puri, Odisha \u00b7 March 2026                </p>
                   </div>
                 </div>
               </div>

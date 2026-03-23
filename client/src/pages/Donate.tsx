@@ -166,13 +166,13 @@ export default function Donate() {
             </h2>
             <div className="w-16 h-0.5 bg-gradient-to-r from-[#C9A84C] to-[#1A7F8E] mx-auto mb-8" />
             <p className="text-[#0A1628]/70 text-base leading-relaxed max-w-xl mx-auto mb-8">
-              As a Section 8 Company (registration pending), no property, asset, or income of Abhiara Foundation can be personally claimed — by the founder, family, or any individual. Your donation will be legally protected and mission-bound.
+              As a Section 8 Company, no property, asset, or income of Abhiara Foundation can be personally claimed — by the founder, family, or any individual. Your donation is legally protected and mission-bound.
             </p>
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
             <p className="text-[#0A1628]/40 font-mono text-[9px] tracking-wider uppercase">
-              Abhiara Foundation · Section 8 Company (Registration Pending) · Not-for-Profit · Odisha · Pan India
+              Abhiara Foundation · Section 8 Company · Not-for-Profit · Odisha · Pan India
             </p>
           </AnimatedSection>
         </div>

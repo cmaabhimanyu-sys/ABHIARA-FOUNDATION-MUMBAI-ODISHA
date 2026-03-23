@@ -213,3 +213,13 @@
 - [x] Upload Sagar Jena's profile photo to Team page
 - [x] Fix: Remove Aradhana trustee mention from Home page only (keep in OurStory and Team)
 - [x] Fix: Update Truth of Life quote on all 5 pages (Home, Donate, Programs, CsrPartners, OurStory) — correct grammar
+- [x] Push latest code to GitHub repository
+- [ ] Upload Biswajita Mallik's real photo to Team page (waiting for user to provide)
+- [x] Test mobile viewport — verify Vidyapeeth timeline with 4 phases (confirmed: 4 phases, no Aradhana, correct quote)
+- [x] Remove duplicate GitHub repositories, keep only the latest synced one
+- [x] Fix 1: Change hero bar from "Section 8 Registration Pending" to "Section 8 Company · Not-for-Profit" (also updated Footer, CSR, OurStory, Donate)
+- [x] Fix 2: Move adoption pricing below emotional story on Programs page — NOT FOUND (no pricing tiers exist on site)
+- [x] Fix 3: Replace zero transparency report — NOT FOUND (no zero-value report exists on site)
+- [x] Fix 4: Reduce Home page CTAs to only 2: "Our Story" + "Partner With Us"
+- [x] Fix 5: Update activity dates from Oct/Nov 2025 to March 2026 across all pages (Home, Programs, Activities, Vision, Admin)
+- [x] Fix 6: Verify WhatsApp is prominent on Contact page — ALREADY DONE (hero has WhatsApp button, quick connect cards, sidebar card, bottom CTA)

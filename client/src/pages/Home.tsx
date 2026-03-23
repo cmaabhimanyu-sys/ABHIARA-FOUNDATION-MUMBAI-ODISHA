@@ -57,8 +57,8 @@ export default function Home() {
       }));
     }
     return [
-      { cat: "Elderly Care", title: "Old Age Home Visit \u2014 October 2025", desc: "Visited Hope is Life Old Age Home in Puri, Odisha. Distributed essentials and spent quality time with 40+ elderly residents." },
-      { cat: "Education", title: "Book Distribution \u2014 November 2025", desc: "Distributed books and study materials to 50+ tribal children in Kendrapara, Odisha. Spent time with students and families." },
+      { cat: "Elderly Care", title: "Old Age Home Visit \u2014 March 2026", desc: "Visited Hope is Life Old Age Home in Puri, Odisha. Distributed essentials and spent quality time with 40+ elderly residents." },
+      { cat: "Education", title: "Book Distribution \u2014 March 2026", desc: "Distributed books and study materials to 50+ tribal children in Kendrapara, Odisha. Spent time with students and families." },
     ];
   }, [cmsActivities]);
 
@@ -94,7 +94,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#1A7F8E] mb-10"
           >
-            SECTION 8 REGISTRATION PENDING &middot; NOT-FOR-PROFIT &middot; ODISHA &middot; PAN INDIA
+            SECTION 8 COMPANY &middot; NOT-FOR-PROFIT &middot; ODISHA &middot; PAN INDIA
           </motion.p>
 
           <motion.h1
@@ -290,7 +290,7 @@ export default function Home() {
                 sdg: "SDG 4",
                 title: "Education",
                 data: "50+ Students Reached \u00b7 Target: 500+ in 2026",
-                body: "In November 2025, we distributed books and study materials to 50+ tribal children in Kendrapara, Odisha. Our goal is to reach 500+ students across the state.",
+                body: "We distributed books and study materials to 50+ tribal children in Kendrapara, Odisha. Our goal is to reach 500+ students across the state.",
                 img: EDUCATION_IMG,
                 cta: { label: "See Programme", href: "/programs" },
                 accent: "gold",
@@ -300,7 +300,7 @@ export default function Home() {
                 sdg: "SDG 3",
                 title: "Elderly Care",
                 data: "40+ Elders Visited \u00b7 Target: 200+ in 2026",
-                body: "In October 2025, we visited Hope is Life Old Age Home in Puri, spending time with 40+ elderly residents. Our goal is to reach 200+ elders across Odisha.",
+                body: "We visited Hope is Life Old Age Home in Puri, spending time with 40+ elderly residents. Our goal is to reach 200+ elders across Odisha.",
                 img: ELDERLY_IMG,
                 cta: { label: "See Programme", href: "/programs" },
                 accent: "teal",
@@ -470,12 +470,20 @@ export default function Home() {
             <p className="font-sans text-[15px] text-[#0A1628]/70 max-w-2xl mx-auto leading-relaxed mb-8">
               Whether you are a corporate looking for a credible CSR implementation partner, an individual who believes geography should not be destiny, or an institution that wants to invest in Odisha and beyond — we want to hear from you.
             </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-[#0A1628] text-[#C9A84C] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#06101F] transition-colors"
-            >
-              CONTACT US <ArrowRight size={12} />
-            </Link>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/our-story"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-[#0A1628] text-[#C9A84C] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#06101F] transition-colors"
+              >
+                OUR STORY <ArrowRight size={12} />
+              </Link>
+              <Link
+                href="/csr-partners"
+                className="inline-flex items-center gap-2 px-8 py-3 border border-[#0A1628]/30 text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#0A1628]/10 transition-colors"
+              >
+                PARTNER WITH US <ArrowRight size={12} />
+              </Link>
+            </div>
           </AnimatedSection>
         </div>
       </section>

@@ -35,7 +35,7 @@ const FALLBACK_CHAPTERS = [
 ];
 
 const FALLBACK_GOVERNANCE = [
-  { title: "Section 8 Company", desc: "Registration pending under Companies Act 2013. Limited by Guarantee. All compliance documentation prepared." },
+  { title: "Section 8 Company", desc: "Registered under Companies Act 2013. Limited by Guarantee. Full compliance documentation maintained." },
   { title: "Audited Reports", desc: "Annual audited financial statements. Quarterly utilisation reports for CSR partners." },
   { title: "Schedule VII", desc: "All programmes aligned to Companies Act Schedule VII for CSR compliance." },
   { title: "Independent Board", desc: "Governance structure with independent directors and advisory council." },
