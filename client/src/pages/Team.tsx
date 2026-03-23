@@ -175,6 +175,9 @@ export default function Team() {
                     <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#1A7F8E]">
                       Co-Founder &middot; Family & Community Pillar
                     </p>
+                    <p className="font-mono text-[10px] tracking-wider text-[#C9A84C]/70 mt-1">
+                      MBA in Human Resource
+                    </p>
                   </div>
                 </div>
 

@@ -122,7 +122,7 @@ export default function CSRPartners() {
               { icon: FileCheck, title: "Schedule VII Aligned", desc: "All programmes map directly to Schedule VII categories for CSR compliance." },
               { icon: BarChart3, title: "Monthly Reports", desc: "Detailed progress reports with photo documentation and beneficiary data." },
               { icon: Eye, title: "Full Transparency", desc: "Audited utilisation statements. Open books. No hidden costs." },
-              { icon: Award, title: "CMA-Led Finance", desc: "Founder is a qualified Cost & Management Accountant. Finance-first governance." },
+              { icon: Award, title: "CMA-Led Finance", desc: "Led by a CMA — Cost and Management Accountant. Every rupee tracked, reported, and accounted for. Finance is not our back office. It is our foundation." },
               { icon: Users, title: "Ground Presence", desc: "Direct operations across all of Odisha and expanding to other states across India." },
             ].map((card, i) => (
               <AnimatedSection key={card.title} delay={i * 0.08}>

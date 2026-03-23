@@ -206,3 +206,5 @@
 - [x] 10/10: Footer simplification (4 columns → 3, merged Our Work into Navigate)
 - [ ] 10/10: Social proof section (partner logos, testimonials)
 - [x] Add Sagar Jena's qualifications: BCom, Diploma in Fashion Designing
+- [x] Update CMA-Led Finance card text on CSR Partners page
+- [x] Add Biswajita Mallik's qualification: MBA in Human Resource
