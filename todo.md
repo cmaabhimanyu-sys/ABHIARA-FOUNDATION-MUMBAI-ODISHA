@@ -240,3 +240,5 @@
 - [x] Fix: Vision.tsx 2037 reference changed to 2030
 - [x] Full site audit: all previous fixes verified clean (logo left, nav right-aligned)
 - [x] Audit ALL pages for Option B alternating warm/dark sections — ALL CLEAN, text contrast fixed, comprehensive audit passed
+- [x] Add social proof / founder credibility section to Home page (Abhimanyu Mallik CMA, Mumbai)
+- [x] Push to GitHub as cmaabhimanyu-sys for Vercel auto-deploy

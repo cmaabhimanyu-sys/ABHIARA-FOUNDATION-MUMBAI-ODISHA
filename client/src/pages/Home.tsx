@@ -6,7 +6,7 @@
  */
 import { useEffect, useRef, useState, useMemo } from "react";
 import { Link } from "wouter";
-import { GraduationCap, HeartHandshake, Building2, ArrowRight } from "lucide-react";
+import { GraduationCap, HeartHandshake, Building2, ArrowRight, Shield, Award, MapPin, Briefcase } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -458,7 +458,113 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Smooth transition: light → gold CTA */}
+      {/* Smooth transition: light → dark */}
+      <div className="section-divider-light-to-dark" />
+
+      {/* ===== SOCIAL PROOF / FOUNDER CREDIBILITY ===== */}
+      <section className="py-20 md:py-28 bg-[#0A1628] relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='%23C9A84C' stroke-width='0.5'/%3E%3C/svg%3E")`,
+          backgroundSize: "60px 60px",
+        }} />
+
+        <div className="container relative z-10">
+          <AnimatedSection className="text-center mb-14">
+            <p className="section-label mb-4">WHY TRUST ABHIARA</p>
+            <h2 className="heading-xl text-white mb-4">
+              Led by <span className="text-[#C9A84C]">Professionals.</span> Driven by <span className="text-[#1A7F8E]">Purpose.</span>
+            </h2>
+            <div className="gradient-rule mx-auto mb-6" />
+            <p className="font-sans text-[15px] text-white/60 max-w-xl mx-auto">
+              Abhiara Foundation is not just another NGO. It is built on professional governance, financial accountability, and a deeply personal commitment to change.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-10 lg:gap-14 items-start">
+            {/* Founder Photo + Quick Bio */}
+            <AnimatedSection direction="left">
+              <div className="text-center lg:text-left">
+                <div className="w-48 h-48 md:w-56 md:h-56 mx-auto lg:mx-0 rounded-full overflow-hidden border-2 border-[#C9A84C]/30 mb-6">
+                  <img
+                    src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/abhimanyu-mallik-photo_f9777f21.png"
+                    alt="Abhimanyu Mallik - Founder, CMA"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="font-serif text-xl font-bold text-white mb-1">Abhimanyu Mallik</h3>
+                <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C] mb-2">FOUNDER &middot; DIRECTOR</p>
+                <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-[#1A7F8E]">
+                  CMA (Cost &amp; Management Accountant)
+                </p>
+                <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-white/40 mt-1 flex items-center justify-center lg:justify-start gap-1">
+                  <MapPin size={10} /> Mumbai, Maharashtra
+                </p>
+              </div>
+            </AnimatedSection>
+
+            {/* Credibility Grid */}
+            <AnimatedSection direction="right">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {/* Card 1: Professional Qualification */}
+                <div className="glass-card p-6">
+                  <Award size={20} className="text-[#C9A84C] mb-3" />
+                  <h4 className="font-serif text-base font-bold text-white mb-2">CMA-Qualified Governance</h4>
+                  <p className="font-sans text-[13px] text-white/55 leading-relaxed">
+                    The Institute of Cost Accountants of India (ICMAI) qualification ensures every rupee is tracked, reported, and audited to the highest professional standards.
+                  </p>
+                </div>
+
+                {/* Card 2: Corporate Experience */}
+                <div className="glass-card p-6">
+                  <Briefcase size={20} className="text-[#1A7F8E] mb-3" />
+                  <h4 className="font-serif text-base font-bold text-white mb-2">Corporate Finance Background</h4>
+                  <p className="font-sans text-[13px] text-white/55 leading-relaxed">
+                    Years of experience in corporate finance, budgeting, and compliance — now applied to transparent NGO operations and CSR fund management.
+                  </p>
+                </div>
+
+                {/* Card 3: Schedule VII Compliance */}
+                <div className="glass-card p-6">
+                  <Shield size={20} className="text-[#C9A84C] mb-3" />
+                  <h4 className="font-serif text-base font-bold text-white mb-2">Schedule VII Compliant</h4>
+                  <p className="font-sans text-[13px] text-white/55 leading-relaxed">
+                    Full compliance with Companies Act 2013, Schedule VII. Monthly impact reports, audited utilisation certificates, and complete documentation for CSR partners.
+                  </p>
+                </div>
+
+                {/* Card 4: Personal Journey */}
+                <div className="glass-card p-6">
+                  <MapPin size={20} className="text-[#1A7F8E] mb-3" />
+                  <h4 className="font-serif text-base font-bold text-white mb-2">Village to Metro Mumbai</h4>
+                  <p className="font-sans text-[13px] text-white/55 leading-relaxed">
+                    From a remote village in Odisha to professional life in Mumbai — the founder's own journey is the foundation's deepest motivation and proof of what is possible.
+                  </p>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/team"
+                  className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C] hover:text-[#B8942A] transition-colors"
+                >
+                  MEET THE FULL TEAM <ArrowRight size={12} />
+                </Link>
+                <Link
+                  href="/csr-partners"
+                  className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.15em] uppercase text-[#1A7F8E] hover:text-[#C9A84C] transition-colors"
+                >
+                  CSR PARTNERSHIP DETAILS <ArrowRight size={12} />
+                </Link>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* Smooth transition: dark → gold CTA */}
 
       {/* ===== S9: CONTACT CTA STRIP ===== */}
       <section className="py-16 md:py-20 bg-[#C9A84C]">
