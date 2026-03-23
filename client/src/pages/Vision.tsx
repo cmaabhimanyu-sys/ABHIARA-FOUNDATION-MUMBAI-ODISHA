@@ -182,11 +182,11 @@ export default function Vision() {
           <AnimatedSection className="text-center mb-16">
             <p className="section-label mb-4">MASTER TIMELINE</p>
             <h2 className="heading-xl text-white mb-4">
-              2025 <span className="text-[#C9A84C]">&rarr;</span> 2037
+              2025 <span className="text-[#C9A84C]">&rarr;</span> 2030
             </h2>
             <div className="gradient-rule mx-auto mb-6" />
             <p className="font-sans text-[15px] text-white/60 max-w-xl mx-auto">
-              From foundation to legacy — every year has a purpose.
+              From foundation to impact — every year has a purpose.
             </p>
           </AnimatedSection>
 

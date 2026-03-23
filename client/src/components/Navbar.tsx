@@ -54,7 +54,7 @@ export default function Navbar() {
             : "bg-transparent"
         }`}
       >
-        <div className="container flex items-center justify-between h-16 md:h-20">
+        <div className="container flex items-center h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <img
@@ -73,7 +73,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-6 ml-auto">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -106,7 +106,7 @@ export default function Navbar() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden w-10 h-10 flex items-center justify-center text-white"
+            className="lg:hidden ml-auto w-10 h-10 flex items-center justify-center text-white"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}

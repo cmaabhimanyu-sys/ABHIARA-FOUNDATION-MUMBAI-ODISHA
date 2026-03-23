@@ -236,3 +236,6 @@
 - [x] Add closing line replacement on Team page
 - [x] Push to GitHub to trigger Vercel deployment (commit 5a115cc as cmaabhimanyu-sys)
 - [x] Fix: Replace Abhimanyu Mallik's photo with correct one on Team page
+- [x] Fix: Reduce large gap between logo and nav links in Navbar (ml-auto on nav)
+- [x] Fix: Vision.tsx 2037 reference changed to 2030
+- [x] Full site audit: all previous fixes verified clean (logo left, nav right-aligned)
