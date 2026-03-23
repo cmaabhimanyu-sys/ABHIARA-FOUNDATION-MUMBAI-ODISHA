@@ -242,3 +242,14 @@
 - [x] Audit ALL pages for Option B alternating warm/dark sections — ALL CLEAN, text contrast fixed, comprehensive audit passed
 - [x] Add social proof / founder credibility section to Home page (Abhimanyu Mallik CMA, Mumbai)
 - [x] Push to GitHub as cmaabhimanyu-sys for Vercel auto-deploy
+- [ ] AUDIT: Verify Option B alternating warm/dark pattern on ALL 9 pages (Home, OurStory, Vision, Programs, Activities, Team, CsrPartners, Contact, Donate)
+- [ ] AUDIT: Fix any violations — light sections must use #FAF7F2 bg, navy #0A1628 headings, #333333 body text, white cards with shadow
+- [ ] Push audit fixes to GitHub as cmaabhimanyu-sys only
+- [x] Enhance Social Proof section: Add certification badges (CMA, Section 8, Schedule VII)
+- [x] Enhance Social Proof section: Add testimonial quotes from beneficiaries
+- [x] Enhance Social Proof section: Add partner logos with real company logos and CSR links
+- [x] Audit all 9 pages for Option B compliance
+- [ ] Push all fixes to GitHub as cmaabhimanyu-sys (pending)
+- [x] Add real company logos + CSR page links for: Tata Group, Infosys, Wipro, HDFC Bank, Reliance, Mahindra, Adani Foundation, JSW, Vedanta, NTPC
+- [x] Update CSR Partners page with company logos grid
+- [x] Update Home page social proof section with company logos

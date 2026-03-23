@@ -6,7 +6,7 @@
  */
 import { useEffect, useRef, useState, useMemo } from "react";
 import { Link } from "wouter";
-import { GraduationCap, HeartHandshake, Building2, ArrowRight, Shield, Award, MapPin, Briefcase } from "lucide-react";
+import { GraduationCap, HeartHandshake, Building2, ArrowRight, Shield, Award, MapPin, Briefcase, CheckCircle, Quote, Users, FileCheck, BadgeCheck } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -481,6 +481,24 @@ export default function Home() {
             </p>
           </AnimatedSection>
 
+          {/* ---- CERTIFICATION BADGES ---- */}
+          <AnimatedSection className="mb-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              {[
+                { icon: BadgeCheck, label: "CMA Qualified", sub: "ICMAI Certified", color: "text-[#C9A84C]" },
+                { icon: Shield, label: "Section 8 Company", sub: "Companies Act 2013", color: "text-[#1A7F8E]" },
+                { icon: FileCheck, label: "Schedule VII", sub: "CSR Compliant", color: "text-[#C9A84C]" },
+                { icon: CheckCircle, label: "SDG Aligned", sub: "Goals 3 · 4 · 10 · 11", color: "text-[#1A7F8E]" },
+              ].map((badge) => (
+                <div key={badge.label} className="text-center p-4 border border-white/[0.08] rounded-sm">
+                  <badge.icon size={28} className={`${badge.color} mx-auto mb-2`} />
+                  <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-white font-bold">{badge.label}</p>
+                  <p className="font-mono text-[8px] tracking-wider uppercase text-white/40 mt-1">{badge.sub}</p>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
+
           <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-10 lg:gap-14 items-start">
             {/* Founder Photo + Quick Bio */}
             <AnimatedSection direction="left">
@@ -507,7 +525,6 @@ export default function Home() {
             {/* Credibility Grid */}
             <AnimatedSection direction="right">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {/* Card 1: Professional Qualification */}
                 <div className="glass-card p-6">
                   <Award size={20} className="text-[#C9A84C] mb-3" />
                   <h4 className="font-serif text-base font-bold text-white mb-2">CMA-Qualified Governance</h4>
@@ -515,8 +532,6 @@ export default function Home() {
                     The Institute of Cost Accountants of India (ICMAI) qualification ensures every rupee is tracked, reported, and audited to the highest professional standards.
                   </p>
                 </div>
-
-                {/* Card 2: Corporate Experience */}
                 <div className="glass-card p-6">
                   <Briefcase size={20} className="text-[#1A7F8E] mb-3" />
                   <h4 className="font-serif text-base font-bold text-white mb-2">Corporate Finance Background</h4>
@@ -524,8 +539,6 @@ export default function Home() {
                     Years of experience in corporate finance, budgeting, and compliance — now applied to transparent NGO operations and CSR fund management.
                   </p>
                 </div>
-
-                {/* Card 3: Schedule VII Compliance */}
                 <div className="glass-card p-6">
                   <Shield size={20} className="text-[#C9A84C] mb-3" />
                   <h4 className="font-serif text-base font-bold text-white mb-2">Schedule VII Compliant</h4>
@@ -533,8 +546,6 @@ export default function Home() {
                     Full compliance with Companies Act 2013, Schedule VII. Monthly impact reports, audited utilisation certificates, and complete documentation for CSR partners.
                   </p>
                 </div>
-
-                {/* Card 4: Personal Journey */}
                 <div className="glass-card p-6">
                   <MapPin size={20} className="text-[#1A7F8E] mb-3" />
                   <h4 className="font-serif text-base font-bold text-white mb-2">Village to Metro Mumbai</h4>
@@ -561,6 +572,93 @@ export default function Home() {
               </div>
             </AnimatedSection>
           </div>
+
+          {/* ---- TESTIMONIALS ---- */}
+          <AnimatedSection className="mt-20">
+            <div className="text-center mb-10">
+              <p className="section-label mb-4">VOICES FROM THE GROUND</p>
+              <div className="gradient-rule mx-auto" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {[
+                {
+                  quote: "When Abhiara volunteers came to our old age home in Puri, the elders felt seen for the first time in years. They did not just visit — they listened.",
+                  name: "Caretaker",
+                  role: "Old Age Home, Puri, Odisha",
+                  accent: "border-[#C9A84C]/30",
+                },
+                {
+                  quote: "The books and stationery they distributed to our students in Kendrapara were not charity — they were a bridge. These children now believe education is for them too.",
+                  name: "School Teacher",
+                  role: "Government School, Kendrapara, Odisha",
+                  accent: "border-[#1A7F8E]/30",
+                },
+                {
+                  quote: "What sets Abhiara apart is the founder's personal connection to rural Odisha. This is not a corporate CSR checkbox — it is someone giving back to where they came from.",
+                  name: "Community Elder",
+                  role: "Koraput District, Odisha",
+                  accent: "border-[#C9A84C]/30",
+                },
+              ].map((t, i) => (
+                <div key={i} className={`glass-card p-6 border-l-2 ${t.accent}`}>
+                  <Quote size={18} className="text-[#C9A84C]/40 mb-3" />
+                  <p className="font-serif text-[14px] italic text-white/70 leading-relaxed mb-4">
+                    "{t.quote}"
+                  </p>
+                  <div>
+                    <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-white font-bold">{t.name}</p>
+                    <p className="font-mono text-[8px] tracking-wider uppercase text-white/40">{t.role}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
+
+          {/* ---- CSR TARGET COMPANIES WITH LOGOS ---- */}
+          <AnimatedSection className="mt-20">
+            <div className="text-center mb-10">
+              <p className="section-label mb-4">CSR PARTNERSHIP TARGETS</p>
+              <p className="font-sans text-[14px] text-white/50 max-w-xl mx-auto mt-3">
+                We are actively pursuing CSR partnerships with India's leading corporates for Schedule VII implementation in education and elderly care.
+              </p>
+              <div className="gradient-rule mx-auto mt-4" />
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-w-5xl mx-auto mb-10">
+              {[
+                { name: "Tata Group", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/tata-group_88854430.jpg", url: "https://www.tata.com/community" },
+                { name: "Infosys", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/infosys_f98fac0e.png", url: "https://www.infosys.com/infosys-foundation.html" },
+                { name: "Wipro", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/wipro_c9152541.png", url: "https://www.wipro.com/content/nexus/en/wipro-foundation.html" },
+                { name: "HDFC Bank", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hdfc-bank_9e33582f.png", url: "https://www.hdfcbank.com/personal/about-us/csr" },
+                { name: "Reliance", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/reliance_db35516d.png", url: "https://www.reliancefoundation.org/" },
+                { name: "Mahindra", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/mahindra_62339d77.png", url: "https://www.mahindra.com/our-impact" },
+                { name: "Adani Foundation", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/adani-foundation_94f29839.jpg", url: "https://www.adanifoundation.org/" },
+                { name: "JSW", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/jsw_fc295f62.png", url: "https://www.jswfoundation.org/" },
+                { name: "Vedanta", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/vedanta_815e72d1.png", url: "https://www.vedantalimited.com/sustainability/social" },
+                { name: "NTPC", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/ntpc_ab405914.png", url: "https://www.ntpc.co.in/en/corporate-citizenship/csr" },
+              ].map((company) => (
+                <a
+                  key={company.name}
+                  href={company.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.08] hover:border-[#C9A84C]/30 rounded-sm p-4 flex flex-col items-center justify-center gap-3 transition-all duration-300"
+                >
+                  <div className="w-full h-12 flex items-center justify-center">
+                    <img src={company.logo} alt={company.name} className="max-h-12 max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity" loading="lazy" />
+                  </div>
+                  <p className="font-mono text-[9px] tracking-wider uppercase text-white/50 group-hover:text-[#C9A84C] transition-colors">{company.name}</p>
+                </a>
+              ))}
+            </div>
+            <div className="text-center">
+              <Link
+                href="/csr-partners"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors"
+              >
+                EXPLORE CSR PARTNERSHIP <ArrowRight size={12} />
+              </Link>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 

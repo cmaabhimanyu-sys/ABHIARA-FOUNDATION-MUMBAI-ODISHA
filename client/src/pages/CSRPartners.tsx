@@ -19,10 +19,10 @@ function BudgetBar({ label, amount, pct, color }: { label: string; amount: strin
   return (
     <div className="mb-5">
       <div className="flex justify-between mb-1.5">
-        <span className="font-sans text-[13px] light-body">{label}</span>
-        <span className="font-mono text-[11px] light-muted">{amount}</span>
+        <span className="font-sans text-[13px] text-white/70">{label}</span>
+        <span className="font-mono text-[11px] text-white/40">{amount}</span>
       </div>
-      <div className="h-2 bg-[#0A1628]/10 rounded-full overflow-hidden">
+      <div className="h-2 bg-white/10 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${pct}%` }}
@@ -139,17 +139,17 @@ export default function CSRPartners() {
         </div>
       </section>
 
-      {/* ===== S3: BUDGET TRANSPARENCY ===== */}
-      <section className="py-20 md:py-28 section-light">
+      {/* ===== S3: BUDGET TRANSPARENCY (DARK) ===== */}
+      <section className="py-20 md:py-28 bg-[#0A1628]">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <AnimatedSection direction="left">
               <p className="section-label mb-4">BUDGET TRANSPARENCY</p>
-              <h2 className="heading-lg light-heading mb-4">
+              <h2 className="heading-lg text-white mb-4">
                 Year 1 Budget: <span className="text-[#C9A84C]">₹30,00,000</span>
               </h2>
               <div className="gradient-rule mb-8" />
-              <p className="font-sans text-[15px] light-body leading-relaxed mb-8">
+              <p className="font-sans text-[15px] text-white/60 leading-relaxed mb-8">
                 Every rupee is accounted for. Our budget is public, audited, and available for review by any CSR partner.
               </p>
 
@@ -161,7 +161,7 @@ export default function CSRPartners() {
             </AnimatedSection>
 
             <AnimatedSection direction="right">
-              <div className="light-card-gold p-8">
+              <div className="glass-card-gold p-8">
                 <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-4">CSR DELIVERABLES</p>
                 <ul className="space-y-4">
                   {[
@@ -176,7 +176,7 @@ export default function CSRPartners() {
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <CheckCircle2 size={16} className="text-[#C9A84C] mt-0.5 shrink-0" />
-                      <span className="font-sans text-[14px] light-body">{item}</span>
+                      <span className="font-sans text-[14px] text-white/70">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -252,16 +252,31 @@ export default function CSRPartners() {
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-w-5xl mx-auto">
             {[
-              "Tata Group", "Infosys", "Wipro", "HDFC Bank", "Reliance",
-              "Mahindra", "Adani Foundation", "JSW", "Vedanta", "NTPC",
+              { name: "Tata Group", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/tata-group_88854430.jpg", url: "https://www.tata.com/community" },
+              { name: "Infosys", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/infosys_f98fac0e.png", url: "https://www.infosys.com/infosys-foundation.html" },
+              { name: "Wipro", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/wipro_c9152541.png", url: "https://www.wipro.com/content/nexus/en/wipro-foundation.html" },
+              { name: "HDFC Bank", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hdfc-bank_9e33582f.png", url: "https://www.hdfcbank.com/personal/about-us/csr" },
+              { name: "Reliance", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/reliance_db35516d.png", url: "https://www.reliancefoundation.org/" },
+              { name: "Mahindra", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/mahindra_62339d77.png", url: "https://www.mahindra.com/our-impact" },
+              { name: "Adani Foundation", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/adani-foundation_94f29839.jpg", url: "https://www.adanifoundation.org/" },
+              { name: "JSW", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/jsw_fc295f62.png", url: "https://www.jswfoundation.org/" },
+              { name: "Vedanta", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/vedanta_815e72d1.png", url: "https://www.vedantalimited.com/sustainability/social" },
+              { name: "NTPC", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/ntpc_ab405914.png", url: "https://www.ntpc.co.in/en/corporate-citizenship/csr" },
             ].map((company, i) => (
-              <AnimatedSection key={company} delay={i * 0.04}>
-                <div className="light-card p-4 text-center hover:border-[#C9A84C]/30 transition-colors">
-                  <Building2 size={20} className="text-[#C9A84C]/40 mx-auto mb-2" />
-                  <p className="font-sans text-[13px] light-body">{company}</p>
-                </div>
+              <AnimatedSection key={company.name} delay={i * 0.04}>
+                <a
+                  href={company.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group light-card p-4 text-center hover:border-[#C9A84C]/30 transition-all duration-300 flex flex-col items-center justify-center gap-3 h-full"
+                >
+                  <div className="w-full h-12 flex items-center justify-center">
+                    <img src={company.logo} alt={company.name} className="max-h-12 max-w-full object-contain opacity-60 group-hover:opacity-100 transition-opacity" loading="lazy" />
+                  </div>
+                  <p className="font-sans text-[12px] light-heading font-semibold group-hover:text-[#C9A84C] transition-colors">{company.name}</p>
+                </a>
               </AnimatedSection>
             ))}
           </div>
