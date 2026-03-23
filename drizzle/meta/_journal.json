@@ -22,6 +22,20 @@
       "when": 1774170945878,
       "tag": "0002_salty_dreadnoughts",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1774257444102,
+      "tag": "0003_smooth_mercury",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1774258180174,
+      "tag": "0004_damp_tempest",
+      "breakpoints": true
     }
   ]
 }

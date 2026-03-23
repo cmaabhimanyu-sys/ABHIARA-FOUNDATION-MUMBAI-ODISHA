@@ -17,6 +17,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Team = lazy(() => import("./pages/Team"));
 const Donate = lazy(() => import("./pages/Donate"));
 const ThankYou = lazy(() => import("./pages/ThankYou"));
+const Admin = lazy(() => import("./pages/Admin"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -66,6 +67,7 @@ function Router() {
         <Route path="/team" component={Team} />
         <Route path="/donate" component={Donate} />
         <Route path="/thank-you" component={ThankYou} />
+        <Route path="/admin" component={Admin} />
         {/* Legacy routes redirect to unified Activities page */}
         <Route path="/impact-gallery" component={GalleryRedirect} />
         <Route path="/blog" component={BlogRedirect} />

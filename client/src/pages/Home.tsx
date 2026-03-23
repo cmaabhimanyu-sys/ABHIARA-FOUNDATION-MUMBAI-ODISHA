@@ -4,7 +4,7 @@
  * Vidyapeeth Teaser, Activities Preview, Contact CTA
  * NO donation buttons. All CTAs → Contact or relevant pages.
  */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { Link } from "wouter";
 import { GraduationCap, HeartHandshake, Building2, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -13,6 +13,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import CounterAnimation from "@/components/CounterAnimation";
 import { motion } from "framer-motion";
 import SEO from "@/components/SEO";
+import { trpc } from "@/lib/trpc";
 
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hero-dawn-PUfjxrVLdG8a3bgPJiAovi.webp";
 const EDUCATION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-village-session_60ea6065.jpeg";
@@ -21,6 +22,45 @@ const COMMUNITY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/
 
 export default function Home() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  // Fetch CMS settings and activities for dynamic content
+  const { data: cmsSettings = [] } = trpc.cms.settings.list.useQuery();
+  const { data: cmsActivities = [] } = trpc.cms.activities.listPublished.useQuery();
+
+  const getSetting = (key: string, fallback: string) => {
+    const setting = cmsSettings.find((s: any) => s.settingKey === key);
+    return setting ? setting.settingValue : fallback;
+  };
+
+  const getSettingNum = (key: string, fallback: number) => {
+    const setting = cmsSettings.find((s: any) => s.settingKey === key);
+    if (!setting) return fallback;
+    const num = parseInt(setting.settingValue.replace(/[^0-9]/g, ''), 10);
+    return isNaN(num) ? fallback : num;
+  };
+
+  // Dynamic stats from CMS
+  const heroStats = useMemo(() => [
+    { value: getSettingNum("stat_students_reached", 50), suffix: "+", label: "Students Reached" },
+    { value: getSettingNum("stat_elders_visited", 40), suffix: "+", label: "Elders Visited" },
+    { value: getSettingNum("stat_activities_completed", 2), suffix: "", label: "Activities Completed" },
+    { value: getSettingNum("stat_students_target", 500), suffix: "+", label: "Students \u00b7 Target 2026" },
+  ], [cmsSettings]);
+
+  // Dynamic activities preview from CMS
+  const activityPreviews = useMemo(() => {
+    if (cmsActivities.length > 0) {
+      return cmsActivities.slice(0, 2).map((a: any) => ({
+        cat: a.category === "elderly" ? "Elderly Care" : "Education",
+        title: `${a.title} \u2014 ${a.date}`,
+        desc: a.description.length > 200 ? a.description.slice(0, 200) + "..." : a.description,
+      }));
+    }
+    return [
+      { cat: "Elderly Care", title: "Old Age Home Visit \u2014 October 2025", desc: "Visited Hope is Life Old Age Home in Puri, Odisha. Distributed essentials and spent quality time with 40+ elderly residents." },
+      { cat: "Education", title: "Book Distribution \u2014 November 2025", desc: "Distributed books and study materials to 50+ tribal children in Kendrapara, Odisha. Spent time with students and families." },
+    ];
+  }, [cmsActivities]);
 
   return (
     <div className="min-h-screen bg-[#0A1628]">
@@ -141,12 +181,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 1.3 }}
             className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto"
           >
-            {[
-              { value: 50, suffix: "+", label: "Students Reached" },
-              { value: 40, suffix: "+", label: "Elders Visited" },
-              { value: 2, suffix: "", label: "Activities Completed" },
-              { value: 500, suffix: "+", label: "Students · Target 2026" },
-            ].map((stat) => (
+            {heroStats.map((stat) => (
               <div key={stat.label} className="glass-card p-4 text-center">
                 <p className="font-serif text-2xl md:text-3xl font-bold text-[#C9A84C]">
                   <CounterAnimation end={stat.value} prefix="" suffix={stat.suffix} />
@@ -197,7 +232,7 @@ export default function Home() {
             <AnimatedSection delay={0}>
               <div className="glass-card-gold p-8 text-center h-full">
                 <p className="font-serif text-5xl md:text-6xl font-bold text-[#C9A84C] mb-2">
-                  <CounterAnimation end={50} suffix="+" />
+                  <CounterAnimation end={getSettingNum("stat_students_reached", 50)} suffix="+" />
                 </p>
                 <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/70 mb-3">
                   Students Supported
@@ -212,7 +247,7 @@ export default function Home() {
             <AnimatedSection delay={0.1}>
               <div className="glass-card p-8 text-center h-full">
                 <p className="font-serif text-5xl md:text-6xl font-bold text-[#1A7F8E] mb-2">
-                  <CounterAnimation end={25} suffix="+" />
+                  <CounterAnimation end={getSettingNum("stat_elders_visited", 25)} suffix="+" />
                 </p>
                 <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/70 mb-3">
                   Elderly Families Enrolled
@@ -232,7 +267,7 @@ export default function Home() {
                   </span>
                 </div>
                 <p className="font-serif text-5xl md:text-6xl font-bold text-[#C9A84C] mb-2">
-                  <CounterAnimation end={500} suffix="+" />
+                  <CounterAnimation end={getSettingNum("stat_students_target", 500)} suffix="+" />
                 </p>
                 <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/70 mb-3">
                   Students · Target 2026
@@ -432,10 +467,7 @@ export default function Home() {
 
           {/* Activity Highlights */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
-            {[
-              { cat: "Elderly Care", title: "Old Age Home Visit \u2014 October 2025", desc: "Visited Hope is Life Old Age Home in Puri, Odisha. Distributed essentials and spent quality time with 40+ elderly residents." },
-              { cat: "Education", title: "Book Distribution \u2014 November 2025", desc: "Distributed books and study materials to 50+ tribal children in Kendrapara, Odisha. Spent time with students and families." },
-            ].map((item, i) => (
+            {activityPreviews.map((item: any, i: number) => (
               <AnimatedSection key={i} delay={i * 0.06}>
                 <div className="glass-card p-6 h-full">
                   <span className={`inline-block font-mono text-[8px] tracking-[0.15em] uppercase px-2 py-0.5 rounded-sm mb-3 ${item.cat === 'Elderly Care' ? 'bg-[#C9A84C]/10 text-[#C9A84C]' : 'bg-[#1A7F8E]/10 text-[#1A7F8E]'}`}>

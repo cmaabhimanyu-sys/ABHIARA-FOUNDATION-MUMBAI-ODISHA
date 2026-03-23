@@ -146,3 +146,24 @@
 - [x] Add "Written by Abhimanyu Mallik" to Truth of Life quote attribution on Home and Donate (only 2 pages have the quote)
 - [x] Add Truth of Life quote with "Written by Abhimanyu Mallik" to Programs page
 - [x] Add Truth of Life quote with "Written by Abhimanyu Mallik" to CSRPartners page
+- [x] CMS: Design database schema for activities, gallery, blog, youtube, social_links tables
+- [x] CMS: Create and push database migrations
+- [x] CMS: Build tRPC CRUD procedures (admin-protected) for all content types
+- [x] CMS: Build Admin Dashboard page with sidebar navigation
+- [x] CMS: Activities Manager — add/edit/delete with photo upload, date, location
+- [x] CMS: Gallery Manager — upload/manage photos with categories
+- [x] CMS: Blog/Updates Manager — write/publish/edit posts
+- [x] CMS: YouTube Videos Manager — paste links, auto-embed
+- [x] CMS: Social Media Links Manager — update LinkedIn, WhatsApp, Instagram, etc.
+- [x] CMS: Update public Activities page to fetch from database
+- [x] CMS: Update public Gallery tab to fetch from database
+- [x] CMS: Update public Blog/Updates tab to fetch from database
+- [x] CMS: Display YouTube videos on public site
+- [x] CMS: Display social media links from database
+- [x] CMS: Write vitest tests for CRUD procedures
+- [x] CMS: Site Settings Manager — homepage stats, contact info, configurable values
+- [x] CMS: Dynamic Home page stats from CMS settings
+- [x] CMS: Dynamic Home page activities preview from CMS
+- [x] CMS: Dynamic Footer social links from CMS
+- [x] CMS: Dynamic Footer contact info from CMS settings
+- [x] CMS: Redirect /gallery and /blog to Activities page tabs

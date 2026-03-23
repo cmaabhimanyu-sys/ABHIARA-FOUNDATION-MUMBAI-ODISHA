@@ -4,10 +4,12 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { addNewsletterSubscriber, createContactInquiry, createVolunteerSubmission } from "./db";
 import { notifyOwner } from "./_core/notification";
+import { cmsRouter } from "./cms-router";
 import { z } from "zod";
 
 export const appRouter = router({
   system: systemRouter,
+  cms: cmsRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

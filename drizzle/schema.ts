@@ -78,3 +78,116 @@ export const volunteerSubmissions = mysqlTable("volunteer_submissions", {
 
 export type VolunteerSubmission = typeof volunteerSubmissions.$inferSelect;
 export type InsertVolunteerSubmission = typeof volunteerSubmissions.$inferInsert;
+
+// ===== CMS CONTENT TABLES =====
+
+/**
+ * Activities — managed from admin dashboard, displayed on public Activities page.
+ */
+export const activities = mysqlTable("activities", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 500 }).notNull(),
+  description: text("description").notNull(),
+  date: varchar("date", { length: 100 }).notNull(),
+  location: varchar("location", { length: 500 }).notNull(),
+  category: mysqlEnum("category", ["education", "elderly", "community", "csr"]).notNull(),
+  imageUrl: text("imageUrl"),
+  sdgTags: varchar("sdgTags", { length: 255 }),
+  beneficiariesCount: varchar("beneficiariesCount", { length: 100 }),
+  isPublished: boolean("isPublished").default(true).notNull(),
+  sortOrder: int("sortOrder").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Activity = typeof activities.$inferSelect;
+export type InsertActivity = typeof activities.$inferInsert;
+
+/**
+ * Gallery Photos — managed from admin dashboard, displayed on Gallery tab.
+ */
+export const galleryPhotos = mysqlTable("gallery_photos", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 500 }).notNull(),
+  description: text("description"),
+  imageUrl: text("imageUrl").notNull(),
+  category: mysqlEnum("category", ["education", "elderly", "events", "community"]).notNull(),
+  location: varchar("location", { length: 500 }),
+  dateTaken: varchar("dateTaken", { length: 100 }),
+  isPublished: boolean("isPublished").default(true).notNull(),
+  sortOrder: int("sortOrder").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type GalleryPhoto = typeof galleryPhotos.$inferSelect;
+export type InsertGalleryPhoto = typeof galleryPhotos.$inferInsert;
+
+/**
+ * Blog Posts — managed from admin dashboard, displayed on Updates tab.
+ */
+export const blogPosts = mysqlTable("blog_posts", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 500 }).notNull(),
+  excerpt: text("excerpt").notNull(),
+  content: text("content").notNull(),
+  imageUrl: text("imageUrl"),
+  author: varchar("author", { length: 255 }).default("Abhimanyu Mallik").notNull(),
+  category: mysqlEnum("category", ["education", "elderly", "csr", "announcement", "event"]).notNull(),
+  tags: varchar("tags", { length: 500 }),
+  isPublished: boolean("isPublished").default(true).notNull(),
+  publishedAt: timestamp("publishedAt").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type BlogPost = typeof blogPosts.$inferSelect;
+export type InsertBlogPost = typeof blogPosts.$inferInsert;
+
+/**
+ * YouTube Videos — paste link from admin, auto-embed on public site.
+ */
+export const youtubeVideos = mysqlTable("youtube_videos", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 500 }).notNull(),
+  youtubeUrl: text("youtubeUrl").notNull(),
+  description: text("description"),
+  category: mysqlEnum("category", ["education", "elderly", "event", "documentary", "other"]).notNull(),
+  isPublished: boolean("isPublished").default(true).notNull(),
+  sortOrder: int("sortOrder").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type YoutubeVideo = typeof youtubeVideos.$inferSelect;
+export type InsertYoutubeVideo = typeof youtubeVideos.$inferInsert;
+
+/**
+ * Social Media Links — managed from admin, displayed in footer/contact.
+ */
+export const socialLinks = mysqlTable("social_links", {
+  id: int("id").autoincrement().primaryKey(),
+  platform: varchar("platform", { length: 100 }).notNull().unique(),
+  url: text("url").notNull(),
+  label: varchar("label", { length: 255 }),
+  isActive: boolean("isActive").default(true).notNull(),
+  sortOrder: int("sortOrder").default(0).notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type SocialLink = typeof socialLinks.$inferSelect;
+export type InsertSocialLink = typeof socialLinks.$inferInsert;
+
+/**
+ * Site Settings — key-value store for homepage stats, text snippets, etc.
+ * Managed from admin dashboard.
+ */
+export const siteSettings = mysqlTable("site_settings", {
+  id: int("id").autoincrement().primaryKey(),
+  settingKey: varchar("settingKey", { length: 255 }).notNull().unique(),
+  settingValue: text("settingValue").notNull(),
+  label: varchar("label", { length: 500 }),
+  category: varchar("category", { length: 100 }).default("general").notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type SiteSetting = typeof siteSettings.$inferSelect;
+export type InsertSiteSetting = typeof siteSettings.$inferInsert;
