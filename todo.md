@@ -239,3 +239,4 @@
 - [x] Fix: Reduce large gap between logo and nav links in Navbar (ml-auto on nav)
 - [x] Fix: Vision.tsx 2037 reference changed to 2030
 - [x] Full site audit: all previous fixes verified clean (logo left, nav right-aligned)
+- [x] Audit ALL pages for Option B alternating warm/dark sections — ALL CLEAN, text contrast fixed, comprehensive audit passed

@@ -541,8 +541,8 @@ function GalleryTab() {
                     <span className={`inline-block w-fit px-2 py-0.5 rounded-sm font-mono text-[8px] tracking-wider uppercase mb-2 ${
                       img.category === "education" ? "bg-[#1A7F8E]/30 text-[#1A7F8E]" : img.category === "elderly" ? "bg-[#C9A84C]/30 text-[#C9A84C]" : "bg-white/10 text-white/70"
                     }`}>{img.category}</span>
-                    <p className="font-sans text-[13px] text-white/90 leading-relaxed">{img.caption}</p>
-                    <p className="font-mono text-[9px] tracking-wider uppercase text-white/40 mt-2">{img.location}</p>
+                    <p className="font-sans text-[13px] light-heading leading-relaxed">{img.caption}</p>
+                    <p className="font-mono text-[9px] tracking-wider uppercase light-muted mt-2">{img.location}</p>
                   </div>
                 </motion.div>
               ))}

@@ -331,13 +331,13 @@
 
   /* Light section text helpers */
   .light-heading {
-    color: #1A1A2E;
+    color: #0A1628;
   }
   .light-body {
-    color: #4A4A5A;
+    color: #333333;
   }
   .light-muted {
-    color: #7A7A8A;
+    color: #666666;
   }
 
   /* Section label on light bg */
