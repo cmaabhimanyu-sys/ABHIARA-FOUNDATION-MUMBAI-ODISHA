@@ -226,7 +226,7 @@ export default function Team() {
                 name: "Sagar Jena",
                 role: "Education Advisor",
                 qualifications: "BCom, Diploma in Fashion Designing",
-                photo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/sagar-jena-photo_a0596a76.png",
+                photo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/sagar-jena-photo_0935b6dc.png",
                 desc: "Founder of Ama Chatasali and rights activist. Mr. Jena brings grassroots advocacy experience and a deep commitment to educational equity and accountability in public institutions.",
                 icon: GraduationCap,
                 accent: "teal",
