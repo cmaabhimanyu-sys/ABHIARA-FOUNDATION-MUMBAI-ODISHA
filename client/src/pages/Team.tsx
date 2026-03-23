@@ -29,7 +29,7 @@ export default function Team() {
       <SEO
         title="Our Team — Abhiara Foundation"
         description="Meet the people behind Abhiara Foundation — Founder Abhimanyu Mallik, Legal Advisor Advocate Sujit Sahu, and the team building a fearless path."
-        image="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/abhimanyu-mallik-photo_3520ef46.png"
+        image="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/abhimanyu-mallik-photo_f9777f21.png"
         url="https://abhiarafoundation.com/team"
       />
       <Navbar />
@@ -83,7 +83,7 @@ export default function Team() {
               <div className="light-card-gold p-8 h-full">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-[#C9A84C]/30">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/abhimanyu-mallik-photo_3520ef46.png" alt="Abhimanyu Mallik - Founder, Abhiara Foundation" className="w-full h-full object-cover" loading="lazy" />
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/abhimanyu-mallik-photo_f9777f21.png" alt="Abhimanyu Mallik - Founder, Abhiara Foundation" className="w-full h-full object-cover" loading="lazy" />
                   </div>
                   <div>
                     <h3 className="font-serif text-xl font-bold light-heading">

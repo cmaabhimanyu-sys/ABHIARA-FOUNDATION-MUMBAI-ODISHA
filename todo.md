@@ -234,4 +234,5 @@
 - [x] Remove Aradhana Future Leadership block from Vision.tsx
 - [x] Remove Aradhana Future Leadership block from Home.tsx (already clean)
 - [x] Add closing line replacement on Team page
-- [ ] Push to GitHub to trigger Vercel deployment
+- [x] Push to GitHub to trigger Vercel deployment (commit 5a115cc as cmaabhimanyu-sys)
+- [x] Fix: Replace Abhimanyu Mallik's photo with correct one on Team page
