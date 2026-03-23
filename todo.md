@@ -172,3 +172,6 @@
 - [x] Seed CMS with existing activities, gallery photos, blog posts, stats, social links
 - [x] Make Programs page dynamic with CMS settings
 - [x] Make Contact page dynamic with CMS settings (phone, email, WhatsApp)
+- [x] Make Our Story page dynamic with CMS settings (founder story, timeline, quotes)
+- [x] Make Vision page dynamic with CMS settings (mission, vision, values, SDGs)
+- [x] Seed CMS with Our Story and Vision page content defaults
