@@ -208,3 +208,6 @@
 - [x] Add Sagar Jena's qualifications: BCom, Diploma in Fashion Designing
 - [x] Update CMA-Led Finance card text on CSR Partners page
 - [x] Add Biswajita Mallik's qualification: MBA in Human Resource
+- [x] Add Abhimanyu Mallik's CMA qualification to Founder card on Team page
+- [x] Upload Abhimanyu Mallik's profile photo to Team page
+- [x] Upload Sagar Jena's profile photo to Team page

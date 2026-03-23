@@ -29,7 +29,7 @@ export default function Team() {
       <SEO
         title="Our Team — Abhiara Foundation"
         description="Meet the people behind Abhiara Foundation — Founder Abhimanyu Mallik, Legal Advisor Advocate Sujit Sahu, and the team building a fearless path."
-        image="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/founder-abhimanyu-mallik_cfb3b1d3.png"
+        image="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/abhimanyu-mallik-photo_3520ef46.png"
         url="https://abhiarafoundation.com/team"
       />
       <Navbar />
@@ -83,7 +83,7 @@ export default function Team() {
               <div className="light-card-gold p-8 h-full">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-[#C9A84C]/30">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/founder-abhimanyu-mallik_cfb3b1d3.png" alt="Abhimanyu Mallik - Founder, Abhiara Foundation" className="w-full h-full object-cover" loading="lazy" />
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/abhimanyu-mallik-photo_3520ef46.png" alt="Abhimanyu Mallik - Founder, Abhiara Foundation" className="w-full h-full object-cover" loading="lazy" />
                   </div>
                   <div>
                     <h3 className="font-serif text-xl font-bold light-heading">
@@ -91,6 +91,9 @@ export default function Team() {
                     </h3>
                     <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C]">
                       Founder & Managing Director · CMA
+                    </p>
+                    <p className="font-mono text-[10px] tracking-wider text-[#C9A84C]/70 mt-1">
+                      CMA (Cost & Management Accountant)
                     </p>
                   </div>
                 </div>
@@ -223,6 +226,7 @@ export default function Team() {
                 name: "Sagar Jena",
                 role: "Education Advisor",
                 qualifications: "BCom, Diploma in Fashion Designing",
+                photo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/sagar-jena-photo_a0596a76.png",
                 desc: "Founder of Ama Chatasali and rights activist. Mr. Jena brings grassroots advocacy experience and a deep commitment to educational equity and accountability in public institutions.",
                 icon: GraduationCap,
                 accent: "teal",
@@ -250,22 +254,28 @@ export default function Team() {
             ].map((advisor, i) => (
               <AnimatedSection key={i} delay={i * 0.1}>
                 <div className="glass-card p-6 h-full text-center">
-                  <div
-                    className={`w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center ${
-                      advisor.accent === "gold"
-                        ? "bg-[#C9A84C]/10"
-                        : "bg-[#1A7F8E]/10"
-                    }`}
-                  >
-                    <advisor.icon
-                      size={24}
-                      className={
+                  {(advisor as any).photo ? (
+                    <div className="w-14 h-14 rounded-full mx-auto mb-4 overflow-hidden border-2 border-[#C9A84C]/30">
+                      <img src={(advisor as any).photo} alt={advisor.name} className="w-full h-full object-cover" loading="lazy" />
+                    </div>
+                  ) : (
+                    <div
+                      className={`w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center ${
                         advisor.accent === "gold"
-                          ? "text-[#C9A84C]"
-                          : "text-[#1A7F8E]"
-                      }
-                    />
-                  </div>
+                          ? "bg-[#C9A84C]/10"
+                          : "bg-[#1A7F8E]/10"
+                      }`}
+                    >
+                      <advisor.icon
+                        size={24}
+                        className={
+                          advisor.accent === "gold"
+                            ? "text-[#C9A84C]"
+                            : "text-[#1A7F8E]"
+                        }
+                      />
+                    </div>
+                  )}
                   <h3 className={`font-serif text-lg font-bold mb-1 ${(advisor as any).announced ? 'text-white' : 'text-white/30'}`}>
                     {advisor.name}
                   </h3>
