@@ -1,7 +1,7 @@
 /*
  * Abhiara Foundation — Vision Page V2.0 (Dynamic CMS)
  * The founder's complete plan: Education, Elderly Care, CSR Implementation,
- * Abhiara Vidyapeeth within 5 years, Aradhana becomes Trustee at age 18 by 2037.
+ * Abhiara Vidyapeeth within 5 years.
  * All content fetched from CMS with hardcoded fallback.
  */
 import { useEffect, useMemo } from "react";
@@ -20,7 +20,6 @@ import {
   BookOpen,
   Heart,
   Landmark,
-  Crown,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -36,7 +35,6 @@ const PILLAR_ICONS: Record<string, any> = {
   "Elderly Care": HeartHandshake,
   "CSR Implementation": Building2,
   "Abhiara Vidyapeeth": School,
-  "Aradhana — Future Trustee": Crown,
 };
 
 const TIMELINE_ICONS: Record<string, any> = {
@@ -45,7 +43,7 @@ const TIMELINE_ICONS: Record<string, any> = {
   "Land & Plan": MapPin,
   "Build the School": School,
   "Vidyapeeth Opens": GraduationCap,
-  "Aradhana Becomes Trustee": Crown,
+
 };
 
 // Fallback data
@@ -55,7 +53,6 @@ const FALLBACK_PILLARS = [
   { title: "Elderly Care", desc: "Companion networks, quarterly health camps, legal aid for pension and property rights. Old age home visits in Puri and rural Odisha village outreach.", sdg: "SDG 3", accent: "gold" },
   { title: "CSR Implementation", desc: "End-to-end CSR project execution for corporates. Monthly impact reports, audited utilisation statements, and Schedule VII compliance.", sdg: "SDG 10 + 11", accent: "teal" },
   { title: "Abhiara Vidyapeeth", desc: "A full-fledged school in the heart of tribal Odisha \u2014 CBSE affiliated, built within 5 years. The flagship dream of the foundation.", sdg: "SDG 4", accent: "gold" },
-  { title: "Aradhana \u2014 Future Trustee", desc: "By 2037, Aradhana turns 18 and becomes the youngest trustee of Abhiara Foundation \u2014 carrying forward the legacy of fearless light.", sdg: "2037", accent: "teal" },
 ];
 
 const FALLBACK_TIMELINE = [
@@ -64,7 +61,6 @@ const FALLBACK_TIMELINE = [
   { year: "2027", title: "Land & Plan", items: ["Acquire land for Abhiara Vidyapeeth in tribal Odisha", "Begin architectural planning and CBSE affiliation process", "Expand to neighbouring states (Chhattisgarh, Jharkhand)", "2,000+ students supported across programmes", "CSR portfolio reaches \u20b91 Cr+"], active: false },
   { year: "2028", title: "Build the School", items: ["Construction of Abhiara Vidyapeeth begins", "Recruit founding faculty and staff", "CBSE affiliation secured", "Pan-India CSR implementation partnerships", "5,000+ students impacted across all programmes"], active: false },
   { year: "2029\u20132030", title: "Vidyapeeth Opens", items: ["First batch of students enrolled at Abhiara Vidyapeeth", "Residential school with free education for tribal children", "Digital learning infrastructure fully operational", "Abhiara Foundation becomes a recognised national NGO", "10,000+ lives impacted across India"], active: false },
-  { year: "2037", title: "Aradhana Becomes Trustee", items: ["Aradhana turns 18 \u2014 becomes the youngest trustee", "Abhiara Vidyapeeth is a thriving institution", "Foundation operates across multiple states", "The legacy of fearless light is passed forward", "A father\u2019s promise fulfilled \u2014 a daughter\u2019s journey begins"], active: false },
 ];
 
 const FALLBACK_TARGETS = [
@@ -107,15 +103,14 @@ export default function Vision() {
     } catch { return FALLBACK_TARGETS; }
   }, [cmsSettings]);
 
-  const heroDesc = getSetting("vision_hero_desc", "A clear, time-bound plan to support poor and underprivileged students, care for the elderly, implement CSR projects at scale, build Abhiara Vidyapeeth within 5 years, and pass the torch to Aradhana by 2037.");
-  const aradhanaDesc = getSetting("vision_aradhana_desc", "When Aradhana turns 18 in 2037, she becomes the youngest trustee of Abhiara Foundation. The foundation that bears her name \u2014 ARA, a ray of sacred light \u2014 will be hers to lead. A father\u2019s courage meets a daughter\u2019s destiny.");
-  const aradhanaQuote = getSetting("vision_aradhana_quote", "Every child we educate today is a seed planted for the world Aradhana will inherit.");
+  const heroDesc = getSetting("vision_hero_desc", "A clear, time-bound plan to support poor and underprivileged students, care for the elderly, implement CSR projects at scale, and build Abhiara Vidyapeeth within 5 years.");
+
 
   return (
     <div className="min-h-screen bg-[#0A1628]">
       <SEO
-        title="Vision 2037 — Abhiara Foundation"
-        description="Abhiara Foundation's 12-year roadmap to transform education and elderly care across India. By 2037, Aradhana becomes the youngest trustee."
+        title="Vision — Abhiara Foundation"
+        description="Abhiara Foundation's roadmap to transform education and elderly care across India. Building Abhiara Vidyapeeth within 5 years."
         url="https://abhiarafoundation.com/vision"
       />
       <Navbar />
@@ -247,48 +242,7 @@ export default function Vision() {
         </div>
       </section>
 
-      {/* ===== ARADHANA 2037 HIGHLIGHT (from CMS) ===== */}
-      <section className="py-20 md:py-28 bg-[#06101F]">
-        <div className="container">
-          <AnimatedSection>
-            <div className="max-w-3xl mx-auto glass-card-gold p-8 md:p-12 text-center">
-              <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-6">
-                THE PROMISE &middot; 2037
-              </p>
-              <Crown size={40} className="text-[#C9A84C] mx-auto mb-6" />
-              <h2
-                className="font-serif font-bold text-white mb-6"
-                style={{ fontSize: "clamp(28px, 3.5vw, 44px)" }}
-              >
-                Aradhana Becomes <span className="text-[#C9A84C]">Trustee</span>
-              </h2>
-              <p className="font-sans text-[16px] text-white/60 leading-relaxed mb-8 max-w-xl mx-auto">
-                {aradhanaDesc}
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                <div className="glass-card p-4 text-center">
-                  <p className="font-serif text-2xl font-bold text-[#C9A84C]">2019</p>
-                  <p className="font-mono text-[9px] tracking-wider uppercase text-white/50 mt-1">Aradhana Born</p>
-                </div>
-                <div className="glass-card p-4 text-center">
-                  <p className="font-serif text-2xl font-bold text-[#C9A84C]">2025</p>
-                  <p className="font-mono text-[9px] tracking-wider uppercase text-white/50 mt-1">Foundation Started</p>
-                </div>
-                <div className="glass-card p-4 text-center">
-                  <p className="font-serif text-2xl font-bold text-[#C9A84C]">2037</p>
-                  <p className="font-mono text-[9px] tracking-wider uppercase text-white/50 mt-1">Becomes Trustee</p>
-                </div>
-              </div>
-              <p className="font-serif text-lg italic text-[#C9A84C]/80">
-                "{aradhanaQuote}"
-              </p>
-              <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/40 mt-3">
-                — Abhimanyu Mallik &middot; Founder
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+
 
       {/* ===== IMPACT TARGETS (LIGHT) ===== */}
       <section className="py-20 md:py-28 section-light">

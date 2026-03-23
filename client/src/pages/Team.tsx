@@ -1,6 +1,6 @@
 /*
  * Abhiara Foundation — Team Page
- * Board of Directors, Advisory Board, and Future Leadership
+ * Board of Directors, Advisory Board, and Governance
  */
 import { useEffect } from "react";
 import { Link } from "wouter";
@@ -381,49 +381,7 @@ export default function Team() {
         </div>
       </section>
 
-      {/* ===== FUTURE LEADERSHIP ===== */}
-      <section className="py-20 md:py-28 bg-[#0A1628]">
-        <div className="container max-w-3xl">
-          <AnimatedSection>
-            <div className="glass-card-gold p-8 md:p-12 text-center">
-              <p className="section-label mb-4">FUTURE LEADERSHIP</p>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-2">
-                Aradhana Mallik
-              </h2>
-              <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C] mb-6">
-                Future Trustee · By 2037
-              </p>
-              <div className="gradient-rule mx-auto mb-8" />
 
-              <p className="font-sans text-[15px] text-white/60 leading-relaxed mb-6">
-                Aradhana is the reason this foundation exists. Her name — ARA — means "ray of
-                sacred light." When she turns 18, she will be offered the first right of
-                appointment as Director of Abhiara Foundation, becoming its youngest trustee.
-              </p>
-
-              <div className="flex flex-wrap justify-center gap-3 mb-8">
-                {[
-                  "Born 2019",
-                  "Foundation Named After Her",
-                  "AoA Succession Clause",
-                  "Trustee at 18 · By 2037",
-                ].map((tag) => (
-                  <span
-                    key={tag}
-                    className="font-mono text-[9px] tracking-wider uppercase text-white/50 px-3 py-1.5 border border-[#C9A84C]/20 rounded-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <p className="font-serif text-lg italic text-[#C9A84C]">
-                "Where a father's courage meets a daughter's devotion."
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
 
       {/* ===== GOVERNANCE ===== */}
       <section className="py-20 md:py-28 section-light">
@@ -456,7 +414,7 @@ export default function Team() {
               {
                 icon: Star,
                 title: "Four-Layer Succession",
-                desc: "Dual directors, AoA succession clause, personal will directive, and Aradhana clause — ensuring the foundation outlives any individual.",
+                desc: "Dual directors, AoA succession clause, personal will directive, and multi-layer governance — ensuring the foundation outlives any individual.",
               },
             ].map((item, i) => (
               <AnimatedSection key={i} delay={i * 0.08}>
@@ -505,25 +463,12 @@ export default function Team() {
         </div>
       </section>
 
-      {/* ===== ARADHANA PROMISE ===== */}
-      <section className="py-20 md:py-28 bg-[#C9A84C]/10 border-y border-[#C9A84C]/30">
-        <div className="container max-w-3xl text-center">
-          <AnimatedSection>
-            <p
-              className="font-serif font-bold text-white leading-[1.4]"
-              style={{ fontSize: "clamp(22px, 2.8vw, 34px)" }}
-            >
-              By 2037, Aradhana Mallik — daughter of Abhimanyu and Biswajita — turns 18 and becomes the youngest trustee of Abhiara Foundation.
-            </p>
-            <p
-              className="font-serif italic text-[#C9A84C] mt-6"
-              style={{ fontSize: "clamp(20px, 2.5vw, 32px)" }}
-            >
-              That is not a plan. That is a promise.
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
+      {/* ===== CLOSING LINE ===== */}
+      <div className="text-center py-8">
+        <p className="text-white/50 text-sm italic">
+          Abhiara Foundation is built for perpetual impact — governed today with the same rigour we expect from every generation that follows. 🙏
+        </p>
+      </div>
 
       <Footer />
     </div>

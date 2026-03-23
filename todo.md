@@ -223,3 +223,15 @@
 - [x] Fix 4: Reduce Home page CTAs to only 2: "Our Story" + "Partner With Us"
 - [x] Fix 5: Update activity dates from Oct/Nov 2025 to March 2026 across all pages (Home, Programs, Activities, Vision, Admin)
 - [x] Fix 6: Verify WhatsApp is prominent on Contact page — ALREADY DONE (hero has WhatsApp button, quick connect cards, sidebar card, bottom CTA)
+- [ ] Convert project to standalone static Vite+React for Vercel deployment
+- [ ] Remove all tRPC/server dependencies
+- [ ] Replace contact form with EmailJS or static alternative
+- [ ] Remove admin panel and auth system
+- [ ] Hardcode all CMS fallback data as permanent content
+- [ ] Test production build locally
+- [ ] Push Vercel-ready code to GitHub
+- [x] Remove Aradhana Future Leadership block from Team.tsx
+- [x] Remove Aradhana Future Leadership block from Vision.tsx
+- [x] Remove Aradhana Future Leadership block from Home.tsx (already clean)
+- [x] Add closing line replacement on Team page
+- [ ] Push to GitHub to trigger Vercel deployment
