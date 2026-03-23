@@ -185,3 +185,11 @@
 - [x] Design: Activities page — alternate light/dark sections
 - [x] Design: Team page — alternate light/dark sections
 - [x] Design: Donate page — alternate light/dark sections
+- [x] Fix: Navbar text and logo invisible on Donate page — restructured to dark hero
+- [x] Fix: Ensure navbar adapts to light hero backgrounds on all pages — all pages now have dark hero
+- [x] AUDIT: Full visual consistency audit across all 10 pages
+- [x] AUDIT: Fix Navbar — Donate page restructured to dark hero (consistent with all pages)
+- [x] AUDIT: Ensure consistent light/dark section alternation pattern on all pages
+- [x] AUDIT: Fix all invisible text issues (filter buttons, search bars fixed for light sections)
+- [x] AUDIT: Verify all card styles match their section background (glass-card vs light-card)
+- [x] AUDIT: Browser test all pages for visual correctness — Donate page verified

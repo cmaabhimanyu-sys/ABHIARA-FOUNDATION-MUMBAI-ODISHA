@@ -371,10 +371,10 @@ function ActivitiesTab() {
               className={`px-4 md:px-6 py-2 font-mono text-[9px] md:text-[10px] tracking-[0.15em] uppercase transition-all duration-300 border ${
                 filter === tab.key
                   ? "bg-[#C9A84C] text-[#0A1628] border-[#C9A84C] font-bold"
-                  : "bg-transparent text-white/60 border-white/10 hover:border-[#C9A84C]/40 hover:text-white"
+                  : "bg-transparent text-[#0A1628]/60 border-[#0A1628]/15 hover:border-[#C9A84C]/40 hover:text-[#0A1628]"
               }`}
             >
-              {tab.label} <span className={filter === tab.key ? "text-[#0A1628]/60" : "text-white/30"}>({tab.count})</span>
+              {tab.label} <span className={filter === tab.key ? "text-[#0A1628]/60" : "text-[#0A1628]/30"}>({tab.count})</span>
             </button>
           ))}
         </div>
@@ -513,7 +513,7 @@ function GalleryTab() {
               return (
                 <button key={cat.key} onClick={() => setFilter(cat.key as typeof filter)}
                   className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-mono text-[10px] tracking-[0.12em] uppercase transition-all cursor-pointer ${
-                    isActive ? "bg-[#C9A84C] text-[#0A1628] shadow-lg shadow-[#C9A84C]/20" : "bg-white/[0.04] text-white/50 border border-white/10 hover:border-[#C9A84C]/30 hover:text-[#C9A84C]"
+                    isActive ? "bg-[#C9A84C] text-[#0A1628] shadow-lg shadow-[#C9A84C]/20" : "bg-[#0A1628]/[0.04] text-[#0A1628]/50 border border-[#0A1628]/10 hover:border-[#C9A84C]/30 hover:text-[#C9A84C]"
                   }`}
                 >
                   <Icon size={14} />{cat.label}
@@ -694,14 +694,14 @@ function UpdatesTab() {
                 { key: "news", label: "News" },
               ] as const).map((tab) => (
                 <button key={tab.key} onClick={() => setActiveCategory(tab.key)}
-                  className={`font-mono text-[10px] tracking-wider uppercase px-4 py-2 transition-all ${activeCategory === tab.key ? "bg-[#C9A84C] text-[#0A1628] font-bold" : "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/70"}`}
+                  className={`font-mono text-[10px] tracking-wider uppercase px-4 py-2 transition-all ${activeCategory === tab.key ? "bg-[#C9A84C] text-[#0A1628] font-bold" : "bg-[#0A1628]/5 text-[#0A1628]/50 hover:bg-[#0A1628]/10 hover:text-[#0A1628]/70"}`}
                 >{tab.label}</button>
               ))}
             </div>
             <div className="relative w-full md:w-64">
-              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" />
+              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#0A1628]/30" />
               <input type="text" placeholder="Search posts..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 bg-white/5 border border-white/10 text-white/80 font-mono text-xs placeholder:text-white/30 focus:outline-none focus:border-[#C9A84C]/50" />
+                className="w-full pl-9 pr-4 py-2 bg-[#0A1628]/5 border border-[#0A1628]/10 text-[#0A1628]/80 font-mono text-xs placeholder:text-[#0A1628]/30 focus:outline-none focus:border-[#C9A84C]/50" />
             </div>
           </div>
         </div>
