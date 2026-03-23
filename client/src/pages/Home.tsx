@@ -302,16 +302,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== S4: THREE PILLARS ===== */}
-      <section className="py-20 md:py-28 bg-[#080F1C]">
+      {/* ===== S4: THREE PILLARS (LIGHT) ===== */}
+      <section className="py-20 md:py-28 section-light">
         <div className="container">
           <AnimatedSection className="text-center mb-16">
-            <p className="section-label mb-4">WHAT WE DO</p>
-            <h2 className="heading-xl text-white mb-4">
+            <p className="section-label-light mb-4">WHAT WE DO</p>
+            <h2 className="heading-xl light-heading mb-4">
               Three Pillars. <span className="text-[#C9A84C]">One Promise.</span>
             </h2>
-            <div className="gradient-rule mx-auto mb-6" />
-            <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
+            <div className="gradient-rule-light mx-auto mb-6" />
+            <p className="font-sans text-[15px] light-body max-w-lg mx-auto">
               Covering all of Odisha and expanding across other states.
             </p>
           </AnimatedSection>
@@ -350,14 +350,14 @@ export default function Home() {
               },
             ].map((pillar, i) => (
               <AnimatedSection key={pillar.title} delay={i * 0.08}>
-                <div className={`group glass-card${pillar.accent === "gold" ? "-gold" : ""} overflow-hidden h-full flex flex-col`}>
+                <div className="group light-card overflow-hidden h-full flex flex-col">
                   {/* Image */}
                   <div className="relative h-56 md:h-64 overflow-hidden">
                     <img src={pillar.img} alt={pillar.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent" />
                     <div className="absolute bottom-3 left-4 flex items-center gap-2">
                       <pillar.icon size={18} className={pillar.accent === "gold" ? "text-[#C9A84C]" : "text-[#1A7F8E]"} />
-                      <span className="font-serif text-lg font-bold text-white">{pillar.title}</span>
+                      <span className="font-serif text-lg font-bold text-white drop-shadow-md">{pillar.title}</span>
                     </div>
                     <span className="absolute top-3 right-3 font-mono text-[9px] tracking-wider uppercase bg-black/40 backdrop-blur-sm px-2 py-1 text-white/70 rounded-sm">
                       {pillar.sdg}
@@ -365,12 +365,12 @@ export default function Home() {
                   </div>
 
                   <div className="p-5 flex flex-col flex-1">
-                    <p className="font-mono text-[10px] tracking-wider text-[#C9A84C] mb-3">{pillar.data}</p>
-                    <p className="font-sans text-[14px] text-white/60 leading-relaxed mb-5 flex-1">{pillar.body}</p>
+                    <p className="font-mono text-[10px] tracking-wider text-[#B8942A] mb-3">{pillar.data}</p>
+                    <p className="font-sans text-[14px] light-body leading-relaxed mb-5 flex-1">{pillar.body}</p>
                     <Link
                       href={pillar.cta.href}
                       className={`font-mono text-[10px] tracking-[0.15em] uppercase flex items-center gap-2 ${
-                        pillar.accent === "gold" ? "text-[#C9A84C] hover:text-[#B8942A]" : "text-[#1A7F8E] hover:text-[#145E6A]"
+                        pillar.accent === "gold" ? "text-[#B8942A] hover:text-[#9A7A1E]" : "text-[#1A7F8E] hover:text-[#145E6A]"
                       } transition-colors`}
                     >
                       {pillar.cta.label} <ArrowRight size={12} />
@@ -451,16 +451,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== S8: ACTIVITIES PREVIEW ===== */}
-      <section className="py-20 md:py-28 bg-[#0A1628]">
+      {/* ===== S8: ACTIVITIES PREVIEW (LIGHT) ===== */}
+      <section className="py-20 md:py-28 section-light">
         <div className="container">
           <AnimatedSection className="text-center mb-14">
-            <p className="section-label mb-4">ON THE GROUND</p>
-            <h2 className="heading-xl text-white mb-4">
+            <p className="section-label-light mb-4">ON THE GROUND</p>
+            <h2 className="heading-xl light-heading mb-4">
               Our <span className="text-[#C9A84C]">Activities</span>
             </h2>
-            <div className="gradient-rule mx-auto mb-6" />
-            <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
+            <div className="gradient-rule-light mx-auto mb-6" />
+            <p className="font-sans text-[15px] light-body max-w-lg mx-auto">
               Real moments from the field — visiting old age homes, donating books to tribal students, and building connections that matter.
             </p>
           </AnimatedSection>
@@ -469,12 +469,12 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
             {activityPreviews.map((item: any, i: number) => (
               <AnimatedSection key={i} delay={i * 0.06}>
-                <div className="glass-card p-6 h-full">
-                  <span className={`inline-block font-mono text-[8px] tracking-[0.15em] uppercase px-2 py-0.5 rounded-sm mb-3 ${item.cat === 'Elderly Care' ? 'bg-[#C9A84C]/10 text-[#C9A84C]' : 'bg-[#1A7F8E]/10 text-[#1A7F8E]'}`}>
+                <div className="light-card p-6 h-full">
+                  <span className={`inline-block font-mono text-[8px] tracking-[0.15em] uppercase px-2 py-0.5 rounded-sm mb-3 ${item.cat === 'Elderly Care' ? 'bg-[#C9A84C]/15 text-[#B8942A]' : 'bg-[#1A7F8E]/15 text-[#1A7F8E]'}`}>
                     {item.cat}
                   </span>
-                  <h3 className="font-serif text-lg font-bold text-white mb-2">{item.title}</h3>
-                  <p className="font-sans text-[13px] text-white/55 leading-relaxed">{item.desc}</p>
+                  <h3 className="font-serif text-lg font-bold light-heading mb-2">{item.title}</h3>
+                  <p className="font-sans text-[13px] light-body leading-relaxed">{item.desc}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -484,7 +484,7 @@ export default function Home() {
           <AnimatedSection className="text-center">
             <Link
               href="/activities"
-              className="inline-flex items-center gap-2 px-8 py-3 border border-[#C9A84C]/40 text-[#C9A84C] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#C9A84C]/10 transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-3 border border-[#B8942A]/40 text-[#B8942A] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#C9A84C]/10 transition-colors"
             >
               VIEW ALL ACTIVITIES <ArrowRight size={12} />
             </Link>

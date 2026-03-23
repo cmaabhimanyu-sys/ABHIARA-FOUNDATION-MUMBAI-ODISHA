@@ -329,28 +329,28 @@ function ActivitiesTab() {
   return (
     <>
       {/* Stats */}
-      <section className="py-8 bg-[#080F1C]">
+      <section className="py-8 section-light">
         <div className="container">
           <div className="flex flex-wrap items-center justify-center gap-6">
-            <div className="glass-card px-6 py-4 flex items-center gap-3">
+            <div className="light-card px-6 py-4 flex items-center gap-3">
               <Heart size={20} className="text-[#C9A84C]" />
               <div className="text-left">
                 <p className="font-serif text-2xl font-bold text-[#C9A84C]">{elderlyCount}</p>
-                <p className="font-mono text-[9px] tracking-wider uppercase text-white/50">Elderly Care Activities</p>
+                <p className="font-mono text-[9px] tracking-wider uppercase light-muted">Elderly Care Activities</p>
               </div>
             </div>
-            <div className="glass-card px-6 py-4 flex items-center gap-3">
+            <div className="light-card px-6 py-4 flex items-center gap-3">
               <BookOpen size={20} className="text-[#1A7F8E]" />
               <div className="text-left">
                 <p className="font-serif text-2xl font-bold text-[#1A7F8E]">{educationCount}</p>
-                <p className="font-mono text-[9px] tracking-wider uppercase text-white/50">Education Activities</p>
+                <p className="font-mono text-[9px] tracking-wider uppercase light-muted">Education Activities</p>
               </div>
             </div>
-            <div className="glass-card px-6 py-4 flex items-center gap-3">
+            <div className="light-card px-6 py-4 flex items-center gap-3">
               <span className="text-[#C9A84C] text-lg">✦</span>
               <div className="text-left">
-                <p className="font-serif text-2xl font-bold text-white">{activities.length}</p>
-                <p className="font-mono text-[9px] tracking-wider uppercase text-white/50">Total Activities</p>
+                <p className="font-serif text-2xl font-bold light-heading">{activities.length}</p>
+                <p className="font-mono text-[9px] tracking-wider uppercase light-muted">Total Activities</p>
               </div>
             </div>
           </div>
@@ -358,7 +358,7 @@ function ActivitiesTab() {
       </section>
 
       {/* Filter */}
-      <section className="py-4 bg-[#080F1C] border-b border-white/[0.06]">
+      <section className="py-4 section-light border-b border-[#0A1628]/[0.06]">
         <div className="container flex items-center justify-center gap-3 md:gap-4">
           {([
             { key: "all", label: "All Activities", count: activities.length },
@@ -381,17 +381,17 @@ function ActivitiesTab() {
       </section>
 
       {/* Activity Cards */}
-      <section className="py-16 md:py-24 bg-[#080F1C]">
+      <section className="py-16 md:py-24 section-light">
         <div className="container max-w-4xl">
           {filter !== "all" && (
             <AnimatedSection className="mb-12">
-              <div className="glass-card p-6 md:p-8 flex items-start gap-4">
+              <div className="light-card p-6 md:p-8 flex items-start gap-4">
                 {filter === "elderly" ? <Heart size={28} className="text-[#C9A84C] shrink-0 mt-1" /> : <BookOpen size={28} className="text-[#1A7F8E] shrink-0 mt-1" />}
                 <div>
-                  <h2 className="font-serif text-2xl font-bold text-white mb-2">
+                  <h2 className="font-serif text-2xl font-bold light-heading mb-2">
                     {filter === "elderly" ? "Elderly Care — Old Age Home Visits" : "Education — Student Support"}
                   </h2>
-                  <p className="font-sans text-[14px] text-white/55 leading-relaxed">
+                  <p className="font-sans text-[14px] light-body leading-relaxed">
                     {filter === "elderly"
                       ? "Our team regularly visits old age homes in Puri, Odisha to provide essentials, companionship, and dignity to elderly residents who need it most."
                       : "We travel to villages in Kendrapara and other districts across Odisha to donate books, notebooks, and learning materials to children who deserve the same opportunities."}
@@ -404,11 +404,11 @@ function ActivitiesTab() {
           <div className="space-y-5">
             {filtered.map((activity, idx) => (
               <AnimatedSection key={`${activity.title}-${idx}`} delay={Math.min(idx * 0.05, 0.3)}>
-                <div className={`glass-card${activity.category === "elderly" ? "-gold" : ""} p-6 md:p-8 transition-all duration-300 ${activity.highlight ? "ring-1 ring-white/[0.06]" : ""}`}>
+                <div className={`${activity.category === "elderly" ? "light-card-gold" : "light-card"} p-6 md:p-8 transition-all duration-300 ${activity.highlight ? "ring-1 ring-[#0A1628]/[0.06]" : ""}`}>
                   <div className="flex items-start gap-4">
                     <div className="hidden md:flex flex-col items-center">
                       <div className={`w-3 h-3 rounded-full shrink-0 ${activity.category === "elderly" ? "bg-[#C9A84C]" : "bg-[#1A7F8E]"}`} />
-                      <div className="w-px h-full bg-white/10 min-h-[40px]" />
+                      <div className="w-px h-full bg-[#0A1628]/10 min-h-[40px]" />
                     </div>
                     <div className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 ${activity.category === "elderly" ? "bg-[#C9A84C]/10" : "bg-[#1A7F8E]/10"}`}>
                       {activity.category === "elderly" ? <Heart size={22} className="text-[#C9A84C]" /> : <BookOpen size={22} className="text-[#1A7F8E]" />}
@@ -418,13 +418,13 @@ function ActivitiesTab() {
                         <span className={`font-mono text-[9px] tracking-wider uppercase px-2 py-0.5 rounded-sm ${activity.category === "elderly" ? "bg-[#C9A84C]/10 text-[#C9A84C]" : "bg-[#1A7F8E]/10 text-[#1A7F8E]"}`}>
                           {activity.category === "elderly" ? "Elderly Care" : "Education"}
                         </span>
-                        {activity.highlight && <span className="font-mono text-[8px] tracking-wider uppercase px-2 py-0.5 rounded-sm bg-white/5 text-white/40">Featured</span>}
+                        {activity.highlight && <span className="font-mono text-[8px] tracking-wider uppercase px-2 py-0.5 rounded-sm bg-[#0A1628]/5 light-muted">Featured</span>}
                       </div>
-                      <h3 className="font-serif text-lg md:text-xl font-bold text-white mb-2">{activity.title}</h3>
-                      <p className="font-sans text-[14px] text-white/55 leading-relaxed mb-4">{activity.description}</p>
+                      <h3 className="font-serif text-lg md:text-xl font-bold light-heading mb-2">{activity.title}</h3>
+                      <p className="font-sans text-[14px] light-body leading-relaxed mb-4">{activity.description}</p>
                       <div className="flex flex-wrap items-center gap-4">
-                        <span className="flex items-center gap-1.5 font-mono text-[9px] tracking-wider uppercase text-white/40"><Calendar size={12} />{activity.date}</span>
-                        <span className="flex items-center gap-1.5 font-mono text-[9px] tracking-wider uppercase text-white/40"><MapPin size={12} />{activity.location}</span>
+                        <span className="flex items-center gap-1.5 font-mono text-[9px] tracking-wider uppercase light-muted"><Calendar size={12} />{activity.date}</span>
+                        <span className="flex items-center gap-1.5 font-mono text-[9px] tracking-wider uppercase light-muted"><MapPin size={12} />{activity.location}</span>
                       </div>
                     </div>
                   </div>
@@ -435,7 +435,7 @@ function ActivitiesTab() {
 
           {filtered.length === 0 && (
             <div className="text-center py-20">
-              <p className="font-sans text-white/40">No activities in this category yet.</p>
+              <p className="font-sans light-muted">No activities in this category yet.</p>
             </div>
           )}
         </div>
@@ -485,7 +485,7 @@ function GalleryTab() {
   return (
     <>
       {/* Stats Bar */}
-      <section className="bg-[#080F1C] py-6 border-b border-white/[0.06]">
+      <section className="section-light py-6 border-b border-[#0A1628]/[0.06]">
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             {[
@@ -496,7 +496,7 @@ function GalleryTab() {
             ].map((stat) => (
               <div key={stat.label}>
                 <p className="font-serif text-2xl font-bold text-[#C9A84C]">{stat.value}</p>
-                <p className="font-mono text-[9px] tracking-wider uppercase text-white/40 mt-1">{stat.label}</p>
+                <p className="font-mono text-[9px] tracking-wider uppercase light-muted mt-1">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -504,7 +504,7 @@ function GalleryTab() {
       </section>
 
       {/* Filter Tabs */}
-      <section className="py-8 bg-[#080F1C]">
+      <section className="py-8 section-light">
         <div className="container">
           <div className="flex flex-wrap items-center justify-center gap-3">
             {GALLERY_CATEGORIES.map((cat) => {
@@ -525,7 +525,7 @@ function GalleryTab() {
       </section>
 
       {/* Gallery Grid */}
-      <section className="py-12 md:py-20 bg-[#080F1C]">
+      <section className="py-12 md:py-20 section-light">
         <div className="container">
           <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             <AnimatePresence mode="popLayout">
@@ -551,8 +551,8 @@ function GalleryTab() {
 
           {filtered.length === 0 && (
             <div className="text-center py-20">
-              <Camera size={40} className="text-white/20 mx-auto mb-4" />
-              <p className="font-sans text-white/40">No images in this category yet.</p>
+              <Camera size={40} className="light-muted mx-auto mb-4" />
+              <p className="font-sans light-muted">No images in this category yet.</p>
             </div>
           )}
         </div>
@@ -639,7 +639,7 @@ function UpdatesTab() {
     <>
       {/* Featured Posts */}
       {activeCategory === "all" && searchQuery === "" && featuredPosts.length > 0 && (
-        <section className="py-12 bg-[#080F1C]">
+        <section className="py-12 section-light">
           <div className="container">
             <AnimatedSection>
               <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#C9A84C] mb-6">FEATURED STORIES</p>
@@ -650,7 +650,7 @@ function UpdatesTab() {
                 const CatIcon = catConfig.icon;
                 return (
                   <AnimatedSection key={post.id} delay={i * 0.08}>
-                    <div className="glass-card overflow-hidden h-full flex flex-col group cursor-pointer" onClick={() => setExpandedPost(expandedPost === post.id ? null : post.id)}>
+                    <div className="light-card overflow-hidden h-full flex flex-col group cursor-pointer" onClick={() => setExpandedPost(expandedPost === post.id ? null : post.id)}>
                       {post.image && (
                         <div className="relative h-48 overflow-hidden">
                           <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -662,14 +662,14 @@ function UpdatesTab() {
                       )}
                       <div className="p-5 flex flex-col flex-1">
                         <div className="flex items-center gap-3 mb-3">
-                          <span className="font-mono text-[9px] text-white/40 flex items-center gap-1"><Calendar size={10} /> {formatDate(post.date)}</span>
-                          {post.location && <span className="font-mono text-[9px] text-white/40 flex items-center gap-1"><MapPin size={10} /> {post.location}</span>}
+                          <span className="font-mono text-[9px] light-muted flex items-center gap-1"><Calendar size={10} /> {formatDate(post.date)}</span>
+                          {post.location && <span className="font-mono text-[9px] light-muted flex items-center gap-1"><MapPin size={10} /> {post.location}</span>}
                         </div>
-                        <h3 className="font-serif text-lg font-bold text-white mb-2 group-hover:text-[#C9A84C] transition-colors">{post.title}</h3>
-                        <p className="font-sans text-[13px] text-white/55 leading-relaxed flex-1">{post.excerpt}</p>
+                        <h3 className="font-serif text-lg font-bold light-heading mb-2 group-hover:text-[#C9A84C] transition-colors">{post.title}</h3>
+                        <p className="font-sans text-[13px] light-body leading-relaxed flex-1">{post.excerpt}</p>
                         <div className="flex items-center gap-2 mt-4">
-                          <Clock size={10} className="text-white/40" />
-                          <span className="font-mono text-[9px] text-white/40">{post.readTime}</span>
+                          <Clock size={10} className="light-muted" />
+                          <span className="font-mono text-[9px] light-muted">{post.readTime}</span>
                         </div>
                       </div>
                     </div>
@@ -682,7 +682,7 @@ function UpdatesTab() {
       )}
 
       {/* Filter Bar */}
-      <section className="py-8 bg-[#0A1628] border-y border-white/[0.06]">
+      <section className="py-8 section-light border-y border-[#0A1628]/[0.06]">
         <div className="container">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-2">
@@ -708,18 +708,18 @@ function UpdatesTab() {
       </section>
 
       {/* All Posts */}
-      <section className="py-16 bg-[#080F1C]">
+      <section className="py-16 section-light">
         <div className="container">
           <AnimatedSection>
             <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-2">
               {activeCategory === "all" ? "ALL UPDATES" : BLOG_CATEGORY_CONFIG[activeCategory].label.toUpperCase()}
             </p>
-            <p className="font-mono text-[10px] text-white/40 mb-8">{filteredPosts.length} {filteredPosts.length === 1 ? "post" : "posts"} found</p>
+            <p className="font-mono text-[10px] light-muted mb-8">{filteredPosts.length} {filteredPosts.length === 1 ? "post" : "posts"} found</p>
           </AnimatedSection>
 
           {filteredPosts.length === 0 ? (
             <div className="text-center py-16">
-              <p className="font-sans text-white/40 text-lg">No posts found matching your criteria.</p>
+              <p className="font-sans light-muted text-lg">No posts found matching your criteria.</p>
               <button onClick={() => { setActiveCategory("all"); setSearchQuery(""); }} className="mt-4 font-mono text-[10px] tracking-wider uppercase text-[#C9A84C] hover:text-[#B8942A] transition-colors">Clear filters</button>
             </div>
           ) : (
@@ -730,7 +730,7 @@ function UpdatesTab() {
                 const isExpanded = expandedPost === post.id;
                 return (
                   <AnimatedSection key={post.id} delay={i * 0.05}>
-                    <motion.article layout className="glass-card overflow-hidden">
+                    <motion.article layout className="light-card overflow-hidden">
                       <div className="flex flex-col md:flex-row">
                         {post.image && (
                           <div className="relative w-full md:w-72 h-48 md:h-auto flex-shrink-0 overflow-hidden">
@@ -744,22 +744,22 @@ function UpdatesTab() {
                             <span className="font-mono text-[9px] tracking-wider uppercase px-2 py-1 rounded-sm flex items-center gap-1" style={{ backgroundColor: `${catConfig.color}15`, color: catConfig.color, border: `1px solid ${catConfig.color}30` }}>
                               <CatIcon size={10} /> {catConfig.label}
                             </span>
-                            <span className="font-mono text-[9px] text-white/40 flex items-center gap-1"><Calendar size={10} /> {formatDate(post.date)}</span>
-                            {post.location && <span className="font-mono text-[9px] text-white/40 flex items-center gap-1"><MapPin size={10} /> {post.location}</span>}
-                            <span className="font-mono text-[9px] text-white/40 flex items-center gap-1"><Clock size={10} /> {post.readTime}</span>
+                            <span className="font-mono text-[9px] light-muted flex items-center gap-1"><Calendar size={10} /> {formatDate(post.date)}</span>
+                            {post.location && <span className="font-mono text-[9px] light-muted flex items-center gap-1"><MapPin size={10} /> {post.location}</span>}
+                            <span className="font-mono text-[9px] light-muted flex items-center gap-1"><Clock size={10} /> {post.readTime}</span>
                           </div>
-                          <h2 className="font-serif text-xl md:text-2xl font-bold text-white mb-3">{post.title}</h2>
-                          <p className="font-sans text-[14px] text-white/55 leading-relaxed mb-4">{post.excerpt}</p>
+                          <h2 className="font-serif text-xl md:text-2xl font-bold light-heading mb-3">{post.title}</h2>
+                          <p className="font-sans text-[14px] light-body leading-relaxed mb-4">{post.excerpt}</p>
                           {isExpanded && (
                             <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="mb-4 space-y-4">
                               {post.content.map((para, pi) => (
-                                <p key={pi} className="font-sans text-[14px] text-white/50 leading-relaxed">{para}</p>
+                                <p key={pi} className="font-sans text-[14px] light-body leading-relaxed">{para}</p>
                               ))}
                             </motion.div>
                           )}
                           <div className="flex flex-wrap items-center gap-2 mb-4">
                             {post.tags.map((tag) => (
-                              <span key={tag} className="font-mono text-[8px] tracking-wider uppercase px-2 py-0.5 bg-white/5 text-white/40 border border-white/10 flex items-center gap-1"><Tag size={8} /> {tag}</span>
+                              <span key={tag} className="font-mono text-[8px] tracking-wider uppercase px-2 py-0.5 bg-[#0A1628]/5 light-muted border border-[#0A1628]/10 flex items-center gap-1"><Tag size={8} /> {tag}</span>
                             ))}
                           </div>
                           <button onClick={() => setExpandedPost(isExpanded ? null : post.id)} className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C] hover:text-[#B8942A] transition-colors flex items-center gap-2">

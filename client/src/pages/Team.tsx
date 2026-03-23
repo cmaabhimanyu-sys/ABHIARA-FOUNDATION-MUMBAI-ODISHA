@@ -64,15 +64,15 @@ export default function Team() {
       </section>
 
       {/* ===== BOARD OF DIRECTORS ===== */}
-      <section className="py-20 md:py-28 bg-[#080F1C]">
+      <section className="py-20 md:py-28 section-light">
         <div className="container">
           <AnimatedSection className="text-center mb-14">
             <p className="section-label mb-4">LEADERSHIP</p>
-            <h2 className="heading-xl text-white mb-4">
+            <h2 className="heading-xl light-heading mb-4">
               Board of <span className="text-[#C9A84C]">Directors</span>
             </h2>
             <div className="gradient-rule mx-auto mb-6" />
-            <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
+            <p className="font-sans text-[15px] light-body max-w-lg mx-auto">
               Section 8 Company governance with CMA-led compliance and dual-director structure.
             </p>
           </AnimatedSection>
@@ -80,13 +80,13 @@ export default function Team() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Abhimanyu Mallik */}
             <AnimatedSection delay={0}>
-              <div className="glass-card-gold p-8 h-full">
+              <div className="light-card-gold p-8 h-full">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-[#C9A84C]/30">
                     <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/founder-abhimanyu-mallik_cfb3b1d3.png" alt="Abhimanyu Mallik" className="w-full h-full object-cover" />
                   </div>
                   <div>
-                    <h3 className="font-serif text-xl font-bold text-white">
+                    <h3 className="font-serif text-xl font-bold light-heading">
                       Abhimanyu Mallik
                     </h3>
                     <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C]">
@@ -95,7 +95,7 @@ export default function Team() {
                   </div>
                 </div>
 
-                <p className="font-sans text-[14px] text-white/55 leading-relaxed mb-6">
+                <p className="font-sans text-[14px] light-body leading-relaxed mb-6">
                   Born in Raisar, Kendrapara, Odisha — Abhimanyu's journey from a farming family to leading finance for one of India's most ambitious technology companies is the origin story of Abhiara Foundation itself. A Cost and Management Accountant by qualification, he brings institutional rigour, financial discipline, and strategic clarity to every aspect of the foundation's governance, compliance, and long-term vision. He believes that systems change lives — and that the most powerful thing a person can do with success is build the bridge they once needed.
                 </p>
 
@@ -116,13 +116,13 @@ export default function Team() {
 
             {/* Sujit Sahu */}
             <AnimatedSection delay={0.1}>
-              <div className="glass-card p-8 h-full">
+              <div className="light-card p-8 h-full">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-[#1A7F8E]/30">
                     <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/advocate-sujit-sahu_c5e63d2b.png" alt="Advocate Sujit Sahu" className="w-full h-full object-cover" />
                   </div>
                   <div>
-                    <h3 className="font-serif text-xl font-bold text-white">
+                    <h3 className="font-serif text-xl font-bold light-heading">
                       Sujit Sahu
                     </h3>
                     <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#1A7F8E]">
@@ -134,25 +134,25 @@ export default function Team() {
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-2">
                     <GraduationCap size={14} className="text-[#C9A84C] shrink-0" />
-                    <span className="font-mono text-[10px] tracking-wider uppercase text-white/50">
+                    <span className="font-mono text-[10px] tracking-wider uppercase light-muted">
                       LLB, MBA
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Scale size={14} className="text-[#C9A84C] shrink-0" />
-                    <span className="font-mono text-[10px] tracking-wider uppercase text-white/50">
+                    <span className="font-mono text-[10px] tracking-wider uppercase light-muted">
                       Advocate, High Court of Odisha
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Shield size={14} className="text-[#C9A84C] shrink-0" />
-                    <span className="font-mono text-[10px] tracking-wider uppercase text-white/50">
+                    <span className="font-mono text-[10px] tracking-wider uppercase light-muted">
                       Odisha Human Rights Commission Office
                     </span>
                   </div>
                 </div>
 
-                <p className="font-sans text-[14px] text-white/55 leading-relaxed">
+                <p className="font-sans text-[14px] light-body leading-relaxed">
                   A legal professional with deep expertise in constitutional law, human rights, and
                   corporate governance. Mr. Sahu brings independent oversight and legal counsel to
                   ensure the foundation operates with the highest standards of compliance and
@@ -163,13 +163,13 @@ export default function Team() {
 
             {/* Biswajita Mallik */}
             <AnimatedSection delay={0.2}>
-              <div className="glass-card p-8 h-full">
+              <div className="light-card p-8 h-full">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-[#1A7F8E]/30">
                     <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/biswajita_founder_style_maroon_6bcbce2c.webp" alt="Biswajita Mallik" className="w-full h-full object-cover" />
                   </div>
                   <div>
-                    <h3 className="font-serif text-xl font-bold text-white">
+                    <h3 className="font-serif text-xl font-bold light-heading">
                       Biswajita Mallik
                     </h3>
                     <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#1A7F8E]">
@@ -178,7 +178,7 @@ export default function Team() {
                   </div>
                 </div>
 
-                <p className="font-sans text-[14px] text-white/55 leading-relaxed mb-6">
+                <p className="font-sans text-[14px] light-body leading-relaxed mb-6">
                   The steady and unshakeable strength behind every chapter of the Abhiara journey. Biswajita's quiet conviction and unwavering support through every challenge is woven into the foundation's DNA.
                 </p>
 
@@ -407,11 +407,11 @@ export default function Team() {
       </section>
 
       {/* ===== GOVERNANCE ===== */}
-      <section className="py-20 md:py-28 bg-[#080F1C]">
+      <section className="py-20 md:py-28 section-light">
         <div className="container max-w-4xl">
           <AnimatedSection className="text-center mb-14">
             <p className="section-label mb-4">INSTITUTIONAL GOVERNANCE</p>
-            <h2 className="heading-xl text-white mb-4">
+            <h2 className="heading-xl light-heading mb-4">
               Built for <span className="text-[#C9A84C]">Perpetuity</span>
             </h2>
             <div className="gradient-rule mx-auto mb-6" />
@@ -441,16 +441,16 @@ export default function Team() {
               },
             ].map((item, i) => (
               <AnimatedSection key={i} delay={i * 0.08}>
-                <div className="glass-card p-6 h-full">
+                <div className="light-card p-6 h-full">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center shrink-0">
                       <item.icon size={20} className="text-[#C9A84C]" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-lg font-bold text-white mb-2">
+                      <h3 className="font-serif text-lg font-bold light-heading mb-2">
                         {item.title}
                       </h3>
-                      <p className="font-sans text-[13px] text-white/55 leading-relaxed">
+                      <p className="font-sans text-[13px] light-body leading-relaxed">
                         {item.desc}
                       </p>
                     </div>

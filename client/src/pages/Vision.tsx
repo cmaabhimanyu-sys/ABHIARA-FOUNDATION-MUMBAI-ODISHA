@@ -142,16 +142,16 @@ export default function Vision() {
         </div>
       </section>
 
-      {/* ===== FIVE PILLARS OF THE PLAN (from CMS) ===== */}
-      <section className="py-20 md:py-28 bg-[#080F1C]">
+      {/* ===== FIVE PILLARS OF THE PLAN (LIGHT) ===== */}
+      <section className="py-20 md:py-28 section-light">
         <div className="container">
           <AnimatedSection className="text-center mb-16">
-            <p className="section-label mb-4">THE PLAN</p>
-            <h2 className="heading-xl text-white mb-4">
+            <p className="section-label-light mb-4">THE PLAN</p>
+            <h2 className="heading-xl light-heading mb-4">
               Five Pillars. <span className="text-[#C9A84C]">One Mission.</span>
             </h2>
-            <div className="gradient-rule mx-auto mb-6" />
-            <p className="font-sans text-[15px] text-white/60 max-w-xl mx-auto">
+            <div className="gradient-rule-light mx-auto mb-6" />
+            <p className="font-sans text-[15px] light-body max-w-xl mx-auto">
               Every pillar is interconnected. Together, they form the foundation of lasting change.
             </p>
           </AnimatedSection>
@@ -161,18 +161,18 @@ export default function Vision() {
               const IconComp = PILLAR_ICONS[pillar.title] || Star;
               return (
                 <AnimatedSection key={pillar.title} delay={i * 0.06}>
-                  <div className={`glass-card${pillar.accent === "gold" ? "-gold" : ""} p-6 h-full flex flex-col`}>
+                  <div className={`${pillar.accent === "gold" ? "light-card-gold" : "light-card"} p-6 h-full flex flex-col`}>
                     <div className="flex items-center justify-between mb-4">
                       <IconComp
                         size={28}
                         className={pillar.accent === "gold" ? "text-[#C9A84C]" : "text-[#1A7F8E]"}
                       />
-                      <span className="font-mono text-[9px] tracking-wider uppercase bg-white/5 px-2 py-1 text-white/50 rounded-sm">
+                      <span className="font-mono text-[9px] tracking-wider uppercase bg-[#0A1628]/5 px-2 py-1 light-muted rounded-sm">
                         {pillar.sdg}
                       </span>
                     </div>
-                    <h3 className="font-serif text-lg font-bold text-white mb-3">{pillar.title}</h3>
-                    <p className="font-sans text-[14px] text-white/55 leading-relaxed flex-1">{pillar.desc}</p>
+                    <h3 className="font-serif text-lg font-bold light-heading mb-3">{pillar.title}</h3>
+                    <p className="font-sans text-[14px] light-body leading-relaxed flex-1">{pillar.desc}</p>
                   </div>
                 </AnimatedSection>
               );
@@ -290,24 +290,24 @@ export default function Vision() {
         </div>
       </section>
 
-      {/* ===== IMPACT TARGETS (from CMS) ===== */}
-      <section className="py-20 md:py-28 bg-[#040C18]">
+      {/* ===== IMPACT TARGETS (LIGHT) ===== */}
+      <section className="py-20 md:py-28 section-light">
         <div className="container">
           <AnimatedSection className="text-center mb-16">
-            <p className="section-label mb-4">IMPACT TARGETS</p>
-            <h2 className="heading-xl text-white mb-4">
+            <p className="section-label-light mb-4">IMPACT TARGETS</p>
+            <h2 className="heading-xl light-heading mb-4">
               What We Aim to <span className="text-[#C9A84C]">Achieve</span>
             </h2>
-            <div className="gradient-rule mx-auto mb-6" />
+            <div className="gradient-rule-light mx-auto mb-6" />
           </AnimatedSection>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {impactTargets.map((stat: any, i: number) => (
               <AnimatedSection key={stat.label} delay={i * 0.08}>
-                <div className="glass-card p-6 text-center">
+                <div className="light-card p-6 text-center">
                   <p className="font-serif text-3xl md:text-4xl font-bold text-[#C9A84C] mb-2">{stat.value}</p>
-                  <p className="font-sans text-[14px] text-white/70 mb-1">{stat.label}</p>
-                  <p className="font-mono text-[9px] tracking-wider uppercase text-white/40">{stat.sub}</p>
+                  <p className="font-sans text-[14px] light-heading mb-1">{stat.label}</p>
+                  <p className="font-mono text-[9px] tracking-wider uppercase light-muted">{stat.sub}</p>
                 </div>
               </AnimatedSection>
             ))}

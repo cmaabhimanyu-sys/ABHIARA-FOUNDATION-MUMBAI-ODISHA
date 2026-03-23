@@ -19,10 +19,10 @@ function BudgetBar({ label, amount, pct, color }: { label: string; amount: strin
   return (
     <div className="mb-5">
       <div className="flex justify-between mb-1.5">
-        <span className="font-sans text-[13px] text-white/70">{label}</span>
-        <span className="font-mono text-[11px] text-white/50">{amount}</span>
+        <span className="font-sans text-[13px] light-body">{label}</span>
+        <span className="font-mono text-[11px] light-muted">{amount}</span>
       </div>
-      <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+      <div className="h-2 bg-[#0A1628]/10 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${pct}%` }}
@@ -106,11 +106,11 @@ export default function CSRPartners() {
       </section>
 
       {/* ===== S2: WHY PARTNER WITH US ===== */}
-      <section className="py-20 md:py-28 bg-[#080F1C]">
+      <section className="py-20 md:py-28 section-light">
         <div className="container">
           <AnimatedSection className="text-center mb-14">
             <p className="section-label mb-4">WHY ABHIARA</p>
-            <h2 className="heading-lg text-white mb-4">
+            <h2 className="heading-lg light-heading mb-4">
               Why Partner <span className="text-[#C9A84C]">With Us</span>
             </h2>
             <div className="gradient-rule mx-auto" />
@@ -126,12 +126,12 @@ export default function CSRPartners() {
               { icon: Users, title: "Ground Presence", desc: "Direct operations across all of Odisha and expanding to other states across India." },
             ].map((card, i) => (
               <AnimatedSection key={card.title} delay={i * 0.08}>
-                <div className="glass-card p-6 h-full">
+                <div className="light-card p-6 h-full">
                   <div className="w-10 h-10 mb-4 rounded-full bg-[#C9A84C]/10 flex items-center justify-center">
                     <card.icon size={20} className="text-[#C9A84C]" />
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-white mb-2">{card.title}</h3>
-                  <p className="font-sans text-[13px] text-white/50 leading-relaxed">{card.desc}</p>
+                  <h3 className="font-serif text-lg font-bold light-heading mb-2">{card.title}</h3>
+                  <p className="font-sans text-[13px] light-body leading-relaxed">{card.desc}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -140,16 +140,16 @@ export default function CSRPartners() {
       </section>
 
       {/* ===== S3: BUDGET TRANSPARENCY ===== */}
-      <section className="py-20 md:py-28 bg-[#0A1628]">
+      <section className="py-20 md:py-28 section-light">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <AnimatedSection direction="left">
               <p className="section-label mb-4">BUDGET TRANSPARENCY</p>
-              <h2 className="heading-lg text-white mb-4">
+              <h2 className="heading-lg light-heading mb-4">
                 Year 1 Budget: <span className="text-[#C9A84C]">₹30,00,000</span>
               </h2>
               <div className="gradient-rule mb-8" />
-              <p className="font-sans text-[15px] text-white/60 leading-relaxed mb-8">
+              <p className="font-sans text-[15px] light-body leading-relaxed mb-8">
                 Every rupee is accounted for. Our budget is public, audited, and available for review by any CSR partner.
               </p>
 
@@ -161,7 +161,7 @@ export default function CSRPartners() {
             </AnimatedSection>
 
             <AnimatedSection direction="right">
-              <div className="glass-card-gold p-8">
+              <div className="light-card-gold p-8">
                 <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-4">CSR DELIVERABLES</p>
                 <ul className="space-y-4">
                   {[
@@ -176,7 +176,7 @@ export default function CSRPartners() {
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <CheckCircle2 size={16} className="text-[#C9A84C] mt-0.5 shrink-0" />
-                      <span className="font-sans text-[14px] text-white/60">{item}</span>
+                      <span className="font-sans text-[14px] light-body">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -187,7 +187,7 @@ export default function CSRPartners() {
       </section>
 
       {/* ===== S4: SCHEDULE VII ALIGNMENT ===== */}
-      <section className="py-20 md:py-28 bg-[#06101F]">
+      <section className="py-20 md:py-28 bg-[#0A1628]">
         <div className="container">
           <AnimatedSection className="text-center mb-14">
             <p className="section-label mb-4">COMPLIANCE</p>
@@ -239,15 +239,15 @@ export default function CSRPartners() {
       </section>
 
       {/* ===== S5: TARGET COMPANIES ===== */}
-      <section className="py-20 md:py-28 bg-[#080F1C]">
+      <section className="py-20 md:py-28 section-light">
         <div className="container">
           <AnimatedSection className="text-center mb-14">
             <p className="section-label mb-4">PARTNERSHIP TARGETS</p>
-            <h2 className="heading-lg text-white mb-4">
+            <h2 className="heading-lg light-heading mb-4">
               Companies We <span className="text-[#C9A84C]">Want to Work With</span>
             </h2>
             <div className="gradient-rule mx-auto mb-6" />
-            <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
+            <p className="font-sans text-[15px] light-body max-w-lg mx-auto">
               We are actively seeking CSR partnerships with companies that share our vision for Odisha and beyond.
             </p>
           </AnimatedSection>
@@ -258,16 +258,16 @@ export default function CSRPartners() {
               "Mahindra", "Adani Foundation", "JSW", "Vedanta", "NTPC",
             ].map((company, i) => (
               <AnimatedSection key={company} delay={i * 0.04}>
-                <div className="glass-card p-4 text-center hover:border-[#C9A84C]/30 transition-colors">
+                <div className="light-card p-4 text-center hover:border-[#C9A84C]/30 transition-colors">
                   <Building2 size={20} className="text-[#C9A84C]/40 mx-auto mb-2" />
-                  <p className="font-sans text-[13px] text-white/60">{company}</p>
+                  <p className="font-sans text-[13px] light-body">{company}</p>
                 </div>
               </AnimatedSection>
             ))}
           </div>
 
           <AnimatedSection delay={0.5} className="mt-8 text-center">
-            <p className="font-sans text-[13px] text-white/40 italic">
+            <p className="font-sans text-[13px] light-muted italic">
               These are aspirational targets. We welcome partnerships with companies of all sizes.
             </p>
           </AnimatedSection>

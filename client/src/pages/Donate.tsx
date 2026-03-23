@@ -6,26 +6,26 @@ import SEO from "@/components/SEO";
 export default function Donate() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
-    <div className="min-h-screen bg-[#0A1628]">
+    <div className="min-h-screen bg-[#FAF7F2]">
       <SEO
         title="Donate — Abhiara Foundation"
         description="Support Abhiara Foundation's mission — education for children, dignity for the elderly. Every contribution is legally protected and mission-bound."
         url="https://abhiarafoundation.com/donate"
       />
       <Navbar />
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 section-light">
         <div className="container mx-auto px-6 max-w-3xl text-center">
           <p className="text-[#1A7F8E] uppercase tracking-widest text-sm font-semibold mb-4">Support Our Mission</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold light-heading mb-4">
             Help Us Build a <span className="text-[#C9A84C]">Fearless</span> Future
           </h1>
           <div className="w-16 h-0.5 bg-gradient-to-r from-[#C9A84C] to-[#1A7F8E] mx-auto mb-8" />
-          <p className="text-white/70 text-lg leading-relaxed mb-12">
+          <p className="light-body text-lg leading-relaxed mb-12">
             Every contribution to Abhiara Foundation goes directly towards 
             education for underprivileged children and dignity for the elderly — 
             village by village, life by life.
           </p>
-          <div className="bg-white/5 border border-[#C9A84C]/30 rounded-2xl p-8 mb-8 text-left">
+          <div className="bg-white border border-[#C9A84C]/30 rounded-2xl p-8 mb-8 text-left shadow-sm">
             <h2 className="text-[#C9A84C] text-xl font-semibold mb-6 text-center">To Donate, Please Contact Us Directly</h2>
             <div className="flex flex-col items-center gap-4">
               <a
@@ -50,59 +50,59 @@ export default function Donate() {
                 </svg>
                 WhatsApp — +91 99389 38321
               </a>
-              <p className="text-white/50 text-sm text-center">Founder & Director · Abhiara Foundation</p>
+              <p className="text-[#0A1628]/50 text-sm text-center">Founder & Director · Abhiara Foundation</p>
             </div>
           </div>
           {/* ===== ABHIARA PROMISE ===== */}
           <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 text-center my-12 max-w-3xl mx-auto">
             <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-6">Truth of Life</p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">"Who help today who needed.</p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">It returns to him.</p>
+            <p className="text-2xl md:text-3xl text-[#0A1628] font-bold italic leading-relaxed mb-2">"Who help today who needed.</p>
+            <p className="text-2xl md:text-3xl text-[#0A1628] font-bold italic leading-relaxed mb-2">It returns to him.</p>
             <p className="text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">Always but other way."</p>
             <div className="w-12 h-0.5 bg-[#C9A84C] mx-auto my-4" />
             <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
-            <p className="text-white/50 text-xs uppercase tracking-widest mt-1">Written by Abhimanyu Mallik</p>
+            <p className="text-[#0A1628]/50 text-xs uppercase tracking-widest mt-1">Written by Abhimanyu Mallik</p>
           </div>
 
-          <div className="bg-red-950/40 border border-red-500/30 rounded-2xl p-8 text-left space-y-4">
-            <h3 className="text-red-400 font-semibold text-lg text-center mb-4">⚠ Important Notice</h3>
+          <div className="bg-red-50 border border-red-300 rounded-2xl p-8 text-left space-y-4">
+            <h3 className="text-red-700 font-semibold text-lg text-center mb-4">Important Notice</h3>
             <div className="flex gap-3">
-              <span className="text-red-400 mt-0.5 flex-shrink-0">•</span>
-              <p className="text-white/80 text-sm leading-relaxed">
-                <strong className="text-white">Abhiara Foundation does not accept cash donations.</strong> All contributions must be made through proper banking channels — NEFT, RTGS, cheque, or online transfer — to ensure full transparency and accountability.
+              <span className="text-red-600 mt-0.5 flex-shrink-0">•</span>
+              <p className="text-[#0A1628]/70 text-sm leading-relaxed">
+                <strong className="text-[#0A1628]">Abhiara Foundation does not accept cash donations.</strong> All contributions must be made through proper banking channels — NEFT, RTGS, cheque, or online transfer — to ensure full transparency and accountability.
               </p>
             </div>
             <div className="flex gap-3">
-              <span className="text-red-400 mt-0.5 flex-shrink-0">•</span>
-              <p className="text-white/80 text-sm leading-relaxed">
-                <strong className="text-white">We do not work with agents or intermediaries.</strong> Abhiara Foundation does not authorise any individual or organisation to collect donations on our behalf or pay any commission in exchange for donations.
+              <span className="text-red-600 mt-0.5 flex-shrink-0">•</span>
+              <p className="text-[#0A1628]/70 text-sm leading-relaxed">
+                <strong className="text-[#0A1628]">We do not work with agents or intermediaries.</strong> Abhiara Foundation does not authorise any individual or organisation to collect donations on our behalf or pay any commission in exchange for donations.
               </p>
             </div>
             <div className="flex gap-3">
-              <span className="text-red-400 mt-0.5 flex-shrink-0">•</span>
-              <p className="text-white/80 text-sm leading-relaxed">
-                <strong className="text-white">Do not expect cash back against your donation</strong> to claim income tax benefits. Donations must be made transparently through banking channels to qualify for 80G deduction under the Income Tax Act.
+              <span className="text-red-600 mt-0.5 flex-shrink-0">•</span>
+              <p className="text-[#0A1628]/70 text-sm leading-relaxed">
+                <strong className="text-[#0A1628]">Do not expect cash back against your donation</strong> to claim income tax benefits. Donations must be made transparently through banking channels to qualify for 80G deduction under the Income Tax Act.
               </p>
             </div>
             <div className="flex gap-3">
-              <span className="text-red-400 mt-0.5 flex-shrink-0">•</span>
-              <p className="text-white/80 text-sm leading-relaxed">
-                Anyone approaching you claiming to represent Abhiara Foundation for cash collection is <strong className="text-white">not authorised</strong>. Please report such instances directly to us via LinkedIn.
+              <span className="text-red-600 mt-0.5 flex-shrink-0">•</span>
+              <p className="text-[#0A1628]/70 text-sm leading-relaxed">
+                Anyone approaching you claiming to represent Abhiara Foundation for cash collection is <strong className="text-[#0A1628]">not authorised</strong>. Please report such instances directly to us via LinkedIn.
               </p>
             </div>
           </div>
 
-          <div className="bg-white/5 border border-[#C9A84C]/20 rounded-2xl p-8 text-center mt-6">
+          <div className="bg-white border border-[#C9A84C]/20 rounded-2xl p-8 text-center mt-6 shadow-sm">
             <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-3">Governance Promise</p>
-            <p className="text-white font-semibold text-base mb-3">
+            <p className="text-[#0A1628] font-semibold text-base mb-3">
               Most NGOs ask you to trust the founder. We ask you to trust the structure.
             </p>
-            <p className="text-white/60 text-sm leading-relaxed max-w-xl mx-auto">
+            <p className="text-[#0A1628]/60 text-sm leading-relaxed max-w-xl mx-auto">
               As a Section 8 Company (registration pending), no property, asset, or income of Abhiara Foundation can be personally claimed — by the founder, family, or any individual. Your donation will be legally protected and mission-bound.
             </p>
           </div>
 
-          <p className="text-white/40 text-xs mt-8">
+          <p className="text-[#0A1628]/40 text-xs mt-8">
             Abhiara Foundation · Section 8 Company (Registration Pending) · Not-for-Profit · Odisha · Pan India
           </p>
         </div>

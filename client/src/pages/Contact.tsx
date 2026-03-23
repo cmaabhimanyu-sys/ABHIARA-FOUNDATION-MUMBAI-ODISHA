@@ -131,14 +131,14 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ===== S2: CONTACT GRID ===== */}
-      <section className="py-20 md:py-28 bg-[#080F1C]">
+      {/* ===== S2: CONTACT GRID (LIGHT) ===== */}
+      <section className="py-20 md:py-28 section-light">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
             {/* Left: WhatsApp Quick Prompts + Contact Form */}
             <AnimatedSection direction="left" className="lg:col-span-3">
-              <p className="section-label mb-4">QUICK CONNECT VIA WHATSAPP</p>
-              <h2 className="heading-md text-white mb-8">
+              <p className="section-label-light mb-4">QUICK CONNECT VIA WHATSAPP</p>
+              <h2 className="heading-md light-heading mb-8">
                 Choose your <span className="text-[#25D366]">conversation</span>
               </h2>
 
@@ -170,10 +170,10 @@ export default function Contact() {
                     href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(box.message)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="glass-card p-6 group hover:border-[#25D366]/30 transition-all block"
+                    className="light-card p-6 group hover:border-[#25D366]/30 transition-all block"
                   >
-                    <h3 className="font-serif text-lg font-bold text-white mb-2 group-hover:text-[#25D366] transition-colors">{box.title}</h3>
-                    <p className="font-sans text-[13px] text-white/50 leading-relaxed mb-3">{box.desc}</p>
+                    <h3 className="font-serif text-lg font-bold light-heading mb-2 group-hover:text-[#25D366] transition-colors">{box.title}</h3>
+                    <p className="font-sans text-[13px] light-muted leading-relaxed mb-3">{box.desc}</p>
                     <span className="font-mono text-[9px] tracking-wider uppercase text-[#25D366] flex items-center gap-2">
                       <WhatsAppIcon className="w-4 h-4" />
                       CHAT ON WHATSAPP
@@ -183,9 +183,9 @@ export default function Contact() {
               </div>
 
               {/* Contact Form (saves to database) */}
-              <div className="glass-card-gold p-6 md:p-8">
+              <div className="light-card-gold p-6 md:p-8">
                 <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-2">OR SEND US A MESSAGE</p>
-                <p className="font-sans text-[12px] text-white/40 mb-4">Your message is saved and we will respond via WhatsApp or email.</p>
+                <p className="font-sans text-[12px] light-muted mb-4">Your message is saved and we will respond via WhatsApp or email.</p>
                 <form onSubmit={handleContactSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <input
@@ -193,7 +193,7 @@ export default function Contact() {
                       required
                       value={contactForm.name}
                       onChange={(e) => setContactForm(prev => ({ ...prev, name: e.target.value }))}
-                      className="px-4 py-3 bg-white/5 border border-white/15 rounded-sm text-white font-sans text-sm placeholder:text-white/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
+                      className="px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
                       placeholder="Your Name"
                     />
                     <input
@@ -201,25 +201,25 @@ export default function Contact() {
                       required
                       value={contactForm.email}
                       onChange={(e) => setContactForm(prev => ({ ...prev, email: e.target.value }))}
-                      className="px-4 py-3 bg-white/5 border border-white/15 rounded-sm text-white font-sans text-sm placeholder:text-white/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
+                      className="px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
                       placeholder="Your Email"
                     />
                   </div>
                   <select
                     value={contactForm.type}
                     onChange={(e) => setContactForm(prev => ({ ...prev, type: e.target.value as typeof contactForm.type }))}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-sm text-white font-sans text-sm focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
                   >
-                    <option value="general" className="bg-[#0A1628]">General Inquiry</option>
-                    <option value="csr_partnership" className="bg-[#0A1628]">CSR Partnership</option>
-                    <option value="volunteer" className="bg-[#0A1628]">Volunteering</option>
-                    <option value="media" className="bg-[#0A1628]">Media & Press</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="csr_partnership">CSR Partnership</option>
+                    <option value="volunteer">Volunteering</option>
+                    <option value="media">Media & Press</option>
                   </select>
                   <input
                     type="text"
                     value={contactForm.subject}
                     onChange={(e) => setContactForm(prev => ({ ...prev, subject: e.target.value }))}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-sm text-white font-sans text-sm placeholder:text-white/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
                     placeholder="Subject (optional)"
                   />
                   <textarea
@@ -227,7 +227,7 @@ export default function Contact() {
                     rows={4}
                     value={contactForm.message}
                     onChange={(e) => setContactForm(prev => ({ ...prev, message: e.target.value }))}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-sm text-white font-sans text-sm placeholder:text-white/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors resize-none"
                     placeholder="Your message..."
                   />
                   <button
@@ -249,10 +249,10 @@ export default function Contact() {
             <AnimatedSection direction="right" className="lg:col-span-2">
               <div className="space-y-6">
                 {/* Founder Card */}
-                <div className="glass-card-gold p-6">
+                <div className="light-card-gold p-6">
                   <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-3">FOUNDER</p>
-                  <h3 className="font-serif text-xl font-bold text-white mb-1">Abhimanyu Mallik</h3>
-                  <p className="font-sans text-[13px] text-white/40 mb-4">CMA · Mumbai, Maharashtra</p>
+                  <h3 className="font-serif text-xl font-bold light-heading mb-1">Abhimanyu Mallik</h3>
+                  <p className="font-sans text-[13px] light-muted mb-4">CMA · Mumbai, Maharashtra</p>
                   <div className="space-y-3">
                     {/* WhatsApp — Primary */}
                     <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[13px] text-[#25D366] hover:text-[#1DA851] transition-colors font-semibold">
@@ -260,12 +260,12 @@ export default function Contact() {
                       {phoneDisplay}
                     </a>
                     {/* Email */}
-                    <a href={`mailto:${emailAddress}`} className="flex items-center gap-3 text-[13px] text-white/60 hover:text-[#C9A84C] transition-colors">
+                    <a href={`mailto:${emailAddress}`} className="flex items-center gap-3 text-[13px] light-body hover:text-[#C9A84C] transition-colors">
                       <Mail size={14} className="text-[#1A7F8E] shrink-0" />
                       {emailAddress}
                     </a>
                     {/* LinkedIn */}
-                    <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[13px] text-white/60 hover:text-[#C9A84C] transition-colors">
+                    <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[13px] light-body hover:text-[#C9A84C] transition-colors">
                       <Linkedin size={14} className="text-[#1A7F8E] shrink-0" />
                       LinkedIn — Abhimanyu Mallik
                     </a>
@@ -277,13 +277,13 @@ export default function Contact() {
                   href={`https://wa.me/${whatsappNumber}?text=Hello%20Abhiara%20Foundation%2C%20I%20would%20like%20to%20connect.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block glass-card p-6 group hover:border-[#25D366]/30 transition-all text-center"
+                  className="block light-card p-6 group hover:border-[#25D366]/30 transition-all text-center"
                 >
                   <WhatsAppIcon className="w-10 h-10 text-[#25D366] mx-auto mb-3" />
-                  <p className="font-serif text-lg font-bold text-white mb-1 group-hover:text-[#25D366] transition-colors">
+                  <p className="font-serif text-lg font-bold light-heading mb-1 group-hover:text-[#25D366] transition-colors">
                     Fastest Way to Reach Us
                   </p>
-                  <p className="font-sans text-[13px] text-white/50 mb-3">
+                  <p className="font-sans text-[13px] light-muted mb-3">
                     Tap to open WhatsApp and message us directly. We typically respond within 24 hours.
                   </p>
                   <span className="font-mono text-[10px] tracking-wider uppercase text-[#25D366] flex items-center justify-center gap-2">
@@ -292,40 +292,40 @@ export default function Contact() {
                 </a>
 
                 {/* Location */}
-                <div className="glass-card p-6">
+                <div className="light-card p-6">
                   <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-3">LOCATIONS</p>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
                       <MapPin size={14} className="text-[#C9A84C] mt-0.5 shrink-0" />
                       <div>
-                        <p className="font-sans text-sm font-semibold text-white">Registered Office</p>
-                        <p className="font-sans text-[13px] text-white/40">Mumbai, Maharashtra, India</p>
+                        <p className="font-sans text-sm font-semibold light-heading">Registered Office</p>
+                        <p className="font-sans text-[13px] light-muted">Mumbai, Maharashtra, India</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <MapPin size={14} className="text-[#1A7F8E] mt-0.5 shrink-0" />
                       <div>
-                        <p className="font-sans text-sm font-semibold text-white">Operations</p>
-                        <p className="font-sans text-[13px] text-white/40">All of Odisha & Other States<br />Expanding Across India</p>
+                        <p className="font-sans text-sm font-semibold light-heading">Operations</p>
+                        <p className="font-sans text-[13px] light-muted">All of Odisha & Other States<br />Expanding Across India</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Social */}
-                <div className="glass-card p-6">
+                <div className="light-card p-6">
                   <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#C9A84C] mb-3">CONNECT</p>
                   <div className="flex gap-3">
                     <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#25D366]/30 bg-[#25D366]/10 flex items-center justify-center text-[#25D366] hover:bg-[#25D366]/20 hover:border-[#25D366]/50 transition-colors">
                       <WhatsAppIcon className="w-[18px] h-[18px]" />
                     </a>
-                    <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
+                    <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#0A1628]/15 flex items-center justify-center text-[#0A1628]/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
                       <Linkedin size={18} />
                     </a>
-                    <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
+                    <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#0A1628]/15 flex items-center justify-center text-[#0A1628]/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
                       <Twitter size={18} />
                     </a>
-                    <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
+                    <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#0A1628]/15 flex items-center justify-center text-[#0A1628]/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
                       <Instagram size={18} />
                     </a>
                   </div>

@@ -123,40 +123,40 @@ export default function OurStory() {
         </div>
       </section>
 
-      {/* ===== S2: THE NAME ===== */}
-      <section className="py-20 md:py-28 bg-[#080F1C]">
+      {/* ===== S2: THE NAME (LIGHT) ===== */}
+      <section className="py-20 md:py-28 section-light">
         <div className="container">
           <AnimatedSection className="text-center mb-12">
-            <p className="section-label mb-4">THE NAME</p>
-            <h2 className="heading-lg text-white mb-4">
+            <p className="section-label-light mb-4">THE NAME</p>
+            <h2 className="heading-lg light-heading mb-4">
               ABHI + ARA = <span className="italic text-[#C9A84C]">Fearless Ray of Light</span>
             </h2>
-            <div className="gradient-rule mx-auto" />
+            <div className="gradient-rule-light mx-auto" />
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
             <div className="max-w-3xl mx-auto">
-              <p className="font-sans text-[15px] text-white/60 leading-relaxed mb-8">
+              <p className="font-sans text-[15px] light-body leading-relaxed mb-8">
                 Abhiara Foundation takes its name from two people who define its purpose.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="glass-card-gold p-6">
-                  <h3 className="font-serif text-3xl font-bold text-white mb-1">ABHI</h3>
+                <div className="light-card-gold p-6">
+                  <h3 className="font-serif text-3xl font-bold light-heading mb-1">ABHI</h3>
                   <p className="font-serif text-xl text-[#C9A84C]/60 mb-2">अभि</p>
                   <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-3">
                     Fearless &middot; Brave &middot; Dauntless
                   </p>
-                  <p className="font-sans text-[14px] text-white/55 leading-relaxed">
+                  <p className="font-sans text-[14px] light-body leading-relaxed">
                     <span className="text-[#C9A84C] font-semibold">ABHI</span> {abhiDesc.replace(/^ABHI\s*—?\s*/, "— ")}
                   </p>
                 </div>
-                <div className="glass-card p-6">
-                  <h3 className="font-serif text-3xl font-bold text-white mb-1">ARA</h3>
+                <div className="light-card p-6">
+                  <h3 className="font-serif text-3xl font-bold light-heading mb-1">ARA</h3>
                   <p className="font-serif text-xl text-[#C9A84C]/60 mb-2">आरा</p>
                   <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-3">
                     Ray of Sacred Light
                   </p>
-                  <p className="font-sans text-[14px] text-white/55 leading-relaxed">
+                  <p className="font-sans text-[14px] light-body leading-relaxed">
                     <span className="text-[#1A7F8E] font-semibold">ARA</span> {araDesc.replace(/^ARA\s*—?\s*/, "— ")}
                   </p>
                 </div>
@@ -260,30 +260,30 @@ export default function OurStory() {
         </div>
       </section>
 
-      {/* ===== TRUTH OF LIFE ===== */}
-      <section className="py-12 bg-[#0A1628]">
+      {/* ===== TRUTH OF LIFE (LIGHT) ===== */}
+      <section className="py-12 section-light">
         <div className="container">
-          <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 text-center my-12 max-w-3xl mx-auto">
-            <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-6">Truth of Life</p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">"Who help today who needed.</p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">It returns to him.</p>
-            <p className="text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">Always but other way."</p>
+          <div className="light-card-gold p-8 text-center my-12 max-w-3xl mx-auto">
+            <p className="text-[#B8942A] text-xs uppercase tracking-widest mb-6">Truth of Life</p>
+            <p className="text-2xl md:text-3xl light-heading font-bold italic leading-relaxed mb-2">"Who help today who needed.</p>
+            <p className="text-2xl md:text-3xl light-heading font-bold italic leading-relaxed mb-2">It returns to him.</p>
+            <p className="text-2xl md:text-3xl text-[#B8942A] font-bold italic leading-relaxed mb-6">Always but other way."</p>
             <div className="w-12 h-0.5 bg-[#C9A84C] mx-auto my-4" />
-            <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
+            <p className="text-[#B8942A] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
           </div>
         </div>
       </section>
 
-      {/* ===== S4: GOVERNANCE (from CMS) ===== */}
-      <section className="py-20 md:py-28 bg-[#06101F]">
+      {/* ===== S4: GOVERNANCE (LIGHT) ===== */}
+      <section className="py-20 md:py-28 section-light-alt">
         <div className="container">
           <AnimatedSection className="text-center mb-14">
-            <p className="section-label mb-4">GOVERNANCE</p>
-            <h2 className="heading-lg text-white mb-4">
+            <p className="section-label-light mb-4">GOVERNANCE</p>
+            <h2 className="heading-lg light-heading mb-4">
               Built on <span className="text-[#C9A84C]">Transparency</span>
             </h2>
-            <div className="gradient-rule mx-auto mb-6" />
-            <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
+            <div className="gradient-rule-light mx-auto mb-6" />
+            <p className="font-sans text-[15px] light-body max-w-lg mx-auto">
               Every rupee tracked. Every impact measured. Every report published.
             </p>
           </AnimatedSection>
@@ -293,12 +293,12 @@ export default function OurStory() {
               const IconComp = GOVERNANCE_ICONS[card.title] || Shield;
               return (
                 <AnimatedSection key={card.title} delay={i * 0.08}>
-                  <div className="glass-card p-6 h-full text-center">
+                  <div className="light-card p-6 h-full text-center">
                     <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-[#C9A84C]/10 flex items-center justify-center">
                       <IconComp size={22} className="text-[#C9A84C]" />
                     </div>
-                    <h3 className="font-serif text-lg font-bold text-white mb-2">{card.title}</h3>
-                    <p className="font-sans text-[13px] text-white/50 leading-relaxed">{card.desc}</p>
+                    <h3 className="font-serif text-lg font-bold light-heading mb-2">{card.title}</h3>
+                    <p className="font-sans text-[13px] light-muted leading-relaxed">{card.desc}</p>
                   </div>
                 </AnimatedSection>
               );

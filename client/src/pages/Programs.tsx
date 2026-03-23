@@ -21,7 +21,7 @@ function TargetBar({ label, status, color }: { label: string; status: string; co
   return (
     <div className="mb-3 flex items-center gap-3">
       <div className="w-2 h-2 rounded-full" style={{ background: color }} />
-      <span className="font-mono text-[9px] tracking-wider uppercase text-white/50">{label}</span>
+      <span className="font-mono text-[9px] tracking-wider uppercase light-muted">{label}</span>
       <span className="font-mono text-[9px] tracking-wider uppercase ml-auto" style={{ color }}>{status}</span>
     </div>
   );
@@ -87,8 +87,8 @@ export default function Programs() {
         </div>
       </section>
 
-      {/* ===== S2: EDUCATION ===== */}
-      <section className="py-20 md:py-28 bg-[#080F1C]">
+      {/* ===== S2: EDUCATION (LIGHT) ===== */}
+      <section className="py-20 md:py-28 section-light">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <AnimatedSection direction="left">
@@ -121,8 +121,8 @@ export default function Programs() {
                   PILLAR ONE
                 </p>
               </div>
-              <h2 className="heading-lg text-white mb-6">Education</h2>
-              <p className="font-sans text-[15px] text-white/60 leading-relaxed mb-6">
+              <h2 className="heading-lg light-heading mb-6">Education</h2>
+              <p className="font-sans text-[15px] light-body leading-relaxed mb-6">
                 Scholarships, digital learning centres, and study kits for poor and underprivileged students from tribal and rural families. We believe no child should be denied education because of geography or poverty. Covering all of Odisha and expanding across India.
               </p>
 
@@ -134,10 +134,10 @@ export default function Programs() {
                   { icon: MapPin, label: "Kendrapara", sub: "Odisha" },
                   { icon: Calendar, label: "Nov 2025", sub: "Book Distribution" },
                 ].map((item) => (
-                  <div key={item.label} className="glass-card-gold p-3">
+                  <div key={item.label} className="light-card-gold p-3">
                     <item.icon size={16} className="text-[#C9A84C] mb-1.5" />
-                    <p className="font-sans text-sm font-semibold text-white">{item.label}</p>
-                    <p className="font-mono text-[9px] tracking-wider text-white/40">{item.sub}</p>
+                    <p className="font-sans text-sm font-semibold light-heading">{item.label}</p>
+                    <p className="font-mono text-[9px] tracking-wider light-muted">{item.sub}</p>
                   </div>
                 ))}
               </div>
@@ -152,7 +152,7 @@ export default function Programs() {
                   "After-school tutoring and mentorship",
                   "Early childhood readiness programmes",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 font-sans text-[14px] text-white/55">
+                  <li key={item} className="flex items-start gap-3 font-sans text-[14px] light-body">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#C9A84C] mt-2 shrink-0" />
                     {item}
                   </li>
@@ -160,7 +160,7 @@ export default function Programs() {
               </ul>
 
               {/* Progress */}
-              <TargetBar label="Scholarship Fund" status="Year 1 Target" color="#C9A84C" />
+              <TargetBar label="Scholarship Fund" status="Year 1 Target" color="#B8942A" />
               <TargetBar label="Centre Setup" status="Planning Phase" color="#1A7F8E" />
 
               <Link
@@ -257,8 +257,8 @@ export default function Programs() {
         </div>
       </section>
 
-      {/* ===== S4: CSR IMPACT ===== */}
-      <section className="py-20 md:py-28 bg-[#06101F]">
+      {/* ===== S4: CSR IMPACT (LIGHT) ===== */}
+      <section className="py-20 md:py-28 section-light">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <AnimatedSection direction="left">
@@ -280,8 +280,8 @@ export default function Programs() {
                   PILLAR THREE
                 </p>
               </div>
-              <h2 className="heading-lg text-white mb-6">CSR Implementation</h2>
-              <p className="font-sans text-[15px] text-white/60 leading-relaxed mb-6">
+              <h2 className="heading-lg light-heading mb-6">CSR Implementation</h2>
+              <p className="font-sans text-[15px] light-body leading-relaxed mb-6">
                 End-to-end CSR project implementation for corporates. Schedule VII compliant with monthly reporting, audited utilisation statements, and co-branded impact documentation.
               </p>
 
@@ -292,10 +292,10 @@ export default function Programs() {
                   { icon: Building2, label: "Schedule VII", sub: "Compliant Framework" },
                   { icon: Calendar, label: "Seeking", sub: "Corporate Partners" },
                 ].map((item) => (
-                  <div key={item.label} className="glass-card-gold p-3">
+                  <div key={item.label} className="light-card-gold p-3">
                     <item.icon size={16} className="text-[#C9A84C] mb-1.5" />
-                    <p className="font-sans text-sm font-semibold text-white">{item.label}</p>
-                    <p className="font-mono text-[9px] tracking-wider text-white/40">{item.sub}</p>
+                    <p className="font-sans text-sm font-semibold light-heading">{item.label}</p>
+                    <p className="font-mono text-[9px] tracking-wider light-muted">{item.sub}</p>
                   </div>
                 ))}
               </div>
@@ -309,7 +309,7 @@ export default function Programs() {
                   "Annual impact report with beneficiary data",
                   "Co-branded CSR documentation for your annual report",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 font-sans text-[14px] text-white/55">
+                  <li key={item} className="flex items-start gap-3 font-sans text-[14px] light-body">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#C9A84C] mt-2 shrink-0" />
                     {item}
                   </li>

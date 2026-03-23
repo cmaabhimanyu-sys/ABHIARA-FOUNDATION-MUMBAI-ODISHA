@@ -282,6 +282,67 @@
     100% { transform: scale(1.6); opacity: 0; }
   }
 
+  /* ===== LIGHT SECTION STYLES ===== */
+  .section-light {
+    background: #FAF7F2 !important;
+  }
+  .section-light-alt {
+    background: #F0EBE3 !important;
+  }
+
+  /* Light-mode glass card (for use on light backgrounds) */
+  .light-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .light-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+  }
+
+  .light-card-gold {
+    background: #FFFDF7;
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(201, 168, 76, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .light-card-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(201, 168, 76, 0.15);
+  }
+
+  /* Light section text helpers */
+  .light-heading {
+    color: #1A1A2E;
+  }
+  .light-body {
+    color: #4A4A5A;
+  }
+  .light-muted {
+    color: #7A7A8A;
+  }
+
+  /* Section label on light bg */
+  .section-label-light {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #1A7F8E;
+  }
+
+  /* Gradient rule on light bg */
+  .gradient-rule-light {
+    height: 2px;
+    width: 60px;
+    background: linear-gradient(90deg, #C9A84C, #1A7F8E);
+    border-radius: 2px;
+  }
+
   /* Marquee scroll animation for trust bar */
   @keyframes scroll {
     0% { transform: translateX(0); }

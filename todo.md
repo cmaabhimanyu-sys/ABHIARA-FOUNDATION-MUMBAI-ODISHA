@@ -175,3 +175,13 @@
 - [x] Make Our Story page dynamic with CMS settings (founder story, timeline, quotes)
 - [x] Make Vision page dynamic with CMS settings (mission, vision, values, SDGs)
 - [x] Seed CMS with Our Story and Vision page content defaults
+- [x] Design: Define warm cream light palette and add CSS utility classes
+- [x] Design: Home page — alternate light/dark sections
+- [x] Design: Our Story page — alternate light/dark sections
+- [x] Design: Vision page — alternate light/dark sections
+- [x] Design: Programs page — alternate light/dark sections
+- [x] Design: Contact page — alternate light/dark sections
+- [x] Design: CSR Partners page — alternate light/dark sections
+- [x] Design: Activities page — alternate light/dark sections
+- [x] Design: Team page — alternate light/dark sections
+- [x] Design: Donate page — alternate light/dark sections
