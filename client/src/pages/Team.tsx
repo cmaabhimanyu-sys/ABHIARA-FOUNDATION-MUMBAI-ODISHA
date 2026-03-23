@@ -219,6 +219,7 @@ export default function Team() {
                 initials: "SJ",
                 name: "Sagar Jena",
                 role: "Education Advisor",
+                qualifications: "BCom, Diploma in Fashion Designing",
                 desc: "Founder of Ama Chatasali and rights activist. Mr. Jena brings grassroots advocacy experience and a deep commitment to educational equity and accountability in public institutions.",
                 icon: GraduationCap,
                 accent: "teal",
@@ -274,6 +275,11 @@ export default function Team() {
                   >
                     {advisor.role}
                   </p>
+                  {(advisor as any).qualifications && (
+                    <p className="font-mono text-[10px] tracking-wider text-[#C9A84C]/70 mt-1">
+                      {(advisor as any).qualifications}
+                    </p>
+                  )}
                   <p className="font-sans text-[13px] text-white/45 leading-relaxed">
                     {advisor.desc}
                   </p>

@@ -205,3 +205,4 @@
 - [x] 10/10: Donate button prominence (gold outline with heart icon in navbar)
 - [x] 10/10: Footer simplification (4 columns → 3, merged Our Work into Navigate)
 - [ ] 10/10: Social proof section (partner logos, testimonials)
+- [x] Add Sagar Jena's qualifications: BCom, Diploma in Fashion Designing
