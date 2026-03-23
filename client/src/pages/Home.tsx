@@ -6,7 +6,7 @@
  */
 import { useEffect, useRef, useState, useMemo } from "react";
 import { Link } from "wouter";
-import { GraduationCap, HeartHandshake, Building2, ArrowRight, Shield, Award, MapPin, Briefcase, CheckCircle, Quote, Users, FileCheck, BadgeCheck } from "lucide-react";
+import { GraduationCap, HeartHandshake, Building2, ArrowRight, Shield, Award, MapPin, Briefcase, CheckCircle, Quote, Users, FileCheck, BadgeCheck, Phone, Mail, Linkedin } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -519,6 +519,17 @@ export default function Home() {
                 <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-white/40 mt-1 flex items-center justify-center lg:justify-start gap-1">
                   <MapPin size={10} /> Mumbai, Maharashtra
                 </p>
+                <div className="flex flex-col gap-2 mt-4">
+                  <a href="tel:+919938938321" className="font-mono text-[10px] tracking-[0.12em] uppercase text-white/50 hover:text-[#C9A84C] transition-colors flex items-center justify-center lg:justify-start gap-2">
+                    <Phone size={10} /> +91 99389 38321
+                  </a>
+                  <a href="mailto:info@abhiarafoundation.org" className="font-mono text-[10px] tracking-[0.12em] uppercase text-white/50 hover:text-[#C9A84C] transition-colors flex items-center justify-center lg:justify-start gap-2">
+                    <Mail size={10} /> info@abhiarafoundation.org
+                  </a>
+                  <a href="https://www.linkedin.com/in/abhimanyu-mallik/" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] tracking-[0.12em] uppercase text-white/50 hover:text-[#C9A84C] transition-colors flex items-center justify-center lg:justify-start gap-2">
+                    <Linkedin size={10} /> LinkedIn — Abhimanyu Mallik
+                  </a>
+                </div>
               </div>
             </AnimatedSection>
 

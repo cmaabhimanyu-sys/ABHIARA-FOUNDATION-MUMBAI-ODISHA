@@ -102,7 +102,7 @@ export default function Team() {
                   Born in Raisar, Kendrapara, Odisha — Abhimanyu's journey from a farming family to leading finance for one of India's most ambitious technology companies is the origin story of Abhiara Foundation itself. A Cost and Management Accountant by qualification, he brings institutional rigour, financial discipline, and strategic clarity to every aspect of the foundation's governance, compliance, and long-term vision. He believes that systems change lives — and that the most powerful thing a person can do with success is build the bridge they once needed.
                 </p>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {[
                     "CMA · Cost and Management Accountant",
                     "Section 8 Compliance Lead",
@@ -113,6 +113,17 @@ export default function Team() {
                       {tag}
                     </span>
                   ))}
+                </div>
+                <div className="flex flex-col gap-1.5 pt-4 border-t border-[#C9A84C]/10">
+                  <a href="tel:+919938938321" className="font-mono text-[10px] tracking-[0.1em] light-muted hover:text-[#C9A84C] transition-colors flex items-center gap-2">
+                    +91 99389 38321
+                  </a>
+                  <a href="mailto:info@abhiarafoundation.org" className="font-mono text-[10px] tracking-[0.1em] light-muted hover:text-[#C9A84C] transition-colors flex items-center gap-2">
+                    info@abhiarafoundation.org
+                  </a>
+                  <a href="https://www.linkedin.com/in/abhimanyu-mallik/" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] tracking-[0.1em] light-muted hover:text-[#C9A84C] transition-colors flex items-center gap-2">
+                    LinkedIn — Abhimanyu Mallik
+                  </a>
                 </div>
               </div>
             </AnimatedSection>
