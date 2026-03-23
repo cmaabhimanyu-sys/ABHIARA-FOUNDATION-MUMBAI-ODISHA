@@ -103,9 +103,9 @@ export default function Donate() {
           <AnimatedSection delay={0.15}>
             <div className="light-card p-8 text-center mb-8">
               <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#C9A84C] mb-6">Truth of Life</p>
-              <p className="font-serif text-2xl md:text-3xl text-[#0A1628] font-bold italic leading-relaxed mb-2">"Who help today who needed.</p>
-              <p className="font-serif text-2xl md:text-3xl text-[#0A1628] font-bold italic leading-relaxed mb-2">It returns to him.</p>
-              <p className="font-serif text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">Always but other way."</p>
+              <p className="font-serif text-2xl md:text-3xl text-[#0A1628] font-bold italic leading-relaxed mb-2">"Help someone today who needs it.</p>
+              <p className="font-serif text-2xl md:text-3xl text-[#0A1628] font-bold italic leading-relaxed mb-2">It returns to you.</p>
+              <p className="font-serif text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">Always. But another way."</p>
               <div className="w-12 h-0.5 bg-[#C9A84C] mx-auto my-4" />
               <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C]">— Abhiara Foundation</p>
               <p className="font-mono text-[9px] tracking-wider uppercase text-[#0A1628]/40 mt-1">Written by Abhimanyu Mallik</p>

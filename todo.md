@@ -211,3 +211,5 @@
 - [x] Add Abhimanyu Mallik's CMA qualification to Founder card on Team page
 - [x] Upload Abhimanyu Mallik's profile photo to Team page
 - [x] Upload Sagar Jena's profile photo to Team page
+- [x] Fix: Remove Aradhana trustee mention from Home page only (keep in OurStory and Team)
+- [x] Fix: Update Truth of Life quote on all 5 pages (Home, Donate, Programs, CsrPartners, OurStory) — correct grammar

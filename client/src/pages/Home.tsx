@@ -256,9 +256,9 @@ export default function Home() {
         <div className="container">
           <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 text-center my-12 max-w-3xl mx-auto">
             <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-6">Truth of Life</p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">"Who help today who needed.</p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">It returns to him.</p>
-            <p className="text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">Always but other way."</p>
+            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">"Help someone today who needs it.</p>
+            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">It returns to you.</p>
+            <p className="text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">Always. But another way."</p>
             <div className="w-12 h-0.5 bg-[#C9A84C] mx-auto my-4" />
             <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
             <p className="text-white/50 text-xs uppercase tracking-widest mt-1">Written by Abhimanyu Mallik</p>
@@ -374,12 +374,11 @@ export default function Home() {
                   { phase: "Phase 2", years: "2027", desc: "Acquire land in tribal Odisha · Begin CBSE affiliation" },
                   { phase: "Phase 3", years: "2028", desc: "Construction begins · Recruit founding faculty" },
                   { phase: "Phase 4", years: "2029–2030", desc: "Abhiara Vidyapeeth opens · First batch enrolled" },
-                  { phase: "Phase 5", years: "2037", desc: "Aradhana turns 18 · Becomes youngest Trustee" },
                 ].map((item, i) => (
                   <div key={item.phase} className="flex gap-4">
                     <div className="flex flex-col items-center">
                       <div className={`w-3 h-3 rounded-full ${i === 0 ? "bg-[#C9A84C]" : "bg-[#C9A84C]/30"} shrink-0`} />
-                      {i < 4 && <div className="w-px h-full bg-[#C9A84C]/20 min-h-[60px]" />}
+                      {i < 3 && <div className="w-px h-full bg-[#C9A84C]/20 min-h-[60px]" />}
                     </div>
                     <div className="pb-8">
                       <p className="font-mono text-[10px] tracking-wider uppercase text-[#C9A84C] mb-1">{item.phase} &middot; {item.years}</p>
@@ -399,11 +398,7 @@ export default function Home() {
                 <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C]">
                   — Abhimanyu Mallik &middot; Founder
                 </p>
-                <div className="mt-8 pt-6 border-t border-[#C9A84C]/15">
-                  <p className="font-sans text-[14px] text-white/50 italic">
-                    "When Aradhana turns 18 in 2037, she becomes the youngest trustee of Abhiara Foundation."
-                  </p>
-                </div>
+
               </div>
 
               <div className="mt-8">
