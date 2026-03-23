@@ -3,7 +3,7 @@
  * IntersectionObserver fade-up: opacity 0→1, translateY 24px→0, 0.65s ease
  * Stagger: 0.08s increments
  */
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 
 interface AnimatedSectionProps {
@@ -21,6 +21,7 @@ export default function AnimatedSection({
 }: AnimatedSectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const prefersReducedMotion = useReducedMotion();
 
   const variants = {
     hidden: {
@@ -38,10 +39,10 @@ export default function AnimatedSection({
   return (
     <motion.div
       ref={ref}
-      initial="hidden"
+      initial={prefersReducedMotion ? "visible" : "hidden"}
       animate={isInView ? "visible" : "hidden"}
       variants={variants}
-      transition={{ duration: 0.65, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: prefersReducedMotion ? 0 : 0.65, delay: prefersReducedMotion ? 0 : delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={className}
     >
       {children}

@@ -193,3 +193,15 @@
 - [x] AUDIT: Fix all invisible text issues (filter buttons, search bars fixed for light sections)
 - [x] AUDIT: Verify all card styles match their section background (glass-card vs light-card)
 - [x] AUDIT: Browser test all pages for visual correctness — Donate page verified
+- [x] 10/10: Fix counter animations showing 0 instead of real numbers
+- [x] 10/10: Simplify hero section (less text, stronger single message)
+- [x] 10/10: Consolidate navigation (8 items → 6 items + 2 CTA buttons)
+- [x] 10/10: Typography overhaul (16px body, 1.8 line-height)
+- [x] 10/10: Accessibility (alt text on all images, ARIA labels on nav/footer, skip-to-content link, prefers-reduced-motion)
+- [x] 10/10: Redesign Impact Counter section (big animated numbers 56-88px, horizontal layout with dividers)
+- [x] 10/10: Add section transitions (gradient dividers between dark/light sections)
+- [x] 10/10: Micro-interactions (card hover scale effects, image zoom on hover, smooth scroll animations)
+- [x] 10/10: Performance (lazy loading on all non-hero images, preload hero image, font-display swap)
+- [x] 10/10: Donate button prominence (gold outline with heart icon in navbar)
+- [x] 10/10: Footer simplification (4 columns → 3, merged Our Work into Navigate)
+- [ ] 10/10: Social proof section (partner logos, testimonials)

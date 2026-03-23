@@ -1,8 +1,8 @@
 /*
- * Abhiara Foundation — Footer V2.0 (Dynamic)
+ * Abhiara Foundation — Footer V3.0 (Simplified + Dynamic)
  * Background: #040C18 (darkest)
- * 3-column layout + manifesto quote + legal line
- * Fetches social links from CMS with fallback to hardcoded
+ * 3-column layout: Brand | Navigate | Connect
+ * Manifesto quote + legal line
  */
 import { Link } from "wouter";
 import { Linkedin, Instagram, Twitter, Youtube, Facebook, Globe, Mail } from "lucide-react";
@@ -29,12 +29,10 @@ export default function Footer() {
   const { data: cmsSocial = [] } = trpc.cms.social.listActive.useQuery();
   const { data: cmsSettings = [] } = trpc.cms.settings.list.useQuery();
 
-  // Use CMS social links if available, else fallback
   const socialLinks = cmsSocial.length > 0
     ? cmsSocial.map((s: any) => ({ platform: s.platform, url: s.url, label: s.label || "" }))
     : FALLBACK_SOCIAL;
 
-  // Get settings with fallback
   const getSetting = (key: string, fallback: string) => {
     const setting = cmsSettings.find((s: any) => s.settingKey === key);
     return setting ? setting.settingValue : fallback;
@@ -44,10 +42,10 @@ export default function Footer() {
   const whatsapp = getSetting("whatsapp_number", "919938938321");
 
   return (
-    <footer className="bg-[#040C18] text-white/60">
+    <footer className="bg-[#040C18] text-white/60" role="contentinfo" aria-label="Site footer">
       <div className="container py-16 md:py-20">
-        {/* Top Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+        {/* Top Row — 3 columns */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
           {/* Brand Column */}
           <div>
             <div className="mb-5 flex items-center gap-3">
@@ -55,6 +53,7 @@ export default function Footer() {
                 src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/aaf-logo-concept-3-DYGWPrtD3n9D2RUbi4xCrD.png"
                 alt="Abhiara Foundation Logo"
                 className="h-12 w-auto"
+                loading="lazy"
               />
               <div>
                 <h3 className="font-serif text-2xl font-bold tracking-[0.15em] text-white">
@@ -68,14 +67,14 @@ export default function Footer() {
             <p className="font-sans text-sm text-white/50 mb-1">
               Fearless Ray of Light
             </p>
-            <p className="font-sans text-[12px] text-white/35 leading-relaxed">
+            <p className="font-sans text-[13px] text-white/35 leading-relaxed mb-5">
               Education for children. Dignity for the elderly. Built from the village up.
             </p>
-            <div className="flex gap-3 mt-5">
+            <div className="flex gap-3">
               {socialLinks.filter((s: any) => s.platform !== "WhatsApp" && s.platform !== "Email").map((social: any, i: number) => {
                 const Icon = PLATFORM_ICONS[social.platform] || Globe;
                 return (
-                  <a key={i} href={social.url} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-[#C9A84C] hover:border-[#C9A84C] transition-colors">
+                  <a key={i} href={social.url} target="_blank" rel="noopener noreferrer" aria-label={`Follow us on ${social.platform}`} className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-[#C9A84C] hover:border-[#C9A84C] transition-colors">
                     <Icon size={15} />
                   </a>
                 );
@@ -83,12 +82,12 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Navigate */}
+          {/* Navigate — merged with Our Work */}
           <div>
             <h4 className="font-mono text-[10px] font-bold tracking-[0.2em] uppercase text-[#1A7F8E] mb-5">
               Navigate
             </h4>
-            <ul className="space-y-3">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-3">
               {[
                 { href: "/", label: "Home" },
                 { href: "/our-story", label: "Our Story" },
@@ -97,28 +96,13 @@ export default function Footer() {
                 { href: "/csr-partners", label: "CSR Partners" },
                 { href: "/activities", label: "Activities" },
                 { href: "/team", label: "Team" },
-                { href: "/contact", label: "Contact" },
+                { href: "/donate", label: "Donate" },
               ].map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="font-sans text-sm text-white/50 hover:text-[#C9A84C] transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
+                <Link key={link.href} href={link.href} className="font-sans text-sm text-white/50 hover:text-[#C9A84C] transition-colors">
+                  {link.label}
+                </Link>
               ))}
-            </ul>
-          </div>
-
-          {/* Our Work */}
-          <div>
-            <h4 className="font-mono text-[10px] font-bold tracking-[0.2em] uppercase text-[#1A7F8E] mb-5">
-              Our Work
-            </h4>
-            <ul className="space-y-3">
-              <li className="font-sans text-sm text-white/50">Education</li>
-              <li className="font-sans text-sm text-white/50">Elderly Care</li>
-              <li className="font-sans text-sm text-white/50">CSR Impact</li>
-              <li className="font-sans text-sm text-white/50">Abhiara Vidyapeeth</li>
-            </ul>
+            </div>
           </div>
 
           {/* Connect — Dynamic */}
@@ -131,13 +115,13 @@ export default function Footer() {
                 <li key={i}>
                   <a href={social.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-sans text-sm text-white/50 hover:text-[#C9A84C] transition-colors">
                     <Linkedin size={16} className="shrink-0" />
-                    <span>{social.label || "LinkedIn"} {social.label ? "" : ""}</span>
+                    <span>{social.label || "LinkedIn"}</span>
                   </a>
                 </li>
               ))}
               <li>
                 <a href={`mailto:${email}`} className="flex items-center gap-3 font-sans text-sm text-white/50 hover:text-[#C9A84C] transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <Mail size={16} className="shrink-0" />
                   <span>{email}</span>
                 </a>
               </li>
@@ -152,14 +136,14 @@ export default function Footer() {
         </div>
 
         {/* Manifesto Quote */}
-        <div className="mt-16 mb-12 text-center">
+        <div className="mt-14 mb-10 text-center">
           <p className="font-serif text-xl md:text-2xl italic text-[#C9A84C] max-w-2xl mx-auto">
             "Raisar to Mumbai. And back — through purpose."
           </p>
         </div>
 
         {/* Governance Trust Line */}
-        <div className="border-t border-white/10 pt-4 mt-4 text-center">
+        <div className="border-t border-white/10 pt-6 text-center">
           <p className="text-white/30 text-xs leading-relaxed max-w-2xl mx-auto">
             Abhiara Foundation is a Section 8 Not-for-Profit Company (registration pending). No property, asset, or income can be personally claimed by the founder, family, or any individual. Every contribution will be legally protected and mission-bound.
           </p>

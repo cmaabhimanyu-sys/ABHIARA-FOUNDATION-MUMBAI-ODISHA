@@ -73,10 +73,10 @@ export default function Home() {
       <Navbar />
 
       {/* ===== S2: HERO ===== */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="main-content" className="relative min-h-screen flex items-center justify-center overflow-hidden" role="banner" aria-label="Hero section">
         {/* Background: cinematic hero image with overlay */}
         <div className="absolute inset-0">
-          <img src={HERO_IMG} alt="" className="w-full h-full object-cover" />
+          <img src={HERO_IMG} alt="Dawn breaking over the green fields of Odisha, India" className="w-full h-full object-cover" fetchPriority="high" />
           <div className="absolute inset-0 bg-[#0A1628]/70" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0A1628]/40 via-transparent to-[#0A1628]" />
         </div>
@@ -87,12 +87,12 @@ export default function Home() {
           backgroundSize: "60px 60px",
         }} />
 
-        <div className="relative z-10 container text-center pt-20 pb-16">
+        <div className="relative z-10 container text-center pt-24 pb-20">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-8"
+            className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#1A7F8E] mb-10"
           >
             SECTION 8 REGISTRATION PENDING &middot; NOT-FOR-PROFIT &middot; ODISHA &middot; PAN INDIA
           </motion.p>
@@ -101,8 +101,8 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="font-serif font-bold leading-[1.1] mb-8"
-            style={{ fontSize: "clamp(52px, 6vw, 76px)" }}
+            className="font-serif font-bold leading-[1.05] mb-6"
+            style={{ fontSize: "clamp(56px, 7vw, 84px)" }}
           >
             <span className="text-[#C9A84C]">Fearless.</span><br />
             <span className="text-white">Purposeful.</span><br />
@@ -110,87 +110,34 @@ export default function Home() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="font-serif text-2xl md:text-3xl italic text-[#C9A84C]/80 mb-6"
-          >
-            Fearless Ray of Light
-          </motion.p>
-
-          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="font-sans text-[18px] text-white/60 max-w-[560px] mx-auto leading-relaxed mb-4"
+            className="font-sans text-lg md:text-xl text-white/70 max-w-[520px] mx-auto leading-relaxed mb-12"
           >
-            Every child from a remote village deserves a fearless path.
-            Every elder deserves dignity in their final years.
-            We are building that path — village by village, district by district, life by life.
+            Education for every child. Dignity for every elder.
+            Built from the village up.
           </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="font-mono text-[11px] tracking-[0.12em] uppercase text-[#C9A84C]/70 max-w-[560px] mx-auto mb-10"
-          >
-            Education for children. Dignity for the elderly. Built from the village up.
-          </motion.p>
-
-          {/* Manifesto Quote Block */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="max-w-xl mx-auto mb-12 border-l-2 border-[#1A7F8E] pl-6 text-left"
-          >
-            <p className="font-serif italic text-[#C9A84C] text-lg md:text-xl leading-relaxed">
-              "Remote to Metro Mumbai was my journey. Abhiara Foundation is my promise — that the next child from the village has a path."
-            </p>
-            <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/50 mt-3">
-              — Abhimanyu Mallik &middot; Founder
-            </p>
-          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.1 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link
               href="/our-story"
-              className="px-8 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors flex items-center gap-2"
+              className="px-10 py-4 bg-[#C9A84C] text-[#0A1628] font-mono text-[11px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors flex items-center gap-2"
             >
-              OUR STORY <ArrowRight size={12} />
+              OUR STORY <ArrowRight size={14} />
             </Link>
             <Link
               href="/csr-partners"
-              className="px-8 py-3 border border-white/20 text-white/80 font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:border-[#C9A84C]/50 hover:text-[#C9A84C] transition-colors"
+              className="px-10 py-4 border border-white/30 text-white font-mono text-[11px] font-bold tracking-[0.15em] uppercase hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors"
             >
               PARTNER WITH US
             </Link>
-          </motion.div>
-
-          {/* Stats Row */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.3 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto"
-          >
-            {heroStats.map((stat) => (
-              <div key={stat.label} className="glass-card p-4 text-center">
-                <p className="font-serif text-2xl md:text-3xl font-bold text-[#C9A84C]">
-                  <CounterAnimation end={stat.value} prefix="" suffix={stat.suffix} />
-                </p>
-                <p className="font-mono text-[9px] tracking-wider uppercase text-white/50 mt-1">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
           </motion.div>
         </div>
 
@@ -208,78 +155,95 @@ export default function Home() {
 
 
 
+      {/* ===== STATS BAR ===== */}
+      <section className="py-6 bg-[#06101F] border-y border-white/[0.06]">
+        <div className="container">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            {heroStats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="font-serif text-3xl md:text-4xl font-bold text-[#C9A84C]">
+                  <CounterAnimation end={stat.value} prefix="" suffix={stat.suffix} />
+                </p>
+                <p className="font-mono text-[9px] tracking-wider uppercase text-white/50 mt-1">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== IMPACT COUNTER ===== */}
-      <section className="py-16 md:py-24 bg-[#0A1628] relative overflow-hidden">
+      <section className="py-20 md:py-28 bg-[#0A1628] relative overflow-hidden">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-[0.02]" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='%23C9A84C' stroke-width='0.5'/%3E%3C/svg%3E")`,
           backgroundSize: "60px 60px",
         }} />
         <div className="container relative z-10">
-          <AnimatedSection className="text-center mb-12">
+          <AnimatedSection className="text-center mb-16">
             <p className="section-label mb-4">EARLY IMPACT</p>
             <h2 className="heading-xl text-white mb-4">
               Small Numbers. <span className="text-[#C9A84C]">Real Lives.</span>
             </h2>
             <div className="gradient-rule mx-auto mb-6" />
-            <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
+            <p className="font-sans text-[16px] text-white/60 max-w-lg mx-auto">
               We are in our founding year. Every number here is a real child, a real elder, a real family.
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {/* Big Impact Numbers — Horizontal */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 max-w-5xl mx-auto mb-12">
             {/* Students Supported */}
             <AnimatedSection delay={0}>
-              <div className="glass-card-gold p-8 text-center h-full">
-                <p className="font-serif text-5xl md:text-6xl font-bold text-[#C9A84C] mb-2">
+              <div className="text-center py-10 md:py-14 md:border-r border-white/[0.08]">
+                <p className="font-serif font-bold text-[#C9A84C] mb-3" style={{ fontSize: "clamp(56px, 7vw, 88px)", lineHeight: 1 }}>
                   <CounterAnimation end={getSettingNum("stat_students_reached", 50)} suffix="+" />
                 </p>
-                <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/70 mb-3">
+                <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-white/70 mb-3">
                   Students Supported
                 </p>
-                <p className="font-sans text-[13px] text-white/45 leading-relaxed">
-                  Children from remote villages in Kendrapara, Cuttack, and other districts of Odisha receiving educational support.
+                <p className="font-sans text-[13px] text-white/40 leading-relaxed max-w-[240px] mx-auto">
+                  Children from remote villages in Odisha receiving educational support
                 </p>
               </div>
             </AnimatedSection>
 
             {/* Elderly Families */}
-            <AnimatedSection delay={0.1}>
-              <div className="glass-card p-8 text-center h-full">
-                <p className="font-serif text-5xl md:text-6xl font-bold text-[#1A7F8E] mb-2">
+            <AnimatedSection delay={0.12}>
+              <div className="text-center py-10 md:py-14 md:border-r border-white/[0.08]">
+                <p className="font-serif font-bold text-[#1A7F8E] mb-3" style={{ fontSize: "clamp(56px, 7vw, 88px)", lineHeight: 1 }}>
                   <CounterAnimation end={getSettingNum("stat_elders_visited", 25)} suffix="+" />
                 </p>
-                <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/70 mb-3">
+                <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-white/70 mb-3">
                   Elderly Families Enrolled
                 </p>
-                <p className="font-sans text-[13px] text-white/45 leading-relaxed">
-                  Senior citizens and their families receiving companion support, health camps, and legal aid.
+                <p className="font-sans text-[13px] text-white/40 leading-relaxed max-w-[240px] mx-auto">
+                  Senior citizens receiving companion support and health camps
                 </p>
               </div>
             </AnimatedSection>
 
-            {/* 2027 Target */}
-            <AnimatedSection delay={0.2}>
-              <div className="glass-card-gold p-8 text-center h-full relative overflow-hidden">
-                <div className="absolute top-3 right-3">
-                  <span className="font-mono text-[9px] tracking-wider uppercase bg-[#C9A84C]/10 text-[#C9A84C] px-2 py-1 rounded-sm">
-                    Target 2026
-                  </span>
+            {/* 2026 Target */}
+            <AnimatedSection delay={0.24}>
+              <div className="text-center py-10 md:py-14 relative">
+                <div className="absolute top-4 right-4">
+                  <span className="font-mono text-[8px] tracking-wider uppercase bg-[#C9A84C]/15 text-[#C9A84C] px-2 py-1">TARGET 2026</span>
                 </div>
-                <p className="font-serif text-5xl md:text-6xl font-bold text-[#C9A84C] mb-2">
+                <p className="font-serif font-bold text-[#C9A84C] mb-3" style={{ fontSize: "clamp(56px, 7vw, 88px)", lineHeight: 1 }}>
                   <CounterAnimation end={getSettingNum("stat_students_target", 500)} suffix="+" />
                 </p>
-                <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/70 mb-3">
-                  Students · Target 2026
+                <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-white/70 mb-3">
+                  Students · Goal
                 </p>
-                <p className="font-sans text-[13px] text-white/45 leading-relaxed">
-                  Our goal: 500+ students across Odisha with digital learning centres and scholarship support.
+                <p className="font-sans text-[13px] text-white/40 leading-relaxed max-w-[240px] mx-auto">
+                  Digital learning centres and scholarship support across Odisha
                 </p>
               </div>
             </AnimatedSection>
           </div>
 
-          <AnimatedSection delay={0.3} className="text-center mt-10">
+          <AnimatedSection delay={0.3} className="text-center">
             <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/30">
               We don't inflate numbers. We earn them — one village at a time.
             </p>
@@ -301,6 +265,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Smooth transition: dark → light */}
+      <div className="section-divider-dark-to-light" />
 
       {/* ===== S4: THREE PILLARS (LIGHT) ===== */}
       <section className="py-20 md:py-28 section-light">
@@ -383,7 +350,8 @@ export default function Home() {
         </div>
       </section>
 
-
+      {/* Smooth transition: light → dark */}
+      <div className="section-divider-light-to-dark" />
 
       {/* ===== S7: ABHIARA VIDYAPEETH TEASER ===== */}
       <section className="py-20 md:py-28 bg-[#040C18]">
@@ -451,6 +419,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Smooth transition: dark → light */}
+      <div className="section-divider-dark-to-light" />
+
       {/* ===== S8: ACTIVITIES PREVIEW (LIGHT) ===== */}
       <section className="py-20 md:py-28 section-light">
         <div className="container">
@@ -491,6 +462,8 @@ export default function Home() {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Smooth transition: light → gold CTA */}
 
       {/* ===== S9: CONTACT CTA STRIP ===== */}
       <section className="py-16 md:py-20 bg-[#C9A84C]">

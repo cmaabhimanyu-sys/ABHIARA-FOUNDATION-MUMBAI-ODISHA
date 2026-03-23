@@ -653,7 +653,7 @@ function UpdatesTab() {
                     <div className="light-card overflow-hidden h-full flex flex-col group cursor-pointer" onClick={() => setExpandedPost(expandedPost === post.id ? null : post.id)}>
                       {post.image && (
                         <div className="relative h-48 overflow-hidden">
-                          <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                          <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                           <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] to-transparent" />
                           <span className="absolute top-3 left-3 font-mono text-[9px] tracking-wider uppercase px-2 py-1 rounded-sm backdrop-blur-sm flex items-center gap-1" style={{ backgroundColor: `${catConfig.color}20`, color: catConfig.color, border: `1px solid ${catConfig.color}40` }}>
                             <CatIcon size={10} /> {catConfig.label}
@@ -734,7 +734,7 @@ function UpdatesTab() {
                       <div className="flex flex-col md:flex-row">
                         {post.image && (
                           <div className="relative w-full md:w-72 h-48 md:h-auto flex-shrink-0 overflow-hidden">
-                            <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+                            <img src={post.image} alt={post.title} className="w-full h-full object-cover" loading="lazy" />
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0A1628]/60 hidden md:block" />
                             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] to-transparent md:hidden" />
                           </div>

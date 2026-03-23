@@ -83,7 +83,7 @@ export default function Team() {
               <div className="light-card-gold p-8 h-full">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-[#C9A84C]/30">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/founder-abhimanyu-mallik_cfb3b1d3.png" alt="Abhimanyu Mallik" className="w-full h-full object-cover" />
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/founder-abhimanyu-mallik_cfb3b1d3.png" alt="Abhimanyu Mallik - Founder, Abhiara Foundation" className="w-full h-full object-cover" loading="lazy" />
                   </div>
                   <div>
                     <h3 className="font-serif text-xl font-bold light-heading">
@@ -119,7 +119,7 @@ export default function Team() {
               <div className="light-card p-8 h-full">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-[#1A7F8E]/30">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/advocate-sujit-sahu_c5e63d2b.png" alt="Advocate Sujit Sahu" className="w-full h-full object-cover" />
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/advocate-sujit-sahu_c5e63d2b.png" alt="Advocate Sujit Sahu - Legal Advisor" className="w-full h-full object-cover" loading="lazy" />
                   </div>
                   <div>
                     <h3 className="font-serif text-xl font-bold light-heading">
@@ -166,7 +166,7 @@ export default function Team() {
               <div className="light-card p-8 h-full">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-[#1A7F8E]/30">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/biswajita_founder_style_maroon_6bcbce2c.webp" alt="Biswajita Mallik" className="w-full h-full object-cover" />
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/biswajita_founder_style_maroon_6bcbce2c.webp" alt="Biswajita Mallik - Co-Founder" className="w-full h-full object-cover" loading="lazy" />
                   </div>
                   <div>
                     <h3 className="font-serif text-xl font-bold light-heading">

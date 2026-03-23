@@ -85,7 +85,7 @@ export default function OurStory() {
       {/* ===== S1: HERO ===== */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={JOURNEY_IMG} alt="" className="w-full h-full object-cover" />
+          <img src={JOURNEY_IMG} alt="Founder journey from rural Odisha to Mumbai" className="w-full h-full object-cover" loading="lazy" />
           <div className="absolute inset-0 bg-[#0A1628]/75" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0A1628]/50 via-transparent to-[#0A1628]" />
         </div>

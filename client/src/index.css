@@ -251,9 +251,23 @@
   /* Body text on dark */
   .body-text {
     font-family: 'DM Sans', system-ui, sans-serif;
-    color: rgba(255, 255, 255, 0.62);
-    font-size: 15px;
-    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  /* Section transition dividers */
+  .section-divider-dark-to-light {
+    height: 80px;
+    background: linear-gradient(to bottom, #0A1628, #FAF7F2);
+  }
+  .section-divider-light-to-dark {
+    height: 80px;
+    background: linear-gradient(to bottom, #FAF7F2, #0A1628);
+  }
+  .section-divider-dark-to-dark {
+    height: 40px;
+    background: linear-gradient(to bottom, #080F1C, #0A1628);
   }
 
   /* WhatsApp floating button */
