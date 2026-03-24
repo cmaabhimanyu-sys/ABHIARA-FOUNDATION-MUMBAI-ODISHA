@@ -134,7 +134,7 @@ function ActivitiesManager() {
         <Input value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="Activity Title *" className="bg-white/5 border-white/10 text-white" />
         <Textarea value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="Description *" className="bg-white/5 border-white/10 text-white min-h-[100px]" />
         <div className="grid grid-cols-2 gap-3">
-          <Input value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} placeholder="Date (e.g. March 2026) *" className="bg-white/5 border-white/10 text-white" />
+          <Input value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} placeholder="Date (e.g. October 2025) *" className="bg-white/5 border-white/10 text-white" />
           <Input value={form.location} onChange={e => setForm(f => ({ ...f, location: e.target.value }))} placeholder="Location *" className="bg-white/5 border-white/10 text-white" />
         </div>
         <div className="grid grid-cols-2 gap-3">

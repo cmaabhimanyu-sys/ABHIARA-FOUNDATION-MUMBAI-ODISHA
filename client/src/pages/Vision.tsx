@@ -35,10 +35,9 @@ const PILLAR_ICONS: Record<string, any> = {
 };
 
 const TIMELINE_ICONS: Record<string, any> = {
-  "Foundation Year": Landmark,
-  "Scale & Strengthen": Users,
-  "Land & Plan": MapPin,
-  "Build the School": School,
+  "Build Corpus · Register · Launch": Landmark,
+  "Acquire Land · Begin Affiliation": MapPin,
+  "Construction · Recruit Faculty": School,
   "Vidyapeeth Opens": GraduationCap,
 };
 
@@ -51,18 +50,17 @@ const FALLBACK_PILLARS = [
 ];
 
 const FALLBACK_TIMELINE = [
-  { year: "2026", title: "Foundation Year", items: ["Section 8 Company \u2014 Registration in process", "Old Age Home visit \u2014 40+ elders visited in Puri (March 2026)", "Book distribution \u2014 50+ students reached in Kendrapara (March 2026)", "2 activities completed on the ground", "Operations begun in Kendrapara and Puri, Odisha"], active: true },
-  { year: "2026", title: "Scale & Strengthen", items: ["Reach 500+ students across Odisha", "Reach 200+ elders with companion visits", "Launch CSR partnerships \u2014 \u20b930L target (post Section 8 registration)", "10 activities completed across Odisha"], active: false },
-  { year: "2027", title: "Land & Plan", items: ["Acquire land for Abhiara Vidyapeeth in tribal Odisha", "Begin architectural planning and CBSE affiliation process", "Expand to neighbouring states (Chhattisgarh, Jharkhand)", "2,000+ students supported across programmes", "CSR portfolio reaches \u20b91 Cr+"], active: false },
-  { year: "2028", title: "Build the School", items: ["Construction of Abhiara Vidyapeeth begins", "Recruit founding faculty and staff", "CBSE affiliation secured", "Pan-India CSR implementation partnerships", "5,000+ students impacted across all programmes"], active: false },
-  { year: "2029\u20132030", title: "Vidyapeeth Opens", items: ["First batch of students enrolled at Abhiara Vidyapeeth", "Residential school with free education for tribal children", "Digital learning infrastructure fully operational", "Abhiara Foundation becomes a recognised national NGO", "10,000+ lives impacted across India"], active: false },
+  { year: "2026\u20132030", title: "Build Corpus \u00b7 Register \u00b7 Launch", items: ["Section 8 Company \u2014 Registration in process", "Build corpus and establish financial foundation", "Launch education and elderly care programmes across Odisha", "Reach 500+ students and 200+ elders", "Launch CSR partnerships and complete 10+ activities"], active: true },
+  { year: "2030", title: "Acquire Land \u00b7 Begin Affiliation", items: ["Acquire land for Abhiara Vidyapeeth in tribal Odisha", "Begin CBSE affiliation process", "Architectural planning and site development", "Expand programmes to neighbouring states"], active: false },
+  { year: "2032", title: "Construction \u00b7 Recruit Faculty", items: ["Construction of Abhiara Vidyapeeth begins", "Recruit founding faculty and staff", "CBSE affiliation secured", "Infrastructure and digital learning systems built"], active: false },
+  { year: "2035", title: "Vidyapeeth Opens", items: ["First batch of students enrolled at Abhiara Vidyapeeth", "Residential school with free education for tribal children", "Digital learning infrastructure fully operational", "Abhiara Foundation becomes a recognised national NGO"], active: false },
 ];
 
 const FALLBACK_TARGETS = [
-  { value: "10,000+", label: "Students Supported", sub: "By 2030" },
-  { value: "1,000+", label: "Elders Cared For", sub: "By 2030" },
-  { value: "\u20b95 Cr+", label: "CSR Implemented", sub: "By 2030" },
-  { value: "1", label: "School Built", sub: "Abhiara Vidyapeeth" },
+  { value: "10,000+", label: "Students Supported", sub: "By 2035" },
+  { value: "1,000+", label: "Elders Cared For", sub: "By 2035" },
+  { value: "\u20b95 Cr+", label: "CSR Implemented", sub: "By 2035" },
+  { value: "1", label: "School Built", sub: "Abhiara Vidyapeeth · 2035" },
 ];
 
 export default function Vision() {
@@ -177,7 +175,7 @@ export default function Vision() {
           <AnimatedSection className="text-center mb-16">
             <p className="section-label mb-4">MASTER TIMELINE</p>
             <h2 className="heading-xl text-white mb-4">
-              2026 <span className="text-[#C9A84C]">&rarr;</span> 2030
+              2026 <span className="text-[#C9A84C]">&rarr;</span> 2035
             </h2>
             <div className="gradient-rule mx-auto mb-6" />
             <p className="font-sans text-[15px] text-white/60 max-w-xl mx-auto">

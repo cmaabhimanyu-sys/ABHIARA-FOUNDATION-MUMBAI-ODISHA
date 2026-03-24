@@ -102,8 +102,8 @@ export default function Home() {
       }));
     }
     return [
-      { cat: "Elderly Care", title: "Old Age Home Visit — March 2026", desc: "Visited Hope is Life Old Age Home in Puri, Odisha. Distributed essentials and spent quality time with 40+ elderly residents." },
-      { cat: "Education", title: "Book Distribution — March 2026", desc: "Distributed books and study materials to 50+ tribal children in Kendrapara, Odisha. Spent time with students and families." },
+      { cat: "Elderly Care", title: "Old Age Home Visit — October 2025", desc: "Visited Hope is Life Old Age Home in Puri, Odisha. Distributed essentials and spent quality time with 40+ elderly residents." },
+      { cat: "Education", title: "Book Distribution — October 2025", desc: "Distributed books and study materials to 50+ tribal children in Kendrapara, Odisha. Spent time with students and families." },
     ];
   }, [cmsActivities]);
 
@@ -680,7 +680,7 @@ export default function Home() {
                     <div>
                       <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-white font-bold">{t.name}</p>
                       <p className="font-mono text-[8px] tracking-wider uppercase text-white/40">{t.role}</p>
-                      <p className="font-mono text-[8px] tracking-wider uppercase text-white/25 mt-1">Shared during our March 2026 visit</p>
+                      <p className="font-mono text-[8px] tracking-wider uppercase text-white/25 mt-1">Shared during our October 2025 visit</p>
                     </div>
                   </div>
                 </AnimatedSection>

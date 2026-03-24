@@ -295,3 +295,7 @@
 - [x] Remove duplicate email links on Contact page sidebar (was showing both founder@ and info@)
 - [x] Add Manoj Kumar Mallik's real photo to Team page (replaced MK initials placeholder)
 - [x] Fix: 'We don't inflate numbers' text too light on Home page — increased contrast and made bold
+- [x] Update Vidyapeeth timeline on Vision page: Phase 1 (2026-2030), Phase 2 (2030), Phase 3 (2032), Phase 4 (2035)
+- [x] Update Old Age Home visit date from March 2026 to October 2025 across all pages
+- [x] Update Book Distribution date from March 2026 to October 2025 across all pages
+- [x] Update Vision timeline: field work began Sept 2025, platform built March 2026
