@@ -211,16 +211,6 @@ export default function Home() {
         </div>
 
         <motion.div className="relative z-10 container text-center pt-24 pb-20" style={{ opacity: heroOpacity }}>
-          {/* Tagline */}
-          <motion.p
-            initial={{ opacity: 0, letterSpacing: "0.5em" }}
-            animate={{ opacity: 1, letterSpacing: "0.25em" }}
-            transition={{ duration: 1.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="font-mono text-[10px] uppercase text-[#1A7F8E] mb-12"
-          >
-            SECTION 8 COMPANY · NOT-FOR-PROFIT · ODISHA · PAN INDIA
-          </motion.p>
-
           {/* Dramatic staggered headline */}
           <h1 className="font-serif font-bold leading-[1.05] mb-8" style={{ fontSize: "clamp(56px, 8vw, 96px)" }}>
             <HeroWord text="Fearless." delay={0.4} className="text-[#C9A84C]" />

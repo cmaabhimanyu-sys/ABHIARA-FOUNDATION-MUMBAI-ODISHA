@@ -256,4 +256,7 @@
 - [x] Update founder contact details across all pages: phone +91 99389 38321, email info@abhiarafoundation.org, LinkedIn Abhimanyu Mallik, title CMA Mumbai Maharashtra
 - [x] Study abhicharitable.com for design inspiration
 - [x] Redesign Home page V3.0 — cinematic parallax hero, staggered text reveal, floating particles, logo marquee, enhanced animations
-- [ ] Push redesigned Home page V3.0 to GitHub as cmaabhimanyu-sys
+- [x] Push redesigned Home page V3.0 to GitHub as cmaabhimanyu-sys — commit 4214d5d
+- [x] Redesign Navbar: logo+name left, all nav links center (HOME, OUR STORY, VISION, PROGRAMS, CSR PARTNERS, ACTIVITIES, TEAM, DONATE), GET IN TOUCH button right, no big gap
+- [x] Move announcement bar below navbar, removed duplicate from Home hero
+- [ ] Push navbar redesign to GitHub as cmaabhimanyu-sys (pending)
