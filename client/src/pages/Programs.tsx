@@ -147,7 +147,7 @@ export default function Programs() {
               <ul className="space-y-2 mb-6">
                 {[
                   "Full and partial scholarships for poor and underprivileged Class 8–12 students",
-                  "Digital learning centres with tablets and internet",
+                  "Digital learning centres with tablets and internet \u2014 planned for 2026",
                   "Study kits — books, stationery, school bags",
                   "After-school tutoring and mentorship",
                   "Early childhood readiness programmes",
@@ -212,8 +212,8 @@ export default function Programs() {
                 {[
                   "Regular companion visits and emotional support",
                   "Quarterly health camps with medical professionals",
-                  "Wellness kits — medicines and nutrition",
-                  "Legal aid for pension and property rights",
+                  "Wellness kits \u2014 nutrition supplements and hygiene essentials",
+                  "Guidance and referral support for pension and property rights",
                   "Community engagement and social events",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 font-sans text-[14px] text-white/55">
@@ -248,7 +248,7 @@ export default function Programs() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/60 to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3">
                    <p className="font-mono text-[9px] tracking-[0.15em] uppercase text-white/80 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-sm inline-block">
-                   Abhiara Foundation's elder care visit \u2014 Hope is Life Old Age Home, Puri, Odisha \u00b7 March 2026                </p>
+                   Abhiara Foundation's elder care visit — Hope is Life Old Age Home, Puri, Odisha · March 2026                </p>
                   </div>
                 </div>
               </div>
@@ -288,7 +288,7 @@ export default function Programs() {
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
                   { icon: Handshake, label: "Not Started", sub: "Planned for 2026" },
-                  { icon: Target, label: "\u20b930L", sub: "Target FY 2026" },
+                  { icon: Target, label: "\u20b930L", sub: "Target FY 2026 (post Section 8 registration)" },
                   { icon: Building2, label: "Schedule VII", sub: "Compliant Framework" },
                   { icon: Calendar, label: "Seeking", sub: "Corporate Partners" },
                 ].map((item) => (

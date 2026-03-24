@@ -1,21 +1,19 @@
-import { MessageCircle } from "lucide-react";
+import { Mail } from "lucide-react";
 
-export default function WhatsAppButton() {
+export default function EmailButton() {
   return (
     <a
-      href="https://wa.me/919938938321"
-      target="_blank"
-      rel="noopener noreferrer"
+      href="mailto:info@abhiarafoundation.org"
       className="whatsapp-float group"
-      aria-label="Chat with us on WhatsApp"
-      title="Chat with us on WhatsApp"
+      aria-label="Email Abhiara Foundation"
+      title="Email Abhiara Foundation"
     >
       {/* Pulse ring */}
       <span
-        className="absolute inset-0 rounded-full bg-[#25D366]"
+        className="absolute inset-0 rounded-full bg-[#C9A84C]"
         style={{ animation: "pulse-ring 2s ease-out infinite" }}
       />
-      <MessageCircle size={26} className="text-white relative z-10 fill-white" />
+      <Mail size={26} className="text-white relative z-10" />
     </a>
   );
 }

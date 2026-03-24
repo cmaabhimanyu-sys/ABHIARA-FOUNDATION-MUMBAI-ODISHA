@@ -17,8 +17,6 @@ import {
   Calendar,
   MapPin,
   Users,
-  BookOpen,
-  Heart,
   Landmark,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -30,8 +28,7 @@ import { trpc } from "@/lib/trpc";
 
 // Icon map for pillars and timeline
 const PILLAR_ICONS: Record<string, any> = {
-  "Support Underprivileged Students": BookOpen,
-  "Education at Scale": GraduationCap,
+  "Education": GraduationCap,
   "Elderly Care": HeartHandshake,
   "CSR Implementation": Building2,
   "Abhiara Vidyapeeth": School,
@@ -43,21 +40,19 @@ const TIMELINE_ICONS: Record<string, any> = {
   "Land & Plan": MapPin,
   "Build the School": School,
   "Vidyapeeth Opens": GraduationCap,
-
 };
 
 // Fallback data
 const FALLBACK_PILLARS = [
-  { title: "Support Underprivileged Students", desc: "Scholarships, study materials, digital learning centres, and mentorship for children from poor and tribal families who cannot afford quality education.", sdg: "SDG 4", accent: "gold" },
-  { title: "Education at Scale", desc: "Class 8\u201312 scholarship programmes, early childhood readiness, and career guidance across all of Odisha and expanding to other states across India.", sdg: "SDG 4", accent: "teal" },
+  { title: "Education", desc: "Scholarships, study materials, digital learning centres, career guidance and mentorship for children from poor and tribal families across all of Odisha and expanding to other states across India.", sdg: "SDG 4", accent: "gold" },
   { title: "Elderly Care", desc: "Companion networks, quarterly health camps, legal aid for pension and property rights. Old age home visits in Puri and rural Odisha village outreach.", sdg: "SDG 3", accent: "gold" },
   { title: "CSR Implementation", desc: "End-to-end CSR project execution for corporates. Monthly impact reports, audited utilisation statements, and Schedule VII compliance.", sdg: "SDG 10 + 11", accent: "teal" },
   { title: "Abhiara Vidyapeeth", desc: "A full-fledged school in the heart of tribal Odisha \u2014 CBSE affiliated, built within 5 years. The flagship dream of the foundation.", sdg: "SDG 4", accent: "gold" },
 ];
 
 const FALLBACK_TIMELINE = [
-  { year: "2025\u20132026", title: "Foundation Year", items: ["Section 8 Company registered", "Old Age Home visit \u2014 40+ elders visited in Puri (March 2026)", "Book distribution \u2014 50+ students reached in Kendrapara (March 2026)", "2 activities completed on the ground", "Operations begun in Kendrapara and Puri, Odisha"], active: true },
-  { year: "2026", title: "Scale & Strengthen", items: ["Reach 500+ students across Odisha", "Reach 200+ elders with companion visits", "Launch CSR partnerships \u2014 \u20b930L target", "10 activities completed across Odisha"], active: false },
+  { year: "2026", title: "Foundation Year", items: ["Section 8 Company \u2014 Registration in process", "Old Age Home visit \u2014 40+ elders visited in Puri (March 2026)", "Book distribution \u2014 50+ students reached in Kendrapara (March 2026)", "2 activities completed on the ground", "Operations begun in Kendrapara and Puri, Odisha"], active: true },
+  { year: "2026", title: "Scale & Strengthen", items: ["Reach 500+ students across Odisha", "Reach 200+ elders with companion visits", "Launch CSR partnerships \u2014 \u20b930L target (post Section 8 registration)", "10 activities completed across Odisha"], active: false },
   { year: "2027", title: "Land & Plan", items: ["Acquire land for Abhiara Vidyapeeth in tribal Odisha", "Begin architectural planning and CBSE affiliation process", "Expand to neighbouring states (Chhattisgarh, Jharkhand)", "2,000+ students supported across programmes", "CSR portfolio reaches \u20b91 Cr+"], active: false },
   { year: "2028", title: "Build the School", items: ["Construction of Abhiara Vidyapeeth begins", "Recruit founding faculty and staff", "CBSE affiliation secured", "Pan-India CSR implementation partnerships", "5,000+ students impacted across all programmes"], active: false },
   { year: "2029\u20132030", title: "Vidyapeeth Opens", items: ["First batch of students enrolled at Abhiara Vidyapeeth", "Residential school with free education for tribal children", "Digital learning infrastructure fully operational", "Abhiara Foundation becomes a recognised national NGO", "10,000+ lives impacted across India"], active: false },
@@ -143,7 +138,7 @@ export default function Vision() {
           <AnimatedSection className="text-center mb-16">
             <p className="section-label-light mb-4">THE PLAN</p>
             <h2 className="heading-xl light-heading mb-4">
-              Five Pillars. <span className="text-[#C9A84C]">One Mission.</span>
+              Four Pillars. <span className="text-[#C9A84C]">One Mission.</span>
             </h2>
             <div className="gradient-rule-light mx-auto mb-6" />
             <p className="font-sans text-[15px] light-body max-w-xl mx-auto">
@@ -182,7 +177,7 @@ export default function Vision() {
           <AnimatedSection className="text-center mb-16">
             <p className="section-label mb-4">MASTER TIMELINE</p>
             <h2 className="heading-xl text-white mb-4">
-              2025 <span className="text-[#C9A84C]">&rarr;</span> 2030
+              2026 <span className="text-[#C9A84C]">&rarr;</span> 2030
             </h2>
             <div className="gradient-rule mx-auto mb-6" />
             <p className="font-sans text-[15px] text-white/60 max-w-xl mx-auto">

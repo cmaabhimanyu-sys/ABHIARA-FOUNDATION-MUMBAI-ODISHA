@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { Link } from "wouter";
 import {
   ArrowRight, Shield, FileText, BarChart3, Building2,
-  CheckCircle2, Eye, Clock, Users, Briefcase, Award, FileCheck, Download
+  CheckCircle2, Eye, Clock, Users, Briefcase, Award, FileCheck
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -83,8 +83,7 @@ export default function CSRPartners() {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="font-sans text-[15px] text-white/60 max-w-xl mx-auto"
           >
-            End-to-end CSR implementation. Schedule VII compliant. Monthly reporting. Audited utilisation. Real impact — documented, verified, and co-branded.
-          </motion.p>
+            End-to-end CSR implementation. Schedule VII compliant. Monthly reporting. Full utilisation reporting. Real impact \u2014 documented and verified.       </motion.p>
         </div>
       </section>
 
@@ -118,10 +117,10 @@ export default function CSRPartners() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
-              { icon: Shield, title: "Section 8 Company", desc: "Registered under Companies Act 2013. Limited by Guarantee. Full compliance documentation maintained." },
+              { icon: Shield, title: "Section 8 Company", desc: "Registration in process under Companies Act 2013. Limited by Guarantee. Full compliance documentation being prepared." },
               { icon: FileCheck, title: "Schedule VII Aligned", desc: "All programmes map directly to Schedule VII categories for CSR compliance." },
               { icon: BarChart3, title: "Monthly Reports", desc: "Detailed progress reports with photo documentation and beneficiary data." },
-              { icon: Eye, title: "Full Transparency", desc: "Audited utilisation statements. Open books. No hidden costs." },
+              { icon: Eye, title: "Full Transparency", desc: "Full utilisation reporting. Open books. No hidden costs." },
               { icon: Award, title: "CMA-Led Finance", desc: "Led by a CMA — Cost and Management Accountant. Every rupee tracked, reported, and accounted for. Finance is not our back office. It is our foundation." },
               { icon: Users, title: "Ground Presence", desc: "Direct operations across all of Odisha and expanding to other states across India." },
             ].map((card, i) => (
@@ -145,6 +144,9 @@ export default function CSRPartners() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <AnimatedSection direction="left">
               <p className="section-label mb-4">BUDGET TRANSPARENCY</p>
+              <p className="text-white/60 text-sm text-center mb-6 italic">
+                This is our Year 1 operational budget target — currently being raised through CSR partnerships and individual donations.
+              </p>
               <h2 className="heading-lg text-white mb-4">
                 Year 1 Budget: <span className="text-[#C9A84C]">₹30,00,000</span>
               </h2>
@@ -167,12 +169,12 @@ export default function CSRPartners() {
                   {[
                     "Project proposal with detailed budget and timeline",
                     "Monthly progress reports with photo documentation",
-                    "Quarterly audited utilisation statements",
+                    "Quarterly utilisation statements \u2014 audited annually from FY 2026-27",
                     "Annual impact report with beneficiary data",
                     "Co-branded CSR documentation for annual reports",
                     "Site visits arranged for CSR team verification",
-                    "Named programme options (e.g., 'XYZ Corp Scholarship')",
-                    "Board-level presentation of impact outcomes",
+                    "Named programme options (e.g., 'XYZ Corp Scholarship') \u2014 available post registration",
+                    "Founder-level presentation of impact outcomes to your CSR committee",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <CheckCircle2 size={16} className="text-[#C9A84C] mt-0.5 shrink-0" />
@@ -252,31 +254,15 @@ export default function CSRPartners() {
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-w-5xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
             {[
-              { name: "Tata Group", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/tata-group_88854430.jpg", url: "https://www.tata.com/community" },
-              { name: "Infosys", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/infosys_f98fac0e.png", url: "https://www.infosys.com/infosys-foundation.html" },
-              { name: "Wipro", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/wipro_c9152541.png", url: "https://www.wipro.com/content/nexus/en/wipro-foundation.html" },
-              { name: "HDFC Bank", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hdfc-bank_9e33582f.png", url: "https://www.hdfcbank.com/personal/about-us/csr" },
-              { name: "Reliance", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/reliance_db35516d.png", url: "https://www.reliancefoundation.org/" },
-              { name: "Mahindra", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/mahindra_62339d77.png", url: "https://www.mahindra.com/our-impact" },
-              { name: "Adani Foundation", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/adani-foundation_94f29839.jpg", url: "https://www.adanifoundation.org/" },
-              { name: "JSW", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/jsw_fc295f62.png", url: "https://www.jswfoundation.org/" },
-              { name: "Vedanta", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/vedanta_815e72d1.png", url: "https://www.vedantalimited.com/sustainability/social" },
-              { name: "NTPC", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/ntpc_ab405914.png", url: "https://www.ntpc.co.in/en/corporate-citizenship/csr" },
-            ].map((company, i) => (
-              <AnimatedSection key={company.name} delay={i * 0.04}>
-                <a
-                  href={company.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group glass-card p-4 text-center hover:border-[#C9A84C]/30 transition-all duration-300 flex flex-col items-center justify-center gap-3 h-full"
-                >
-                  <div className="w-full h-12 flex items-center justify-center">
-                    <img src={company.logo} alt={company.name} className="max-h-12 max-w-full object-contain opacity-60 group-hover:opacity-100 transition-opacity" loading="lazy" />
-                  </div>
-                  <p className="font-sans text-[12px] text-white/80 font-semibold group-hover:text-[#C9A84C] transition-colors">{company.name}</p>
-                </a>
+              "Tata Group", "Infosys", "Wipro", "HDFC Bank", "Reliance",
+              "Mahindra", "Adani Foundation", "JSW", "Vedanta", "NTPC",
+            ].map((name, i) => (
+              <AnimatedSection key={name} delay={i * 0.04}>
+                <span className="glass-card px-5 py-3 font-sans text-[13px] text-white/70 font-semibold">
+                  {name}
+                </span>
               </AnimatedSection>
             ))}
           </div>
@@ -361,14 +347,12 @@ export default function CSRPartners() {
               >
                 CONTACT US <ArrowRight size={12} />
               </Link>
-              <a
-                href="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/Abhiara_CSR_Proposal_3841fc6e.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-3 border border-[#0A1628]/30 text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#0A1628]/10 transition-colors"
               >
-                <Download size={12} /> DOWNLOAD CSR PROPOSAL
-              </a>
+                REQUEST CSR PROPOSAL <ArrowRight size={12} />
+              </Link>
             </div>
           </AnimatedSection>
         </div>

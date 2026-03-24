@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
+import ContactForm from "@/components/ContactForm";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -68,18 +69,18 @@ export default function Donate() {
               <div className="text-center mb-6">
                 <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#C9A84C] mb-2">REGISTRATION STATUS</p>
                 <h3 className="font-serif text-xl md:text-2xl font-bold text-white">
-                  80G &amp; Tax Exemption — <span className="text-[#C9A84C]">Applied / In Process</span>
+                  80G &amp; Tax Exemption — <span className="text-[#C9A84C]">In Process</span>
                 </h3>
               </div>
               <p className="font-sans text-[14px] text-white/60 leading-relaxed text-center mb-6">
-                Abhiara Foundation has applied for 80G and 12A registration under the Income Tax Act, 1961. Once approved, donors will be eligible for tax deduction on their contributions. The approval is currently in process with the Income Tax Department.
+                Abhiara Foundation's 80G and 12A registration under the Income Tax Act, 1961 is currently in process. Once approved, donors will be eligible for tax deduction on their contributions. This page will be updated with certificate numbers upon approval.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                 {[
-                  { label: "Section 8", value: "Registered", active: true },
+                  { label: "Section 8", value: "Registration in Process", active: false },
                   { label: "CIN", value: "In Process", active: false },
-                  { label: "80G", value: "Applied", active: false },
-                  { label: "12A", value: "Applied", active: false },
+                  { label: "80G", value: "In Process", active: false },
+                  { label: "12A", value: "In Process", active: false },
                   { label: "FCRA", value: "In Process", active: false },
                   { label: "PAN", value: "In Process", active: false },
                 ].map((item) => (
@@ -111,30 +112,24 @@ export default function Donate() {
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
-            <div className="flex flex-col items-center gap-4 mb-12">
-              <a
-                href="https://www.linkedin.com/in/abhimanyu-mallik/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-[#0A66C2] hover:bg-[#004182] text-white px-8 py-4 rounded-sm font-mono text-xs font-bold tracking-[0.1em] uppercase transition-all duration-300 w-full max-w-sm justify-center"
-              >
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-                LinkedIn — Abhimanyu Mallik
-              </a>
-              <a
-                href="https://wa.me/919938938321"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-[#25D366] hover:bg-[#1DA851] text-white px-8 py-4 rounded-sm font-mono text-xs font-bold tracking-[0.1em] uppercase transition-all duration-300 w-full max-w-sm justify-center"
-              >
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-                WhatsApp — +91 99389 38321
-              </a>
-              <p className="text-[#0A1628]/50 text-sm text-center mt-2">Founder & Director · Abhiara Foundation</p>
+            <div className="max-w-lg mx-auto mb-12">
+              <ContactForm
+                defaultPurpose="donation"
+                pageSource="Donate Page"
+                title="I Want to Donate"
+                showPurpose={false}
+                variant="light"
+              />
+
+              <div className="bg-white/5 border border-[#0A1628]/10 rounded-2xl p-6 text-center mt-6">
+                <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-3">Bank Transfer Details</p>
+                <p className="text-[#0A1628]/60 text-sm leading-relaxed">
+                  Bank transfer details will be published once Section 8 registration and PAN are confirmed.
+                  Please use the form above or email us at{" "}
+                  <span className="text-[#C9A84C]">info@abhiarafoundation.org</span>{" "}
+                  to arrange a donation in the interim.
+                </p>
+              </div>
             </div>
           </AnimatedSection>
 
@@ -172,12 +167,7 @@ export default function Donate() {
                   <strong className="text-white">Abhiara Foundation does not accept cash donations.</strong> All contributions must be made through proper banking channels — NEFT, RTGS, cheque, or online transfer — to ensure full transparency and accountability.
                 </p>
               </div>
-              <div className="flex gap-3">
-                <span className="text-red-400 mt-0.5 flex-shrink-0 font-bold">✦</span>
-                <p className="text-white/70 text-sm leading-relaxed">
-                  <strong className="text-white">80G tax exemption is currently in process.</strong> Once approved by the Income Tax Department, donors will receive 80G certificates for tax deduction. We will update this page with the registration number upon approval.
-                </p>
-              </div>
+
               <div className="flex gap-3">
                 <span className="text-red-400 mt-0.5 flex-shrink-0 font-bold">✦</span>
                 <p className="text-white/70 text-sm leading-relaxed">
@@ -187,7 +177,7 @@ export default function Donate() {
               <div className="flex gap-3">
                 <span className="text-red-400 mt-0.5 flex-shrink-0 font-bold">✦</span>
                 <p className="text-white/70 text-sm leading-relaxed">
-                  Anyone approaching you claiming to represent Abhiara Foundation for cash collection is <strong className="text-white">not authorised</strong>. Please report such instances directly to us via LinkedIn or WhatsApp.
+                  Anyone approaching you claiming to represent Abhiara Foundation for cash collection is <strong className="text-white">not authorised</strong>. Please report such instances directly to us via LinkedIn or email at info@abhiarafoundation.org.
                 </p>
               </div>
             </div>
@@ -224,6 +214,9 @@ export default function Donate() {
             <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#0A1628] mb-4">
               Every contribution builds the bridge.
             </h2>
+            <p className="text-[#0A1628]/50 text-sm text-center italic mb-4">
+              Every contribution matters — from ₹500 to ₹50,00,000. No donation is too small when it reaches the right child.
+            </p>
             <p className="font-sans text-[14px] text-[#0A1628]/70 max-w-lg mx-auto mb-8">
               Whether you are a corporate, an individual, or an institution — your support creates real impact.
             </p>

@@ -1,0 +1,2 @@
+ALTER TABLE `contact_inquiries` MODIFY COLUMN `type` enum('general','csr_partnership','volunteer','media','donation','birthday','team','other') NOT NULL DEFAULT 'general';--> statement-breakpoint
+ALTER TABLE `contact_inquiries` ADD `pageSource` varchar(255);

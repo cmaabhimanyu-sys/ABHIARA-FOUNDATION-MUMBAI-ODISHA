@@ -47,7 +47,8 @@ export const contactInquiries = mysqlTable("contact_inquiries", {
   email: varchar("email", { length: 320 }).notNull(),
   subject: varchar("subject", { length: 500 }),
   message: text("message").notNull(),
-  type: mysqlEnum("type", ["general", "csr_partnership", "volunteer", "media"]).default("general").notNull(),
+  type: mysqlEnum("type", ["general", "csr_partnership", "volunteer", "media", "donation", "birthday", "team", "other"]).default("general").notNull(),
+  pageSource: varchar("pageSource", { length: 255 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   isRead: boolean("isRead").default(false).notNull(),
 });

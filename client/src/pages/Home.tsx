@@ -10,7 +10,7 @@ import { Link } from "wouter";
 import {
   GraduationCap, HeartHandshake, Building2, ArrowRight, Shield, Award,
   MapPin, Briefcase, CheckCircle, Quote, FileCheck, BadgeCheck,
-  Phone, Mail, Linkedin,
+  Mail, Linkedin,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -28,41 +28,7 @@ const ELDERLY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv
 const COMMUNITY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit-2_76a48a25.jpeg";
 const FOUNDER_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/abhimanyu-mallik-photo_f9777f21.png";
 
-/* ─── CSR Target Companies ─── */
-const CSR_COMPANIES = [
-  { name: "Tata Group", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/tata-group_88854430.jpg", url: "https://www.tata.com/community" },
-  { name: "Infosys", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/infosys_f98fac0e.png", url: "https://www.infosys.com/infosys-foundation.html" },
-  { name: "Wipro", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/wipro_c9152541.png", url: "https://www.wipro.com/content/nexus/en/wipro-foundation.html" },
-  { name: "HDFC Bank", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hdfc-bank_9e33582f.png", url: "https://www.hdfcbank.com/personal/about-us/csr" },
-  { name: "Reliance", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/reliance_db35516d.png", url: "https://www.reliancefoundation.org/" },
-  { name: "Mahindra", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/mahindra_62339d77.png", url: "https://www.mahindra.com/our-impact" },
-  { name: "Adani Foundation", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/adani-foundation_94f29839.jpg", url: "https://www.adanifoundation.org/" },
-  { name: "JSW", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/jsw_fc295f62.png", url: "https://www.jswfoundation.org/" },
-  { name: "Vedanta", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/vedanta_815e72d1.png", url: "https://www.vedantalimited.com/sustainability/social" },
-  { name: "NTPC", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/ntpc_ab405914.png", url: "https://www.ntpc.co.in/en/corporate-citizenship/csr" },
-];
 
-/* ─── Infinite Marquee Component ─── */
-function LogoMarquee() {
-  const doubled = [...CSR_COMPANIES, ...CSR_COMPANIES];
-  return (
-    <div className="relative overflow-hidden py-6">
-      <div className="flex gap-8 animate-[marquee_35s_linear_infinite]">
-        {doubled.map((c, i) => (
-          <a
-            key={`${c.name}-${i}`}
-            href={c.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 w-32 h-16 flex items-center justify-center bg-white/[0.05] border border-white/[0.08] rounded-sm px-4 hover:border-[#C9A84C]/30 hover:bg-white/[0.1] transition-all duration-300"
-          >
-            <img src={c.logo} alt={c.name} className="max-h-10 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy" />
-          </a>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 /* ─── Staggered Text Reveal ─── */
 function HeroWord({ text, delay, className }: { text: string; delay: number; className: string }) {
@@ -410,8 +376,8 @@ export default function Home() {
                 icon: GraduationCap,
                 sdg: "SDG 4",
                 title: "Education",
-                data: "50+ Students Reached · Target: 500+ in 2026",
-                body: "We distributed books and study materials to 50+ tribal children in Kendrapara, Odisha. Our goal is to reach 500+ students across the state.",
+                data: "50+ Students Reached · Target: 500+ by December 2026",
+                body: "50+ students reached in our founding year. We distributed books and study materials to tribal children in Kendrapara, Odisha. Target: 500+ by December 2026.",
                 img: EDUCATION_IMG,
                 cta: { label: "See Programme", href: "/programs" },
                 accent: "gold",
@@ -420,8 +386,8 @@ export default function Home() {
                 icon: HeartHandshake,
                 sdg: "SDG 3",
                 title: "Elderly Care",
-                data: "40+ Elders Visited · Target: 200+ in 2026",
-                body: "We visited Hope is Life Old Age Home in Puri, spending time with 40+ elderly residents. Our goal is to reach 200+ elders across Odisha.",
+                data: "40+ Elders Visited · Target: 200+ by December 2026",
+                body: "40+ elders visited in our founding year at Hope is Life Old Age Home in Puri, Odisha. Target: 200+ elders across Odisha by December 2026.",
                 img: ELDERLY_IMG,
                 cta: { label: "See Programme", href: "/programs" },
                 accent: "teal",
@@ -498,7 +464,7 @@ export default function Home() {
             <AnimatedSection direction="left">
               <div className="space-y-0">
                 {[
-                  { phase: "Phase 1", years: "2025–2026", desc: "Build corpus · Register · Launch education & elderly care programmes" },
+                  { phase: "Phase 1", years: "2026", desc: "Build corpus · Register · Launch education & elderly care programmes" },
                   { phase: "Phase 2", years: "2027", desc: "Acquire land in tribal Odisha · Begin CBSE affiliation" },
                   { phase: "Phase 3", years: "2028", desc: "Construction begins · Recruit founding faculty" },
                   { phase: "Phase 4", years: "2029–2030", desc: "Abhiara Vidyapeeth opens · First batch enrolled" },
@@ -641,9 +607,6 @@ export default function Home() {
                   <MapPin size={10} /> Mumbai, Maharashtra
                 </p>
                 <div className="flex flex-col gap-2 mt-4">
-                  <a href="tel:+919938938321" className="font-mono text-[10px] tracking-[0.12em] uppercase text-white/50 hover:text-[#C9A84C] transition-colors flex items-center justify-center lg:justify-start gap-2">
-                    <Phone size={10} /> +91 99389 38321
-                  </a>
                   <a href="mailto:info@abhiarafoundation.org" className="font-mono text-[10px] tracking-[0.12em] uppercase text-white/50 hover:text-[#C9A84C] transition-colors flex items-center justify-center lg:justify-start gap-2">
                     <Mail size={10} /> info@abhiarafoundation.org
                   </a>
@@ -704,7 +667,7 @@ export default function Home() {
                 {
                   quote: "What sets Abhiara apart is the founder's personal connection to rural Odisha. This is not a corporate CSR checkbox — it is someone giving back to where they came from.",
                   name: "Community Elder",
-                  role: "Koraput District, Odisha",
+                  role: "Kendrapara District, Odisha",
                   accent: "border-[#C9A84C]/30",
                 },
               ].map((t, i) => (
@@ -717,6 +680,7 @@ export default function Home() {
                     <div>
                       <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-white font-bold">{t.name}</p>
                       <p className="font-mono text-[8px] tracking-wider uppercase text-white/40">{t.role}</p>
+                      <p className="font-mono text-[8px] tracking-wider uppercase text-white/25 mt-1">Shared during our March 2026 visit</p>
                     </div>
                   </div>
                 </AnimatedSection>
@@ -724,16 +688,15 @@ export default function Home() {
             </div>
           </AnimatedSection>
 
-          {/* CSR Target Companies — Infinite Marquee */}
+          {/* CSR Partnership — Generic Text */}
           <AnimatedSection className="mt-20">
             <div className="text-center mb-6">
               <p className="section-label mb-4">CSR PARTNERSHIP TARGETS</p>
-              <p className="font-sans text-[14px] text-white/50 max-w-xl mx-auto mt-3">
-                We are actively pursuing CSR partnerships with India's leading corporates for Schedule VII implementation.
+              <p className="font-sans text-[15px] text-white/60 max-w-xl mx-auto mt-3 leading-relaxed">
+                We are actively pursuing CSR partnerships with India's leading corporates across Technology, Banking, Infrastructure, and Energy.
               </p>
             </div>
-            <LogoMarquee />
-            <div className="text-center mt-6">
+            <div className="text-center mt-8">
               <Link
                 href="/csr-partners"
                 className="group inline-flex items-center gap-2 px-8 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors"

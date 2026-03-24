@@ -4,7 +4,7 @@ import { lazy, Suspense, useEffect } from "react";
 import { Route, Switch, useLocation, Redirect } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import WhatsAppButton from "./components/WhatsAppButton";
+import EmailButton from "./components/WhatsAppButton";
 import BackToTop from "./components/BackToTop";
 
 const Home = lazy(() => import("./pages/Home"));
@@ -85,7 +85,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
-          <WhatsAppButton />
+          <EmailButton />
           <BackToTop />
         </TooltipProvider>
       </ThemeProvider>

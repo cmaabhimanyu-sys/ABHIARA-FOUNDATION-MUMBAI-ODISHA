@@ -8,8 +8,6 @@ import {
   ArrowRight,
   Shield,
   GraduationCap,
-  Briefcase,
-  Heart,
   Star,
   Users,
   Scale,
@@ -115,9 +113,6 @@ export default function Team() {
                   ))}
                 </div>
                 <div className="flex flex-col gap-1.5 pt-4 border-t border-[#C9A84C]/10">
-                  <a href="tel:+919938938321" className="font-mono text-[10px] tracking-[0.1em] light-muted hover:text-[#C9A84C] transition-colors flex items-center gap-2">
-                    +91 99389 38321
-                  </a>
                   <a href="mailto:info@abhiarafoundation.org" className="font-mono text-[10px] tracking-[0.1em] light-muted hover:text-[#C9A84C] transition-colors flex items-center gap-2">
                     info@abhiarafoundation.org
                   </a>
@@ -202,7 +197,9 @@ export default function Team() {
                 <div className="flex flex-wrap gap-2">
                   {[
                     "Co-Founder",
-                    "Odisha",
+                    "Community Relations",
+                    "Family Programme Coordination",
+                    "Odisha Outreach",
                   ].map((tag) => (
                     <span key={tag} className="font-mono text-[9px] tracking-wider uppercase bg-[#1A7F8E]/10 border border-[#1A7F8E]/20 text-[#1A7F8E]/70 px-3 py-1 rounded-sm">
                       {tag}
@@ -230,7 +227,7 @@ export default function Team() {
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {[
               {
                 initials: "SJ",
@@ -254,14 +251,7 @@ export default function Team() {
                 announced: true,
                 tagline: "XLRI · HR Business Partner",
               },
-              {
-                initials: "—",
-                name: "Advisory Member",
-                role: "Community & Welfare Advisor",
-                desc: "Advising on elderly care programmes, community outreach, and grassroots impact measurement.",
-                icon: Heart,
-                accent: "teal",
-              },
+
             ].map((advisor, i) => (
               <AnimatedSection key={i} delay={i * 0.1}>
                 <div className="glass-card p-6 h-full text-center">
@@ -271,20 +261,15 @@ export default function Team() {
                     </div>
                   ) : (
                     <div
-                      className={`w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center ${
+                      className={`w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center border ${
                         advisor.accent === "gold"
-                          ? "bg-[#C9A84C]/10"
-                          : "bg-[#1A7F8E]/10"
+                          ? "bg-[#C9A84C]/20 border-[#C9A84C]/30"
+                          : "bg-[#1A7F8E]/20 border-[#1A7F8E]/30"
                       }`}
                     >
-                      <advisor.icon
-                        size={24}
-                        className={
-                          advisor.accent === "gold"
-                            ? "text-[#C9A84C]"
-                            : "text-[#1A7F8E]"
-                        }
-                      />
+                      <span className={`text-lg font-bold ${
+                        advisor.accent === "gold" ? "text-[#C9A84C]" : "text-[#1A7F8E]"
+                      }`}>{advisor.initials}</span>
                     </div>
                   )}
                   <h3 className={`font-serif text-lg font-bold mb-1 ${(advisor as any).announced ? 'text-white' : 'text-white/30'}`}>
@@ -381,7 +366,7 @@ export default function Team() {
                   Volunteer &middot; CSR Global Operation
                 </p>
                 <p className="font-sans text-[13px] light-body leading-relaxed">
-                  A committed volunteer and operations lead who supports Abhiara Foundation's on-ground activities, community coordination, and programme execution across global.
+                  A committed volunteer and operations lead who supports Abhiara Foundation's on-ground activities, community coordination, and programme execution globally.
                 </p>
                 <p className="font-mono text-[9px] tracking-wider uppercase text-[#C9A84C]/60 mt-4">
                   Member &middot; Abhiara Foundation
@@ -415,7 +400,7 @@ export default function Team() {
               {
                 icon: Users,
                 title: "Dual-Director Structure",
-                desc: "Two directors at all times. Dual-signature mandate for transactions above Rs 25,000. Foundation never becomes headless.",
+                desc: "Two directors at all times. Multi-layer approval process for all financial transactions above threshold limits. Foundation never becomes headless.",
               },
               {
                 icon: Scale,
@@ -425,7 +410,7 @@ export default function Team() {
               {
                 icon: Star,
                 title: "Four-Layer Succession",
-                desc: "Dual directors, AoA succession clause, personal will directive, and multi-layer governance — ensuring the foundation outlives any individual.",
+                desc: "Dual directors, AoA succession clause, founder succession planning, and multi-layer governance \u2014 ensuring the foundation outlives any individual.",
               },
             ].map((item, i) => (
               <AnimatedSection key={i} delay={i * 0.08}>

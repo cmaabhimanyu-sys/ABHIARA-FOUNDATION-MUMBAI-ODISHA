@@ -65,7 +65,8 @@ export const appRouter = router({
           email: z.string().email("Valid email is required"),
           subject: z.string().optional(),
           message: z.string().min(1, "Message is required"),
-          type: z.enum(["general", "csr_partnership", "volunteer", "media"]).default("general"),
+          type: z.enum(["general", "csr_partnership", "volunteer", "media", "donation", "birthday", "team", "other"]).default("general"),
+          pageSource: z.string().optional(),
         })
       )
       .mutation(async ({ input }) => {
@@ -73,7 +74,7 @@ export const appRouter = router({
         // Notify owner about new inquiry
         await notifyOwner({
           title: `New Contact: ${input.type === "csr_partnership" ? "CSR Partnership" : input.type}`,
-          content: `From: ${input.name} (${input.email})\nSubject: ${input.subject || "N/A"}\nMessage: ${input.message}`,
+          content: `From: ${input.name} (${input.email})\nType: ${input.type}\nPage: ${input.pageSource || "N/A"}\nSubject: ${input.subject || "N/A"}\nMessage: ${input.message}\nTime: ${new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}`,
         }).catch(() => {});
         return result;
       }),

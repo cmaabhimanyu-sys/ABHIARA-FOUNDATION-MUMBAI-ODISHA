@@ -32,7 +32,7 @@ import SEO from "@/components/SEO";
 import { motion, AnimatePresence } from "framer-motion";
 import { trpc } from "@/lib/trpc";
 
-const WHATSAPP_NUMBER = "919938938321";
+const INFO_EMAIL = "info@abhiarafoundation.org";
 
 /* ══════════════════════════════════════════════════════════
    FALLBACK DATA — used when CMS database is empty
@@ -78,14 +78,15 @@ type GalleryImage = {
   category: "education" | "elderly" | "community" | "events";
   caption: string;
   location: string;
+  attribution?: string;
 };
 
 const FALLBACK_GALLERY: GalleryImage[] = [
   {
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-village-session_60ea6065.jpeg",
-    alt: "Abhiara Foundation education session with village children in Odisha",
-    category: "education",
-    caption: "Book donation and open-air learning session with tribal children — because education should not wait for four walls.",
+    alt: "Abhiara Foundation education session withbecause education should not wait for four walls.",
+    caption: "Book donation and open-air learning session with tribal children \u2014 because education should not wait for four walls.",
+    attribution: "\u2014 Abhiara Foundation",
     location: "Kendrapara, Odisha",
   },
   {
@@ -542,6 +543,7 @@ function GalleryTab() {
                       img.category === "education" ? "bg-[#1A7F8E]/30 text-[#1A7F8E]" : img.category === "elderly" ? "bg-[#C9A84C]/30 text-[#C9A84C]" : "bg-white/10 text-white/70"
                     }`}>{img.category}</span>
                     <p className="font-sans text-[13px] light-heading leading-relaxed">{img.caption}</p>
+                    {img.attribution && <span className="text-[#C9A84C] text-xs block mt-1 italic">{img.attribution}</span>}
                     <p className="font-mono text-[9px] tracking-wider uppercase light-muted mt-2">{img.location}</p>
                   </div>
                 </motion.div>
@@ -570,6 +572,7 @@ function GalleryTab() {
               <img src={GALLERY_IMAGES[lightbox].src} alt={GALLERY_IMAGES[lightbox].alt} className="w-full h-auto max-h-[70vh] object-contain rounded-lg" />
               <div className="mt-4 text-center">
                 <p className="font-sans text-[15px] text-white/80 leading-relaxed max-w-2xl mx-auto">{GALLERY_IMAGES[lightbox].caption}</p>
+                {GALLERY_IMAGES[lightbox].attribution && <span className="text-[#C9A84C] text-xs block mt-1 italic">{GALLERY_IMAGES[lightbox].attribution}</span>}
                 <p className="font-mono text-[10px] tracking-wider uppercase text-[#C9A84C] mt-2">{GALLERY_IMAGES[lightbox].location}</p>
               </div>
               <div className="flex items-center justify-center gap-6 mt-6">
@@ -841,25 +844,39 @@ function BeTheChangeSection() {
   const [submitted, setSubmitted] = useState(false);
   const [isPending, setIsPending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.areaOfInterest) return;
     const areaLabels: Record<string, string> = {
       education: "Education and Teaching", eldercare: "Elderly Care", csr: "CSR and Fundraising",
       finance: "Finance and Compliance", technology: "Technology and Digital", fieldwork: "Field Work and Community", other: "Other",
     };
-    const message = [
-      `*Be The Change — Volunteer Application*`, ``,
-      `*Name:* ${formData.fullName}`, `*Qualification:* ${formData.qualification}`,
-      `*Email:* ${formData.email}`, `*Social Profile:* ${formData.socialProfile}`,
-      `*Area of Interest:* ${areaLabels[formData.areaOfInterest] || formData.areaOfInterest}`,
-      ``, `_Sent from abhiarafoundation.org_`,
-    ].join("%0a");
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
-    window.open(whatsappUrl, "_blank");
-    setSubmitted(true);
-    setFormData({ fullName: "", qualification: "", email: "", socialProfile: "", areaOfInterest: "" });
-    toast.success("Redirecting to WhatsApp...");
+    setIsPending(true);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/info@abhiarafoundation.org", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: "Be The Change \u2014 Volunteer Application",
+          name: formData.fullName,
+          qualification: formData.qualification,
+          email: formData.email,
+          socialProfile: formData.socialProfile,
+          areaOfInterest: areaLabels[formData.areaOfInterest] || formData.areaOfInterest,
+        }),
+      });
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ fullName: "", qualification: "", email: "", socialProfile: "", areaOfInterest: "" });
+        toast.success("Application submitted successfully!");
+      } else {
+        toast.error("Submission failed. Please try again.");
+      }
+    } catch {
+      toast.error("Network error. Please try again.");
+    } finally {
+      setIsPending(false);
+    }
   };
 
   return (
@@ -916,7 +933,7 @@ function BeTheChangeSection() {
             </div>
             <button type="submit" disabled={isPending}
               className="w-full bg-[#C9A84C] hover:bg-[#B8943E] text-[#0A1628] font-bold py-4 rounded-xl transition-all duration-300 text-base uppercase tracking-wider disabled:opacity-50">
-              Be The Change via WhatsApp {"\u2192"}
+              Submit Application {"\u2192"}
             </button>
           </form>
         )}
@@ -930,7 +947,7 @@ function BeTheChangeSection() {
    BIRTHDAY WITH PURPOSE SECTION
    ══════════════════════════════════════════════════════════ */
 function BirthdayWithPurposeSection() {
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi! I'd like to register my birthday with Abhiara Foundation's #BirthdayWithPurpose movement. Please share the details.")}`;
+  const birthdayUrl = "/contact";
 
   return (
     <section className="py-16 bg-[#0A1628]">
@@ -966,13 +983,14 @@ function BirthdayWithPurposeSection() {
           <p className="text-[#C9A84C] text-xs mt-3 font-semibold">— Abhiara Foundation · #BirthdayWithPurpose</p>
         </div>
         <div className="mb-10">
-          <p className="text-white/70 text-base mb-6">Ready to celebrate your birthday with purpose? Reach out to us on WhatsApp!</p>
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 text-lg shadow-lg hover:shadow-xl hover:scale-105">
-            <svg viewBox="0 0 32 32" className="w-7 h-7 fill-current" xmlns="http://www.w3.org/2000/svg">
-              <path d="M16.004 0h-.008C7.174 0 0 7.176 0 16c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.907 15.907 0 0016.004 32C24.826 32 32 24.822 32 16S24.826 0 16.004 0zm9.342 22.616c-.39 1.1-1.932 2.014-3.168 2.28-.846.18-1.95.324-5.67-1.218-4.762-1.974-7.826-6.81-8.064-7.124-.23-.314-1.928-2.566-1.928-4.894 0-2.328 1.22-3.47 1.654-3.944.39-.428 1.036-.624 1.654-.624.2 0 .38.01.54.018.474.02.712.048 1.024.792.39.93 1.338 3.258 1.454 3.496.118.238.236.556.078.87-.15.322-.282.466-.52.738-.238.272-.464.48-.702.774-.218.258-.464.534-.196 1.008.268.466 1.192 1.966 2.56 3.184 1.758 1.564 3.24 2.05 3.7 2.278.474.238.75.198 1.024-.118.282-.324 1.204-1.4 1.526-1.882.314-.474.636-.394 1.072-.236.44.158 2.762 1.302 3.236 1.54.474.238.788.354.906.554.116.2.116 1.16-.274 2.26z" />
+          <p className="text-white/70 text-base mb-6">Ready to celebrate your birthday with purpose? Reach out to us via email!</p>
+          <a href={birthdayUrl}
+            className="inline-flex items-center gap-3 bg-[#C9A84C] hover:bg-[#B8943E] text-[#0A1628] font-bold py-4 px-8 rounded-2xl transition-all duration-300 text-lg shadow-lg hover:shadow-xl hover:scale-105">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
             </svg>
-            Register My Birthday on WhatsApp
+            Register My Birthday {"\u2192"}
           </a>
         </div>
         <p className="text-white/30 text-sm leading-relaxed">

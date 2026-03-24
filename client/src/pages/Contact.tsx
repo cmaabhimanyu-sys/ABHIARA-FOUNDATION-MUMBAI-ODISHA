@@ -1,47 +1,28 @@
 /*
- * Abhiara Foundation — Contact V3.0
- * WhatsApp as primary contact. Contact form uses tRPC backend.
- * 3 Sections: Hero, Contact Grid (WhatsApp Prompt Boxes + Form + Info), CTA
+ * Abhiara Foundation — Contact V4.0
+ * Email as primary contact. Contact form uses FormSubmit.co (no backend needed).
+ * 3 Sections: Hero, Contact Grid (Email Prompt Boxes + Form + Info), CTA
  */
 import { useState, useEffect } from "react";
-import { useLocation } from "wouter";
-import { Mail, MapPin, Linkedin, Instagram, Twitter, Send, ArrowRight, Loader2, Phone } from "lucide-react";
+import { Mail, MapPin, Linkedin, Instagram, Twitter, Send, Loader2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
 import SEO from "@/components/SEO";
 import { toast } from "sonner";
-import { trpc } from "@/lib/trpc";
+import { submitContactForm } from "@/lib/formSubmit";
 
-/* WhatsApp SVG icon component */
-function WhatsAppIcon({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-    </svg>
-  );
-}
 
 export default function Contact() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
-  const [, navigate] = useLocation();
 
-  // Fetch CMS settings for dynamic contact info
-  const { data: cmsSettings = [] } = trpc.cms.settings.list.useQuery();
-  const { data: cmsSocialLinks = [] } = trpc.cms.social.listActive.useQuery();
-  const getSetting = (key: string, fallback: string) => {
-    const s = cmsSettings.find((x: any) => x.settingKey === key);
-    return s ? s.settingValue : fallback;
-  };
-  const emailAddress = getSetting("email_address", "info@abhiarafoundation.org");
-  const whatsappNumber = getSetting("whatsapp_number", "919938938321");
-  const phoneDisplay = getSetting("phone_display", "+91 99389 38321");
-  const linkedInUrl = cmsSocialLinks.find((l: any) => l.platform.toLowerCase().includes("linkedin"))?.url || "https://www.linkedin.com/in/abhimanyu-mallik/";
-  const twitterUrl = cmsSocialLinks.find((l: any) => l.platform.toLowerCase().includes("twitter") || l.platform.toLowerCase().includes("x"))?.url || "https://x.com/abhimanyumalli7?s=11";
-  const instagramUrl = cmsSocialLinks.find((l: any) => l.platform.toLowerCase().includes("instagram"))?.url || "https://www.instagram.com/cma.abhimanyu";
+  const infoEmail = "info@abhiarafoundation.org";
+  const linkedInUrl = "https://www.linkedin.com/in/abhimanyu-mallik/";
+  const twitterUrl = "https://x.com/abhimanyumalli7?s=11";
+  const instagramUrl = "https://www.instagram.com/cma.abhimanyu";
 
-  /* Contact form via tRPC */
+  /* Contact form via FormSubmit.co */
   const [contactForm, setContactForm] = useState({
     name: "",
     email: "",
@@ -49,23 +30,38 @@ export default function Contact() {
     message: "",
     type: "general" as "general" | "csr_partnership" | "volunteer" | "media",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const contactMutation = trpc.contact.submit.useMutation({
-    onSuccess: () => {
-      const name = encodeURIComponent(contactForm.name.trim());
-      navigate(`/thank-you?type=contact&name=${name}`);
-    },
-    onError: () => {
-      toast.error("Failed to send message", {
-        description: "Please try WhatsApp instead — it's the fastest way to reach us.",
-      });
-    },
-  });
-
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!contactForm.name.trim() || !contactForm.email.trim() || !contactForm.message.trim()) return;
-    contactMutation.mutate(contactForm);
+
+    setIsSubmitting(true);
+    try {
+      const result = await submitContactForm({
+        name: contactForm.name.trim(),
+        email: contactForm.email.trim(),
+        type: contactForm.type,
+        subject: contactForm.subject.trim() || undefined,
+        message: contactForm.message.trim(),
+      });
+
+      if (result.success) {
+        setIsSubmitted(true);
+        toast.success("Thank you! We will respond within 48 hours.");
+      } else {
+        toast.error("Failed to send message", {
+          description: "Please try emailing us at info@abhiarafoundation.org instead.",
+        });
+      }
+    } catch {
+      toast.error("Failed to send message", {
+        description: "Please try emailing us at info@abhiarafoundation.org instead.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -115,18 +111,16 @@ export default function Contact() {
             Whether you want to partner, volunteer, or simply learn more — we would love to hear from you.
           </motion.p>
 
-          {/* Primary WhatsApp CTA */}
+          {/* Primary Email CTA */}
           <motion.a
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            href={`https://wa.me/${whatsappNumber}?text=Hello%20Abhiara%20Foundation%2C%20I%20would%20like%20to%20connect.`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white font-mono text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#1DA851] transition-colors rounded-sm"
+            href={`mailto:${infoEmail}`}
+            className="inline-flex items-center gap-3 px-8 py-4 bg-[#C9A84C] text-[#0A1628] font-mono text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors rounded-sm"
           >
-            <WhatsAppIcon className="w-5 h-5" />
-            MESSAGE US ON WHATSAPP
+            <Mail size={20} />
+            EMAIL US
           </motion.a>
         </div>
       </section>
@@ -135,11 +129,11 @@ export default function Contact() {
       <section className="py-20 md:py-28 section-light">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
-            {/* Left: WhatsApp Quick Prompts + Contact Form */}
+            {/* Left: Quick Connect + Contact Form */}
             <AnimatedSection direction="left" className="lg:col-span-3">
-              <p className="section-label-light mb-4">QUICK CONNECT VIA WHATSAPP</p>
+              <p className="section-label-light mb-4">QUICK CONNECT VIA EMAIL</p>
               <h2 className="heading-md light-heading mb-8">
-                Choose your <span className="text-[#25D366]">conversation</span>
+                Choose your <span className="text-[#C9A84C]">conversation</span>
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
@@ -147,101 +141,110 @@ export default function Contact() {
                   {
                     title: "CSR Partnership",
                     desc: "Discuss how your CSR budget can create measurable impact in tribal Odisha.",
-                    message: "Hello Abhiara Foundation, I am interested in CSR Partnership.",
+                    subject: "CSR Partnership Inquiry",
                   },
                   {
                     title: "General Inquiry",
                     desc: "Questions about our programmes, governance, or how to get involved.",
-                    message: "Hello Abhiara Foundation, I have a general inquiry.",
+                    subject: "General Inquiry",
                   },
                   {
                     title: "Volunteering",
                     desc: "Join our ground team in Odisha or support remotely from anywhere.",
-                    message: "Hello Abhiara Foundation, I am interested in volunteering.",
+                    subject: "Volunteering Interest",
                   },
                   {
                     title: "Media & Press",
                     desc: "Press inquiries, interviews, or coverage requests about Abhiara Foundation.",
-                    message: "Hello Abhiara Foundation, I have a media/press inquiry.",
+                    subject: "Media & Press Inquiry",
                   },
                 ].map((box) => (
                   <a
                     key={box.title}
-                    href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(box.message)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="light-card p-6 group hover:border-[#25D366]/30 transition-all block"
+                    href={`mailto:${infoEmail}?subject=${encodeURIComponent(box.subject)}`}
+                    className="light-card p-6 group hover:border-[#C9A84C]/30 transition-all block"
                   >
-                    <h3 className="font-serif text-lg font-bold light-heading mb-2 group-hover:text-[#25D366] transition-colors">{box.title}</h3>
+                    <h3 className="font-serif text-lg font-bold light-heading mb-2 group-hover:text-[#C9A84C] transition-colors">{box.title}</h3>
                     <p className="font-sans text-[13px] light-muted leading-relaxed mb-3">{box.desc}</p>
-                    <span className="font-mono text-[9px] tracking-wider uppercase text-[#25D366] flex items-center gap-2">
-                      <WhatsAppIcon className="w-4 h-4" />
-                      CHAT ON WHATSAPP
+                    <span className="font-mono text-[9px] tracking-wider uppercase text-[#C9A84C] flex items-center gap-2">
+                      <Mail size={14} />
+                      EMAIL US
                     </span>
                   </a>
                 ))}
               </div>
 
-              {/* Contact Form (saves to database) */}
-              <div className="light-card-gold p-6 md:p-8">
+              {/* Contact Form (sends via FormSubmit.co) */}
+              <div id="form" className="light-card-gold p-6 md:p-8">
                 <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-2">OR SEND US A MESSAGE</p>
-                <p className="font-sans text-[12px] light-muted mb-4">Your message is saved and we will respond via WhatsApp or email.</p>
-                <form onSubmit={handleContactSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <p className="font-sans text-[12px] light-muted mb-4">Your message will be delivered to our team. We respond within 48 hours.</p>
+
+                {isSubmitted ? (
+                  <div className="text-center py-8">
+                    <div className="text-4xl mb-4">🙏</div>
+                    <h3 className="font-serif text-xl font-bold text-[#C9A84C] mb-2">Thank You!</h3>
+                    <p className="font-sans text-[14px] light-muted">
+                      Your message has been sent. We will respond within 48 hours.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleContactSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <input
+                        type="text"
+                        required
+                        value={contactForm.name}
+                        onChange={(e) => setContactForm(prev => ({ ...prev, name: e.target.value }))}
+                        className="px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
+                        placeholder="Your Name"
+                      />
+                      <input
+                        type="email"
+                        required
+                        value={contactForm.email}
+                        onChange={(e) => setContactForm(prev => ({ ...prev, email: e.target.value }))}
+                        className="px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
+                        placeholder="Your Email"
+                      />
+                    </div>
+                    <select
+                      value={contactForm.type}
+                      onChange={(e) => setContactForm(prev => ({ ...prev, type: e.target.value as typeof contactForm.type }))}
+                      className="w-full px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
+                    >
+                      <option value="general">General Inquiry</option>
+                      <option value="csr_partnership">CSR Partnership</option>
+                      <option value="volunteer">Volunteering</option>
+                      <option value="media">Media & Press</option>
+                    </select>
                     <input
                       type="text"
-                      required
-                      value={contactForm.name}
-                      onChange={(e) => setContactForm(prev => ({ ...prev, name: e.target.value }))}
-                      className="px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
-                      placeholder="Your Name"
+                      value={contactForm.subject}
+                      onChange={(e) => setContactForm(prev => ({ ...prev, subject: e.target.value }))}
+                      className="w-full px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
+                      placeholder="Subject (optional)"
                     />
-                    <input
-                      type="email"
+                    <textarea
                       required
-                      value={contactForm.email}
-                      onChange={(e) => setContactForm(prev => ({ ...prev, email: e.target.value }))}
-                      className="px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
-                      placeholder="Your Email"
+                      rows={4}
+                      value={contactForm.message}
+                      onChange={(e) => setContactForm(prev => ({ ...prev, message: e.target.value }))}
+                      className="w-full px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors resize-none"
+                      placeholder="Your message..."
                     />
-                  </div>
-                  <select
-                    value={contactForm.type}
-                    onChange={(e) => setContactForm(prev => ({ ...prev, type: e.target.value as typeof contactForm.type }))}
-                    className="w-full px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
-                  >
-                    <option value="general">General Inquiry</option>
-                    <option value="csr_partnership">CSR Partnership</option>
-                    <option value="volunteer">Volunteering</option>
-                    <option value="media">Media & Press</option>
-                  </select>
-                  <input
-                    type="text"
-                    value={contactForm.subject}
-                    onChange={(e) => setContactForm(prev => ({ ...prev, subject: e.target.value }))}
-                    className="w-full px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
-                    placeholder="Subject (optional)"
-                  />
-                  <textarea
-                    required
-                    rows={4}
-                    value={contactForm.message}
-                    onChange={(e) => setContactForm(prev => ({ ...prev, message: e.target.value }))}
-                    className="w-full px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors resize-none"
-                    placeholder="Your message..."
-                  />
-                  <button
-                    type="submit"
-                    disabled={contactMutation.isPending}
-                    className="px-8 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors flex items-center gap-2 disabled:opacity-50"
-                  >
-                    {contactMutation.isPending ? (
-                      <><Loader2 size={12} className="animate-spin" /> SENDING...</>
-                    ) : (
-                      <><Send size={12} /> SEND MESSAGE</>
-                    )}
-                  </button>
-                </form>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="px-8 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors flex items-center gap-2 disabled:opacity-50"
+                    >
+                      {isSubmitting ? (
+                        <><Loader2 size={12} className="animate-spin" /> SENDING...</>
+                      ) : (
+                        <><Send size={12} /> SEND MESSAGE</>
+                      )}
+                    </button>
+                  </form>
+                )}
               </div>
             </AnimatedSection>
 
@@ -254,15 +257,10 @@ export default function Contact() {
                   <h3 className="font-serif text-xl font-bold light-heading mb-1">Abhimanyu Mallik</h3>
                   <p className="font-sans text-[13px] light-muted mb-4">CMA · Mumbai, Maharashtra</p>
                   <div className="space-y-3">
-                    {/* WhatsApp — Primary */}
-                    <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[13px] text-[#25D366] hover:text-[#1DA851] transition-colors font-semibold">
-                      <WhatsAppIcon className="w-4 h-4 shrink-0" />
-                      {phoneDisplay}
-                    </a>
                     {/* Email */}
-                    <a href={`mailto:${emailAddress}`} className="flex items-center gap-3 text-[13px] light-body hover:text-[#C9A84C] transition-colors">
-                      <Mail size={14} className="text-[#1A7F8E] shrink-0" />
-                      {emailAddress}
+                    <a href={`mailto:${infoEmail}`} className="flex items-center gap-3 text-[13px] text-[#C9A84C] hover:text-[#B8942A] transition-colors font-semibold">
+                      <Mail size={14} className="shrink-0" />
+                      {infoEmail}
                     </a>
                     {/* LinkedIn */}
                     <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[13px] light-body hover:text-[#C9A84C] transition-colors">
@@ -272,22 +270,20 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* WhatsApp Quick Message */}
+                {/* Email Quick Message */}
                 <a
-                  href={`https://wa.me/${whatsappNumber}?text=Hello%20Abhiara%20Foundation%2C%20I%20would%20like%20to%20connect.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block light-card p-6 group hover:border-[#25D366]/30 transition-all text-center"
+                  href={`mailto:${infoEmail}`}
+                  className="block light-card p-6 group hover:border-[#C9A84C]/30 transition-all text-center"
                 >
-                  <WhatsAppIcon className="w-10 h-10 text-[#25D366] mx-auto mb-3" />
-                  <p className="font-serif text-lg font-bold light-heading mb-1 group-hover:text-[#25D366] transition-colors">
+                  <Mail size={40} className="text-[#C9A84C] mx-auto mb-3" />
+                  <p className="font-serif text-lg font-bold light-heading mb-1 group-hover:text-[#C9A84C] transition-colors">
                     Fastest Way to Reach Us
                   </p>
                   <p className="font-sans text-[13px] light-muted mb-3">
-                    Tap to open WhatsApp and message us directly. We typically respond within 24 hours.
+                    Email us directly. We typically respond within 48 hours.
                   </p>
-                  <span className="font-mono text-[10px] tracking-wider uppercase text-[#25D366] flex items-center justify-center gap-2">
-                    <Phone size={12} /> OPEN WHATSAPP
+                  <span className="font-mono text-[10px] tracking-wider uppercase text-[#C9A84C] flex items-center justify-center gap-2">
+                    <Mail size={12} /> EMAIL US
                   </span>
                 </a>
 
@@ -316,8 +312,8 @@ export default function Contact() {
                 <div className="light-card p-6">
                   <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#C9A84C] mb-3">CONNECT</p>
                   <div className="flex gap-3">
-                    <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#25D366]/30 bg-[#25D366]/10 flex items-center justify-center text-[#25D366] hover:bg-[#25D366]/20 hover:border-[#25D366]/50 transition-colors">
-                      <WhatsAppIcon className="w-[18px] h-[18px]" />
+                    <a href={`mailto:${infoEmail}`} className="w-10 h-10 rounded-full border border-[#C9A84C]/30 bg-[#C9A84C]/10 flex items-center justify-center text-[#C9A84C] hover:bg-[#C9A84C]/20 hover:border-[#C9A84C]/50 transition-colors">
+                      <Mail size={18} />
                     </a>
                     <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#0A1628]/15 flex items-center justify-center text-[#0A1628]/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
                       <Linkedin size={18} />
@@ -336,7 +332,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ===== S3: CTA — WhatsApp ===== */}
+      {/* ===== S3: CTA — Email ===== */}
       <section className="py-16 md:py-20 bg-gradient-to-br from-[#1A7F8E] to-[#145E6A]">
         <div className="container text-center">
           <AnimatedSection>
@@ -348,18 +344,16 @@ export default function Contact() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href={`https://wa.me/${whatsappNumber}?text=Hello%20Abhiara%20Foundation%2C%20I%20would%20like%20to%20connect.`}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`mailto:${infoEmail}`}
                 className="inline-flex items-center gap-2 px-8 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors"
               >
-                <WhatsAppIcon className="w-4 h-4" /> MESSAGE ON WHATSAPP
+                <Mail size={14} /> EMAIL US
               </a>
               <a
-                href={`mailto:${emailAddress}`}
+                href="/contact#form"
                 className="inline-flex items-center gap-2 px-8 py-3 border-2 border-white text-white font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-white/10 transition-colors"
               >
-                <Mail size={12} /> EMAIL US
+                <Mail size={12} /> SEND A MESSAGE
               </a>
             </div>
           </AnimatedSection>

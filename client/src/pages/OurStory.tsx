@@ -19,14 +19,14 @@ const GOVERNANCE_ICONS: Record<string, any> = {
   "Section 8 Company": Shield,
   "Audited Reports": BookOpen,
   "Schedule VII": Scale,
-  "Independent Board": Users,
+  "Governance Structure": Users,
 };
 
 // Fallback data — improved with transition lines for better flow
 const FALLBACK_CHAPTERS = [
   {
     label: "The Beginning",
-    text: "I was born in Raisar, a small village in Kendrapara district — Tulasi Kshetra, one of the five sacred sites of Odisha, as holy as Puri itself — 754134. Electricity was uncertain. The nearest college was a long walk and a financial stretch. The idea of career guidance did not exist. There were only two mentors — my father and my mother. No internet. No one else to tell you what was possible.",
+    text: "I was born in Raisar, a small village in Kendrapara district — Tulasi Kshetra, one of the five sacred sites of Odisha, as holy as Puri itself. Electricity was uncertain. The nearest college was a long walk and a financial stretch. The idea of career guidance did not exist. There were only two mentors — my father and my mother. No internet. No one else to tell you what was possible.",
     transition: "But even in that silence, a spark was lit.",
   },
   {
@@ -62,9 +62,9 @@ const FALLBACK_CHAPTERS = [
 
 const FALLBACK_GOVERNANCE = [
   { title: "Section 8 Company", desc: "Registered under Companies Act 2013. Limited by Guarantee. Full compliance documentation maintained." },
-  { title: "Audited Reports", desc: "Annual audited financial statements. Quarterly utilisation reports for CSR partners." },
+  { title: "Audited Reports", desc: "Annual audited financial statements will be published from March 2027 covering FY 2026-27. Quarterly utilisation reports will be provided to all CSR partners from Q1 2026." },
   { title: "Schedule VII", desc: "All programmes aligned to Companies Act Schedule VII for CSR compliance." },
-  { title: "Independent Board", desc: "Governance structure with independent directors and advisory council." },
+  { title: "Governance Structure", desc: "Section 8 Company governed by CMA-qualified founder with full statutory compliance. Independent board being constituted." },
 ];
 
 export default function OurStory() {
@@ -215,7 +215,11 @@ export default function OurStory() {
             <div className="absolute left-[15px] md:left-[19px] top-0 bottom-0 w-px bg-gradient-to-b from-[#C9A84C]/60 via-[#1A7F8E]/40 to-[#C9A84C]/60" />
 
             <div className="space-y-0">
-              {narrativeChapters.map((block: any, i: number) => (
+              {(() => {
+                let chapterNum = 0;
+                return narrativeChapters.map((block: any, i: number) => {
+                  if (!block.highlight) chapterNum++;
+                  return (
                 <div key={block.label || `block-${i}`}>
                   <AnimatedSection delay={i * 0.08}>
                     {block.highlight ? (
@@ -229,7 +233,7 @@ export default function OurStory() {
                         {/* Timeline dot */}
                         <div className="relative flex-shrink-0">
                           <div className="w-[31px] h-[31px] md:w-[39px] md:h-[39px] rounded-full border-2 border-[#C9A84C]/50 bg-[#0A1628] flex items-center justify-center z-10 relative">
-                            <span className="font-mono text-[10px] text-[#C9A84C] font-bold">{String(i + 1).padStart(2, '0')}</span>
+                            <span className="font-mono text-[10px] text-[#C9A84C] font-bold">{String(chapterNum).padStart(2, '0')}</span>
                           </div>
                         </div>
                         {/* Content */}
@@ -252,7 +256,9 @@ export default function OurStory() {
                     </AnimatedSection>
                   )}
                 </div>
-              ))}
+                  );
+                });
+              })()}
             </div>
           </div>
 
@@ -367,10 +373,10 @@ export default function OurStory() {
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                 {[
-                  { label: "Entity Type", value: "Section 8", active: true },
+                  { label: "Section 8", value: "Registration in Process", active: false },
                   { label: "CIN", value: "In Process", active: false },
-                  { label: "80G", value: "Applied", active: false },
-                  { label: "12A", value: "Applied", active: false },
+                  { label: "80G", value: "In Process", active: false },
+                  { label: "12A", value: "In Process", active: false },
                   { label: "FCRA", value: "In Process", active: false },
                   { label: "PAN", value: "In Process", active: false },
                 ].map((item) => (

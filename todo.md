@@ -269,9 +269,27 @@
 - [x] COMPREHENSIVE AUDIT: Polish to world-class quality
 - [x] Fix Vercel runtime crash: add graceful fallbacks for missing env vars
 - [x] Make tRPC/auth not crash when backend is unavailable on Vercel
-- [ ] Roshani feedback: Fix website not loading on Vercel (user needs to commit crash-proof files)
-- [ ] Roshani feedback: Add 80G registration note/status on Donate, Home, Footer
-- [ ] Roshani feedback: Add CIN number and FCRA status for genuineness/credibility
-- [ ] Roshani feedback: Add Registration details section (Section 8 Company info)
-- [ ] Roshani feedback: Improve Our Story page flow/narrative continuity
-- [ ] Roshani feedback: Verify .org domain references consistent across all pages
+- [x] Roshani feedback: Fix website not loading on Vercel (user needs to commit crash-proof files)
+- [x] Roshani feedback: Add 80G registration note/status on Donate, Home, Footer
+- [x] Roshani feedback: Add CIN number and FCRA status for genuineness/credibility
+- [x] Roshani feedback: Add Registration details section (Section 8 Company info)
+- [x] Roshani feedback: Improve Our Story page flow/narrative continuity
+- [x] Roshani feedback: Verify .org domain references consistent across all pages
+- [x] Remove pin code 754134 from OurStory.tsx The Beginning section
+- [x] Verify .org domain is maintained across all pages
+- [x] Verify 80G section shows "In Process" status correctly
+- [x] Verify CIN and FCRA status shows "In Process" correctly
+- [ ] Fix 1: Remove phone number +91 99389 38321, replace with founder@abhiarafoundation.org
+- [ ] Fix 2: Remove "BUILT WITH VIBE CODING BY ABHIMANYU MALLIK" from Footer
+- [ ] Fix 3: Remove CSR company names (Tata, Infosys etc), replace with generic text
+- [ ] Fix 4: Fix Koraput → Kendrapara in testimonial
+- [ ] Fix 5: Fix Phase 1 date from 2025-2026 to 2026
+- [ ] Fix 6: Number consistency — 50+ reached, target 500+ by Dec 2026
+- [ ] Fix 7: Add "Shared during our March 2026 visit" to testimonials
+- [ ] Bug fix: Contact page form "Failed to send message" — switch from tRPC to FormSubmit.co for Vercel compatibility
+- [x] Remove founder@abhiarafoundation.org from Contact.tsx — replaced with info@
+- [x] Remove founder@abhiarafoundation.org from Team.tsx — replaced with info@
+- [x] Verify no remaining founder@ references in any source files
+- [x] Fix Contact.tsx form: switch from tRPC backend to FormSubmit.co (works on static Vercel)
+- [x] Fix ContactForm.tsx component: switch from tRPC backend to FormSubmit.co
+- [x] Remove duplicate email links on Contact page sidebar (was showing both founder@ and info@)
