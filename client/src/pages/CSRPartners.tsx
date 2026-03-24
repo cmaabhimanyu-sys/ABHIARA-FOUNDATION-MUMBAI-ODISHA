@@ -246,18 +246,19 @@ export default function CSRPartners() {
           <AnimatedSection className="text-center mb-14">
             <p className="section-label mb-4">PARTNERSHIP TARGETS</p>
             <h2 className="heading-lg text-white mb-4">
-              Companies We <span className="text-[#C9A84C]">Want to Work With</span>
+              Industries We <span className="text-[#C9A84C]">Partner With</span>
             </h2>
             <div className="gradient-rule mx-auto mb-6" />
             <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
-              We are actively seeking CSR partnerships with companies that share our vision for Odisha and beyond.
+              We welcome CSR partnerships with companies across all sectors that share our vision for education, elderly care, and community development.
             </p>
           </AnimatedSection>
 
           <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
             {[
-              "Tata Group", "Infosys", "Wipro", "HDFC Bank", "Reliance",
-              "Mahindra", "Adani Foundation", "JSW", "Vedanta", "NTPC",
+              "IT & Technology", "Banking & Finance", "Manufacturing", "Energy & Power",
+              "Infrastructure", "Healthcare & Pharma", "FMCG & Retail", "Mining & Metals",
+              "Automotive", "PSUs & Government Enterprises",
             ].map((name, i) => (
               <AnimatedSection key={name} delay={i * 0.04}>
                 <span className="glass-card px-5 py-3 font-sans text-[13px] text-white/70 font-semibold">
@@ -269,7 +270,7 @@ export default function CSRPartners() {
 
           <AnimatedSection delay={0.5} className="mt-8 text-center">
             <p className="font-sans text-[13px] text-white/40 italic">
-              These are aspirational targets. We welcome partnerships with companies of all sizes.
+              We welcome partnerships with companies of all sizes — from startups to large corporates.
             </p>
           </AnimatedSection>
         </div>
@@ -324,7 +325,7 @@ export default function CSRPartners() {
               <p className="text-2xl md:text-3xl text-[#B8942A] font-bold italic leading-relaxed mb-6">Always. But another way."</p>
               <div className="w-12 h-0.5 bg-[#C9A84C] mx-auto my-4" />
               <p className="text-[#B8942A] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
-              <p className="text-[#333]/50 text-xs uppercase tracking-widest mt-1">Written by Abhimanyu Mallik</p>
+              <p className="text-[#555] text-xs uppercase tracking-widest mt-1">Written by Abhimanyu Mallik</p>
             </div>
           </AnimatedSection>
         </div>

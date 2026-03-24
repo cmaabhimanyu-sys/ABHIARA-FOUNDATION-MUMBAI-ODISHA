@@ -464,10 +464,10 @@ export default function Home() {
             <AnimatedSection direction="left">
               <div className="space-y-0">
                 {[
-                  { phase: "Phase 1", years: "2026", desc: "Build corpus · Register · Launch education & elderly care programmes" },
-                  { phase: "Phase 2", years: "2027", desc: "Acquire land in tribal Odisha · Begin CBSE affiliation" },
-                  { phase: "Phase 3", years: "2028", desc: "Construction begins · Recruit founding faculty" },
-                  { phase: "Phase 4", years: "2029–2030", desc: "Abhiara Vidyapeeth opens · First batch enrolled" },
+                  { phase: "Phase 1", years: "2026–2030", desc: "Build corpus · Register · Launch education & elderly care programmes" },
+                  { phase: "Phase 2", years: "2030", desc: "Acquire land in tribal Odisha · Begin CBSE affiliation" },
+                  { phase: "Phase 3", years: "2032", desc: "Construction begins · Recruit founding faculty" },
+                  { phase: "Phase 4", years: "2035", desc: "Abhiara Vidyapeeth opens · First batch enrolled" },
                 ].map((item, i) => (
                   <div key={item.phase} className="flex gap-4">
                     <div className="flex flex-col items-center">

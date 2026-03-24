@@ -300,3 +300,5 @@
 - [x] Update Book Distribution date from March 2026 to October 2025 across all pages
 - [x] Update Vision timeline: field work began Sept 2025, platform built March 2026
 - [x] Add Bharat Panigrahy's real photo to Team page
+- [x] Remove all specific company names from CSR sections (legal risk)
+- [x] Fix low-contrast designation/role text on light background sections

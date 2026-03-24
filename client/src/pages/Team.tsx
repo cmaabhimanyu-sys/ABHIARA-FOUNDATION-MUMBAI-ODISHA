@@ -87,10 +87,10 @@ export default function Team() {
                     <h3 className="font-serif text-xl font-bold light-heading">
                       Abhimanyu Mallik
                     </h3>
-                    <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C]">
+                    <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#8B6914] font-bold">
                       Founder & Managing Director · CMA
                     </p>
-                    <p className="font-mono text-[10px] tracking-wider text-[#C9A84C]/70 mt-1">
+                    <p className="font-mono text-[10px] tracking-wider text-[#6B5210] mt-1">
                       CMA (Cost & Management Accountant)
                     </p>
                   </div>
@@ -107,7 +107,7 @@ export default function Team() {
                     "MCA & IT Filings",
                     "Raisar, Odisha → Mumbai",
                   ].map((tag) => (
-                    <span key={tag} className="font-mono text-[9px] tracking-wider uppercase bg-[#C9A84C]/10 border border-[#C9A84C]/20 text-[#C9A84C]/70 px-3 py-1 rounded-sm">
+                    <span key={tag} className="font-mono text-[9px] tracking-wider uppercase bg-[#C9A84C]/15 border border-[#C9A84C]/30 text-[#8B6914] px-3 py-1 rounded-sm">
                       {tag}
                     </span>
                   ))}
@@ -134,7 +134,7 @@ export default function Team() {
                     <h3 className="font-serif text-xl font-bold light-heading">
                       Sujit Sahu
                     </h3>
-                    <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#1A7F8E]">
+                    <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#145E6A] font-bold">
                       Independent Director
                     </p>
                   </div>
@@ -181,10 +181,10 @@ export default function Team() {
                     <h3 className="font-serif text-xl font-bold light-heading">
                       Biswajita Mallik
                     </h3>
-                    <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#1A7F8E]">
+                    <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#145E6A] font-bold">
                       Co-Founder &middot; Family & Community Pillar
                     </p>
-                    <p className="font-mono text-[10px] tracking-wider text-[#C9A84C]/70 mt-1">
+                    <p className="font-mono text-[10px] tracking-wider text-[#6B5210] mt-1">
                       MBA in Human Resource
                     </p>
                   </div>
@@ -336,19 +336,19 @@ export default function Team() {
                 <h3 className="font-serif text-lg font-bold light-heading mb-1">
                   Manoj Kumar Mallik
                 </h3>
-                <p className="font-mono text-[9px] tracking-[0.15em] uppercase mb-4 text-[#C9A84C]">
+                <p className="font-mono text-[9px] tracking-[0.15em] uppercase mb-4 text-[#8B6914] font-bold">
                   Operations &middot; On the Ground
                 </p>
                 <div className="flex items-center justify-center gap-2 mb-4">
                   <GraduationCap size={14} className="text-[#1A7F8E] shrink-0" />
-                  <span className="font-mono text-[10px] tracking-wider uppercase text-[#333]/50">
+                  <span className="font-mono text-[10px] tracking-wider uppercase text-[#555]">
                     MBA in Finance
                   </span>
                 </div>
                 <p className="font-sans text-[13px] light-body leading-relaxed">
                   The foundation's presence on the ground in Odisha. Manoj Kumar Mallik leads field operations — coordinating with local communities, overseeing programme delivery, and ensuring that every initiative reaches the people it was built for.
                 </p>
-                <p className="font-mono text-[9px] tracking-wider uppercase text-[#C9A84C]/60 mt-4">
+                <p className="font-mono text-[9px] tracking-wider uppercase text-[#8B6914] mt-4">
                   MBA in Finance &middot; Field Operations &middot; Odisha
                 </p>
               </div>
@@ -363,13 +363,13 @@ export default function Team() {
                 <h3 className="font-serif text-lg font-bold light-heading mb-1">
                   Amit Kumar Jena
                 </h3>
-                <p className="font-mono text-[9px] tracking-[0.15em] uppercase mb-4 text-[#C9A84C]">
+                <p className="font-mono text-[9px] tracking-[0.15em] uppercase mb-4 text-[#8B6914] font-bold">
                   Volunteer &middot; CSR Global Operation
                 </p>
                 <p className="font-sans text-[13px] light-body leading-relaxed">
                   A committed volunteer and operations lead who supports Abhiara Foundation's on-ground activities, community coordination, and programme execution globally.
                 </p>
-                <p className="font-mono text-[9px] tracking-wider uppercase text-[#C9A84C]/60 mt-4">
+                <p className="font-mono text-[9px] tracking-wider uppercase text-[#8B6914] mt-4">
                   Member &middot; Abhiara Foundation
                 </p>
               </div>

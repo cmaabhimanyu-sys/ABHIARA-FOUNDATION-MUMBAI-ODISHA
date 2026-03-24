@@ -168,7 +168,7 @@ export default function OurStory() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="light-card-gold p-6">
                   <h3 className="font-serif text-3xl font-bold light-heading mb-1">ABHI</h3>
-                  <p className="font-serif text-xl text-[#C9A84C]/60 mb-2">अभि</p>
+                  <p className="font-serif text-xl text-[#8B6914] mb-2">अभि</p>
                   <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-3">
                     Fearless &middot; Brave &middot; Dauntless
                   </p>
@@ -178,7 +178,7 @@ export default function OurStory() {
                 </div>
                 <div className="light-card p-6">
                   <h3 className="font-serif text-3xl font-bold light-heading mb-1">ARA</h3>
-                  <p className="font-serif text-xl text-[#C9A84C]/60 mb-2">आरा</p>
+                  <p className="font-serif text-xl text-[#8B6914] mb-2">आरा</p>
                   <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-3">
                     Ray of Sacred Light
                   </p>

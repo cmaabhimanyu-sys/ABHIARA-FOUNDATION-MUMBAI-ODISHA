@@ -84,9 +84,10 @@ type GalleryImage = {
 const FALLBACK_GALLERY: GalleryImage[] = [
   {
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-village-session_60ea6065.jpeg",
-    alt: "Abhiara Foundation education session withbecause education should not wait for four walls.",
-    caption: "Book donation and open-air learning session with tribal children \u2014 because education should not wait for four walls.",
-    attribution: "\u2014 Abhiara Foundation",
+    alt: "Abhiara Foundation education session with tribal children in Odisha",
+    category: "education",
+    caption: "Book donation and open-air learning session with tribal children — because education should not wait for four walls.",
+    attribution: "— Abhiara Foundation",
     location: "Kendrapara, Odisha",
   },
   {
