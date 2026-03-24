@@ -9,13 +9,14 @@ type UseAuthOptions = {
 };
 
 export function useAuth(options?: UseAuthOptions) {
-  const { redirectOnUnauthenticated = false, redirectPath = getLoginUrl() } =
-    options ?? {};
+  const { redirectOnUnauthenticated = false, redirectPath } = options ?? {};
   const utils = trpc.useUtils();
 
   const meQuery = trpc.auth.me.useQuery(undefined, {
     retry: false,
     refetchOnWindowFocus: false,
+    // Don't throw errors — handle them gracefully
+    throwOnError: false,
   });
 
   const logoutMutation = trpc.auth.logout.useMutation({
@@ -34,18 +35,27 @@ export function useAuth(options?: UseAuthOptions) {
       ) {
         return;
       }
-      throw error;
+      // Don't throw — just log. Public site should never crash.
+      console.warn("[Auth] Logout error:", error);
     } finally {
-      utils.auth.me.setData(undefined, null);
-      await utils.auth.me.invalidate();
+      try {
+        utils.auth.me.setData(undefined, null);
+        await utils.auth.me.invalidate();
+      } catch (e) {
+        // Silently handle cleanup errors
+      }
     }
   }, [logoutMutation, utils]);
 
   const state = useMemo(() => {
-    localStorage.setItem(
-      "manus-runtime-user-info",
-      JSON.stringify(meQuery.data)
-    );
+    try {
+      localStorage.setItem(
+        "manus-runtime-user-info",
+        JSON.stringify(meQuery.data)
+      );
+    } catch (e) {
+      // localStorage may not be available
+    }
     return {
       user: meQuery.data ?? null,
       loading: meQuery.isLoading || logoutMutation.isPending,
@@ -65,9 +75,13 @@ export function useAuth(options?: UseAuthOptions) {
     if (meQuery.isLoading || logoutMutation.isPending) return;
     if (state.user) return;
     if (typeof window === "undefined") return;
-    if (window.location.pathname === redirectPath) return;
 
-    window.location.href = redirectPath
+    // Only redirect if we have a valid login URL
+    const targetPath = redirectPath || getLoginUrl();
+    if (!targetPath || targetPath === "#") return;
+    if (window.location.pathname === targetPath) return;
+
+    window.location.href = targetPath;
   }, [
     redirectOnUnauthenticated,
     redirectPath,

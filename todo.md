@@ -244,7 +244,7 @@
 - [x] Push to GitHub as cmaabhimanyu-sys for Vercel auto-deploy
 - [x] AUDIT: Verify Option B alternating warm/dark pattern on ALL 9 pages (Home, OurStory, Vision, Programs, Activities, Team, CsrPartners, Contact, Donate)
 - [x] AUDIT: Fix any violations — light sections must use #FAF7F2 bg, navy #0A1628 headings, #333333 body text, white cards with shadow
-- [ ] Push comprehensive audit fixes to GitHub as cmaabhimanyu-sys only
+- [x] Push comprehensive audit fixes to GitHub as cmaabhimanyu-sys — commit 026ea43
 - [x] Enhance Social Proof section: Add certification badges (CMA, Section 8, Schedule VII)
 - [x] Enhance Social Proof section: Add testimonial quotes from beneficiaries
 - [x] Enhance Social Proof section: Add partner logos with real company logos and CSR links
@@ -267,3 +267,5 @@
 - [x] COMPREHENSIVE AUDIT: Fix broken links, navigation, routing
 - [x] COMPREHENSIVE AUDIT: Visual QA every page via screenshots
 - [x] COMPREHENSIVE AUDIT: Polish to world-class quality
+- [x] Fix Vercel runtime crash: add graceful fallbacks for missing env vars
+- [x] Make tRPC/auth not crash when backend is unavailable on Vercel
