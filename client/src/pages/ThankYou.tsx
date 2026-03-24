@@ -66,7 +66,7 @@ export default function ThankYou() {
       <SEO
         title="Thank You — Abhiara Foundation"
         description="Thank you for contacting Abhiara Foundation. We will respond soon."
-        url="https://abhiarafoundation.com/thank-you"
+        url="https://abhiarafoundation.org/thank-you"
       />
       <Navbar />
 

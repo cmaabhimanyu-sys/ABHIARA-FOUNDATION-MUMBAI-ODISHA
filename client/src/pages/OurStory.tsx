@@ -1,6 +1,6 @@
 /*
- * Abhiara Foundation — Our Story V3.1 (Dynamic CMS)
- * Sections: Hero, Name Meaning, Founding Narrative (chapters from CMS), Google Maps, Governance, CTA
+ * Abhiara Foundation — Our Story V4.0 (Improved Flow + Registration Details)
+ * Sections: Hero, Name Meaning, Founding Narrative (smooth timeline), Google Maps, Governance + Registration, CTA
  */
 import { useEffect, useMemo } from "react";
 import { Link } from "wouter";
@@ -22,16 +22,42 @@ const GOVERNANCE_ICONS: Record<string, any> = {
   "Independent Board": Users,
 };
 
-// Fallback data
+// Fallback data — improved with transition lines for better flow
 const FALLBACK_CHAPTERS = [
-  { label: "The Beginning", text: "I was born in Raisar, a small village in Kendrapara district \u2014 Tulasi Kshetra, one of the five sacred sites of Odisha, as holy as Puri itself \u2014 754134. Electricity was uncertain. The nearest college was a long walk and a financial stretch. The idea of career guidance did not exist. There were only two mentors \u2014 my father and my mother. No internet. No one else to tell you what was possible." },
-  { label: "The Struggle", text: "What we had was a family that never gave up. When I completed my 10th class, submitting a college admission form became a crisis. The city college was out of reach. I joined a local college instead \u2014 not by choice, but by circumstance. Some called it a limitation. My parents called it a beginning." },
-  { label: "The Distance", text: "I studied. I stretched. I cleared one of India\u2019s most rigorous professional examinations \u2014 the CMA, Cost and Management Accountant. I built a career in finance from the ground up, city by city, challenge by challenge. Through every difficult chapter, my wife Biswajita stood beside me \u2014 steady, silent, and unshakeable. The kind of support that does not announce itself but never disappears. I moved to Mumbai \u2014 the city that does not care where you come from, only whether you can keep up." },
-  { label: "The Belief", text: "Today I lead finance for one of India\u2019s most ambitious technology companies. I understand budgets, audits, compliance, and strategy. But I also understand what it means to grow up without access \u2014 without books, without guidance, without anyone telling you that you matter. That understanding is not a footnote in my story. It is the headline." },
-  { label: "The Foundation", text: "Abhiara Foundation is not charity. It is a structural intervention. It is the bridge I wish someone had built for me. It is the school I wish had existed in Raisar. It is the elder care programme I wish my family had access to. The name carries my fearlessness and my daughter\u2019s light \u2014 Abhi for courage, Ara for Aradhana, my ray of sacred light born in 2019." },
-  { label: "The Plan", text: "Our plan is clear \u2014 support underprivileged children through education, care for the elderly with dignity, implement CSR projects that create real and measurable impact, and build Abhiara Vidyapeeth \u2014 a full school in Odisha \u2014 within 5 years. By 2037, when Aradhana turns 18, she becomes the youngest trustee of this foundation." },
+  {
+    label: "The Beginning",
+    text: "I was born in Raisar, a small village in Kendrapara district — Tulasi Kshetra, one of the five sacred sites of Odisha, as holy as Puri itself — 754134. Electricity was uncertain. The nearest college was a long walk and a financial stretch. The idea of career guidance did not exist. There were only two mentors — my father and my mother. No internet. No one else to tell you what was possible.",
+    transition: "But even in that silence, a spark was lit.",
+  },
+  {
+    label: "The Struggle",
+    text: "What we had was a family that never gave up. When I completed my 10th class, submitting a college admission form became a crisis. The city college was out of reach. I joined a local college instead — not by choice, but by circumstance. Some called it a limitation. My parents called it a beginning.",
+    transition: "That beginning became a journey no one in the village had taken before.",
+  },
+  {
+    label: "The Distance",
+    text: "I studied. I stretched. I cleared one of India\u2019s most rigorous professional examinations — the CMA, Cost and Management Accountant. I built a career in finance from the ground up, city by city, challenge by challenge. Through every difficult chapter, my wife Biswajita stood beside me — steady, silent, and unshakeable. The kind of support that does not announce itself but never disappears. I moved to Mumbai — the city that does not care where you come from, only whether you can keep up.",
+    transition: "Mumbai tested me. But it also showed me what was possible.",
+  },
+  {
+    label: "The Belief",
+    text: "Today I lead finance for one of India\u2019s most ambitious technology companies. I understand budgets, audits, compliance, and strategy. But I also understand what it means to grow up without access — without books, without guidance, without anyone telling you that you matter. That understanding is not a footnote in my story. It is the headline.",
+    transition: "And that headline demanded action — not someday, but now.",
+  },
+  {
+    label: "The Foundation",
+    text: "Abhiara Foundation is not charity. It is a structural intervention. It is the bridge I wish someone had built for me. It is the school I wish had existed in Raisar. It is the elder care programme I wish my family had access to. The name carries my fearlessness and my daughter\u2019s light — Abhi for courage, Ara for Aradhana, my ray of sacred light born in 2019.",
+    transition: "The name was chosen. The mission was clear. Now came the plan.",
+  },
+  {
+    label: "The Plan",
+    text: "Our plan is clear — support underprivileged children through education, care for the elderly with dignity, implement CSR projects that create real and measurable impact, and build Abhiara Vidyapeeth — a full school in Odisha — within 5 years. By 2037, when Aradhana turns 18, she becomes the youngest trustee of this foundation.",
+  },
   { label: "", text: "That is not a dream. That is a deadline.", highlight: true },
-  { label: "The Scale", text: "We start in Raisar. We build in Mumbai. We think at the scale of the world." },
+  {
+    label: "The Scale",
+    text: "We start in Raisar. We build in Mumbai. We think at the scale of the world.",
+  },
 ];
 
 const FALLBACK_GOVERNANCE = [
@@ -78,7 +104,7 @@ export default function OurStory() {
         title="Our Story — Abhiara Foundation"
         description="From Raisar village to Mumbai — the journey of Abhimanyu Mallik and how Abhiara Foundation was born. ABHI (Fearless) + ARA (Ray of Light)."
         image="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/founder-journey-Xx6vnKWGMfZ6h3k4ufv5M9.webp"
-        url="https://abhiarafoundation.com/our-story"
+        url="https://abhiarafoundation.org/our-story"
       />
       <Navbar />
 
@@ -171,7 +197,7 @@ export default function OurStory() {
         </div>
       </section>
 
-      {/* ===== S3: FOUNDING NARRATIVE (from CMS) ===== */}
+      {/* ===== S3: FOUNDING NARRATIVE — TIMELINE WITH FLOW ===== */}
       <section className="py-20 md:py-28 bg-[#0A1628]">
         <div className="container max-w-3xl">
           <AnimatedSection className="text-center mb-14">
@@ -183,23 +209,51 @@ export default function OurStory() {
             <div className="gradient-rule mx-auto" />
           </AnimatedSection>
 
-          <div className="space-y-8">
-            {narrativeChapters.map((block: any, i: number) => (
-              <AnimatedSection key={block.label || `block-${i}`} delay={i * 0.08}>
-                {block.highlight ? (
-                  <div className="pl-6">
-                    <p className="font-serif text-xl md:text-2xl italic text-[#C9A84C] leading-relaxed">
-                      {block.text}
-                    </p>
-                  </div>
-                ) : (
-                  <div className="border-l-2 border-[#C9A84C]/30 pl-6 hover:border-[#C9A84C] transition-colors">
-                    <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#C9A84C] mb-2">{block.label}</p>
-                    <p className="font-sans text-[15px] text-white/80 leading-relaxed">{block.text}</p>
-                  </div>
-                )}
-              </AnimatedSection>
-            ))}
+          {/* Timeline narrative with connecting flow */}
+          <div className="relative">
+            {/* Vertical timeline line */}
+            <div className="absolute left-[15px] md:left-[19px] top-0 bottom-0 w-px bg-gradient-to-b from-[#C9A84C]/60 via-[#1A7F8E]/40 to-[#C9A84C]/60" />
+
+            <div className="space-y-0">
+              {narrativeChapters.map((block: any, i: number) => (
+                <div key={block.label || `block-${i}`}>
+                  <AnimatedSection delay={i * 0.08}>
+                    {block.highlight ? (
+                      <div className="pl-12 md:pl-14 py-6">
+                        <p className="font-serif text-xl md:text-2xl italic text-[#C9A84C] leading-relaxed">
+                          {block.text}
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="flex gap-4 md:gap-6 py-4">
+                        {/* Timeline dot */}
+                        <div className="relative flex-shrink-0">
+                          <div className="w-[31px] h-[31px] md:w-[39px] md:h-[39px] rounded-full border-2 border-[#C9A84C]/50 bg-[#0A1628] flex items-center justify-center z-10 relative">
+                            <span className="font-mono text-[10px] text-[#C9A84C] font-bold">{String(i + 1).padStart(2, '0')}</span>
+                          </div>
+                        </div>
+                        {/* Content */}
+                        <div className="pb-2">
+                          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#C9A84C] mb-2">{block.label}</p>
+                          <p className="font-sans text-[15px] text-white/80 leading-relaxed">{block.text}</p>
+                        </div>
+                      </div>
+                    )}
+                  </AnimatedSection>
+
+                  {/* Transition line — bridges chapters for narrative flow */}
+                  {block.transition && (
+                    <AnimatedSection delay={i * 0.08 + 0.04}>
+                      <div className="pl-12 md:pl-14 py-3">
+                        <p className="font-serif text-[15px] italic text-[#1A7F8E]/80 leading-relaxed">
+                          {block.transition}
+                        </p>
+                      </div>
+                    </AnimatedSection>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Our Commitment (from CMS) */}
@@ -274,11 +328,11 @@ export default function OurStory() {
         </div>
       </section>
 
-      {/* ===== S4: GOVERNANCE (LIGHT) ===== */}
+      {/* ===== S4: GOVERNANCE + REGISTRATION (LIGHT) ===== */}
       <section className="py-20 md:py-28 section-light-alt">
         <div className="container">
           <AnimatedSection className="text-center mb-14">
-            <p className="section-label-light mb-4">GOVERNANCE</p>
+            <p className="section-label-light mb-4">GOVERNANCE &amp; REGISTRATION</p>
             <h2 className="heading-lg light-heading mb-4">
               Built on <span className="text-[#C9A84C]">Transparency</span>
             </h2>
@@ -288,7 +342,7 @@ export default function OurStory() {
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto mb-12">
             {governanceCards.map((card: any, i: number) => {
               const IconComp = GOVERNANCE_ICONS[card.title] || Shield;
               return (
@@ -304,6 +358,35 @@ export default function OurStory() {
               );
             })}
           </div>
+
+          {/* Registration Status Grid */}
+          <AnimatedSection delay={0.2}>
+            <div className="max-w-3xl mx-auto">
+              <h3 className="font-mono text-[10px] font-bold tracking-[0.2em] uppercase text-[#C9A84C] mb-5 text-center">
+                Registration Status
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                {[
+                  { label: "Entity Type", value: "Section 8", active: true },
+                  { label: "CIN", value: "In Process", active: false },
+                  { label: "80G", value: "Applied", active: false },
+                  { label: "12A", value: "Applied", active: false },
+                  { label: "FCRA", value: "In Process", active: false },
+                  { label: "PAN", value: "In Process", active: false },
+                ].map((item) => (
+                  <div key={item.label} className="text-center p-3 bg-[#0A1628]/5 border border-[#0A1628]/10 rounded-sm">
+                    <p className="font-mono text-[8px] tracking-[0.15em] uppercase text-[#0A1628]/40 mb-1">{item.label}</p>
+                    <p className={`font-mono text-[10px] tracking-wider uppercase font-bold ${item.active ? "text-[#1A7F8E]" : "text-[#C9A84C]"}`}>
+                      {item.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-center text-[#0A1628]/35 text-[10px] font-mono tracking-wider mt-3">
+                All registrations are in process. Details will be updated upon approval.
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 

@@ -157,7 +157,7 @@ export default function Home() {
         title="Abhiara Foundation — Fearless Ray of Light"
         description="Education for every child. Dignity for every elder. Founded by Abhimanyu Mallik in Raisar, Kendrapara, Odisha. Section 8 Not-for-Profit."
         image={HERO_IMG}
-        url="https://abhiarafoundation.com/"
+        url="https://abhiarafoundation.org/"
       />
       <Navbar />
 

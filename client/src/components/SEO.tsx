@@ -18,7 +18,7 @@ const DEFAULTS = {
     "Education for every child. Dignity for every elder. Founded by Abhimanyu Mallik. Built from the village up.",
   image:
     "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hero-dawn-PUfjxrVLdG8a3bgPJiAovi.webp",
-  url: "https://abhiarafoundation.com",
+  url: "https://abhiarafoundation.org",
   type: "website",
 };
 

@@ -3,7 +3,7 @@ Allow: /
 Disallow: /api/
 Disallow: /404
 
-Sitemap: https://abhiarafoundation.com/sitemap.xml
+Sitemap: https://abhiarafoundation.org/sitemap.xml
 
-# Abhiara Foundation — abhiarafoundation.com
+# Abhiara Foundation — abhiarafoundation.org
 # Section 8 Not-for-Profit | Education & Elderly Care | Odisha, India

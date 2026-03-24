@@ -45,7 +45,7 @@ export default function CSRPartners() {
         title="CSR Partners — Abhiara Foundation"
         description="Partner with Abhiara Foundation for transparent, impact-verified CSR implementation under Companies Act Schedule VII. Monthly reports, audited statements."
         image="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/community-impact-JqLQdk8SYBsopiModUvtKZ.webp"
-        url="https://abhiarafoundation.com/csr-partners"
+        url="https://abhiarafoundation.org/csr-partners"
       />
       <Navbar />
 

@@ -43,7 +43,7 @@ export default function Programs() {
         title="Programs — Abhiara Foundation"
         description="Education for underprivileged children, elderly care and companion networks, and CSR implementation under Schedule VII. Three pillars, one promise."
         image="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-children-gGByyfoUfKLuHnK73a4QT3.webp"
-        url="https://abhiarafoundation.com/programs"
+        url="https://abhiarafoundation.org/programs"
       />
       <Navbar />
 

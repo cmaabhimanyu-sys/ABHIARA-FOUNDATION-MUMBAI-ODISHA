@@ -73,7 +73,7 @@ export default function Contact() {
       <SEO
         title="Contact — Abhiara Foundation"
         description="Get in touch with Abhiara Foundation. Reach our founder Abhimanyu Mallik for partnerships, volunteering, or support. Based in Mumbai, operating across Odisha."
-        url="https://abhiarafoundation.com/contact"
+        url="https://abhiarafoundation.org/contact"
       />
       <Navbar />
 

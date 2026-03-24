@@ -1,8 +1,8 @@
 /*
- * Abhiara Foundation — Footer V3.0 (Simplified + Dynamic)
+ * Abhiara Foundation — Footer V4.0 (Simplified + Dynamic + Registration Details)
  * Background: #040C18 (darkest)
  * 3-column layout: Brand | Navigate | Connect
- * Manifesto quote + legal line
+ * Legal & Registration Details + Manifesto quote + legal line
  */
 import { Link } from "wouter";
 import { Linkedin, Instagram, Twitter, Youtube, Facebook, Globe, Mail } from "lucide-react";
@@ -142,10 +142,37 @@ export default function Footer() {
           </p>
         </div>
 
+        {/* ===== LEGAL & REGISTRATION DETAILS ===== */}
+        <div className="border-t border-white/10 pt-8 mb-8">
+          <h4 className="font-mono text-[10px] font-bold tracking-[0.2em] uppercase text-[#C9A84C] mb-5 text-center">
+            Legal &amp; Registration Details
+          </h4>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
+            {[
+              { label: "Entity Type", value: "Section 8 Company", status: "" },
+              { label: "CIN", value: "In Process", status: "pending" },
+              { label: "80G", value: "Applied", status: "pending" },
+              { label: "12A", value: "Applied", status: "pending" },
+              { label: "FCRA", value: "In Process", status: "pending" },
+              { label: "PAN", value: "In Process", status: "pending" },
+            ].map((item) => (
+              <div key={item.label} className="text-center p-3 border border-white/[0.08] rounded-sm">
+                <p className="font-mono text-[8px] tracking-[0.15em] uppercase text-white/40 mb-1">{item.label}</p>
+                <p className={`font-mono text-[10px] tracking-wider uppercase font-bold ${item.status === "pending" ? "text-[#C9A84C]" : "text-[#1A7F8E]"}`}>
+                  {item.value}
+                </p>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-white/25 text-[10px] font-mono tracking-wider mt-4">
+            All registrations are in process. Details will be updated upon approval.
+          </p>
+        </div>
+
         {/* Governance Trust Line */}
         <div className="border-t border-white/10 pt-6 text-center">
           <p className="text-white/30 text-xs leading-relaxed max-w-2xl mx-auto">
-            Abhiara Foundation is a Section 8 Not-for-Profit Company. No property, asset, or income can be personally claimed by the founder, family, or any individual. Every contribution is legally protected and mission-bound.
+            Abhiara Foundation is a Section 8 Not-for-Profit Company under the Companies Act, 2013. No property, asset, or income can be personally claimed by the founder, family, or any individual. Every contribution is legally protected and mission-bound.
           </p>
         </div>
 

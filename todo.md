@@ -269,3 +269,9 @@
 - [x] COMPREHENSIVE AUDIT: Polish to world-class quality
 - [x] Fix Vercel runtime crash: add graceful fallbacks for missing env vars
 - [x] Make tRPC/auth not crash when backend is unavailable on Vercel
+- [ ] Roshani feedback: Fix website not loading on Vercel (user needs to commit crash-proof files)
+- [ ] Roshani feedback: Add 80G registration note/status on Donate, Home, Footer
+- [ ] Roshani feedback: Add CIN number and FCRA status for genuineness/credibility
+- [ ] Roshani feedback: Add Registration details section (Section 8 Company info)
+- [ ] Roshani feedback: Improve Our Story page flow/narrative continuity
+- [ ] Roshani feedback: Verify .org domain references consistent across all pages

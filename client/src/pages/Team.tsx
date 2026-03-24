@@ -30,7 +30,7 @@ export default function Team() {
         title="Our Team — Abhiara Foundation"
         description="Meet the people behind Abhiara Foundation — Founder Abhimanyu Mallik, Legal Advisor Advocate Sujit Sahu, and the team building a fearless path."
         image="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/abhimanyu-mallik-photo_f9777f21.png"
-        url="https://abhiarafoundation.com/team"
+        url="https://abhiarafoundation.org/team"
       />
       <Navbar />
 

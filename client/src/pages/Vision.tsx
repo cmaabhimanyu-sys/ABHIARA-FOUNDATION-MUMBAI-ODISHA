@@ -111,7 +111,7 @@ export default function Vision() {
       <SEO
         title="Vision — Abhiara Foundation"
         description="Abhiara Foundation's roadmap to transform education and elderly care across India. Building Abhiara Vidyapeeth within 5 years."
-        url="https://abhiarafoundation.com/vision"
+        url="https://abhiarafoundation.org/vision"
       />
       <Navbar />
 
