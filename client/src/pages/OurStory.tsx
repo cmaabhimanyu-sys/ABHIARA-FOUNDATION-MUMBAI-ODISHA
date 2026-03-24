@@ -260,16 +260,16 @@ export default function OurStory() {
         </div>
       </section>
 
-      {/* ===== TRUTH OF LIFE (LIGHT) ===== */}
-      <section className="py-12 section-light">
+      {/* ===== TRUTH OF LIFE (DARK) ===== */}
+      <section className="py-12 bg-[#0A1628]">
         <div className="container">
-          <div className="light-card-gold p-8 text-center my-12 max-w-3xl mx-auto">
-            <p className="text-[#B8942A] text-xs uppercase tracking-widest mb-6">Truth of Life</p>
-            <p className="text-2xl md:text-3xl light-heading font-bold italic leading-relaxed mb-2">"Help someone today who needs it.</p>
-            <p className="text-2xl md:text-3xl light-heading font-bold italic leading-relaxed mb-2">It returns to you.</p>
-            <p className="text-2xl md:text-3xl text-[#B8942A] font-bold italic leading-relaxed mb-6">Always. But another way."</p>
+          <div className="glass-card-gold p-8 text-center my-12 max-w-3xl mx-auto">
+            <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-6">Truth of Life</p>
+            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">"Help someone today who needs it.</p>
+            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">It returns to you.</p>
+            <p className="text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">Always. But another way."</p>
             <div className="w-12 h-0.5 bg-[#C9A84C] mx-auto my-4" />
-            <p className="text-[#B8942A] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
+            <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
           </div>
         </div>
       </section>

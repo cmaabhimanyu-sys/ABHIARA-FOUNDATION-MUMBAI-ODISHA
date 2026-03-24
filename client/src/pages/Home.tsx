@@ -300,43 +300,39 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           S3: IMPACT COUNTER — Dramatic Large Numbers
       ═══════════════════════════════════════════════════════════ */}
-      <section className="py-20 md:py-28 bg-[#0A1628] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='%23C9A84C' stroke-width='0.5'/%3E%3C/svg%3E")`,
-          backgroundSize: "60px 60px",
-        }} />
+      <section className="py-20 md:py-28 section-light relative overflow-hidden">
         <div className="container relative z-10">
           <AnimatedSection className="text-center mb-16">
-            <p className="section-label mb-4">EARLY IMPACT</p>
-            <h2 className="heading-xl text-white mb-4">
+            <p className="section-label-light mb-4">EARLY IMPACT</p>
+            <h2 className="heading-xl light-heading mb-4">
               Small Numbers. <span className="text-[#C9A84C]">Real Lives.</span>
             </h2>
-            <div className="gradient-rule mx-auto mb-6" />
-            <p className="font-sans text-[16px] text-white/60 max-w-lg mx-auto">
+            <div className="gradient-rule-light mx-auto mb-6" />
+            <p className="font-sans text-[16px] light-body max-w-lg mx-auto">
               We are in our founding year. Every number here is a real child, a real elder, a real family.
             </p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 max-w-5xl mx-auto mb-12">
             <AnimatedSection delay={0}>
-              <div className="text-center py-10 md:py-14 md:border-r border-white/[0.08]">
+              <div className="text-center py-10 md:py-14 md:border-r border-[#0A1628]/[0.08]">
                 <p className="font-serif font-bold text-[#C9A84C] mb-3" style={{ fontSize: "clamp(56px, 7vw, 88px)", lineHeight: 1 }}>
                   <CounterAnimation end={getSettingNum("stat_students_reached", 50)} suffix="+" />
                 </p>
-                <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-white/70 mb-3">Students Supported</p>
-                <p className="font-sans text-[13px] text-white/40 leading-relaxed max-w-[240px] mx-auto">
+                <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A1628]/70 mb-3">Students Supported</p>
+                <p className="font-sans text-[13px] text-[#333]/60 leading-relaxed max-w-[240px] mx-auto">
                   Children from remote villages in Odisha receiving educational support
                 </p>
               </div>
             </AnimatedSection>
 
             <AnimatedSection delay={0.12}>
-              <div className="text-center py-10 md:py-14 md:border-r border-white/[0.08]">
+              <div className="text-center py-10 md:py-14 md:border-r border-[#0A1628]/[0.08]">
                 <p className="font-serif font-bold text-[#1A7F8E] mb-3" style={{ fontSize: "clamp(56px, 7vw, 88px)", lineHeight: 1 }}>
                   <CounterAnimation end={getSettingNum("stat_elders_visited", 25)} suffix="+" />
                 </p>
-                <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-white/70 mb-3">Elderly Families Enrolled</p>
-                <p className="font-sans text-[13px] text-white/40 leading-relaxed max-w-[240px] mx-auto">
+                <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A1628]/70 mb-3">Elderly Families Enrolled</p>
+                <p className="font-sans text-[13px] text-[#333]/60 leading-relaxed max-w-[240px] mx-auto">
                   Senior citizens receiving companion support and health camps
                 </p>
               </div>
@@ -345,13 +341,13 @@ export default function Home() {
             <AnimatedSection delay={0.24}>
               <div className="text-center py-10 md:py-14 relative">
                 <div className="absolute top-4 right-4">
-                  <span className="font-mono text-[8px] tracking-wider uppercase bg-[#C9A84C]/15 text-[#C9A84C] px-2 py-1">TARGET 2026</span>
+                  <span className="font-mono text-[8px] tracking-wider uppercase bg-[#C9A84C]/15 text-[#B8942A] px-2 py-1">TARGET 2026</span>
                 </div>
                 <p className="font-serif font-bold text-[#C9A84C] mb-3" style={{ fontSize: "clamp(56px, 7vw, 88px)", lineHeight: 1 }}>
                   <CounterAnimation end={getSettingNum("stat_students_target", 500)} suffix="+" />
                 </p>
-                <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-white/70 mb-3">Students · Goal</p>
-                <p className="font-sans text-[13px] text-white/40 leading-relaxed max-w-[240px] mx-auto">
+                <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A1628]/70 mb-3">Students · Goal</p>
+                <p className="font-sans text-[13px] text-[#333]/60 leading-relaxed max-w-[240px] mx-auto">
                   Digital learning centres and scholarship support across Odisha
                 </p>
               </div>
@@ -359,7 +355,7 @@ export default function Home() {
           </div>
 
           <AnimatedSection delay={0.3} className="text-center">
-            <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/30">
+            <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#0A1628]/30">
               We don't inflate numbers. We earn them — one village at a time.
             </p>
           </AnimatedSection>
@@ -451,10 +447,10 @@ export default function Home() {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/80 via-[#0A1628]/30 to-transparent" />
                     <div className="absolute bottom-3 left-4 flex items-center gap-2">
                       <pillar.icon size={18} className={pillar.accent === "gold" ? "text-[#C9A84C]" : "text-[#1A7F8E]"} />
-                      <span className="font-serif text-lg font-bold text-white drop-shadow-md">{pillar.title}</span>
+                      <span className="font-serif text-lg font-bold text-white" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>{pillar.title}</span>
                     </div>
                     <span className="absolute top-3 right-3 font-mono text-[9px] tracking-wider uppercase bg-black/40 backdrop-blur-sm px-2 py-1 text-white/70 rounded-sm">
                       {pillar.sdg}

@@ -186,16 +186,16 @@ export default function CSRPartners() {
         </div>
       </section>
 
-      {/* ===== S4: SCHEDULE VII ALIGNMENT ===== */}
-      <section className="py-20 md:py-28 bg-[#0A1628]">
+      {/* ===== S4: SCHEDULE VII ALIGNMENT (LIGHT) ===== */}
+      <section className="py-20 md:py-28 section-light">
         <div className="container">
           <AnimatedSection className="text-center mb-14">
-            <p className="section-label mb-4">COMPLIANCE</p>
-            <h2 className="heading-lg text-white mb-4">
+            <p className="section-label-light mb-4">COMPLIANCE</p>
+            <h2 className="heading-lg light-heading mb-4">
               Schedule VII <span className="text-[#C9A84C]">Alignment</span>
             </h2>
-            <div className="gradient-rule mx-auto mb-6" />
-            <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
+            <div className="gradient-rule-light mx-auto mb-6" />
+            <p className="font-sans text-[15px] light-body max-w-lg mx-auto">
               Every programme maps directly to Companies Act Schedule VII categories.
             </p>
           </AnimatedSection>
@@ -204,7 +204,7 @@ export default function CSRPartners() {
             <div className="max-w-4xl mx-auto overflow-x-auto">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="border-b border-white/10">
+                  <tr className="border-b border-[#0A1628]/10">
                     <th className="font-mono text-[10px] tracking-wider uppercase text-[#1A7F8E] py-3 pr-4">Programme</th>
                     <th className="font-mono text-[10px] tracking-wider uppercase text-[#1A7F8E] py-3 pr-4">Schedule VII Category</th>
                     <th className="font-mono text-[10px] tracking-wider uppercase text-[#1A7F8E] py-3 pr-4">SDG</th>
@@ -218,15 +218,15 @@ export default function CSRPartners() {
                     { prog: "CSR Impact", cat: "(x) Rural development", sdg: "SDG 10, 11", status: "Not Started" },
                     { prog: "Vidyapeeth", cat: "(ii) Promoting education", sdg: "SDG 4", status: "Planned" },
                   ].map((row) => (
-                    <tr key={row.prog} className="border-b border-white/[0.06]">
-                      <td className="font-sans text-[14px] text-white/70 py-4 pr-4">{row.prog}</td>
-                      <td className="font-sans text-[13px] text-white/50 py-4 pr-4">{row.cat}</td>
+                    <tr key={row.prog} className="border-b border-[#0A1628]/[0.06]">
+                      <td className="font-sans text-[14px] text-[#0A1628]/80 py-4 pr-4">{row.prog}</td>
+                      <td className="font-sans text-[13px] text-[#333]/60 py-4 pr-4">{row.cat}</td>
                       <td className="py-4 pr-4">
                         <span className="font-mono text-[9px] tracking-wider uppercase bg-[#1A7F8E]/15 text-[#1A7F8E] px-2 py-1 rounded-sm">{row.sdg}</span>
                       </td>
                       <td className="py-4">
                         <span className={`font-mono text-[9px] tracking-wider uppercase px-2 py-1 rounded-sm ${
-                          row.status === "Active" ? "bg-[#C9A84C]/15 text-[#C9A84C]" : "bg-white/10 text-white/40"
+                          row.status === "Active" ? "bg-[#C9A84C]/15 text-[#B8942A]" : "bg-[#0A1628]/10 text-[#0A1628]/40"
                         }`}>{row.status}</span>
                       </td>
                     </tr>
@@ -238,16 +238,16 @@ export default function CSRPartners() {
         </div>
       </section>
 
-      {/* ===== S5: TARGET COMPANIES ===== */}
-      <section className="py-20 md:py-28 section-light">
+      {/* ===== S5: TARGET COMPANIES (DARK) ===== */}
+      <section className="py-20 md:py-28 bg-[#0A1628]">
         <div className="container">
           <AnimatedSection className="text-center mb-14">
             <p className="section-label mb-4">PARTNERSHIP TARGETS</p>
-            <h2 className="heading-lg light-heading mb-4">
+            <h2 className="heading-lg text-white mb-4">
               Companies We <span className="text-[#C9A84C]">Want to Work With</span>
             </h2>
             <div className="gradient-rule mx-auto mb-6" />
-            <p className="font-sans text-[15px] light-body max-w-lg mx-auto">
+            <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
               We are actively seeking CSR partnerships with companies that share our vision for Odisha and beyond.
             </p>
           </AnimatedSection>
@@ -270,19 +270,19 @@ export default function CSRPartners() {
                   href={company.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group light-card p-4 text-center hover:border-[#C9A84C]/30 transition-all duration-300 flex flex-col items-center justify-center gap-3 h-full"
+                  className="group glass-card p-4 text-center hover:border-[#C9A84C]/30 transition-all duration-300 flex flex-col items-center justify-center gap-3 h-full"
                 >
                   <div className="w-full h-12 flex items-center justify-center">
                     <img src={company.logo} alt={company.name} className="max-h-12 max-w-full object-contain opacity-60 group-hover:opacity-100 transition-opacity" loading="lazy" />
                   </div>
-                  <p className="font-sans text-[12px] light-heading font-semibold group-hover:text-[#C9A84C] transition-colors">{company.name}</p>
+                  <p className="font-sans text-[12px] text-white/80 font-semibold group-hover:text-[#C9A84C] transition-colors">{company.name}</p>
                 </a>
               </AnimatedSection>
             ))}
           </div>
 
           <AnimatedSection delay={0.5} className="mt-8 text-center">
-            <p className="font-sans text-[13px] light-muted italic">
+            <p className="font-sans text-[13px] text-white/40 italic">
               These are aspirational targets. We welcome partnerships with companies of all sizes.
             </p>
           </AnimatedSection>
@@ -327,18 +327,18 @@ export default function CSRPartners() {
         </div>
       </section>
 
-      {/* ===== TRUTH OF LIFE ===== */}
-      <section className="py-16 md:py-20 bg-[#0A1628]">
+      {/* ===== TRUTH OF LIFE (LIGHT) ===== */}
+      <section className="py-16 md:py-20 section-light">
         <div className="container max-w-3xl">
           <AnimatedSection>
-            <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 text-center">
-              <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-6">Truth of Life</p>
-              <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">"Help someone today who needs it.</p>
-              <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">It returns to you.</p>
-              <p className="text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">Always. But another way."</p>
+            <div className="light-card-gold p-8 text-center">
+              <p className="text-[#B8942A] text-xs uppercase tracking-widest mb-6">Truth of Life</p>
+              <p className="text-2xl md:text-3xl light-heading font-bold italic leading-relaxed mb-2">"Help someone today who needs it.</p>
+              <p className="text-2xl md:text-3xl light-heading font-bold italic leading-relaxed mb-2">It returns to you.</p>
+              <p className="text-2xl md:text-3xl text-[#B8942A] font-bold italic leading-relaxed mb-6">Always. But another way."</p>
               <div className="w-12 h-0.5 bg-[#C9A84C] mx-auto my-4" />
-              <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
-              <p className="text-white/50 text-xs uppercase tracking-widest mt-1">Written by Abhimanyu Mallik</p>
+              <p className="text-[#B8942A] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
+              <p className="text-[#333]/50 text-xs uppercase tracking-widest mt-1">Written by Abhimanyu Mallik</p>
             </div>
           </AnimatedSection>
         </div>

@@ -326,16 +326,16 @@ export default function Team() {
         </div>
       </section>
 
-      {/* ===== OPERATIONS ON THE GROUND ===== */}
-      <section className="py-20 md:py-28 bg-[#0A1628]">
+      {/* ===== OPERATIONS ON THE GROUND (LIGHT) ===== */}
+      <section className="py-20 md:py-28 section-light">
         <div className="container">
           <AnimatedSection className="text-center mb-14">
-            <p className="section-label mb-4">OPERATIONS</p>
-            <h2 className="heading-xl text-white mb-4">
+            <p className="section-label-light mb-4">OPERATIONS</p>
+            <h2 className="heading-xl light-heading mb-4">
               On the <span className="text-[#C9A84C]">Ground</span>
             </h2>
-            <div className="gradient-rule mx-auto mb-6" />
-            <p className="font-sans text-[15px] text-white/60 max-w-lg mx-auto">
+            <div className="gradient-rule-light mx-auto mb-6" />
+            <p className="font-sans text-[15px] light-body max-w-lg mx-auto">
               The people who turn vision into action — on the ground, in the villages, every day.
             </p>
           </AnimatedSection>
@@ -343,11 +343,11 @@ export default function Team() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {/* Manoj Kumar Mallik */}
             <AnimatedSection delay={0}>
-              <div className="glass-card-gold p-6 h-full text-center">
+              <div className="light-card-gold p-6 h-full text-center">
                 <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center bg-[#C9A84C]/15">
                   <span className="font-serif text-2xl font-bold text-[#C9A84C]">MK</span>
                 </div>
-                <h3 className="font-serif text-lg font-bold text-white mb-1">
+                <h3 className="font-serif text-lg font-bold light-heading mb-1">
                   Manoj Kumar Mallik
                 </h3>
                 <p className="font-mono text-[9px] tracking-[0.15em] uppercase mb-4 text-[#C9A84C]">
@@ -355,11 +355,11 @@ export default function Team() {
                 </p>
                 <div className="flex items-center justify-center gap-2 mb-4">
                   <GraduationCap size={14} className="text-[#1A7F8E] shrink-0" />
-                  <span className="font-mono text-[10px] tracking-wider uppercase text-white/50">
+                  <span className="font-mono text-[10px] tracking-wider uppercase text-[#333]/50">
                     MBA in Finance
                   </span>
                 </div>
-                <p className="font-sans text-[13px] text-white/45 leading-relaxed">
+                <p className="font-sans text-[13px] light-body leading-relaxed">
                   The foundation's presence on the ground in Odisha. Manoj Kumar Mallik leads field operations — coordinating with local communities, overseeing programme delivery, and ensuring that every initiative reaches the people it was built for.
                 </p>
                 <p className="font-mono text-[9px] tracking-wider uppercase text-[#C9A84C]/60 mt-4">
@@ -370,17 +370,17 @@ export default function Team() {
 
             {/* Amit Kumar Jena */}
             <AnimatedSection delay={0.1}>
-              <div className="glass-card p-6 h-full text-center">
+              <div className="light-card p-6 h-full text-center">
                 <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center bg-[#C9A84C]/10">
                   <Users size={24} className="text-[#C9A84C]" />
                 </div>
-                <h3 className="font-serif text-lg font-bold text-white mb-1">
+                <h3 className="font-serif text-lg font-bold light-heading mb-1">
                   Amit Kumar Jena
                 </h3>
                 <p className="font-mono text-[9px] tracking-[0.15em] uppercase mb-4 text-[#C9A84C]">
                   Volunteer &middot; CSR Global Operation
                 </p>
-                <p className="font-sans text-[13px] text-white/45 leading-relaxed">
+                <p className="font-sans text-[13px] light-body leading-relaxed">
                   A committed volunteer and operations lead who supports Abhiara Foundation's on-ground activities, community coordination, and programme execution across global.
                 </p>
                 <p className="font-mono text-[9px] tracking-wider uppercase text-[#C9A84C]/60 mt-4">
@@ -394,12 +394,12 @@ export default function Team() {
 
 
 
-      {/* ===== GOVERNANCE ===== */}
-      <section className="py-20 md:py-28 section-light">
+      {/* ===== GOVERNANCE (DARK) ===== */}
+      <section className="py-20 md:py-28 bg-[#0A1628]">
         <div className="container max-w-4xl">
           <AnimatedSection className="text-center mb-14">
             <p className="section-label mb-4">INSTITUTIONAL GOVERNANCE</p>
-            <h2 className="heading-xl light-heading mb-4">
+            <h2 className="heading-xl text-white mb-4">
               Built for <span className="text-[#C9A84C]">Perpetuity</span>
             </h2>
             <div className="gradient-rule mx-auto mb-6" />
@@ -429,16 +429,16 @@ export default function Team() {
               },
             ].map((item, i) => (
               <AnimatedSection key={i} delay={i * 0.08}>
-                <div className="light-card p-6 h-full">
+                <div className="glass-card p-6 h-full">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center shrink-0">
                       <item.icon size={20} className="text-[#C9A84C]" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-lg font-bold light-heading mb-2">
+                      <h3 className="font-serif text-lg font-bold text-white mb-2">
                         {item.title}
                       </h3>
-                      <p className="font-sans text-[13px] light-body leading-relaxed">
+                      <p className="font-sans text-[13px] text-white/60 leading-relaxed">
                         {item.desc}
                       </p>
                     </div>
@@ -475,7 +475,7 @@ export default function Team() {
       </section>
 
       {/* ===== CLOSING LINE ===== */}
-      <div className="text-center py-8">
+      <div className="text-center py-8 bg-[#0A1628]">
         <p className="text-white/50 text-sm italic">
           Abhiara Foundation is built for perpetual impact — governed today with the same rigour we expect from every generation that follows. 🙏
         </p>
