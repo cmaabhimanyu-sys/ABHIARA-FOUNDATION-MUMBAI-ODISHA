@@ -321,7 +321,7 @@ export default function Home() {
           </div>
 
           <AnimatedSection delay={0.3} className="text-center">
-            <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#0A1628]/30">
+            <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-[#0A1628]/70 font-bold">
               We don't inflate numbers. We earn them — one village at a time.
             </p>
           </AnimatedSection>

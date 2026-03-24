@@ -294,3 +294,4 @@
 - [x] Fix ContactForm.tsx component: switch from tRPC backend to FormSubmit.co
 - [x] Remove duplicate email links on Contact page sidebar (was showing both founder@ and info@)
 - [x] Add Manoj Kumar Mallik's real photo to Team page (replaced MK initials placeholder)
+- [x] Fix: 'We don't inflate numbers' text too light on Home page — increased contrast and made bold
