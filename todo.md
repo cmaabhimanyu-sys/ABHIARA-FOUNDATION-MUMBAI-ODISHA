@@ -302,3 +302,5 @@
 - [x] Add Bharat Panigrahy's real photo to Team page
 - [x] Remove all specific company names from CSR sections (legal risk)
 - [x] Fix low-contrast designation/role text on light background sections
+- [x] Remove "born in 2019" from OurStory founding narrative
+- [x] Remove "By 2037, when Aradhana turns 18, she becomes the youngest trustee" from OurStory

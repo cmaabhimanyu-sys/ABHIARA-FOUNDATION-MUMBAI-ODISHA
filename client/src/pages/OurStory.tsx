@@ -46,12 +46,12 @@ const FALLBACK_CHAPTERS = [
   },
   {
     label: "The Foundation",
-    text: "Abhiara Foundation is not charity. It is a structural intervention. It is the bridge I wish someone had built for me. It is the school I wish had existed in Raisar. It is the elder care programme I wish my family had access to. The name carries my fearlessness and my daughter\u2019s light — Abhi for courage, Ara for Aradhana, my ray of sacred light born in 2019.",
+    text: "Abhiara Foundation is not charity. It is a structural intervention. It is the bridge I wish someone had built for me. It is the school I wish had existed in Raisar. It is the elder care programme I wish my family had access to. The name carries my fearlessness and my daughter\u2019s light \u2014 Abhi for courage, Ara for Aradhana, my ray of sacred light.",
     transition: "The name was chosen. The mission was clear. Now came the plan.",
   },
   {
     label: "The Plan",
-    text: "Our plan is clear — support underprivileged children through education, care for the elderly with dignity, implement CSR projects that create real and measurable impact, and build Abhiara Vidyapeeth — a full school in Odisha — within 5 years. By 2037, when Aradhana turns 18, she becomes the youngest trustee of this foundation.",
+    text: "Our plan is clear \u2014 support underprivileged children through education, care for the elderly with dignity, implement CSR projects that create real and measurable impact, and build Abhiara Vidyapeeth \u2014 a full school in Odisha.",
   },
   { label: "", text: "That is not a dream. That is a deadline.", highlight: true },
   {
