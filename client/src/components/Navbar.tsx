@@ -111,16 +111,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Announcement Bar — below nav, compact */}
-        <div className={`border-t border-white/[0.04] transition-all duration-500 ${
-          scrolled ? "h-0 overflow-hidden opacity-0" : "h-auto opacity-100"
-        }`}>
-          <div className="max-w-[1400px] mx-auto px-4 md:px-6 py-1.5 flex items-center justify-center">
-            <p className="font-mono text-[8px] md:text-[9px] tracking-[0.2em] uppercase text-[#C9A84C]/70">
-              SECTION 8 REGISTRATION PENDING &nbsp;·&nbsp; NOT-FOR-PROFIT &nbsp;·&nbsp; ODISHA &nbsp;·&nbsp; PAN INDIA
-            </p>
-          </div>
-        </div>
+
       </nav>
 
       {/* Mobile Full-Screen Overlay */}

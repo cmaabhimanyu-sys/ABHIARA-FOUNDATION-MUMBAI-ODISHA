@@ -259,4 +259,5 @@
 - [x] Push redesigned Home page V3.0 to GitHub as cmaabhimanyu-sys — commit 4214d5d
 - [x] Redesign Navbar: logo+name left, all nav links center (HOME, OUR STORY, VISION, PROGRAMS, CSR PARTNERS, ACTIVITIES, TEAM, DONATE), GET IN TOUCH button right, no big gap
 - [x] Move announcement bar below navbar, removed duplicate from Home hero
-- [ ] Push navbar redesign to GitHub as cmaabhimanyu-sys (pending)
+- [x] Push navbar redesign to GitHub as cmaabhimanyu-sys — commit c464088
+- [x] Remove SECTION 8 REGISTRATION PENDING announcement bar from navbar
