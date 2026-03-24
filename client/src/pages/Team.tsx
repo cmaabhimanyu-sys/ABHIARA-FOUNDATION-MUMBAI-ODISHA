@@ -245,6 +245,7 @@ export default function Team() {
                 initials: "BP",
                 name: "Bharat Panigrahy",
                 role: "CSR & Compliance Advisor",
+                photo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/bharat-panigrahy_f4ea690a.png",
                 desc: "XLRI MBA with expertise in HR business partnering, governance, and strategic planning. Mr. Panigrahy brings corporate compliance rigour and institutional governance experience to Abhiara Foundation.",
                 icon: Shield,
                 accent: "gold",
