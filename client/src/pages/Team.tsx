@@ -329,8 +329,8 @@ export default function Team() {
             {/* Manoj Kumar Mallik */}
             <AnimatedSection delay={0}>
               <div className="light-card-gold p-6 h-full text-center">
-                <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center bg-[#C9A84C]/15">
-                  <span className="font-serif text-2xl font-bold text-[#C9A84C]">MK</span>
+                <div className="w-16 h-16 rounded-full mx-auto mb-4 overflow-hidden border-2 border-[#C9A84C]/30">
+                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/manoj-kumar-mallik_db058a62.jpeg" alt="Manoj Kumar Mallik - Operations, Abhiara Foundation" className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <h3 className="font-serif text-lg font-bold light-heading mb-1">
                   Manoj Kumar Mallik

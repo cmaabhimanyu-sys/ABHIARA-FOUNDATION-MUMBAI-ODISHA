@@ -293,3 +293,4 @@
 - [x] Fix Contact.tsx form: switch from tRPC backend to FormSubmit.co (works on static Vercel)
 - [x] Fix ContactForm.tsx component: switch from tRPC backend to FormSubmit.co
 - [x] Remove duplicate email links on Contact page sidebar (was showing both founder@ and info@)
+- [x] Add Manoj Kumar Mallik's real photo to Team page (replaced MK initials placeholder)
