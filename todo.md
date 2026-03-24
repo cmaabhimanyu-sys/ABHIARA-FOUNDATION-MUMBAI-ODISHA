@@ -254,3 +254,6 @@
 - [x] Update CSR Partners page with company logos grid
 - [x] Update Home page social proof section with company logos
 - [x] Update founder contact details across all pages: phone +91 99389 38321, email info@abhiarafoundation.org, LinkedIn Abhimanyu Mallik, title CMA Mumbai Maharashtra
+- [x] Study abhicharitable.com for design inspiration
+- [x] Redesign Home page V3.0 — cinematic parallax hero, staggered text reveal, floating particles, logo marquee, enhanced animations
+- [ ] Push redesigned Home page V3.0 to GitHub as cmaabhimanyu-sys

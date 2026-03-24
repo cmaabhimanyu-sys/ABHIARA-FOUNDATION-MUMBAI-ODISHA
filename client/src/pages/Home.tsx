@@ -1,26 +1,105 @@
 /*
- * Abhiara Foundation — Home Page V2.0
- * Sections: Hero, Trust Bar, Truth of Life, Three Pillars,
- * Vidyapeeth Teaser, Activities Preview, Contact CTA
+ * Abhiara Foundation — Home Page V3.0 "Game-Changer"
+ * Cinematic scroll-driven experience with dramatic animations.
+ * Sections: Hero, Trust Bar, Impact Counter, Truth of Life,
+ * Three Pillars, Vidyapeeth, Activities, Social Proof + Logos Marquee, CTA
  * NO donation buttons. All CTAs → Contact or relevant pages.
  */
 import { useEffect, useRef, useState, useMemo } from "react";
 import { Link } from "wouter";
-import { GraduationCap, HeartHandshake, Building2, ArrowRight, Shield, Award, MapPin, Briefcase, CheckCircle, Quote, Users, FileCheck, BadgeCheck, Phone, Mail, Linkedin } from "lucide-react";
+import {
+  GraduationCap, HeartHandshake, Building2, ArrowRight, Shield, Award,
+  MapPin, Briefcase, CheckCircle, Quote, FileCheck, BadgeCheck,
+  Phone, Mail, Linkedin,
+} from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import CounterAnimation from "@/components/CounterAnimation";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import SEO from "@/components/SEO";
 import { trpc } from "@/lib/trpc";
+import { useAuth } from "@/_core/hooks/useAuth";
 
+/* ─── CDN Images ─── */
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hero-dawn-PUfjxrVLdG8a3bgPJiAovi.webp";
 const EDUCATION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/education-village-session_60ea6065.jpeg";
 const ELDERLY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit-1_c836b920.jpeg";
 const COMMUNITY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/elderly-care-visit-2_76a48a25.jpeg";
+const FOUNDER_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/abhimanyu-mallik-photo_f9777f21.png";
 
+/* ─── CSR Target Companies ─── */
+const CSR_COMPANIES = [
+  { name: "Tata Group", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/tata-group_88854430.jpg", url: "https://www.tata.com/community" },
+  { name: "Infosys", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/infosys_f98fac0e.png", url: "https://www.infosys.com/infosys-foundation.html" },
+  { name: "Wipro", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/wipro_c9152541.png", url: "https://www.wipro.com/content/nexus/en/wipro-foundation.html" },
+  { name: "HDFC Bank", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hdfc-bank_9e33582f.png", url: "https://www.hdfcbank.com/personal/about-us/csr" },
+  { name: "Reliance", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/reliance_db35516d.png", url: "https://www.reliancefoundation.org/" },
+  { name: "Mahindra", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/mahindra_62339d77.png", url: "https://www.mahindra.com/our-impact" },
+  { name: "Adani Foundation", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/adani-foundation_94f29839.jpg", url: "https://www.adanifoundation.org/" },
+  { name: "JSW", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/jsw_fc295f62.png", url: "https://www.jswfoundation.org/" },
+  { name: "Vedanta", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/vedanta_815e72d1.png", url: "https://www.vedantalimited.com/sustainability/social" },
+  { name: "NTPC", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/ntpc_ab405914.png", url: "https://www.ntpc.co.in/en/corporate-citizenship/csr" },
+];
+
+/* ─── Infinite Marquee Component ─── */
+function LogoMarquee() {
+  const doubled = [...CSR_COMPANIES, ...CSR_COMPANIES];
+  return (
+    <div className="relative overflow-hidden py-6">
+      <div className="flex gap-8 animate-[marquee_35s_linear_infinite]">
+        {doubled.map((c, i) => (
+          <a
+            key={`${c.name}-${i}`}
+            href={c.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 w-32 h-16 flex items-center justify-center bg-white/[0.05] border border-white/[0.08] rounded-sm px-4 hover:border-[#C9A84C]/30 hover:bg-white/[0.1] transition-all duration-300"
+          >
+            <img src={c.logo} alt={c.name} className="max-h-10 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy" />
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ─── Staggered Text Reveal ─── */
+function HeroWord({ text, delay, className }: { text: string; delay: number; className: string }) {
+  return (
+    <motion.span
+      initial={{ opacity: 0, y: 60, rotateX: -40 }}
+      animate={{ opacity: 1, y: 0, rotateX: 0 }}
+      transition={{ duration: 1.2, delay, ease: [0.22, 1, 0.36, 1] }}
+      className={`inline-block ${className}`}
+      style={{ perspective: "800px" }}
+    >
+      {text}
+    </motion.span>
+  );
+}
+
+/* ─── Parallax Section Wrapper ─── */
+function ParallaxSection({ children, className = "", speed = 0.15 }: { children: React.ReactNode; className?: string; speed?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [speed * 100, -speed * 100]);
+
+  return (
+    <div ref={ref} className={`relative overflow-hidden ${className}`}>
+      <motion.div style={{ y }}>
+        {children}
+      </motion.div>
+    </div>
+  );
+}
+
+/* ─── Main Component ─── */
 export default function Home() {
+  let { user, loading, error, isAuthenticated, logout } = useAuth();
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   // Fetch CMS settings and activities for dynamic content
@@ -44,7 +123,7 @@ export default function Home() {
     { value: getSettingNum("stat_students_reached", 50), suffix: "+", label: "Students Reached" },
     { value: getSettingNum("stat_elders_visited", 40), suffix: "+", label: "Elders Visited" },
     { value: getSettingNum("stat_activities_completed", 2), suffix: "", label: "Activities Completed" },
-    { value: getSettingNum("stat_students_target", 500), suffix: "+", label: "Students \u00b7 Target 2026" },
+    { value: getSettingNum("stat_students_target", 500), suffix: "+", label: "Students · Target 2026" },
   ], [cmsSettings]);
 
   // Dynamic activities preview from CMS
@@ -52,130 +131,186 @@ export default function Home() {
     if (cmsActivities.length > 0) {
       return cmsActivities.slice(0, 2).map((a: any) => ({
         cat: a.category === "elderly" ? "Elderly Care" : "Education",
-        title: `${a.title} \u2014 ${a.date}`,
+        title: `${a.title} — ${a.date}`,
         desc: a.description.length > 200 ? a.description.slice(0, 200) + "..." : a.description,
       }));
     }
     return [
-      { cat: "Elderly Care", title: "Old Age Home Visit \u2014 March 2026", desc: "Visited Hope is Life Old Age Home in Puri, Odisha. Distributed essentials and spent quality time with 40+ elderly residents." },
-      { cat: "Education", title: "Book Distribution \u2014 March 2026", desc: "Distributed books and study materials to 50+ tribal children in Kendrapara, Odisha. Spent time with students and families." },
+      { cat: "Elderly Care", title: "Old Age Home Visit — March 2026", desc: "Visited Hope is Life Old Age Home in Puri, Odisha. Distributed essentials and spent quality time with 40+ elderly residents." },
+      { cat: "Education", title: "Book Distribution — March 2026", desc: "Distributed books and study materials to 50+ tribal children in Kendrapara, Odisha. Spent time with students and families." },
     ];
   }, [cmsActivities]);
+
+  /* Hero parallax ref */
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: heroScroll } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroImgY = useTransform(heroScroll, [0, 1], [0, 150]);
+  const heroOpacity = useTransform(heroScroll, [0, 0.5], [1, 0]);
+  const heroScale = useTransform(heroScroll, [0, 0.5], [1, 1.1]);
 
   return (
     <div className="min-h-screen bg-[#0A1628]">
       <SEO
         title="Abhiara Foundation — Fearless Ray of Light"
         description="Education for every child. Dignity for every elder. Founded by Abhimanyu Mallik in Raisar, Kendrapara, Odisha. Section 8 Not-for-Profit."
-        image="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hero-dawn-PUfjxrVLdG8a3bgPJiAovi.webp"
+        image={HERO_IMG}
         url="https://abhiarafoundation.com/"
       />
       <Navbar />
 
-      {/* ===== S2: HERO ===== */}
-      <section id="main-content" className="relative min-h-screen flex items-center justify-center overflow-hidden" role="banner" aria-label="Hero section">
-        {/* Background: cinematic hero image with overlay */}
-        <div className="absolute inset-0">
+      {/* ═══════════════════════════════════════════════════════════
+          S1: CINEMATIC HERO — Parallax Image + Staggered Text
+      ═══════════════════════════════════════════════════════════ */}
+      <section
+        ref={heroRef}
+        id="main-content"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        role="banner"
+        aria-label="Hero section"
+      >
+        {/* Parallax Background Image */}
+        <motion.div className="absolute inset-0" style={{ y: heroImgY, scale: heroScale }}>
           <img src={HERO_IMG} alt="Dawn breaking over the green fields of Odisha, India" className="w-full h-full object-cover" fetchPriority="high" />
-          <div className="absolute inset-0 bg-[#0A1628]/70" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A1628]/40 via-transparent to-[#0A1628]" />
-        </div>
+        </motion.div>
 
-        {/* Subtle geometric pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-[#0A1628]/75" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A1628]/50 via-transparent to-[#0A1628]" />
+
+        {/* Geometric pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.04]" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='%23C9A84C' stroke-width='0.5'/%3E%3C/svg%3E")`,
           backgroundSize: "60px 60px",
         }} />
 
-        <div className="relative z-10 container text-center pt-24 pb-20">
+        {/* Floating particles */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-[#C9A84C]/30 rounded-full"
+              style={{
+                left: `${15 + i * 15}%`,
+                top: `${20 + (i % 3) * 25}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                opacity: [0.2, 0.6, 0.2],
+              }}
+              transition={{
+                duration: 4 + i * 0.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.8,
+              }}
+            />
+          ))}
+        </div>
+
+        <motion.div className="relative z-10 container text-center pt-24 pb-20" style={{ opacity: heroOpacity }}>
+          {/* Tagline */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#1A7F8E] mb-10"
+            initial={{ opacity: 0, letterSpacing: "0.5em" }}
+            animate={{ opacity: 1, letterSpacing: "0.25em" }}
+            transition={{ duration: 1.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="font-mono text-[10px] uppercase text-[#1A7F8E] mb-12"
           >
-            SECTION 8 COMPANY &middot; NOT-FOR-PROFIT &middot; ODISHA &middot; PAN INDIA
+            SECTION 8 COMPANY · NOT-FOR-PROFIT · ODISHA · PAN INDIA
           </motion.p>
 
-          <motion.h1
+          {/* Dramatic staggered headline */}
+          <h1 className="font-serif font-bold leading-[1.05] mb-8" style={{ fontSize: "clamp(56px, 8vw, 96px)" }}>
+            <HeroWord text="Fearless." delay={0.4} className="text-[#C9A84C]" />
+            <br />
+            <HeroWord text="Purposeful." delay={0.7} className="text-white" />
+            <br />
+            <HeroWord text="Rooted." delay={1.0} className="text-[#1A7F8E]" />
+          </h1>
+
+          {/* Subtitle with reveal */}
+          <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="font-serif font-bold leading-[1.05] mb-6"
-            style={{ fontSize: "clamp(56px, 7vw, 84px)" }}
-          >
-            <span className="text-[#C9A84C]">Fearless.</span><br />
-            <span className="text-white">Purposeful.</span><br />
-            <span className="text-[#1A7F8E]">Rooted.</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="font-sans text-lg md:text-xl text-white/70 max-w-[520px] mx-auto leading-relaxed mb-12"
+            transition={{ duration: 1, delay: 1.4, ease: [0.22, 1, 0.36, 1] }}
+            className="font-sans text-lg md:text-xl text-white/70 max-w-[520px] mx-auto leading-relaxed mb-14"
           >
             Education for every child. Dignity for every elder.
             Built from the village up.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons with stagger */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            transition={{ duration: 0.8, delay: 1.7 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link
               href="/our-story"
-              className="px-10 py-4 bg-[#C9A84C] text-[#0A1628] font-mono text-[11px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors flex items-center gap-2"
+              className="group px-10 py-4 bg-[#C9A84C] text-[#0A1628] font-mono text-[11px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-all duration-300 flex items-center gap-2"
             >
-              OUR STORY <ArrowRight size={14} />
+              OUR STORY <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="/csr-partners"
-              className="px-10 py-4 border border-white/30 text-white font-mono text-[11px] font-bold tracking-[0.15em] uppercase hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+              className="px-10 py-4 border border-white/30 text-white font-mono text-[11px] font-bold tracking-[0.15em] uppercase hover:border-[#C9A84C] hover:text-[#C9A84C] transition-all duration-300"
             >
               PARTNER WITH US
             </Link>
           </motion.div>
-        </div>
+        </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Animated scroll indicator */}
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.2 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <div className="w-5 h-8 border border-white/20 rounded-full flex items-start justify-center p-1">
-            <div className="w-1 h-2 bg-[#C9A84C] rounded-full" />
-          </div>
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <div className="w-5 h-9 border border-white/20 rounded-full flex items-start justify-center p-1.5">
+              <motion.div
+                animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="w-1 h-2 bg-[#C9A84C] rounded-full"
+              />
+            </div>
+          </motion.div>
         </motion.div>
       </section>
 
-
-
-      {/* ===== STATS BAR ===== */}
+      {/* ═══════════════════════════════════════════════════════════
+          S2: STATS BAR — Compact Trust Indicators
+      ═══════════════════════════════════════════════════════════ */}
       <section className="py-6 bg-[#06101F] border-y border-white/[0.06]">
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {heroStats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="font-serif text-3xl md:text-4xl font-bold text-[#C9A84C]">
-                  <CounterAnimation end={stat.value} prefix="" suffix={stat.suffix} />
-                </p>
-                <p className="font-mono text-[9px] tracking-wider uppercase text-white/50 mt-1">
-                  {stat.label}
-                </p>
-              </div>
+            {heroStats.map((stat, i) => (
+              <AnimatedSection key={stat.label} delay={i * 0.08}>
+                <div className="text-center">
+                  <p className="font-serif text-3xl md:text-4xl font-bold text-[#C9A84C]">
+                    <CounterAnimation end={stat.value} prefix="" suffix={stat.suffix} />
+                  </p>
+                  <p className="font-mono text-[9px] tracking-wider uppercase text-white/50 mt-1">
+                    {stat.label}
+                  </p>
+                </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===== IMPACT COUNTER ===== */}
+      {/* ═══════════════════════════════════════════════════════════
+          S3: IMPACT COUNTER — Dramatic Large Numbers
+      ═══════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-28 bg-[#0A1628] relative overflow-hidden">
-        {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-[0.02]" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='%23C9A84C' stroke-width='0.5'/%3E%3C/svg%3E")`,
           backgroundSize: "60px 60px",
@@ -192,39 +327,31 @@ export default function Home() {
             </p>
           </AnimatedSection>
 
-          {/* Big Impact Numbers — Horizontal */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 max-w-5xl mx-auto mb-12">
-            {/* Students Supported */}
             <AnimatedSection delay={0}>
               <div className="text-center py-10 md:py-14 md:border-r border-white/[0.08]">
                 <p className="font-serif font-bold text-[#C9A84C] mb-3" style={{ fontSize: "clamp(56px, 7vw, 88px)", lineHeight: 1 }}>
                   <CounterAnimation end={getSettingNum("stat_students_reached", 50)} suffix="+" />
                 </p>
-                <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-white/70 mb-3">
-                  Students Supported
-                </p>
+                <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-white/70 mb-3">Students Supported</p>
                 <p className="font-sans text-[13px] text-white/40 leading-relaxed max-w-[240px] mx-auto">
                   Children from remote villages in Odisha receiving educational support
                 </p>
               </div>
             </AnimatedSection>
 
-            {/* Elderly Families */}
             <AnimatedSection delay={0.12}>
               <div className="text-center py-10 md:py-14 md:border-r border-white/[0.08]">
                 <p className="font-serif font-bold text-[#1A7F8E] mb-3" style={{ fontSize: "clamp(56px, 7vw, 88px)", lineHeight: 1 }}>
                   <CounterAnimation end={getSettingNum("stat_elders_visited", 25)} suffix="+" />
                 </p>
-                <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-white/70 mb-3">
-                  Elderly Families Enrolled
-                </p>
+                <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-white/70 mb-3">Elderly Families Enrolled</p>
                 <p className="font-sans text-[13px] text-white/40 leading-relaxed max-w-[240px] mx-auto">
                   Senior citizens receiving companion support and health camps
                 </p>
               </div>
             </AnimatedSection>
 
-            {/* 2026 Target */}
             <AnimatedSection delay={0.24}>
               <div className="text-center py-10 md:py-14 relative">
                 <div className="absolute top-4 right-4">
@@ -233,9 +360,7 @@ export default function Home() {
                 <p className="font-serif font-bold text-[#C9A84C] mb-3" style={{ fontSize: "clamp(56px, 7vw, 88px)", lineHeight: 1 }}>
                   <CounterAnimation end={getSettingNum("stat_students_target", 500)} suffix="+" />
                 </p>
-                <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-white/70 mb-3">
-                  Students · Goal
-                </p>
+                <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-white/70 mb-3">Students · Goal</p>
                 <p className="font-sans text-[13px] text-white/40 leading-relaxed max-w-[240px] mx-auto">
                   Digital learning centres and scholarship support across Odisha
                 </p>
@@ -251,25 +376,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== ABHIARA PROMISE ===== */}
-      <section className="py-12 bg-[#0A1628]">
+      {/* ═══════════════════════════════════════════════════════════
+          S4: TRUTH OF LIFE — Dramatic Quote
+      ═══════════════════════════════════════════════════════════ */}
+      <section className="py-16 md:py-20 bg-[#0A1628] relative">
         <div className="container">
-          <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-2xl p-8 text-center my-12 max-w-3xl mx-auto">
-            <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-6">Truth of Life</p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">"Help someone today who needs it.</p>
-            <p className="text-2xl md:text-3xl text-white font-bold italic leading-relaxed mb-2">It returns to you.</p>
-            <p className="text-2xl md:text-3xl text-[#C9A84C] font-bold italic leading-relaxed mb-6">Always. But another way."</p>
-            <div className="w-12 h-0.5 bg-[#C9A84C] mx-auto my-4" />
-            <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
-            <p className="text-white/50 text-xs uppercase tracking-widest mt-1">Written by Abhimanyu Mallik</p>
-          </div>
+          <AnimatedSection>
+            <div className="max-w-3xl mx-auto text-center relative">
+              {/* Large decorative quote marks */}
+              <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[#C9A84C]/10 font-serif" style={{ fontSize: "120px", lineHeight: 1 }}>"</div>
+              <div className="relative z-10 bg-[#C9A84C]/[0.06] border border-[#C9A84C]/20 rounded-2xl p-10 md:p-14">
+                <p className="text-[#C9A84C] text-xs uppercase tracking-widest mb-8">Truth of Life</p>
+                <p className="text-2xl md:text-3xl lg:text-4xl text-white font-bold italic leading-relaxed mb-2 font-serif">"Help someone today who needs it.</p>
+                <p className="text-2xl md:text-3xl lg:text-4xl text-white font-bold italic leading-relaxed mb-2 font-serif">It returns to you.</p>
+                <p className="text-2xl md:text-3xl lg:text-4xl text-[#C9A84C] font-bold italic leading-relaxed mb-8 font-serif">Always. But another way."</p>
+                <div className="w-16 h-0.5 bg-gradient-to-r from-[#C9A84C] to-[#1A7F8E] mx-auto mb-6" />
+                <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-semibold">— Abhiara Foundation</p>
+                <p className="text-white/50 text-xs uppercase tracking-widest mt-1">Written by Abhimanyu Mallik</p>
+              </div>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Smooth transition: dark → light */}
       <div className="section-divider-dark-to-light" />
 
-      {/* ===== S4: THREE PILLARS (LIGHT) ===== */}
+      {/* ═══════════════════════════════════════════════════════════
+          S5: THREE PILLARS — Enhanced Cards with Hover Effects
+      ═══════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-28 section-light">
         <div className="container">
           <AnimatedSection className="text-center mb-16">
@@ -289,7 +424,7 @@ export default function Home() {
                 icon: GraduationCap,
                 sdg: "SDG 4",
                 title: "Education",
-                data: "50+ Students Reached \u00b7 Target: 500+ in 2026",
+                data: "50+ Students Reached · Target: 500+ in 2026",
                 body: "We distributed books and study materials to 50+ tribal children in Kendrapara, Odisha. Our goal is to reach 500+ students across the state.",
                 img: EDUCATION_IMG,
                 cta: { label: "See Programme", href: "/programs" },
@@ -299,7 +434,7 @@ export default function Home() {
                 icon: HeartHandshake,
                 sdg: "SDG 3",
                 title: "Elderly Care",
-                data: "40+ Elders Visited \u00b7 Target: 200+ in 2026",
+                data: "40+ Elders Visited · Target: 200+ in 2026",
                 body: "We visited Hope is Life Old Age Home in Puri, spending time with 40+ elderly residents. Our goal is to reach 200+ elders across Odisha.",
                 img: ELDERLY_IMG,
                 cta: { label: "See Programme", href: "/programs" },
@@ -309,18 +444,23 @@ export default function Home() {
                 icon: Building2,
                 sdg: "SDG 10 + 11",
                 title: "CSR Implementation",
-                data: "Not Started Yet \u00b7 Planned for 2026",
-                body: "We are planning end-to-end CSR project implementation for corporates under Schedule VII. This programme has not started yet \u2014 we are actively seeking partners.",
+                data: "Not Started Yet · Planned for 2026",
+                body: "We are planning end-to-end CSR project implementation for corporates under Schedule VII. This programme has not started yet — we are actively seeking partners.",
                 img: COMMUNITY_IMG,
                 cta: { label: "Partner With Us", href: "/csr-partners" },
                 accent: "gold",
               },
             ].map((pillar, i) => (
-              <AnimatedSection key={pillar.title} delay={i * 0.08}>
+              <AnimatedSection key={pillar.title} delay={i * 0.1}>
                 <div className="group light-card overflow-hidden h-full flex flex-col">
-                  {/* Image */}
+                  {/* Image with zoom on hover */}
                   <div className="relative h-56 md:h-64 overflow-hidden">
-                    <img src={pillar.img} alt={pillar.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                    <img
+                      src={pillar.img}
+                      alt={pillar.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent" />
                     <div className="absolute bottom-3 left-4 flex items-center gap-2">
                       <pillar.icon size={18} className={pillar.accent === "gold" ? "text-[#C9A84C]" : "text-[#1A7F8E]"} />
@@ -336,11 +476,11 @@ export default function Home() {
                     <p className="font-sans text-[14px] light-body leading-relaxed mb-5 flex-1">{pillar.body}</p>
                     <Link
                       href={pillar.cta.href}
-                      className={`font-mono text-[10px] tracking-[0.15em] uppercase flex items-center gap-2 ${
+                      className={`group/link font-mono text-[10px] tracking-[0.15em] uppercase flex items-center gap-2 ${
                         pillar.accent === "gold" ? "text-[#B8942A] hover:text-[#9A7A1E]" : "text-[#1A7F8E] hover:text-[#145E6A]"
                       } transition-colors`}
                     >
-                      {pillar.cta.label} <ArrowRight size={12} />
+                      {pillar.cta.label} <ArrowRight size={12} className="group-hover/link:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </div>
@@ -353,7 +493,9 @@ export default function Home() {
       {/* Smooth transition: light → dark */}
       <div className="section-divider-light-to-dark" />
 
-      {/* ===== S7: ABHIARA VIDYAPEETH TEASER ===== */}
+      {/* ═══════════════════════════════════════════════════════════
+          S6: ABHIARA VIDYAPEETH — Timeline with Parallax
+      ═══════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-28 bg-[#040C18]">
         <div className="container">
           <AnimatedSection className="text-center mb-12">
@@ -381,7 +523,7 @@ export default function Home() {
                       {i < 3 && <div className="w-px h-full bg-[#C9A84C]/20 min-h-[60px]" />}
                     </div>
                     <div className="pb-8">
-                      <p className="font-mono text-[10px] tracking-wider uppercase text-[#C9A84C] mb-1">{item.phase} &middot; {item.years}</p>
+                      <p className="font-mono text-[10px] tracking-wider uppercase text-[#C9A84C] mb-1">{item.phase} · {item.years}</p>
                       <p className="font-sans text-[14px] text-white/60">{item.desc}</p>
                     </div>
                   </div>
@@ -396,17 +538,16 @@ export default function Home() {
                   "The school does not exist yet. But every child we reach today is proof that it will."
                 </p>
                 <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C]">
-                  — Abhimanyu Mallik &middot; Founder
+                  — Abhimanyu Mallik · Founder
                 </p>
-
               </div>
 
               <div className="mt-8">
                 <Link
                   href="/programs"
-                  className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.15em] uppercase text-[#1A7F8E] hover:text-[#C9A84C] transition-colors"
+                  className="group inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.15em] uppercase text-[#1A7F8E] hover:text-[#C9A84C] transition-colors"
                 >
-                  LEARN MORE <ArrowRight size={12} />
+                  LEARN MORE <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </AnimatedSection>
@@ -417,7 +558,9 @@ export default function Home() {
       {/* Smooth transition: dark → light */}
       <div className="section-divider-dark-to-light" />
 
-      {/* ===== S8: ACTIVITIES PREVIEW (LIGHT) ===== */}
+      {/* ═══════════════════════════════════════════════════════════
+          S7: ACTIVITIES PREVIEW — From CMS (Light)
+      ═══════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-28 section-light">
         <div className="container">
           <AnimatedSection className="text-center mb-14">
@@ -431,12 +574,11 @@ export default function Home() {
             </p>
           </AnimatedSection>
 
-          {/* Activity Highlights */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
             {activityPreviews.map((item: any, i: number) => (
-              <AnimatedSection key={i} delay={i * 0.06}>
+              <AnimatedSection key={i} delay={i * 0.08}>
                 <div className="light-card p-6 h-full">
-                  <span className={`inline-block font-mono text-[8px] tracking-[0.15em] uppercase px-2 py-0.5 rounded-sm mb-3 ${item.cat === 'Elderly Care' ? 'bg-[#C9A84C]/15 text-[#B8942A]' : 'bg-[#1A7F8E]/15 text-[#1A7F8E]'}`}>
+                  <span className={`inline-block font-mono text-[8px] tracking-[0.15em] uppercase px-2 py-0.5 rounded-sm mb-3 ${item.cat === 'Elderly Care' ? 'bg-[#1A7F8E]/10 text-[#1A7F8E]' : 'bg-[#C9A84C]/10 text-[#B8942A]'}`}>
                     {item.cat}
                   </span>
                   <h3 className="font-serif text-lg font-bold light-heading mb-2">{item.title}</h3>
@@ -446,13 +588,12 @@ export default function Home() {
             ))}
           </div>
 
-          {/* CTA to activities page */}
           <AnimatedSection className="text-center">
             <Link
               href="/activities"
-              className="inline-flex items-center gap-2 px-8 py-3 border border-[#B8942A]/40 text-[#B8942A] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#C9A84C]/10 transition-colors"
+              className="group inline-flex items-center gap-2 px-8 py-3 border border-[#B8942A]/40 text-[#B8942A] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#C9A84C]/10 transition-colors"
             >
-              VIEW ALL ACTIVITIES <ArrowRight size={12} />
+              VIEW ALL ACTIVITIES <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </AnimatedSection>
         </div>
@@ -461,9 +602,10 @@ export default function Home() {
       {/* Smooth transition: light → dark */}
       <div className="section-divider-light-to-dark" />
 
-      {/* ===== SOCIAL PROOF / FOUNDER CREDIBILITY ===== */}
+      {/* ═══════════════════════════════════════════════════════════
+          S8: SOCIAL PROOF — Founder + Badges + Testimonials + Logo Marquee
+      ═══════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-28 bg-[#0A1628] relative overflow-hidden">
-        {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-[0.02]" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='%23C9A84C' stroke-width='0.5'/%3E%3C/svg%3E")`,
           backgroundSize: "60px 60px",
@@ -481,7 +623,7 @@ export default function Home() {
             </p>
           </AnimatedSection>
 
-          {/* ---- CERTIFICATION BADGES ---- */}
+          {/* Certification Badges */}
           <AnimatedSection className="mb-16">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
               {[
@@ -490,7 +632,7 @@ export default function Home() {
                 { icon: FileCheck, label: "Schedule VII", sub: "CSR Compliant", color: "text-[#C9A84C]" },
                 { icon: CheckCircle, label: "SDG Aligned", sub: "Goals 3 · 4 · 10 · 11", color: "text-[#1A7F8E]" },
               ].map((badge) => (
-                <div key={badge.label} className="text-center p-4 border border-white/[0.08] rounded-sm">
+                <div key={badge.label} className="text-center p-4 border border-white/[0.08] rounded-sm hover:border-[#C9A84C]/20 transition-colors">
                   <badge.icon size={28} className={`${badge.color} mx-auto mb-2`} />
                   <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-white font-bold">{badge.label}</p>
                   <p className="font-mono text-[8px] tracking-wider uppercase text-white/40 mt-1">{badge.sub}</p>
@@ -499,23 +641,16 @@ export default function Home() {
             </div>
           </AnimatedSection>
 
+          {/* Founder + Credibility Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-10 lg:gap-14 items-start">
-            {/* Founder Photo + Quick Bio */}
             <AnimatedSection direction="left">
               <div className="text-center lg:text-left">
                 <div className="w-48 h-48 md:w-56 md:h-56 mx-auto lg:mx-0 rounded-full overflow-hidden border-2 border-[#C9A84C]/30 mb-6">
-                  <img
-                    src="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/abhimanyu-mallik-photo_f9777f21.png"
-                    alt="Abhimanyu Mallik - Founder, CMA"
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
+                  <img src={FOUNDER_IMG} alt="Abhimanyu Mallik - Founder, CMA" className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <h3 className="font-serif text-xl font-bold text-white mb-1">Abhimanyu Mallik</h3>
-                <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C] mb-2">FOUNDER &middot; DIRECTOR</p>
-                <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-[#1A7F8E]">
-                  CMA (Cost &amp; Management Accountant)
-                </p>
+                <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C] mb-2">FOUNDER · DIRECTOR</p>
+                <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-[#1A7F8E]">CMA (Cost &amp; Management Accountant)</p>
                 <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-white/40 mt-1 flex items-center justify-center lg:justify-start gap-1">
                   <MapPin size={10} /> Mumbai, Maharashtra
                 </p>
@@ -533,58 +668,34 @@ export default function Home() {
               </div>
             </AnimatedSection>
 
-            {/* Credibility Grid */}
             <AnimatedSection direction="right">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div className="glass-card p-6">
-                  <Award size={20} className="text-[#C9A84C] mb-3" />
-                  <h4 className="font-serif text-base font-bold text-white mb-2">CMA-Qualified Governance</h4>
-                  <p className="font-sans text-[13px] text-white/55 leading-relaxed">
-                    The Institute of Cost Accountants of India (ICMAI) qualification ensures every rupee is tracked, reported, and audited to the highest professional standards.
-                  </p>
-                </div>
-                <div className="glass-card p-6">
-                  <Briefcase size={20} className="text-[#1A7F8E] mb-3" />
-                  <h4 className="font-serif text-base font-bold text-white mb-2">Corporate Finance Background</h4>
-                  <p className="font-sans text-[13px] text-white/55 leading-relaxed">
-                    Years of experience in corporate finance, budgeting, and compliance — now applied to transparent NGO operations and CSR fund management.
-                  </p>
-                </div>
-                <div className="glass-card p-6">
-                  <Shield size={20} className="text-[#C9A84C] mb-3" />
-                  <h4 className="font-serif text-base font-bold text-white mb-2">Schedule VII Compliant</h4>
-                  <p className="font-sans text-[13px] text-white/55 leading-relaxed">
-                    Full compliance with Companies Act 2013, Schedule VII. Monthly impact reports, audited utilisation certificates, and complete documentation for CSR partners.
-                  </p>
-                </div>
-                <div className="glass-card p-6">
-                  <MapPin size={20} className="text-[#1A7F8E] mb-3" />
-                  <h4 className="font-serif text-base font-bold text-white mb-2">Village to Metro Mumbai</h4>
-                  <p className="font-sans text-[13px] text-white/55 leading-relaxed">
-                    From a remote village in Odisha to professional life in Mumbai — the founder's own journey is the foundation's deepest motivation and proof of what is possible.
-                  </p>
-                </div>
+                {[
+                  { icon: Award, title: "CMA-Qualified Governance", desc: "The Institute of Cost Accountants of India (ICMAI) qualification ensures every rupee is tracked, reported, and audited to the highest professional standards.", color: "text-[#C9A84C]" },
+                  { icon: Briefcase, title: "Corporate Finance Background", desc: "Years of experience in corporate finance, budgeting, and compliance — now applied to transparent NGO operations and CSR fund management.", color: "text-[#1A7F8E]" },
+                  { icon: Shield, title: "Schedule VII Compliant", desc: "Full compliance with Companies Act 2013, Schedule VII. Monthly impact reports, audited utilisation certificates, and complete documentation for CSR partners.", color: "text-[#C9A84C]" },
+                  { icon: MapPin, title: "Village to Metro Mumbai", desc: "From a remote village in Odisha to professional life in Mumbai — the founder's own journey is the foundation's deepest motivation and proof of what is possible.", color: "text-[#1A7F8E]" },
+                ].map((card) => (
+                  <div key={card.title} className="glass-card p-6">
+                    <card.icon size={20} className={`${card.color} mb-3`} />
+                    <h4 className="font-serif text-base font-bold text-white mb-2">{card.title}</h4>
+                    <p className="font-sans text-[13px] text-white/55 leading-relaxed">{card.desc}</p>
+                  </div>
+                ))}
               </div>
 
-              {/* CTA */}
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/team"
-                  className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C] hover:text-[#B8942A] transition-colors"
-                >
-                  MEET THE FULL TEAM <ArrowRight size={12} />
+                <Link href="/team" className="group inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.15em] uppercase text-[#C9A84C] hover:text-[#B8942A] transition-colors">
+                  MEET THE FULL TEAM <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link
-                  href="/csr-partners"
-                  className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.15em] uppercase text-[#1A7F8E] hover:text-[#C9A84C] transition-colors"
-                >
-                  CSR PARTNERSHIP DETAILS <ArrowRight size={12} />
+                <Link href="/csr-partners" className="group inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.15em] uppercase text-[#1A7F8E] hover:text-[#C9A84C] transition-colors">
+                  CSR PARTNERSHIP DETAILS <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </AnimatedSection>
           </div>
 
-          {/* ---- TESTIMONIALS ---- */}
+          {/* Testimonials */}
           <AnimatedSection className="mt-20">
             <div className="text-center mb-10">
               <p className="section-label mb-4">VOICES FROM THE GROUND</p>
@@ -611,92 +722,72 @@ export default function Home() {
                   accent: "border-[#C9A84C]/30",
                 },
               ].map((t, i) => (
-                <div key={i} className={`glass-card p-6 border-l-2 ${t.accent}`}>
-                  <Quote size={18} className="text-[#C9A84C]/40 mb-3" />
-                  <p className="font-serif text-[14px] italic text-white/70 leading-relaxed mb-4">
-                    "{t.quote}"
-                  </p>
-                  <div>
-                    <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-white font-bold">{t.name}</p>
-                    <p className="font-mono text-[8px] tracking-wider uppercase text-white/40">{t.role}</p>
+                <AnimatedSection key={i} delay={i * 0.1}>
+                  <div className={`glass-card p-6 border-l-2 ${t.accent} h-full`}>
+                    <Quote size={18} className="text-[#C9A84C]/40 mb-3" />
+                    <p className="font-serif text-[14px] italic text-white/70 leading-relaxed mb-4">
+                      "{t.quote}"
+                    </p>
+                    <div>
+                      <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-white font-bold">{t.name}</p>
+                      <p className="font-mono text-[8px] tracking-wider uppercase text-white/40">{t.role}</p>
+                    </div>
                   </div>
-                </div>
+                </AnimatedSection>
               ))}
             </div>
           </AnimatedSection>
 
-          {/* ---- CSR TARGET COMPANIES WITH LOGOS ---- */}
+          {/* CSR Target Companies — Infinite Marquee */}
           <AnimatedSection className="mt-20">
-            <div className="text-center mb-10">
+            <div className="text-center mb-6">
               <p className="section-label mb-4">CSR PARTNERSHIP TARGETS</p>
               <p className="font-sans text-[14px] text-white/50 max-w-xl mx-auto mt-3">
-                We are actively pursuing CSR partnerships with India's leading corporates for Schedule VII implementation in education and elderly care.
+                We are actively pursuing CSR partnerships with India's leading corporates for Schedule VII implementation.
               </p>
-              <div className="gradient-rule mx-auto mt-4" />
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-w-5xl mx-auto mb-10">
-              {[
-                { name: "Tata Group", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/tata-group_88854430.jpg", url: "https://www.tata.com/community" },
-                { name: "Infosys", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/infosys_f98fac0e.png", url: "https://www.infosys.com/infosys-foundation.html" },
-                { name: "Wipro", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/wipro_c9152541.png", url: "https://www.wipro.com/content/nexus/en/wipro-foundation.html" },
-                { name: "HDFC Bank", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hdfc-bank_9e33582f.png", url: "https://www.hdfcbank.com/personal/about-us/csr" },
-                { name: "Reliance", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/reliance_db35516d.png", url: "https://www.reliancefoundation.org/" },
-                { name: "Mahindra", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/mahindra_62339d77.png", url: "https://www.mahindra.com/our-impact" },
-                { name: "Adani Foundation", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/adani-foundation_94f29839.jpg", url: "https://www.adanifoundation.org/" },
-                { name: "JSW", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/jsw_fc295f62.png", url: "https://www.jswfoundation.org/" },
-                { name: "Vedanta", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/vedanta_815e72d1.png", url: "https://www.vedantalimited.com/sustainability/social" },
-                { name: "NTPC", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/ntpc_ab405914.png", url: "https://www.ntpc.co.in/en/corporate-citizenship/csr" },
-              ].map((company) => (
-                <a
-                  key={company.name}
-                  href={company.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.08] hover:border-[#C9A84C]/30 rounded-sm p-4 flex flex-col items-center justify-center gap-3 transition-all duration-300"
-                >
-                  <div className="w-full h-12 flex items-center justify-center">
-                    <img src={company.logo} alt={company.name} className="max-h-12 max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity" loading="lazy" />
-                  </div>
-                  <p className="font-mono text-[9px] tracking-wider uppercase text-white/50 group-hover:text-[#C9A84C] transition-colors">{company.name}</p>
-                </a>
-              ))}
-            </div>
-            <div className="text-center">
+            <LogoMarquee />
+            <div className="text-center mt-6">
               <Link
                 href="/csr-partners"
-                className="inline-flex items-center gap-2 px-8 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors"
+                className="group inline-flex items-center gap-2 px-8 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors"
               >
-                EXPLORE CSR PARTNERSHIP <ArrowRight size={12} />
+                EXPLORE CSR PARTNERSHIP <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Smooth transition: dark → gold CTA */}
-
-      {/* ===== S9: CONTACT CTA STRIP ===== */}
-      <section className="py-16 md:py-20 bg-[#C9A84C]">
-        <div className="container text-center">
+      {/* ═══════════════════════════════════════════════════════════
+          S9: GOLD CTA — Full-Width Dramatic Close
+      ═══════════════════════════════════════════════════════════ */}
+      <section className="py-20 md:py-24 bg-[#C9A84C] relative overflow-hidden">
+        {/* Decorative pattern */}
+        <div className="absolute inset-0 opacity-[0.06]" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='%230A1628' stroke-width='0.5'/%3E%3C/svg%3E")`,
+          backgroundSize: "60px 60px",
+        }} />
+        <div className="container text-center relative z-10">
           <AnimatedSection>
-            <h2 className="font-serif font-bold text-[#0A1628] mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 48px)" }}>
+            <h2 className="font-serif font-bold text-[#0A1628] mb-6" style={{ fontSize: "clamp(32px, 4vw, 56px)" }}>
               Ready to make an impact?
             </h2>
-            <p className="font-sans text-[15px] text-[#0A1628]/70 max-w-2xl mx-auto leading-relaxed mb-8">
+            <p className="font-sans text-[16px] text-[#0A1628]/70 max-w-2xl mx-auto leading-relaxed mb-10">
               Whether you are a corporate looking for a credible CSR implementation partner, an individual who believes geography should not be destiny, or an institution that wants to invest in Odisha and beyond — we want to hear from you.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/our-story"
-                className="inline-flex items-center gap-2 px-8 py-3 bg-[#0A1628] text-[#C9A84C] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#06101F] transition-colors"
+                className="group inline-flex items-center gap-2 px-10 py-4 bg-[#0A1628] text-[#C9A84C] font-mono text-[11px] font-bold tracking-[0.15em] uppercase hover:bg-[#06101F] transition-colors"
               >
-                OUR STORY <ArrowRight size={12} />
+                OUR STORY <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/csr-partners"
-                className="inline-flex items-center gap-2 px-8 py-3 border border-[#0A1628]/30 text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#0A1628]/10 transition-colors"
+                className="group inline-flex items-center gap-2 px-10 py-4 border-2 border-[#0A1628]/30 text-[#0A1628] font-mono text-[11px] font-bold tracking-[0.15em] uppercase hover:bg-[#0A1628]/10 transition-colors"
               >
-                PARTNER WITH US <ArrowRight size={12} />
+                PARTNER WITH US <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </AnimatedSection>
