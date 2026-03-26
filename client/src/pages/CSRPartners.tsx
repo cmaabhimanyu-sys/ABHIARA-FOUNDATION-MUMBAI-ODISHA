@@ -83,7 +83,7 @@ export default function CSRPartners() {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="font-sans text-[15px] text-white/60 max-w-xl mx-auto"
           >
-            End-to-end CSR implementation. Schedule VII compliant. Monthly reporting. Full utilisation reporting. Real impact \u2014 documented and verified.       </motion.p>
+            End-to-end CSR implementation. Schedule VII compliant. Monthly reporting. Full utilisation reporting. Real impact — documented and verified.</motion.p>
         </div>
       </section>
 
