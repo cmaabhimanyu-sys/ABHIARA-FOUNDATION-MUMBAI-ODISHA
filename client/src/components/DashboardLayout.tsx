@@ -1,12 +1,6 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
@@ -19,130 +13,135 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { Button } from "@/components/ui/button";
 import { getLoginUrl } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LayoutDashboard, LogOut, PanelLeft, Users } from "lucide-react";
-import { CSSProperties, useEffect, useRef, useState } from "react";
-import { useLocation } from "wouter";
-import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
-import { Button } from "./ui/button";
+import { ExternalLink, LogOut, PanelLeft } from "lucide-react";
+import { type ComponentType, type CSSProperties, type ReactNode, useEffect, useRef, useState } from "react";
+import { DashboardLayoutSkeleton } from "./DashboardLayoutSkeleton";
 
-const menuItems = [
-  { icon: LayoutDashboard, label: "Page 1", path: "/" },
-  { icon: Users, label: "Page 2", path: "/some-path" },
-];
+export type DashboardMenuItem = {
+  key: string;
+  label: string;
+  icon: ComponentType<{ className?: string }>;
+};
 
-const SIDEBAR_WIDTH_KEY = "sidebar-width";
-const DEFAULT_WIDTH = 280;
-const MIN_WIDTH = 200;
-const MAX_WIDTH = 480;
+type DashboardLayoutProps = {
+  children: ReactNode;
+  menuItems: DashboardMenuItem[];
+  activeKey: string;
+  onSelect: (key: string) => void;
+  title?: string;
+};
+
+const SIDEBAR_WIDTH_KEY = "abhiara-admin-sidebar-width";
+const DEFAULT_WIDTH = 272;
+const MIN_WIDTH = 220;
+const MAX_WIDTH = 360;
 
 export default function DashboardLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+  menuItems,
+  activeKey,
+  onSelect,
+  title = "Owner Control Centre",
+}: DashboardLayoutProps) {
   const [sidebarWidth, setSidebarWidth] = useState(() => {
-    const saved = localStorage.getItem(SIDEBAR_WIDTH_KEY);
-    return saved ? parseInt(saved, 10) : DEFAULT_WIDTH;
+    if (typeof window === "undefined") return DEFAULT_WIDTH;
+    const saved = window.localStorage.getItem(SIDEBAR_WIDTH_KEY);
+    return saved ? Number.parseInt(saved, 10) : DEFAULT_WIDTH;
   });
-  const { loading, user } = useAuth();
+  const { loading, user, logout } = useAuth();
 
   useEffect(() => {
-    localStorage.setItem(SIDEBAR_WIDTH_KEY, sidebarWidth.toString());
+    window.localStorage.setItem(SIDEBAR_WIDTH_KEY, String(sidebarWidth));
   }, [sidebarWidth]);
 
-  if (loading) {
-    return <DashboardLayoutSkeleton />
-  }
+  if (loading) return <DashboardLayoutSkeleton />;
 
   if (!user) {
+    const startLogin = () => {
+      const target = getLoginUrl("/admin");
+      if (target && target !== "#") window.location.href = target;
+    };
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="flex flex-col items-center gap-8 p-8 max-w-md w-full">
-          <div className="flex flex-col items-center gap-6">
-            <h1 className="text-2xl font-semibold tracking-tight text-center">
-              Sign in to continue
-            </h1>
-            <p className="text-sm text-muted-foreground text-center max-w-sm">
-              Access to this dashboard requires authentication. Continue to launch the login flow.
-            </p>
-          </div>
-          <Button
-            onClick={() => {
-              window.location.href = getLoginUrl();
-            }}
-            size="lg"
-            className="w-full shadow-lg hover:shadow-xl transition-all"
-          >
-            Sign in
+      <div className="flex min-h-screen items-center justify-center bg-[#FAF8F3] px-4">
+        <div className="w-full max-w-md rounded-2xl border border-[#E8DCC6] bg-white p-8 text-center shadow-sm">
+          <img src="/abhiara-logo.png" alt="Abhiara Foundation" className="mx-auto h-16 w-auto" />
+          <h1 className="mt-6 font-serif text-3xl font-bold text-[#1A1A1A]">Owner sign in</h1>
+          <p className="mt-3 font-sans text-sm leading-relaxed text-[#666]">
+            Sign in with the Foundation owner account to manage reports, approved photos, public details and donation records.
+          </p>
+          <Button onClick={startLogin} size="lg" className="mt-7 w-full bg-[#F5A623] font-bold text-[#1A1A1A] hover:bg-[#E8960E]">
+            Continue to secure sign in
           </Button>
+          <a href="/" className="mt-5 inline-flex text-sm font-bold text-[#9A6100] hover:underline">Back to website</a>
         </div>
       </div>
     );
   }
 
   return (
-    <SidebarProvider
-      style={
-        {
-          "--sidebar-width": `${sidebarWidth}px`,
-        } as CSSProperties
-      }
-    >
-      <DashboardLayoutContent setSidebarWidth={setSidebarWidth}>
+    <SidebarProvider style={{ "--sidebar-width": `${sidebarWidth}px` } as CSSProperties}>
+      <DashboardLayoutContent
+        title={title}
+        menuItems={menuItems}
+        activeKey={activeKey}
+        onSelect={onSelect}
+        onLogout={() => void logout()}
+        setSidebarWidth={setSidebarWidth}
+        userName={user.name || "Owner"}
+        userEmail={user.email || ""}
+      >
         {children}
       </DashboardLayoutContent>
     </SidebarProvider>
   );
 }
 
-type DashboardLayoutContentProps = {
-  children: React.ReactNode;
+type DashboardLayoutContentProps = DashboardLayoutProps & {
+  onLogout: () => void;
   setSidebarWidth: (width: number) => void;
+  userName: string;
+  userEmail: string;
 };
 
 function DashboardLayoutContent({
   children,
+  menuItems,
+  activeKey,
+  onSelect,
+  onLogout,
   setSidebarWidth,
+  title = "Owner Control Centre",
+  userName,
+  userEmail,
 }: DashboardLayoutContentProps) {
-  const { user, logout } = useAuth();
-  const [location, setLocation] = useLocation();
   const { state, toggleSidebar } = useSidebar();
   const isCollapsed = state === "collapsed";
+  const isMobile = useIsMobile();
   const [isResizing, setIsResizing] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
-  const activeMenuItem = menuItems.find(item => item.path === location);
-  const isMobile = useIsMobile();
+  const activeItem = menuItems.find(item => item.key === activeKey);
 
   useEffect(() => {
-    if (isCollapsed) {
-      setIsResizing(false);
-    }
+    if (isCollapsed) setIsResizing(false);
   }, [isCollapsed]);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = (event: MouseEvent) => {
       if (!isResizing) return;
-
-      const sidebarLeft = sidebarRef.current?.getBoundingClientRect().left ?? 0;
-      const newWidth = e.clientX - sidebarLeft;
-      if (newWidth >= MIN_WIDTH && newWidth <= MAX_WIDTH) {
-        setSidebarWidth(newWidth);
-      }
+      const left = sidebarRef.current?.getBoundingClientRect().left ?? 0;
+      const width = event.clientX - left;
+      if (width >= MIN_WIDTH && width <= MAX_WIDTH) setSidebarWidth(width);
     };
-
-    const handleMouseUp = () => {
-      setIsResizing(false);
-    };
-
+    const handleMouseUp = () => setIsResizing(false);
     if (isResizing) {
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseup", handleMouseUp);
       document.body.style.cursor = "col-resize";
       document.body.style.userSelect = "none";
     }
-
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
@@ -154,45 +153,28 @@ function DashboardLayoutContent({
   return (
     <>
       <div className="relative" ref={sidebarRef}>
-        <Sidebar
-          collapsible="icon"
-          className="border-r-0"
-          disableTransition={isResizing}
-        >
-          <SidebarHeader className="h-16 justify-center">
-            <div className="flex items-center gap-3 px-2 transition-all w-full">
-              <button
-                onClick={toggleSidebar}
-                className="h-8 w-8 flex items-center justify-center hover:bg-accent rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring shrink-0"
-                aria-label="Toggle navigation"
-              >
-                <PanelLeft className="h-4 w-4 text-muted-foreground" />
+        <Sidebar collapsible="icon" className="border-r border-[#E8DCC6] bg-[#17130D] text-white" disableTransition={isResizing}>
+          <SidebarHeader className="border-b border-white/10 px-3 py-4">
+            <div className="flex items-center gap-3">
+              <button onClick={toggleSidebar} className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-white/70 hover:bg-white/10" aria-label="Toggle menu">
+                <PanelLeft className="h-4 w-4" />
               </button>
-              {!isCollapsed ? (
-                <div className="flex items-center gap-2 min-w-0">
-                  <span className="font-semibold tracking-tight truncate">
-                    Navigation
-                  </span>
-                </div>
-              ) : null}
+              {!isCollapsed && <div><p className="font-serif text-base font-bold text-white">Abhiara Foundation</p><p className="text-[10px] uppercase tracking-wider text-[#F5A623]">Owner controls</p></div>}
             </div>
           </SidebarHeader>
-
-          <SidebarContent className="gap-0">
-            <SidebarMenu className="px-2 py-1">
+          <SidebarContent className="px-2 py-3">
+            <SidebarMenu>
               {menuItems.map(item => {
-                const isActive = location === item.path;
+                const active = item.key === activeKey;
                 return (
-                  <SidebarMenuItem key={item.path}>
+                  <SidebarMenuItem key={item.key}>
                     <SidebarMenuButton
-                      isActive={isActive}
-                      onClick={() => setLocation(item.path)}
+                      isActive={active}
+                      onClick={() => onSelect(item.key)}
                       tooltip={item.label}
-                      className={`h-10 transition-all font-normal`}
+                      className={`h-11 rounded-lg ${active ? "bg-[#F5A623] font-bold text-[#1A1A1A] hover:bg-[#F5A623]" : "text-white/75 hover:bg-white/10 hover:text-white"}`}
                     >
-                      <item.icon
-                        className={`h-4 w-4 ${isActive ? "text-primary" : ""}`}
-                      />
+                      <item.icon className="h-4 w-4" />
                       <span>{item.label}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -200,64 +182,24 @@ function DashboardLayoutContent({
               })}
             </SidebarMenu>
           </SidebarContent>
-
-          <SidebarFooter className="p-3">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button className="flex items-center gap-3 rounded-lg px-1 py-1 hover:bg-accent/50 transition-colors w-full text-left group-data-[collapsible=icon]:justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                  <Avatar className="h-9 w-9 border shrink-0">
-                    <AvatarFallback className="text-xs font-medium">
-                      {user?.name?.charAt(0).toUpperCase()}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1 min-w-0 group-data-[collapsible=icon]:hidden">
-                    <p className="text-sm font-medium truncate leading-none">
-                      {user?.name || "-"}
-                    </p>
-                    <p className="text-xs text-muted-foreground truncate mt-1.5">
-                      {user?.email || "-"}
-                    </p>
-                  </div>
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
-                <DropdownMenuItem
-                  onClick={logout}
-                  className="cursor-pointer text-destructive focus:text-destructive"
-                >
-                  <LogOut className="mr-2 h-4 w-4" />
-                  <span>Sign out</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+          <SidebarFooter className="border-t border-white/10 p-3">
+            {!isCollapsed && <div className="mb-3 flex items-center gap-3 px-2"><Avatar className="h-9 w-9 border border-white/20"><AvatarFallback>{userName.charAt(0).toUpperCase()}</AvatarFallback></Avatar><div className="min-w-0"><p className="truncate text-sm font-bold text-white">{userName}</p><p className="truncate text-[10px] text-white/50">{userEmail}</p></div></div>}
+            <a href="https://www.abhiarafoundation.org/" target="_blank" rel="noreferrer" className="mb-1 flex h-10 items-center gap-3 rounded-lg px-3 text-sm text-white/70 hover:bg-white/10 hover:text-white"><ExternalLink className="h-4 w-4 shrink-0" />{!isCollapsed && <span>Open website</span>}</a>
+            <button type="button" onClick={onLogout} className="flex h-10 w-full items-center gap-3 rounded-lg px-3 text-sm text-white/70 hover:bg-white/10 hover:text-white"><LogOut className="h-4 w-4 shrink-0" />{!isCollapsed && <span>Sign out</span>}</button>
           </SidebarFooter>
         </Sidebar>
-        <div
-          className={`absolute top-0 right-0 w-1 h-full cursor-col-resize hover:bg-primary/20 transition-colors ${isCollapsed ? "hidden" : ""}`}
-          onMouseDown={() => {
-            if (isCollapsed) return;
-            setIsResizing(true);
-          }}
-          style={{ zIndex: 50 }}
-        />
+        <div className={`absolute right-0 top-0 z-50 h-full w-1 cursor-col-resize hover:bg-[#F5A623]/30 ${isCollapsed ? "hidden" : ""}`} onMouseDown={() => setIsResizing(true)} />
       </div>
 
-      <SidebarInset>
-        {isMobile && (
-          <div className="flex border-b h-14 items-center justify-between bg-background/95 px-2 backdrop-blur supports-[backdrop-filter]:backdrop-blur sticky top-0 z-40">
-            <div className="flex items-center gap-2">
-              <SidebarTrigger className="h-9 w-9 rounded-lg bg-background" />
-              <div className="flex items-center gap-3">
-                <div className="flex flex-col gap-1">
-                  <span className="tracking-tight text-foreground">
-                    {activeMenuItem?.label ?? "Menu"}
-                  </span>
-                </div>
-              </div>
-            </div>
+      <SidebarInset className="bg-[#FAF8F3]">
+        <header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-[#E8DCC6] bg-white/95 px-4 backdrop-blur md:px-6">
+          <div className="flex items-center gap-3">
+            {isMobile && <SidebarTrigger className="h-9 w-9" />}
+            <div><p className="font-serif text-lg font-bold text-[#1A1A1A]">{activeItem?.label || title}</p><p className="hidden text-xs text-[#777] sm:block">Manage the website without editing code</p></div>
           </div>
-        )}
-        <main className="flex-1 p-4">{children}</main>
+          <span className="rounded-full bg-emerald-50 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700">Secure admin</span>
+        </header>
+        <main className="flex-1 p-4 md:p-6 lg:p-8">{children}</main>
       </SidebarInset>
     </>
   );

@@ -10,7 +10,7 @@ export default function EmailButton() {
     >
       {/* Pulse ring */}
       <span
-        className="absolute inset-0 rounded-full bg-[#C9A84C]"
+        className="absolute inset-0 rounded-full bg-[#F5A623]"
         style={{ animation: "pulse-ring 2s ease-out infinite" }}
       />
       <Mail size={26} className="text-white relative z-10" />

@@ -76,21 +76,21 @@ export default function ContactForm({
 
   const isDark = variant === "dark";
   const inputClasses = isDark
-    ? "w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#C9A84C] transition-all"
-    : "w-full bg-white border border-[#0A1628]/15 rounded-xl px-4 py-3 text-[#0A1628] placeholder-[#0A1628]/30 focus:outline-none focus:border-[#C9A84C] transition-all";
+    ? "w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#F5A623] transition-all"
+    : "w-full bg-white border border-[#111111]/15 rounded-xl px-4 py-3 text-[#1A1A1A] placeholder-[#1A1A1A]/30 focus:outline-none focus:border-[#F5A623] transition-all";
   const labelClasses = isDark
     ? "text-white/70 text-sm font-medium mb-2 block"
-    : "text-[#0A1628]/70 text-sm font-medium mb-2 block";
-  const selectBg = isDark ? "bg-[#0A1628]" : "bg-white";
+    : "text-[#1A1A1A]/70 text-sm font-medium mb-2 block";
+  const selectBg = isDark ? "bg-[#111111]" : "bg-white";
 
   if (submitted) {
     return (
-      <div className={`${isDark ? "bg-white/5 border border-[#C9A84C]/30" : "bg-[#0A1628]/5 border border-[#C9A84C]/30"} rounded-2xl p-8 text-center`}>
+      <div className={`${isDark ? "bg-white/5 border border-[#F5A623]/30" : "bg-[#111111]/5 border border-[#F5A623]/30"} rounded-2xl p-8 text-center`}>
         <div className="text-4xl mb-4">🙏</div>
-        <h3 className={`${isDark ? "text-[#C9A84C]" : "text-[#C9A84C]"} text-lg font-semibold mb-2`}>
+        <h3 className={`${isDark ? "text-[#F5A623]" : "text-[#F5A623]"} text-lg font-semibold mb-2`}>
           Thank you!
         </h3>
-        <p className={`${isDark ? "text-white/60" : "text-[#0A1628]/60"} text-sm`}>
+        <p className={`${isDark ? "text-white/60" : "text-[#1A1A1A]/60"} text-sm`}>
           We will respond within 48 hours.
         </p>
       </div>
@@ -100,9 +100,9 @@ export default function ContactForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className={`${isDark ? "bg-white/5 border border-[#C9A84C]/30" : "bg-[#0A1628]/5 border border-[#C9A84C]/30"} rounded-2xl p-8 text-left`}
+      className={`${isDark ? "bg-white/5 border border-[#F5A623]/30" : "bg-[#111111]/5 border border-[#F5A623]/30"} rounded-2xl p-8 text-left`}
     >
-      <h3 className="text-[#C9A84C] text-lg font-semibold text-center mb-6">
+      <h3 className="text-[#F5A623] text-lg font-semibold text-center mb-6">
         {title}
       </h3>
 
@@ -163,7 +163,7 @@ export default function ContactForm({
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-[#C9A84C] hover:bg-[#B8943E] text-[#0A1628] font-bold py-4 rounded-xl transition-all duration-300 text-base uppercase tracking-wider disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-[#F5A623] hover:bg-[#E8960E] text-[#1A1A1A] font-bold py-4 rounded-xl transition-all duration-300 text-base uppercase tracking-wider disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? "Sending..." : "Send Message →"}
       </button>

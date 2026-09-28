@@ -1,10 +1,21 @@
 /*
- * Abhiara Foundation — Contact V4.0
+ * Abhiara Foundation, Contact V4.0
  * Email as primary contact. Contact form uses FormSubmit.co (no backend needed).
  * 3 Sections: Hero, Contact Grid (Email Prompt Boxes + Form + Info), CTA
  */
-import { useState, useEffect } from "react";
-import { Mail, MapPin, Linkedin, Instagram, Twitter, Send, Loader2 } from "lucide-react";
+import { useState, useEffect, type ComponentType } from "react";
+import {
+  Mail,
+  MapPin,
+  Facebook,
+  Youtube,
+  Linkedin,
+  Instagram,
+  Send,
+  Loader2,
+  MessageCircle,
+  ShieldCheck,
+} from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -12,15 +23,39 @@ import { motion } from "framer-motion";
 import SEO from "@/components/SEO";
 import { toast } from "sonner";
 import { submitContactForm } from "@/lib/formSubmit";
+import { useLanguage } from "@/contexts/LanguageContext";
+import {
+  FOUNDER_LINKEDIN_URL,
+  resolvePublicSocialLinks,
+  SOCIAL_FOLLOW_MESSAGE,
+  SOCIAL_PLATFORM_FALLBACKS,
+} from "@/data/socialPlatforms";
+import { trpc } from "@/lib/trpc";
 
+const SOCIAL_ICONS: Record<
+  (typeof SOCIAL_PLATFORM_FALLBACKS)[number]["platform"],
+  ComponentType<{ size?: number; className?: string }>
+> = {
+  Facebook,
+  YouTube: Youtube,
+  LinkedIn: Linkedin,
+  Instagram,
+};
 
 export default function Contact() {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  const { t } = useLanguage();
+  const { data: activeSocialLinks = [] } = trpc.cms.social.listActive.useQuery(
+    undefined,
+    { retry: false }
+  );
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const infoEmail = "info@abhiarafoundation.org";
-  const linkedInUrl = "https://www.linkedin.com/in/abhimanyu-mallik/";
-  const twitterUrl = "https://x.com/abhimanyumalli7?s=11";
-  const instagramUrl = "https://www.instagram.com/cma.abhimanyu";
+  const socialLinks = resolvePublicSocialLinks(activeSocialLinks);
+  const linkedInUrl =
+    socialLinks.find(item => item.platform === "LinkedIn")?.url || "";
 
   /* Contact form via FormSubmit.co */
   const [contactForm, setContactForm] = useState({
@@ -28,14 +63,23 @@ export default function Contact() {
     email: "",
     subject: "",
     message: "",
-    type: "general" as "general" | "csr_partnership" | "volunteer" | "media",
+    type: "general" as
+      | "general"
+      | "institutional_support"
+      | "volunteer"
+      | "media",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!contactForm.name.trim() || !contactForm.email.trim() || !contactForm.message.trim()) return;
+    if (
+      !contactForm.name.trim() ||
+      !contactForm.email.trim() ||
+      !contactForm.message.trim()
+    )
+      return;
 
     setIsSubmitting(true);
     try {
@@ -49,317 +93,515 @@ export default function Contact() {
 
       if (result.success) {
         setIsSubmitted(true);
-        toast.success("Thank you! We will respond within 48 hours.");
+        toast.success(
+          t(
+            "Thank you. Your message has been sent.",
+            "ଧନ୍ୟବାଦ। ଆପଣଙ୍କ ସନ୍ଦେଶ ପଠାଯାଇଛି।"
+          )
+        );
       } else {
-        toast.error("Failed to send message", {
-          description: "Please try emailing us at info@abhiarafoundation.org instead.",
-        });
+        toast.error(
+          t("The message could not be sent", "ସନ୍ଦେଶ ପଠାଯାଇ ପାରିଲା ନାହିଁ"),
+          {
+            description: t(
+              "Please email us at info@abhiarafoundation.org.",
+              "ଦୟାକରି info@abhiarafoundation.org କୁ ଇମେଲ କରନ୍ତୁ।"
+            ),
+          }
+        );
       }
     } catch {
-      toast.error("Failed to send message", {
-        description: "Please try emailing us at info@abhiarafoundation.org instead.",
-      });
+      toast.error(
+        t("The message could not be sent", "ସନ୍ଦେଶ ପଠାଯାଇ ପାରିଲା ନାହିଁ"),
+        {
+          description: t(
+            "Please email us at info@abhiarafoundation.org.",
+            "ଦୟାକରି info@abhiarafoundation.org କୁ ଇମେଲ କରନ୍ତୁ।"
+          ),
+        }
+      );
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#0A1628]">
+    <div className="min-h-screen bg-[#FAFAFA]">
       <SEO
-        title="Contact — Abhiara Foundation"
-        description="Get in touch with Abhiara Foundation. Reach our founder Abhimanyu Mallik for partnerships, volunteering, or support. Based in Mumbai, operating across Odisha."
-        url="https://abhiarafoundation.org/contact"
+        title={t("Contact Abhiara Foundation", "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସହ ଯୋଗାଯୋଗ")}
+        description={t(
+          "Contact Abhiara Foundation about education support, institutional support, volunteering, safeguarding or a grievance.",
+          "ଶିକ୍ଷା ସହାୟତା, ସଂସ୍ଥାଗତ ସହାୟତା, ସ୍ୱେଚ୍ଛାସେବା, ସୁରକ୍ଷା ବା ଅଭିଯୋଗ ବିଷୟରେ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସହ ଯୋଗାଯୋଗ କରନ୍ତୁ।"
+        )}
+        url="https://www.abhiarafoundation.org/contact"
       />
       <Navbar />
 
-      {/* ===== S1: HERO ===== */}
-      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0A1628] via-[#0d1f38] to-[#0A1628]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[#C9A84C]/5 blur-[100px] pointer-events-none" />
+      <main id="main-content">
+        {/* ===== S1: HERO ===== */}
+        <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#111111] via-[#111111] to-[#111111]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[#F5A623]/5 blur-[100px] pointer-events-none" />
 
-        <div className="relative z-10 container text-center pt-24 pb-16">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-6"
-          >
-            GET IN TOUCH
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="heading-xl text-white mb-4"
-          >
-            Every Conversation<br />
-            <span className="text-[#C9A84C]">Starts Here</span>
-          </motion.h1>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="gradient-rule mx-auto mb-6"
-          />
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="font-sans text-[15px] text-white/60 max-w-xl mx-auto mb-8"
-          >
-            Whether you want to partner, volunteer, or simply learn more — we would love to hear from you.
-          </motion.p>
+          <div className="relative z-10 container text-center pt-24 pb-16">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#F5A623] mb-6"
+            >
+              {t("GET IN TOUCH", "ଯୋଗାଯୋଗ କରନ୍ତୁ")}
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              className="heading-xl text-white mb-4"
+            >
+              {t("Get in ", "ଆମ ସହ ")}
+              <span className="text-[#F5A623]">{t("Touch", "ଯୋଗାଯୋଗ")}</span>
+            </motion.h1>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="gradient-rule mx-auto mb-6"
+            />
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="font-sans text-[17px] text-white/70 max-w-xl mx-auto mb-8"
+            >
+              {t(
+                "Write to us about a partnership, volunteering, support, or any question.",
+                "ସହଭାଗିତା, ସ୍ୱେଚ୍ଛାସେବା, ସହାୟତା କିମ୍ବା କୌଣସି ପ୍ରଶ୍ନ ପାଇଁ ଆମକୁ ଲେଖନ୍ତୁ।"
+              )}
+            </motion.p>
 
-          {/* Primary Email CTA */}
-          <motion.a
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            href={`mailto:${infoEmail}`}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#C9A84C] text-[#0A1628] font-mono text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors rounded-sm"
-          >
-            <Mail size={20} />
-            EMAIL US
-          </motion.a>
-        </div>
-      </section>
+            {/* Primary Email CTA */}
+            <motion.a
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              href={`mailto:${infoEmail}`}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-[#F5A623] text-[#1A1A1A] font-mono text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#E8960E] transition-colors rounded-sm"
+            >
+              <Mail size={20} />
+              {t("EMAIL US", "ଇମେଲ କରନ୍ତୁ")}
+            </motion.a>
+          </div>
+        </section>
 
-      {/* ===== S2: CONTACT GRID (LIGHT) ===== */}
-      <section className="py-20 md:py-28 section-light">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
-            {/* Left: Quick Connect + Contact Form */}
-            <AnimatedSection direction="left" className="lg:col-span-3">
-              <p className="section-label-light mb-4">QUICK CONNECT VIA EMAIL</p>
-              <h2 className="heading-md light-heading mb-8">
-                Choose your <span className="text-[#C9A84C]">conversation</span>
-              </h2>
+        {/* ===== S2: CONTACT GRID (LIGHT) ===== */}
+        <section className="py-24 md:py-32 section-light">
+          <div className="container">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+              {/* Left: Quick Connect + Contact Form */}
+              <AnimatedSection direction="left" className="lg:col-span-3">
+                <p className="section-label-light mb-4">
+                  {t("QUICK EMAIL CONTACT", "ଇମେଲରେ ଶୀଘ୍ର ଯୋଗାଯୋଗ")}
+                </p>
+                <h2 className="heading-md light-heading mb-8">
+                  {t("Send us an ", "ଆମକୁ ଏକ ")}
+                  <span className="text-[#F5A623]">
+                    {t("email", "ଇମେଲ ପଠାନ୍ତୁ")}
+                  </span>
+                </h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                {[
-                  {
-                    title: "CSR Partnership",
-                    desc: "Discuss how your CSR budget can create measurable impact in tribal Odisha.",
-                    subject: "CSR Partnership Inquiry",
-                  },
-                  {
-                    title: "General Inquiry",
-                    desc: "Questions about our programmes, governance, or how to get involved.",
-                    subject: "General Inquiry",
-                  },
-                  {
-                    title: "Volunteering",
-                    desc: "Join our ground team in Odisha or support remotely from anywhere.",
-                    subject: "Volunteering Interest",
-                  },
-                  {
-                    title: "Media & Press",
-                    desc: "Press inquiries, interviews, or coverage requests about Abhiara Foundation.",
-                    subject: "Media & Press Inquiry",
-                  },
-                ].map((box) => (
-                  <a
-                    key={box.title}
-                    href={`mailto:${infoEmail}?subject=${encodeURIComponent(box.subject)}`}
-                    className="light-card p-6 group hover:border-[#C9A84C]/30 transition-all block"
-                  >
-                    <h3 className="font-serif text-lg font-bold light-heading mb-2 group-hover:text-[#C9A84C] transition-colors">{box.title}</h3>
-                    <p className="font-sans text-[13px] light-muted leading-relaxed mb-3">{box.desc}</p>
-                    <span className="font-mono text-[9px] tracking-wider uppercase text-[#C9A84C] flex items-center gap-2">
-                      <Mail size={14} />
-                      EMAIL US
-                    </span>
-                  </a>
-                ))}
-              </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                  {[
+                    {
+                      title: t("Institutional Support", "ସଂସ୍ଥାଗତ ସହାୟତା"),
+                      desc: t(
+                        "Talk to us about helping children continue their education after their needs are verified.",
+                        "ଯାଞ୍ଚ ହୋଇଥିବା ଶିକ୍ଷା ଜାରି ରଖିବାକୁ ସମର୍ଥନ ବିଷୟରେ କଥା ହୁଅନ୍ତୁ।"
+                      ),
+                      subject: "Institutional Support Inquiry",
+                    },
+                    {
+                      title: t("General Question", "ସାଧାରଣ ପ୍ରଶ୍ନ"),
+                      desc: t(
+                        "Ask about our work or how you can join us.",
+                        "ଆମ କାମ କିମ୍ବା ଆମ ସହ କିପରି ଯୋଡ଼ି ହେବେ ତାହା ପଚାରନ୍ତୁ।"
+                      ),
+                      subject: "General Inquiry",
+                    },
+                    {
+                      title: t("Volunteering", "ସ୍ୱେଚ୍ଛାସେବା"),
+                      desc: t(
+                        "Help us in Odisha or support us from where you live.",
+                        "ଓଡ଼ିଶାରେ ଆମକୁ ସାହାଯ୍ୟ କରନ୍ତୁ କିମ୍ବା ନିଜ ସ୍ଥାନରୁ ସହଯୋଗ କରନ୍ତୁ।"
+                      ),
+                      subject: "Volunteering Interest",
+                    },
+                    {
+                      title: t("Media and Press", "ମିଡିଆ ଓ ସମ୍ବାଦ"),
+                      desc: t(
+                        "Write to us for an interview or news request.",
+                        "ସାକ୍ଷାତକାର କିମ୍ବା ସମ୍ବାଦ ପାଇଁ ଆମକୁ ଲେଖନ୍ତୁ।"
+                      ),
+                      subject: "Media & Press Inquiry",
+                    },
+                  ].map(box => (
+                    <a
+                      key={box.title}
+                      href={`mailto:${infoEmail}?subject=${encodeURIComponent(box.subject)}`}
+                      className="light-card p-6 group hover:border-[#F5A623]/30 transition-all block"
+                    >
+                      <h3 className="font-serif text-lg font-bold light-heading mb-2 group-hover:text-[#F5A623] transition-colors">
+                        {box.title}
+                      </h3>
+                      <p className="font-sans text-[13px] light-muted leading-relaxed mb-3">
+                        {box.desc}
+                      </p>
+                      <span className="font-mono text-[9px] tracking-wider uppercase text-[#F5A623] flex items-center gap-2">
+                        <Mail size={14} />
+                        {t("EMAIL US", "ଇମେଲ କରନ୍ତୁ")}
+                      </span>
+                    </a>
+                  ))}
+                </div>
 
-              {/* Contact Form (sends via FormSubmit.co) */}
-              <div id="form" className="light-card-gold p-6 md:p-8">
-                <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-2">OR SEND US A MESSAGE</p>
-                <p className="font-sans text-[12px] light-muted mb-4">Your message will be delivered to our team. We respond within 48 hours.</p>
-
-                {isSubmitted ? (
-                  <div className="text-center py-8">
-                    <div className="text-4xl mb-4">🙏</div>
-                    <h3 className="font-serif text-xl font-bold text-[#C9A84C] mb-2">Thank You!</h3>
-                    <p className="font-sans text-[14px] light-muted">
-                      Your message has been sent. We will respond within 48 hours.
+                {/* Contact Form (sends via FormSubmit.co) */}
+                <div id="form" className="light-card-gold p-6 md:p-8">
+                  <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#F5A623] mb-2">
+                    {t("OR SEND A MESSAGE", "କିମ୍ବା ସନ୍ଦେଶ ପଠାନ୍ତୁ")}
+                  </p>
+                  <p className="font-sans text-[12px] light-muted mb-4">
+                    {t(
+                      "We will read your message and reply when we can.",
+                      "ଆମେ ଆପଣଙ୍କ ସନ୍ଦେଶ ପଢ଼ି ସମ୍ଭବ ହେଲେ ଉତ୍ତର ଦେବୁ।"
+                    )}
+                  </p>
+                  <div className="mb-5 flex gap-3 border border-amber-200 bg-amber-50 p-4 text-amber-950">
+                    <ShieldCheck className="mt-0.5 shrink-0" size={18} />
+                    <p className="font-sans text-xs leading-6">
+                      {t(
+                        "Please do not send a child's full name, exact address, identity document, bank paper, medical record or school record in this form. Email us first and we will explain what information is needed.",
+                        "ଦୟାକରି ଏହି ଫର୍ମରେ ଶିଶୁର ପୂର୍ଣ୍ଣ ନାମ, ଠିକଣା, ପରିଚୟ ପତ୍ର, ବ୍ୟାଙ୍କ କାଗଜ, ଚିକିତ୍ସା ରେକର୍ଡ ବା ସ୍କୁଲ ରେକର୍ଡ ପଠାନ୍ତୁ ନାହିଁ। ପ୍ରଥମେ ଆମକୁ ଇମେଲ କରନ୍ତୁ, ଆମେ କେଉଁ ତଥ୍ୟ ଆବଶ୍ୟକ ତାହା କହିବୁ।"
+                      )}
                     </p>
                   </div>
-                ) : (
-                  <form onSubmit={handleContactSubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                  {isSubmitted ? (
+                    <div className="text-center py-8">
+                      <div className="text-4xl mb-4">🙏</div>
+                      <h3 className="font-serif text-xl font-bold text-[#F5A623] mb-2">
+                        {t("Thank you", "ଧନ୍ୟବାଦ")}
+                      </h3>
+                      <p className="font-sans text-[16px] light-muted">
+                        {t(
+                          "Your message has been sent. We will reply when we can.",
+                          "ଆପଣଙ୍କ ସନ୍ଦେଶ ପଠାଯାଇଛି। ସମ୍ଭବ ହେଲେ ଆମେ ଉତ୍ତର ଦେବୁ।"
+                        )}
+                      </p>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleContactSubmit} className="space-y-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input
+                          type="text"
+                          required
+                          value={contactForm.name}
+                          onChange={e =>
+                            setContactForm(prev => ({
+                              ...prev,
+                              name: e.target.value,
+                            }))
+                          }
+                          className="px-4 py-3 bg-[#FAFAFA] border border-gray-200 rounded-sm text-[#333] font-sans text-sm placeholder:text-[#888] focus:border-[#F5A623]/50 focus:outline-none transition-colors"
+                          placeholder={t("Your name", "ଆପଣଙ୍କ ନାମ")}
+                        />
+                        <input
+                          type="email"
+                          required
+                          value={contactForm.email}
+                          onChange={e =>
+                            setContactForm(prev => ({
+                              ...prev,
+                              email: e.target.value,
+                            }))
+                          }
+                          className="px-4 py-3 bg-[#FAFAFA] border border-gray-200 rounded-sm text-[#333] font-sans text-sm placeholder:text-[#888] focus:border-[#F5A623]/50 focus:outline-none transition-colors"
+                          placeholder={t("Your email", "ଆପଣଙ୍କ ଇମେଲ")}
+                        />
+                      </div>
+                      <select
+                        value={contactForm.type}
+                        onChange={e =>
+                          setContactForm(prev => ({
+                            ...prev,
+                            type: e.target.value as typeof contactForm.type,
+                          }))
+                        }
+                        className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-200 rounded-sm text-[#333] font-sans text-sm focus:border-[#F5A623]/50 focus:outline-none transition-colors"
+                      >
+                        <option value="general">
+                          {t("General question", "ସାଧାରଣ ପ୍ରଶ୍ନ")}
+                        </option>
+                        <option value="institutional_support">
+                          {t("Institutional support", "ସଂସ୍ଥାଗତ ସହାୟତା")}
+                        </option>
+                        <option value="volunteer">
+                          {t("Volunteering", "ସ୍ୱେଚ୍ଛାସେବା")}
+                        </option>
+                        <option value="media">
+                          {t("Media and press", "ମିଡିଆ ଓ ସମ୍ବାଦ")}
+                        </option>
+                      </select>
                       <input
                         type="text"
-                        required
-                        value={contactForm.name}
-                        onChange={(e) => setContactForm(prev => ({ ...prev, name: e.target.value }))}
-                        className="px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
-                        placeholder="Your Name"
+                        value={contactForm.subject}
+                        onChange={e =>
+                          setContactForm(prev => ({
+                            ...prev,
+                            subject: e.target.value,
+                          }))
+                        }
+                        className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-200 rounded-sm text-[#333] font-sans text-sm placeholder:text-[#888] focus:border-[#F5A623]/50 focus:outline-none transition-colors"
+                        placeholder={t("Subject, optional", "ବିଷୟ, ଇଚ୍ଛାଧୀନ")}
                       />
-                      <input
-                        type="email"
+                      <textarea
                         required
-                        value={contactForm.email}
-                        onChange={(e) => setContactForm(prev => ({ ...prev, email: e.target.value }))}
-                        className="px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
-                        placeholder="Your Email"
+                        rows={4}
+                        value={contactForm.message}
+                        onChange={e =>
+                          setContactForm(prev => ({
+                            ...prev,
+                            message: e.target.value,
+                          }))
+                        }
+                        className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-200 rounded-sm text-[#333] font-sans text-sm placeholder:text-[#888] focus:border-[#F5A623]/50 focus:outline-none transition-colors resize-none"
+                        placeholder={t("Your message", "ଆପଣଙ୍କ ସନ୍ଦେଶ")}
                       />
-                    </div>
-                    <select
-                      value={contactForm.type}
-                      onChange={(e) => setContactForm(prev => ({ ...prev, type: e.target.value as typeof contactForm.type }))}
-                      className="w-full px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
-                    >
-                      <option value="general">General Inquiry</option>
-                      <option value="csr_partnership">CSR Partnership</option>
-                      <option value="volunteer">Volunteering</option>
-                      <option value="media">Media & Press</option>
-                    </select>
-                    <input
-                      type="text"
-                      value={contactForm.subject}
-                      onChange={(e) => setContactForm(prev => ({ ...prev, subject: e.target.value }))}
-                      className="w-full px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
-                      placeholder="Subject (optional)"
-                    />
-                    <textarea
-                      required
-                      rows={4}
-                      value={contactForm.message}
-                      onChange={(e) => setContactForm(prev => ({ ...prev, message: e.target.value }))}
-                      className="w-full px-4 py-3 bg-[#0A1628]/5 border border-[#0A1628]/15 rounded-sm text-[#1A2B42] font-sans text-sm placeholder:text-[#0A1628]/30 focus:border-[#C9A84C]/50 focus:outline-none transition-colors resize-none"
-                      placeholder="Your message..."
-                    />
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="px-8 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors flex items-center gap-2 disabled:opacity-50"
-                    >
-                      {isSubmitting ? (
-                        <><Loader2 size={12} className="animate-spin" /> SENDING...</>
-                      ) : (
-                        <><Send size={12} /> SEND MESSAGE</>
-                      )}
-                    </button>
-                  </form>
-                )}
-              </div>
-            </AnimatedSection>
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="px-8 py-3 bg-[#F5A623] text-[#1A1A1A] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#E8960E] transition-colors flex items-center gap-2 disabled:opacity-50"
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 size={12} className="animate-spin" />{" "}
+                            {t("SENDING", "ପଠାଯାଉଛି")}
+                          </>
+                        ) : (
+                          <>
+                            <Send size={12} />{" "}
+                            {t("SEND MESSAGE", "ସନ୍ଦେଶ ପଠାନ୍ତୁ")}
+                          </>
+                        )}
+                      </button>
+                    </form>
+                  )}
+                </div>
+              </AnimatedSection>
 
-            {/* Contact Info Sidebar */}
-            <AnimatedSection direction="right" className="lg:col-span-2">
-              <div className="space-y-6">
-                {/* Founder Card */}
-                <div className="light-card-gold p-6">
-                  <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-3">FOUNDER</p>
-                  <h3 className="font-serif text-xl font-bold light-heading mb-1">Abhimanyu Mallik</h3>
-                  <p className="font-sans text-[13px] light-muted mb-4">CMA · Mumbai, Maharashtra</p>
-                  <div className="space-y-3">
-                    {/* Email */}
-                    <a href={`mailto:${infoEmail}`} className="flex items-center gap-3 text-[13px] text-[#C9A84C] hover:text-[#B8942A] transition-colors font-semibold">
-                      <Mail size={14} className="shrink-0" />
-                      {infoEmail}
-                    </a>
-                    {/* LinkedIn */}
-                    <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[13px] light-body hover:text-[#C9A84C] transition-colors">
-                      <Linkedin size={14} className="text-[#1A7F8E] shrink-0" />
-                      LinkedIn — Abhimanyu Mallik
-                    </a>
+              {/* Contact Info Sidebar */}
+              <AnimatedSection direction="right" className="lg:col-span-2">
+                <div className="space-y-6">
+                  {/* Foundation Contact Card */}
+                  <div className="light-card-gold p-6">
+                    <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#F5A623] mb-3">
+                      {t("FOUNDATION CONTACT", "ଫାଉଣ୍ଡେସନ ଯୋଗାଯୋଗ")}
+                    </p>
+                    <h3 className="font-serif text-xl font-bold light-heading mb-1">
+                      Abhiara Foundation
+                    </h3>
+                    <p className="font-sans text-[13px] light-muted mb-4">
+                      {t(
+                        "Registered office in Mumbai. Programme operations in Odisha.",
+                        "ନିବନ୍ଧିତ କାର୍ଯ୍ୟାଳୟ ମୁମ୍ବାଇରେ। କାର୍ଯ୍ୟକ୍ରମ ପରିଚାଳନା ଓଡ଼ିଶାରେ।"
+                      )}
+                    </p>
+                    <div className="space-y-3">
+                      {/* Email */}
+                      <a
+                        href={`mailto:${infoEmail}`}
+                        className="flex items-center gap-3 text-[13px] text-[#F5A623] hover:text-[#E65100] transition-colors font-semibold"
+                      >
+                        <Mail size={14} className="shrink-0" />
+                        {infoEmail}
+                      </a>
+                      {/* LinkedIn */}
+                      <a
+                        href={linkedInUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 text-[13px] light-body hover:text-[#F5A623] transition-colors"
+                      >
+                        <Linkedin
+                          size={14}
+                          className="text-[#F5A623] shrink-0"
+                        />
+                        LinkedIn. Abhiara Foundation
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Email Quick Message */}
+                  <a
+                    href={`mailto:${infoEmail}`}
+                    className="block light-card p-6 group hover:border-[#F5A623]/30 transition-all text-center"
+                  >
+                    <Mail size={40} className="text-[#F5A623] mx-auto mb-3" />
+                    <p className="font-serif text-lg font-bold light-heading mb-1 group-hover:text-[#F5A623] transition-colors">
+                      {t("Fastest Way to Reach Us", "ଆମ ସହ ଶୀଘ୍ର ଯୋଗାଯୋଗ")}
+                    </p>
+                    <p className="font-sans text-[13px] light-muted mb-3">
+                      {t(
+                        "Email us directly. We will read your message and reply when we can.",
+                        "ଆମକୁ ସିଧାସଳଖ ଇମେଲ କରନ୍ତୁ। ଆମେ ସନ୍ଦେଶ ପଢ଼ି ସମ୍ଭବ ହେଲେ ଉତ୍ତର ଦେବୁ।"
+                      )}
+                    </p>
+                    <span className="font-mono text-[10px] tracking-wider uppercase text-[#F5A623] flex items-center justify-center gap-2">
+                      <Mail size={12} /> {t("EMAIL US", "ଇମେଲ କରନ୍ତୁ")}
+                    </span>
+                  </a>
+
+                  {/* Location */}
+                  <div className="light-card p-6">
+                    <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#F5A623] mb-3">
+                      {t("LOCATIONS", "ସ୍ଥାନ")}
+                    </p>
+                    <div className="space-y-4">
+                      <div className="flex items-start gap-3">
+                        <MapPin
+                          size={14}
+                          className="text-[#F5A623] mt-0.5 shrink-0"
+                        />
+                        <div>
+                          <p className="font-sans text-sm font-semibold light-heading">
+                            {t("Registered Office", "ପଞ୍ଜୀକୃତ କାର୍ଯ୍ୟାଳୟ")}
+                          </p>
+                          <p className="font-sans text-[13px] light-muted">
+                            {t(
+                              "Mumbai, Maharashtra, India",
+                              "ମୁମ୍ବାଇ, ମହାରାଷ୍ଟ୍ର, ଭାରତ"
+                            )}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <MapPin
+                          size={14}
+                          className="text-[#F5A623] mt-0.5 shrink-0"
+                        />
+                        <div>
+                          <p className="font-sans text-sm font-semibold light-heading">
+                            {t("Field Work", "କ୍ଷେତ୍ର କାମ")}
+                          </p>
+                          <p className="font-sans text-[13px] light-muted">
+                            {t(
+                              "Odisha and other states in India",
+                              "ଓଡ଼ିଶା ଏବଂ ଭାରତର ଅନ୍ୟ ରାଜ୍ୟ"
+                            )}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Social */}
+                  <div className="light-card p-6">
+                    <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#F5A623] mb-3">
+                      {t("CONNECT", "ଯୋଡ଼ି ହୁଅନ୍ତୁ")}
+                    </p>
+                    <p className="mb-4 font-sans text-sm leading-6 text-[#666]">
+                      {t(SOCIAL_FOLLOW_MESSAGE.en, SOCIAL_FOLLOW_MESSAGE.od)}
+                    </p>
+                    <div className="flex gap-3">
+                      <a
+                        href={`mailto:${infoEmail}`}
+                        aria-label={t(
+                          "Email Abhiara Foundation",
+                          "ଅଭିଆରା ଫାଉଣ୍ଡେସନକୁ ଇମେଲ କରନ୍ତୁ"
+                        )}
+                        className="w-10 h-10 rounded-full border border-[#F5A623]/30 bg-[#F5A623]/10 flex items-center justify-center text-[#F5A623] hover:bg-[#F5A623]/20 hover:border-[#F5A623]/50 transition-colors"
+                      >
+                        <Mail size={18} />
+                      </a>
+                      {socialLinks.map(item => {
+                        const Icon = SOCIAL_ICONS[item.platform];
+                        return (
+                          <a
+                            key={item.platform}
+                            href={item.url}
+                            aria-label={`Follow Abhiara Foundation on ${item.platform}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#666] hover:text-[#F5A623] hover:border-[#F5A623]/50 transition-colors"
+                          >
+                            <Icon size={18} />
+                          </a>
+                        );
+                      })}
+                      <a
+                        href={FOUNDER_LINKEDIN_URL}
+                        aria-label={t(
+                          "Founder Abhimanyu Mallik on LinkedIn",
+                          "ଲିଙ୍କଡଇନରେ ପ୍ରତିଷ୍ଠାତା ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ"
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#666] hover:text-[#F5A623] hover:border-[#F5A623]/50 transition-colors"
+                      >
+                        <Linkedin size={18} />
+                      </a>
+                      <a
+                        href="https://whatsapp.com/channel/0029Vb86xwaAe5VjYZTEwO1i"
+                        aria-label={t(
+                          "Follow the Abhiara Foundation WhatsApp channel",
+                          "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ହ୍ୱାଟସଆପ ଚ୍ୟାନେଲ ଦେଖନ୍ତୁ"
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 rounded-full border border-[#25D366]/30 bg-[#25D366]/10 flex items-center justify-center text-[#25D366] hover:bg-[#25D366]/20 hover:border-[#25D366]/50 transition-colors"
+                      >
+                        <MessageCircle size={18} />
+                      </a>
+                    </div>
                   </div>
                 </div>
+              </AnimatedSection>
+            </div>
+          </div>
+        </section>
 
-                {/* Email Quick Message */}
+        {/* ===== S3: CTA. Email ===== */}
+        <section className="py-20 md:py-24 bg-gradient-to-br from-[#1A1A1A] to-[#111111]">
+          <div className="container text-center">
+            <AnimatedSection>
+              <h2
+                className="font-serif font-bold text-white mb-4"
+                style={{ fontSize: "clamp(28px, 3.5vw, 44px)" }}
+              >
+                {t("Write to us.", "ଆସନ୍ତୁ କଥା ହେବା।")}
+              </h2>
+              <p className="mx-auto mb-8 max-w-xl font-sans text-[17px] text-white/70">
+                {t(
+                  "Write to us about a partnership, volunteering, or any question.",
+                  "ସହଭାଗିତା, ସ୍ୱେଚ୍ଛାସେବା କିମ୍ବା କୌଣସି ପ୍ରଶ୍ନ ପାଇଁ ଆମକୁ ଲେଖନ୍ତୁ।"
+                )}
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
                   href={`mailto:${infoEmail}`}
-                  className="block light-card p-6 group hover:border-[#C9A84C]/30 transition-all text-center"
+                  className="inline-flex items-center gap-2 px-8 py-3 bg-[#F5A623] text-[#1A1A1A] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#E8960E] transition-colors"
                 >
-                  <Mail size={40} className="text-[#C9A84C] mx-auto mb-3" />
-                  <p className="font-serif text-lg font-bold light-heading mb-1 group-hover:text-[#C9A84C] transition-colors">
-                    Fastest Way to Reach Us
-                  </p>
-                  <p className="font-sans text-[13px] light-muted mb-3">
-                    Email us directly. We typically respond within 48 hours.
-                  </p>
-                  <span className="font-mono text-[10px] tracking-wider uppercase text-[#C9A84C] flex items-center justify-center gap-2">
-                    <Mail size={12} /> EMAIL US
-                  </span>
+                  <Mail size={14} /> {t("EMAIL US", "ଇମେଲ କରନ୍ତୁ")}
                 </a>
-
-                {/* Location */}
-                <div className="light-card p-6">
-                  <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#1A7F8E] mb-3">LOCATIONS</p>
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <MapPin size={14} className="text-[#C9A84C] mt-0.5 shrink-0" />
-                      <div>
-                        <p className="font-sans text-sm font-semibold light-heading">Registered Office</p>
-                        <p className="font-sans text-[13px] light-muted">Mumbai, Maharashtra, India</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <MapPin size={14} className="text-[#1A7F8E] mt-0.5 shrink-0" />
-                      <div>
-                        <p className="font-sans text-sm font-semibold light-heading">Operations</p>
-                        <p className="font-sans text-[13px] light-muted">All of Odisha & Other States<br />Expanding Across India</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Social */}
-                <div className="light-card p-6">
-                  <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#C9A84C] mb-3">CONNECT</p>
-                  <div className="flex gap-3">
-                    <a href={`mailto:${infoEmail}`} className="w-10 h-10 rounded-full border border-[#C9A84C]/30 bg-[#C9A84C]/10 flex items-center justify-center text-[#C9A84C] hover:bg-[#C9A84C]/20 hover:border-[#C9A84C]/50 transition-colors">
-                      <Mail size={18} />
-                    </a>
-                    <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#0A1628]/15 flex items-center justify-center text-[#0A1628]/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
-                      <Linkedin size={18} />
-                    </a>
-                    <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#0A1628]/15 flex items-center justify-center text-[#0A1628]/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
-                      <Twitter size={18} />
-                    </a>
-                    <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#0A1628]/15 flex items-center justify-center text-[#0A1628]/50 hover:text-[#C9A84C] hover:border-[#C9A84C]/50 transition-colors">
-                      <Instagram size={18} />
-                    </a>
-                  </div>
-                </div>
+                <a
+                  href="/contact#form"
+                  className="inline-flex items-center gap-2 px-8 py-3 border-2 border-white text-white font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-white/10 transition-colors"
+                >
+                  <Mail size={12} /> {t("SEND A MESSAGE", "ସନ୍ଦେଶ ପଠାନ୍ତୁ")}
+                </a>
               </div>
             </AnimatedSection>
           </div>
-        </div>
-      </section>
-
-      {/* ===== S3: CTA — Email ===== */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-[#1A7F8E] to-[#145E6A]">
-        <div className="container text-center">
-          <AnimatedSection>
-            <h2 className="font-serif font-bold text-white mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 44px)" }}>
-              Every ray of light counts.
-            </h2>
-            <p className="font-sans text-[15px] text-white/80 max-w-xl mx-auto mb-8">
-              Your partnership, your time, your voice — it all matters. Let's build something meaningful together.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href={`mailto:${infoEmail}`}
-                className="inline-flex items-center gap-2 px-8 py-3 bg-[#C9A84C] text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#B8942A] transition-colors"
-              >
-                <Mail size={14} /> EMAIL US
-              </a>
-              <a
-                href="/contact#form"
-                className="inline-flex items-center gap-2 px-8 py-3 border-2 border-white text-white font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-white/10 transition-colors"
-              >
-                <Mail size={12} /> SEND A MESSAGE
-              </a>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
+        </section>
+      </main>
       <Footer />
     </div>
   );

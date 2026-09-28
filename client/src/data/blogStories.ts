@@ -1,0 +1,268 @@
+export type LocalizedText = {
+  en: string;
+  od: string;
+};
+
+export type StoryCategory = "founder" | "education" | "jeevan-sathi" | "relief" | "events";
+
+export type BlogStory = {
+  slug: string;
+  category: StoryCategory;
+  title: LocalizedText;
+  excerpt: LocalizedText;
+  paragraphs: LocalizedText[];
+  dateISO: string;
+  date: LocalizedText;
+  location: LocalizedText;
+  result: LocalizedText;
+  resultLabel?: LocalizedText;
+  image: string;
+  imageAlt: LocalizedText;
+  imagePosition?: string;
+  evidenceHref: string;
+  evidenceLabel?: LocalizedText;
+  author?: LocalizedText;
+  authorRole?: LocalizedText;
+  featured?: boolean;
+};
+
+export const STORY_CATEGORY_LABELS: Record<StoryCategory, LocalizedText> = {
+  founder: { en: "Founder Story / Our Story", od: "ପ୍ରତିଷ୍ଠାତାଙ୍କ କାହାଣୀ / ଆମ କାହାଣୀ" },
+  education: { en: "Education Support", od: "ଶିକ୍ଷା ସହାୟତା" },
+  "jeevan-sathi": { en: "Jeevan Sathi", od: "ଜୀବନ ସାଥୀ" },
+  relief: { en: "Emergency Relief", od: "ଜରୁରୀ ସହାୟତା" },
+  events: { en: "Events and Activities", od: "କାର୍ଯ୍ୟକ୍ରମ ଓ କାର୍ଯ୍ୟକଳାପ" },
+};
+
+export const BLOG_STORIES: BlogStory[] = [
+  {
+    slug: "someone-once-extended-a-hand",
+    category: "founder",
+    featured: true,
+    title: {
+      en: "Someone Once Extended a Hand",
+      od: "କେହି ଦିନେ ମୋ ପାଇଁ ହାତ ବଢ଼ାଇଥିଲେ",
+    },
+    excerpt: {
+      en: "Abhiara Foundation began with a simple belief: the support we receive in life should one day be passed on to someone who needs it.",
+      od: "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଏକ ସରଳ ବିଶ୍ୱାସରୁ ଆରମ୍ଭ ହୋଇଥିଲା। ଜୀବନରେ ଆମେ ପାଇଥିବା ସହାୟତା ଦିନେ ନା ଦିନେ ଆଉ ଜଣେ ଆବଶ୍ୟକତାରେ ଥିବା ମଣିଷଙ୍କ ପାଖକୁ ପହଞ୍ଚିବା ଉଚିତ।",
+    },
+    paragraphs: [
+      {
+        en: "I was raised in a rural community where opportunities were limited, but people always found ways to support one another.",
+        od: "ମୁଁ ଏମିତି ଏକ ଗ୍ରାମୀଣ ପରିବେଶରେ ବଢ଼ିଛି, ଯେଉଁଠାରେ ସୁଯୋଗ ସୀମିତ ଥିଲା। ତଥାପି ଲୋକମାନେ ପରସ୍ପରକୁ ସାହାଯ୍ୟ କରିବାର ଉପାୟ ଖୋଜି ନେଉଥିଲେ।",
+      },
+      {
+        en: "My journey was shaped by family sacrifices, the guidance of teachers, the encouragement of friends, and the kindness of people who stood beside me at different stages. Sometimes the support was practical. Sometimes it was advice. Sometimes it was simply someone saying, “Keep going. You are not alone.”",
+        od: "ପରିବାରର ତ୍ୟାଗ, ଶିକ୍ଷକମାନଙ୍କ ମାର୍ଗଦର୍ଶନ, ସାଙ୍ଗମାନଙ୍କ ଉତ୍ସାହ ଏବଂ ଜୀବନର ଭିନ୍ନ ଭିନ୍ନ ସମୟରେ ପାଖରେ ଠିଆ ହୋଇଥିବା ଲୋକଙ୍କ ଭଲପାଇବା ମୋ ଯାତ୍ରାକୁ ଗଢ଼ିଛି। କେବେ ସହାୟତା ବ୍ୟବହାରିକ ଥିଲା। କେବେ ପରାମର୍ଶ ଥିଲା। କେବେ କେବଳ କେହି କହିଥିଲେ, “ଆଗକୁ ଚାଲ। ତୁମେ ଏକା ନୁହଁ।”",
+      },
+      {
+        en: "As life moved forward, I realised that no one succeeds completely on their own. Behind every person’s progress, there are often many unseen hands. This understanding stayed with me.",
+        od: "ଜୀବନ ଆଗକୁ ବଢ଼ିବା ସହ ମୁଁ ବୁଝିଲି ଯେ କେହି ବି ସମ୍ପୂର୍ଣ୍ଣ ଭାବେ ଏକା ଆଗକୁ ବଢ଼ନ୍ତି ନାହିଁ। ପ୍ରତ୍ୟେକ ମଣିଷର ଉନ୍ନତି ପଛରେ ଅନେକ ଅଦୃଶ୍ୟ ହାତ ଥାଏ। ଏହି ବୁଝାମଣା ମୋ ସହ ରହିଗଲା।",
+      },
+      {
+        en: "Over the years, I met children who wanted to study but lacked basic support. I saw young people who needed guidance, families struggling during emergencies, and older people looking for care and respect.",
+        od: "ବର୍ଷ ଗଡ଼ିବା ସହ ମୁଁ ଏମିତି ପିଲାମାନଙ୍କୁ ଦେଖିଲି, ଯେଉଁମାନେ ପଢ଼ିବାକୁ ଚାହୁଁଥିଲେ କିନ୍ତୁ ମୂଳ ସହାୟତାର ଅଭାବ ଥିଲା। ମାର୍ଗଦର୍ଶନ ଚାହୁଁଥିବା ଯୁବକଯୁବତୀ, ଜରୁରୀ ସମୟରେ ସଂଘର୍ଷ କରୁଥିବା ପରିବାର ଏବଂ ସାଥୀ ଓ ସମ୍ମାନ ଚାହୁଁଥିବା ବୃଦ୍ଧମାନଙ୍କୁ ମଧ୍ୟ ଦେଖିଲି।",
+      },
+      {
+        en: "These experiences gave birth to the idea of Abhiara Foundation. Abhiara was not created from one incident or for personal recognition. It grew from a lifetime of seeing how timely support can protect someone’s hope and change the direction of a life.",
+        od: "ଏହି ଅନୁଭବଗୁଡ଼ିକରୁ ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଭାବନା ଜନ୍ମ ନେଲା। ଅଭିଆରା କୌଣସି ଗୋଟିଏ ଘଟଣାରୁ କିମ୍ବା ବ୍ୟକ୍ତିଗତ ପରିଚୟ ପାଇଁ ତିଆରି ହୋଇନଥିଲା। ସମୟରେ ମିଳୁଥିବା ସହାୟତା କିପରି ଜଣେ ମଣିଷର ଆଶାକୁ ବଞ୍ଚାଇପାରେ ଏବଂ ଜୀବନର ଦିଗ ବଦଳାଇପାରେ, ସେଥିକୁ ଦୀର୍ଘ ସମୟ ଧରି ଦେଖିବାରୁ ଏହି ଭାବନା ବଢ଼ିଲା।",
+      },
+      {
+        en: "Our purpose is simple: to stand beside people when support matters most.",
+        od: "ଆମର ଉଦ୍ଦେଶ୍ୟ ସରଳ। ସହାୟତା ସବୁଠାରୁ ଅଧିକ ଦରକାର ଥିବା ସମୟରେ ଲୋକଙ୍କ ପାଖରେ ଠିଆ ହେବା।",
+      },
+      {
+        en: "Our current verified work includes monthly tuition and learning materials for vulnerable children, practical support for verified families during difficult situations, and visits that offer time and essential supplies to older people. As this work grows, we also want young people to receive clear guidance about education and opportunity.",
+        od: "ଆମର ବର୍ତ୍ତମାନର ଯାଞ୍ଚ ହୋଇଥିବା କାମରେ ଅସୁରକ୍ଷିତ ପିଲାମାନଙ୍କୁ ମାସିକ ଟ୍ୟୁସନ ଓ ପାଠ୍ୟ ସାମଗ୍ରୀ, କଷ୍ଟକର ସମୟରେ ଯାଞ୍ଚ ହୋଇଥିବା ପରିବାରଙ୍କୁ ବ୍ୟବହାରିକ ସହାୟତା ଏବଂ ବୃଦ୍ଧମାନଙ୍କ ସହ ସମୟ ବିତାଇ ଆବଶ୍ୟକ ସାମଗ୍ରୀ ଦେବା ରହିଛି। ଏହି କାମ ବଢ଼ିବା ସହ ଯୁବମାନେ ଶିକ୍ଷା ଓ ସୁଯୋଗ ବିଷୟରେ ସ୍ପଷ୍ଟ ମାର୍ଗଦର୍ଶନ ପାଆନ୍ତୁ ବୋଲି ମଧ୍ୟ ଆମର ଇଚ୍ଛା।",
+      },
+      {
+        en: "Our aim is not to create dependency. We want people to gain the education, confidence, and opportunity needed to stand on their own.",
+        od: "ଲୋକଙ୍କୁ ନିର୍ଭରଶୀଳ କରିବା ଆମର ଲକ୍ଷ୍ୟ ନୁହେଁ। ନିଜ ଗୋଡ଼ରେ ଠିଆ ହେବା ପାଇଁ ଆବଶ୍ୟକ ଶିକ୍ଷା, ଆତ୍ମବିଶ୍ୱାସ ଓ ସୁଯୋଗ ସେମାନେ ପାଆନ୍ତୁ ବୋଲି ଆମେ ଚାହୁଁ।",
+      },
+      {
+        en: "I do not believe that one person or one organisation can change the entire world. But we can help one child remain in school. We can guide one student who does not know the next step. We can stand beside one family during a difficult time. That one step matters.",
+        od: "ଜଣେ ମଣିଷ କିମ୍ବା ଗୋଟିଏ ସଂଗଠନ ସମଗ୍ର ଦୁନିଆକୁ ବଦଳାଇପାରିବ ବୋଲି ମୁଁ ଭାବେନି। କିନ୍ତୁ ଆମେ ଜଣେ ପିଲାଙ୍କୁ ପାଠପଢ଼ା ଜାରି ରଖିବାରେ ସାହାଯ୍ୟ କରିପାରିବା। ପରବର୍ତ୍ତୀ ପଦକ୍ଷେପ ଜାଣିନଥିବା ଜଣେ ଛାତ୍ରକୁ ବାଟ ଦେଖାଇପାରିବା। କଷ୍ଟକର ସମୟରେ ଗୋଟିଏ ପରିବାର ପାଖରେ ଠିଆ ହୋଇପାରିବା। ସେହି ଗୋଟିଏ ପଦକ୍ଷେପର ମୂଲ୍ୟ ଅଛି।",
+      },
+      {
+        en: "Someone once extended a hand to me. Through Abhiara Foundation, I want to extend that hand to someone else.",
+        od: "କେହି ଦିନେ ମୋ ପାଇଁ ହାତ ବଢ଼ାଇଥିଲେ। ଅଭିଆରା ଫାଉଣ୍ଡେସନ ମାଧ୍ୟମରେ ମୁଁ ସେହି ହାତ ଆଉ ଜଣେ ମଣିଷଙ୍କ ପାଇଁ ବଢ଼ାଇବାକୁ ଚାହେଁ।",
+      },
+    ],
+    dateISO: "2026-09-12",
+    date: { en: "12 September 2026", od: "୧୨ ସେପ୍ଟେମ୍ବର ୨୦୨୬" },
+    location: { en: "Odisha and Mumbai, India", od: "ଓଡ଼ିଶା ଓ ମୁମ୍ବାଇ, ଭାରତ" },
+    result: {
+      en: "The support we receive in life should be passed on with dignity.",
+      od: "ଜୀବନରେ ଆମେ ପାଇଥିବା ସହାୟତାକୁ ସମ୍ମାନର ସହ ଆଉ ଜଣେ ମଣିଷଙ୍କ ପାଖକୁ ପହଞ୍ଚାଇବା ଉଚିତ।",
+    },
+    resultLabel: { en: "Story focus", od: "କାହାଣୀର ମୂଳ କଥା" },
+    image: "/images/team-abhimanyu-mallik.png",
+    imageAlt: {
+      en: "Abhimanyu Mallik, Founder and Director of Abhiara Foundation",
+      od: "ଅଭିଆରା ଫାଉଣ୍ଡେସନର ପ୍ରତିଷ୍ଠାତା ଓ ନିର୍ଦ୍ଦେଶକ ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ",
+    },
+    imagePosition: "center 20%",
+    evidenceHref: "/our-story",
+    evidenceLabel: { en: "Read Our Story", od: "ଆମ କାହାଣୀ ପଢ଼ନ୍ତୁ" },
+    author: { en: "Abhimanyu Mallik", od: "ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ" },
+    authorRole: { en: "Founder and Director", od: "ପ୍ରତିଷ୍ଠାତା ଓ ନିର୍ଦ୍ଦେଶକ" },
+  },
+  {
+    slug: "pratibha-samman-2026",
+    category: "education",
+    title: {
+      en: "57 students honoured at Abhiara Pratibha Samman 2026",
+      od: "ଅଭିଆରା ପ୍ରତିଭା ସମ୍ମାନ ୨୦୨୬ରେ ୫୭ ଛାତ୍ରଛାତ୍ରୀ ସମ୍ମାନିତ",
+    },
+    excerpt: {
+      en: "Students of Raisar Kharisan High School were recognised with trophies, certificates, and medals on 4 June 2026.",
+      od: "୪ ଜୁନ ୨୦୨୬ରେ ରାଇସର ଖରିସାନ ଉଚ୍ଚ ବିଦ୍ୟାଳୟର ଛାତ୍ରଛାତ୍ରୀଙ୍କୁ ଟ୍ରଫି, ପ୍ରମାଣପତ୍ର ଓ ପଦକ ଦେଇ ସମ୍ମାନିତ କରାଗଲା।",
+    },
+    paragraphs: [
+      {
+        en: "Abhiara Pratibha Samman was held at Raisar Kharisan High School in Garadpur, Kendrapara, on 4 June 2026. The programme brought students, teachers, school committee members, guests, and the Abhiara Foundation team together at the school.",
+        od: "୪ ଜୁନ ୨୦୨୬ରେ କେନ୍ଦ୍ରାପଡ଼ାର ଗରଦପୁରସ୍ଥିତ ରାଇସର ଖରିସାନ ଉଚ୍ଚ ବିଦ୍ୟାଳୟରେ ଅଭିଆରା ପ୍ରତିଭା ସମ୍ମାନ ଆୟୋଜିତ ହୋଇଥିଲା। ଏହି କାର୍ଯ୍ୟକ୍ରମରେ ଛାତ୍ରଛାତ୍ରୀ, ଶିକ୍ଷକ, ବିଦ୍ୟାଳୟ କମିଟି ସଦସ୍ୟ, ଅତିଥି ଏବଂ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଦଳ ଯୋଗ ଦେଇଥିଲେ।",
+      },
+      {
+        en: "A total of 57 students were honoured. Students received trophies, certificates, and medals during the ceremony. The purpose of the programme was simple: recognise their effort and encourage them to continue their studies.",
+        od: "ମୋଟ ୫୭ ଜଣ ଛାତ୍ରଛାତ୍ରୀଙ୍କୁ ସମ୍ମାନିତ କରାଗଲା। ସମାରୋହରେ ସେମାନଙ୍କୁ ଟ୍ରଫି, ପ୍ରମାଣପତ୍ର ଓ ପଦକ ଦିଆଗଲା। ସେମାନଙ୍କ ପରିଶ୍ରମକୁ ସମ୍ମାନ ଦେବା ଏବଂ ପାଠପଢ଼ା ଜାରି ରଖିବାକୁ ଉତ୍ସାହ ଦେବା ଥିଲା ଏହି କାର୍ଯ୍ୟକ୍ରମର ସରଳ ଉଦ୍ଦେଶ୍ୟ।",
+      },
+      {
+        en: "The public record includes ceremony photographs, local newspaper coverage, and a programme video. These materials are available in the June 2026 Monthly Impact report.",
+        od: "ସାର୍ବଜନୀନ ରେକର୍ଡରେ ସମାରୋହର ଫଟୋ, ସ୍ଥାନୀୟ ଖବରକାଗଜ କଭରେଜ ଓ କାର୍ଯ୍ୟକ୍ରମ ଭିଡିଓ ରହିଛି। ଏହି ସାମଗ୍ରୀ ଜୁନ ୨୦୨୬ ମାସିକ ପ୍ରଭାବ ରିପୋର୍ଟରେ ଦେଖିପାରିବେ।",
+      },
+    ],
+    dateISO: "2026-06-04",
+    date: { en: "4 June 2026", od: "୪ ଜୁନ ୨୦୨୬" },
+    location: {
+      en: "Raisar, Garadpur, Kendrapara, Odisha",
+      od: "ରାଇସର, ଗରଦପୁର, କେନ୍ଦ୍ରାପଡ଼ା, ଓଡ଼ିଶା",
+    },
+    result: { en: "57 students honoured", od: "୫୭ ଛାତ୍ରଛାତ୍ରୀ ସମ୍ମାନିତ" },
+    image: "/images/pratibha-samman-group.jpeg",
+    imageAlt: {
+      en: "Students, teachers, guests, and Abhiara Foundation team at Pratibha Samman 2026",
+      od: "ପ୍ରତିଭା ସମ୍ମାନ ୨୦୨୬ରେ ଛାତ୍ରଛାତ୍ରୀ, ଶିକ୍ଷକ, ଅତିଥି ଓ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଦଳ",
+    },
+    evidenceHref: "/impact#june-2026",
+  },
+  {
+    slug: "fire-relief-kankili",
+    category: "relief",
+    title: {
+      en: "Support after a house fire in Kankili village",
+      od: "କଙ୍କିଲି ଗ୍ରାମରେ ଘର ଅଗ୍ନିକାଣ୍ଡ ପରେ ସହାୟତା",
+    },
+    excerpt: {
+      en: "The team visited a fire-affected family in Dhenkanal and handed over clothes, rice, groceries, and household essentials.",
+      od: "ଦଳ ଢେଙ୍କାନାଳର ଅଗ୍ନିକାଣ୍ଡ ପ୍ରଭାବିତ ପରିବାରକୁ ଭେଟି ଲୁଗାପଟା, ଚାଉଳ, ଖାଦ୍ୟସାମଗ୍ରୀ ଓ ଘରୋଇ ଆବଶ୍ୟକ ସାମଗ୍ରୀ ଦେଇଥିଲେ।",
+    },
+    paragraphs: [
+      {
+        en: "In June 2026, the Abhiara Foundation team visited Kankili village in Parjang block, Dhenkanal, after a family lost their home belongings in a fire. The team saw the damage at the site and spoke with the family.",
+        od: "ଜୁନ ୨୦୨୬ରେ ଏକ ପରିବାର ଅଗ୍ନିକାଣ୍ଡରେ ଘରୋଇ ସାମଗ୍ରୀ ହରାଇବା ପରେ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଦଳ ଢେଙ୍କାନାଳର ପରଜଙ୍ଗ ବ୍ଲକସ୍ଥିତ କଙ୍କିଲି ଗ୍ରାମକୁ ଯାଇଥିଲେ। ଦଳ ଘଟଣାସ୍ଥଳର କ୍ଷୟକ୍ଷତି ଦେଖି ପରିବାର ସହ କଥା ହୋଇଥିଲେ।",
+      },
+      {
+        en: "Clothes, rice, groceries, and household essentials were handed over directly. The help was limited to immediate practical needs. No wider outcome is claimed beyond the supplies shown in the public record.",
+        od: "ଲୁଗାପଟା, ଚାଉଳ, ଖାଦ୍ୟସାମଗ୍ରୀ ଓ ଘରୋଇ ଆବଶ୍ୟକ ସାମଗ୍ରୀ ସିଧାସଳଖ ଦିଆଗଲା। ଏହି ସହାୟତା ତତ୍କାଳ ଆବଶ୍ୟକତା ପର୍ଯ୍ୟନ୍ତ ସୀମିତ ଥିଲା। ସାର୍ବଜନୀନ ରେକର୍ଡରେ ଥିବା ସାମଗ୍ରୀ ବ୍ୟତୀତ ଅନ୍ୟ କୌଣସି ଫଳାଫଳ ଦାବି କରାଯାଇନାହିଁ।",
+      },
+      {
+        en: "Photographs and a short field video show the visit, damage assessment, and supply handover. They are available in the June 2026 Monthly Impact report.",
+        od: "ଫଟୋ ଓ ଛୋଟ କ୍ଷେତ୍ର ଭିଡିଓରେ ପରିଦର୍ଶନ, କ୍ଷୟକ୍ଷତି ଯାଞ୍ଚ ଓ ସାମଗ୍ରୀ ହସ୍ତାନ୍ତର ଦେଖାଯାଇଛି। ଏଗୁଡ଼ିକ ଜୁନ ୨୦୨୬ ମାସିକ ପ୍ରଭାବ ରିପୋର୍ଟରେ ଉପଲବ୍ଧ।",
+      },
+    ],
+    dateISO: "2026-06-17",
+    date: { en: "June 2026", od: "ଜୁନ ୨୦୨୬" },
+    location: {
+      en: "Kankili village, Parjang block, Dhenkanal, Odisha",
+      od: "କଙ୍କିଲି ଗ୍ରାମ, ପରଜଙ୍ଗ ବ୍ଲକ, ଢେଙ୍କାନାଳ, ଓଡ଼ିଶା",
+    },
+    result: { en: "1 family received essential supplies", od: "୧ ପରିବାର ଆବଶ୍ୟକ ସାମଗ୍ରୀ ପାଇଲେ" },
+    image: "/images/fire-relief-distribution.jpeg",
+    imageAlt: {
+      en: "Abhiara Foundation handing supplies to a fire-affected family in Kankili",
+      od: "କଙ୍କିଲିର ଅଗ୍ନିକାଣ୍ଡ ପ୍ରଭାବିତ ପରିବାରକୁ ସାମଗ୍ରୀ ଦେଉଛି ଅଭିଆରା ଫାଉଣ୍ଡେସନ",
+    },
+    evidenceHref: "/impact#june-2026",
+  },
+  {
+    slug: "pana-sankranti-water-camps",
+    category: "events",
+    title: {
+      en: "Free drinking water on Pana Sankranti",
+      od: "ପଣା ସଂକ୍ରାନ୍ତିରେ ନିଶୁଳ୍କ ପାନୀୟ ଜଳ ସେବା",
+    },
+    excerpt: {
+      en: "Free drinking-water camps were held in three Odisha locations on 14 April 2026.",
+      od: "୧୪ ଏପ୍ରିଲ ୨୦୨୬ରେ ଓଡ଼ିଶାର ତିନୋଟି ସ୍ଥାନରେ ନିଶୁଳ୍କ ପାନୀୟ ଜଳ ଶିବିର କରାଗଲା।",
+    },
+    paragraphs: [
+      {
+        en: "On 14 April 2026, free drinking-water camps were held for Pana Sankranti in Koraput, Kendrapara, and Bhubaneswar. The activity was a simple public service during the Odisha solar new year occasion.",
+        od: "୧୪ ଏପ୍ରିଲ ୨୦୨୬ରେ ପଣା ସଂକ୍ରାନ୍ତି ଅବସରରେ କୋରାପୁଟ, କେନ୍ଦ୍ରାପଡ଼ା ଓ ଭୁବନେଶ୍ୱରରେ ନିଶୁଳ୍କ ପାନୀୟ ଜଳ ଶିବିର କରାଗଲା। ଓଡ଼ିଆ ସୌର ନବବର୍ଷ ଅବସରରେ ଏହା ଏକ ସରଳ ଜନସେବା କାର୍ଯ୍ୟ ଥିଲା।",
+      },
+      {
+        en: "Volunteers prepared the camp areas and served drinking water to people passing by. Abhiara does not publish an estimated beneficiary count because a verified count was not recorded.",
+        od: "ସ୍ୱେଚ୍ଛାସେବୀମାନେ ଶିବିର ସ୍ଥାନ ପ୍ରସ୍ତୁତ କରି ଯାତାୟାତ କରୁଥିବା ଲୋକଙ୍କୁ ପାନୀୟ ଜଳ ଦେଇଥିଲେ। ଯାଞ୍ଚ ହୋଇଥିବା ଗଣନା ରେକର୍ଡ ନଥିବାରୁ ଅଭିଆରା ଲାଭାର୍ଥୀ ସଂଖ୍ୟାର ଅନୁମାନ ପ୍ରକାଶ କରୁନାହିଁ।",
+      },
+      {
+        en: "The April 2026 Monthly Impact report carries registered photos and videos of the camp setup and water service.",
+        od: "ଏପ୍ରିଲ ୨୦୨୬ ମାସିକ ପ୍ରଭାବ ରିପୋର୍ଟରେ ଶିବିର ପ୍ରସ୍ତୁତି ଓ ପାଣି ସେବାର ରେଜିଷ୍ଟର ହୋଇଥିବା ଫଟୋ ଓ ଭିଡିଓ ରହିଛି।",
+      },
+    ],
+    dateISO: "2026-04-14",
+    date: { en: "14 April 2026", od: "୧୪ ଏପ୍ରିଲ ୨୦୨୬" },
+    location: {
+      en: "Koraput, Kendrapara, and Bhubaneswar, Odisha",
+      od: "କୋରାପୁଟ, କେନ୍ଦ୍ରାପଡ଼ା ଓ ଭୁବନେଶ୍ୱର, ଓଡ଼ିଶା",
+    },
+    result: { en: "Free water service at 3 locations", od: "୩ ସ୍ଥାନରେ ନିଶୁଳ୍କ ଜଳ ସେବା" },
+    image: "/images/water-camp-serving.jpeg",
+    imageAlt: {
+      en: "Volunteers serving drinking water at a Pana Sankranti camp",
+      od: "ପଣା ସଂକ୍ରାନ୍ତି ଜଳଛତ୍ରରେ ପାନୀୟ ଜଳ ଦେଉଥିବା ସ୍ୱେଚ୍ଛାସେବୀ",
+    },
+    evidenceHref: "/impact#april-2026",
+  },
+  {
+    slug: "hope-is-life-old-age-home-visit",
+    category: "jeevan-sathi",
+    title: {
+      en: "A visit to Hope is Life Old Age Home in Puri",
+      od: "ପୁରୀର ହୋପ ଇଜ୍ ଲାଇଫ ବୃଦ୍ଧାଶ୍ରମ ପରିଦର୍ଶନ",
+    },
+    excerpt: {
+      en: "The team spent time with more than 40 elderly residents and shared essential supplies during an October 2025 visit.",
+      od: "ଅକ୍ଟୋବର ୨୦୨୫ରେ ଦଳ ୪୦ରୁ ଅଧିକ ବୃଦ୍ଧ ବାସିନ୍ଦାଙ୍କ ସହ ସମୟ ବିତାଇ ଆବଶ୍ୟକ ସାମଗ୍ରୀ ଦେଇଥିଲେ।",
+    },
+    paragraphs: [
+      {
+        en: "In October 2025, the Abhiara Foundation team visited Hope is Life Old Age Home in Puri, Odisha. The team met more than 40 elderly residents and spent time speaking with them.",
+        od: "ଅକ୍ଟୋବର ୨୦୨୫ରେ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଦଳ ପୁରୀର ହୋପ ଇଜ୍ ଲାଇଫ ବୃଦ୍ଧାଶ୍ରମକୁ ଯାଇଥିଲେ। ଦଳ ୪୦ରୁ ଅଧିକ ବୃଦ୍ଧ ବାସିନ୍ଦାଙ୍କୁ ଭେଟି ସେମାନଙ୍କ ସହ କଥା ହୋଇ ସମୟ ବିତାଇଥିଲେ।",
+      },
+      {
+        en: "Essential supplies were shared during the visit. The public record describes companionship and practical support only. It does not make claims about residents' families, health, legal needs, or future services.",
+        od: "ପରିଦର୍ଶନ ସମୟରେ ଆବଶ୍ୟକ ସାମଗ୍ରୀ ଦିଆଗଲା। ସାର୍ବଜନୀନ ରେକର୍ଡରେ କେବଳ ସାଥୀ ସେବା ଓ ବ୍ୟବହାରିକ ସହାୟତା ଉଲ୍ଲେଖ ଅଛି। ବାସିନ୍ଦାଙ୍କ ପରିବାର, ସ୍ୱାସ୍ଥ୍ୟ, ଆଇନଗତ ଆବଶ୍ୟକତା କିମ୍ବା ଭବିଷ୍ୟତ ସେବା ବିଷୟରେ କୌଣସି ଦାବି କରାଯାଇନାହିଁ।",
+      },
+      {
+        en: "The October 2025 Monthly Impact report contains the registered photographs from this visit.",
+        od: "ଅକ୍ଟୋବର ୨୦୨୫ ମାସିକ ପ୍ରଭାବ ରିପୋର୍ଟରେ ଏହି ପରିଦର୍ଶନର ରେଜିଷ୍ଟର ହୋଇଥିବା ଫଟୋ ରହିଛି।",
+      },
+    ],
+    dateISO: "2025-10-15",
+    date: { en: "October 2025", od: "ଅକ୍ଟୋବର ୨୦୨୫" },
+    location: { en: "Puri, Odisha", od: "ପୁରୀ, ଓଡ଼ିଶା" },
+    result: { en: "40+ elderly residents visited", od: "୪୦+ ବୃଦ୍ଧ ବାସିନ୍ଦାଙ୍କୁ ଭେଟ" },
+    image: "/images/elderly-care-visit-3.jpeg",
+    imageAlt: {
+      en: "Abhiara Foundation team spending time with elderly residents in Puri",
+      od: "ପୁରୀର ବୃଦ୍ଧ ବାସିନ୍ଦାଙ୍କ ସହ ସମୟ ବିତାଉଥିବା ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଦଳ",
+    },
+    evidenceHref: "/impact#october-2025",
+  },
+];
+
+export function getStoryBySlug(slug: string) {
+  return BLOG_STORIES.find(story => story.slug === slug);
+}

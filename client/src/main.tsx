@@ -6,6 +6,7 @@ import { createRoot } from "react-dom/client";
 import superjson from "superjson";
 import App from "./App";
 import { getLoginUrl } from "./const";
+import { safeTrpcFetch } from "./lib/safeTrpcFetch";
 import "./index.css";
 
 const queryClient = new QueryClient({
@@ -22,7 +23,7 @@ const queryClient = new QueryClient({
         return failureCount < 1;
       },
       refetchOnWindowFocus: false,
-      // CRITICAL: Never throw errors from queries — let components handle them gracefully
+      // CRITICAL: Never throw errors from queries. Let components handle them gracefully
       throwOnError: false,
     },
     mutations: {
@@ -76,23 +77,12 @@ const trpcClient = trpc.createClient({
     httpBatchLink({
       url: "/api/trpc",
       transformer: superjson,
-      fetch(input, init) {
-        return globalThis.fetch(input, {
-          ...(init ?? {}),
-          credentials: "include",
-        }).catch((err) => {
-          // If backend is completely unavailable, return a fake error response
-          // instead of letting the fetch rejection crash the app
-          console.warn("[tRPC] Backend unavailable:", err.message);
-          return new Response(
-            JSON.stringify([{ error: { message: "Backend unavailable", code: -1 } }]),
-            { status: 500, headers: { "content-type": "application/json" } }
-          );
-        });
-      },
+      fetch: safeTrpcFetch,
     }),
   ],
 });
+
+document.getElementById("static-fallback")?.remove();
 
 createRoot(document.getElementById("root")!).render(
   <trpc.Provider client={trpcClient} queryClient={queryClient}>

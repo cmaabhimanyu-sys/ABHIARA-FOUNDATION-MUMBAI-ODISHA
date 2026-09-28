@@ -1,8 +1,9 @@
 /**
- * SEO Component — Dynamic per-page Open Graph, Twitter Card, and meta tags
+ * SEO Component. Dynamic per-page Open Graph, Twitter Card, and meta tags
  * Updates document head on mount/update for rich social media previews
  */
 import { useEffect } from "react";
+import { CORE_STATEMENT } from "@/data/focusContent";
 
 interface SEOProps {
   title?: string;
@@ -13,17 +14,17 @@ interface SEOProps {
 }
 
 const DEFAULTS = {
-  title: "Abhiara Foundation — Fearless Ray of Light",
-  description:
-    "Education for every child. Dignity for every elder. Founded by Abhimanyu Mallik. Built from the village up.",
-  image:
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hero-dawn-PUfjxrVLdG8a3bgPJiAovi.webp",
-  url: "https://abhiarafoundation.org",
+  title: "Abhiara Foundation | Education first. Compassion always.",
+  description: CORE_STATEMENT,
+  image: "/abhiara-logo.png",
+  url: "https://www.abhiarafoundation.org",
   type: "website",
 };
 
 function setMeta(property: string, content: string) {
-  let el = document.querySelector(`meta[property="${property}"]`) as HTMLMetaElement | null;
+  let el = document.querySelector(
+    `meta[property="${property}"]`
+  ) as HTMLMetaElement | null;
   if (!el) {
     el = document.createElement("meta");
     el.setAttribute("property", property);
@@ -33,7 +34,9 @@ function setMeta(property: string, content: string) {
 }
 
 function setNameMeta(name: string, content: string) {
-  let el = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
+  let el = document.querySelector(
+    `meta[name="${name}"]`
+  ) as HTMLMetaElement | null;
   if (!el) {
     el = document.createElement("meta");
     el.setAttribute("name", name);
@@ -43,7 +46,9 @@ function setNameMeta(name: string, content: string) {
 }
 
 function setCanonical(href: string) {
-  let el = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  let el = document.querySelector(
+    'link[rel="canonical"]'
+  ) as HTMLLinkElement | null;
   if (!el) {
     el = document.createElement("link");
     el.setAttribute("rel", "canonical");
@@ -60,10 +65,14 @@ export default function SEO({
   type = DEFAULTS.type,
 }: SEOProps) {
   useEffect(() => {
+    const resolvedImage = image.startsWith("http")
+      ? image
+      : new URL(image, url).toString();
+
     // Page title
     document.title = title;
 
-    // Canonical URL — tells Google which URL is the "real" one
+    // Canonical URL. tells Google which URL is the "real" one
     setCanonical(url);
 
     // Standard meta
@@ -72,7 +81,7 @@ export default function SEO({
     // Open Graph
     setMeta("og:title", title);
     setMeta("og:description", description);
-    setMeta("og:image", image);
+    setMeta("og:image", resolvedImage);
     setMeta("og:url", url);
     setMeta("og:type", type);
     setMeta("og:site_name", "Abhiara Foundation");
@@ -82,7 +91,7 @@ export default function SEO({
     setNameMeta("twitter:card", "summary_large_image");
     setNameMeta("twitter:title", title);
     setNameMeta("twitter:description", description);
-    setNameMeta("twitter:image", image);
+    setNameMeta("twitter:image", resolvedImage);
 
     // Cleanup: restore defaults on unmount
     return () => {

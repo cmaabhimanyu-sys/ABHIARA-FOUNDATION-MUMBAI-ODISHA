@@ -1,0 +1,23 @@
+CREATE TABLE `occasion_donations` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`donorName` varchar(255) NOT NULL,
+	`donorEmail` varchar(320) NOT NULL,
+	`donorPhone` varchar(20),
+	`amount` int NOT NULL,
+	`currency` varchar(10) NOT NULL DEFAULT 'INR',
+	`occasionCause` enum('education','elderly_care','general','vidyapeeth') NOT NULL DEFAULT 'general',
+	`occasionStatus` enum('pending','completed','failed','cancelled') NOT NULL DEFAULT 'pending',
+	`occRazorpayOrderId` varchar(255),
+	`occRazorpayPaymentId` varchar(255),
+	`occasion` enum('birthday','anniversary','wedding','diwali','promotion','graduation','other') NOT NULL DEFAULT 'birthday',
+	`celebrantName` varchar(255) NOT NULL,
+	`occasionDate` varchar(20),
+	`occRelationship` varchar(100),
+	`celebrantEmail` varchar(320),
+	`celebrantPhone` varchar(20),
+	`wishingMessage` text,
+	`occPanNumber` varchar(20),
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `occasion_donations_id` PRIMARY KEY(`id`)
+);

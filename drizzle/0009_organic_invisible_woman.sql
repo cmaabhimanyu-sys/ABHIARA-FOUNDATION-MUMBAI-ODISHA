@@ -1,0 +1,22 @@
+CREATE TABLE `memorial_donations` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`donorName` varchar(255) NOT NULL,
+	`donorEmail` varchar(320) NOT NULL,
+	`donorPhone` varchar(20),
+	`amount` int NOT NULL,
+	`currency` varchar(10) NOT NULL DEFAULT 'INR',
+	`memorialCause` enum('education','elderly_care','general','vidyapeeth') NOT NULL DEFAULT 'general',
+	`memorialStatus` enum('pending','completed','failed','cancelled') NOT NULL DEFAULT 'pending',
+	`memRazorpayOrderId` varchar(255),
+	`memRazorpayPaymentId` varchar(255),
+	`honoreeName` varchar(255) NOT NULL,
+	`relationship` varchar(100),
+	`dateOfPassing` varchar(20),
+	`tributeMessage` text,
+	`notifyFamily` boolean DEFAULT false,
+	`familyEmail` varchar(320),
+	`panNumber` varchar(20),
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `memorial_donations_id` PRIMARY KEY(`id`)
+);

@@ -15,7 +15,7 @@ export function useAuth(options?: UseAuthOptions) {
   const meQuery = trpc.auth.me.useQuery(undefined, {
     retry: false,
     refetchOnWindowFocus: false,
-    // Don't throw errors — handle them gracefully
+    // Don't throw errors. handle them gracefully
     throwOnError: false,
   });
 
@@ -35,7 +35,7 @@ export function useAuth(options?: UseAuthOptions) {
       ) {
         return;
       }
-      // Don't throw — just log. Public site should never crash.
+      // Don't throw. just log. Public site should never crash.
       console.warn("[Auth] Logout error:", error);
     } finally {
       try {

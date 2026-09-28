@@ -1,19 +1,24 @@
-import { AXIOS_TIMEOUT_MS, COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
-import { ForbiddenError } from "@shared/_core/errors";
+import {
+  AXIOS_TIMEOUT_MS,
+  COOKIE_NAME,
+  decodeOAuthState,
+  ONE_YEAR_MS,
+} from "../../shared/const.js";
+import { ForbiddenError } from "../../shared/_core/errors.js";
 import axios, { type AxiosInstance } from "axios";
 import { parse as parseCookieHeader } from "cookie";
 import type { Request } from "express";
 import { SignJWT, jwtVerify } from "jose";
-import type { User } from "../../drizzle/schema";
-import * as db from "../db";
-import { ENV } from "./env";
+import type { User } from "../../drizzle/schema.js";
+import * as db from "../db.js";
+import { ENV } from "./env.js";
 import type {
   ExchangeTokenRequest,
   ExchangeTokenResponse,
   GetUserInfoResponse,
   GetUserInfoWithJwtRequest,
   GetUserInfoWithJwtResponse,
-} from "./types/manusTypes";
+} from "./types/manusTypes.js";
 // Utility function
 const isNonEmptyString = (value: unknown): value is string =>
   typeof value === "string" && value.length > 0;
@@ -39,7 +44,8 @@ class OAuthService {
   }
 
   private decodeState(state: string): string {
-    const redirectUri = atob(state);
+    const { redirectUri } = decodeOAuthState(state);
+    if (!redirectUri) throw new Error("OAuth state is missing redirect URI");
     return redirectUri;
   }
 
@@ -176,6 +182,56 @@ class SDKServer {
       },
       options
     );
+  }
+
+  async createAdminRelayToken(
+    openId: string,
+    nonce: string,
+    returnPath: string
+  ): Promise<string> {
+    const issuedAt = Date.now();
+    const secretKey = this.getSessionSecret();
+
+    return new SignJWT({
+      openId,
+      appId: ENV.appId,
+      purpose: "admin-relay",
+      nonce,
+      returnPath,
+    })
+      .setProtectedHeader({ alg: "HS256", typ: "JWT" })
+      .setIssuedAt(Math.floor(issuedAt / 1000))
+      .setExpirationTime(Math.floor((issuedAt + 5 * 60 * 1000) / 1000))
+      .sign(secretKey);
+  }
+
+  async verifyAdminRelayToken(token: string): Promise<{
+    openId: string;
+    nonce: string;
+    returnPath: string;
+  } | null> {
+    try {
+      const secretKey = this.getSessionSecret();
+      const { payload } = await jwtVerify(token, secretKey, {
+        algorithms: ["HS256"],
+      });
+      const { openId, appId, purpose, nonce, returnPath } = payload as Record<
+        string,
+        unknown
+      >;
+      if (
+        appId !== ENV.appId ||
+        purpose !== "admin-relay" ||
+        !isNonEmptyString(openId) ||
+        !isNonEmptyString(nonce) ||
+        !isNonEmptyString(returnPath)
+      ) {
+        return null;
+      }
+      return { openId, nonce, returnPath };
+    } catch {
+      return null;
+    }
   }
 
   async signSession(

@@ -1,7 +1,7 @@
 /**
  * Form submission utility for Abhiara Foundation
  *
- * Uses FormSubmit.co — a free service that sends form data
+ * Uses FormSubmit.co. a free service that sends form data
  * directly to info@abhiarafoundation.org with no API key needed.
  *
  * First submission triggers a one-time email verification from FormSubmit.co.
@@ -103,7 +103,7 @@ export async function submitContactForm(data: {
       Subject: data.subject || "General Inquiry",
       Message: data.message,
     },
-    data.subject || `${formatLabel(data.type)} — ${data.name}`
+    data.subject || `${formatLabel(data.type)}. ${data.name}`
   );
 }
 
@@ -125,7 +125,7 @@ export async function submitVolunteerForm(data: {
       "Social Profile": data.socialProfile,
       "Area of Interest": formatLabel(data.areaOfInterest),
     },
-    `Volunteer Application — ${data.fullName}`
+    `Volunteer Application. ${data.fullName}`
   );
 }
 
@@ -149,7 +149,7 @@ export async function submitBirthdayForm(data: {
       "Celebration Type": formatLabel(data.celebrationType),
       Message: data.message || "No additional message",
     },
-    `Birthday Registration — ${data.fullName} (${data.birthdayDate})`
+    `Birthday Registration. ${data.fullName} (${data.birthdayDate})`
   );
 }
 

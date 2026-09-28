@@ -1,0 +1,1 @@
+ALTER TABLE `gallery_photos` MODIFY COLUMN `category` enum('education','elderly','medical','disaster','animals','events','community') NOT NULL;

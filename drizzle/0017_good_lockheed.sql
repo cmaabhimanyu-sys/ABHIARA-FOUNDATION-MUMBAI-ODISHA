@@ -1,0 +1,1 @@
+ALTER TABLE `donations` MODIFY COLUMN `cause` enum('education','elderly_care','general','vidyapeeth','shiksha_sathi','medical_emergency','disaster_relief','animal_welfare') NOT NULL DEFAULT 'general';

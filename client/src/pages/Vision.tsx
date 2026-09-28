@@ -1,297 +1,564 @@
-/*
- * Abhiara Foundation — Vision Page V2.0 (Dynamic CMS)
- * The founder's complete plan: Education, Elderly Care, CSR Implementation,
- * Abhiara Vidyapeeth within 5 years.
- * All content fetched from CMS with hardcoded fallback.
- */
-import { useEffect, useMemo } from "react";
+import { useEffect, type ComponentType } from "react";
 import { Link } from "wouter";
 import {
-  GraduationCap,
-  HeartHandshake,
-  Building2,
-  School,
-  Star,
   ArrowRight,
-  Target,
-  Calendar,
-  MapPin,
+  BookOpen,
+  ClipboardCheck,
+  HandHeart,
+  Handshake,
+  Heart,
+  ShieldCheck,
   Users,
-  Landmark,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
-import { motion } from "framer-motion";
 import SEO from "@/components/SEO";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { trpc } from "@/lib/trpc";
 
-// Icon map for pillars and timeline
-const PILLAR_ICONS: Record<string, any> = {
-  "Education": GraduationCap,
-  "Elderly Care": HeartHandshake,
-  "CSR Implementation": Building2,
-  "Abhiara Vidyapeeth": School,
+type LocalText = {
+  en: string;
+  od: string;
 };
 
-const TIMELINE_ICONS: Record<string, any> = {
-  "Build Corpus · Register · Launch": Landmark,
-  "Acquire Land · Begin Affiliation": MapPin,
-  "Construction · Recruit Faculty": School,
-  "Vidyapeeth Opens": GraduationCap,
+type MissionItem = {
+  icon: ComponentType<{ size?: number; className?: string }>;
+  number: string;
+  title: LocalText;
+  body: LocalText;
 };
 
-// Fallback data
-const FALLBACK_PILLARS = [
-  { title: "Education", desc: "Scholarships, study materials, digital learning centres, career guidance and mentorship for children from poor and tribal families across all of Odisha and expanding to other states across India.", sdg: "SDG 4", accent: "gold" },
-  { title: "Elderly Care", desc: "Companion networks, quarterly health camps, legal aid for pension and property rights. Old age home visits in Puri and rural Odisha village outreach.", sdg: "SDG 3", accent: "gold" },
-  { title: "CSR Implementation", desc: "End-to-end CSR project execution for corporates. Monthly impact reports, audited utilisation statements, and Schedule VII compliance.", sdg: "SDG 10 + 11", accent: "teal" },
-  { title: "Abhiara Vidyapeeth", desc: "A full-fledged school in the heart of tribal Odisha \u2014 CBSE affiliated, built within 5 years. The flagship dream of the foundation.", sdg: "SDG 4", accent: "gold" },
+type ValueItem = {
+  title: LocalText;
+  body: LocalText;
+  image: string;
+  imageAlt: LocalText;
+};
+
+type PeopleGroup = {
+  title: LocalText;
+  label: LocalText;
+  count: LocalText;
+  body: LocalText;
+  image: string;
+  imageAlt: LocalText;
+  href: string;
+};
+
+const MISSION_ITEMS: MissionItem[] = [
+  {
+    icon: BookOpen,
+    number: "01",
+    title: {
+      en: "Help children continue learning",
+      od: "ପିଲାମାନଙ୍କ ପଢ଼ା ଜାରି ରଖିବା",
+    },
+    body: {
+      en: "Support verified students with tuition fees, school bags, books and learning materials according to need.",
+      od: "ଯାଞ୍ଚ ହୋଇଥିବା ଛାତ୍ରଛାତ୍ରୀଙ୍କୁ ଆବଶ୍ୟକତା ଅନୁସାରେ ଟ୍ୟୁସନ ଫି, ସ୍କୁଲ ବ୍ୟାଗ, ବହି ଓ ପଢ଼ା ସାମଗ୍ରୀ ଦେବା।",
+    },
+  },
+  {
+    icon: HandHeart,
+    number: "02",
+    title: {
+      en: "Stand beside families in difficult times",
+      od: "କଷ୍ଟ ସମୟରେ ପରିବାର ପାଖରେ ରହିବା",
+    },
+    body: {
+      en: "Provide verified support during medical emergencies, a death in the family, disasters and other urgent situations.",
+      od: "ଚିକିତ୍ସା ଜରୁରୀ ସ୍ଥିତି, ପରିବାରରେ ମୃତ୍ୟୁ, ବିପର୍ଯ୍ୟୟ ଓ ଅନ୍ୟ ତୁରନ୍ତ ଆବଶ୍ୟକ ସମୟରେ ଯାଞ୍ଚ ହୋଇଥିବା ସହାୟତା ଦେବା।",
+    },
+  },
+  {
+    icon: Users,
+    number: "03",
+    title: { en: "Work with communities", od: "ସମୁଦାୟ ସହ ମିଶି କାମ କରିବା" },
+    body: {
+      en: "Listen to local people, understand the need and carry out practical activities with regular follow up.",
+      od: "ସ୍ଥାନୀୟ ଲୋକଙ୍କ କଥା ଶୁଣିବା, ଆବଶ୍ୟକତା ବୁଝିବା ଓ ନିୟମିତ ଅନୁସରଣ ସହ ବ୍ୟବହାରିକ କାମ କରିବା।",
+    },
+  },
+  {
+    icon: ClipboardCheck,
+    number: "04",
+    title: {
+      en: "Keep the work open and accountable",
+      od: "କାମକୁ ସ୍ପଷ୍ଟ ଓ ଦାୟିତ୍ୱପୂର୍ଣ୍ଣ ରଖିବା",
+    },
+    body: {
+      en: "Maintain activity records, protect personal information and share public impact updates with supporters and partners.",
+      od: "କାର୍ଯ୍ୟକଳାପର ରେକର୍ଡ ରଖିବା, ବ୍ୟକ୍ତିଗତ ସୂଚନା ସୁରକ୍ଷିତ ରଖିବା ଓ ସହଯୋଗୀମାନଙ୍କ ସହ ସାର୍ବଜନୀନ ପ୍ରଭାବ ତଥ୍ୟ ଭାଗ କରିବା।",
+    },
+  },
 ];
 
-const FALLBACK_TIMELINE = [
-  { year: "2026\u20132030", title: "Build Corpus \u00b7 Register \u00b7 Launch", items: ["Section 8 Company \u2014 Registration in process", "Build corpus and establish financial foundation", "Launch education and elderly care programmes across Odisha", "Reach 500+ students and 200+ elders", "Launch CSR partnerships and complete 10+ activities"], active: true },
-  { year: "2030", title: "Acquire Land \u00b7 Begin Affiliation", items: ["Acquire land for Abhiara Vidyapeeth in tribal Odisha", "Begin CBSE affiliation process", "Architectural planning and site development", "Expand programmes to neighbouring states"], active: false },
-  { year: "2032", title: "Construction \u00b7 Recruit Faculty", items: ["Construction of Abhiara Vidyapeeth begins", "Recruit founding faculty and staff", "CBSE affiliation secured", "Infrastructure and digital learning systems built"], active: false },
-  { year: "2035", title: "Vidyapeeth Opens", items: ["First batch of students enrolled at Abhiara Vidyapeeth", "Residential school with free education for tribal children", "Digital learning infrastructure fully operational", "Abhiara Foundation becomes a recognised national NGO"], active: false },
+const VALUES: ValueItem[] = [
+  {
+    title: { en: "Dignity", od: "ମର୍ଯ୍ୟାଦା" },
+    body: {
+      en: "Every person must be treated with respect. Help should never take away someone’s privacy or self respect.",
+      od: "ପ୍ରତ୍ୟେକ ଲୋକଙ୍କୁ ସମ୍ମାନ ଦେବା ଦରକାର। ସହାୟତା କେବେ ମଧ୍ୟ କାହାର ବ୍ୟକ୍ତିଗତ ଗୋପନୀୟତା କିମ୍ବା ଆତ୍ମସମ୍ମାନ କମାଇବା ଉଚିତ ନୁହେଁ।",
+    },
+    image: "/images/elderly-care-visit-3.jpeg",
+    imageAlt: {
+      en: "Abhiara team spending time with elders",
+      od: "ବୟସ୍କମାନଙ୍କ ସହ ସମୟ ବିତାଉଥିବା ଅଭିଆରା ଦଳ",
+    },
+  },
+  {
+    title: { en: "Care", od: "ଯତ୍ନ" },
+    body: {
+      en: "We listen before we act and give support according to the real need of the child, family or community.",
+      od: "କାମ କରିବା ପୂର୍ବରୁ ଆମେ କଥା ଶୁଣୁ ଏବଂ ପିଲା, ପରିବାର କିମ୍ବା ସମୁଦାୟର ପ୍ରକୃତ ଆବଶ୍ୟକତା ଅନୁସାରେ ସହାୟତା କରୁ।",
+    },
+    image: "/images/shiksha-sathi-children-siblings.jpeg",
+    imageAlt: {
+      en: "Children supported through Shiksha Sathi",
+      od: "ଶିକ୍ଷା ସାଥୀ ମାଧ୍ୟମରେ ସହାୟତା ପାଉଥିବା ପିଲାମାନେ",
+    },
+  },
+  {
+    title: { en: "Accountability", od: "ଜବାବଦେହୀତା" },
+    body: {
+      en: "We keep records, review the work and explain how support is used. Public claims must be backed by verified field information.",
+      od: "ଆମେ ରେକର୍ଡ ରଖୁ, କାମର ସମୀକ୍ଷା କରୁ ଓ ସହାୟତା କିପରି ବ୍ୟବହାର ହେଲା ସେଥିରେ ସ୍ପଷ୍ଟତା ରଖୁ। ସାର୍ବଜନୀନ ତଥ୍ୟ କ୍ଷେତ୍ର ରେକର୍ଡ ଦ୍ୱାରା ଯାଞ୍ଚ ହେବା ଦରକାର।",
+    },
+    image: "/images/disaster-relief-team-village.jpeg",
+    imageAlt: {
+      en: "Abhiara team with community members during a relief visit",
+      od: "ସହାୟତା ପରିଦର୍ଶନ ସମୟରେ ସମୁଦାୟ ସଦସ୍ୟଙ୍କ ସହ ଅଭିଆରା ଦଳ",
+    },
+  },
+  {
+    title: { en: "Participation", od: "ସହଭାଗିତା" },
+    body: {
+      en: "Students, families, teachers and community members should have a voice in the work that concerns them.",
+      od: "ଛାତ୍ରଛାତ୍ରୀ, ପରିବାର, ଶିକ୍ଷକ ଓ ସମୁଦାୟ ସଦସ୍ୟଙ୍କ ସହ ସମ୍ପର୍କିତ କାମରେ ସେମାନଙ୍କ ମତ ରହିବା ଦରକାର।",
+    },
+    image: "/images/pratibha-samman-group.jpeg",
+    imageAlt: {
+      en: "Students, teachers and community members at Pratibha Samman",
+      od: "ପ୍ରତିଭା ସମ୍ମାନରେ ଛାତ୍ରଛାତ୍ରୀ, ଶିକ୍ଷକ ଓ ସମୁଦାୟ ସଦସ୍ୟ",
+    },
+  },
+  {
+    title: { en: "Working Together", od: "ମିଶି କାମ କରିବା" },
+    body: {
+      en: "Lasting work needs volunteers, community members, donors and responsible partners to stand together.",
+      od: "ଦୀର୍ଘସ୍ଥାୟୀ କାମ ପାଇଁ ସ୍ୱେଚ୍ଛାସେବୀ, ସମୁଦାୟ ସଦସ୍ୟ, ଦାତା ଓ ଦାୟିତ୍ୱପୂର୍ଣ୍ଣ ସହଯୋଗୀମାନେ ମିଶି ରହିବା ଦରକାର।",
+    },
+    image: "/images/water-camp-serving.jpeg",
+    imageAlt: {
+      en: "Volunteers serving water at a community camp",
+      od: "ସମୁଦାୟ ଶିବିରରେ ପାଣି ବଣ୍ଟନ କରୁଥିବା ସ୍ୱେଚ୍ଛାସେବୀ",
+    },
+  },
 ];
 
-const FALLBACK_TARGETS = [
-  { value: "10,000+", label: "Students Supported", sub: "By 2035" },
-  { value: "1,000+", label: "Elders Cared For", sub: "By 2035" },
-  { value: "\u20b95 Cr+", label: "CSR Implemented", sub: "By 2035" },
-  { value: "1", label: "School Built", sub: "Abhiara Vidyapeeth · 2035" },
+const PEOPLE_GROUPS: PeopleGroup[] = [
+  {
+    title: { en: "Board of Directors", od: "ନିର୍ଦ୍ଦେଶକ ମଣ୍ଡଳ" },
+    label: { en: "Official governance", od: "ଅଧିକୃତ ପରିଚାଳନା" },
+    count: { en: "2 confirmed directors", od: "୨ ଜଣ ନିଶ୍ଚିତ ନିର୍ଦ୍ଦେଶକ" },
+    body: {
+      en: "The Board is responsible for purpose, compliance, finances and major programme decisions.",
+      od: "ନିର୍ଦ୍ଦେଶକ ମଣ୍ଡଳ ଉଦ୍ଦେଶ୍ୟ, ଅନୁପାଳନ, ଆର୍ଥିକ ବ୍ୟବସ୍ଥା ଓ ମୁଖ୍ୟ କାର୍ଯ୍ୟକ୍ରମ ନିଷ୍ପତ୍ତି ପାଇଁ ଦାୟୀ।",
+    },
+    image: "/images/team-abhimanyu-mallik.png",
+    imageAlt: {
+      en: "Abhimanyu Mallik, Founder and Director",
+      od: "ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ, ପ୍ରତିଷ୍ଠାତା ଓ ନିର୍ଦ୍ଦେଶକ",
+    },
+    href: "/board-and-transparency#board",
+  },
+  {
+    title: { en: "Advisors", od: "ପରାମର୍ଶଦାତା" },
+    label: { en: "Subject guidance", od: "ବିଷୟଗତ ପରାମର୍ଶ" },
+    count: { en: "4 confirmed advisors", od: "୪ ଜଣ ନିଶ୍ଚିତ ପରାମର୍ଶଦାତା" },
+    body: {
+      en: "Advisors share strategic, legal, education, CSR and compliance knowledge. They are listed separately from the Board.",
+      od: "ପରାମର୍ଶଦାତାମାନେ ରଣନୀତି, ଆଇନ, ଶିକ୍ଷା, CSR ଓ ଅନୁପାଳନ ବିଷୟରେ ଜ୍ଞାନ ଦିଅନ୍ତି। ସେମାନଙ୍କୁ ମଣ୍ଡଳରୁ ଅଲଗା ଭାବେ ଦର୍ଶାଯାଇଛି।",
+    },
+    image: "/images/team-amit-kumar-jena.jpeg",
+    imageAlt: {
+      en: "Amit Kumar Jena, Founding Patron and Strategic Advisor",
+      od: "ଅମିତ କୁମାର ଜେନା, ପ୍ରତିଷ୍ଠାକାଳୀନ ପୃଷ୍ଠପୋଷକ ଓ ରଣନୀତିକ ପରାମର୍ଶଦାତା",
+    },
+    href: "/board-and-transparency#advisors",
+  },
+  {
+    title: { en: "Programme and Ground Team", od: "କାର୍ଯ୍ୟକ୍ରମ ଓ କ୍ଷେତ୍ର ଦଳ" },
+    label: { en: "Field work", od: "କ୍ଷେତ୍ର କାମ" },
+    count: { en: "5 core and field members", od: "୫ ଜଣ ମୁଖ୍ୟ ଓ କ୍ଷେତ୍ର ସଦସ୍ୟ" },
+    body: {
+      en: "The team carries out visits, coordinates activities, keeps records and follows up on programme needs.",
+      od: "ଦଳ ପରିଦର୍ଶନ କରେ, କାର୍ଯ୍ୟକଳାପ ସମନ୍ୱୟ କରେ, ରେକର୍ଡ ରଖେ ଓ କାର୍ଯ୍ୟକ୍ରମ ଆବଶ୍ୟକତାର ଅନୁସରଣ କରେ।",
+    },
+    image: "/images/team-bhubaneswar.jpeg",
+    imageAlt: {
+      en: "Abhiara Foundation team during field work",
+      od: "କ୍ଷେତ୍ର କାମ ସମୟରେ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଦଳ",
+    },
+    href: "/team#ground-team",
+  },
 ];
 
 export default function Vision() {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  const { t } = useLanguage();
+  const { data: leadershipMembers = [] } =
+    trpc.cms.leadership.listPublished.useQuery(undefined, { retry: false });
+  const publishedBoardCount = leadershipMembers.filter(
+    (member: any) => member.memberType === "board"
+  ).length;
+  const publishedAdvisorCount = leadershipMembers.filter(
+    (member: any) => member.memberType === "advisor"
+  ).length;
 
-  // Fetch CMS settings
-  const { data: cmsSettings = [] } = trpc.cms.settings.list.useQuery();
-
-  const getSetting = (key: string, fallback: string) => {
-    const s = cmsSettings.find((x: any) => x.settingKey === key);
-    return s ? s.settingValue : fallback;
-  };
-
-  // Parse JSON settings with fallback
-  const pillars = useMemo(() => {
-    try {
-      const raw = getSetting("vision_pillars", "");
-      return raw ? JSON.parse(raw) : FALLBACK_PILLARS;
-    } catch { return FALLBACK_PILLARS; }
-  }, [cmsSettings]);
-
-  const timeline = useMemo(() => {
-    try {
-      const raw = getSetting("vision_timeline", "");
-      return raw ? JSON.parse(raw) : FALLBACK_TIMELINE;
-    } catch { return FALLBACK_TIMELINE; }
-  }, [cmsSettings]);
-
-  const impactTargets = useMemo(() => {
-    try {
-      const raw = getSetting("vision_impact_targets", "");
-      return raw ? JSON.parse(raw) : FALLBACK_TARGETS;
-    } catch { return FALLBACK_TARGETS; }
-  }, [cmsSettings]);
-
-  const heroDesc = getSetting("vision_hero_desc", "A clear, time-bound plan to support poor and underprivileged students, care for the elderly, implement CSR projects at scale, and build Abhiara Vidyapeeth within 5 years.");
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-[#0A1628]">
+    <div className="min-h-screen bg-white">
       <SEO
-        title="Vision — Abhiara Foundation"
-        description="Abhiara Foundation's roadmap to transform education and elderly care across India. Building Abhiara Vidyapeeth within 5 years."
-        url="https://abhiarafoundation.org/vision"
+        title={t(
+          "Vision, Mission and People, Abhiara Foundation",
+          "ଦୃଷ୍ଟି, ଲକ୍ଷ୍ୟ ଓ ଲୋକମାନେ, ଅଭିଆରା ଫାଉଣ୍ଡେସନ"
+        )}
+        description={t(
+          "Read Abhiara Foundation's vision, mission, values and public people structure.",
+          "ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଦୃଷ୍ଟି, ଲକ୍ଷ୍ୟ, ମୂଲ୍ୟବୋଧ ଓ ସାର୍ବଜନୀନ ଦଳ ଗଠନ ବିଷୟରେ ପଢ଼ନ୍ତୁ।"
+        )}
+        image="/images/pratibha-samman-group.jpeg"
+        url="https://www.abhiarafoundation.com/vision"
       />
       <Navbar />
 
-      {/* ===== HERO ===== */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full bg-[#C9A84C]/5 blur-[200px] pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-[#1A7F8E]/5 blur-[150px] pointer-events-none" />
+      <main id="main-content">
+        <section className="relative overflow-hidden bg-[#F8F6EF] pt-20 pb-20 md:pt-28 md:pb-28">
+          <div
+            className="absolute inset-0 pointer-events-none"
+            aria-hidden="true"
+          >
+            <div className="absolute -top-28 -right-16 h-80 w-80 rounded-full bg-[#C9A84C]/12 blur-3xl" />
+            <div className="absolute -bottom-36 -left-24 h-96 w-96 rounded-full bg-[#1A7F8E]/10 blur-3xl" />
+          </div>
 
-        <div className="container relative z-10 text-center">
-          <AnimatedSection>
-            <p className="section-label mb-4">OUR VISION</p>
-            <h1
-              className="font-serif font-bold text-white leading-[1.1] mb-6"
-              style={{ fontSize: "clamp(36px, 5vw, 64px)" }}
-            >
-              The <span className="text-[#C9A84C]">Roadmap</span> to Impact
-            </h1>
-            <div className="gradient-rule mx-auto mb-8" />
-            <p className="font-sans text-[17px] text-white/60 max-w-2xl mx-auto leading-relaxed">
-              {heroDesc}
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
+          <div className="container relative grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-16 items-center">
+            <AnimatedSection>
+              <p className="font-sans text-[11px] font-bold tracking-[0.2em] uppercase text-[#1A7F8E] mb-5">
+                {t(
+                  "Vision, mission, values and people",
+                  "ଦୃଷ୍ଟି, ଲକ୍ଷ୍ୟ, ମୂଲ୍ୟବୋଧ ଓ ଲୋକମାନେ"
+                )}
+              </p>
+              <h1
+                className="font-serif font-bold text-[#191919] leading-[1.05] mb-6"
+                style={{ fontSize: "clamp(42px, 6vw, 76px)" }}
+              >
+                {t("What guides", "ଆମ କାମକୁ")}
+                <br />
+                <span className="text-[#C9A84C]">
+                  {t("our work", "କଣ ଦିଗ ଦେଉଛି")}
+                </span>
+              </h1>
+              <p className="font-sans text-[17px] text-[#555] max-w-xl leading-8 mb-8">
+                {t(
+                  "Our vision tells us where we want to go. Our mission tells us what we do each day. Our values show how we must work with people.",
+                  "ଆମ ଦୃଷ୍ଟି ଆମେ କେଉଁଠି ପହଞ୍ଚିବାକୁ ଚାହୁଁଛୁ ତାହା କହେ। ଆମ ଲକ୍ଷ୍ୟ ପ୍ରତିଦିନ କଣ କରିବା ଦରକାର ତାହା କହେ। ଆମ ମୂଲ୍ୟବୋଧ ଲୋକଙ୍କ ସହ କିପରି କାମ କରିବା ଦରକାର ତାହା ଦେଖାଏ।"
+                )}
+              </p>
+              <nav
+                className="flex flex-wrap gap-3"
+                aria-label={t("Page sections", "ପୃଷ୍ଠା ବିଭାଗ")}
+              >
+                {[
+                  { href: "#vision", en: "Vision", od: "ଦୃଷ୍ଟି" },
+                  { href: "#mission", en: "Mission", od: "ଲକ୍ଷ୍ୟ" },
+                  { href: "#values", en: "Values", od: "ମୂଲ୍ୟବୋଧ" },
+                  { href: "#people", en: "Our People", od: "ଆମ ଲୋକମାନେ" },
+                ].map(item => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="px-4 py-2.5 bg-white border border-[#DED5C2] text-[#333] font-sans text-[13px] font-semibold hover:border-[#C9A84C] hover:text-[#8B6914] transition-colors active:scale-[0.97]"
+                  >
+                    {t(item.en, item.od)}
+                  </a>
+                ))}
+              </nav>
+            </AnimatedSection>
 
-      {/* ===== FIVE PILLARS OF THE PLAN (LIGHT) ===== */}
-      <section className="py-20 md:py-28 section-light">
-        <div className="container">
-          <AnimatedSection className="text-center mb-16">
-            <p className="section-label-light mb-4">THE PLAN</p>
-            <h2 className="heading-xl light-heading mb-4">
-              Four Pillars. <span className="text-[#C9A84C]">One Mission.</span>
-            </h2>
-            <div className="gradient-rule-light mx-auto mb-6" />
-            <p className="font-sans text-[15px] light-body max-w-xl mx-auto">
-              Every pillar is interconnected. Together, they form the foundation of lasting change.
-            </p>
-          </AnimatedSection>
+            <AnimatedSection delay={0.1}>
+              <figure className="bg-white border border-[#E8E1D1] p-3 shadow-[0_24px_60px_rgba(26,32,28,0.12)]">
+                <img
+                  src="/images/pratibha-samman-group.jpeg"
+                  alt={t(
+                    "Students, teachers and Abhiara Foundation team at Pratibha Samman 2026",
+                    "ପ୍ରତିଭା ସମ୍ମାନ ୨୦୨୬ରେ ଛାତ୍ରଛାତ୍ରୀ, ଶିକ୍ଷକ ଓ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଦଳ"
+                  )}
+                  className="w-full h-[320px] md:h-[390px] object-contain bg-[#F6F2E8]"
+                  loading="eager"
+                />
+                <figcaption className="font-sans text-[12px] text-[#777] px-3 pt-3 pb-1">
+                  {t(
+                    "Students, teachers and community members at Pratibha Samman 2026",
+                    "ପ୍ରତିଭା ସମ୍ମାନ ୨୦୨୬ରେ ଛାତ୍ରଛାତ୍ରୀ, ଶିକ୍ଷକ ଓ ସମୁଦାୟ ସଦସ୍ୟ"
+                  )}
+                </figcaption>
+              </figure>
+            </AnimatedSection>
+          </div>
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pillars.map((pillar: any, i: number) => {
-              const IconComp = PILLAR_ICONS[pillar.title] || Star;
-              return (
-                <AnimatedSection key={pillar.title} delay={i * 0.06}>
-                  <div className={`${pillar.accent === "gold" ? "light-card-gold" : "light-card"} p-6 h-full flex flex-col`}>
-                    <div className="flex items-center justify-between mb-4">
-                      <IconComp
-                        size={28}
-                        className={pillar.accent === "gold" ? "text-[#C9A84C]" : "text-[#1A7F8E]"}
-                      />
-                      <span className="font-mono text-[9px] tracking-wider uppercase bg-[#0A1628]/5 px-2 py-1 light-muted rounded-sm">
-                        {pillar.sdg}
+        <section id="vision" className="scroll-mt-24 py-20 md:py-28 bg-white">
+          <div className="container">
+            <AnimatedSection className="max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 md:gap-14 items-start">
+                <div>
+                  <p className="font-sans text-[11px] font-bold tracking-[0.2em] uppercase text-[#1A7F8E] mb-4">
+                    {t("Our Vision", "ଆମ ଦୃଷ୍ଟି")}
+                  </p>
+                  <div className="h-px w-20 bg-[#C9A84C]" />
+                </div>
+                <blockquote className="border-l-4 border-[#C9A84C] pl-7 md:pl-10">
+                  <p className="font-serif text-3xl md:text-5xl text-[#191919] leading-tight">
+                    {t(
+                      "A society where every person, especially children and families facing hardship, can live with dignity, continue learning and find timely support when it matters most.",
+                      "ଏମିତି ଏକ ସମାଜ, ଯେଉଁଠାରେ ପ୍ରତ୍ୟେକ ଲୋକ, ବିଶେଷ କରି କଷ୍ଟରେ ଥିବା ପିଲା ଓ ପରିବାର, ସମ୍ମାନ ସହ ବଞ୍ଚିପାରିବେ, ପଢ଼ା ଜାରି ରଖିପାରିବେ ଓ ଆବଶ୍ୟକ ସମୟରେ ସହାୟତା ପାଇପାରିବେ।"
+                    )}
+                  </p>
+                </blockquote>
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
+
+        <section
+          id="mission"
+          className="scroll-mt-24 py-20 md:py-28 bg-[#F8F6EF]"
+        >
+          <div className="container">
+            <AnimatedSection className="text-center mb-12 md:mb-16">
+              <p className="font-sans text-[11px] font-bold tracking-[0.2em] uppercase text-[#8B6914] mb-4">
+                {t("Our Mission", "ଆମ ଲକ୍ଷ୍ୟ")}
+              </p>
+              <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#191919] mb-5">
+                {t("Simple work that matters", "ସରଳ କିନ୍ତୁ ଜରୁରୀ କାମ")}
+              </h2>
+              <p className="font-sans text-[16px] text-[#555] max-w-2xl mx-auto leading-7">
+                {t(
+                  "We focus on practical support that can be verified, followed up and explained clearly.",
+                  "ଆମେ ଏମିତି ବ୍ୟବହାରିକ ସହାୟତାରେ ଧ୍ୟାନ ଦେଉ ଯାହାକୁ ଯାଞ୍ଚ, ଅନୁସରଣ ଓ ସ୍ପଷ୍ଟ ଭାବେ ବୁଝାଇ ହେବ।"
+                )}
+              </p>
+            </AnimatedSection>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+              {MISSION_ITEMS.map((item, index) => (
+                <AnimatedSection key={item.number} delay={index * 0.06}>
+                  <article className="h-full bg-white border border-[#E8E1D1] p-7 md:p-8 shadow-[0_10px_35px_rgba(26,32,28,0.05)]">
+                    <div className="flex items-start justify-between gap-4 mb-6">
+                      <div className="w-12 h-12 rounded-full bg-[#1A7F8E]/10 text-[#1A7F8E] flex items-center justify-center">
+                        <item.icon size={23} />
+                      </div>
+                      <span className="font-serif text-3xl text-[#C9A84C]/65">
+                        {item.number}
                       </span>
                     </div>
-                    <h3 className="font-serif text-lg font-bold light-heading mb-3">{pillar.title}</h3>
-                    <p className="font-sans text-[14px] light-body leading-relaxed flex-1">{pillar.desc}</p>
-                  </div>
+                    <h3 className="font-serif text-2xl font-bold text-[#191919] mb-3">
+                      {t(item.title.en, item.title.od)}
+                    </h3>
+                    <p className="font-sans text-[15px] text-[#555] leading-7">
+                      {t(item.body.en, item.body.od)}
+                    </p>
+                  </article>
                 </AnimatedSection>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== MASTER TIMELINE (from CMS) ===== */}
-      <section className="py-20 md:py-28 bg-[#0A1628]">
-        <div className="container">
-          <AnimatedSection className="text-center mb-16">
-            <p className="section-label mb-4">MASTER TIMELINE</p>
-            <h2 className="heading-xl text-white mb-4">
-              2026 <span className="text-[#C9A84C]">&rarr;</span> 2035
-            </h2>
-            <div className="gradient-rule mx-auto mb-6" />
-            <p className="font-sans text-[15px] text-white/60 max-w-xl mx-auto">
-              From foundation to impact — every year has a purpose.
-            </p>
-          </AnimatedSection>
-
-          <div className="max-w-3xl mx-auto">
-            {timeline.map((phase: any, i: number) => {
-              const IconComp = TIMELINE_ICONS[phase.title] || Calendar;
-              return (
-                <AnimatedSection key={phase.year} delay={i * 0.05}>
-                  <div className="flex gap-4 md:gap-6 mb-2">
-                    {/* Timeline line + icon */}
-                    <div className="flex flex-col items-center">
-                      <div
-                        className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shrink-0 ${
-                          phase.active
-                            ? "bg-[#C9A84C] text-[#0A1628]"
-                            : "bg-[#C9A84C]/10 text-[#C9A84C]"
-                        }`}
-                      >
-                        <IconComp size={18} />
-                      </div>
-                      {i < timeline.length - 1 && (
-                        <div className="w-px flex-1 bg-[#C9A84C]/20 min-h-[40px]" />
-                      )}
-                    </div>
-
-                    {/* Content */}
-                    <div className="pb-10">
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="font-mono text-[11px] tracking-[0.15em] uppercase font-bold text-[#C9A84C]">
-                          {phase.year}
-                        </span>
-                        {phase.active && (
-                          <span className="font-mono text-[8px] tracking-wider uppercase bg-[#C9A84C] text-[#0A1628] px-2 py-0.5 font-bold">
-                            CURRENT
-                          </span>
-                        )}
-                      </div>
-                      <h3 className="font-serif text-xl font-bold text-white mb-3">{phase.title}</h3>
-                      <ul className="space-y-2">
-                        {phase.items.map((item: string, j: number) => (
-                          <li key={j} className="flex items-start gap-2 font-sans text-[14px] text-white/55 leading-relaxed">
-                            <span className="text-[#1A7F8E] mt-1 shrink-0">&#9656;</span>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </AnimatedSection>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-
-
-      {/* ===== IMPACT TARGETS (LIGHT) ===== */}
-      <section className="py-20 md:py-28 section-light">
-        <div className="container">
-          <AnimatedSection className="text-center mb-16">
-            <p className="section-label-light mb-4">IMPACT TARGETS</p>
-            <h2 className="heading-xl light-heading mb-4">
-              What We Aim to <span className="text-[#C9A84C]">Achieve</span>
-            </h2>
-            <div className="gradient-rule-light mx-auto mb-6" />
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {impactTargets.map((stat: any, i: number) => (
-              <AnimatedSection key={stat.label} delay={i * 0.08}>
-                <div className="light-card p-6 text-center">
-                  <p className="font-serif text-3xl md:text-4xl font-bold text-[#C9A84C] mb-2">{stat.value}</p>
-                  <p className="font-sans text-[14px] light-heading mb-1">{stat.label}</p>
-                  <p className="font-mono text-[9px] tracking-wider uppercase light-muted">{stat.sub}</p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== CTA ===== */}
-      <section className="py-16 md:py-20 bg-[#C9A84C]">
-        <div className="container text-center">
-          <AnimatedSection>
-            <h2
-              className="font-serif font-bold text-[#0A1628] mb-4"
-              style={{ fontSize: "clamp(28px, 3.5vw, 48px)" }}
-            >
-              Be part of the vision.
-            </h2>
-            <p className="font-sans text-[15px] text-[#0A1628]/70 max-w-2xl mx-auto leading-relaxed mb-8">
-              Whether you want to fund a scholarship, partner on CSR, or simply spread the word — every action brings us closer to the school, the students, and the future we are building.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-3 bg-[#0A1628] text-[#C9A84C] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#06101F] transition-colors"
-              >
-                GET IN TOUCH <ArrowRight size={12} />
-              </Link>
-              <Link
-                href="/csr-partners"
-                className="inline-flex items-center gap-2 px-8 py-3 border border-[#0A1628]/30 text-[#0A1628] font-mono text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#0A1628]/10 transition-colors"
-              >
-                CSR PARTNERSHIP <ArrowRight size={12} />
-              </Link>
+              ))}
             </div>
-          </AnimatedSection>
-        </div>
-      </section>
+          </div>
+        </section>
+
+        <section id="values" className="scroll-mt-24 py-20 md:py-28 bg-white">
+          <div className="container">
+            <AnimatedSection className="max-w-3xl mb-12 md:mb-16">
+              <p className="font-sans text-[11px] font-bold tracking-[0.2em] uppercase text-[#1A7F8E] mb-4">
+                {t("Our Values", "ଆମ ମୂଲ୍ୟବୋଧ")}
+              </p>
+              <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#191919] mb-5">
+                {t("How we work with people", "ଆମେ ଲୋକଙ୍କ ସହ କିପରି କାମ କରୁ")}
+              </h2>
+              <p className="font-sans text-[16px] text-[#555] leading-7">
+                {t(
+                  "These values guide decisions in the field, use of funds, public communication and partnerships.",
+                  "ଏହି ମୂଲ୍ୟବୋଧ କ୍ଷେତ୍ର କାମ, ଅର୍ଥ ବ୍ୟବହାର, ସାର୍ବଜନୀନ ସୂଚନା ଓ ସହଭାଗିତାରେ ଆମ ନିଷ୍ପତ୍ତିକୁ ଦିଗ ଦେଉଛି।"
+                )}
+              </p>
+            </AnimatedSection>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
+              {VALUES.map((value, index) => (
+                <AnimatedSection
+                  key={value.title.en}
+                  delay={(index % 3) * 0.06}
+                  className={
+                    index < 3
+                      ? "lg:col-span-2"
+                      : index === 3
+                        ? "lg:col-start-2 lg:col-span-2"
+                        : "lg:col-span-2"
+                  }
+                >
+                  <article className="h-full bg-[#F8F6EF] border border-[#E8E1D1] overflow-hidden">
+                    <div className="h-52 bg-white border-b border-[#E8E1D1] flex items-center justify-center">
+                      <img
+                        src={value.image}
+                        alt={t(value.imageAlt.en, value.imageAlt.od)}
+                        className="w-full h-full object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="font-serif text-2xl font-bold text-[#191919] mb-3">
+                        {t(value.title.en, value.title.od)}
+                      </h3>
+                      <p className="font-sans text-[14px] text-[#555] leading-6">
+                        {t(value.body.en, value.body.od)}
+                      </p>
+                    </div>
+                  </article>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="people"
+          className="scroll-mt-24 py-20 md:py-28 bg-[#F8F6EF]"
+        >
+          <div className="container">
+            <AnimatedSection className="text-center mb-12 md:mb-16">
+              <p className="font-sans text-[11px] font-bold tracking-[0.2em] uppercase text-[#8B6914] mb-4">
+                {t("Our People", "ଆମ ଲୋକମାନେ")}
+              </p>
+              <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#191919] mb-5">
+                {t("People behind the work", "କାମ ପଛରେ ଥିବା ଲୋକମାନେ")}
+              </h2>
+              <p className="font-sans text-[16px] text-[#555] max-w-2xl mx-auto leading-7">
+                {t(
+                  "Governance, advice and field work are shown separately so the public can understand who is responsible for what.",
+                  "ପରିଚାଳନା, ପରାମର୍ଶ ଓ କ୍ଷେତ୍ର କାମକୁ ଅଲଗା ଭାବେ ଦର୍ଶାଯାଇଛି, ଯାହାଦ୍ୱାରା କିଏ କେଉଁ କାମ ପାଇଁ ଦାୟୀ ତାହା ସାଧାରଣ ଲୋକ ବୁଝିପାରିବେ।"
+                )}
+              </p>
+            </AnimatedSection>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {PEOPLE_GROUPS.map((group, index) => (
+                <AnimatedSection key={group.title.en} delay={index * 0.08}>
+                  <article className="h-full bg-white border border-[#E8E1D1] overflow-hidden shadow-[0_12px_38px_rgba(26,32,28,0.06)] flex flex-col">
+                    <div className="h-64 bg-[#F6F2E8] flex items-center justify-center border-b border-[#E8E1D1]">
+                      <img
+                        src={group.image}
+                        alt={t(group.imageAlt.en, group.imageAlt.od)}
+                        className="w-full h-full object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-7 flex flex-col flex-1">
+                      <p className="font-sans text-[10px] font-bold tracking-[0.18em] uppercase text-[#1A7F8E] mb-3">
+                        {t(group.label.en, group.label.od)}
+                      </p>
+                      <h3 className="font-serif text-2xl font-bold text-[#191919] mb-2">
+                        {t(group.title.en, group.title.od)}
+                      </h3>
+                      <p className="font-sans text-[13px] font-semibold text-[#8B6914] mb-4">
+                        {index === 0 && publishedBoardCount > 0
+                          ? t(
+                              `${publishedBoardCount} confirmed directors`,
+                              `${publishedBoardCount} ଜଣ ନିଶ୍ଚିତ ନିର୍ଦ୍ଦେଶକ`
+                            )
+                          : index === 1 && publishedAdvisorCount > 0
+                            ? t(
+                                `${publishedAdvisorCount} confirmed advisors`,
+                                `${publishedAdvisorCount} ଜଣ ନିଶ୍ଚିତ ପରାମର୍ଶଦାତା`
+                              )
+                            : t(group.count.en, group.count.od)}
+                      </p>
+                      <p className="font-sans text-[14px] text-[#555] leading-6 mb-6 flex-1">
+                        {t(group.body.en, group.body.od)}
+                      </p>
+                      <Link
+                        href={group.href}
+                        className="inline-flex items-center gap-2 font-sans text-[13px] font-bold text-[#1A7F8E] hover:text-[#11636F] transition-colors active:scale-[0.97]"
+                      >
+                        {t(
+                          "See confirmed profiles",
+                          "ନିଶ୍ଚିତ ପ୍ରୋଫାଇଲ ଦେଖନ୍ତୁ"
+                        )}{" "}
+                        <ArrowRight size={15} />
+                      </Link>
+                    </div>
+                  </article>
+                </AnimatedSection>
+              ))}
+            </div>
+
+            <AnimatedSection className="max-w-4xl mx-auto mt-10">
+              <div className="bg-[#F4FAF9] border-l-4 border-[#1A7F8E] px-6 py-5 flex items-start gap-3">
+                <ShieldCheck
+                  size={20}
+                  className="text-[#1A7F8E] shrink-0 mt-0.5"
+                />
+                <p className="font-sans text-[14px] text-[#3F5653] leading-6">
+                  {t(
+                    "Only confirmed public roles are shown. Advisors, ground team members and volunteers are not shown as directors.",
+                    "କେବଳ ନିଶ୍ଚିତ ସାର୍ବଜନୀନ ଭୂମିକା ଦର୍ଶାଯାଇଛି। ପରାମର୍ଶଦାତା, କ୍ଷେତ୍ର ଦଳ ସଦସ୍ୟ ଓ ସ୍ୱେଚ୍ଛାସେବୀଙ୍କୁ ନିର୍ଦ୍ଦେଶକ ଭାବେ ଦର୍ଶାଯାଇନାହିଁ।"
+                  )}
+                </p>
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
+
+        <section className="py-20 md:py-24 bg-[#1A7F8E]">
+          <div className="container max-w-3xl text-center">
+            <AnimatedSection>
+              <Heart size={34} className="text-[#F6D77A] mx-auto mb-5" />
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
+                {t(
+                  "Stand with work you can see",
+                  "ଦେଖିପାରୁଥିବା କାମ ସହ ଠିଆ ହୁଅନ୍ତୁ"
+                )}
+              </h2>
+              <p className="font-sans text-[16px] text-white/85 leading-7 mb-8">
+                {t(
+                  "Read our public activity records, ask questions and choose how you would like to support the work.",
+                  "ଆମ ସାର୍ବଜନୀନ କାର୍ଯ୍ୟ ରେକର୍ଡ ପଢ଼ନ୍ତୁ, ପ୍ରଶ୍ନ ପଚାରନ୍ତୁ ଓ କାମକୁ କିପରି ସହଯୋଗ କରିବେ ତାହା ଚୟନ କରନ୍ତୁ।"
+                )}
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link
+                  href="/impact"
+                  className="inline-flex items-center gap-2 px-7 py-3 bg-[#C9A84C] text-[#191919] font-sans text-[13px] font-bold hover:bg-[#D7B95F] transition-colors active:scale-[0.97]"
+                >
+                  {t("See Monthly Impact", "ମାସିକ ପ୍ରଭାବ ଦେଖନ୍ତୁ")}{" "}
+                  <ArrowRight size={15} />
+                </Link>
+                <Link
+                  href="/volunteer"
+                  className="inline-flex items-center gap-2 px-7 py-3 border border-white/45 text-white font-sans text-[13px] font-bold hover:bg-white/10 transition-colors active:scale-[0.97]"
+                >
+                  <Handshake size={16} />{" "}
+                  {t("Volunteer with Abhiara", "ଅଭିଆରା ସହ ସ୍ୱେଚ୍ଛାସେବା କରନ୍ତୁ")}
+                </Link>
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>

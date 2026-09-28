@@ -1,0 +1,127 @@
+{
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "dist/public",
+  "installCommand": "pnpm install",
+  "functions": {
+    "api/index.ts": {
+      "maxDuration": 30,
+      "includeFiles": "server/**/*.ts,shared/**/*.ts,drizzle/**/*.ts"
+    }
+  },
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "abhiarafoundation.org" }],
+      "destination": "https://www.abhiarafoundation.org/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "abhiarafoundation.com" }],
+      "destination": "https://www.abhiarafoundation.org/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.abhiarafoundation.com" }],
+      "destination": "https://www.abhiarafoundation.org/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/programs",
+      "destination": "/shiksha-sathi",
+      "permanent": true
+    },
+    {
+      "source": "/activities",
+      "destination": "/monthly-reports",
+      "permanent": true
+    },
+    {
+      "source": "/impact",
+      "destination": "/student-impact",
+      "permanent": true
+    },
+    {
+      "source": "/gallery",
+      "destination": "/monthly-reports",
+      "permanent": true
+    },
+    {
+      "source": "/media",
+      "destination": "/press-and-media",
+      "permanent": true
+    },
+    {
+      "source": "/press-media",
+      "destination": "/press-and-media",
+      "permanent": true
+    },
+    {
+      "source": "/public-awareness",
+      "destination": "/rti-human-rights-awareness",
+      "permanent": true
+    },
+    {
+      "source": "/rti-and-human-rights",
+      "destination": "/rti-human-rights-awareness",
+      "permanent": true
+    },
+    {
+      "source": "/rural-transformation",
+      "destination": "/rural-area-transformation",
+      "permanent": true
+    },
+    {
+      "source": "/pratibha-samman",
+      "destination": "/abhiara-pratibha-samman",
+      "permanent": true
+    },
+    {
+      "source": "/elder-care",
+      "destination": "/elder-care-and-dignity",
+      "permanent": true
+    },
+    {
+      "source": "/csr-partners",
+      "destination": "/partners-and-supporters",
+      "permanent": true
+    },
+    {
+      "source": "/team",
+      "destination": "/board-and-transparency",
+      "permanent": true
+    },
+    {
+      "source": "/governance",
+      "destination": "/board-and-transparency",
+      "permanent": true
+    },
+    {
+      "source": "/vision",
+      "destination": "/abhiara-vidyapitha",
+      "permanent": true
+    },
+    {
+      "source": "/donate-for-occasion",
+      "destination": "/birthday-with-purpose",
+      "permanent": true
+    },
+    {
+      "source": "/celebrate",
+      "destination": "/birthday-with-purpose",
+      "permanent": true
+    },
+    {
+      "source": "/birthday",
+      "destination": "/birthday-with-purpose",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    { "source": "/api/trpc/:path*", "destination": "/api" },
+    { "source": "/api/oauth/:path*", "destination": "/api" },
+    { "source": "/manus-storage/:path*", "destination": "/api" },
+    { "source": "/((?!api|manus-storage).*)", "destination": "/index.html" }
+  ]
+}

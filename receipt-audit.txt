@@ -1,0 +1,87 @@
+client/src/components/Footer.tsx:183:              <p className="font-sans text-[11px] text-[#888]">{t("12A and 80G Status", "12A ଓ 80G ସ୍ଥିତି")}</p>
+client/src/pages/Admin.tsx:1365:            <label className="text-xs font-mono uppercase tracking-wider text-[#888] mb-1 block">PAN (for 80G receipt)</label>
+client/src/pages/BankTransfer.tsx:199:                  titleEn: "Receive Your Receipt",
+client/src/pages/BankTransfer.tsx:201:                  descEn: "We'll send an official donation receipt within 24 hours of verification.",
+client/src/pages/Donate.tsx:235:              <Building2 size={12} className="text-[#F5A623]" /> {t("80G Under Process", "80G ପ୍ରକ୍ରିୟାରେ ଅଛି")}
+client/src/pages/Donate.tsx:431:                            "80G approval is under process. Donations made now are not eligible for an 80G tax deduction. We can provide a Donation Acknowledgement.",
+client/src/pages/Donate.tsx:432:                            "80G ଅନୁମୋଦନ ପ୍ରକ୍ରିୟାରେ ଅଛି। ବର୍ତ୍ତମାନର ଦାନ 80G କର ରିହାତି ପାଇଁ ଯୋଗ୍ୟ ନୁହେଁ। ଆମେ ଦାନ ସ୍ୱୀକୃତି ପତ୍ର ଦେଇପାରିବୁ।",
+client/src/pages/Donate.tsx:564:                    "After a direct UPI or bank payment, email the payment reference to info@abhiarafoundation.org if you need a Donation Acknowledgement.",
+client/src/pages/Donate.tsx:594:                q: t("Is an 80G tax deduction available?", "80G କର ରିହାତି ମିଳିବ କି?"),
+client/src/pages/Donate.tsx:596:                  "Not yet. Our 80G approval is under process. Donations made now are not eligible for an 80G tax deduction. We can provide a Donation Acknowledgement.",
+client/src/pages/Donate.tsx:597:                  "ଏଯାବତ ନୁହେଁ। ଆମ 80G ଅନୁମୋଦନ ପ୍ରକ୍ରିୟାରେ ଅଛି। ବର୍ତ୍ତମାନର ଦାନ 80G କର ରିହାତି ପାଇଁ ଯୋଗ୍ୟ ନୁହେଁ। ଆମେ ଦାନ ସ୍ୱୀକୃତି ପତ୍ର ଦେଇପାରିବୁ।",
+client/src/pages/DonateForOccasion.tsx:725:                      <label className="block text-xs font-medium text-[#333]/70 mb-1">{t("PAN (for 80G receipt)", "PAN (80G ରସିଦ ପାଇଁ)")}</label>
+client/src/pages/DonateForOccasion.tsx:866:                      "Section 8 Company \u00B7 CIN: U87300MH2026NPL471397 \u00B7 80G tax exemption in process. Every rupee goes to our programmes.",
+client/src/pages/DonateForOccasion.tsx:867:                      "ଧାରା ୮ କମ୍ପାନୀ \u00B7 CIN: U87300MH2026NPL471397 \u00B7 80G ଟ୍ୟାକ୍ସ ଛାଡ ପ୍ରକ୍ରିୟାରେ। ପ୍ରତ୍ୟେକ ଟଙ୍କା ମିଶନ-ବଦ୍ଧ।"
+client/src/pages/DonateInMemory.tsx:673:                        {t("PAN Number (for 80G receipt)", "PAN ନମ୍ବର (80G ରସିଦ ପାଇଁ)")}
+client/src/pages/DonateInMemory.tsx:704:                    {t("SECURE · TAX BENEFIT (80G IN PROCESS) · MISSION-BOUND", "ସୁରକ୍ଷିତ · କର ସୁବିଧା (80G ପ୍ରକ୍ରିୟାରେ) · ମିଶନ-ବାଧ୍ୟ")}
+client/src/pages/DonateInMemory.tsx:787:                      <span>{t("80G Tax Benefit (in process)", "80G କର ସୁବିଧା (ପ୍ରକ୍ରିୟାରେ)")}</span>
+client/src/pages/DonorDashboard.tsx:4: * download 80G receipts, and manage monthly subscriptions.
+client/src/pages/DonorDashboard.tsx:9:import { Download, Receipt, Calendar, IndianRupee, Heart, Mail, ArrowRight, XCircle, CheckCircle, Clock } from "lucide-react";
+client/src/pages/DonorDashboard.tsx:43:              <Receipt size={48} className="text-[#F5A623] mx-auto mb-4" />
+client/src/pages/DonorDashboard.tsx:46:                Access your donation history, download 80G receipts, and manage your monthly subscriptions.
+client/src/pages/DonorDashboard.tsx:221:                <Receipt size={20} className="text-[#F5A623] mb-2" />
+client/src/pages/DonorDashboard.tsx:276:                <Receipt size={18} className="text-[#F5A623]" /> Donation History
+client/src/pages/DonorDashboard.tsx:307:                              toast.info("80G receipt download will be available once Razorpay is connected. Please contact info@abhiarafoundation.org for your receipt.");
+client/src/pages/DonorDashboard.tsx:311:                            <Download size={12} /> 80G Receipt
+client/src/pages/DonorDashboard.tsx:330:          {/* 80G Tax Info */}
+client/src/pages/DonorDashboard.tsx:334:                <Receipt size={16} className="text-[#F5A623]" /> About 80G Tax Receipts
+client/src/pages/DonorDashboard.tsx:337:                <p>• All donations to Abhiara Foundation are eligible for 50% tax deduction under Section 80G of the Income Tax Act.</p>
+client/src/pages/DonorDashboard.tsx:338:                <p>• 80G receipts are generated automatically for completed donations where PAN number is provided.</p>
+client/src/pages/DonorDashboard.tsx:339:                <p>• Receipts are available for download within 48 hours of payment confirmation.</p>
+client/src/pages/DonorDashboard.tsx:340:                <p>• For any receipt-related queries, email us at <a href="mailto:info@abhiarafoundation.org" className="text-[#F5A623] hover:underline">info@abhiarafoundation.org</a></p>
+client/src/pages/FAQ.tsx:114:        questionEn: "Will I receive a receipt, and is 80G available?",
+client/src/pages/FAQ.tsx:115:        questionOd: "ମୁଁ ରସିଦ ପାଇବି କି, ଏବଂ 80G ଉପଲବ୍ଧ କି?",
+client/src/pages/FAQ.tsx:117:          "We can provide a Donation Acknowledgement. Our 80G approval is under process, so donations made now are not eligible for an 80G tax deduction.",
+client/src/pages/FAQ.tsx:119:          "ଆମେ ଦାନ ସ୍ୱୀକୃତି ପତ୍ର ଦେଇପାରିବୁ। ଆମର 80G ଅନୁମୋଦନ ପ୍ରକ୍ରିୟାରେ ଅଛି, ତେଣୁ ବର୍ତ୍ତମାନ କରାଯାଇଥିବା ଦାନ 80G କର ରିହାତି ପାଇଁ ଯୋଗ୍ୟ ନୁହେଁ।",
+client/src/pages/FAQ.tsx:186:          "Clear answers about Abhiara Foundation, our work, donations, 80G status, privacy, and volunteering.",
+client/src/pages/FAQ.tsx:187:          "ଅଭିଆରା ଫାଉଣ୍ଡେସନ, ଆମ କାମ, ଦାନ, 80G ସ୍ଥିତି, ଗୋପନୀୟତା ଓ ସ୍ୱେଚ୍ଛାସେବା ବିଷୟରେ ସ୍ପଷ୍ଟ ଉତ୍ତର।",
+client/src/pages/Financials.tsx:26:    title: "80G Tax Exemption Certificate",
+client/src/pages/Financials.tsx:27:    titleOd: "80G ଟ୍ୟାକ୍ସ ଛାଡ଼ ପ୍ରମାଣପତ୍ର",
+client/src/pages/Governance.tsx:228:                      <td className="py-3 font-sans text-[14px] text-[#888]">{t("80G Certification", "80G ପ୍ରମାଣପତ୍ର")}</td>
+client/src/pages/Home.tsx:907:              { icon: Award, label: t("80G Status", "80G ସ୍ଥିତି"), detail: t("Application pending", "ଆବେଦନ ବିଚାରାଧୀନ") },
+client/src/pages/Home.tsx:948:                q: t("Will I get a tax receipt for my donation?", "ମୋ ଦାନ ପାଇଁ ଟ୍ୟାକ୍ସ ରସିଦ ମିଳିବ କି?"),
+client/src/pages/Home.tsx:949:                a: t("We can provide a Donation Acknowledgement. Our 80G approval is under process, so donations made now are not eligible for an 80G tax deduction.", "ଆମେ ଦାନ ସ୍ୱୀକୃତି ପତ୍ର ଦେଇପାରିବୁ। ଆମର 80G ଅନୁମୋଦନ ପ୍ରକ୍ରିୟାରେ ଅଛି, ତେଣୁ ବର୍ତ୍ତମାନ କରାଯାଇଥିବା ଦାନ 80G କର ରିହାତି ପାଇଁ ଯୋଗ୍ୟ ନୁହେଁ।"),
+client/src/pages/OurStory.tsx:378:                  { label: "80G", value: "In Process", active: false },
+client/src/pages/Privacy.tsx:64:              <li className="font-sans text-[17px] text-[#333]">{t("To process donations and issue receipts", "ଦାନ ପ୍ରକ୍ରିୟା ଏବଂ ରସିଦ ପ୍ରଦାନ ପାଇଁ")}</li>
+client/src/pages/Sponsor.tsx:334:                { icon: Check, labelEn: "80G Tax Exemption (In Process)", labelOd: "80G ଟ୍ୟାକ୍ସ ଛାଡ଼ (ପ୍ରକ୍ରିୟାରେ)" },
+client/src/pages/Team.tsx:434:                desc: "All MCA filings, IT returns, 12A/80G renewals, and statutory audits managed by CMA-qualified founder. Only external cost: statutory audit fee.",
+client/src/pages/Terms.tsx:70:                "All donations to Abhiara Foundation are voluntary. Abhiara Foundation is currently in the process of obtaining 80G and 12A registrations under the Income Tax Act, 1961. Until such registrations are obtained, donors may not be eligible for tax deductions. We do not accept cash donations. No person is authorised to collect donations on behalf of Abhiara Foundation unless explicitly authorised in writing by the Board of Directors. Abhiara Foundation does not guarantee any specific outcomes from donations.",
+server/donation.test.ts:25:        donorName: "Test Donor",
+server/donation.test.ts:40:        donorName: "Test Donor",
+server/new-features.test.ts:22:      donorName: "Test Donor",
+server/new-features.test.ts:37:      donorName: "Test Donor 2",
+server/new-features.test.ts:51:      donorName: "Test Donor 3",
+server/routers.ts:194:            receipt: `donation_${donationResult.id}`,
+server/routers.ts:317:          body: JSON.stringify({ amount: input.amount * 100, currency: "INR", receipt: `memorial_${result.id}`, notes: { type: "memorial", honoreeName: input.honoreeName, donorName: input.donorName } }),
+server/routers.ts:401:          body: JSON.stringify({ amount: input.amount * 100, currency: "INR", receipt: `occasion_${result.id}`, notes: { type: "occasion", occasion: input.occasion, celebrantName: input.celebrantName, donorName: input.donorName } }),
+drizzle/schema.ts:263:  /** PAN number for 80G receipt (optional) */
+drizzle/schema.ts:312:  /** PAN number for 80G receipt (optional) */
+drizzle/schema.ts:350:  /** PAN number for 80G receipt (optional) */
+drizzle/schema.ts:454:  /** PAN number for 80G receipts */
+donation-page-audit.md:7:The useful parts are the one-time amount choices, cause selection, donor details, anonymous amount preference, Razorpay payment button, direct UPI QR, bank transfer details, 80G pending notice, and short FAQ. The repeated impact statements, secondary quote blocks, inactive monthly option, detailed gift-designation list, memorial and occasion promotions, and duplicated compliance information make the page feel heavy.
+donation-page-audit.md:13:CRY presents a clear hero and places the donation form high on the page. It asks for citizenship, frequency, amount, identity, address, PAN, and declaration information. It has strong trust language and valid 80G claims, but the page is also long. The useful pattern for Abhiara is a direct amount-to-details flow. Abhiara should not copy CRY's 80G language because Abhiara's approval is still under process.
+language-audit-notes.md:11:The donation hero trust labels remain in English: Section 8 Company, Razorpay Secure Payment, and 80G Under Process.
+live-deployment-audit.md:24:The live `/careers` route correctly redirects to `/volunteer` and preserves the query string. The live donation page contains the one-time Razorpay form, accurate 80G pending wording, the `❤️🙏 Donation` label, three real support photos, and the current compliance details. The payment form was not submitted. The QR merchant-number privacy treatment could not be confirmed from the initial viewport because the QR section is lower on the page.
+reference-notes.md:5:Top bar: "Section 8 · 80G & 12A · CSR-1 Registered". Clean serif headings.
+reference-notes.md:10:Donation form with PAN field for 80G. Impact banner showing "11 million children" stats.
+todo.md:273:- [x] Roshani feedback: Add 80G registration note/status on Donate, Home, Footer
+todo.md:280:- [x] Verify 80G section shows "In Process" status correctly
+todo.md:340:- [x] Add legal disclaimer about 80G/12A status (in process) (shown on Donate, Footer, Home)
+todo.md:343:- [x] Review all pages for false tax benefit claims (all say 80G In Process, no false claims)
+todo.md:408:- [x] DONATION V2: Trust signals section (Section 8, CIN, 80G status)
+todo.md:418:- [x] Test donation flow end-to-end (6 vitest tests passing)
+todo.md:447:- [x] AKSHAYA PATRA GAP: Create "Tax Exemption / 80G FAQs" page (10 FAQs, registration status cards)
+todo.md:472:- [x] FEATURE: Build Donor Dashboard page (/donor-dashboard) with receipt download, subscription management
+todo.md:474:- [x] FEATURE: Add donor dashboard tRPC procedures (profile, receipts, subscriptions)
+todo.md:695:- [x] Add compliance disclosure section (CIN, registered office, 12A/80G status) — per Platform Upgrade Report
+todo.md:727:- [x] Add donor trust badges to Donate page (Section 8, 80G pending, audited accounts)
+todo.md:746:- [x] Remove 80G tax deduction claims while approval is under process and use "Donation Acknowledgement" wording
+todo.md:772:- [x] Preserve accurate 80G under-process and no-auto-debit wording
+todo.md:840:- [ ] Audit every public page, component, route, test, fixture, download, and message for fake, sample, mock, placeholder, or fabricated donation receipts
+todo.md:841:- [ ] Keep only accurate Donation Acknowledgement wording while 80G approval remains pending
+todo.md:842:- [ ] Remove demo receipt displays, fabricated receipt numbers, sample donor records, and unsupported automatic tax-receipt claims from public code
+todo.md:843:- [ ] Preserve real Razorpay payments and real donor records during the receipt cleanup
+todo.md:845:- [ ] Verify receipt and acknowledgement wording in English and Odia on desktop and mobile
+upgrade-report-notes.md:17:2. **Compliance disclosure** - CIN, PAN, 12A/80G status, NGO Darpan ID NOT displayed
+upgrade-report-notes.md:29:- Add compliance page: CIN U87300MH2026NPL471397, PAN, registered office, 12A/80G status, NGO Darpan ID
+upgrade-report-notes.md:30:- Donate page with payment gateway (once 80G in hand)

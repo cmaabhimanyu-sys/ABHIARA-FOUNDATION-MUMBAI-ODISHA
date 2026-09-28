@@ -1,0 +1,1033 @@
+{
+  "_README": "This is the master image registry for the Abhiara Foundation website. To add a new image: 1) Drop the file in this folder (public/images/), 2) Add an entry below with the filename and category, 3) Push to GitHub. The website will pick it up automatically.",
+  "_CATEGORIES": "hero, education, elderly-care, team, gallery, brand, news, fire-relief, pratibha-samman, water-camp, community, csr, animal-welfare, child-home, donate, family-support, shiksha-sathi, independence-day-books, reference",
+  "_VIDEOS_NOTE": "Videos are too large for Git. They stay on CDN and are listed in the 'videos' section below.",
+  "images": [
+    {
+      "file": "hero-dawn.webp",
+      "category": "hero",
+      "slot": "hero-slide-1",
+      "alt": "Dawn breaking over Odisha landscape",
+      "caption": ""
+    },
+    {
+      "file": "founder-journey.webp",
+      "category": "hero",
+      "slot": "hero-slide-2",
+      "alt": "Founder's journey from village to city",
+      "caption": ""
+    },
+    {
+      "file": "education-village-session.jpeg",
+      "category": "hero",
+      "slot": "hero-slide-3",
+      "alt": "Education session in a village school",
+      "caption": ""
+    },
+    {
+      "file": "elderly-care-visit-1.jpeg",
+      "category": "hero",
+      "slot": "hero-slide-4",
+      "alt": "Visiting elders in a village",
+      "caption": ""
+    },
+    {
+      "file": "brand-girl.png",
+      "category": "brand",
+      "slot": "brand-girl",
+      "alt": "Abhiara Foundation brand visual",
+      "caption": ""
+    },
+    {
+      "file": "team-abhimanyu-mallik.png",
+      "category": "team",
+      "slot": "team-founder",
+      "alt": "Abhimanyu Mallik — Founder & Director",
+      "caption": "Abhimanyu Mallik"
+    },
+    {
+      "file": "team-manoj-kumar-mallik.jpeg",
+      "category": "team",
+      "slot": "team-manoj",
+      "alt": "Manoj Kumar Mallik — Advisor",
+      "caption": "Manoj Kumar Mallik"
+    },
+    {
+      "file": "team-sagar-jena.png",
+      "category": "team",
+      "slot": "team-sagar",
+      "alt": "Sagar Jena — Team Member",
+      "caption": "Sagar Jena"
+    },
+    {
+      "file": "team-advocate-sujit-sahu.png",
+      "category": "team",
+      "slot": "team-sujit",
+      "alt": "Advocate Sujit Sahu — Legal Advisor",
+      "caption": "Advocate Sujit Sahu"
+    },
+    {
+      "file": "team-bharat-panigrahy.png",
+      "category": "team",
+      "slot": "team-bharat",
+      "alt": "Bharat Panigrahy — Advisor",
+      "caption": "Bharat Panigrahy"
+    },
+    {
+      "file": "team-amit-kumar-jena.jpeg",
+      "category": "team",
+      "slot": "team-amit-kumar-jena",
+      "alt": "Amit Kumar Jena, Founding Patron and Strategic Advisor",
+      "caption": "Amit Kumar Jena"
+    },
+    {
+      "file": "team-bhubaneswar.jpeg",
+      "category": "team",
+      "slot": "team-group",
+      "alt": "Abhiara Foundation team in Bhubaneswar",
+      "caption": ""
+    },
+    {
+      "file": "education-children-1.jpeg",
+      "category": "education",
+      "slot": "education-main",
+      "alt": "Children in a village classroom",
+      "caption": ""
+    },
+    {
+      "file": "education-children-hero.webp",
+      "category": "education",
+      "slot": "education-hero",
+      "alt": "Children learning together",
+      "caption": ""
+    },
+    {
+      "file": "education-village-session.jpeg",
+      "category": "education",
+      "slot": "education-village",
+      "alt": "Education session in a village",
+      "caption": ""
+    },
+    {
+      "file": "education-classroom-session.jpeg",
+      "category": "education",
+      "slot": "education-classroom",
+      "alt": "Classroom teaching session",
+      "caption": ""
+    },
+    {
+      "file": "education-classroom-teaching.jpeg",
+      "category": "education",
+      "slot": "education-teaching",
+      "alt": "Teacher with students in classroom",
+      "caption": ""
+    },
+    {
+      "file": "education-outdoor-session.jpeg",
+      "category": "education",
+      "slot": "education-outdoor",
+      "alt": "Outdoor learning session",
+      "caption": ""
+    },
+    {
+      "file": "education-outdoor-class.jpeg",
+      "category": "education",
+      "slot": "education-outdoor-2",
+      "alt": "Children in outdoor class",
+      "caption": ""
+    },
+    {
+      "file": "education-book-distribution.jpeg",
+      "category": "education",
+      "slot": "education-books",
+      "alt": "Book distribution to students",
+      "caption": ""
+    },
+    {
+      "file": "education-classroom-gathered.jpeg",
+      "category": "education",
+      "slot": "education-gathered",
+      "alt": "Children gathered in classroom",
+      "caption": ""
+    },
+    {
+      "file": "elderly-care-visit-1.jpeg",
+      "category": "elderly-care",
+      "slot": "elderly-main",
+      "alt": "Visiting elders in a village",
+      "caption": ""
+    },
+    {
+      "file": "elderly-care-visit-2.jpeg",
+      "category": "elderly-care",
+      "slot": "elderly-visit-2",
+      "alt": "Elder care visit",
+      "caption": ""
+    },
+    {
+      "file": "elderly-care-visit-3.jpeg",
+      "category": "elderly-care",
+      "slot": "elderly-visit-3",
+      "alt": "Spending time with elders",
+      "caption": ""
+    },
+    {
+      "file": "elderly-care-meal.jpeg",
+      "category": "elderly-care",
+      "slot": "elderly-meal",
+      "alt": "Serving meals to elders",
+      "caption": ""
+    },
+    {
+      "file": "elderly-care-celebration.jpeg",
+      "category": "elderly-care",
+      "slot": "elderly-celebration",
+      "alt": "Celebration with elders",
+      "caption": ""
+    },
+    {
+      "file": "elderly-care-village-outreach.jpeg",
+      "category": "elderly-care",
+      "slot": "elderly-outreach",
+      "alt": "Village elder outreach programme",
+      "caption": ""
+    },
+    {
+      "file": "water-camp-serving.jpeg",
+      "category": "water-camp",
+      "slot": "water-camp-serving",
+      "alt": "Serving water at community camp",
+      "caption": ""
+    },
+    {
+      "file": "water-camp-children.jpeg",
+      "category": "water-camp",
+      "slot": "water-camp-children",
+      "alt": "Children at water camp",
+      "caption": ""
+    },
+    {
+      "file": "water-camp-crowd.jpeg",
+      "category": "water-camp",
+      "slot": "water-camp-crowd",
+      "alt": "Crowd at water distribution camp",
+      "caption": ""
+    },
+    {
+      "file": "water-camp-setup.jpeg",
+      "category": "water-camp",
+      "slot": "water-camp-setup",
+      "alt": "Setting up water camp",
+      "caption": ""
+    },
+    {
+      "file": "community-village-shop-banner.jpeg",
+      "category": "community",
+      "slot": "community-banner",
+      "alt": "Abhiara Foundation banner at village shop",
+      "caption": ""
+    },
+    {
+      "file": "pratibha-samman-top3.jpeg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-top3",
+      "alt": "Abhiara Pratibha Samman 2026 — Top 3 students with trophies and certificates",
+      "caption": "Top 3 students of Raisar Kharisan High School honoured with trophies, medals, and certificates. 4th June 2026, Garadpur, Kendrapara.",
+      "location": "Raisar, Garadpur, Kendrapara, Odisha"
+    },
+    {
+      "file": "pratibha-samman-group.jpeg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-group",
+      "alt": "Abhiara Pratibha Samman 2026 — Full group photo of all honoured students, teachers, and guests",
+      "caption": "All 57 honoured students with teachers, school committee members, and Abhiara Foundation team at the Pratibha Samman 2026 ceremony.",
+      "location": "Raisar, Garadpur, Kendrapara, Odisha"
+    },
+    {
+      "file": "pratibha-samman-certificate.jpeg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-certificate",
+      "alt": "Abhiara Pratibha Samman 2026 — Student receiving certificate on stage",
+      "caption": "A student receives her certificate and trophy at the ceremony.",
+      "location": "Raisar, Garadpur, Kendrapara, Odisha"
+    },
+    {
+      "file": "pratibha-samman-media-interview.jpeg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-media",
+      "alt": "Abhiara Pratibha Samman 2026 — Student being interviewed by media",
+      "caption": "Award-winning student being interviewed by local media.",
+      "location": "Raisar, Garadpur, Kendrapara, Odisha"
+    },
+    {
+      "file": "pratibha-samman-students-media.jpeg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-students-media",
+      "alt": "Abhiara Pratibha Samman 2026 — Students speaking to media",
+      "caption": "Students with their trophies speaking to local media.",
+      "location": "Raisar, Garadpur, Kendrapara, Odisha"
+    },
+    {
+      "file": "pratibha-samman-trophies.jpeg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-trophies",
+      "alt": "Abhiara Pratibha Samman 2026 — Students with Abhiara Foundation trophy",
+      "caption": "Students proudly holding their Abhiara Foundation trophies and certificates.",
+      "location": "Raisar, Garadpur, Kendrapara, Odisha"
+    },
+    {
+      "file": "pratibha-samman-committee.jpeg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-committee",
+      "alt": "Abhiara Pratibha Samman 2026 — School committee members interviewed",
+      "caption": "School committee members and guests being interviewed by media.",
+      "location": "Raisar, Garadpur, Kendrapara, Odisha"
+    },
+    {
+      "file": "pratibha-samman-sruti-news.jpg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-sruti-news",
+      "alt": "Abhiara Pratibha Samman 2026 — Sruti News newspaper coverage",
+      "caption": "Sruti News coverage of Abhiara Pratibha Samman 2026.",
+      "location": "Raisar, Garadpur, Kendrapara, Odisha"
+    },
+    {
+      "file": "pratibha-samman-newspaper.jpg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-newspaper",
+      "alt": "Abhiara Pratibha Samman 2026 — Newspaper coverage",
+      "caption": "Newspaper coverage: 28 students honoured at Raisar Kharisan High School.",
+      "location": "Raisar, Garadpur, Kendrapara, Odisha"
+    },
+    {
+      "file": "pratibha-samman-sambad.jpg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-sambad",
+      "alt": "Abhiara Pratibha Samman 2026 — Sambad newspaper coverage (Kendrapara Edition)",
+      "caption": "Sambad newspaper (Kendrapara Edition, Page 2, June 5 2026) coverage.",
+      "location": "Raisar, Garadpur, Kendrapara, Odisha"
+    },
+    {
+      "file": "fire-relief-distribution.jpeg",
+      "category": "fire-relief",
+      "slot": "fire-relief-1",
+      "alt": "Fire disaster relief — distributing clothes and groceries to affected family",
+      "caption": "Abhiara Foundation provided clothes, rice, and grocery essentials to a family who lost everything in a fire. Kankili village, Parjang block, Dhenkanal, Odisha. June 2026.",
+      "location": "Kankili, Parjang, Dhenkanal, Odisha"
+    },
+    {
+      "file": "fire-relief-supplies.jpeg",
+      "category": "fire-relief",
+      "slot": "fire-relief-2",
+      "alt": "Fire disaster relief — handing over supplies to the family",
+      "caption": "Handing over clothes and essentials to the fire-affected family.",
+      "location": "Kankili, Parjang, Dhenkanal, Odisha"
+    },
+    {
+      "file": "gallery-water-camp-1.jpg",
+      "category": "gallery",
+      "slot": "gallery-water-1",
+      "alt": "Water distribution camp",
+      "caption": ""
+    },
+    {
+      "file": "gallery-water-camp-2.jpg",
+      "category": "gallery",
+      "slot": "gallery-water-2",
+      "alt": "Water distribution camp",
+      "caption": ""
+    },
+    {
+      "file": "gallery-water-camp-3.jpg",
+      "category": "gallery",
+      "slot": "gallery-water-3",
+      "alt": "Water distribution camp",
+      "caption": ""
+    },
+    {
+      "file": "gallery-water-camp-4.jpg",
+      "category": "gallery",
+      "slot": "gallery-water-4",
+      "alt": "Water distribution camp",
+      "caption": ""
+    },
+    {
+      "file": "gallery-elderly-care-1.jpeg",
+      "category": "gallery",
+      "slot": "gallery-elderly-1",
+      "alt": "Elderly care visit",
+      "caption": ""
+    },
+    {
+      "file": "gallery-elderly-care-2.jpeg",
+      "category": "gallery",
+      "slot": "gallery-elderly-2",
+      "alt": "Elderly care visit",
+      "caption": ""
+    },
+    {
+      "file": "gallery-education-1.jpeg",
+      "category": "gallery",
+      "slot": "gallery-education-1",
+      "alt": "Education programme",
+      "caption": ""
+    },
+    {
+      "file": "gallery-education-2.jpeg",
+      "category": "gallery",
+      "slot": "gallery-education-2",
+      "alt": "Education programme",
+      "caption": ""
+    },
+    {
+      "file": "gallery-activity-1.jpg",
+      "category": "gallery",
+      "slot": "gallery-activity-1",
+      "alt": "Community activity",
+      "caption": ""
+    },
+    {
+      "file": "gallery-activity-2.jpg",
+      "category": "gallery",
+      "slot": "gallery-activity-2",
+      "alt": "Community activity",
+      "caption": ""
+    },
+    {
+      "file": "gallery-activity-3.jpg",
+      "category": "gallery",
+      "slot": "gallery-activity-3",
+      "alt": "Community activity",
+      "caption": ""
+    },
+    {
+      "file": "gallery-activity-4.jpg",
+      "category": "gallery",
+      "slot": "gallery-activity-4",
+      "alt": "Community activity",
+      "caption": ""
+    },
+    {
+      "file": "disaster-relief-supplies-handover.jpeg",
+      "category": "disaster-relief",
+      "slot": "disaster-supplies-handover",
+      "alt": "Abhiara Foundation team handing over supplies to fire-affected family",
+      "caption": "Team members delivering rice, groceries, and essentials to the affected family. Kankili village, Parjang block, Dhenkanal, Odisha. August 2026.",
+      "location": "Kankili, Parjang, Dhenkanal, Odisha"
+    },
+    {
+      "file": "disaster-relief-team-village.jpeg",
+      "category": "disaster-relief",
+      "slot": "disaster-team-village",
+      "alt": "Abhiara Foundation team with villagers at the disaster site",
+      "caption": "The team with community members in front of the damaged house. Kankili village, Parjang block, Dhenkanal, Odisha.",
+      "location": "Kankili, Parjang, Dhenkanal, Odisha"
+    },
+    {
+      "file": "disaster-relief-assessment.jpeg",
+      "category": "disaster-relief",
+      "slot": "disaster-assessment",
+      "alt": "Damage assessment and documentation at disaster site",
+      "caption": "Assessing damage and documenting the situation for relief coordination.",
+      "location": "Kankili, Parjang, Dhenkanal, Odisha"
+    },
+    {
+      "file": "disaster-relief-team-car.jpeg",
+      "category": "disaster-relief",
+      "slot": "disaster-team-car",
+      "alt": "Abhiara Foundation relief team with supplies ready for distribution",
+      "caption": "The full team with bags of rice, sugar, and essentials loaded and ready for distribution.",
+      "location": "Kankili, Parjang, Dhenkanal, Odisha"
+    },
+    {
+      "file": "disaster-relief-distribution.jpeg",
+      "category": "disaster-relief",
+      "slot": "disaster-distribution",
+      "alt": "Distributing groceries and essentials to affected villagers",
+      "caption": "Handing over grocery packets to the affected family members.",
+      "location": "Kankili, Parjang, Dhenkanal, Odisha"
+    },
+    {
+      "file": "donate-upi-qr.jpeg",
+      "category": "donate",
+      "slot": "donate-qr",
+      "alt": "Abhiara Foundation UPI QR code. Scan with any UPI app",
+      "caption": "Scan with any UPI app to donate to Abhiara Foundation"
+    },
+    {
+      "file": "shiksha-sathi-logo.png",
+      "category": "brand",
+      "slot": "shiksha-sathi-logo",
+      "alt": "Abhiara Shiksha Sathi — A Companion for Every Child's Education",
+      "caption": "Abhiara Shiksha Sathi programme supporting orphan students with tuition fees and education materials"
+    },
+    {
+      "filename": "shiksha-sathi-child-1.jpeg",
+      "category": "shiksha-sathi",
+      "alt": "Shiksha Sathi child receiving education support from Abhiara Foundation",
+      "page": "programs"
+    },
+    {
+      "filename": "shiksha-sathi-children-siblings.jpeg",
+      "category": "shiksha-sathi",
+      "alt": "Orphan siblings supported by Abhiara Shiksha Sathi programme",
+      "page": "programs"
+    },
+    {
+      "filename": "shiksha-sathi-family-support.jpeg",
+      "category": "shiksha-sathi",
+      "alt": "Family with children receiving monthly education support from Abhiara Foundation",
+      "page": "programs"
+    },
+    {
+      "filename": "shiksha-sathi-school-bags.jpeg",
+      "category": "shiksha-sathi",
+      "alt": "Children with new school bags provided by Abhiara Shiksha Sathi",
+      "page": "programs"
+    },
+    {
+      "file": "donate-family-support.jpeg",
+      "category": "family-support",
+      "slot": "donate-support-photo",
+      "alt": "A family standing together outside their home",
+      "caption": "Family support is one of the areas where Abhiara Foundation helps when urgent needs arise.",
+      "page": "donate"
+    },
+    {
+      "file": "donate-community-support.jpeg",
+      "category": "family-support",
+      "slot": "donate-community-photo",
+      "alt": "Children during a community support visit with an Abhiara Foundation team member",
+      "caption": "A community visit where essential supplies were handed to children.",
+      "page": "donate"
+    },
+    {
+      "file": "donate-community-visit.jpeg",
+      "category": "family-support",
+      "slot": "donate-community-visit-photo",
+      "alt": "Children standing beside an Abhiara Foundation team member during a community visit",
+      "caption": "A community visit to understand the needs of children and families.",
+      "page": "donate"
+    },
+    {
+      "file": "donate-rural-community-support.jpeg",
+      "category": "family-support",
+      "slot": "donate-rural-community-support-photo",
+      "alt": "A community support visit outside a rural home",
+      "caption": "Essential supplies being shared during a rural community visit.",
+      "page": "donate"
+    },
+    {
+      "file": "shiksha-sathi-supported-student-01.jpeg",
+      "category": "shiksha-sathi",
+      "slot": "shiksha-sathi-supported-student-01",
+      "alt": "A school student supported through Abhiara Shiksha Sathi",
+      "caption": "Abhiara supports enrolled students with monthly tuition fees, school bags and learning materials. Names and private family details are not published.",
+      "page": "programs"
+    },
+    {
+      "file": "shiksha-sathi-supported-student-02.jpeg",
+      "category": "shiksha-sathi",
+      "slot": "shiksha-sathi-supported-student-02",
+      "alt": "Two students supported through Abhiara Shiksha Sathi",
+      "caption": "Abhiara supports enrolled students with monthly tuition fees, school bags and learning materials. Names and private family details are not published.",
+      "page": "programs"
+    },
+    {
+      "file": "shiksha-sathi-supported-student-03.jpeg",
+      "category": "shiksha-sathi",
+      "slot": "shiksha-sathi-supported-student-03",
+      "alt": "A student in school uniform supported through Abhiara Shiksha Sathi",
+      "caption": "Abhiara supports enrolled students with monthly tuition fees, school bags and learning materials. Names and private family details are not published.",
+      "page": "programs"
+    },
+    {
+      "file": "shiksha-sathi-supported-student-04.jpeg",
+      "category": "shiksha-sathi",
+      "slot": "shiksha-sathi-supported-student-04",
+      "alt": "A family with school going children in the Shiksha Sathi support record",
+      "caption": "Abhiara supports enrolled students with monthly tuition fees, school bags and learning materials. Names and private family details are not published.",
+      "page": "programs"
+    },
+    {
+      "file": "shiksha-sathi-supported-student-05.jpeg",
+      "category": "shiksha-sathi",
+      "slot": "shiksha-sathi-supported-student-05",
+      "alt": "A student standing with a parent in the Shiksha Sathi support record",
+      "caption": "Abhiara supports enrolled students with monthly tuition fees, school bags and learning materials. Names and private family details are not published.",
+      "page": "programs"
+    },
+    {
+      "file": "shiksha-sathi-supported-student-06.jpeg",
+      "category": "shiksha-sathi",
+      "slot": "shiksha-sathi-supported-student-06",
+      "alt": "A family with students in the Shiksha Sathi support record",
+      "caption": "Abhiara supports enrolled students with monthly tuition fees, school bags and learning materials. Names and private family details are not published.",
+      "page": "programs"
+    },
+    {
+      "file": "shiksha-sathi-supported-student-07.jpeg",
+      "category": "shiksha-sathi",
+      "slot": "shiksha-sathi-supported-student-07",
+      "alt": "A student standing with family elders in the Shiksha Sathi support record",
+      "caption": "Abhiara supports enrolled students with monthly tuition fees, school bags and learning materials. Names and private family details are not published.",
+      "page": "programs"
+    },
+    {
+      "file": "shiksha-sathi-supported-student-08.jpeg",
+      "category": "shiksha-sathi",
+      "slot": "shiksha-sathi-supported-student-08",
+      "alt": "Children receiving materials during an Abhiara Foundation ground visit",
+      "caption": "Abhiara supports enrolled students with monthly tuition fees, school bags and learning materials. Names and private family details are not published.",
+      "page": "programs"
+    },
+    {
+      "file": "shiksha-sathi-supported-student-09.jpeg",
+      "category": "shiksha-sathi",
+      "slot": "shiksha-sathi-supported-student-09",
+      "alt": "Students included in the Abhiara Shiksha Sathi support record",
+      "caption": "Abhiara supports enrolled students with monthly tuition fees, school bags and learning materials. Names and private family details are not published.",
+      "page": "programs"
+    },
+    {
+      "file": "shiksha-sathi-supported-student-10.jpeg",
+      "category": "shiksha-sathi",
+      "slot": "shiksha-sathi-supported-student-10",
+      "alt": "Students included in the Abhiara Shiksha Sathi support record",
+      "caption": "Abhiara supports enrolled students with monthly tuition fees, school bags and learning materials. Names and private family details are not published.",
+      "page": "programs"
+    },
+    {
+      "file": "shiksha-sathi-supported-student-11.jpeg",
+      "category": "shiksha-sathi",
+      "slot": "shiksha-sathi-supported-student-11",
+      "alt": "Students included in the Abhiara Shiksha Sathi support record",
+      "caption": "Abhiara supports enrolled students with monthly tuition fees, school bags and learning materials. Names and private family details are not published.",
+      "page": "programs"
+    },
+    {
+      "file": "education-books-independence-day-01.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-01",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-02.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-02",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-04.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-04",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-06.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-06",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-07.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-07",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-08.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-08",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-09.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-09",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-10.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-10",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-11.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-11",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-12.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-12",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-13.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-13",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-14.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-14",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-15.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-15",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-16.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-16",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-17.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-17",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-18.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-18",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-19.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-19",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-20.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-20",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-21.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-21",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-22.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-22",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-23.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-23",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-24.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-24",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-25.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-25",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-26.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-26",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-27.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-27",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-28.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-28",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-29.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-29",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "education-books-independence-day-30.jpeg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-30",
+      "alt": "School books and dictionaries being distributed to students on Independence Day",
+      "caption": "School books and dictionaries distributed on 15 August 2026 to encourage students to continue their education.",
+      "page": "impact",
+      "location": "Raisar, Kendrapara district, Odisha"
+    },
+    {
+      "file": "csr-fynd-foundation-mumbai.png",
+      "category": "csr",
+      "slot": "csr-fynd-foundation-mumbai",
+      "alt": "Fynd Foundation logo, CSR partner supporting Abhiara Foundation ground work",
+      "caption": "Fynd Foundation, Mumbai, CSR partner",
+      "page": "csr-partners"
+    },
+    {
+      "file": "pratibha-samman-press-coverage-01.jpg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-press-coverage-01",
+      "alt": "Press clipping covering Abhiara Pratibha Samman 2026",
+      "caption": "Press coverage of Abhiara Pratibha Samman 2026. The clipping is kept as part of the public activity record.",
+      "location": "Garadpur, Kendrapara, Odisha",
+      "page": "impact"
+    },
+    {
+      "file": "pratibha-samman-press-coverage-02.jpg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-press-coverage-02",
+      "alt": "Press clipping covering Abhiara Pratibha Samman 2026",
+      "caption": "Press coverage of Abhiara Pratibha Samman 2026. The clipping is kept as part of the public activity record.",
+      "location": "Garadpur, Kendrapara, Odisha",
+      "page": "impact"
+    },
+    {
+      "file": "pratibha-samman-press-coverage-03.jpg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-press-coverage-03",
+      "alt": "Press clipping covering Abhiara Pratibha Samman 2026",
+      "caption": "Press coverage of Abhiara Pratibha Samman 2026. The clipping is kept as part of the public activity record.",
+      "location": "Garadpur, Kendrapara, Odisha",
+      "page": "impact"
+    },
+    {
+      "file": "pratibha-samman-press-coverage-04.jpg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-press-coverage-04",
+      "alt": "Press clipping covering Abhiara Pratibha Samman 2026",
+      "caption": "Press coverage of Abhiara Pratibha Samman 2026. The clipping is kept as part of the public activity record.",
+      "location": "Garadpur, Kendrapara, Odisha",
+      "page": "impact"
+    },
+    {
+      "file": "pratibha-samman-press-coverage-05.jpg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-press-coverage-05",
+      "alt": "Press clipping covering Abhiara Pratibha Samman 2026",
+      "caption": "Press coverage of Abhiara Pratibha Samman 2026. The clipping is kept as part of the public activity record.",
+      "location": "Garadpur, Kendrapara, Odisha",
+      "page": "impact"
+    },
+    {
+      "file": "pratibha-samman-press-coverage-06.jpg",
+      "category": "pratibha-samman",
+      "slot": "pratibha-press-coverage-06",
+      "alt": "Press clipping covering Abhiara Pratibha Samman 2026",
+      "caption": "Press coverage of Abhiara Pratibha Samman 2026. The clipping is kept as part of the public activity record.",
+      "location": "Garadpur, Kendrapara, Odisha",
+      "page": "impact"
+    },
+    {
+      "file": "education-books-independence-day-press-coverage-01.jpg",
+      "category": "independence-day-books",
+      "slot": "education-books-independence-day-press-coverage-01",
+      "alt": "Press clipping covering the 15 August 2026 education activity",
+      "caption": "Press coverage kept as part of the 15 August 2026 education activity record.",
+      "location": "Raisar, Kendrapara district, Odisha",
+      "page": "impact"
+    },
+    {
+      "file": "education-higher-study-support.jpeg",
+      "category": "shiksha-sathi",
+      "slot": "education-higher-study-support",
+      "alt": "A higher-education student standing outside an institute campus",
+      "caption": "Consent-approved photograph from a higher-education support record. Personal details are kept private on the public website.",
+      "page": "student-impact"
+    }
+  ],
+  "videos": [
+    {
+      "url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/water-camp-video-1_8104b7eb.mp4",
+      "category": "water-camp",
+      "slot": "video-water-camp-1",
+      "alt": "Water camp video 1",
+      "thumbnail": "water-camp-serving.jpeg"
+    },
+    {
+      "url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/water-camp-video-2_5cec3479.mp4",
+      "category": "water-camp",
+      "slot": "video-water-camp-2",
+      "alt": "Water camp video 2",
+      "thumbnail": "water-camp-crowd.jpeg"
+    },
+    {
+      "url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/water-camp-video-3_087a0830.mp4",
+      "category": "water-camp",
+      "slot": "video-water-camp-3",
+      "alt": "Water camp video 3",
+      "thumbnail": "water-camp-children.jpeg"
+    },
+    {
+      "url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/water-camp-video-4_ce738a7d.mp4",
+      "category": "water-camp",
+      "slot": "video-water-camp-4",
+      "alt": "Water camp video 4",
+      "thumbnail": "water-camp-setup.jpeg"
+    },
+    {
+      "url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/water-camp-video-5_b973abe4.mp4",
+      "category": "water-camp",
+      "slot": "video-water-camp-5",
+      "alt": "Water camp video 5",
+      "thumbnail": "water-camp-serving.jpeg"
+    },
+    {
+      "url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/field-activity-video_a50abbfb.mp4",
+      "category": "gallery",
+      "slot": "video-field-activity",
+      "alt": "Field activity video",
+      "thumbnail": "education-village-session.jpeg"
+    },
+    {
+      "url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/64a07096-1c35-43a2-a467-ee011089d79e_2297c64a.mp4",
+      "category": "gallery",
+      "slot": "video-activity-1",
+      "alt": "Activity video",
+      "thumbnail": "gallery-activity-1.jpg"
+    },
+    {
+      "url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/69e342f1-a762-4729-91d3-747212eb67ca_8fa6185e.mp4",
+      "category": "gallery",
+      "slot": "video-activity-2",
+      "alt": "Activity video",
+      "thumbnail": "gallery-activity-2.jpg"
+    },
+    {
+      "url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/IMG_5967_c1e60032.MOV",
+      "category": "education",
+      "slot": "video-education-1",
+      "alt": "Education programme video",
+      "thumbnail": "education-classroom-session.jpeg"
+    },
+    {
+      "url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/IMG_5968_ab5bd31e.MOV",
+      "category": "education",
+      "slot": "video-education-2",
+      "alt": "Education programme video",
+      "thumbnail": "education-outdoor-session.jpeg"
+    },
+    {
+      "url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/IMG_5969_00b459ef.MOV",
+      "category": "education",
+      "slot": "video-education-3",
+      "alt": "Education programme video",
+      "thumbnail": "education-book-distribution.jpeg"
+    },
+    {
+      "url": "/manus-storage/e65e3323-2a20-48ae-baea-344be2eecf0e_d456647f.MP4",
+      "category": "pratibha-samman",
+      "slot": "video-pratibha-samman",
+      "alt": "Abhiara Pratibha Samman 2026 ceremony video",
+      "thumbnail": "pratibha-samman-top3.jpeg"
+    },
+    {
+      "url": "/manus-storage/WhatsAppVideo2026-06-17at9.48.03AM_6bb87510.mp4",
+      "category": "fire-relief",
+      "slot": "video-fire-relief",
+      "alt": "Fire disaster relief video — distributing supplies",
+      "thumbnail": "fire-relief-distribution.jpeg"
+    }
+  ]
+}

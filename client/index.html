@@ -1,159 +1,207 @@
 <!doctype html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function () {
+        var host = window.location.hostname;
+        if (
+          host === "abhiarafoundation.org" ||
+          host === "abhiarafoundation.com" ||
+          host === "www.abhiarafoundation.com"
+        ) {
+          window.location.replace(
+            "https://www.abhiarafoundation.org" +
+              window.location.pathname +
+              window.location.search +
+              window.location.hash
+          );
+        }
+      })();
+    </script>
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Abhiara Foundation — Fearless Ray of Light</title>
-    <meta name="description" content="Abhiara Foundation — Education for underprivileged children and dignity for the elderly. Founded by Abhimanyu Mallik in Raisar, Kendrapara, Odisha. Section 8 Not-for-Profit. Pan India." />
-    <meta name="keywords" content="Abhiara Foundation, Abhimanyu Mallik, Founder Abhiara Foundation, NGO Odisha, education NGO India, elderly care Odisha, CSR partners India, Kendrapara NGO, Raisar Odisha, Section 8 Company" />
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://abhiarafoundation.org/" />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Abhiara Foundation — Fearless Ray of Light" />
-    <meta property="og:description" content="Education for every child. Dignity for every elder. Founded by Abhimanyu Mallik. We start in Raisar. We build in Mumbai. We think at the scale of the world." />
-    <meta property="og:url" content="https://abhiarafoundation.org" />
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <title>Abhiara Foundation | Education first. Compassion always.</title>
+    <meta
+      name="description"
+      content="Education is our main work. Through Abhiara Shiksha Sathi, we help orphaned children and children from underprivileged families stay in school across India."
+    />
+    <meta
+      name="keywords"
+      content="Abhiara Foundation, Abhiara Shiksha Sathi, orphan education support, underprivileged child education India, Section 8 company"
+    />
+    <link rel="canonical" href="https://www.abhiarafoundation.org/" />
+    <meta
+      property="og:title"
+      content="Abhiara Foundation | Education first. Compassion always."
+    />
+    <meta
+      property="og:description"
+      content="We help orphaned children and children from underprivileged families stay in school. Education support is not limited to one state."
+    />
+    <meta property="og:url" content="https://www.abhiarafoundation.org/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Abhiara Foundation" />
-    <meta property="og:image" content="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/aaf-logo-concept-3-DYGWPrtD3n9D2RUbi4xCrD.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image"
+      content="https://www.abhiarafoundation.org/abhiara-logo.png"
+    />
     <meta property="og:locale" content="en_IN" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Abhiara Foundation — Fearless Ray of Light" />
-    <meta name="twitter:description" content="Education for every child. Dignity for every elder. Founded by Abhimanyu Mallik. Built from the village up." />
-    <meta name="twitter:image" content="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/aaf-logo-concept-3-DYGWPrtD3n9D2RUbi4xCrD.png" />
-
-    <!-- JSON-LD Schema Markup: Organization -->
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Abhiara Foundation | Education first. Compassion always."
+    />
+    <meta
+      name="twitter:description"
+      content="We help orphaned children and children from underprivileged families stay in school. Education support is not limited to one state."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.abhiarafoundation.org/abhiara-logo.png"
+    />
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "NGO",
-          "@id": "https://abhiarafoundation.org/#organization",
-          "name": "Abhiara Foundation",
-          "alternateName": "Abhiara",
-          "url": "https://abhiarafoundation.org/",
-          "logo": "https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/aaf-logo-concept-3-DYGWPrtD3n9D2RUbi4xCrD.png",
-          "description": "Abhiara Foundation is a Section 8 Not-for-Profit organization focused on education for underprivileged children and dignity for the elderly. Founded in Raisar, Kendrapara, Odisha with operations across India.",
-          "foundingDate": "2025",
-          "foundingLocation": {
-            "@type": "Place",
-            "name": "Raisar, Kendrapara, Odisha, India"
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "NGO",
+            "@id": "https://www.abhiarafoundation.org/#organization",
+            "name": "Abhiara Foundation",
+            "url": "https://www.abhiarafoundation.org/",
+            "logo": "https://www.abhiarafoundation.org/abhiara-logo.png",
+            "description": "Education is our main work. Through Abhiara Shiksha Sathi, we help orphaned children and children from underprivileged families stay in school. Education support is not limited to one state. Other help for vulnerable elders, animal welfare, medical emergencies and disaster relief depends on verification, available funds and an approved budget.",
+            "slogan": "Fearless Ray of Light",
+            "areaServed": { "@type": "Country", "name": "India" },
+            "sameAs": [
+              "https://www.linkedin.com/company/abhiarafoundation",
+              "https://www.instagram.com/abhiarafoundation/"
+            ]
           },
-          "founder": {
-            "@id": "https://abhiarafoundation.org/#founder"
+          {
+            "@type": "WebSite",
+            "@id": "https://www.abhiarafoundation.org/#website",
+            "name": "Abhiara Foundation",
+            "url": "https://www.abhiarafoundation.org/",
+            "publisher": {
+              "@id": "https://www.abhiarafoundation.org/#organization"
+            }
           },
-          "areaServed": {
-            "@type": "Country",
-            "name": "India"
-          },
-          "sameAs": [
-            "https://www.linkedin.com/company/abhiarafoundation"
-          ]
-        },
-        {
-          "@type": "Person",
-          "@id": "https://abhiarafoundation.org/#founder",
-          "name": "Abhimanyu Mallik",
-          "jobTitle": "Founder",
-          "description": "Abhimanyu Mallik is the Founder of Abhiara Foundation, a Section 8 Not-for-Profit organization focused on education for underprivileged children and dignity for the elderly in India.",
-          "worksFor": {
-            "@id": "https://abhiarafoundation.org/#organization"
-          },
-          "birthPlace": {
-            "@type": "Place",
-            "name": "Raisar, Kendrapara, Odisha, India"
-          },
-          "sameAs": [
-            "https://www.linkedin.com/in/abhimanyu-mallik"
-          ]
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://abhiarafoundation.org/#website",
-          "name": "Abhiara Foundation",
-          "url": "https://abhiarafoundation.org/",
-          "publisher": {
-            "@id": "https://abhiarafoundation.org/#organization"
-          },
-          "description": "Official website of Abhiara Foundation — Fearless Ray of Light. Education for children. Dignity for the elderly. Built from the village up."
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://abhiarafoundation.org/#webpage",
-          "url": "https://abhiarafoundation.org/",
-          "name": "Abhiara Foundation — Fearless Ray of Light",
-          "isPartOf": {
-            "@id": "https://abhiarafoundation.org/#website"
-          },
-          "about": {
-            "@id": "https://abhiarafoundation.org/#organization"
-          },
-          "description": "Abhiara Foundation — Education for underprivileged children and dignity for the elderly. Founded by Abhimanyu Mallik in Raisar, Kendrapara, Odisha."
-        }
-      ]
-    }
+          {
+            "@type": "DonateAction",
+            "@id": "https://www.abhiarafoundation.org/#donate",
+            "name": "Donate for Education",
+            "description": "Make a secure one-time donation for verified tuition, school supplies and learning support under Abhiara Shiksha Sathi.",
+            "agent": {
+              "@id": "https://www.abhiarafoundation.org/#organization"
+            },
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://www.abhiarafoundation.org/donate-for-education"
+            }
+          }
+        ]
+      }
     </script>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMZFM1Q315"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PMZFM1Q315"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-PMZFM1Q315');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-PMZFM1Q315");
     </script>
-
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://d2xsxph8kpxj0f.cloudfront.net" />
-    <!-- Preload hero image for faster LCP -->
-    <link rel="preload" as="image" href="https://d2xsxph8kpxj0f.cloudfront.net/310519663432731013/hv6LgfNej6qprpT227NQzW/hero-dawn-PUfjxrVLdG8a3bgPJiAovi.webp" />
-    <!-- Fonts with display=swap for better CLS -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   </head>
-
   <body>
-    <!-- Accessibility: Skip to main content -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-[#C9A84C] focus:text-[#0A1628] focus:px-4 focus:py-2 focus:text-sm focus:font-bold">Skip to main content</a>
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-[#F5A623] focus:text-black focus:px-4 focus:py-2 focus:text-sm focus:font-bold"
+      >Skip to main content</a
+    >
+    <div
+      id="static-fallback"
+      style="
+        font-family: Arial, sans-serif;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 32px 20px;
+        color: #1a1a1a;
+      "
+    >
+      <header>
+        <img src="/abhiara-logo.png" alt="Abhiara Foundation" width="150" />
+        <p>Section 8 not-for-profit company</p>
+      </header>
+      <main>
+        <h1>Education first. Compassion always.</h1>
+        <p>
+          We help orphaned children and children from underprivileged families
+          stay in school. Education support is not limited to one state.
+        </p>
+        <h2>Our focus</h2>
+        <p>
+          Education is our main work. Through Abhiara Shiksha Sathi, we help
+          orphaned children and children from underprivileged families stay in
+          school across India.
+        </p>
+        <h2>Abhiara Shiksha Sathi</h2>
+        <p>
+          Verified, need-based education support may include monthly tuition
+          fees, school bags, books, stationery, uniforms, examination needs and
+          learning materials. More than 50 children are actively supported.
+        </p>
+        <h2>How support works</h2>
+        <ol>
+          <li>Referral or request</li>
+          <li>Ground verification</li>
+          <li>Need and capacity review</li>
+          <li>Documented approval</li>
+          <li>Traceable payment</li>
+          <li>Follow-up</li>
+        </ol>
+        <h2>Limited verified support</h2>
+        <p>
+          Alongside education, Abhiara Foundation provides limited, verified
+          support for vulnerable elders, animal welfare, medical emergencies and
+          disaster relief, subject to available funds, ground verification and
+          approved budget.
+        </p>
+        <h2>Transparency</h2>
+        <p>
+          CIN: U87300MH2026NPL471397. NGO DARPAN: MH/2026/1110513. 12AB and 80G
+          applications are pending. Foreign contributions are not accepted at
+          present.
+        </p>
+        <nav>
+          <a href="/shiksha-sathi">Programme</a> |
+          <a href="/monthly-reports">Monthly Reports</a> |
+          <a href="/board-and-transparency">Board and Transparency</a> |
+          <a href="/donate-for-education">Donate for Education</a> |
+          <a href="/contact">Contact</a>
+        </nav>
+      </main>
+    </div>
     <div id="root"></div>
-
-    <!-- SEO: Noscript fallback content for search engine crawlers that don't execute JavaScript -->
-    <noscript>
-      <h1>Abhiara Foundation — Fearless Ray of Light</h1>
-      <p>Abhiara Foundation is a Section 8 Not-for-Profit organization founded by <strong>Abhimanyu Mallik</strong> in Raisar, Kendrapara, Odisha, India.</p>
-      <p>We focus on education for underprivileged children and dignity for the elderly. Built from the village up.</p>
-      <h2>Our Mission</h2>
-      <p>Every child from a remote village deserves a fearless path. Every elder deserves dignity in their final years. We are building that path — village by village, district by district, life by life.</p>
-      <h2>What We Do</h2>
-      <ul>
-        <li><strong>Education:</strong> Digital learning centres, scholarship support for Class 8-12 students, and early childhood readiness programmes across Odisha and beyond.</li>
-        <li><strong>Elderly Care:</strong> Companion networks, quarterly health camps, and legal aid support for pension and property rights.</li>
-        <li><strong>CSR Implementation:</strong> End-to-end CSR project implementation for corporates under Companies Act Schedule VII.</li>
-      </ul>
-      <h2>The Founder</h2>
-      <p><strong>Abhimanyu Mallik</strong> is the Founder of Abhiara Foundation. Born in Raisar, a small village in Kendrapara district, Odisha. His journey from a remote village to Mumbai inspired the creation of Abhiara Foundation — a promise that the next child from the village has a path.</p>
-      <h2>The Name: ABHIARA</h2>
-      <p>ABHI (Fearless, from Abhimanyu — the Founder) + ARA (Ray of Sacred Light, from Aradhana — the Founder's daughter) = A Fearless Ray of Light.</p>
-      <h2>Contact</h2>
-      <p>Website: <a href="https://abhiarafoundation.org">https://abhiarafoundation.org</a></p>
-    </noscript>
-
     <script type="module" src="/src/main.tsx"></script>
     <script
       defer
       src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
+      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"
+    ></script>
   </body>
-
 </html>
