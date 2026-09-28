@@ -13,6 +13,10 @@ const migration = readFileSync(
   "drizzle/0018_fluffy_thunderbolt_ross.sql",
   "utf8"
 );
+const featuredMigration = readFileSync(
+  "drizzle/0020_flowery_captain_midlands.sql",
+  "utf8"
+);
 const ownerGuide = readFileSync("OWNER_ADMIN_GUIDE.md", "utf8");
 
 const publicPhotoPages = [
@@ -26,10 +30,10 @@ const publicPhotoPages = [
 
 describe("owner-published impact photos", () => {
   it("starts the homepage hero with the selected education photo and then rotates all published programme photos", () => {
-    expect(home).toContain("const FEATURED_HOME_PHOTO_ID = 30046");
-    expect(home).toContain(
-      'const FEATURED_HOME_PHOTO_PATH = "education-children-1.jpeg"'
-    );
+    expect(home).toContain("left.isHomepageFeatured");
+    expect(home).toContain("right.isHomepageFeatured");
+    expect(home).not.toContain("FEATURED_HOME_PHOTO_ID");
+    expect(home).not.toContain("FEATURED_HOME_PHOTO_PATH");
     expect(home).toContain("const orderedHeroPhotos");
     expect(home).toContain("orderedHeroPhotos.map");
     expect(home).toContain("HERO_AREA_BY_PHOTO_CATEGORY");
@@ -60,8 +64,9 @@ describe("owner-published impact photos", () => {
     expect(home).toContain("Open Impact Gallery");
     expect(home).toContain("from-black/95 via-black/25 to-transparent");
     expect(home).toContain("from-black/70 via-black/30 to-transparent");
-    expect(home).toContain("bg-black/70 p-5");
-    expect(home).toContain("text-white md:text-base");
+    expect(home).toContain('className="max-w-2xl"');
+    expect(home).not.toContain("bg-black/70 p-5");
+    expect(home).toContain("drop-shadow");
     expect(home.indexOf("HOME_WORK_AREAS.map")).toBeLessThan(
       home.indexOf("Our programmes in pictures")
     );
@@ -89,6 +94,16 @@ describe("owner-published impact photos", () => {
     expect(admin).toContain("Unpublish");
     expect(admin).toContain("Live on public pages");
     expect(admin).toContain("Draft");
+    expect(admin).toContain("First homepage photo");
+    expect(admin).toContain("Set as first");
+    expect(admin).toContain("Display order");
+    expect(admin).toContain("Earlier");
+    expect(admin).toContain("Later");
+    expect(schema).toContain("isHomepageFeatured");
+    expect(cmsRouter).toContain("moveGalleryPhoto");
+    expect(featuredMigration).toContain("isHomepageFeatured");
+    expect(featuredMigration).toContain("WHERE `id` = 30046");
+    expect(featuredMigration).not.toMatch(/DROP TABLE|DROP COLUMN|TRUNCATE/i);
     expect(admin).toContain('label: "Impact Photos"');
     expect(controlCentre).toContain('title: "Impact Photos"');
   });

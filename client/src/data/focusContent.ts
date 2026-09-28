@@ -177,8 +177,8 @@ export const PRIMARY_NAV = [
   },
   {
     href: "/board-and-transparency",
-    en: "Board and Transparency",
-    od: "ବୋର୍ଡ ଓ ସ୍ୱଚ୍ଛତା",
+    en: "Board, Members and Advisors",
+    od: "ବୋର୍ଡ, ସଦସ୍ୟ ଓ ପରାମର୍ଶଦାତା",
   },
   {
     href: "/donate",
@@ -285,11 +285,6 @@ export const HEADER_NAV_GROUPS = [
       { href: "/monthly-reports", en: "Monthly Reports", od: "ମାସିକ ରିପୋର୍ଟ" },
       { href: "/press-and-media", en: "Press and Media", od: "ପ୍ରେସ ଓ ମିଡିଆ" },
       {
-        href: "/board-and-transparency",
-        en: "Board and Transparency",
-        od: "ବୋର୍ଡ ଓ ସ୍ୱଚ୍ଛତା",
-      },
-      {
         href: "/privacy",
         en: "Privacy and Child Safeguarding",
         od: "ଗୋପନୀୟତା ଓ ଶିଶୁ ସୁରକ୍ଷା",
@@ -297,37 +292,11 @@ export const HEADER_NAV_GROUPS = [
     ],
   },
   {
-    key: "wellbeing",
-    href: "/limited-verified-support",
-    en: "Wellbeing & Relief",
-    od: "ସୁସ୍ଥତା ଓ ସହାୟତା",
-    items: [
-      {
-        href: "/limited-verified-support",
-        en: "Support Overview",
-        od: "ସହାୟତା ସାରାଂଶ",
-      },
-      {
-        href: "/wellness-and-wellbeing",
-        en: "Wellness and Wellbeing",
-        od: "ସ୍ୱାସ୍ଥ୍ୟ ଓ ସୁସ୍ଥତା",
-      },
-      {
-        href: "/elder-care-and-dignity",
-        en: "Elder Care and Dignity",
-        od: "ବୃଦ୍ଧ ସେବା ଓ ସମ୍ମାନ",
-      },
-      {
-        href: "/other-verified-support",
-        en: "Other Activities",
-        od: "ଅନ୍ୟ କାର୍ଯ୍ୟକଳାପ",
-      },
-      {
-        href: "/birthday-with-purpose",
-        en: "Birthday with Purpose",
-        od: "ଉଦ୍ଦେଶ୍ୟ ସହ ଜନ୍ମଦିନ",
-      },
-    ],
+    key: "governance",
+    href: "/board-and-transparency",
+    en: "Board Members & Transparency",
+    od: "ବୋର୍ଡ ସଦସ୍ୟ ଓ ସ୍ୱଚ୍ଛତା",
+    items: [],
   },
 ] as const;
 

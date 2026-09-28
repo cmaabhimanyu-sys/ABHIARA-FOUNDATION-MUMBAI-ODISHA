@@ -1,4 +1,4 @@
-import { eq, desc, asc } from "drizzle-orm";
+import { eq, desc, asc, max } from "drizzle-orm";
 import { getDb } from "./db.js";
 import {
   activities,
@@ -79,7 +79,11 @@ export async function getGalleryPhotos(publishedOnly = false) {
   const query = db
     .select()
     .from(galleryPhotos)
-    .orderBy(desc(galleryPhotos.createdAt));
+    .orderBy(
+      desc(galleryPhotos.isHomepageFeatured),
+      asc(galleryPhotos.sortOrder),
+      desc(galleryPhotos.createdAt)
+    );
   if (publishedOnly) {
     return query.where(eq(galleryPhotos.isPublished, true));
   }
@@ -89,7 +93,26 @@ export async function getGalleryPhotos(publishedOnly = false) {
 export async function createGalleryPhoto(data: InsertGalleryPhoto) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
-  await db.insert(galleryPhotos).values(data);
+  const [last] = await db
+    .select({ value: max(galleryPhotos.sortOrder) })
+    .from(galleryPhotos);
+  const values: InsertGalleryPhoto = {
+    ...data,
+    sortOrder:
+      data.sortOrder && data.sortOrder > 0
+        ? data.sortOrder
+        : Number(last?.value || 0) + 1,
+    isPublished: data.isHomepageFeatured ? true : data.isPublished,
+  };
+  await db.transaction(async tx => {
+    if (values.isHomepageFeatured) {
+      await tx
+        .update(galleryPhotos)
+        .set({ isHomepageFeatured: false })
+        .where(eq(galleryPhotos.isHomepageFeatured, true));
+    }
+    await tx.insert(galleryPhotos).values(values);
+  });
   return { success: true };
 }
 
@@ -99,7 +122,45 @@ export async function updateGalleryPhoto(
 ) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
-  await db.update(galleryPhotos).set(data).where(eq(galleryPhotos.id, id));
+  const values: Partial<InsertGalleryPhoto> = { ...data };
+  if (values.isHomepageFeatured) values.isPublished = true;
+  if (values.isPublished === false) values.isHomepageFeatured = false;
+  await db.transaction(async tx => {
+    if (values.isHomepageFeatured) {
+      await tx
+        .update(galleryPhotos)
+        .set({ isHomepageFeatured: false })
+        .where(eq(galleryPhotos.isHomepageFeatured, true));
+    }
+    await tx.update(galleryPhotos).set(values).where(eq(galleryPhotos.id, id));
+  });
+  return { success: true };
+}
+
+export async function moveGalleryPhoto(id: number, direction: "up" | "down") {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const rows = await db
+    .select({ id: galleryPhotos.id })
+    .from(galleryPhotos)
+    .orderBy(asc(galleryPhotos.sortOrder), desc(galleryPhotos.createdAt));
+  const currentIndex = rows.findIndex(row => row.id === id);
+  if (currentIndex < 0) throw new Error("Photo not found");
+  const targetIndex = direction === "up" ? currentIndex - 1 : currentIndex + 1;
+  if (targetIndex < 0 || targetIndex >= rows.length) return { success: true };
+  [rows[currentIndex], rows[targetIndex]] = [
+    rows[targetIndex],
+    rows[currentIndex],
+  ];
+  await db.transaction(async tx => {
+    for (let index = 0; index < rows.length; index += 1) {
+      const row = rows[index];
+      await tx
+        .update(galleryPhotos)
+        .set({ sortOrder: index + 1 })
+        .where(eq(galleryPhotos.id, row.id));
+    }
+  });
   return { success: true };
 }
 

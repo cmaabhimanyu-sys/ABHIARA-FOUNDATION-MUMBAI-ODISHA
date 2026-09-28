@@ -152,8 +152,8 @@ const PUBLIC_DIRECTORY = [
       },
       {
         href: "/board-and-transparency",
-        en: "Board and Transparency",
-        od: "ବୋର୍ଡ ଓ ସ୍ୱଚ୍ଛତା",
+        en: "Board, Members and Advisors",
+        od: "ବୋର୍ଡ, ସଦସ୍ୟ ଓ ପରାମର୍ଶଦାତା",
       },
       {
         href: "/press-and-media",

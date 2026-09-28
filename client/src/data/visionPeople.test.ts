@@ -44,13 +44,14 @@ describe("vision, mission, values and people page", () => {
 
   it("keeps the people section aligned with the verified public hierarchy", () => {
     expect(visionPage).toContain("2 confirmed directors");
-    expect(visionPage).toContain("4 confirmed advisors");
-    expect(visionPage).toContain("5 core and field members");
+    expect(visionPage).toContain("Published members");
+    expect(visionPage).toContain("Published advisors");
     expect(visionPage).toContain("/board-and-transparency#board");
+    expect(visionPage).toContain("/board-and-transparency#members");
     expect(visionPage).toContain("/board-and-transparency#advisors");
-    expect(visionPage).toContain("/team#ground-team");
     expect(visionPage).toContain("trpc.cms.leadership.listPublished.useQuery");
     expect(visionPage).toContain("publishedBoardCount");
+    expect(visionPage).toContain("publishedMemberCount");
     expect(visionPage).toContain("publishedAdvisorCount");
     expect(teamPage).toContain("Board of Directors");
     expect(teamPage).toContain("Advisory Support");
@@ -91,7 +92,7 @@ describe("vision, mission, values and people page", () => {
 
   it("uses the approved primary domain and does not depend on unrestricted CMS text", () => {
     expect(visionPage).toContain(
-      'url="https://www.abhiarafoundation.com/vision"'
+      'url="https://www.abhiarafoundation.org/vision"'
     );
     expect(visionPage).not.toContain("trpc.cms.settings");
     expect(visionPage).not.toContain("vision_impact_targets");

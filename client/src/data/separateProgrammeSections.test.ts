@@ -96,16 +96,11 @@ describe("separate programme panels and galleries", () => {
       "/medical-emergency-support"
     );
     expect(
-      HEADER_NAV_GROUPS.find(group => group.key === "wellbeing")?.items.map(
-        item => item.href
-      )
-    ).not.toEqual(
-      expect.arrayContaining([
-        "/disaster-relief",
-        "/animal-welfare-support",
-        "/medical-emergency-support",
-      ])
-    );
+      HEADER_NAV_GROUPS.find(group => group.key === "governance")?.href
+    ).toBe("/board-and-transparency");
+    expect(
+      HEADER_NAV_GROUPS.find(group => group.key === "governance")?.items
+    ).toEqual([]);
   });
 
   it("does not expose internal owner, Admin or website-folder instructions publicly", () => {

@@ -3,27 +3,27 @@ import { describe, expect, it } from "vitest";
 
 const teamPage = readFileSync(
   new URL("../pages/Team.tsx", import.meta.url),
-  "utf8",
+  "utf8"
 );
 
 const navbar = readFileSync(
   new URL("../components/Navbar.tsx", import.meta.url),
-  "utf8",
+  "utf8"
 );
 
 const footer = readFileSync(
   new URL("../components/Footer.tsx", import.meta.url),
-  "utf8",
+  "utf8"
 );
 
 const focusContent = readFileSync(
   new URL("./focusContent.ts", import.meta.url),
-  "utf8",
+  "utf8"
 );
 
 const governancePage = readFileSync(
   new URL("../pages/Governance.tsx", import.meta.url),
-  "utf8",
+  "utf8"
 );
 
 const CURRENT_PUBLIC_TEAM = [
@@ -42,7 +42,7 @@ const CURRENT_PUBLIC_TEAM = [
 
 const BOARD_DIRECTORS = ["Abhimanyu Mallik", "Biswajita Mallik"];
 const NON_DIRECTORS = CURRENT_PUBLIC_TEAM.filter(
-  name => !BOARD_DIRECTORS.includes(name),
+  name => !BOARD_DIRECTORS.includes(name)
 );
 
 describe("public board and leadership roster", () => {
@@ -53,9 +53,9 @@ describe("public board and leadership roster", () => {
   });
 
   it("keeps only the two confirmed directors in the Board of Directors data", () => {
-    const boardData = teamPage
-      .split("const BOARD_MEMBERS")[1]
-      ?.split("const ADVISORS")[0] ?? "";
+    const boardData =
+      teamPage.split("const BOARD_MEMBERS")[1]?.split("const ADVISORS")[0] ??
+      "";
 
     for (const director of BOARD_DIRECTORS) {
       expect(boardData).toContain(director);
@@ -73,12 +73,14 @@ describe("public board and leadership roster", () => {
   });
 
   it("keeps Ashish (Rocky) in the ground team without adding an unsupported formal title", () => {
-    const groundTeamData = teamPage
-      .split("const GROUND_TEAM")[1]
-      ?.split("const ORGANISATION_HIERARCHY")[0] ?? "";
-    const ashishProfile = groundTeamData
-      .split('name: { en: "Ashish (Rocky)"')[1]
-      ?.split("},\n  {")[0] ?? "";
+    const groundTeamData =
+      teamPage
+        .split("const GROUND_TEAM")[1]
+        ?.split("const ORGANISATION_HIERARCHY")[0] ?? "";
+    const ashishProfile =
+      groundTeamData
+        .split('name: { en: "Ashish (Rocky)"')[1]
+        ?.split("},\n  {")[0] ?? "";
 
     expect(ashishProfile).toContain("Core Team Member");
     expect(ashishProfile).not.toContain("Director");
@@ -86,15 +88,15 @@ describe("public board and leadership roster", () => {
   });
 
   it("keeps Amit Kumar Jena in Advisory Support and outside the Board of Directors", () => {
-    const boardData = teamPage
-      .split("const BOARD_MEMBERS")[1]
-      ?.split("const ADVISORS")[0] ?? "";
-    const advisorData = teamPage
-      .split("const ADVISORS")[1]
-      ?.split("const GROUND_TEAM")[0] ?? "";
-    const amitProfile = advisorData
-      .split('name: { en: "Amit Kumar Jena"')[1]
-      ?.split("},\n  {")[0] ?? "";
+    const boardData =
+      teamPage.split("const BOARD_MEMBERS")[1]?.split("const ADVISORS")[0] ??
+      "";
+    const advisorData =
+      teamPage.split("const ADVISORS")[1]?.split("const GROUND_TEAM")[0] ?? "";
+    const amitProfile =
+      advisorData
+        .split('name: { en: "Amit Kumar Jena"')[1]
+        ?.split("},\n  {")[0] ?? "";
 
     expect(boardData).not.toContain("Amit Kumar Jena");
     expect(amitProfile).toContain("Founding Patron and Strategic Advisor");
@@ -116,8 +118,8 @@ describe("public board and leadership roster", () => {
     expect(teamPage).toContain('href="/volunteer"');
   });
 
-  it("uses Board and Transparency in the focused public navigation", () => {
-    expect(focusContent).toContain('en: "Board and Transparency"');
+  it("uses Board Members and Transparency in the focused public navigation", () => {
+    expect(focusContent).toContain('en: "Board Members & Transparency"');
     expect(focusContent).toContain('href: "/board-and-transparency"');
     expect(navbar).toContain("HEADER_NAV_GROUPS.map");
     expect(navbar).toContain("DropdownMenu");
@@ -126,9 +128,10 @@ describe("public board and leadership roster", () => {
   });
 
   it("shows a clear four-level Section 8 public hierarchy", () => {
-    const hierarchy = teamPage
-      .split("const ORGANISATION_HIERARCHY")[1]
-      ?.split("function InitialPortrait")[0] ?? "";
+    const hierarchy =
+      teamPage
+        .split("const ORGANISATION_HIERARCHY")[1]
+        ?.split("function InitialPortrait")[0] ?? "";
 
     const expectedOrder = [
       "Board of Directors",
@@ -145,7 +148,9 @@ describe("public board and leadership roster", () => {
     }
 
     expect(hierarchy).toContain("not shown as directors");
-    expect(hierarchy).toContain("does not create a job, board position or authority");
+    expect(hierarchy).toContain(
+      "does not create a job, board position or authority"
+    );
     expect(teamPage).toContain("SECTION 8 ORGANISATION HIERARCHY");
   });
 });

@@ -50,7 +50,7 @@ describe("beginner-friendly owner control centre", () => {
       "Photo Library",
       "Public Details",
       "Social Links",
-      "Board and Advisory Members",
+      "Board, Members and Advisors",
       "Successful Donations",
       "Volunteer Applications",
     ]) {
@@ -134,6 +134,14 @@ describe("beginner-friendly owner control centre", () => {
     expect(admin).toContain("location: publicLocation.trim() || undefined");
     expect(admin).toContain("dateTaken: publicDateTaken || undefined");
     expect(admin).toContain("This photo will appear in");
+    expect(admin).toContain("First homepage photo");
+    expect(admin).toContain("Display order");
+    expect(admin).toContain("aria-label={`Move ${item.title} earlier`}");
+    expect(admin).toContain("aria-label={`Move ${item.title} later`}");
+    expect(admin).toContain("isGenericImpactTitle");
+    expect(admin).toContain(
+      "Replace the generic title with a clear description of this activity."
+    );
     expect(admin).toContain("Delete record");
     expect(admin).toContain(
       "Use Photo Library to permanently delete the stored file."
@@ -145,6 +153,8 @@ describe("beginner-friendly owner control centre", () => {
     expect(ownerGuide).toContain(
       "title, description, category, location, date"
     );
+    expect(ownerGuide).toContain("**First on homepage**");
+    expect(ownerGuide).toContain("**Earlier** and **Later**");
   });
 
   it("gives the owner one guided place for reports, photos, videos, content and social links", () => {

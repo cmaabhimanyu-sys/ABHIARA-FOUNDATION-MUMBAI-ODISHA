@@ -9,6 +9,7 @@ const contact = read("client/src/pages/Contact.tsx");
 const founder = read("client/src/data/restoredPublicContent.ts");
 const vision = read("client/src/pages/AbhiaraVidyapitha.tsx");
 const governance = read("client/src/pages/Governance.tsx");
+const footer = read("client/src/components/Footer.tsx");
 
 const adoptedPublicCopy = [
   programme,
@@ -18,6 +19,7 @@ const adoptedPublicCopy = [
   founder,
   vision,
   governance,
+  footer,
 ].join("\n");
 
 describe("safe adoption of the supplied content proposal", () => {
@@ -60,10 +62,14 @@ describe("safe adoption of the supplied content proposal", () => {
     expect(founder).toContain("Raisar, a rural village in Kendrapara, Odisha");
     expect(founder).toContain("built his career in Odisha");
     expect(founder).toContain("later moved to Mumbai");
-    expect(governance).toContain("U87300MH2026NPL471397");
-    expect(governance).toContain("MH/2026/1110513");
-    expect(governance).toContain("Applications pending");
-    expect(governance).toContain("Not accepted at present");
+    expect(governance).not.toContain("U87300MH2026NPL471397");
+    expect(governance).not.toContain("MH/2026/1110513");
+    expect(footer).toContain("U87300MH2026NPL471397");
+    expect(footer).toContain("MH/2026/1110513");
+    expect(footer).toContain("12AB and 80G applications pending");
+    expect(footer).toContain(
+      "Foreign contributions are not accepted at present"
+    );
     expect(vision).toContain("are not accepting enrolment or applications");
   });
 

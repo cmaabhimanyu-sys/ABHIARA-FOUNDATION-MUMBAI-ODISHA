@@ -156,6 +156,7 @@ export const galleryPhotos = mysqlTable("gallery_photos", {
   location: varchar("location", { length: 500 }),
   dateTaken: varchar("dateTaken", { length: 100 }),
   isPublished: boolean("isPublished").default(true).notNull(),
+  isHomepageFeatured: boolean("isHomepageFeatured").default(false).notNull(),
   sortOrder: int("sortOrder").default(0).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
@@ -164,12 +165,12 @@ export type GalleryPhoto = typeof galleryPhotos.$inferSelect;
 export type InsertGalleryPhoto = typeof galleryPhotos.$inferInsert;
 
 /**
- * Leadership members — owner-managed Board and Advisory profiles.
+ * Leadership members — owner-managed Board, Member and Advisory profiles.
  * Board membership must match the Foundation's official company records.
  */
 export const leadershipMembers = mysqlTable("leadership_members", {
   id: int("id").autoincrement().primaryKey(),
-  memberType: mysqlEnum("memberType", ["board", "advisor"]).notNull(),
+  memberType: mysqlEnum("memberType", ["board", "member", "advisor"]).notNull(),
   nameEn: varchar("nameEn", { length: 255 }).notNull(),
   nameOd: varchar("nameOd", { length: 255 }),
   roleEn: varchar("roleEn", { length: 255 }).notNull(),

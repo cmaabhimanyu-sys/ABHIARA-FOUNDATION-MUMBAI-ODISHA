@@ -100,6 +100,9 @@ A published photo may appear in the homepage rolling photo section, Impact Galle
 Use **Impact Photos** to manage every uploaded public photo.
 
 - **Edit** changes the title, description, category, location, date and public visibility.
+- **First on homepage** makes one published photo the fixed first slide at the top of the homepage.
+- **Earlier** and **Later** change the order of the remaining rolling photos.
+- **Display order** can be entered directly when a specific position is needed.
 - **Publish** makes a reviewed draft live.
 - **Unpublish** removes the photo from public pages without deleting its Blob file.
 - **Delete record** removes the website entry but keeps the stored file in Photo Library.
@@ -143,11 +146,12 @@ Use this to update only reviewed public values:
 
 Only values used by an approved public page are displayed. Legal details, payment settings and protected records remain locked.
 
-### 7. Board and Advisory Members
+### 7. Board, Members and Advisors
 
-Use **Board and Advisors** to manage the profiles shown on the public Board and Transparency page.
+Use **Board, Members and Advisors** to manage every approved Abhiara person shown on the public people page.
 
 - Choose **Board of Directors** only for a director named in the Foundation's official company records.
+- Choose **Members** for people who hold an approved Foundation role but are not directors or advisors.
 - Choose **Advisory Members** for people who guide the Foundation but are not directors.
 - Add the English and Odia name, role, qualification and short biography.
 - Add an approved public profile photo and an HTTPS public profile link where available.

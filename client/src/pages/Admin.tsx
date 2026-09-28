@@ -26,6 +26,8 @@ import {
   EyeOff,
   Upload,
   ArrowLeft,
+  ArrowUp,
+  ArrowDown,
   Calendar,
   MapPin,
   Tag,
@@ -40,6 +42,7 @@ import {
   IndianRupee,
   Newspaper,
   ExternalLink,
+  Star,
 } from "lucide-react";
 
 type Tab = AdminTab;
@@ -94,6 +97,12 @@ const IMPACT_CATEGORY_OPTIONS: Array<{
     destination: "Impact and Media",
   },
 ];
+
+function isGenericImpactTitle(value: string) {
+  return /^(education|community|elder|elderly|medical|disaster|animal|programme|program)\s+(activity|photo|work)$/i.test(
+    value.trim()
+  );
+}
 
 function getImpactCategoryOption(category: ImpactPhotoCategory) {
   return IMPACT_CATEGORY_OPTIONS.find(option => option.value === category)!;
@@ -683,6 +692,7 @@ function GalleryManager() {
   const updateMut = trpc.cms.gallery.update.useMutation({
     onSuccess: () => {
       utils.cms.gallery.list.invalidate();
+      utils.cms.gallery.listPublished.invalidate();
       setEditId(null);
       setShowForm(false);
       resetForm();
@@ -692,8 +702,17 @@ function GalleryManager() {
   const deleteMut = trpc.cms.gallery.delete.useMutation({
     onSuccess: () => {
       utils.cms.gallery.list.invalidate();
+      utils.cms.gallery.listPublished.invalidate();
       toast.success("Media deleted!");
     },
+  });
+  const moveMut = trpc.cms.gallery.move.useMutation({
+    onSuccess: () => {
+      utils.cms.gallery.list.invalidate();
+      utils.cms.gallery.listPublished.invalidate();
+      toast.success("Photo order updated.");
+    },
+    onError: error => toast.error(error.message),
   });
 
   const [showForm, setShowForm] = useState(false);
@@ -708,6 +727,8 @@ function GalleryManager() {
     location: "",
     dateTaken: "",
     isPublished: false,
+    isHomepageFeatured: false,
+    sortOrder: 0,
   });
 
   const resetForm = () =>
@@ -721,6 +742,8 @@ function GalleryManager() {
       location: "",
       dateTaken: "",
       isPublished: false,
+      isHomepageFeatured: false,
+      sortOrder: 0,
     });
 
   const startEdit = (item: any) => {
@@ -734,6 +757,8 @@ function GalleryManager() {
       location: item.location || "",
       dateTaken: item.dateTaken || "",
       isPublished: item.isPublished,
+      isHomepageFeatured: item.isHomepageFeatured,
+      sortOrder: item.sortOrder || 0,
     });
     setEditId(item.id);
     setShowForm(true);
@@ -742,6 +767,16 @@ function GalleryManager() {
   const handleSubmit = () => {
     if (!form.title || !form.imageUrl) {
       toast.error("Title and media file are required");
+      return;
+    }
+    if (form.mediaType === "photo" && form.description.trim().length < 8) {
+      toast.error("Add a short public description for this photo.");
+      return;
+    }
+    if (form.mediaType === "photo" && isGenericImpactTitle(form.title)) {
+      toast.error(
+        "Replace the generic title with a clear description of this activity."
+      );
       return;
     }
     if (editId) {
@@ -854,7 +889,7 @@ function GalleryManager() {
           />
         )}
 
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <label className="mb-1 block text-sm font-medium text-[#333]">
               Website category
@@ -903,20 +938,73 @@ function GalleryManager() {
               className="bg-white border border-gray-300 text-[#333] focus:border-[#F5A623]"
             />
           </div>
+          <div>
+            <label className="mb-1 block text-sm font-medium text-[#333]">
+              Display order
+            </label>
+            <Input
+              type="number"
+              min={0}
+              max={9999}
+              value={form.sortOrder}
+              onChange={event =>
+                setForm(current => ({
+                  ...current,
+                  sortOrder: Number(event.target.value) || 0,
+                }))
+              }
+              className="bg-white border border-gray-300 text-[#333] focus:border-[#F5A623]"
+            />
+            <p className="mt-1 text-xs text-[#777]">
+              Lower numbers appear earlier.
+            </p>
+          </div>
         </div>
-        <label className="flex items-center gap-3 rounded border border-gray-200 bg-gray-50 p-4 text-sm text-[#333]">
-          <input
-            type="checkbox"
-            checked={form.isPublished}
-            onChange={event =>
-              setForm(current => ({
-                ...current,
-                isPublished: event.target.checked,
-              }))
-            }
-          />
-          Published on the homepage, Impact Gallery and matching category page
-        </label>
+        <div className="grid gap-3 md:grid-cols-2">
+          <label className="flex items-start gap-3 rounded border border-gray-200 bg-gray-50 p-4 text-sm text-[#333]">
+            <input
+              type="checkbox"
+              checked={form.isPublished}
+              onChange={event =>
+                setForm(current => ({
+                  ...current,
+                  isPublished: event.target.checked,
+                  isHomepageFeatured: event.target.checked
+                    ? current.isHomepageFeatured
+                    : false,
+                }))
+              }
+              className="mt-1"
+            />
+            <span>
+              <strong className="block">Published</strong>
+              Shows on the homepage, Impact Gallery and matching category page.
+            </span>
+          </label>
+          {form.mediaType === "photo" && (
+            <label className="flex items-start gap-3 rounded border border-amber-300 bg-amber-50 p-4 text-sm text-[#59420B]">
+              <input
+                type="checkbox"
+                checked={form.isHomepageFeatured}
+                onChange={event =>
+                  setForm(current => ({
+                    ...current,
+                    isHomepageFeatured: event.target.checked,
+                    isPublished: event.target.checked
+                      ? true
+                      : current.isPublished,
+                  }))
+                }
+                className="mt-1"
+              />
+              <span>
+                <strong className="block">First homepage photo</strong>
+                Only one photo can hold this position. Selecting another photo
+                replaces the current first photo.
+              </span>
+            </label>
+          )}
+        </div>
         <Button
           onClick={handleSubmit}
           disabled={createMut.isPending || updateMut.isPending}
@@ -946,7 +1034,8 @@ function GalleryManager() {
           <p className="mt-1 text-xs text-[#777]">
             {photos.length} photos and {videos.length} videos. Upload new photos
             in Photo Library. Edit here to change the title, description,
-            category, location, date or public visibility.
+            category, location, date, homepage position, display order or public
+            visibility.
           </p>
           <p className="mt-1 text-xs text-[#777]">
             Unpublish hides a photo safely. Delete record removes its website
@@ -965,7 +1054,7 @@ function GalleryManager() {
         </div>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {items.map((item: any) => (
+          {items.map((item: any, index: number) => (
             <div
               key={item.id}
               className="relative group rounded-lg overflow-hidden bg-white border border-gray-200"
@@ -1010,6 +1099,15 @@ function GalleryManager() {
                 <p className="mt-1 text-[10px] font-bold uppercase tracking-wider text-[#8A5700]">
                   {item.isPublished ? "Live on public pages" : "Draft"}
                 </p>
+                <p className="mt-1 text-[10px] text-[#777]">
+                  Display order {item.sortOrder || index + 1}
+                </p>
+                {item.isHomepageFeatured && (
+                  <p className="mt-1 inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-1 text-[10px] font-bold text-[#6F4300]">
+                    <Star className="h-3 w-3 fill-current" /> First homepage
+                    photo
+                  </p>
+                )}
                 <div className="mt-3 flex flex-wrap gap-2">
                   <Button
                     type="button"
@@ -1019,6 +1117,50 @@ function GalleryManager() {
                     className="h-8 border-gray-300 px-2 text-xs text-[#333]"
                   >
                     <Edit2 className="mr-1 h-3 w-3" /> Edit
+                  </Button>
+                  {item.mediaType !== "video" && !item.isHomepageFeatured && (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() =>
+                        updateMut.mutate({
+                          id: item.id,
+                          isHomepageFeatured: true,
+                          isPublished: true,
+                        })
+                      }
+                      disabled={updateMut.isPending}
+                      className="h-8 border-amber-300 px-2 text-xs text-[#6F4300] hover:bg-amber-50"
+                    >
+                      <Star className="mr-1 h-3 w-3" /> Set as first
+                    </Button>
+                  )}
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() =>
+                      moveMut.mutate({ id: item.id, direction: "up" })
+                    }
+                    disabled={index === 0 || moveMut.isPending}
+                    className="h-8 border-gray-300 px-2 text-xs text-[#333]"
+                    aria-label={`Move ${item.title} earlier`}
+                  >
+                    <ArrowUp className="mr-1 h-3 w-3" /> Earlier
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() =>
+                      moveMut.mutate({ id: item.id, direction: "down" })
+                    }
+                    disabled={index === items.length - 1 || moveMut.isPending}
+                    className="h-8 border-gray-300 px-2 text-xs text-[#333]"
+                    aria-label={`Move ${item.title} later`}
+                  >
+                    <ArrowDown className="mr-1 h-3 w-3" /> Later
                   </Button>
                   <Button
                     type="button"
@@ -2827,6 +2969,12 @@ function VercelMediaManager() {
       toast.error("Add a public title and a short caption before uploading.");
       return;
     }
+    if (impactFolderCategory && isGenericImpactTitle(publicTitle)) {
+      toast.error(
+        "Replace the generic title with a clear description of this activity."
+      );
+      return;
+    }
 
     const dataUrl = await new Promise<string>((resolve, reject) => {
       const reader = new FileReader();
@@ -3253,7 +3401,7 @@ function PressMediaManager({ onOpen }: { onOpen: (tab: Tab) => void }) {
   );
 }
 
-type LeadershipMemberType = "board" | "advisor";
+type LeadershipMemberType = "board" | "member" | "advisor";
 
 function LeadershipManager() {
   const utils = trpc.useUtils();
@@ -3391,8 +3539,8 @@ function LeadershipManager() {
         </div>
         <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-950">
           Board members must match the Foundation&apos;s official company
-          records. Advisory roles must stay separate from the Board of
-          Directors.
+          records. General Members and Advisory roles must stay separate from
+          the Board of Directors.
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <div>
@@ -3410,6 +3558,7 @@ function LeadershipManager() {
               className="h-10 w-full rounded-md border border-gray-300 bg-white px-3 text-sm"
             >
               <option value="board">Board of Directors</option>
+              <option value="member">Members</option>
               <option value="advisor">Advisory Members</option>
             </select>
           </div>
@@ -3564,7 +3713,7 @@ function LeadershipManager() {
             }
             className="mt-1"
           />
-          Show this member on the public Board and Transparency page
+          Show this person on the public Board, Members and Advisors page
         </label>
         <Button
           type="button"
@@ -3586,11 +3735,11 @@ function LeadershipManager() {
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 className="font-serif text-2xl font-bold text-[#1A1A1A]">
-            Board and Advisory Members
+            Board, Members and Advisors
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[#666]">
-            Manage the confirmed directors and advisors shown on the public
-            website. Use Unpublish to hide a profile without deleting it.
+            Manage the confirmed Directors, Members and Advisors shown on the
+            public website. Use Unpublish to hide a profile without deleting it.
           </p>
         </div>
         <Button
@@ -3611,7 +3760,7 @@ function LeadershipManager() {
         </div>
       ) : members.length === 0 ? (
         <p className="rounded-lg border border-dashed border-gray-300 p-8 text-center text-sm text-[#777]">
-          No board or advisory members have been added yet.
+          No board, general or advisory members have been added yet.
         </p>
       ) : (
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -3641,7 +3790,9 @@ function LeadershipManager() {
                 <p className="font-mono text-[9px] font-bold uppercase tracking-[0.16em] text-[#9A6100]">
                   {member.memberType === "board"
                     ? "Board of Directors"
-                    : "Advisory Members"}
+                    : member.memberType === "member"
+                      ? "Members"
+                      : "Advisory Members"}
                 </p>
                 <h3 className="mt-2 font-serif text-xl font-bold text-[#1A1A1A]">
                   {member.nameEn}
@@ -3865,7 +4016,7 @@ export default function Admin() {
     { key: "youtube", label: "Public Videos", icon: Youtube },
     { key: "settings", label: "Public Details", icon: Settings },
     { key: "social", label: "Social Links", icon: Share2 },
-    { key: "leadership", label: "Board and Advisors", icon: Users },
+    { key: "leadership", label: "Board, Members and Advisors", icon: Users },
     { key: "donations", label: "Successful Donations", icon: IndianRupee },
     { key: "members", label: "Volunteer Applications", icon: Users },
   ];

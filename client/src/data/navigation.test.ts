@@ -15,16 +15,17 @@ describe("compact public navigation", () => {
       "Animal Welfare",
       "Medical Emergencies",
       "Impact & Media",
-      "Wellbeing & Relief",
+      "Board Members & Transparency",
     ]);
     expect(HEADER_NAV_GROUPS).toHaveLength(7);
     for (const group of HEADER_NAV_GROUPS.filter(
-      item => !["disaster", "animals", "medical"].includes(item.key)
+      item =>
+        !["disaster", "animals", "medical", "governance"].includes(item.key)
     )) {
       expect(group.items.length).toBeGreaterThanOrEqual(3);
       expect(group.items.length).toBeLessThanOrEqual(6);
     }
-    for (const key of ["disaster", "animals", "medical"]) {
+    for (const key of ["disaster", "animals", "medical", "governance"]) {
       expect(HEADER_NAV_GROUPS.find(group => group.key === key)?.items).toEqual(
         []
       );
@@ -37,14 +38,19 @@ describe("compact public navigation", () => {
   });
 
   it("keeps every established primary route available inside the grouped header", () => {
-    const groupedRoutes = HEADER_NAV_GROUPS.flatMap(group =>
-      group.items.map(item => item.href)
-    );
+    const groupedRoutes = HEADER_NAV_GROUPS.flatMap(group => [
+      group.href,
+      ...group.items.map(item => item.href),
+    ]);
     for (const item of PRIMARY_NAV.filter(
-      item => item.href !== "/" && item.href !== "/donate"
+      item =>
+        item.href !== "/" &&
+        item.href !== "/donate" &&
+        item.href !== "/limited-verified-support"
     )) {
       expect(groupedRoutes).toContain(item.href);
     }
+    expect(footer).toContain("PRIMARY_NAV.filter");
   });
 
   it("keeps parent pages usable beside distinct disclosure controls", () => {
@@ -108,7 +114,9 @@ describe("compact public navigation", () => {
       group.items.map(item => item.href)
     );
     expect(allGroupedRoutes).toContain("/privacy");
-    expect(allGroupedRoutes).toContain("/board-and-transparency");
+    expect(
+      HEADER_NAV_GROUPS.find(group => group.key === "governance")?.href
+    ).toBe("/board-and-transparency");
     expect(allGroupedRoutes).toContain("/abhiara-vidyapitha");
     expect(allGroupedRoutes).toContain("/contact");
     expect(navbar).toContain("Donation policy");

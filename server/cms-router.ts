@@ -17,6 +17,7 @@ import {
   getGalleryPhotos,
   createGalleryPhoto,
   updateGalleryPhoto,
+  moveGalleryPhoto,
   deleteGalleryPhoto,
   getBlogPosts,
   getBlogPostById,
@@ -222,7 +223,8 @@ const galleryRouter = router({
         location: z.string().optional(),
         dateTaken: z.string().optional(),
         isPublished: z.boolean().default(true),
-        sortOrder: z.number().default(0),
+        isHomepageFeatured: z.boolean().default(false),
+        sortOrder: z.number().int().min(0).max(9999).default(0),
       })
     )
     .mutation(({ input }) => createGalleryPhoto(input)),
@@ -249,13 +251,17 @@ const galleryRouter = router({
         location: z.string().optional(),
         dateTaken: z.string().optional(),
         isPublished: z.boolean().optional(),
-        sortOrder: z.number().optional(),
+        isHomepageFeatured: z.boolean().optional(),
+        sortOrder: z.number().int().min(0).max(9999).optional(),
       })
     )
     .mutation(({ input }) => {
       const { id, ...data } = input;
       return updateGalleryPhoto(id, data);
     }),
+  move: adminProcedure
+    .input(z.object({ id: z.number(), direction: z.enum(["up", "down"]) }))
+    .mutation(({ input }) => moveGalleryPhoto(input.id, input.direction)),
   delete: adminProcedure
     .input(z.object({ id: z.number() }))
     .mutation(({ input }) => deleteGalleryPhoto(input.id)),
@@ -268,7 +274,7 @@ const leadershipRouter = router({
   create: adminProcedure
     .input(
       z.object({
-        memberType: z.enum(["board", "advisor"]),
+        memberType: z.enum(["board", "member", "advisor"]),
         nameEn: z.string().min(2).max(255),
         nameOd: z.string().max(255).optional(),
         roleEn: z.string().min(2).max(255),
@@ -295,7 +301,7 @@ const leadershipRouter = router({
     .input(
       z.object({
         id: z.number(),
-        memberType: z.enum(["board", "advisor"]).optional(),
+        memberType: z.enum(["board", "member", "advisor"]).optional(),
         nameEn: z.string().min(2).max(255).optional(),
         nameOd: z.string().max(255).optional(),
         roleEn: z.string().min(2).max(255).optional(),

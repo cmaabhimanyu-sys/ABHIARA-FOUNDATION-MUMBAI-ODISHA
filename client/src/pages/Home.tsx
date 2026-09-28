@@ -95,9 +95,6 @@ const HOME_IMPACT_CATEGORIES: Record<
   },
 };
 
-const FEATURED_HOME_PHOTO_ID = 30046;
-const FEATURED_HOME_PHOTO_PATH = "education-children-1.jpeg";
-
 const HERO_AREA_BY_PHOTO_CATEGORY: Record<string, string> = {
   education: "education",
   events: "education",
@@ -130,19 +127,11 @@ export default function Home() {
       (photo: any) =>
         !/press|newspaper|certificate|clipping/i.test(photo.title || "")
     );
-  const featuredPhotoIndex = impactPhotos.findIndex(
-    (photo: any) =>
-      photo.id === FEATURED_HOME_PHOTO_ID ||
-      String(photo.imageUrl).includes(FEATURED_HOME_PHOTO_PATH)
+  const orderedHeroPhotos = [...impactPhotos].sort(
+    (left: any, right: any) =>
+      Number(Boolean(right.isHomepageFeatured)) -
+      Number(Boolean(left.isHomepageFeatured))
   );
-  const orderedHeroPhotos =
-    featuredPhotoIndex > 0
-      ? [
-          impactPhotos[featuredPhotoIndex],
-          ...impactPhotos.slice(0, featuredPhotoIndex),
-          ...impactPhotos.slice(featuredPhotoIndex + 1),
-        ]
-      : impactPhotos;
   const heroSlides = orderedHeroPhotos.map((photo: any, index: number) => {
     const areaKey = (HERO_AREA_BY_PHOTO_CATEGORY[photo.category] ||
       "rural") as keyof typeof HOME_WORK_ICONS;
@@ -627,18 +616,15 @@ export default function Home() {
 
                   <div className="absolute inset-x-0 bottom-0 z-10">
                     <div className="container flex flex-col gap-5 pb-7 pt-28 md:flex-row md:items-end md:justify-between md:pb-10">
-                      <div
-                        className="max-w-3xl rounded-xl border border-white/15 bg-black/70 p-5 shadow-[0_20px_55px_rgba(0,0,0,0.35)] backdrop-blur-[2px] md:p-7"
-                        aria-live="polite"
-                      >
+                      <div className="max-w-2xl" aria-live="polite">
                         <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#F5A623]">
                           {t(category.en, category.od)}
                         </p>
-                        <h3 className="mt-3 font-serif text-3xl font-bold leading-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] md:text-5xl">
+                        <h3 className="mt-3 font-serif text-3xl font-bold leading-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] md:text-4xl">
                           {photo.title}
                         </h3>
                         {photo.description && (
-                          <p className="mt-4 max-w-2xl text-sm leading-7 text-white md:text-base">
+                          <p className="mt-3 max-w-xl text-sm leading-6 text-white drop-shadow-[0_1px_5px_rgba(0,0,0,0.95)] md:text-base">
                             {photo.description}
                           </p>
                         )}
@@ -649,7 +635,7 @@ export default function Home() {
                               .join(" · ")}
                           </p>
                         )}
-                        <div className="mt-5 flex flex-wrap gap-3">
+                        <div className="mt-4 flex flex-wrap gap-3">
                           <Link
                             href={category.href}
                             className="inline-flex items-center gap-2 rounded border border-white/55 bg-black/35 px-5 py-3 text-sm font-bold text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623]"

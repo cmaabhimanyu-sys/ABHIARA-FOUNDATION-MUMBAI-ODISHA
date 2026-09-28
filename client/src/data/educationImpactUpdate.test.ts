@@ -177,14 +177,17 @@ describe("education-first public website update", () => {
       "Animal Welfare",
       "Medical Emergencies",
       "Impact & Media",
-      "Wellbeing & Relief",
+      "Board Members & Transparency",
     ]);
     const groupedRoutes = HEADER_NAV_GROUPS.flatMap(group => [
       group.href,
       ...group.items.map(item => item.href),
     ]);
     for (const item of PRIMARY_NAV.filter(
-      item => item.href !== "/" && item.href !== "/donate"
+      item =>
+        item.href !== "/" &&
+        item.href !== "/donate" &&
+        item.href !== "/limited-verified-support"
     )) {
       expect(groupedRoutes).toContain(item.href);
     }

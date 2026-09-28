@@ -174,9 +174,27 @@ const PEOPLE_GROUPS: PeopleGroup[] = [
     href: "/board-and-transparency#board",
   },
   {
+    title: { en: "Members", od: "ସଦସ୍ୟ" },
+    label: {
+      en: "Programme and organisational work",
+      od: "କାର୍ଯ୍ୟକ୍ରମ ଓ ସଂଗଠନ କାମ",
+    },
+    count: { en: "Published members", od: "ପ୍ରକାଶିତ ସଦସ୍ୟ" },
+    body: {
+      en: "Members support programme delivery, operations, legal work, compliance and field coordination.",
+      od: "ସଦସ୍ୟମାନେ କାର୍ଯ୍ୟକ୍ରମ ପରିଚାଳନା, କାର୍ଯ୍ୟ ସମନ୍ୱୟ, ଆଇନଗତ କାମ, ଅନୁପାଳନ ଓ କ୍ଷେତ୍ର ସହଯୋଗ କରନ୍ତି।",
+    },
+    image: "/images/team-bhubaneswar.jpeg",
+    imageAlt: {
+      en: "Abhiara Foundation team during field work",
+      od: "କ୍ଷେତ୍ର କାମ ସମୟରେ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଦଳ",
+    },
+    href: "/board-and-transparency#members",
+  },
+  {
     title: { en: "Advisors", od: "ପରାମର୍ଶଦାତା" },
     label: { en: "Subject guidance", od: "ବିଷୟଗତ ପରାମର୍ଶ" },
-    count: { en: "4 confirmed advisors", od: "୪ ଜଣ ନିଶ୍ଚିତ ପରାମର୍ଶଦାତା" },
+    count: { en: "Published advisors", od: "ପ୍ରକାଶିତ ପରାମର୍ଶଦାତା" },
     body: {
       en: "Advisors share strategic, legal, education, CSR and compliance knowledge. They are listed separately from the Board.",
       od: "ପରାମର୍ଶଦାତାମାନେ ରଣନୀତି, ଆଇନ, ଶିକ୍ଷା, CSR ଓ ଅନୁପାଳନ ବିଷୟରେ ଜ୍ଞାନ ଦିଅନ୍ତି। ସେମାନଙ୍କୁ ମଣ୍ଡଳରୁ ଅଲଗା ଭାବେ ଦର୍ଶାଯାଇଛି।",
@@ -188,21 +206,6 @@ const PEOPLE_GROUPS: PeopleGroup[] = [
     },
     href: "/board-and-transparency#advisors",
   },
-  {
-    title: { en: "Programme and Ground Team", od: "କାର୍ଯ୍ୟକ୍ରମ ଓ କ୍ଷେତ୍ର ଦଳ" },
-    label: { en: "Field work", od: "କ୍ଷେତ୍ର କାମ" },
-    count: { en: "5 core and field members", od: "୫ ଜଣ ମୁଖ୍ୟ ଓ କ୍ଷେତ୍ର ସଦସ୍ୟ" },
-    body: {
-      en: "The team carries out visits, coordinates activities, keeps records and follows up on programme needs.",
-      od: "ଦଳ ପରିଦର୍ଶନ କରେ, କାର୍ଯ୍ୟକଳାପ ସମନ୍ୱୟ କରେ, ରେକର୍ଡ ରଖେ ଓ କାର୍ଯ୍ୟକ୍ରମ ଆବଶ୍ୟକତାର ଅନୁସରଣ କରେ।",
-    },
-    image: "/images/team-bhubaneswar.jpeg",
-    imageAlt: {
-      en: "Abhiara Foundation team during field work",
-      od: "କ୍ଷେତ୍ର କାମ ସମୟରେ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଦଳ",
-    },
-    href: "/team#ground-team",
-  },
 ];
 
 export default function Vision() {
@@ -211,6 +214,9 @@ export default function Vision() {
     trpc.cms.leadership.listPublished.useQuery(undefined, { retry: false });
   const publishedBoardCount = leadershipMembers.filter(
     (member: any) => member.memberType === "board"
+  ).length;
+  const publishedMemberCount = leadershipMembers.filter(
+    (member: any) => member.memberType === "member"
   ).length;
   const publishedAdvisorCount = leadershipMembers.filter(
     (member: any) => member.memberType === "advisor"
@@ -232,7 +238,7 @@ export default function Vision() {
           "ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଦୃଷ୍ଟି, ଲକ୍ଷ୍ୟ, ମୂଲ୍ୟବୋଧ ଓ ସାର୍ବଜନୀନ ଦଳ ଗଠନ ବିଷୟରେ ପଢ଼ନ୍ତୁ।"
         )}
         image="/images/pratibha-samman-group.jpeg"
-        url="https://www.abhiarafoundation.com/vision"
+        url="https://www.abhiarafoundation.org/vision"
       />
       <Navbar />
 
@@ -480,12 +486,17 @@ export default function Vision() {
                               `${publishedBoardCount} confirmed directors`,
                               `${publishedBoardCount} ଜଣ ନିଶ୍ଚିତ ନିର୍ଦ୍ଦେଶକ`
                             )
-                          : index === 1 && publishedAdvisorCount > 0
+                          : index === 1 && publishedMemberCount > 0
                             ? t(
-                                `${publishedAdvisorCount} confirmed advisors`,
-                                `${publishedAdvisorCount} ଜଣ ନିଶ୍ଚିତ ପରାମର୍ଶଦାତା`
+                                `${publishedMemberCount} published members`,
+                                `${publishedMemberCount} ଜଣ ପ୍ରକାଶିତ ସଦସ୍ୟ`
                               )
-                            : t(group.count.en, group.count.od)}
+                            : index === 2 && publishedAdvisorCount > 0
+                              ? t(
+                                  `${publishedAdvisorCount} confirmed advisors`,
+                                  `${publishedAdvisorCount} ଜଣ ନିଶ୍ଚିତ ପରାମର୍ଶଦାତା`
+                                )
+                              : t(group.count.en, group.count.od)}
                       </p>
                       <p className="font-sans text-[14px] text-[#555] leading-6 mb-6 flex-1">
                         {t(group.body.en, group.body.od)}
