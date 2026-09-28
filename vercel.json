@@ -119,6 +119,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/api/health", "destination": "/api" },
     { "source": "/api/trpc/:path*", "destination": "/api" },
     { "source": "/api/oauth/:path*", "destination": "/api" },
     { "source": "/manus-storage/:path*", "destination": "/api" },

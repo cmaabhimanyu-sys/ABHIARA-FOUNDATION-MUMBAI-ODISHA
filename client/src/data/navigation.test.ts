@@ -71,9 +71,10 @@ describe("compact public navigation", () => {
     expect(home).toContain(
       "text-4xl font-bold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-7xl"
     );
-    expect(footer).toContain(
-      'className="mb-5 h-20 w-auto rounded bg-white p-1 md:h-24"'
-    );
+    expect(footer).toContain('src="/abhiara-mark.png"');
+    expect(footer).toContain('t("Fearless Ray of Light"');
+    expect(footer).toContain("text-[#F5A623]");
+    expect(footer).not.toContain("rounded bg-white p-1");
   });
 
   it("uses one accessible mobile dialog with Escape, focus return, and large targets", () => {

@@ -27,6 +27,10 @@ describe("Vercel payment API routing", () => {
 
   it("routes tRPC requests to the API before the SPA fallback", () => {
     expect(config.rewrites?.[0]).toEqual({
+      source: "/api/health",
+      destination: "/api",
+    });
+    expect(config.rewrites?.[1]).toEqual({
       source: "/api/trpc/:path*",
       destination: "/api",
     });

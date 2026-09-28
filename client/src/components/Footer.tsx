@@ -129,12 +129,30 @@ export default function Footer() {
       <div className="container py-14 md:py-16">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1.5fr_1fr]">
           <div>
-            <img
-              src="/abhiara-logo.png"
-              alt="Abhiara Foundation"
-              className="mb-5 h-20 w-auto rounded bg-white p-1 md:h-24"
-              loading="lazy"
-            />
+            <Link
+              href="/"
+              aria-label={t(
+                "Abhiara Foundation home",
+                "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ମୁଖ୍ୟ ପୃଷ୍ଠା"
+              )}
+              className="mb-6 inline-flex items-center gap-4 rounded-xl outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[#F5A623] focus-visible:ring-offset-4 focus-visible:ring-offset-[#111111]"
+            >
+              <img
+                src="/abhiara-mark.png"
+                alt=""
+                aria-hidden="true"
+                className="h-16 w-12 object-contain drop-shadow-[0_6px_16px_rgba(245,166,35,0.18)] md:h-20 md:w-16"
+                loading="lazy"
+              />
+              <span>
+                <span className="block font-serif text-2xl font-bold leading-none text-white md:text-3xl">
+                  {t("Abhiara Foundation", "ଅଭିଆରା ଫାଉଣ୍ଡେସନ")}
+                </span>
+                <span className="mt-2 block font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-[#F5A623] md:text-[10px]">
+                  {t("Fearless Ray of Light", "ନିର୍ଭୀକ ଆଲୋକର କିରଣ")}
+                </span>
+              </span>
+            </Link>
             <p className="max-w-sm font-serif text-lg font-bold text-white">
               {t(PUBLIC_TAGLINE, "ଶିକ୍ଷା ପ୍ରଥମ। ଦୟା ସଦା।")}
             </p>
