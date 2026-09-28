@@ -34,7 +34,7 @@ export const translations = {
   home_cta_partner: { en: "PARTNER WITH US", od: "ଆମ ସହ ଭାଗୀଦାର ହୁଅନ୍ତୁ" },
   home_what_we_do: { en: "WHAT WE DO", od: "ଆମେ କ'ଣ କରୁ" },
   home_three_pillars: { en: "Our Programmes.", od: "ଆମର କାର୍ଯ୍ୟକ୍ରମ।" },
-  home_one_promise: { en: "One Promise.", od: "ଗୋଟିଏ ପ୍ରତିଜ୍ଞା।" },
+  home_one_promise: { en: "Clear Programme Scope.", od: "ସ୍ପଷ୍ଟ କାର୍ଯ୍ୟକ୍ରମ ସୀମା।" },
   home_rooted_odisha: { en: "Rooted in Odisha. Scalable across India.", od: "ଓଡ଼ିଶାରେ ମୂଳ। ଭାରତ ଜୁଡ଼ି ବିସ୍ତାରଯୋଗ୍ୟ।" },
   home_education: { en: "Education", od: "ଶିକ୍ଷା" },
   home_elderly_care: { en: "Elderly Care", od: "ବୟସ୍କ ସେବା" },
@@ -44,8 +44,8 @@ export const translations = {
   home_csr_target: { en: "CSR Target FY26", od: "CSR ଲକ୍ଷ୍ୟ FY26" },
   home_districts: { en: "Districts in Odisha", od: "ଓଡ଼ିଶାର ଜିଲ୍ଲା" },
   home_founder_quote: {
-    en: "\"Remote to Metro Mumbai was my journey. Abhiara Foundation is my promise. that the next child from the village has a path.\"",
-    od: "\"ଦୂରବର୍ତ୍ତୀ ଗ୍ରାମରୁ ମେଟ୍ରୋ ମୁମ୍ବାଇ ମୋ ଯାତ୍ରା ଥିଲା। ଅଭିଆରା ଫାଉଣ୍ଡେସନ ମୋ ପ୍ରତିଜ୍ଞା. ଗ୍ରାମର ପରବର୍ତ୍ତୀ ଶିଶୁ ପାଇଁ ଏକ ପଥ ଥିବ।\""
+    en: "Abhiara Foundation provides verified education support through approved programmes and documented need.",
+    od: "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଅନୁମୋଦିତ କାର୍ଯ୍ୟକ୍ରମ ଓ ଲିପିବଦ୍ଧ ଆବଶ୍ୟକତା ଆଧାରରେ ଯାଞ୍ଚ ହୋଇଥିବା ଶିକ୍ଷା ସହାୟତା ପ୍ରଦାନ କରେ।"
   },
   home_founder_name: { en: "Abhimanyu Mallik · Founder", od: "ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ · ପ୍ରତିଷ୍ଠାତା" },
 

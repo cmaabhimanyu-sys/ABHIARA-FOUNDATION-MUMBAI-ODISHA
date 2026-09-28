@@ -23,8 +23,8 @@ export const FOUNDER_STORY = {
     od: "ଓଡ଼ିଶାର କେନ୍ଦ୍ରାପଡ଼ା ଜିଲ୍ଲାର ଛୋଟ ଗ୍ରାମ ରାଇସରରୁ ମୁମ୍ବାଇ",
   },
   introduction: {
-    en: "Abhiara Foundation grew from a simple belief. The support we receive in life should one day be passed on to someone who needs it.",
-    od: "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଏକ ସରଳ ବିଶ୍ୱାସରୁ ଗଢ଼ିଉଠିଛି। ଜୀବନରେ ଆମେ ପାଇଥିବା ସହାୟତା ଦିନେ ଆବଶ୍ୟକତାରେ ଥିବା ଅନ୍ୟ ଜଣଙ୍କ ପାଖକୁ ପହଞ୍ଚିବା ଉଚିତ।",
+    en: "Abhiara Foundation is a Section 8 not for profit company established to organise verified education support for orphaned and underprivileged children.",
+    od: "ଅନାଥ ଓ ସୁବିଧାବଞ୍ଚିତ ଶିଶୁଙ୍କ ପାଇଁ ଯାଞ୍ଚ ଆଧାରିତ ଶିକ୍ଷା ସହାୟତା ସଂଗଠିତ କରିବାକୁ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଏକ ଧାରା ୮ ଅଲାଭକାରୀ କମ୍ପାନୀ ଭାବେ ସ୍ଥାପିତ ହୋଇଛି।",
   },
   chapters: [
     {
@@ -51,8 +51,8 @@ export const FOUNDER_STORY = {
         od: "ନିଜ କାର୍ଯ୍ୟଜୀବନ ଗଢ଼ିବା",
       },
       body: {
-        en: "He built his career in Odisha and later moved to Mumbai to continue his work. Family sacrifice, guidance from teachers and friends, and timely help from others made that journey possible.",
-        od: "ସେ ଓଡ଼ିଶାରେ ନିଜ କାର୍ଯ୍ୟଜୀବନ ଗଢ଼ିଥିଲେ ଏବଂ ପରେ କାମ ଆଗକୁ ନେବା ପାଇଁ ମୁମ୍ବାଇ ଯାଇଥିଲେ। ପରିବାରର ତ୍ୟାଗ, ଶିକ୍ଷକ ଓ ସାଙ୍ଗମାନଙ୍କର ମାର୍ଗଦର୍ଶନ ଏବଂ ଅନ୍ୟମାନଙ୍କ ସମୟୋଚିତ ସହାୟତା ଏହି ଯାତ୍ରାକୁ ସମ୍ଭବ କରିଥିଲା।",
+        en: "He built his career in Odisha and later moved to Mumbai to continue his professional work. His rural background provides context for the Foundation's education focus.",
+        od: "ସେ ଓଡ଼ିଶାରେ ନିଜ କାର୍ଯ୍ୟଜୀବନ ଗଢ଼ିଥିଲେ ଏବଂ ପରେ ପେଶାଗତ କାମ ଜାରି ରଖିବା ପାଇଁ ମୁମ୍ବାଇ ଯାଇଥିଲେ। ତାଙ୍କ ଗ୍ରାମୀଣ ପୃଷ୍ଠଭୂମି ଫାଉଣ୍ଡେସନର ଶିକ୍ଷା କେନ୍ଦ୍ରିତ କାମର ପରିପ୍ରେକ୍ଷ୍ୟ ଦେଇଥାଏ।",
       },
     },
     {
@@ -61,33 +61,33 @@ export const FOUNDER_STORY = {
         od: "ଅଭିଆରା କାହିଁକି",
       },
       title: {
-        en: "Passing support forward",
-        od: "ସହାୟତାକୁ ଆଗକୁ ପହଞ୍ଚାଇବା",
+        en: "A structured education response",
+        od: "ସଂଗଠିତ ଶିକ୍ଷା ସହାୟତା",
       },
       body: {
-        en: "As his life moved forward, he met orphaned children and children from underprivileged families who were struggling to continue school. He felt that the help he had received should reach them too. This became the purpose of Abhiara Foundation.",
-        od: "ଜୀବନ ଆଗକୁ ବଢ଼ିବା ସହ ସେ ପଢ଼ା ଜାରି ରଖିବାରେ କଷ୍ଟ ପାଉଥିବା ଅନାଥ ଶିଶୁ ଓ ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଶିଶୁଙ୍କୁ ଦେଖିଥିଲେ। ନିଜେ ପାଇଥିବା ସହାୟତା ସେମାନଙ୍କ ପାଖକୁ ମଧ୍ୟ ପହଞ୍ଚିବା ଉଚିତ ବୋଲି ସେ ଭାବିଲେ। ଏହି ଭାବନାରୁ ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଉଦ୍ଦେଶ୍ୟ ଗଢ଼ିଉଠିଲା।",
+        en: "Abhiara Foundation was established to provide structured education support where a child's need can be verified and an approved programme budget is available.",
+        od: "ଶିଶୁଙ୍କ ଆବଶ୍ୟକତା ଯାଞ୍ଚ ହୋଇପାରିଲେ ଏବଂ ଅନୁମୋଦିତ କାର୍ଯ୍ୟକ୍ରମ ବଜେଟ ଉପଲବ୍ଧ ଥିଲେ ସଂଗଠିତ ଶିକ୍ଷା ସହାୟତା ଦେବା ପାଇଁ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସ୍ଥାପିତ ହୋଇଛି।",
       },
     },
   ],
   turningPoint: {
     title: {
-      en: "What stayed with him",
-      od: "ଯାହା ତାଙ୍କ ମନରେ ରହିଗଲା",
+      en: "From background to programme focus",
+      od: "ପୃଷ୍ଠଭୂମିରୁ କାର୍ଯ୍ୟକ୍ରମ ଲକ୍ଷ୍ୟ",
     },
     body: {
-      en: "No one moves forward alone. Behind every opportunity, there are often people who give advice, encouragement or practical help at the right time. Abhiara was built to pass that support forward, one child and one checked need at a time.",
-      od: "କେହି ଏକା ଆଗକୁ ବଢ଼ନ୍ତି ନାହିଁ। ପ୍ରତ୍ୟେକ ସୁଯୋଗ ପଛରେ ଅନେକ ସମୟରେ ଠିକ ସମୟରେ ପରାମର୍ଶ, ଉତ୍ସାହ ବା ବ୍ୟବହାରିକ ସହାୟତା ଦେଇଥିବା ଲୋକ ରହନ୍ତି। ସେହି ସହାୟତାକୁ ଗୋଟିଏ ଶିଶୁ ଓ ଗୋଟିଏ ଯାଞ୍ଚ ହୋଇଥିବା ଆବଶ୍ୟକତା ମାଧ୍ୟମରେ ଆଗକୁ ପହଞ୍ଚାଇବା ପାଇଁ ଅଭିଆରା ଗଢ଼ାଯାଇଛି।",
+      en: "The Foundation applies this background through a defined process: receive a request, verify the education need, review available funds, approve support and keep a private programme record.",
+      od: "ଫାଉଣ୍ଡେସନ ଏହି ପୃଷ୍ଠଭୂମିକୁ ଏକ ନିର୍ଦ୍ଧାରିତ ପ୍ରକ୍ରିୟାରେ କାର୍ଯ୍ୟକାରୀ କରେ। ଅନୁରୋଧ ଗ୍ରହଣ, ଶିକ୍ଷା ଆବଶ୍ୟକତା ଯାଞ୍ଚ, ଉପଲବ୍ଧ ଅର୍ଥ ସମୀକ୍ଷା, ସହାୟତା ଅନୁମୋଦନ ଏବଂ ବ୍ୟକ୍ତିଗତ କାର୍ଯ୍ୟକ୍ରମ ରେକର୍ଡ ରଖାଯାଏ।",
     },
   },
   sharedBeginning: {
     title: {
-      en: "A few friends stood with Abhiara",
-      od: "କିଛି ସାଙ୍ଗ ଅଭିଆରା ସହ ଠିଆ ହେଲେ",
+      en: "Support for the organisation",
+      od: "ସଂଗଠନ ପାଇଁ ସହାୟତା",
     },
     body: {
-      en: "This story begins with the founder. A few friends had also grown up with limited opportunities. After building their careers, they chose to support Abhiara Foundation. Their private stories are not published. What matters here is their decision to help children stay in school.",
-      od: "ଏହି କାହାଣୀ ପ୍ରତିଷ୍ଠାତାଙ୍କଠାରୁ ଆରମ୍ଭ ହୁଏ। କିଛି ସାଙ୍ଗ ମଧ୍ୟ ସୀମିତ ସୁଯୋଗ ମଧ୍ୟରେ ବଢ଼ିଥିଲେ। ନିଜ କାର୍ଯ୍ୟଜୀବନ ଗଢ଼ିବା ପରେ ସେମାନେ ଅଭିଆରା ଫାଉଣ୍ଡେସନକୁ ସହାୟତା କରିବାକୁ ବାଛିଲେ। ସେମାନଙ୍କ ବ୍ୟକ୍ତିଗତ କାହାଣୀ ପ୍ରକାଶ ହୁଏ ନାହିଁ। ଏଠାରେ ମୁଖ୍ୟ କଥା ହେଉଛି ଶିଶୁଙ୍କ ପଢ଼ା ଜାରି ରଖିବାରେ ସହାୟତା କରିବା ପାଇଁ ସେମାନଙ୍କ ନିଷ୍ପତ୍ତି।",
+      en: "Directors, advisors, volunteers and supporters contribute through defined roles. Public information focuses on programme work, governance and verified results rather than private personal stories.",
+      od: "ନିର୍ଦ୍ଦେଶକ, ପରାମର୍ଶଦାତା, ସ୍ୱେଚ୍ଛାସେବୀ ଓ ସମର୍ଥକମାନେ ନିର୍ଦ୍ଧାରିତ ଭୂମିକାରେ ଯୋଗଦାନ କରନ୍ତି। ସାର୍ବଜନିକ ସୂଚନା ବ୍ୟକ୍ତିଗତ କାହାଣୀ ପରିବର୍ତ୍ତେ କାର୍ଯ୍ୟକ୍ରମ, ପରିଚାଳନା ଓ ଯାଞ୍ଚ ହୋଇଥିବା ଫଳାଫଳ ଉପରେ କେନ୍ଦ୍ରିତ ରହେ।",
     },
   },
   why: [
@@ -113,8 +113,8 @@ export const FOUNDER_STORY = {
     },
     {
       title: {
-        en: "A clear promise",
-        od: "ଏକ ସ୍ପଷ୍ଟ ପ୍ରତିଶ୍ରୁତି",
+        en: "A clear programme scope",
+        od: "ସ୍ପଷ୍ଟ କାର୍ଯ୍ୟକ୍ରମ ସୀମା",
       },
       body: {
         en: "Education remains our main focus. Other help is limited, verified and subject to available funds and approved budget.",
@@ -123,12 +123,12 @@ export const FOUNDER_STORY = {
     },
   ],
   quote: {
-    en: "The founder wants the support he once received to reach orphaned and underprivileged children through Abhiara Foundation, wherever a checked education need can be supported.",
-    od: "ପ୍ରତିଷ୍ଠାତା ନିଜେ ଦିନେ ପାଇଥିବା ସହାୟତାକୁ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ମାଧ୍ୟମରେ ଅନ୍ୟ ଜଣଙ୍କ ପାଖକୁ ପହଞ୍ଚାଇବାକୁ ଚାହାନ୍ତି।",
+    en: "Education support is reviewed through documented need, available funds and an approved programme budget. Child privacy and dignity remain part of every decision.",
+    od: "ଲିପିବଦ୍ଧ ଆବଶ୍ୟକତା, ଉପଲବ୍ଧ ଅର୍ଥ ଓ ଅନୁମୋଦିତ କାର୍ଯ୍ୟକ୍ରମ ବଜେଟ ଆଧାରରେ ଶିକ୍ଷା ସହାୟତା ସମୀକ୍ଷା କରାଯାଏ। ପ୍ରତ୍ୟେକ ନିଷ୍ପତ୍ତିରେ ଶିଶୁଙ୍କ ଗୋପନୀୟତା ଓ ସମ୍ମାନ ସୁରକ୍ଷିତ ରହେ।",
   },
   attribution: {
-    en: "Abhimanyu Mallik, Founder and Director",
-    od: "ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ, ପ୍ରତିଷ୍ଠାତା ଓ ନିର୍ଦ୍ଦେଶକ",
+    en: "Abhiara Foundation programme standard",
+    od: "ଅଭିଆରା ଫାଉଣ୍ଡେସନ କାର୍ଯ୍ୟକ୍ରମ ମାନଦଣ୍ଡ",
   },
 } as const;
 

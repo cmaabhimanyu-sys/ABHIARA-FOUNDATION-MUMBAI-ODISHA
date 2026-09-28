@@ -83,8 +83,8 @@ export default function DigitalLearningAI() {
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/75">
               {t(
-                "We want children and young people to use digital tools safely and understand AI in simple words. This is a future plan, not an active class today.",
-                "ଶିଶୁ ଓ ଯୁବମାନେ ଡିଜିଟାଲ ଉପକରଣ ସୁରକ୍ଷିତ ଭାବେ ବ୍ୟବହାର କରନ୍ତୁ ଏବଂ ସରଳ ଭାଷାରେ AI କୁ ବୁଝନ୍ତୁ ବୋଲି ଆମର ଇଚ୍ଛା। ଏହା ଭବିଷ୍ୟତ ପରିକଳ୍ପନା, ବର୍ତ୍ତମାନ ସକ୍ରିୟ ଶ୍ରେଣୀ ନୁହେଁ।"
+                "This planned programme would introduce safe use of digital tools and explain AI in simple language for children and young people. It is not an active class today.",
+                "ଏହି ପରିକଳ୍ପିତ କାର୍ଯ୍ୟକ୍ରମରେ ଶିଶୁ ଓ ଯୁବମାନଙ୍କୁ ଡିଜିଟାଲ ଉପକରଣର ସୁରକ୍ଷିତ ବ୍ୟବହାର ଏବଂ ସରଳ ଭାଷାରେ AI ବିଷୟରେ ପରିଚୟ ଦିଆଯିବ। ଏହା ବର୍ତ୍ତମାନ ସକ୍ରିୟ ଶ୍ରେଣୀ ନୁହେଁ।"
               )}
             </p>
           </div>

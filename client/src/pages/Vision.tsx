@@ -266,8 +266,8 @@ export default function Vision() {
               </h1>
               <p className="font-sans text-[17px] text-[#555] max-w-xl leading-8 mb-8">
                 {t(
-                  "Our vision tells us where we want to go. Our mission tells us what we do each day. Our values show how we must work with people.",
-                  "ଆମ ଦୃଷ୍ଟି ଆମେ କେଉଁଠି ପହଞ୍ଚିବାକୁ ଚାହୁଁଛୁ ତାହା କହେ। ଆମ ଲକ୍ଷ୍ୟ ପ୍ରତିଦିନ କଣ କରିବା ଦରକାର ତାହା କହେ। ଆମ ମୂଲ୍ୟବୋଧ ଲୋକଙ୍କ ସହ କିପରି କାମ କରିବା ଦରକାର ତାହା ଦେଖାଏ।"
+                  "The vision sets the Foundation's long term direction. The mission defines its current work. The values guide conduct, decisions and accountability.",
+                  "ଦୃଷ୍ଟି ଫାଉଣ୍ଡେସନର ଦୀର୍ଘମିଆଦୀ ଦିଗ ନିର୍ଦ୍ଧାରଣ କରେ। ଲକ୍ଷ୍ୟ ବର୍ତ୍ତମାନର କାମକୁ ସ୍ପଷ୍ଟ କରେ। ମୂଲ୍ୟବୋଧ ଆଚରଣ, ନିଷ୍ପତ୍ତି ଓ ଉତ୍ତରଦାୟିତ୍ୱକୁ ଦିଗ ଦେଉଛି।"
                 )}
               </p>
               <nav

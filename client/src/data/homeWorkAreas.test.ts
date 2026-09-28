@@ -62,8 +62,9 @@ describe("homepage programme panels and future digital learning", () => {
     expect(footer).toContain('href: "/digital-learning-ai"');
     expect(digital).toContain("Digital Learning and AI Basics");
     expect(digital).toContain(
-      "This is a future plan, not an active class today"
+      "This planned programme would introduce safe use of digital tools"
     );
+    expect(digital).toContain("It is not an active class today");
     expect(digital).toContain(
       "No enrolment, training application or certificate is available"
     );

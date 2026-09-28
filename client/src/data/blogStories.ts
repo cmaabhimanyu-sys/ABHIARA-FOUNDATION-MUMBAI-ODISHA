@@ -3,7 +3,12 @@ export type LocalizedText = {
   od: string;
 };
 
-export type StoryCategory = "founder" | "education" | "jeevan-sathi" | "relief" | "events";
+export type StoryCategory =
+  | "founder"
+  | "education"
+  | "jeevan-sathi"
+  | "relief"
+  | "events";
 
 export type BlogStory = {
   slug: string;
@@ -27,7 +32,10 @@ export type BlogStory = {
 };
 
 export const STORY_CATEGORY_LABELS: Record<StoryCategory, LocalizedText> = {
-  founder: { en: "Founder Story / Our Story", od: "ପ୍ରତିଷ୍ଠାତାଙ୍କ କାହାଣୀ / ଆମ କାହାଣୀ" },
+  founder: {
+    en: "Founder Story / Our Story",
+    od: "ପ୍ରତିଷ୍ଠାତାଙ୍କ କାହାଣୀ / ଆମ କାହାଣୀ",
+  },
   education: { en: "Education Support", od: "ଶିକ୍ଷା ସହାୟତା" },
   "jeevan-sathi": { en: "Jeevan Sathi", od: "ଜୀବନ ସାଥୀ" },
   relief: { en: "Emergency Relief", od: "ଜରୁରୀ ସହାୟତା" },
@@ -40,61 +48,45 @@ export const BLOG_STORIES: BlogStory[] = [
     category: "founder",
     featured: true,
     title: {
-      en: "Someone Once Extended a Hand",
-      od: "କେହି ଦିନେ ମୋ ପାଇଁ ହାତ ବଢ଼ାଇଥିଲେ",
+      en: "From Raisar to a Structured Education Programme",
+      od: "ରାଇସରରୁ ସଂଗଠିତ ଶିକ୍ଷା କାର୍ଯ୍ୟକ୍ରମ ପର୍ଯ୍ୟନ୍ତ",
     },
     excerpt: {
-      en: "Abhiara Foundation began with a simple belief: the support we receive in life should one day be passed on to someone who needs it.",
-      od: "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଏକ ସରଳ ବିଶ୍ୱାସରୁ ଆରମ୍ଭ ହୋଇଥିଲା। ଜୀବନରେ ଆମେ ପାଇଥିବା ସହାୟତା ଦିନେ ନା ଦିନେ ଆଉ ଜଣେ ଆବଶ୍ୟକତାରେ ଥିବା ମଣିଷଙ୍କ ପାଖକୁ ପହଞ୍ଚିବା ଉଚିତ।",
+      en: "Abhiara Foundation is a Section 8 not for profit company focused on verified education support for orphaned and underprivileged children.",
+      od: "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଏକ ଧାରା ୮ ଅଲାଭକାରୀ କମ୍ପାନୀ, ଯାହା ଅନାଥ ଓ ସୁବିଧାବଞ୍ଚିତ ଶିଶୁଙ୍କ ଯାଞ୍ଚ ଆଧାରିତ ଶିକ୍ଷା ସହାୟତା ଉପରେ କେନ୍ଦ୍ରିତ।",
     },
     paragraphs: [
       {
-        en: "I was raised in a rural community where opportunities were limited, but people always found ways to support one another.",
-        od: "ମୁଁ ଏମିତି ଏକ ଗ୍ରାମୀଣ ପରିବେଶରେ ବଢ଼ିଛି, ଯେଉଁଠାରେ ସୁଯୋଗ ସୀମିତ ଥିଲା। ତଥାପି ଲୋକମାନେ ପରସ୍ପରକୁ ସାହାଯ୍ୟ କରିବାର ଉପାୟ ଖୋଜି ନେଉଥିଲେ।",
+        en: "Founder Abhimanyu Mallik grew up in Raisar, a small rural village in Kendrapara district, Odisha. He built his career in Odisha and later moved to Mumbai.",
+        od: "ପ୍ରତିଷ୍ଠାତା ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ ଓଡ଼ିଶାର କେନ୍ଦ୍ରାପଡ଼ା ଜିଲ୍ଲାର ଛୋଟ ଗ୍ରାମ ରାଇସରରେ ବଢ଼ିଥିଲେ। ସେ ଓଡ଼ିଶାରେ ନିଜ କାର୍ଯ୍ୟଜୀବନ ଗଢ଼ିଥିଲେ ଏବଂ ପରେ ମୁମ୍ବାଇ ଯାଇଥିଲେ।",
       },
       {
-        en: "My journey was shaped by family sacrifices, the guidance of teachers, the encouragement of friends, and the kindness of people who stood beside me at different stages. Sometimes the support was practical. Sometimes it was advice. Sometimes it was simply someone saying, “Keep going. You are not alone.”",
-        od: "ପରିବାରର ତ୍ୟାଗ, ଶିକ୍ଷକମାନଙ୍କ ମାର୍ଗଦର୍ଶନ, ସାଙ୍ଗମାନଙ୍କ ଉତ୍ସାହ ଏବଂ ଜୀବନର ଭିନ୍ନ ଭିନ୍ନ ସମୟରେ ପାଖରେ ଠିଆ ହୋଇଥିବା ଲୋକଙ୍କ ଭଲପାଇବା ମୋ ଯାତ୍ରାକୁ ଗଢ଼ିଛି। କେବେ ସହାୟତା ବ୍ୟବହାରିକ ଥିଲା। କେବେ ପରାମର୍ଶ ଥିଲା। କେବେ କେବଳ କେହି କହିଥିଲେ, “ଆଗକୁ ଚାଲ। ତୁମେ ଏକା ନୁହଁ।”",
+        en: "The Foundation was established to organise education support through defined eligibility, verification, approval and record keeping processes.",
+        od: "ନିର୍ଦ୍ଧାରିତ ଯୋଗ୍ୟତା, ଯାଞ୍ଚ, ଅନୁମୋଦନ ଓ ରେକର୍ଡ ରଖିବା ପ୍ରକ୍ରିୟା ମାଧ୍ୟମରେ ଶିକ୍ଷା ସହାୟତା ସଂଗଠିତ କରିବା ପାଇଁ ଫାଉଣ୍ଡେସନ ସ୍ଥାପିତ ହୋଇଛି।",
       },
       {
-        en: "As life moved forward, I realised that no one succeeds completely on their own. Behind every person’s progress, there are often many unseen hands. This understanding stayed with me.",
-        od: "ଜୀବନ ଆଗକୁ ବଢ଼ିବା ସହ ମୁଁ ବୁଝିଲି ଯେ କେହି ବି ସମ୍ପୂର୍ଣ୍ଣ ଭାବେ ଏକା ଆଗକୁ ବଢ଼ନ୍ତି ନାହିଁ। ପ୍ରତ୍ୟେକ ମଣିଷର ଉନ୍ନତି ପଛରେ ଅନେକ ଅଦୃଶ୍ୟ ହାତ ଥାଏ। ଏହି ବୁଝାମଣା ମୋ ସହ ରହିଗଲା।",
+        en: "Education is the main programme area. Support may include tuition, school materials and other approved needs that help a child continue learning.",
+        od: "ଶିକ୍ଷା ହେଉଛି ପ୍ରମୁଖ କାର୍ଯ୍ୟକ୍ରମ କ୍ଷେତ୍ର। ସହାୟତାରେ ଟ୍ୟୁସନ, ସ୍କୁଲ ସାମଗ୍ରୀ ଓ ଶିଶୁଙ୍କ ପଢ଼ା ଜାରି ରଖିବାରେ ଉପଯୋଗୀ ଅନ୍ୟ ଅନୁମୋଦିତ ଆବଶ୍ୟକତା ରହିପାରେ।",
       },
       {
-        en: "Over the years, I met children who wanted to study but lacked basic support. I saw young people who needed guidance, families struggling during emergencies, and older people looking for care and respect.",
-        od: "ବର୍ଷ ଗଡ଼ିବା ସହ ମୁଁ ଏମିତି ପିଲାମାନଙ୍କୁ ଦେଖିଲି, ଯେଉଁମାନେ ପଢ଼ିବାକୁ ଚାହୁଁଥିଲେ କିନ୍ତୁ ମୂଳ ସହାୟତାର ଅଭାବ ଥିଲା। ମାର୍ଗଦର୍ଶନ ଚାହୁଁଥିବା ଯୁବକଯୁବତୀ, ଜରୁରୀ ସମୟରେ ସଂଘର୍ଷ କରୁଥିବା ପରିବାର ଏବଂ ସାଥୀ ଓ ସମ୍ମାନ ଚାହୁଁଥିବା ବୃଦ୍ଧମାନଙ୍କୁ ମଧ୍ୟ ଦେଖିଲି।",
+        en: "Every request is considered against documented need, available funds and an approved programme budget. Support is not automatic and is not promised in advance.",
+        od: "ପ୍ରତ୍ୟେକ ଅନୁରୋଧ ଲିପିବଦ୍ଧ ଆବଶ୍ୟକତା, ଉପଲବ୍ଧ ଅର୍ଥ ଓ ଅନୁମୋଦିତ କାର୍ଯ୍ୟକ୍ରମ ବଜେଟ ଆଧାରରେ ବିଚାର କରାଯାଏ। ସହାୟତା ସ୍ୱୟଂଚାଳିତ ନୁହେଁ ଏବଂ ଆଗୁଆ ପ୍ରତିଶ୍ରୁତି ଦିଆଯାଏ ନାହିଁ।",
       },
       {
-        en: "These experiences gave birth to the idea of Abhiara Foundation. Abhiara was not created from one incident or for personal recognition. It grew from a lifetime of seeing how timely support can protect someone’s hope and change the direction of a life.",
-        od: "ଏହି ଅନୁଭବଗୁଡ଼ିକରୁ ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଭାବନା ଜନ୍ମ ନେଲା। ଅଭିଆରା କୌଣସି ଗୋଟିଏ ଘଟଣାରୁ କିମ୍ବା ବ୍ୟକ୍ତିଗତ ପରିଚୟ ପାଇଁ ତିଆରି ହୋଇନଥିଲା। ସମୟରେ ମିଳୁଥିବା ସହାୟତା କିପରି ଜଣେ ମଣିଷର ଆଶାକୁ ବଞ୍ଚାଇପାରେ ଏବଂ ଜୀବନର ଦିଗ ବଦଳାଇପାରେ, ସେଥିକୁ ଦୀର୍ଘ ସମୟ ଧରି ଦେଖିବାରୁ ଏହି ଭାବନା ବଢ଼ିଲା।",
+        en: "Public reporting uses aggregate information and reviewed records. Child names, private hardship details and identity documents are not published.",
+        od: "ସାର୍ବଜନିକ ରିପୋର୍ଟରେ ସମିକ୍ତ ସୂଚନା ଓ ସମୀକ୍ଷା ହୋଇଥିବା ରେକର୍ଡ ବ୍ୟବହାର କରାଯାଏ। ଶିଶୁଙ୍କ ନାମ, ବ୍ୟକ୍ତିଗତ କଷ୍ଟର ବିବରଣୀ ଓ ପରିଚୟ ପତ୍ର ପ୍ରକାଶ କରାଯାଏ ନାହିଁ।",
       },
       {
-        en: "Our purpose is simple: to stand beside people when support matters most.",
-        od: "ଆମର ଉଦ୍ଦେଶ୍ୟ ସରଳ। ସହାୟତା ସବୁଠାରୁ ଅଧିକ ଦରକାର ଥିବା ସମୟରେ ଲୋକଙ୍କ ପାଖରେ ଠିଆ ହେବା।",
-      },
-      {
-        en: "Our current verified work includes monthly tuition and learning materials for vulnerable children, practical support for verified families during difficult situations, and visits that offer time and essential supplies to older people. As this work grows, we also want young people to receive clear guidance about education and opportunity.",
-        od: "ଆମର ବର୍ତ୍ତମାନର ଯାଞ୍ଚ ହୋଇଥିବା କାମରେ ଅସୁରକ୍ଷିତ ପିଲାମାନଙ୍କୁ ମାସିକ ଟ୍ୟୁସନ ଓ ପାଠ୍ୟ ସାମଗ୍ରୀ, କଷ୍ଟକର ସମୟରେ ଯାଞ୍ଚ ହୋଇଥିବା ପରିବାରଙ୍କୁ ବ୍ୟବହାରିକ ସହାୟତା ଏବଂ ବୃଦ୍ଧମାନଙ୍କ ସହ ସମୟ ବିତାଇ ଆବଶ୍ୟକ ସାମଗ୍ରୀ ଦେବା ରହିଛି। ଏହି କାମ ବଢ଼ିବା ସହ ଯୁବମାନେ ଶିକ୍ଷା ଓ ସୁଯୋଗ ବିଷୟରେ ସ୍ପଷ୍ଟ ମାର୍ଗଦର୍ଶନ ପାଆନ୍ତୁ ବୋଲି ମଧ୍ୟ ଆମର ଇଚ୍ଛା।",
-      },
-      {
-        en: "Our aim is not to create dependency. We want people to gain the education, confidence, and opportunity needed to stand on their own.",
-        od: "ଲୋକଙ୍କୁ ନିର୍ଭରଶୀଳ କରିବା ଆମର ଲକ୍ଷ୍ୟ ନୁହେଁ। ନିଜ ଗୋଡ଼ରେ ଠିଆ ହେବା ପାଇଁ ଆବଶ୍ୟକ ଶିକ୍ଷା, ଆତ୍ମବିଶ୍ୱାସ ଓ ସୁଯୋଗ ସେମାନେ ପାଆନ୍ତୁ ବୋଲି ଆମେ ଚାହୁଁ।",
-      },
-      {
-        en: "I do not believe that one person or one organisation can change the entire world. But we can help one child remain in school. We can guide one student who does not know the next step. We can stand beside one family during a difficult time. That one step matters.",
-        od: "ଜଣେ ମଣିଷ କିମ୍ବା ଗୋଟିଏ ସଂଗଠନ ସମଗ୍ର ଦୁନିଆକୁ ବଦଳାଇପାରିବ ବୋଲି ମୁଁ ଭାବେନି। କିନ୍ତୁ ଆମେ ଜଣେ ପିଲାଙ୍କୁ ପାଠପଢ଼ା ଜାରି ରଖିବାରେ ସାହାଯ୍ୟ କରିପାରିବା। ପରବର୍ତ୍ତୀ ପଦକ୍ଷେପ ଜାଣିନଥିବା ଜଣେ ଛାତ୍ରକୁ ବାଟ ଦେଖାଇପାରିବା। କଷ୍ଟକର ସମୟରେ ଗୋଟିଏ ପରିବାର ପାଖରେ ଠିଆ ହୋଇପାରିବା। ସେହି ଗୋଟିଏ ପଦକ୍ଷେପର ମୂଲ୍ୟ ଅଛି।",
-      },
-      {
-        en: "Someone once extended a hand to me. Through Abhiara Foundation, I want to extend that hand to someone else.",
-        od: "କେହି ଦିନେ ମୋ ପାଇଁ ହାତ ବଢ଼ାଇଥିଲେ। ଅଭିଆରା ଫାଉଣ୍ଡେସନ ମାଧ୍ୟମରେ ମୁଁ ସେହି ହାତ ଆଉ ଜଣେ ମଣିଷଙ୍କ ପାଇଁ ବଢ଼ାଇବାକୁ ଚାହେଁ।",
+        en: "Secondary support for elders, medical emergencies, disaster relief and animal welfare remains limited, verified and subject to available funds and approved budget.",
+        od: "ବୃଦ୍ଧ, ଚିକିତ୍ସା ଜରୁରୀ ପରିସ୍ଥିତି, ବିପର୍ଯ୍ୟୟ ସହାୟତା ଓ ପଶୁ କଲ୍ୟାଣ ପାଇଁ ଦ୍ୱିତୀୟ ସହାୟତା ସୀମିତ, ଯାଞ୍ଚ ଆଧାରିତ ଏବଂ ଉପଲବ୍ଧ ଅର୍ଥ ଓ ଅନୁମୋଦିତ ବଜେଟ ଉପରେ ନିର୍ଭରଶୀଳ।",
       },
     ],
     dateISO: "2026-09-12",
     date: { en: "12 September 2026", od: "୧୨ ସେପ୍ଟେମ୍ବର ୨୦୨୬" },
     location: { en: "Odisha and Mumbai, India", od: "ଓଡ଼ିଶା ଓ ମୁମ୍ବାଇ, ଭାରତ" },
     result: {
-      en: "The support we receive in life should be passed on with dignity.",
-      od: "ଜୀବନରେ ଆମେ ପାଇଥିବା ସହାୟତାକୁ ସମ୍ମାନର ସହ ଆଉ ଜଣେ ମଣିଷଙ୍କ ପାଖକୁ ପହଞ୍ଚାଇବା ଉଚିତ।",
+      en: "Verified education support with privacy and accountability.",
+      od: "ଗୋପନୀୟତା ଓ ଉତ୍ତରଦାୟିତ୍ୱ ସହ ଯାଞ୍ଚ ଆଧାରିତ ଶିକ୍ଷା ସହାୟତା।",
     },
     resultLabel: { en: "Story focus", od: "କାହାଣୀର ମୂଳ କଥା" },
     image: "/images/team-abhimanyu-mallik.png",
@@ -105,8 +97,8 @@ export const BLOG_STORIES: BlogStory[] = [
     imagePosition: "center 20%",
     evidenceHref: "/our-story",
     evidenceLabel: { en: "Read Our Story", od: "ଆମ କାହାଣୀ ପଢ଼ନ୍ତୁ" },
-    author: { en: "Abhimanyu Mallik", od: "ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ" },
-    authorRole: { en: "Founder and Director", od: "ପ୍ରତିଷ୍ଠାତା ଓ ନିର୍ଦ୍ଦେଶକ" },
+    author: { en: "Abhiara Foundation", od: "ଅଭିଆରା ଫାଉଣ୍ଡେସନ" },
+    authorRole: { en: "Public information", od: "ସାର୍ବଜନିକ ସୂଚନା" },
   },
   {
     slug: "pratibha-samman-2026",
@@ -178,7 +170,10 @@ export const BLOG_STORIES: BlogStory[] = [
       en: "Kankili village, Parjang block, Dhenkanal, Odisha",
       od: "କଙ୍କିଲି ଗ୍ରାମ, ପରଜଙ୍ଗ ବ୍ଲକ, ଢେଙ୍କାନାଳ, ଓଡ଼ିଶା",
     },
-    result: { en: "1 family received essential supplies", od: "୧ ପରିବାର ଆବଶ୍ୟକ ସାମଗ୍ରୀ ପାଇଲେ" },
+    result: {
+      en: "1 family received essential supplies",
+      od: "୧ ପରିବାର ଆବଶ୍ୟକ ସାମଗ୍ରୀ ପାଇଲେ",
+    },
     image: "/images/fire-relief-distribution.jpeg",
     imageAlt: {
       en: "Abhiara Foundation handing supplies to a fire-affected family in Kankili",
@@ -217,7 +212,10 @@ export const BLOG_STORIES: BlogStory[] = [
       en: "Koraput, Kendrapara, and Bhubaneswar, Odisha",
       od: "କୋରାପୁଟ, କେନ୍ଦ୍ରାପଡ଼ା ଓ ଭୁବନେଶ୍ୱର, ଓଡ଼ିଶା",
     },
-    result: { en: "Free water service at 3 locations", od: "୩ ସ୍ଥାନରେ ନିଶୁଳ୍କ ଜଳ ସେବା" },
+    result: {
+      en: "Free water service at 3 locations",
+      od: "୩ ସ୍ଥାନରେ ନିଶୁଳ୍କ ଜଳ ସେବା",
+    },
     image: "/images/water-camp-serving.jpeg",
     imageAlt: {
       en: "Volunteers serving drinking water at a Pana Sankranti camp",
@@ -253,7 +251,10 @@ export const BLOG_STORIES: BlogStory[] = [
     dateISO: "2025-10-15",
     date: { en: "October 2025", od: "ଅକ୍ଟୋବର ୨୦୨୫" },
     location: { en: "Puri, Odisha", od: "ପୁରୀ, ଓଡ଼ିଶା" },
-    result: { en: "40+ elderly residents visited", od: "୪୦+ ବୃଦ୍ଧ ବାସିନ୍ଦାଙ୍କୁ ଭେଟ" },
+    result: {
+      en: "40+ elderly residents visited",
+      od: "୪୦+ ବୃଦ୍ଧ ବାସିନ୍ଦାଙ୍କୁ ଭେଟ",
+    },
     image: "/images/elderly-care-visit-3.jpeg",
     imageAlt: {
       en: "Abhiara Foundation team spending time with elderly residents in Puri",

@@ -62,12 +62,13 @@ describe("verified public blog stories", () => {
     }
   });
 
-  it("keeps the founder story warm, privacy-safe, and consistent with the verified public role", () => {
+  it("keeps the founder history factual, privacy-safe and institution-led", () => {
     const founderStory = BLOG_STORIES.find(
       story => story.category === "founder"
     );
     expect(founderStory?.slug).toBe("someone-once-extended-a-hand");
-    expect(founderStory?.authorRole?.en).toBe("Founder and Director");
+    expect(founderStory?.author?.en).toBe("Abhiara Foundation");
+    expect(founderStory?.authorRole?.en).toBe("Public information");
     const founderCopy = JSON.stringify(founderStory).toLowerCase();
     for (const privateDetail of [
       "earring",
@@ -80,6 +81,11 @@ describe("verified public blog stories", () => {
       expect(founderCopy).not.toContain(privateDetail);
     }
     expect(founderCopy).not.toContain("managing director");
+    expect(founderCopy).not.toMatch(
+      /someone once extended|my journey|i want|i believe|i realised|i realized|i saw|personal recognition|our aim|we want/
+    );
+    expect(founderCopy).toContain("documented need");
+    expect(founderCopy).toContain("approved programme budget");
   });
 
   it("keeps the retired blog out of the focused sitemap and redirects it to public reports", () => {

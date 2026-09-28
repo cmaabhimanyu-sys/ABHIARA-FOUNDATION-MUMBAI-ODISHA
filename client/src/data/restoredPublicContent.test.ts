@@ -40,19 +40,20 @@ describe("restored purpose and reviewed history", () => {
     expect(founderCopy).toContain("Kendrapara");
     expect(founderCopy).toContain("built his career in Odisha");
     expect(founderCopy).toContain("moved to Mumbai");
-    expect(founderCopy).toContain("struggling to continue school");
-    expect(founderCopy).toContain("A few friends");
-    expect(founderCopy).toContain("Their private stories are not published");
-    expect(founderCopy).toContain("Founder and Director");
+    expect(founderCopy).toContain("structured education support");
+    expect(founderCopy).toContain(
+      "Directors, advisors, volunteers and supporters"
+    );
+    expect(founderCopy).toContain("rather than private personal stories");
+    expect(founderCopy).toContain("programme standard");
     expect(founderCopy).toContain(
       "From Raisar, a small rural village in Kendrapara district, Odisha, to Mumbai"
     );
     expect(founderCopy).toContain(
       "Raisar village, Kendrapara district, Odisha"
     );
-    expect(founderCopy).toContain("Family sacrifice");
-    expect(founderCopy).toContain("What stayed with him");
-    expect(founderCopy).toContain("No one moves forward alone");
+    expect(founderCopy).toContain("From background to programme focus");
+    expect(founderCopy).toContain("documented need");
     expect(founderCopy).toContain("orphaned and underprivileged children");
     expect(storyPage).toContain("FOUNDER_STORY.turningPoint.body.en");
     expect(storyPage).not.toContain("<blockquote");
@@ -62,6 +63,9 @@ describe("restored purpose and reviewed history", () => {
     expect(storyPage).not.toContain("trpc.cms.settings");
     expect(`${founderCopy}\n${storyPage}`).not.toMatch(
       /Managing Director|Licence No\.|FCRA|Schedule VII|Audited Reports|every rupee|CMA · Founder/i
+    );
+    expect(`${founderCopy}\n${storyPage}`).not.toMatch(
+      /Founder’s commitment|founder wants|support he once received|simple belief|what stayed with him|no one moves forward alone|personal recognition|my journey|I want|I believe/i
     );
   });
 

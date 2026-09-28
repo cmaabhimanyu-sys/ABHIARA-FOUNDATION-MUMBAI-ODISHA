@@ -150,8 +150,8 @@ export default function Volunteer() {
               </h2>
               <p className="font-sans text-[16px] leading-7 text-[#555]">
                 {t(
-                  "We want every visit to feel safe and respectful for the people we meet.",
-                  "ଆମେ ଯେଉଁ ଲୋକଙ୍କୁ ଭେଟୁଛୁ, ସେମାନଙ୍କ ପାଇଁ ପ୍ରତ୍ୟେକ ଭେଟ ସୁରକ୍ଷିତ ଓ ସମ୍ମାନଜନକ ହେଉ ବୋଲି ଚାହୁଁଛୁ।"
+                  "Every volunteer visit must protect the safety, privacy and dignity of the people involved.",
+                  "ପ୍ରତ୍ୟେକ ସ୍ୱେଚ୍ଛାସେବୀ ଭେଟରେ ସମ୍ପୃକ୍ତ ଲୋକଙ୍କ ସୁରକ୍ଷା, ଗୋପନୀୟତା ଓ ସମ୍ମାନ ରକ୍ଷା କରିବା ଆବଶ୍ୟକ।"
                 )}
               </p>
             </AnimatedSection>

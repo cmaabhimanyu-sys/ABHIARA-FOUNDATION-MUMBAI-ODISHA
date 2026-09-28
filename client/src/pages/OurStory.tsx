@@ -175,7 +175,10 @@ export default function OurStory() {
             <AnimatedSection>
               <div className="border-l-4 border-[#F5A623] bg-[#111111] p-8 text-white md:p-12">
                 <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#F5A623]">
-                  {t("Founder’s commitment", "ପ୍ରତିଷ୍ଠାତାଙ୍କ ପ୍ରତିବଦ୍ଧତା")}
+                  {t(
+                    "Foundation programme standard",
+                    "ଫାଉଣ୍ଡେସନ କାର୍ଯ୍ୟକ୍ରମ ମାନଦଣ୍ଡ"
+                  )}
                 </p>
                 <p className="mt-4 font-serif text-2xl font-bold leading-relaxed text-white md:text-4xl">
                   {t(FOUNDER_STORY.quote.en, FOUNDER_STORY.quote.od)}
