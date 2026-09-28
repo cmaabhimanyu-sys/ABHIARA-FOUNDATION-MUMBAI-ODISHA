@@ -255,6 +255,9 @@ export default function Home() {
                     <p className="mb-4 font-serif text-3xl font-bold text-[#F5A623] sm:text-4xl md:text-5xl">
                       {t("Abhiara Foundation", "ଅଭିଆରା ଫାଉଣ୍ଡେସନ")}
                     </p>
+                    <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-white/75 sm:text-xs">
+                      {t("Fearless Ray of Light", "ନିର୍ଭୀକ ଆଲୋକର କିରଣ")}
+                    </p>
                     <h1 className="max-w-4xl font-serif text-4xl font-bold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-7xl">
                       {slide.key === "education"
                         ? t(PUBLIC_TAGLINE, "ଶିକ୍ଷା ପ୍ରଥମ। ଦୟା ସଦା।")

@@ -63,6 +63,8 @@ describe("compact public navigation", () => {
       'className="mx-auto flex h-24 max-w-[1540px] items-center px-4 md:px-6 min-[1440px]:h-28"'
     );
     expect(home).toContain('t("Abhiara Foundation", "ଅଭିଆରା ଫାଉଣ୍ଡେସନ")');
+    expect(home).toContain('"Fearless Ray of Light"');
+    expect(home).toContain('"ନିର୍ଭୀକ ଆଲୋକର କିରଣ"');
     expect(home).toContain(
       "text-3xl font-bold text-[#F5A623] sm:text-4xl md:text-5xl"
     );
