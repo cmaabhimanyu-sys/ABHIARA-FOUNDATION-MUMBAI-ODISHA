@@ -95,13 +95,17 @@ const HOME_IMPACT_CATEGORIES: Record<
   },
 };
 
-const HERO_PHOTO_CATEGORIES: Record<string, string> = {
+const FEATURED_HOME_PHOTO_ID = 30046;
+const FEATURED_HOME_PHOTO_PATH = "education-children-1.jpeg";
+
+const HERO_AREA_BY_PHOTO_CATEGORY: Record<string, string> = {
   education: "education",
-  rural: "community",
-  elder: "elderly",
+  events: "education",
+  community: "rural",
+  elderly: "elder",
   medical: "medical",
   disaster: "disaster",
-  animal: "animals",
+  animals: "animal",
 };
 
 const HERO_DONATION_CAUSES: Record<string, string> = {
@@ -126,13 +130,35 @@ export default function Home() {
       (photo: any) =>
         !/press|newspaper|certificate|clipping/i.test(photo.title || "")
     );
-  const heroSlides = HOME_WORK_AREAS.map(area => ({
-    ...area,
-    photo:
-      impactPhotos.find(
-        (photo: any) => photo.category === HERO_PHOTO_CATEGORIES[area.key]
-      ) || null,
-  }));
+  const featuredPhotoIndex = impactPhotos.findIndex(
+    (photo: any) =>
+      photo.id === FEATURED_HOME_PHOTO_ID ||
+      String(photo.imageUrl).includes(FEATURED_HOME_PHOTO_PATH)
+  );
+  const orderedHeroPhotos =
+    featuredPhotoIndex > 0
+      ? [
+          impactPhotos[featuredPhotoIndex],
+          ...impactPhotos.slice(0, featuredPhotoIndex),
+          ...impactPhotos.slice(featuredPhotoIndex + 1),
+        ]
+      : impactPhotos;
+  const heroSlides = orderedHeroPhotos.map((photo: any, index: number) => {
+    const areaKey = (HERO_AREA_BY_PHOTO_CATEGORY[photo.category] ||
+      "rural") as keyof typeof HOME_WORK_ICONS;
+    const area =
+      HOME_WORK_AREAS.find(item => item.key === areaKey) || HOME_WORK_AREAS[0];
+    const category =
+      HOME_IMPACT_CATEGORIES[photo.category] ||
+      HOME_IMPACT_CATEGORIES.community;
+    return {
+      ...area,
+      key: `photo-${photo.id ?? index}`,
+      areaKey,
+      category,
+      photo,
+    };
+  });
   const [activeHeroIndex, setActiveHeroIndex] = useState(0);
   const [heroPaused, setHeroPaused] = useState(false);
   const [activeImpactIndex, setActiveImpactIndex] = useState(0);
@@ -148,6 +174,11 @@ export default function Home() {
     return () => window.clearInterval(timer);
   }, [heroPaused, heroSlides.length]);
   useEffect(() => {
+    if (activeHeroIndex >= heroSlides.length) {
+      setActiveHeroIndex(0);
+    }
+  }, [activeHeroIndex, heroSlides.length]);
+  useEffect(() => {
     if (impactPhotos.length < 2 || impactPaused) return;
     const timer = window.setInterval(() => {
       setActiveImpactIndex(current => (current + 1) % impactPhotos.length);
@@ -161,7 +192,8 @@ export default function Home() {
   }, [activeImpactIndex, impactPhotos.length]);
   useEffect(() => {
     const photosToPreload = [
-      ...heroSlides.map(slide => slide.photo).filter(Boolean),
+      heroSlides[activeHeroIndex]?.photo,
+      heroSlides[(activeHeroIndex + 1) % heroSlides.length]?.photo,
       impactPhotos[activeImpactIndex],
       impactPhotos[(activeImpactIndex + 1) % impactPhotos.length],
     ];
@@ -170,7 +202,7 @@ export default function Home() {
       const image = new window.Image();
       image.src = photo.imageUrl;
     }
-  }, [publishedImpactPhotos, activeImpactIndex]);
+  }, [publishedImpactPhotos, activeHeroIndex, activeImpactIndex]);
 
   return (
     <div className="min-h-screen bg-[#FFFDF8] text-[#1A1A1A]">
@@ -226,8 +258,9 @@ export default function Home() {
 
           <div className="container relative z-10 flex min-h-[650px] items-center py-16 md:min-h-[700px]">
             {heroSlides.map((slide, index) => {
-              const Icon = HOME_WORK_ICONS[slide.key];
+              const Icon = HOME_WORK_ICONS[slide.areaKey];
               const isActive = index === activeHeroIndex;
+              const isFeatured = index === 0;
               return (
                 <div
                   key={slide.key}
@@ -245,7 +278,7 @@ export default function Home() {
                         <Icon size={20} />
                       </span>
                       <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#F5A623]">
-                        {t(slide.statusEn, slide.statusOd)}
+                        {t(slide.category.en, slide.category.od)}
                       </span>
                       <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-white/55">
                         {String(index + 1).padStart(2, "0")} /{" "}
@@ -259,28 +292,29 @@ export default function Home() {
                       {t("Fearless Ray of Light", "ନିର୍ଭୀକ ଆଲୋକର କିରଣ")}
                     </p>
                     <h1 className="max-w-4xl font-serif text-4xl font-bold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-7xl">
-                      {slide.key === "education"
+                      {isFeatured
                         ? t(PUBLIC_TAGLINE, "ଶିକ୍ଷା ପ୍ରଥମ। ଦୟା ସଦା।")
-                        : t(slide.titleEn, slide.titleOd)}
+                        : slide.photo.title || t(slide.titleEn, slide.titleOd)}
                     </h1>
                     <p className="mt-6 max-w-2xl font-sans text-base leading-7 text-white/80 md:text-lg">
-                      {slide.key === "education"
+                      {isFeatured
                         ? t(
                             PUBLIC_TAGLINE_DESCRIPTION,
                             PUBLIC_TAGLINE_DESCRIPTION_OD
                           )
-                        : t(slide.bodyEn, slide.bodyOd)}
+                        : slide.photo.description ||
+                          t(slide.bodyEn, slide.bodyOd)}
                     </p>
                     <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                       <Link
-                        href={slide.href}
+                        href={slide.category.href}
                         className="inline-flex items-center justify-center gap-2 rounded bg-[#F5A623] px-6 py-3.5 font-sans text-sm font-bold text-[#1A1A1A] hover:bg-[#E8960E]"
                       >
                         {t("Explore this programme", "ଏହି କାର୍ଯ୍ୟକ୍ରମ ଦେଖନ୍ତୁ")}
                         <ArrowRight size={16} />
                       </Link>
                       <Link
-                        href={`/donate?cause=${HERO_DONATION_CAUSES[slide.key]}`}
+                        href={`/donate?cause=${HERO_DONATION_CAUSES[slide.areaKey] || "general"}`}
                         className="inline-flex items-center justify-center gap-2 rounded border border-white/50 bg-black/20 px-6 py-3.5 font-sans text-sm font-bold text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623]"
                       >
                         {t("Donate for this work", "ଏହି କାମ ପାଇଁ ଦାନ")}
@@ -318,25 +352,32 @@ export default function Home() {
           <div className="absolute inset-x-0 bottom-4 z-20">
             <div className="container flex items-center justify-between gap-4">
               <div className="flex flex-wrap items-center gap-2">
-                {heroSlides.map((slide, index) => (
-                  <button
-                    key={slide.key}
-                    type="button"
-                    onClick={() => setActiveHeroIndex(index)}
-                    aria-label={t(
-                      `Show ${slide.titleEn}`,
-                      `${slide.titleOd} ଦେଖନ୍ତୁ`
-                    )}
-                    aria-current={
-                      index === activeHeroIndex ? "true" : undefined
-                    }
-                    className={`h-2.5 rounded-full transition-all ${
-                      index === activeHeroIndex
-                        ? "w-9 bg-[#F5A623]"
-                        : "w-2.5 bg-white/45 hover:bg-white/75"
-                    }`}
-                  />
-                ))}
+                {heroSlides
+                  .map((slide, index) => (
+                    <button
+                      key={slide.key}
+                      type="button"
+                      onClick={() => setActiveHeroIndex(index)}
+                      aria-label={t(
+                        `Show photo ${index + 1}`,
+                        `ଫଟୋ ${index + 1} ଦେଖନ୍ତୁ`
+                      )}
+                      aria-current={
+                        index === activeHeroIndex ? "true" : undefined
+                      }
+                      className={`h-2.5 rounded-full transition-all ${
+                        index === activeHeroIndex
+                          ? "w-9 bg-[#F5A623]"
+                          : "w-2.5 bg-white/45 hover:bg-white/75"
+                      }`}
+                    />
+                  ))
+                  .slice(0, 8)}
+                {heroSlides.length > 8 && (
+                  <span className="font-mono text-[9px] text-white/65">
+                    +{heroSlides.length - 8}
+                  </span>
+                )}
               </div>
               <button
                 type="button"
@@ -546,6 +587,14 @@ export default function Home() {
                     loading="eager"
                     className="absolute inset-0 h-full w-full object-contain p-3 md:p-6"
                   />
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/25 to-transparent"
+                    aria-hidden="true"
+                  />
+                  <div
+                    className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"
+                    aria-hidden="true"
+                  />
 
                   <button
                     type="button"
@@ -578,20 +627,23 @@ export default function Home() {
 
                   <div className="absolute inset-x-0 bottom-0 z-10">
                     <div className="container flex flex-col gap-5 pb-7 pt-28 md:flex-row md:items-end md:justify-between md:pb-10">
-                      <div className="max-w-3xl" aria-live="polite">
+                      <div
+                        className="max-w-3xl rounded-xl border border-white/15 bg-black/70 p-5 shadow-[0_20px_55px_rgba(0,0,0,0.35)] backdrop-blur-[2px] md:p-7"
+                        aria-live="polite"
+                      >
                         <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#F5A623]">
                           {t(category.en, category.od)}
                         </p>
-                        <h3 className="mt-3 font-serif text-3xl font-bold leading-tight text-white md:text-5xl">
+                        <h3 className="mt-3 font-serif text-3xl font-bold leading-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] md:text-5xl">
                           {photo.title}
                         </h3>
                         {photo.description && (
-                          <p className="mt-4 max-w-2xl text-sm leading-7 text-white/80 md:text-base">
+                          <p className="mt-4 max-w-2xl text-sm leading-7 text-white md:text-base">
                             {photo.description}
                           </p>
                         )}
                         {(photo.location || photo.dateTaken) && (
-                          <p className="mt-3 text-xs leading-6 text-white/65">
+                          <p className="mt-3 text-xs font-medium leading-6 text-white/85">
                             {[photo.location, photo.dateTaken]
                               .filter(Boolean)
                               .join(" · ")}

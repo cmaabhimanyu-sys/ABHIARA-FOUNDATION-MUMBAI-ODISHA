@@ -25,9 +25,14 @@ const publicPhotoPages = [
 ].map(path => readFileSync(path, "utf8"));
 
 describe("owner-published impact photos", () => {
-  it("rotates every public work area through the homepage hero", () => {
-    expect(home).toContain("const heroSlides = HOME_WORK_AREAS.map");
-    expect(home).toContain("HERO_PHOTO_CATEGORIES");
+  it("starts the homepage hero with the selected education photo and then rotates all published programme photos", () => {
+    expect(home).toContain("const FEATURED_HOME_PHOTO_ID = 30046");
+    expect(home).toContain(
+      'const FEATURED_HOME_PHOTO_PATH = "education-children-1.jpeg"'
+    );
+    expect(home).toContain("const orderedHeroPhotos");
+    expect(home).toContain("orderedHeroPhotos.map");
+    expect(home).toContain("HERO_AREA_BY_PHOTO_CATEGORY");
     expect(home).toContain("HERO_DONATION_CAUSES");
     expect(home).toContain("setActiveHeroIndex");
     expect(home).toContain("5600");
@@ -53,6 +58,10 @@ describe("owner-published impact photos", () => {
     expect(home).toContain("HOME_IMPACT_CATEGORIES");
     expect(home).toContain("Read about this work");
     expect(home).toContain("Open Impact Gallery");
+    expect(home).toContain("from-black/95 via-black/25 to-transparent");
+    expect(home).toContain("from-black/70 via-black/30 to-transparent");
+    expect(home).toContain("bg-black/70 p-5");
+    expect(home).toContain("text-white md:text-base");
     expect(home.indexOf("HOME_WORK_AREAS.map")).toBeLessThan(
       home.indexOf("Our programmes in pictures")
     );
