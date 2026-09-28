@@ -25,6 +25,21 @@ const publicPhotoPages = [
 ].map(path => readFileSync(path, "utf8"));
 
 describe("owner-published impact photos", () => {
+  it("rotates every public work area through the homepage hero", () => {
+    expect(home).toContain("const heroSlides = HOME_WORK_AREAS.map");
+    expect(home).toContain("HERO_PHOTO_CATEGORIES");
+    expect(home).toContain("HERO_DONATION_CAUSES");
+    expect(home).toContain("setActiveHeroIndex");
+    expect(home).toContain("5600");
+    expect(home).toContain("Abhiara Foundation programmes");
+    expect(home).toContain("Explore this programme");
+    expect(home).toContain("Donate for this work");
+    expect(home).toContain("Pause programme carousel");
+    expect(home).not.toContain(
+      "Building Skills. Strengthening Rural Livelihoods."
+    );
+  });
+
   it("shows a rolling homepage section built only from published photo records", () => {
     expect(home).toContain("trpc.cms.gallery.listPublished.useQuery");
     expect(home).toMatch(/publishedImpactPhotos\s*\.filter/);

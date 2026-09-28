@@ -2872,7 +2872,7 @@ function VercelMediaManager() {
           ? "Checking the photo library…"
           : status?.configured
             ? "The Vercel photo library is connected and ready."
-            : "The photo library is not connected to this deployment yet. Ask Manus to connect it before uploading."}
+            : "The photo library is not connected to this Vercel deployment yet. Ask the website administrator to check the Vercel Blob connection before uploading."}
       </div>
 
       <div className="grid gap-4 rounded-xl border border-gray-200 bg-gray-50 p-5 md:grid-cols-2">
@@ -3959,7 +3959,7 @@ export default function Admin() {
       const target = getOwnerLoginUrl("/admin");
       if (!target || target === "#") {
         toast.error(
-          "Secure sign in is not ready. Please ask Manus to check the login connection."
+          "Secure sign in is not ready. Please ask the website administrator to check the login connection."
         );
         return;
       }

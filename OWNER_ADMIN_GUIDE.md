@@ -197,12 +197,12 @@ Ask your authorised technical maintainer to handle these changes because they af
 ## If something does not work
 
 - **Cannot sign in:** confirm you are using the Foundation owner account.
-- **Photo storage unavailable:** the Vercel Blob connection or production environment may need to be refreshed by Manus.
+- **Photo storage unavailable:** the website administrator should check the Vercel Blob connection and production environment settings.
 - **A public change does not appear:** reload the page once. Admin-published content normally appears without a code deployment.
-- **A structural website change is needed:** request it in Manus. Manus will update the code, test it, push it to GitHub and deploy it to Vercel.
+- **A structural website change is needed:** update the authorised GitHub repository, test the change and deploy it through Vercel.
 
 ## Important distinction
 
 Routine content changes made in the owner dashboard update the database or Blob storage directly. They do not require a GitHub commit.
 
-Changes to design, legal wording, payments, security, routes or software features still require Manus, GitHub and Vercel deployment.
+Changes to design, legal wording, payments, security, routes or software features require a reviewed GitHub change and Vercel deployment.

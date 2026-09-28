@@ -109,5 +109,18 @@ describe("expanded homepage discovery and general giving", () => {
     expect(donate).not.toMatch(
       /subscription|autopay|auto.?debit|monthly donation/i
     );
+    expect(donate).toContain(
+      "A cause-specific donation is used only for verified needs and programme costs within that selected cause."
+    );
+    expect(donate).toContain(
+      "Education donations stay with education. The same rule applies to elder support, medical help, disaster relief and animal welfare."
+    );
+    expect(donate).toContain(
+      "Your General Fund donation may be used across any approved Abhiara programme"
+    );
+    expect(donate).toContain("It will not be moved to another cause.");
+    expect(donate).toContain(
+      "Otherwise it is recorded as a General Fund donation."
+    );
   });
 });

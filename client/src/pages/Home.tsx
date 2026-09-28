@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
+import { motion } from "framer-motion";
 import {
   Activity,
   ArrowRight,
@@ -22,7 +23,6 @@ import {
   Play,
   Quote,
   Scale,
-  Search,
   ShieldCheck,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -95,12 +95,26 @@ const HOME_IMPACT_CATEGORIES: Record<
   },
 };
 
+const HERO_PHOTO_CATEGORIES: Record<string, string> = {
+  education: "education",
+  rural: "community",
+  elder: "elderly",
+  medical: "medical",
+  disaster: "disaster",
+  animal: "animals",
+};
+
+const HERO_DONATION_CAUSES: Record<string, string> = {
+  education: "shiksha_sathi",
+  rural: "shiksha_sathi",
+  elder: "elderly_care",
+  medical: "medical_emergency",
+  disaster: "disaster_relief",
+  animal: "animal_welfare",
+};
+
 export default function Home() {
   const { t, language } = useLanguage();
-  const { data: publicSettings = [] } = trpc.cms.settings.listPublic.useQuery(
-    undefined,
-    { retry: false }
-  );
   const { data: publishedImpactPhotos = [] } =
     trpc.cms.gallery.listPublished.useQuery(undefined, { retry: false });
   const impactPhotos = publishedImpactPhotos
@@ -112,15 +126,27 @@ export default function Home() {
       (photo: any) =>
         !/press|newspaper|certificate|clipping/i.test(photo.title || "")
     );
+  const heroSlides = HOME_WORK_AREAS.map(area => ({
+    ...area,
+    photo:
+      impactPhotos.find(
+        (photo: any) => photo.category === HERO_PHOTO_CATEGORIES[area.key]
+      ) || null,
+  }));
+  const [activeHeroIndex, setActiveHeroIndex] = useState(0);
+  const [heroPaused, setHeroPaused] = useState(false);
   const [activeImpactIndex, setActiveImpactIndex] = useState(0);
   const [impactPaused, setImpactPaused] = useState(false);
-  const studentsSupported =
-    publicSettings.find(
-      (item: any) => item.settingKey === "stat_students_reached"
-    )?.settingValue || "50+";
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  useEffect(() => {
+    if (heroSlides.length < 2 || heroPaused) return;
+    const timer = window.setInterval(() => {
+      setActiveHeroIndex(current => (current + 1) % heroSlides.length);
+    }, 5600);
+    return () => window.clearInterval(timer);
+  }, [heroPaused, heroSlides.length]);
   useEffect(() => {
     if (impactPhotos.length < 2 || impactPaused) return;
     const timer = window.setInterval(() => {
@@ -134,11 +160,17 @@ export default function Home() {
     }
   }, [activeImpactIndex, impactPhotos.length]);
   useEffect(() => {
-    for (const photo of impactPhotos) {
+    const photosToPreload = [
+      ...heroSlides.map(slide => slide.photo).filter(Boolean),
+      impactPhotos[activeImpactIndex],
+      impactPhotos[(activeImpactIndex + 1) % impactPhotos.length],
+    ];
+    for (const photo of photosToPreload) {
+      if (!photo) continue;
       const image = new window.Image();
       image.src = photo.imageUrl;
     }
-  }, [publishedImpactPhotos]);
+  }, [publishedImpactPhotos, activeImpactIndex]);
 
   return (
     <div className="min-h-screen bg-[#FFFDF8] text-[#1A1A1A]">
@@ -152,90 +184,174 @@ export default function Home() {
       />
       <Navbar />
       <main id="main-content">
-        <section className="relative overflow-hidden bg-[#111111] pt-28 text-white md:pt-36">
+        <section
+          className="relative overflow-hidden bg-[#111111] pt-28 text-white md:pt-36"
+          aria-roledescription="carousel"
+          aria-label={t(
+            "Abhiara Foundation programmes",
+            "ଅଭିଆରା ଫାଉଣ୍ଡେସନ କାର୍ଯ୍ୟକ୍ରମ"
+          )}
+          onMouseEnter={() => setHeroPaused(true)}
+          onMouseLeave={() => setHeroPaused(false)}
+          onFocusCapture={() => setHeroPaused(true)}
+          onBlurCapture={event => {
+            if (!event.currentTarget.contains(event.relatedTarget)) {
+              setHeroPaused(false);
+            }
+          }}
+        >
           <div
-            className="absolute inset-0 opacity-20"
+            className="absolute inset-0 opacity-40"
             style={{
               backgroundImage:
-                "radial-gradient(circle at 20% 10%, #F5A623 0, transparent 28%), radial-gradient(circle at 90% 70%, #B56A22 0, transparent 24%)",
+                "radial-gradient(circle at 20% 20%, #8A5418 0, transparent 34%), radial-gradient(circle at 85% 75%, #5A3513 0, transparent 30%)",
             }}
           />
-          <div className="container relative z-10 grid min-h-[650px] items-center gap-10 py-16 lg:grid-cols-[1.2fr_0.8fr]">
-            <AnimatedSection>
-              <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-[#F5A623]">
-                {t("Abhiara Shiksha Sathi", "ଅଭିଆରା ଶିକ୍ଷା ସାଥୀ")}
-              </p>
-              <p className="mb-5 max-w-4xl font-serif text-4xl font-bold leading-tight text-[#F5A623] md:text-5xl lg:text-6xl">
-                {t("Abhiara Foundation", "ଅଭିଆରା ଫାଉଣ୍ଡେସନ")}
-              </p>
-              <h1 className="max-w-5xl font-serif text-5xl font-bold leading-[1.05] text-white md:text-6xl lg:text-7xl">
-                {t(PUBLIC_TAGLINE, "ଶିକ୍ଷା ପ୍ରଥମ। ଦୟା ସଦା।")}
-              </h1>
-              <p className="mt-7 max-w-2xl font-sans text-lg leading-relaxed text-white/75">
-                {t(PUBLIC_TAGLINE_DESCRIPTION, PUBLIC_TAGLINE_DESCRIPTION_OD)}
-              </p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/shiksha-sathi"
-                  className="inline-flex items-center justify-center gap-2 rounded bg-[#F5A623] px-6 py-3.5 font-sans text-sm font-bold text-[#1A1A1A] hover:bg-[#E8960E]"
+          {heroSlides.map((slide, index) =>
+            slide.photo ? (
+              <img
+                key={slide.key}
+                src={slide.photo.imageUrl}
+                alt=""
+                aria-hidden="true"
+                loading="eager"
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+                  index === activeHeroIndex ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ) : null
+          )}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/20" />
+
+          <div className="container relative z-10 flex min-h-[650px] items-center py-16 md:min-h-[700px]">
+            {heroSlides.map((slide, index) => {
+              const Icon = HOME_WORK_ICONS[slide.key];
+              const isActive = index === activeHeroIndex;
+              return (
+                <div
+                  key={slide.key}
+                  aria-hidden={!isActive}
+                  aria-live={isActive ? "polite" : undefined}
+                  className={isActive ? "max-w-4xl" : "hidden"}
                 >
-                  {t("See the programme", "କାର୍ଯ୍ୟକ୍ରମ ଦେଖନ୍ତୁ")}{" "}
-                  <ArrowRight size={16} />
-                </Link>
-                <Link
-                  href="/donate"
-                  className="inline-flex items-center justify-center gap-2 rounded border border-white/35 px-6 py-3.5 font-sans text-sm font-bold text-white hover:border-[#F5A623] hover:text-[#F5A623]"
-                >
-                  {t("Donate once", "ଏକକାଳୀନ ଦାନ")}
-                </Link>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection direction="right">
-              <div className="border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:p-8">
-                <div className="mb-7 flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#F5A623] text-[#1A1A1A]">
-                    <GraduationCap size={25} />
-                  </div>
-                  <div>
-                    <p className="font-serif text-3xl font-bold">
-                      {studentsSupported}
+                  <motion.div
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.45 }}
+                  >
+                    <div className="mb-5 flex flex-wrap items-center gap-3">
+                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#F5A623] text-[#111111]">
+                        <Icon size={20} />
+                      </span>
+                      <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#F5A623]">
+                        {t(slide.statusEn, slide.statusOd)}
+                      </span>
+                      <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-white/55">
+                        {String(index + 1).padStart(2, "0")} /{" "}
+                        {String(heroSlides.length).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <p className="mb-4 font-serif text-3xl font-bold text-[#F5A623] sm:text-4xl md:text-5xl">
+                      {t("Abhiara Foundation", "ଅଭିଆରା ଫାଉଣ୍ଡେସନ")}
                     </p>
-                    <p className="font-sans text-sm text-white/65">
-                      {t("children actively supported", "ଶିଶୁ ସକ୍ରିୟ ସହାୟତାରେ")}
+                    <h1 className="max-w-4xl font-serif text-4xl font-bold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-7xl">
+                      {slide.key === "education"
+                        ? t(PUBLIC_TAGLINE, "ଶିକ୍ଷା ପ୍ରଥମ। ଦୟା ସଦା।")
+                        : t(slide.titleEn, slide.titleOd)}
+                    </h1>
+                    <p className="mt-6 max-w-2xl font-sans text-base leading-7 text-white/80 md:text-lg">
+                      {slide.key === "education"
+                        ? t(
+                            PUBLIC_TAGLINE_DESCRIPTION,
+                            PUBLIC_TAGLINE_DESCRIPTION_OD
+                          )
+                        : t(slide.bodyEn, slide.bodyOd)}
                     </p>
-                  </div>
+                    <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                      <Link
+                        href={slide.href}
+                        className="inline-flex items-center justify-center gap-2 rounded bg-[#F5A623] px-6 py-3.5 font-sans text-sm font-bold text-[#1A1A1A] hover:bg-[#E8960E]"
+                      >
+                        {t("Explore this programme", "ଏହି କାର୍ଯ୍ୟକ୍ରମ ଦେଖନ୍ତୁ")}
+                        <ArrowRight size={16} />
+                      </Link>
+                      <Link
+                        href={`/donate?cause=${HERO_DONATION_CAUSES[slide.key]}`}
+                        className="inline-flex items-center justify-center gap-2 rounded border border-white/50 bg-black/20 px-6 py-3.5 font-sans text-sm font-bold text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623]"
+                      >
+                        {t("Donate for this work", "ଏହି କାମ ପାଇଁ ଦାନ")}
+                      </Link>
+                    </div>
+                  </motion.div>
                 </div>
-                <div className="space-y-4 border-t border-white/10 pt-6">
-                  {[
-                    t(
-                      "Ground verification before approval",
-                      "ଅନୁମୋଦନ ପୂର୍ବରୁ କ୍ଷେତ୍ର ଯାଞ୍ଚ"
-                    ),
-                    t(
-                      "Need-based tuition and learning support",
-                      "ଆବଶ୍ୟକତା ଭିତ୍ତିକ ଟ୍ୟୁସନ ଓ ପଢ଼ା ସହାୟତା"
-                    ),
-                    t(
-                      "Documented follow-up and monthly reporting",
-                      "ରେକର୍ଡ ଭିତ୍ତିକ ଅନୁସରଣ ଓ ମାସିକ ରିପୋର୍ଟ"
-                    ),
-                  ].map((text, index) => {
-                    const Icon = [Search, BookOpen, FileText][index];
-                    return (
-                      <div key={text} className="flex gap-3">
-                        <Icon
-                          size={18}
-                          className="mt-0.5 shrink-0 text-[#F5A623]"
-                        />
-                        <p className="font-sans text-sm leading-relaxed text-white/75">
-                          {text}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
+              );
+            })}
+          </div>
+
+          <button
+            type="button"
+            onClick={() =>
+              setActiveHeroIndex(
+                current => (current - 1 + heroSlides.length) % heroSlides.length
+              )
+            }
+            aria-label={t("Previous programme", "ପୂର୍ବ କାର୍ଯ୍ୟକ୍ରମ")}
+            className="absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/35 bg-black/40 text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623] md:left-6"
+          >
+            <ChevronLeft size={22} />
+          </button>
+          <button
+            type="button"
+            onClick={() =>
+              setActiveHeroIndex(current => (current + 1) % heroSlides.length)
+            }
+            aria-label={t("Next programme", "ପରବର୍ତ୍ତୀ କାର୍ଯ୍ୟକ୍ରମ")}
+            className="absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/35 bg-black/40 text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623] md:right-6"
+          >
+            <ChevronRight size={22} />
+          </button>
+
+          <div className="absolute inset-x-0 bottom-4 z-20">
+            <div className="container flex items-center justify-between gap-4">
+              <div className="flex flex-wrap items-center gap-2">
+                {heroSlides.map((slide, index) => (
+                  <button
+                    key={slide.key}
+                    type="button"
+                    onClick={() => setActiveHeroIndex(index)}
+                    aria-label={t(
+                      `Show ${slide.titleEn}`,
+                      `${slide.titleOd} ଦେଖନ୍ତୁ`
+                    )}
+                    aria-current={
+                      index === activeHeroIndex ? "true" : undefined
+                    }
+                    className={`h-2.5 rounded-full transition-all ${
+                      index === activeHeroIndex
+                        ? "w-9 bg-[#F5A623]"
+                        : "w-2.5 bg-white/45 hover:bg-white/75"
+                    }`}
+                  />
+                ))}
               </div>
-            </AnimatedSection>
+              <button
+                type="button"
+                onClick={() => setHeroPaused(current => !current)}
+                aria-label={
+                  heroPaused
+                    ? t("Play programme carousel", "କାର୍ଯ୍ୟକ୍ରମ ସ୍ଲାଇଡ ଚଳାନ୍ତୁ")
+                    : t(
+                        "Pause programme carousel",
+                        "କାର୍ଯ୍ୟକ୍ରମ ସ୍ଲାଇଡ ବିରତ କରନ୍ତୁ"
+                      )
+                }
+                className="inline-flex min-h-10 items-center gap-2 rounded-full border border-white/30 bg-black/40 px-4 font-sans text-xs font-bold text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623]"
+              >
+                {heroPaused ? <Play size={14} /> : <Pause size={14} />}
+                {heroPaused ? t("Play", "ଚଳାନ୍ତୁ") : t("Pause", "ବିରତ")}
+              </button>
+            </div>
           </div>
         </section>
 

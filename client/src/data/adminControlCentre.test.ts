@@ -195,7 +195,7 @@ describe("beginner-friendly owner control centre", () => {
   });
 
   it("keeps reviewed public settings narrow and removes unsupported broad archive counters", () => {
-    expect(home).toContain("stat_students_reached");
+    expect(home).not.toContain("stat_students_reached");
     expect(studentImpact).toContain("stat_students_reached");
     expect(otherSupport).not.toContain("stat_activities_completed");
     expect(otherSupport).not.toContain("stat_families_supported");

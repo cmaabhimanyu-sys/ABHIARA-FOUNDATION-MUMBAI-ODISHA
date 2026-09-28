@@ -293,8 +293,8 @@ export default function Donate() {
           </h1>
           <p className="font-sans text-[15px] md:text-[16px] text-white/75 max-w-2xl mx-auto mb-5">
             {t(
-              "Choose the general fund or a specific cause. Every online payment is one time and is recorded under the cause you select.",
-              "ସାଧାରଣ ପାଣ୍ଠି ବା ନିର୍ଦ୍ଦିଷ୍ଟ କାରଣ ବାଛନ୍ତୁ। ପ୍ରତ୍ୟେକ ଅନଲାଇନ ପେମେଣ୍ଟ ଏକକାଳୀନ ଏବଂ ଆପଣ ବାଛିଥିବା କାରଣ ଅଧୀନରେ ରେକର୍ଡ ହୁଏ।"
+              "Choose a specific cause to keep your donation within that cause. Choose General Fund to support any approved Abhiara programme.",
+              "ଆପଣଙ୍କ ଦାନକୁ ସେହି କ୍ଷେତ୍ରରେ ରଖିବା ପାଇଁ ଏକ ନିର୍ଦ୍ଦିଷ୍ଟ କାରଣ ବାଛନ୍ତୁ। ଯେକୌଣସି ଅନୁମୋଦିତ ଅଭିଆରା କାର୍ଯ୍ୟକ୍ରମକୁ ସହାୟତା ପାଇଁ ସାଧାରଣ ପାଣ୍ଠି ବାଛନ୍ତୁ।"
             )}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 text-white/70">
@@ -332,16 +332,16 @@ export default function Donate() {
                   <div className="space-y-3">
                     {[
                       t(
-                        "General donations support approved charitable work where the need is greatest.",
-                        "ସାଧାରଣ ଦାନ ସବୁଠାରୁ ଅଧିକ ଆବଶ୍ୟକ ସ୍ଥାନରେ ଅନୁମୋଦିତ ଜନହିତକର କାମକୁ ସହାୟତା କରେ।"
+                        "General Fund donations may support any approved Abhiara programme and the necessary costs of carrying out that work.",
+                        "ସାଧାରଣ ପାଣ୍ଠିର ଦାନ ଯେକୌଣସି ଅନୁମୋଦିତ ଅଭିଆରା କାର୍ଯ୍ୟକ୍ରମ ଏବଂ ସେହି କାମ କରିବା ପାଇଁ ଆବଶ୍ୟକ ଖର୍ଚ୍ଚକୁ ସହାୟତା କରିପାରେ।"
                       ),
                       t(
-                        "Cause-specific donations are used for checked needs within the selected area.",
-                        "ନିର୍ଦ୍ଦିଷ୍ଟ କାରଣର ଦାନ ବାଛିଥିବା କ୍ଷେତ୍ରର ଯାଞ୍ଚ ହୋଇଥିବା ଆବଶ୍ୟକତାରେ ବ୍ୟବହୃତ ହୁଏ।"
+                        "A cause-specific donation is used only for verified needs and programme costs within that selected cause.",
+                        "ନିର୍ଦ୍ଦିଷ୍ଟ କାରଣର ଦାନ କେବଳ ବାଛିଥିବା ସେହି କ୍ଷେତ୍ରର ଯାଞ୍ଚ ହୋଇଥିବା ଆବଶ୍ୟକତା ଓ କାର୍ଯ୍ୟକ୍ରମ ଖର୍ଚ୍ଚରେ ବ୍ୟବହୃତ ହୁଏ।"
                       ),
                       t(
-                        "Every online payment is recorded under the cause selected by the donor.",
-                        "ପ୍ରତ୍ୟେକ ଅନଲାଇନ ଦାନ ଦାତା ବାଛିଥିବା କାରଣ ଅଧୀନରେ ରେକର୍ଡ ହୁଏ।"
+                        "Education donations stay with education. The same rule applies to elder support, medical help, disaster relief and animal welfare.",
+                        "ଶିକ୍ଷା ପାଇଁ ଦାନ ଶିକ୍ଷାରେ ହିଁ ବ୍ୟବହୃତ ହୁଏ। ବୟସ୍କ ସହାୟତା, ଚିକିତ୍ସା ସହାୟତା, ବିପର୍ଯ୍ୟୟ ସହାୟତା ଓ ପଶୁ କଲ୍ୟାଣ ପାଇଁ ମଧ୍ୟ ସେହି ନିୟମ ଲାଗୁ ହୁଏ।"
                       ),
                     ].map(item => (
                       <div key={item} className="flex items-start gap-3">
@@ -474,6 +474,28 @@ export default function Donate() {
                             </button>
                           ))}
                         </div>
+                        <div
+                          role="status"
+                          className="mt-3 rounded-lg border border-[#F5A623]/40 bg-[#FFF8E8] px-4 py-3"
+                        >
+                          <p className="font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-[#9A6100]">
+                            {t(
+                              "Fund use for your selection",
+                              "ଆପଣଙ୍କ ବାଛିଥିବା ପାଣ୍ଠିର ବ୍ୟବହାର"
+                            )}
+                          </p>
+                          <p className="mt-1 font-sans text-[12px] leading-5 text-[#555]">
+                            {cause === "general"
+                              ? t(
+                                  "Your General Fund donation may be used across any approved Abhiara programme, based on verified need and an approved budget.",
+                                  "ଆପଣଙ୍କ ସାଧାରଣ ପାଣ୍ଠି ଦାନ ଯାଞ୍ଚ ହୋଇଥିବା ଆବଶ୍ୟକତା ଓ ଅନୁମୋଦିତ ବଜେଟ ଅନୁଯାୟୀ ଯେକୌଣସି ଅନୁମୋଦିତ ଅଭିଆରା କାର୍ଯ୍ୟକ୍ରମରେ ବ୍ୟବହୃତ ହୋଇପାରେ।"
+                                )
+                              : t(
+                                  `Your ${selectedCause.label} donation will be used only for verified needs and programme costs within ${selectedCause.label}. It will not be moved to another cause.`,
+                                  `ଆପଣଙ୍କ ${selectedCause.labelOd} ଦାନ କେବଳ ${selectedCause.labelOd} କ୍ଷେତ୍ରର ଯାଞ୍ଚ ହୋଇଥିବା ଆବଶ୍ୟକତା ଓ କାର୍ଯ୍ୟକ୍ରମ ଖର୍ଚ୍ଚରେ ବ୍ୟବହୃତ ହେବ। ଏହା ଅନ୍ୟ କାରଣକୁ ସ୍ଥାନାନ୍ତର ହେବ ନାହିଁ।`
+                                )}
+                          </p>
+                        </div>
                       </div>
 
                       <div>
@@ -580,8 +602,12 @@ export default function Donate() {
                         />
                         <span className="font-sans text-[11px] text-[#555] leading-relaxed">
                           {t(
-                            "I confirm that I am an Indian citizen donating from my own Indian funds. I agree that Abhiara Foundation may use this donation for the cause selected above and send me a payment record by email.",
-                            "ମୁଁ ନିଶ୍ଚିତ କରୁଛି ଯେ ମୁଁ ଜଣେ ଭାରତୀୟ ନାଗରିକ ଏବଂ ମୋର ନିଜ ଭାରତୀୟ ଧନରୁ ଦାନ କରୁଛି। ଉପରେ ବାଛିଥିବା କାରଣ ପାଇଁ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଏହି ଦାନ ବ୍ୟବହାର କରିପାରିବ ଏବଂ ମୋତେ ଇମେଲରେ ଦାନ ରେକର୍ଡ ପଠାଇପାରିବ।"
+                            cause === "general"
+                              ? "I confirm that I am an Indian citizen donating from my own Indian funds. I agree that this General Fund donation may support any approved Abhiara programme and that a payment record may be sent to me by email."
+                              : `I confirm that I am an Indian citizen donating from my own Indian funds. I agree that this donation will be used only for ${selectedCause.label} and that a payment record may be sent to me by email.`,
+                            cause === "general"
+                              ? "ମୁଁ ନିଶ୍ଚିତ କରୁଛି ଯେ ମୁଁ ଜଣେ ଭାରତୀୟ ନାଗରିକ ଏବଂ ମୋର ନିଜ ଭାରତୀୟ ଧନରୁ ଦାନ କରୁଛି। ଏହି ସାଧାରଣ ପାଣ୍ଠି ଦାନ ଯେକୌଣସି ଅନୁମୋଦିତ ଅଭିଆରା କାର୍ଯ୍ୟକ୍ରମକୁ ସହାୟତା କରିପାରିବ ଏବଂ ମୋତେ ଇମେଲରେ ଦାନ ରେକର୍ଡ ପଠାଯାଇପାରିବ ବୋଲି ମୁଁ ସମ୍ମତ।"
+                              : `ମୁଁ ନିଶ୍ଚିତ କରୁଛି ଯେ ମୁଁ ଜଣେ ଭାରତୀୟ ନାଗରିକ ଏବଂ ମୋର ନିଜ ଭାରତୀୟ ଧନରୁ ଦାନ କରୁଛି। ଏହି ଦାନ କେବଳ ${selectedCause.labelOd} ପାଇଁ ବ୍ୟବହୃତ ହେବ ଏବଂ ମୋତେ ଇମେଲରେ ଦାନ ରେକର୍ଡ ପଠାଯାଇପାରିବ ବୋଲି ମୁଁ ସମ୍ମତ।`
                           )}
                         </span>
                       </label>
@@ -723,8 +749,8 @@ export default function Donate() {
                 </dl>
                 <p className="font-sans text-[11px] text-[#777] mt-5 pt-4 border-t border-gray-200 leading-relaxed">
                   {t(
-                    "After a direct UPI or bank payment, email the payment reference to info@abhiarafoundation.org if you need a Donation Acknowledgement.",
-                    "ସିଧା UPI କିମ୍ବା ବ୍ୟାଙ୍କ ଦାନ ପରେ ଦାନ ସ୍ୱୀକୃତି ପତ୍ର ଆବଶ୍ୟକ ହେଲେ ପେମେଣ୍ଟ ରେଫରେନ୍ସ info@abhiarafoundation.org କୁ ଇମେଲ କରନ୍ତୁ।"
+                    "To reserve a direct UPI or bank transfer for a specific cause, email the payment reference and cause to info@abhiarafoundation.org. Otherwise it is recorded as a General Fund donation. You may also request a Donation Acknowledgement in the same email.",
+                    "ସିଧା UPI କିମ୍ବା ବ୍ୟାଙ୍କ ଟ୍ରାନ୍ସଫରକୁ ନିର୍ଦ୍ଦିଷ୍ଟ କାରଣ ପାଇଁ ରଖିବାକୁ ପେମେଣ୍ଟ ରେଫରେନ୍ସ ଓ କାରଣ info@abhiarafoundation.org କୁ ଇମେଲ କରନ୍ତୁ। ନହେଲେ ଏହା ସାଧାରଣ ପାଣ୍ଠିର ଦାନ ଭାବେ ରେକର୍ଡ ହେବ। ସେହି ଇମେଲରେ ଆପଣ ଦାନ ସ୍ୱୀକୃତି ପତ୍ର ମଧ୍ୟ ମାଗିପାରିବେ।"
                   )}
                 </p>
               </div>
@@ -752,8 +778,8 @@ export default function Donate() {
               {
                 q: t("How is my donation used?", "ମୋ ଦାନ କିପରି ବ୍ୟବହୃତ ହୁଏ?"),
                 a: t(
-                  "We use it for the cause you select and the programme costs needed to carry out that work. Every payment is recorded in our accounts.",
-                  "ଆପଣ ବାଛିଥିବା କାରଣ ଓ ସେହି କାମ ପାଇଁ ଆବଶ୍ୟକ କାର୍ଯ୍ୟକ୍ରମ ଖର୍ଚ୍ଚରେ ଦାନ ବ୍ୟବହାର ହୁଏ। ପ୍ରତ୍ୟେକ ଦାନ ଆମ ହିସାବରେ ରେକର୍ଡ କରାଯାଏ।"
+                  "A cause-specific donation is used only within that cause. An education donation stays with education, and the same rule applies to every other cause. A General Fund donation may support any approved Abhiara programme. Every payment is recorded under its selected cause in our accounts.",
+                  "ନିର୍ଦ୍ଦିଷ୍ଟ କାରଣର ଦାନ କେବଳ ସେହି କାରଣରେ ବ୍ୟବହୃତ ହୁଏ। ଶିକ୍ଷା ଦାନ ଶିକ୍ଷାରେ ରହେ ଏବଂ ଅନ୍ୟ ପ୍ରତ୍ୟେକ କାରଣ ପାଇଁ ମଧ୍ୟ ସେହି ନିୟମ ଲାଗୁ ହୁଏ। ସାଧାରଣ ପାଣ୍ଠିର ଦାନ ଯେକୌଣସି ଅନୁମୋଦିତ ଅଭିଆରା କାର୍ଯ୍ୟକ୍ରମକୁ ସହାୟତା କରିପାରେ। ପ୍ରତ୍ୟେକ ଦାନ ଆମ ହିସାବରେ ବାଛିଥିବା କାରଣ ଅଧୀନରେ ରେକର୍ଡ ହୁଏ।"
                 ),
               },
               {

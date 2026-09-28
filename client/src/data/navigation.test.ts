@@ -63,9 +63,11 @@ describe("compact public navigation", () => {
       'className="mx-auto flex h-24 max-w-[1540px] items-center px-4 md:px-6 min-[1440px]:h-28"'
     );
     expect(home).toContain('t("Abhiara Foundation", "ଅଭିଆରା ଫାଉଣ୍ଡେସନ")');
-    expect(home).toContain("text-[#F5A623] md:text-5xl lg:text-6xl");
     expect(home).toContain(
-      "text-5xl font-bold leading-[1.05] text-white md:text-6xl lg:text-7xl"
+      "text-3xl font-bold text-[#F5A623] sm:text-4xl md:text-5xl"
+    );
+    expect(home).toContain(
+      "text-4xl font-bold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-7xl"
     );
     expect(footer).toContain(
       'className="mb-5 h-20 w-auto rounded bg-white p-1 md:h-24"'
