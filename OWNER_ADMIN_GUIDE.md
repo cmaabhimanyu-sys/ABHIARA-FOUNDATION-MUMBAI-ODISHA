@@ -154,7 +154,7 @@ Use **Board, Members and Advisors** to manage every approved Abhiara person show
 - Choose **Members** for people who hold an approved Foundation role but are not directors or advisors.
 - Choose **Advisory Members** for people who guide the Foundation but are not directors.
 - Add the English and Odia name, role, qualification and short biography.
-- Use **Mr.**, **Ms.** or **Mrs.** as confirmed by the person. Keep CA, Advocate and other professional qualifications in the role or qualification field, not before the name.
+- Use **Mr.** for men and **Ms.** for women as the standard public title. Use **Mrs.** only when the person confirms that preference. Keep CA, Advocate and other professional qualifications in the role or qualification field, not before the name.
 - Add an approved public profile photo and an HTTPS public profile link where available. Use a centred head and shoulders photo. The Admin uploader prepares an 800 × 1000 WebP portrait and may crop the outer edges so every public profile uses the same frame.
 - Use **Display order** to control the single sequence shown on the website. The public page does not split people into separate sections.
 - Use **Publish** or **Unpublish** to show or hide a profile without deleting it.

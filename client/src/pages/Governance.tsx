@@ -52,10 +52,15 @@ function MemberCard({
       )}
       <div className="p-6">
         <h2 className="font-serif text-2xl font-bold text-[#1A1A1A]">{name}</h2>
+        {qualification && (
+          <p className="mt-2 font-sans text-sm font-semibold leading-6 text-[#555]">
+            {qualification}
+          </p>
+        )}
         <p className="mt-1 font-sans text-sm font-bold text-[#9A6100]">
           {role}
         </p>
-        {(qualification || bio || member.profileUrl) && (
+        {(bio || member.profileUrl) && (
           <details className="group mt-5 border-t border-[#E8DCC6] pt-4">
             <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-sans text-sm font-bold text-[#8A5700] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A623]">
               <span className="group-open:hidden">
@@ -71,15 +76,8 @@ function MemberCard({
               />
             </summary>
             <div className="pb-1 pt-2">
-              {qualification && (
-                <p className="font-sans text-xs font-semibold text-[#666]">
-                  {qualification}
-                </p>
-              )}
               {bio && (
-                <p className="mt-3 font-sans text-sm leading-7 text-[#555]">
-                  {bio}
-                </p>
+                <p className="font-sans text-sm leading-7 text-[#555]">{bio}</p>
               )}
               {member.profileUrl && (
                 <a

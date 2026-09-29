@@ -115,6 +115,11 @@ describe("owner managed board and advisory members", () => {
     expect(memberMigration).toContain(
       "kishore-kumar-parida-people-portrait-800x1000.webp"
     );
+    expect(memberMigration).toContain("Ms. Sonalika Das");
+    expect(memberMigration).toContain("'Core Member'");
+    expect(memberMigration).toContain(
+      "sonalika-das-people-portrait-800x1000.webp"
+    );
   });
 
   it("keeps public reads separate from protected Admin changes", () => {
@@ -137,7 +142,12 @@ describe("owner managed board and advisory members", () => {
     expect(admin).toContain("Advisory roles must stay separate");
     expect(admin).toContain('<option value="member">Members</option>');
     expect(admin).toContain("Display order");
-    expect(admin).toContain("Use Mr., Ms. or Mrs. as confirmed by the person");
+    expect(admin).toContain(
+      "Use Mr. for men and Ms. for women as the standard public title"
+    );
+    expect(admin).toContain(
+      "Use Mrs. only when the person confirms that preference"
+    );
     expect(admin).toContain("Keep CA,");
     expect(admin).toContain(
       "Show this person on the public Board, Members and Advisors page"
@@ -167,6 +177,18 @@ describe("owner managed board and advisory members", () => {
     expect(governance).toContain("width={800}");
     expect(governance).toContain("height={1000}");
     expect(governance).toContain('loading="lazy"');
+    const publicCardContent = governance.indexOf('<div className="p-6">');
+    const qualificationAfterName = governance.indexOf(
+      "{qualification && (",
+      publicCardContent
+    );
+    const roleAfterQualification = governance.indexOf(
+      "{role}",
+      qualificationAfterName
+    );
+    expect(publicCardContent).toBeGreaterThan(-1);
+    expect(qualificationAfterName).toBeGreaterThan(publicCardContent);
+    expect(roleAfterQualification).toBeGreaterThan(qualificationAfterName);
     expect(governance).toContain("<details");
     expect(governance).toContain("View details");
     expect(governance).toContain("Close details");

@@ -3727,8 +3727,10 @@ function LeadershipManager() {
               }
             />
             <p className="mt-1 text-xs leading-5 text-[#666]">
-              Use Mr., Ms. or Mrs. as confirmed by the person. Keep CA, Advocate
-              and other qualifications in the role or qualification field.
+              Use Mr. for men and Ms. for women as the standard public title.
+              Use Mrs. only when the person confirms that preference. Keep CA,
+              Advocate and other qualifications in the role or qualification
+              field.
             </p>
           </div>
           <div>
