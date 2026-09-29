@@ -118,8 +118,8 @@ const ADVISORS: PersonProfile[] = [
   {
     initials: "SS",
     name: { en: "Sujit Sahu", od: "ସୁଜିତ ସାହୁ" },
-    role: { en: "Legal Advisor", od: "ଆଇନ ପରାମର୍ଶଦାତା" },
-    qualification: { en: "LLB, MBA", od: "LLB, MBA" },
+    role: { en: "Founding Patron and Strategic Advisor", od: "ପ୍ରତିଷ୍ଠାକାଳୀନ ପୃଷ୍ଠପୋଷକ ଓ ରଣନୀତିକ ପରାମର୍ଶଦାତା" },
+    qualification: { en: "Advocate, LLB", od: "ଅଧିବକ୍ତା, LLB" },
     photo: "/images/team-advocate-sujit-sahu.png",
     photoAlt: { en: "Sujit Sahu", od: "ସୁଜିତ ସାହୁ" },
     bio: {

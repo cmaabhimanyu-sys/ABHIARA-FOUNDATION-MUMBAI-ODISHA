@@ -163,3 +163,12 @@ WHERE NOT EXISTS (
   SELECT 1 FROM `leadership_members`
   WHERE `nameEn` IN ('Sonalika Das', 'Ms. Sonalika Das')
 );
+--> statement-breakpoint
+UPDATE `leadership_members`
+SET
+  `roleEn` = 'Founding Patron and Strategic Advisor',
+  `roleOd` = 'ପ୍ରତିଷ୍ଠାକାଳୀନ ପୃଷ୍ଠପୋଷକ ଓ ରଣନୀତିକ ପରାମର୍ଶଦାତା',
+  `qualificationEn` = 'Advocate, LLB',
+  `qualificationOd` = 'ଅଧିବକ୍ତା, LLB'
+WHERE `id` = 4
+  AND `nameEn` IN ('Sujit Sahu', 'Mr. Sujit Sahu');

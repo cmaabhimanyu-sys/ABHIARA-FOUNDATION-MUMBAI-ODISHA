@@ -120,6 +120,11 @@ describe("owner managed board and advisory members", () => {
     expect(memberMigration).toContain(
       "sonalika-das-people-portrait-800x1000.webp"
     );
+    expect(memberMigration).toContain("'Advocate, LLB'");
+    expect(memberMigration).toContain(
+      "'Founding Patron and Strategic Advisor'"
+    );
+    expect(team).toContain('en: "Advocate, LLB"');
   });
 
   it("keeps public reads separate from protected Admin changes", () => {
