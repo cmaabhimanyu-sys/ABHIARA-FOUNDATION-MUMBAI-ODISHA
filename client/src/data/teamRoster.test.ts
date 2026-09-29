@@ -118,8 +118,9 @@ describe("public board and leadership roster", () => {
     expect(teamPage).toContain('href="/volunteer"');
   });
 
-  it("keeps the public people page discoverable inside the focused About menu", () => {
-    expect(focusContent).toContain('en: "People of Abhiara Foundation"');
+  it("keeps the public people page as a direct main navigation section", () => {
+    expect(focusContent).toContain('key: "people"');
+    expect(focusContent).toContain('en: "Board & Presence"');
     expect(focusContent).toContain('href: "/board-and-transparency"');
     expect(navbar).toContain("HEADER_NAV_GROUPS.map");
     expect(navbar).toContain("DropdownMenu");

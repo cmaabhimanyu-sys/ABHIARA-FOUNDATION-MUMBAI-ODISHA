@@ -97,10 +97,10 @@ describe("separate programme panels and galleries", () => {
       ])
     );
     expect(
-      HEADER_NAV_GROUPS.find(group => group.key === "about")?.items.map(
+      HEADER_NAV_GROUPS.find(group => group.key === "people")?.items.map(
         item => item.href
       )
-    ).toContain("/board-and-transparency");
+    ).toEqual(["/board-and-transparency", "/our-presence"]);
   });
 
   it("does not expose internal owner, Admin or website-folder instructions publicly", () => {

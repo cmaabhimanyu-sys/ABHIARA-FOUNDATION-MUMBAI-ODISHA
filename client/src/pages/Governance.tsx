@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ExternalLink } from "lucide-react";
+import { ChevronDown, ExternalLink } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -55,24 +55,45 @@ function MemberCard({
         <p className="mt-1 font-sans text-sm font-bold text-[#9A6100]">
           {role}
         </p>
-        {qualification && (
-          <p className="mt-2 font-sans text-xs font-semibold text-[#666]">
-            {qualification}
-          </p>
-        )}
-        {bio && (
-          <p className="mt-4 font-sans text-sm leading-7 text-[#555]">{bio}</p>
-        )}
-        {member.profileUrl && (
-          <a
-            href={member.profileUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#8A5700]"
-          >
-            {language === "od" ? "ସାର୍ବଜନୀନ ପ୍ରୋଫାଇଲ" : "Public profile"}
-            <ExternalLink size={14} aria-hidden="true" />
-          </a>
+        {(qualification || bio || member.profileUrl) && (
+          <details className="group mt-5 border-t border-[#E8DCC6] pt-4">
+            <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-sans text-sm font-bold text-[#8A5700] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A623]">
+              <span className="group-open:hidden">
+                {language === "od" ? "ବିବରଣୀ ଦେଖନ୍ତୁ" : "View details"}
+              </span>
+              <span className="hidden group-open:inline">
+                {language === "od" ? "ବିବରଣୀ ବନ୍ଦ କରନ୍ତୁ" : "Close details"}
+              </span>
+              <ChevronDown
+                size={17}
+                aria-hidden="true"
+                className="shrink-0 transition-transform group-open:rotate-180"
+              />
+            </summary>
+            <div className="pb-1 pt-2">
+              {qualification && (
+                <p className="font-sans text-xs font-semibold text-[#666]">
+                  {qualification}
+                </p>
+              )}
+              {bio && (
+                <p className="mt-3 font-sans text-sm leading-7 text-[#555]">
+                  {bio}
+                </p>
+              )}
+              {member.profileUrl && (
+                <a
+                  href={member.profileUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#8A5700]"
+                >
+                  {language === "od" ? "ସାର୍ବଜନୀନ ପ୍ରୋଫାଇଲ" : "Public profile"}
+                  <ExternalLink size={14} aria-hidden="true" />
+                </a>
+              )}
+            </div>
+          </details>
         )}
       </div>
     </article>
@@ -128,8 +149,8 @@ export default function Governance() {
               </h2>
               <p className="mt-3 text-sm leading-7 text-[#666]">
                 {t(
-                  "Profiles follow the display order managed by the Foundation owner in Admin.",
-                  "ପ୍ରୋଫାଇଲଗୁଡ଼ିକ ଆଡମିନରେ ଫାଉଣ୍ଡେସନ ମାଲିକ ନିର୍ଦ୍ଧାରଣ କରିଥିବା ପ୍ରଦର୍ଶନ କ୍ରମ ଅନୁସରଣ କରେ।"
+                  "Each profile shows the person’s current public role. Open the details to read more.",
+                  "ପ୍ରତ୍ୟେକ ପ୍ରୋଫାଇଲରେ ବ୍ୟକ୍ତିଙ୍କ ବର୍ତ୍ତମାନ ସାର୍ବଜନୀନ ଭୂମିକା ଦିଆଯାଇଛି। ଅଧିକ ପଢ଼ିବା ପାଇଁ ବିବରଣୀ ଖୋଲନ୍ତୁ।"
                 )}
               </p>
             </div>

@@ -7,16 +7,21 @@ const footer = readFileSync("client/src/components/Footer.tsx", "utf8");
 const home = readFileSync("client/src/pages/Home.tsx", "utf8");
 
 describe("compact public navigation", () => {
-  it("uses five clear sections plus separate Home and Donate actions", () => {
+  it("uses six clear sections plus separate Home and Donate actions", () => {
     expect(HEADER_NAV_GROUPS.map(group => group.en)).toEqual([
       "About",
       "Education & Learning",
       "Other Activities",
       "Impact & Transparency",
+      "Board & Presence",
       "Get Involved",
     ]);
-    expect(HEADER_NAV_GROUPS).toHaveLength(5);
+    expect(HEADER_NAV_GROUPS).toHaveLength(6);
     for (const group of HEADER_NAV_GROUPS) {
+      if (group.key === "people") {
+        expect(group.items).toHaveLength(2);
+        continue;
+      }
       expect(group.items.length).toBeGreaterThanOrEqual(3);
       expect(group.items.length).toBeLessThanOrEqual(8);
     }
@@ -104,7 +109,14 @@ describe("compact public navigation", () => {
       group.items.map(item => item.href)
     );
     expect(allGroupedRoutes).toContain("/privacy");
-    expect(allGroupedRoutes).toContain("/board-and-transparency");
+    expect(HEADER_NAV_GROUPS.find(group => group.key === "people")?.href).toBe(
+      "/board-and-transparency"
+    );
+    expect(
+      HEADER_NAV_GROUPS.find(group => group.key === "people")?.items.map(
+        item => item.href
+      )
+    ).toEqual(["/board-and-transparency", "/our-presence"]);
     expect(allGroupedRoutes).toContain("/abhiara-vidyapitha");
     expect(allGroupedRoutes).toContain("/contact");
     expect(navbar).toContain("Donation policy");

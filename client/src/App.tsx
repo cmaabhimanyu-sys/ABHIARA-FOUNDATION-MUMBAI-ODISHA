@@ -31,6 +31,7 @@ const RTIHumanRightsAwareness = lazy(
 const WellnessWellbeing = lazy(() => import("./pages/WellnessWellbeing"));
 const CSRPartners = lazy(() => import("./pages/CSRPartners"));
 const Governance = lazy(() => import("./pages/Governance"));
+const OurPresence = lazy(() => import("./pages/OurPresence"));
 const Donate = lazy(() => import("./pages/Donate"));
 const Volunteer = lazy(() => import("./pages/Volunteer"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -87,6 +88,7 @@ function Router() {
         <Route path="/wellness-and-wellbeing" component={WellnessWellbeing} />
         <Route path="/partners-and-supporters" component={CSRPartners} />
         <Route path="/board-and-transparency" component={Governance} />
+        <Route path="/our-presence" component={OurPresence} />
         <Route path="/donate" component={Donate} />
         <Route path="/donate-for-education" component={Donate} />
         <Route path="/volunteer" component={Volunteer} />

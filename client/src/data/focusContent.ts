@@ -181,6 +181,11 @@ export const PRIMARY_NAV = [
     od: "ବୋର୍ଡ, ସଦସ୍ୟ ଓ ପରାମର୍ଶଦାତା",
   },
   {
+    href: "/our-presence",
+    en: "Our Presence",
+    od: "ଆମର କାର୍ଯ୍ୟ ଉପସ୍ଥିତି",
+  },
+  {
     href: "/donate",
     en: "Donate",
     od: "ଦାନ",
@@ -201,11 +206,6 @@ export const HEADER_NAV_GROUPS = [
         href: "/abhiara-vidyapitha",
         en: "Vision and Future Plans",
         od: "ଦୃଷ୍ଟିକୋଣ ଓ ଭବିଷ୍ୟତ ଯୋଜନା",
-      },
-      {
-        href: "/board-and-transparency",
-        en: "People of Abhiara Foundation",
-        od: "ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଲୋକମାନେ",
       },
       { href: "/faq", en: "Questions and Answers", od: "ପ୍ରଶ୍ନ ଓ ଉତ୍ତର" },
     ],
@@ -314,6 +314,24 @@ export const HEADER_NAV_GROUPS = [
         href: "/privacy",
         en: "Privacy and Child Safeguarding",
         od: "ଗୋପନୀୟତା ଓ ଶିଶୁ ସୁରକ୍ଷା",
+      },
+    ],
+  },
+  {
+    key: "people",
+    href: "/board-and-transparency",
+    en: "Board & Presence",
+    od: "ବୋର୍ଡ ଓ କାର୍ଯ୍ୟ ଉପସ୍ଥିତି",
+    items: [
+      {
+        href: "/board-and-transparency",
+        en: "Board and People",
+        od: "ବୋର୍ଡ ଓ ଆମ ଲୋକମାନେ",
+      },
+      {
+        href: "/our-presence",
+        en: "Where We Work",
+        od: "ଆମେ କେଉଁଠି କାମ କରୁ",
       },
     ],
   },

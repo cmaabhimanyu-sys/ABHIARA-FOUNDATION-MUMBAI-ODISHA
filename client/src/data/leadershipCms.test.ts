@@ -118,6 +118,12 @@ describe("owner managed board and advisory members", () => {
     expect(governance).toContain("width={800}");
     expect(governance).toContain("height={1000}");
     expect(governance).toContain('loading="lazy"');
+    expect(governance).toContain("<details");
+    expect(governance).toContain("View details");
+    expect(governance).toContain("Close details");
+    expect(governance).not.toContain(
+      "managed by the Foundation owner in Admin"
+    );
     expect(governance).not.toContain("Statutory record");
     expect(governance).not.toContain("How accountability works");
     expect(footer).toContain("CIN U87300MH2026NPL471397");

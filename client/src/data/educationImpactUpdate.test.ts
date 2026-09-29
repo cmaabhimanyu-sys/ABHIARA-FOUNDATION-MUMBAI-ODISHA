@@ -155,7 +155,7 @@ describe("education-first public website update", () => {
   });
 
   it("uses the exact focused navigation and one primary education programme", () => {
-    expect(PRIMARY_NAV).toHaveLength(12);
+    expect(PRIMARY_NAV).toHaveLength(13);
     expect(PRIMARY_NAV.map(item => item.href)).toEqual([
       "/",
       "/shiksha-sathi",
@@ -166,6 +166,7 @@ describe("education-first public website update", () => {
       "/abhiara-vidyapitha",
       "/partners-and-supporters",
       "/board-and-transparency",
+      "/our-presence",
       "/donate",
       "/volunteer",
       "/contact",
@@ -175,6 +176,7 @@ describe("education-first public website update", () => {
       "Education & Learning",
       "Other Activities",
       "Impact & Transparency",
+      "Board & Presence",
       "Get Involved",
     ]);
     const groupedRoutes = HEADER_NAV_GROUPS.flatMap(group => [

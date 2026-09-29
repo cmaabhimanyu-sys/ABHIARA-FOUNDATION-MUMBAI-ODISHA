@@ -70,7 +70,7 @@ describe("homepage programme panels and future digital learning", () => {
   });
 
   it("keeps the header compact while making digital learning discoverable", () => {
-    expect(HEADER_NAV_GROUPS).toHaveLength(5);
+    expect(HEADER_NAV_GROUPS).toHaveLength(6);
     expect(
       HEADER_NAV_GROUPS.find(group => group.key === "education")?.items.map(
         item => item.href

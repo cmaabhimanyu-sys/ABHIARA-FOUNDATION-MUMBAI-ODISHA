@@ -24,6 +24,7 @@ import {
   Quote,
   Scale,
   ShieldCheck,
+  Users,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -421,6 +422,84 @@ export default function Home() {
                       {t(item.bodyEn, item.bodyOd)}
                     </p>
                   </article>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-[#E8DCC6] bg-[#FFFDF8] py-14 md:py-20">
+          <div className="container">
+            <AnimatedSection className="mb-9 max-w-3xl">
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#9A6100]">
+                {t("Know Abhiara", "ଅଭିଆରାକୁ ଜାଣନ୍ତୁ")}
+              </p>
+              <h2 className="mt-3 font-serif text-3xl font-bold text-[#1A1A1A] md:text-4xl">
+                {t(
+                  "A clear view of the Foundation.",
+                  "ଫାଉଣ୍ଡେସନ ବିଷୟରେ ଏକ ସ୍ପଷ୍ଟ ପରିଚୟ।"
+                )}
+              </h2>
+            </AnimatedSection>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                {
+                  icon: ShieldCheck,
+                  title: t("Who We Are", "ଆମେ କିଏ"),
+                  body: t(
+                    "A Section 8 nonprofit company with an education first public purpose.",
+                    "ଶିକ୍ଷାକୁ ପ୍ରଥମ ସ୍ଥାନ ଦେଉଥିବା ଏକ ସେକ୍ସନ ୮ ଅଲାଭକାରୀ କମ୍ପାନୀ।"
+                  ),
+                  href: "/our-story",
+                },
+                {
+                  icon: BookOpen,
+                  title: t("What We Do", "ଆମେ କଣ କରୁ"),
+                  body: t(
+                    "Education support for orphaned children and children from underprivileged families is our main work.",
+                    "ଅନାଥ ଶିଶୁ ଓ ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଶିଶୁଙ୍କ ଶିକ୍ଷା ସହାୟତା ଆମର ମୁଖ୍ୟ କାମ।"
+                  ),
+                  href: "/shiksha-sathi",
+                },
+                {
+                  icon: Users,
+                  title: t("Board and People", "ବୋର୍ଡ ଓ ଆମ ଲୋକମାନେ"),
+                  body: t(
+                    "Meet the people associated with Abhiara Foundation in one public sequence.",
+                    "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସହ ଜଡିତ ଲୋକମାନଙ୍କୁ ଗୋଟିଏ ସାର୍ବଜନୀନ କ୍ରମରେ ଦେଖନ୍ତୁ।"
+                  ),
+                  href: "/board-and-transparency",
+                },
+                {
+                  icon: MapPinned,
+                  title: t("Our Presence", "ଆମର କାର୍ଯ୍ୟ ଉପସ୍ଥିତି"),
+                  body: t(
+                    "See where the Foundation is registered, where ground work is organised, and how education requests are considered.",
+                    "ଫାଉଣ୍ଡେସନ କେଉଁଠି ପଞ୍ଜିକୃତ, କ୍ଷେତ୍ର କାମ କେଉଁଠି ହୁଏ ଏବଂ ଶିକ୍ଷା ଅନୁରୋଧ କିପରି ବିଚାର ହୁଏ ଦେଖନ୍ତୁ।"
+                  ),
+                  href: "/our-presence",
+                },
+              ].map((card, index) => (
+                <AnimatedSection key={card.href} delay={index * 0.04}>
+                  <Link
+                    href={card.href}
+                    className="group flex h-full flex-col border border-[#E8DCC6] bg-white p-6 transition-colors hover:border-[#F5A623]"
+                  >
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#FFF1D3] text-[#8A5700]">
+                      <card.icon size={21} aria-hidden="true" />
+                    </span>
+                    <h3 className="mt-5 font-serif text-xl font-bold text-[#1A1A1A]">
+                      {card.title}
+                    </h3>
+                    <p className="mt-3 flex-1 font-sans text-sm leading-7 text-[#555]">
+                      {card.body}
+                    </p>
+                    <span className="mt-5 inline-flex items-center gap-2 font-sans text-xs font-bold text-[#8A5700]">
+                      {t("Read more", "ଅଧିକ ପଢ଼ନ୍ତୁ")}
+                      <ArrowRight size={14} aria-hidden="true" />
+                    </span>
+                  </Link>
                 </AnimatedSection>
               ))}
             </div>
