@@ -169,6 +169,8 @@ describe("owner managed board and advisory members", () => {
   it("shows every published person in one Admin-controlled public sequence", () => {
     expect(governance).toContain("trpc.cms.leadership.listPublished.useQuery");
     expect(governance).toContain("leadershipMembers.map");
+    expect(governance).toContain("Our Core People");
+    expect(governance).toContain("People of Abhiara Foundation");
     expect(governance).toContain('id="people"');
     expect(governance).toContain("one sequence");
     expect(governance).not.toContain('member.memberType === "board"');

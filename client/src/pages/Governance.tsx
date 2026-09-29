@@ -122,7 +122,7 @@ export default function Governance() {
         <section className="bg-[#111111] pb-20 pt-32 text-white md:pt-40">
           <div className="container max-w-5xl">
             <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#F5A623]">
-              {t("Our people", "ଆମ ଲୋକମାନେ")}
+              {t("Our Core People", "ଆମ ମୁଖ୍ୟ ସଦସ୍ୟମାନେ")}
             </p>
             <h1 className="mt-5 font-serif text-4xl font-bold text-white md:text-6xl">
               {t("People of Abhiara Foundation", "ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଲୋକମାନେ")}
