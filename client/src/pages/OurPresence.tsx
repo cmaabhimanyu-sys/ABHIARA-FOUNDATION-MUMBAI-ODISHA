@@ -4,6 +4,7 @@ import {
   ArrowRight,
   Building2,
   GraduationCap,
+  Mail,
   MapPinned,
   ShieldCheck,
 } from "lucide-react";
@@ -12,6 +13,10 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import AnimatedSection from "@/components/AnimatedSection";
 import { useLanguage } from "@/contexts/LanguageContext";
+import {
+  EDUCATION_REQUEST_EMAIL,
+  EDUCATION_REQUEST_MAILTO,
+} from "@/data/focusContent";
 
 const PRESENCE_AREAS = [
   {
@@ -43,12 +48,12 @@ const PRESENCE_AREAS = [
     icon: GraduationCap,
     labelEn: "Education requests",
     labelOd: "ଶିକ୍ଷା ଅନୁରୋଧ",
-    titleEn: "Different parts of India",
-    titleOd: "ଭାରତର ବିଭିନ୍ନ ସ୍ଥାନ",
+    titleEn: "Every Indian state",
+    titleOd: "ଭାରତର ପ୍ରତ୍ୟେକ ରାଜ୍ୟ",
     bodyEn:
-      "Education requests for orphaned and underprivileged children may be considered from different parts of India. Every request is checked before support is approved.",
+      "An adult may email an education request for an orphaned or underprivileged child from any Indian state. Every request is reviewed case by case before support is approved.",
     bodyOd:
-      "ଭାରତର ବିଭିନ୍ନ ସ୍ଥାନର ଅନାଥ ଓ ସୁବିଧାବଞ୍ଚିତ ଶିଶୁଙ୍କ ଶିକ୍ଷା ଅନୁରୋଧ ବିଚାର କରାଯାଇପାରେ। ସହାୟତା ଅନୁମୋଦନ ପୂର୍ବରୁ ପ୍ରତ୍ୟେକ ଅନୁରୋଧ ଯାଞ୍ଚ ହୁଏ।",
+      "ଜଣେ ବୟସ୍କ ବ୍ୟକ୍ତି ଭାରତର ଯେକୌଣସି ରାଜ୍ୟରୁ ଅନାଥ ବା ସୁବିଧାବଞ୍ଚିତ ଶିଶୁଙ୍କ ପାଇଁ ଇମେଲରେ ଶିକ୍ଷା ଅନୁରୋଧ ପଠାଇପାରିବେ। ସହାୟତା ଅନୁମୋଦନ ପୂର୍ବରୁ ପ୍ରତ୍ୟେକ ଅନୁରୋଧ ଅଲଗା ଭାବେ ସମୀକ୍ଷା ହୁଏ।",
   },
 ] as const;
 
@@ -67,8 +72,8 @@ export default function OurPresence() {
           "ଆମର କାର୍ଯ୍ୟ ଉପସ୍ଥିତି | ଅଭିଆରା ଫାଉଣ୍ଡେସନ"
         )}
         description={t(
-          "Abhiara Foundation is registered in Mumbai, organises ground work mainly in Odisha, and may consider checked education requests from different parts of India.",
-          "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ମୁମ୍ବାଇରେ ପଞ୍ଜିକୃତ, ମୁଖ୍ୟତଃ ଓଡ଼ିଶାରେ କ୍ଷେତ୍ର କାମ କରେ ଏବଂ ଭାରତର ବିଭିନ୍ନ ସ୍ଥାନର ଯାଞ୍ଚ ହୋଇଥିବା ଶିକ୍ଷା ଅନୁରୋଧ ବିଚାର କରିପାରେ।"
+          "Abhiara Foundation is registered in Mumbai, organises ground work mainly in Odisha, and accepts education requests by email from every Indian state for case by case review.",
+          "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ମୁମ୍ବାଇରେ ପଞ୍ଜିକୃତ, ମୁଖ୍ୟତଃ ଓଡ଼ିଶାରେ କ୍ଷେତ୍ର କାମ କରେ ଏବଂ ଭାରତର ପ୍ରତ୍ୟେକ ରାଜ୍ୟରୁ ଇମେଲ ମାଧ୍ୟମରେ ଶିକ୍ଷା ଅନୁରୋଧ ଗ୍ରହଣ କରି ପ୍ରତ୍ୟେକଟିକୁ ଅଲଗା ଭାବେ ସମୀକ୍ଷା କରେ।"
         )}
         url="https://www.abhiarafoundation.org/our-presence"
       />
@@ -145,6 +150,13 @@ export default function OurPresence() {
                 {t("Education work", "ଶିକ୍ଷା କାମ")}
                 <ArrowRight size={15} aria-hidden="true" />
               </Link>
+              <a
+                href={EDUCATION_REQUEST_MAILTO}
+                className="inline-flex min-h-11 items-center gap-2 rounded-md border border-[#C9A96E] px-6 py-3 font-sans text-sm font-bold text-[#8A5700] transition-transform active:scale-[0.97]"
+              >
+                <Mail size={15} aria-hidden="true" />
+                {t("Email education request", "ଶିକ୍ଷା ଅନୁରୋଧ ଇମେଲ କରନ୍ତୁ")}
+              </a>
               <Link
                 href="/impact-gallery"
                 className="inline-flex min-h-11 items-center gap-2 rounded-md border border-[#C9A96E] px-6 py-3 font-sans text-sm font-bold text-[#8A5700]"
@@ -156,6 +168,12 @@ export default function OurPresence() {
                 <ArrowRight size={15} aria-hidden="true" />
               </Link>
             </div>
+            <p className="mt-4 font-sans text-xs text-[#777]">
+              {t(
+                `Education requests only: ${EDUCATION_REQUEST_EMAIL}`,
+                `କେବଳ ଶିକ୍ଷା ଅନୁରୋଧ: ${EDUCATION_REQUEST_EMAIL}`
+              )}
+            </p>
           </div>
         </section>
       </main>

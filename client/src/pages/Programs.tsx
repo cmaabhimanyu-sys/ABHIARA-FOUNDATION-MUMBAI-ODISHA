@@ -9,6 +9,7 @@ import {
   FileText,
   GraduationCap,
   Image as ImageIcon,
+  Mail,
   MapPinned,
   Scale,
   School,
@@ -23,6 +24,8 @@ import {
   ACTIVE_SUPPORT,
   CORE_STATEMENT,
   CORE_STATEMENT_OD,
+  EDUCATION_REQUEST_EMAIL,
+  EDUCATION_REQUEST_MAILTO,
   FLAGSHIP_DESCRIPTION,
   FLAGSHIP_DESCRIPTION_OD,
 } from "@/data/focusContent";
@@ -249,8 +252,8 @@ export default function Programs() {
               </h2>
               <p className="mt-5 font-sans text-base leading-relaxed text-[#555]">
                 {t(
-                  "The programme mainly helps orphaned children and children from underprivileged families whose schooling may be interrupted. Education requests may come from different parts of India. We approve support only after verification and when the programme has space and funds.",
-                  "ଯେଉଁ ଅନାଥ ଶିଶୁ ଓ ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଶିଶୁଙ୍କ ପଢ଼ା ବନ୍ଦ ହେବାର ଆଶଙ୍କା ଅଛି, ଏହି କାର୍ଯ୍ୟକ୍ରମ ମୁଖ୍ୟତଃ ସେମାନଙ୍କୁ ସହାୟତା କରେ। ଭାରତର ବିଭିନ୍ନ ସ୍ଥାନରୁ ଶିକ୍ଷା ସହାୟତା ଅନୁରୋଧ ଆସିପାରେ। ଯାଞ୍ଚ ପରେ ଏବଂ କାର୍ଯ୍ୟକ୍ରମରେ ସ୍ଥାନ ଓ ଅର୍ଥ ଥିଲେ ମାତ୍ର ସହାୟତା ଅନୁମୋଦିତ ହୁଏ।"
+                  "The programme mainly helps orphaned children and children from underprivileged families whose schooling may be interrupted. An adult may email an education request from any Indian state. Every request is reviewed case by case. Support is approved only after verification and when funds, programme capacity and local follow-up make it possible.",
+                  "ଯେଉଁ ଅନାଥ ଶିଶୁ ଓ ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଶିଶୁଙ୍କ ପଢ଼ା ବନ୍ଦ ହେବାର ଆଶଙ୍କା ଅଛି, ଏହି କାର୍ଯ୍ୟକ୍ରମ ମୁଖ୍ୟତଃ ସେମାନଙ୍କୁ ସହାୟତା କରେ। ଜଣେ ବୟସ୍କ ବ୍ୟକ୍ତି ଭାରତର ଯେକୌଣସି ରାଜ୍ୟରୁ ଇମେଲ ମାଧ୍ୟମରେ ଶିକ୍ଷା ଅନୁରୋଧ ପଠାଇପାରିବେ। ପ୍ରତ୍ୟେକ ଅନୁରୋଧ ଅଲଗା ଭାବେ ସମୀକ୍ଷା ହୁଏ। ଯାଞ୍ଚ ପରେ ଏବଂ ଅର୍ଥ, କାର୍ଯ୍ୟକ୍ରମ କ୍ଷମତା ଓ ସ୍ଥାନୀୟ ଅନୁସରଣ ସମ୍ଭବ ହେଲେ ମାତ୍ର ସହାୟତା ଅନୁମୋଦିତ ହୁଏ।"
                 )}
               </p>
             </AnimatedSection>
@@ -265,6 +268,41 @@ export default function Programs() {
                     "ଅଭିଭାବକ ସମ୍ମତି ଓ ସୁରକ୍ଷା ସମୀକ୍ଷା ବିନା ଆମେ ଶିଶୁର ପୂର୍ଣ୍ଣ ନାମ, ଠିକଣା, ସ୍କୁଲ ବିବରଣୀ, ବ୍ୟାଙ୍କ ବିବରଣୀ, ସମ୍ବେଦନଶୀଳ ପରିବାରିକ ଘଟଣା ବା ଫଟୋ ପ୍ରକାଶ କରୁ ନାହୁଁ।"
                   )}
                 </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection className="lg:col-span-2">
+              <div className="grid gap-6 border border-[#E8DCC6] bg-[#FFFDF8] p-7 md:grid-cols-[1fr_auto] md:items-center md:p-9">
+                <div>
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#9A6100]">
+                    {t(
+                      "Education requests across India",
+                      "ସମଗ୍ର ଭାରତରୁ ଶିକ୍ଷା ଅନୁରୋଧ"
+                    )}
+                  </p>
+                  <h3 className="mt-3 font-serif text-2xl font-bold text-[#1A1A1A]">
+                    {t(
+                      "Send the first request by email",
+                      "ପ୍ରଥମ ଅନୁରୋଧ ଇମେଲରେ ପଠାନ୍ତୁ"
+                    )}
+                  </h3>
+                  <p className="mt-3 max-w-3xl font-sans text-sm leading-7 text-[#555]">
+                    {t(
+                      "The email opens with a simple checklist. Use the child’s initials only. Do not attach Aadhaar, bank details, certificates, exact address, photographs or sensitive family records in the first email. Sending an email does not guarantee support.",
+                      "ଇମେଲଟି ଏକ ସରଳ ତାଲିକା ସହ ଖୋଲିବ। କେବଳ ଶିଶୁର ନାମର ପ୍ରଥମ ଅକ୍ଷର ଲେଖନ୍ତୁ। ପ୍ରଥମ ଇମେଲରେ ଆଧାର, ବ୍ୟାଙ୍କ ବିବରଣୀ, ସାର୍ଟିଫିକେଟ, ସଠିକ ଠିକଣା, ଫଟୋ ବା ସମ୍ବେଦନଶୀଳ ପରିବାରିକ ରେକର୍ଡ ଯୋଡ଼ନ୍ତୁ ନାହିଁ। ଇମେଲ ପଠାଇବା ସହାୟତାର ନିଶ୍ଚୟତା ନୁହେଁ।"
+                    )}
+                  </p>
+                  <p className="mt-2 font-sans text-xs text-[#777]">
+                    {EDUCATION_REQUEST_EMAIL}
+                  </p>
+                </div>
+                <a
+                  href={EDUCATION_REQUEST_MAILTO}
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#F5A623] px-6 py-3 font-sans text-sm font-bold text-[#1A1A1A] transition-transform active:scale-[0.97]"
+                >
+                  <Mail size={17} aria-hidden="true" />
+                  {t("Email education request", "ଶିକ୍ଷା ଅନୁରୋଧ ଇମେଲ କରନ୍ତୁ")}
+                </a>
               </div>
             </AnimatedSection>
           </div>

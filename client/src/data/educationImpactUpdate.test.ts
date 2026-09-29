@@ -4,6 +4,9 @@ import { MONTHLY_IMPACT_REPORTS } from "./monthlyImpact";
 import {
   BUDGET_PRIORITIES,
   CORE_STATEMENT,
+  EDUCATION_REQUEST_BODY,
+  EDUCATION_REQUEST_EMAIL,
+  EDUCATION_REQUEST_MAILTO,
   FLAGSHIP_DESCRIPTION,
   FOUNDATION_PROMISE,
   FUTURE_INITIATIVES,
@@ -208,7 +211,7 @@ describe("education-first public website update", () => {
     );
     expect(PUBLIC_TAGLINE).toBe("Education first. Compassion always.");
     expect(PUBLIC_TAGLINE_DESCRIPTION).toBe(
-      "We help orphaned children and children from underprivileged families stay in school. Education support is not limited to one state."
+      "We help orphaned children and children from underprivileged families stay in school. Education requests may be emailed from every Indian state and are reviewed case by case."
     );
     expect(PUBLIC_PRIORITY_ORDER.map(item => item.titleEn)).toEqual([
       "Education for orphaned and underprivileged children",
@@ -220,8 +223,13 @@ describe("education-first public website update", () => {
       "not a current programme"
     );
     expect(FLAGSHIP_DESCRIPTION).toContain(
-      "Education requests may be considered from different parts of India"
+      "Education requests may be emailed from every Indian state for case by case review"
     );
+    expect(EDUCATION_REQUEST_EMAIL).toBe("info@abhiarafoundation.org");
+    expect(EDUCATION_REQUEST_MAILTO).toMatch(/^mailto:/);
+    expect(EDUCATION_REQUEST_BODY).toContain("Child's initials only");
+    expect(EDUCATION_REQUEST_BODY).toContain("Please do not attach Aadhaar");
+    expect(EDUCATION_REQUEST_BODY).not.toContain("Child's full name");
     expect(BUDGET_PRIORITIES[0].share).toBe("70 to 75%");
     expect(BUDGET_PRIORITIES[1].share).toBe("20 to 25%");
     expect(BUDGET_PRIORITIES[2].share).toBe("5 to 10%");

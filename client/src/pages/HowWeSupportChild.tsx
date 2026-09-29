@@ -78,8 +78,8 @@ export default function HowWeSupportChild() {
             </h1>
             <p className="mt-6 max-w-3xl font-sans text-lg leading-relaxed text-white/75">
               {t(
-                "We consider education requests for orphaned and underprivileged children from different parts of India. We check each request before support is approved and keep private child records away from the public website.",
-                "ଆମେ ଭାରତର ବିଭିନ୍ନ ସ୍ଥାନର ଅନାଥ ଓ ସୁବିଧାବଞ୍ଚିତ ଶିଶୁଙ୍କ ଶିକ୍ଷା ସହାୟତା ଅନୁରୋଧ ବିଚାର କରୁ। ସହାୟତା ଅନୁମୋଦନ ପୂର୍ବରୁ ପ୍ରତ୍ୟେକ ଅନୁରୋଧ ଯାଞ୍ଚ କରାଯାଏ ଏବଂ ଶିଶୁର ବ୍ୟକ୍ତିଗତ ରେକର୍ଡ ସାର୍ବଜନିକ ୱେବସାଇଟରେ ଦିଆଯାଏ ନାହିଁ।"
+                "An adult may email an education request for an orphaned or underprivileged child from any Indian state. We review each request case by case before support is approved and keep private child records away from the public website.",
+                "ଜଣେ ବୟସ୍କ ବ୍ୟକ୍ତି ଭାରତର ଯେକୌଣସି ରାଜ୍ୟରୁ ଅନାଥ ବା ସୁବିଧାବଞ୍ଚିତ ଶିଶୁଙ୍କ ପାଇଁ ଇମେଲରେ ଶିକ୍ଷା ଅନୁରୋଧ ପଠାଇପାରିବେ। ସହାୟତା ଅନୁମୋଦନ ପୂର୍ବରୁ ପ୍ରତ୍ୟେକ ଅନୁରୋଧ ଅଲଗା ଭାବେ ସମୀକ୍ଷା ହୁଏ ଏବଂ ଶିଶୁର ବ୍ୟକ୍ତିଗତ ରେକର୍ଡ ସାର୍ବଜନିକ ୱେବସାଇଟରେ ଦିଆଯାଏ ନାହିଁ।"
               )}
             </p>
           </div>

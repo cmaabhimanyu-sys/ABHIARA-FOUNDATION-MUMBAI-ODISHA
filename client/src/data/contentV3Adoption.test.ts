@@ -53,7 +53,9 @@ describe("safe adoption of the supplied content proposal", () => {
 
   it("warns people not to send private child records through the contact form", () => {
     expect(contact).toContain("Please do not send a child's full name");
-    expect(contact).toContain("Email us first");
+    expect(contact).toContain(
+      "Education support requests are accepted only by email"
+    );
     expect(contact).not.toContain("within 48 hours");
     expect(contact).toContain("text-white/70");
   });

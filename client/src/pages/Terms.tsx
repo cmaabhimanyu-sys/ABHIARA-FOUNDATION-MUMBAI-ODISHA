@@ -43,8 +43,8 @@ export default function Terms() {
             <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">1. {t("About Us", "ଆମ ବିଷୟରେ")}</h2>
             <p className="font-sans text-[17px] text-[#333] leading-relaxed mb-6">
               {t(
-                "Abhiara Foundation is a Section 8 not-for-profit company incorporated under the Companies Act, 2013 with CIN U87300MH2026NPL471397. Our registered office is in Mumbai, Maharashtra. Our main public programme is Abhiara Shiksha Sathi. It helps orphaned children and children from underprivileged families stay in school after their needs are checked. Education requests may be considered from different parts of India.",
-                "ଅଭିଆରା ଫାଉଣ୍ଡେସନ କମ୍ପାନୀ ଆଇନ, ୨୦୧୩ ଅଧୀନରେ CIN U87300MH2026NPL471397 ସହ ନିବନ୍ଧିତ ସେକ୍ସନ 8 ଲାଭବିହୀନ କମ୍ପାନୀ। ଆମର ପଞ୍ଜୀକୃତ କାର୍ଯ୍ୟାଳୟ ମୁମ୍ବାଇ, ମହାରାଷ୍ଟ୍ରରେ ଅଛି। ଆମର ପ୍ରମୁଖ ସାର୍ବଜନିକ କାର୍ଯ୍ୟକ୍ରମ ଅଭିଆରା ଶିକ୍ଷା ସାଥୀ, ଯାହା ଅନାଥ ଶିଶୁ ଓ ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଶିଶୁଙ୍କ ଶିକ୍ଷା ଜାରି ରଖିବାକୁ ଯାଞ୍ଚ ଭିତ୍ତିକ ସହାୟତା କରେ। ଭାରତର ବିଭିନ୍ନ ସ୍ଥାନରୁ ଶିକ୍ଷା ସହାୟତା ଅନୁରୋଧ ବିଚାର କରାଯାଇପାରେ।"
+                "Abhiara Foundation is a Section 8 not-for-profit company incorporated under the Companies Act, 2013 with CIN U87300MH2026NPL471397. Our registered office is in Mumbai, Maharashtra. Our main public programme is Abhiara Shiksha Sathi. It helps orphaned children and children from underprivileged families stay in school after their needs are checked. An adult may email an education request from any Indian state for case by case review.",
+                "ଅଭିଆରା ଫାଉଣ୍ଡେସନ କମ୍ପାନୀ ଆଇନ, ୨୦୧୩ ଅଧୀନରେ CIN U87300MH2026NPL471397 ସହ ନିବନ୍ଧିତ ସେକ୍ସନ 8 ଲାଭବିହୀନ କମ୍ପାନୀ। ଆମର ପଞ୍ଜୀକୃତ କାର୍ଯ୍ୟାଳୟ ମୁମ୍ବାଇ, ମହାରାଷ୍ଟ୍ରରେ ଅଛି। ଆମର ପ୍ରମୁଖ ସାର୍ବଜନିକ କାର୍ଯ୍ୟକ୍ରମ ଅଭିଆରା ଶିକ୍ଷା ସାଥୀ, ଯାହା ଅନାଥ ଶିଶୁ ଓ ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଶିଶୁଙ୍କ ଶିକ୍ଷା ଜାରି ରଖିବାକୁ ଯାଞ୍ଚ ଭିତ୍ତିକ ସହାୟତା କରେ। ଜଣେ ବୟସ୍କ ବ୍ୟକ୍ତି ଭାରତର ଯେକୌଣସି ରାଜ୍ୟରୁ ଇମେଲ ମାଧ୍ୟମରେ ଶିକ୍ଷା ଅନୁରୋଧ ପଠାଇପାରିବେ ଏବଂ ପ୍ରତ୍ୟେକ ଅନୁରୋଧ ଅଲଗା ଭାବେ ସମୀକ୍ଷା ହୁଏ।"
               )}
             </p>
 

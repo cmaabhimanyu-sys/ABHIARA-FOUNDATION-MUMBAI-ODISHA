@@ -14,16 +14,35 @@ export const CORE_STATEMENT_OD =
 export const PUBLIC_TAGLINE = "Education first. Compassion always.";
 
 export const PUBLIC_TAGLINE_DESCRIPTION =
-  "We help orphaned children and children from underprivileged families stay in school. Education support is not limited to one state.";
+  "We help orphaned children and children from underprivileged families stay in school. Education requests may be emailed from every Indian state and are reviewed case by case.";
 
 export const PUBLIC_TAGLINE_DESCRIPTION_OD =
-  "ଆମେ ଅନାଥ ଶିଶୁ ଓ ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଶିଶୁଙ୍କୁ ପଢ଼ା ଜାରି ରଖିବାରେ ସହାୟତା କରୁ। ଶିକ୍ଷା ସହାୟତା କେବଳ ଗୋଟିଏ ରାଜ୍ୟରେ ସୀମିତ ନୁହେଁ।";
+  "ଆମେ ଅନାଥ ଶିଶୁ ଓ ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଶିଶୁଙ୍କୁ ପଢ଼ା ଜାରି ରଖିବାରେ ସହାୟତା କରୁ। ଭାରତର ପ୍ରତ୍ୟେକ ରାଜ୍ୟରୁ ଇମେଲ ମାଧ୍ୟମରେ ଶିକ୍ଷା ଅନୁରୋଧ ପଠାଯାଇପାରେ ଏବଂ ପ୍ରତ୍ୟେକ ଅନୁରୋଧ ଅଲଗା ଭାବେ ସମୀକ୍ଷା ହୁଏ।";
 
 export const FLAGSHIP_DESCRIPTION =
-  "Abhiara Shiksha Sathi helps orphaned children and children from underprivileged families stay in school. Education requests may be considered from different parts of India. After verification and according to need, help may include monthly tuition fees, school bags, books, stationery, uniforms, examination needs and learning materials.";
+  "Abhiara Shiksha Sathi helps orphaned children and children from underprivileged families stay in school. Education requests may be emailed from every Indian state for case by case review. After verification and according to need, help may include monthly tuition fees, school bags, books, stationery, uniforms, examination needs and learning materials.";
 
 export const FLAGSHIP_DESCRIPTION_OD =
-  "ଅଭିଆରା ଶିକ୍ଷା ସାଥୀ ଅନାଥ ଶିଶୁ ଓ ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଶିଶୁଙ୍କୁ ପଢ଼ା ଜାରି ରଖିବାରେ ସହାୟତା କରେ। ଭାରତର ବିଭିନ୍ନ ସ୍ଥାନରୁ ଆସୁଥିବା ଶିକ୍ଷା ସହାୟତା ଅନୁରୋଧ ବିଚାର କରାଯାଇପାରେ। ଯାଞ୍ଚ ଓ ଆବଶ୍ୟକତା ଅନୁସାରେ ସହାୟତାରେ ମାସିକ ଟ୍ୟୁସନ ଫି, ସ୍କୁଲ ବ୍ୟାଗ, ପୁସ୍ତକ, ଷ୍ଟେସନେରୀ, ୟୁନିଫର୍ମ, ପରୀକ୍ଷା ଆବଶ୍ୟକତା ଓ ପଢ଼ା ସାମଗ୍ରୀ ରହିପାରେ।";
+  "ଅଭିଆରା ଶିକ୍ଷା ସାଥୀ ଅନାଥ ଶିଶୁ ଓ ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଶିଶୁଙ୍କୁ ପଢ଼ା ଜାରି ରଖିବାରେ ସହାୟତା କରେ। ଭାରତର ପ୍ରତ୍ୟେକ ରାଜ୍ୟରୁ ଇମେଲ ମାଧ୍ୟମରେ ଶିକ୍ଷା ଅନୁରୋଧ ପଠାଯାଇପାରେ ଏବଂ ପ୍ରତ୍ୟେକ ଅନୁରୋଧ ଅଲଗା ଭାବେ ସମୀକ୍ଷା ହୁଏ। ଯାଞ୍ଚ ଓ ଆବଶ୍ୟକତା ଅନୁସାରେ ସହାୟତାରେ ମାସିକ ଟ୍ୟୁସନ ଫି, ସ୍କୁଲ ବ୍ୟାଗ, ପୁସ୍ତକ, ଷ୍ଟେସନେରୀ, ୟୁନିଫର୍ମ, ପରୀକ୍ଷା ଆବଶ୍ୟକତା ଓ ପଢ଼ା ସାମଗ୍ରୀ ରହିପାରେ।";
+
+export const EDUCATION_REQUEST_EMAIL = "info@abhiarafoundation.org";
+export const EDUCATION_REQUEST_SUBJECT =
+  "Education support request | State and district";
+export const EDUCATION_REQUEST_BODY = [
+  "Adult requester's name:",
+  "Relationship to the child:",
+  "Phone number:",
+  "State:",
+  "District:",
+  "Child's initials only:",
+  "Age group and current class or course:",
+  "Education support needed:",
+  "Short reason for the request:",
+  "",
+  "Please do not attach Aadhaar, bank details, certificates, exact address, child photographs or sensitive family records in this first email.",
+  "I understand that this is an initial request, not an approval of support.",
+].join("\n");
+export const EDUCATION_REQUEST_MAILTO = `mailto:${EDUCATION_REQUEST_EMAIL}?subject=${encodeURIComponent(EDUCATION_REQUEST_SUBJECT)}&body=${encodeURIComponent(EDUCATION_REQUEST_BODY)}`;
 
 export const FOUNDATION_PROMISE =
   "Along with education, Abhiara Foundation may give limited help to vulnerable elders, animal welfare, medical emergencies and disaster relief. This depends on available funds, ground verification and an approved budget.";

@@ -41,7 +41,9 @@ describe("board, people, and public presence", () => {
     );
     expect(presence).toContain("Mumbai, Maharashtra");
     expect(presence).toContain("Odisha");
-    expect(presence).toContain("Different parts of India");
+    expect(presence).toContain("Every Indian state");
+    expect(presence).toContain("EDUCATION_REQUEST_MAILTO");
+    expect(presence).toContain("Every request is reviewed case by case");
     expect(presence).toContain(
       "does not claim that Abhiara Foundation has an office or an active programme in every state"
     );

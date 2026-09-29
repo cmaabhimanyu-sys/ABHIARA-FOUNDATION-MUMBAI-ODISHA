@@ -65,9 +65,9 @@ const FAQ_GROUPS: FaqGroup[] = [
         questionEn: "Where does Abhiara Foundation work?",
         questionOd: "ଅଭିଆରା ଫାଉଣ୍ଡେସନ କେଉଁଠି କାମ କରେ?",
         answerEn:
-          "Our registered office is in Mumbai and much of our field activity is in Odisha. Education support requests for orphaned and underprivileged children may be considered from different parts of India, based on verification, available funds and programme capacity.",
+          "Our registered office is in Mumbai and much of our field activity is in Odisha. An adult may email an education support request for an orphaned or underprivileged child from any Indian state. Every request is reviewed case by case and support depends on verification, available funds, programme capacity and local follow-up feasibility.",
         answerOd:
-          "ଆମର ପଞ୍ଜୀକୃତ କାର୍ଯ୍ୟାଳୟ ମୁମ୍ବାଇରେ ଅଛି ଏବଂ ଆମର ଅଧିକାଂଶ କ୍ଷେତ୍ର କାମ ଓଡ଼ିଶାରେ ହୁଏ। ଯାଞ୍ଚ, ଉପଲବ୍ଧ ଅର୍ଥ ଓ କାର୍ଯ୍ୟକ୍ରମ କ୍ଷମତା ଅନୁସାରେ ଭାରତର ବିଭିନ୍ନ ସ୍ଥାନର ଅନାଥ ଓ ସୁବିଧାବଞ୍ଚିତ ଶିଶୁଙ୍କ ଶିକ୍ଷା ସହାୟତା ଅନୁରୋଧ ବିଚାର କରାଯାଇପାରେ।",
+          "ଆମର ପଞ୍ଜୀକୃତ କାର୍ଯ୍ୟାଳୟ ମୁମ୍ବାଇରେ ଅଛି ଏବଂ ଆମର ଅଧିକାଂଶ କ୍ଷେତ୍ର କାମ ଓଡ଼ିଶାରେ ହୁଏ। ଜଣେ ବୟସ୍କ ବ୍ୟକ୍ତି ଭାରତର ଯେକୌଣସି ରାଜ୍ୟରୁ ଅନାଥ ବା ସୁବିଧାବଞ୍ଚିତ ଶିଶୁଙ୍କ ପାଇଁ ଇମେଲରେ ଶିକ୍ଷା ସହାୟତା ଅନୁରୋଧ ପଠାଇପାରିବେ। ପ୍ରତ୍ୟେକ ଅନୁରୋଧ ଅଲଗା ଭାବେ ସମୀକ୍ଷା ହୁଏ ଏବଂ ସହାୟତା ଯାଞ୍ଚ, ଉପଲବ୍ଧ ଅର୍ଥ, କାର୍ଯ୍ୟକ୍ରମ କ୍ଷମତା ଓ ସ୍ଥାନୀୟ ଅନୁସରଣ ସମ୍ଭବତା ଉପରେ ନିର୍ଭର କରେ।",
       },
       {
         questionEn: "Does the Foundation support any political party?",

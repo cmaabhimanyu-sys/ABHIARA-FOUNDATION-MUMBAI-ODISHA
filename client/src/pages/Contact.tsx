@@ -25,6 +25,10 @@ import { toast } from "sonner";
 import { submitContactForm } from "@/lib/formSubmit";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
+  EDUCATION_REQUEST_MAILTO,
+  EDUCATION_REQUEST_SUBJECT,
+} from "@/data/focusContent";
+import {
   FOUNDER_LINKEDIN_URL,
   resolvePublicSocialLinks,
   SOCIAL_FOLLOW_MESSAGE,
@@ -212,12 +216,25 @@ export default function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                   {[
                     {
+                      title: t(
+                        "Education Support Request",
+                        "ଶିକ୍ଷା ସହାୟତା ଅନୁରୋଧ"
+                      ),
+                      desc: t(
+                        "Email an education request from any Indian state for case by case review.",
+                        "ଭାରତର ଯେକୌଣସି ରାଜ୍ୟରୁ ଅଲଗା ସମୀକ୍ଷା ପାଇଁ ଶିକ୍ଷା ଅନୁରୋଧ ଇମେଲ କରନ୍ତୁ।"
+                      ),
+                      subject: EDUCATION_REQUEST_SUBJECT,
+                      href: EDUCATION_REQUEST_MAILTO,
+                    },
+                    {
                       title: t("Institutional Support", "ସଂସ୍ଥାଗତ ସହାୟତା"),
                       desc: t(
                         "Talk to us about helping children continue their education after their needs are verified.",
                         "ଯାଞ୍ଚ ହୋଇଥିବା ଶିକ୍ଷା ଜାରି ରଖିବାକୁ ସମର୍ଥନ ବିଷୟରେ କଥା ହୁଅନ୍ତୁ।"
                       ),
                       subject: "Institutional Support Inquiry",
+                      href: `mailto:${infoEmail}?subject=${encodeURIComponent("Institutional Support Inquiry")}`,
                     },
                     {
                       title: t("General Question", "ସାଧାରଣ ପ୍ରଶ୍ନ"),
@@ -226,6 +243,7 @@ export default function Contact() {
                         "ଆମ କାମ କିମ୍ବା ଆମ ସହ କିପରି ଯୋଡ଼ି ହେବେ ତାହା ପଚାରନ୍ତୁ।"
                       ),
                       subject: "General Inquiry",
+                      href: `mailto:${infoEmail}?subject=${encodeURIComponent("General Inquiry")}`,
                     },
                     {
                       title: t("Volunteering", "ସ୍ୱେଚ୍ଛାସେବା"),
@@ -234,6 +252,7 @@ export default function Contact() {
                         "ଓଡ଼ିଶାରେ ଆମକୁ ସାହାଯ୍ୟ କରନ୍ତୁ କିମ୍ବା ନିଜ ସ୍ଥାନରୁ ସହଯୋଗ କରନ୍ତୁ।"
                       ),
                       subject: "Volunteering Interest",
+                      href: `mailto:${infoEmail}?subject=${encodeURIComponent("Volunteering Interest")}`,
                     },
                     {
                       title: t("Media and Press", "ମିଡିଆ ଓ ସମ୍ବାଦ"),
@@ -242,11 +261,12 @@ export default function Contact() {
                         "ସାକ୍ଷାତକାର କିମ୍ବା ସମ୍ବାଦ ପାଇଁ ଆମକୁ ଲେଖନ୍ତୁ।"
                       ),
                       subject: "Media & Press Inquiry",
+                      href: `mailto:${infoEmail}?subject=${encodeURIComponent("Media & Press Inquiry")}`,
                     },
                   ].map(box => (
                     <a
                       key={box.title}
-                      href={`mailto:${infoEmail}?subject=${encodeURIComponent(box.subject)}`}
+                      href={box.href}
                       className="light-card p-6 group hover:border-[#F5A623]/30 transition-all block"
                     >
                       <h3 className="font-serif text-lg font-bold light-heading mb-2 group-hover:text-[#F5A623] transition-colors">
@@ -278,8 +298,8 @@ export default function Contact() {
                     <ShieldCheck className="mt-0.5 shrink-0" size={18} />
                     <p className="font-sans text-xs leading-6">
                       {t(
-                        "Please do not send a child's full name, exact address, identity document, bank paper, medical record or school record in this form. Email us first and we will explain what information is needed.",
-                        "ଦୟାକରି ଏହି ଫର୍ମରେ ଶିଶୁର ପୂର୍ଣ୍ଣ ନାମ, ଠିକଣା, ପରିଚୟ ପତ୍ର, ବ୍ୟାଙ୍କ କାଗଜ, ଚିକିତ୍ସା ରେକର୍ଡ ବା ସ୍କୁଲ ରେକର୍ଡ ପଠାନ୍ତୁ ନାହିଁ। ପ୍ରଥମେ ଆମକୁ ଇମେଲ କରନ୍ତୁ, ଆମେ କେଉଁ ତଥ୍ୟ ଆବଶ୍ୟକ ତାହା କହିବୁ।"
+                        "Education support requests are accepted only by email. Please do not send a child's full name, exact address, identity document, bank paper, medical record or school record in this general contact form.",
+                        "ଶିକ୍ଷା ସହାୟତା ଅନୁରୋଧ କେବଳ ଇମେଲ ମାଧ୍ୟମରେ ଗ୍ରହଣ କରାଯାଏ। ଏହି ସାଧାରଣ ଯୋଗାଯୋଗ ଫର୍ମରେ ଶିଶୁର ପୂର୍ଣ୍ଣ ନାମ, ସଠିକ ଠିକଣା, ପରିଚୟ ପତ୍ର, ବ୍ୟାଙ୍କ କାଗଜ, ଚିକିତ୍ସା ରେକର୍ଡ ବା ସ୍କୁଲ ରେକର୍ଡ ପଠାନ୍ତୁ ନାହିଁ।"
                       )}
                     </p>
                   </div>
