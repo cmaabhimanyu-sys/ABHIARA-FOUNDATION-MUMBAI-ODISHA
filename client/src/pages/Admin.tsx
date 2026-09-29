@@ -252,16 +252,14 @@ async function standardizeLeadershipPortrait(file: File): Promise<File> {
     const context = canvas.getContext("2d");
     if (!context) throw new Error("This browser cannot prepare the photo.");
 
-    context.fillStyle = "#F5EFE3";
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    const scale = Math.min(
+    const scale = Math.max(
       canvas.width / image.naturalWidth,
       canvas.height / image.naturalHeight
     );
     const width = Math.round(image.naturalWidth * scale);
     const height = Math.round(image.naturalHeight * scale);
     const x = Math.round((canvas.width - width) / 2);
-    const y = Math.round((canvas.height - height) / 2);
+    const y = Math.round((canvas.height - height) * 0.43);
     context.imageSmoothingEnabled = true;
     context.imageSmoothingQuality = "high";
     context.drawImage(image, x, y, width, height);
@@ -324,8 +322,9 @@ function LeadershipPortraitUploader({
         Public profile photo
       </label>
       <p className="mb-2 text-xs leading-5 text-[#666]">
-        Upload any clear portrait. It is automatically resized to 800 × 1000
-        WebP without cutting the original photo.
+        Use a centred head and shoulders photo. It is prepared as an 800 × 1000
+        WebP and may crop the outer edges to keep every public profile
+        consistent.
       </p>
       <div className="flex items-center gap-2">
         <Input
@@ -3727,6 +3726,10 @@ function LeadershipManager() {
                 setForm(current => ({ ...current, nameEn: event.target.value }))
               }
             />
+            <p className="mt-1 text-xs leading-5 text-[#666]">
+              Use Mr., Ms. or Mrs. as confirmed by the person. Keep CA, Advocate
+              and other qualifications in the role or qualification field.
+            </p>
           </div>
           <div>
             <label className="mb-1 block text-sm font-medium text-[#333]">

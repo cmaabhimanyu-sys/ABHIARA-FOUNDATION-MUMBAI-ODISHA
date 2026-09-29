@@ -103,3 +103,46 @@ UPDATE `leadership_members`
 SET `isPublished` = false
 WHERE `id` IN (30008, 30009, 30010)
   AND `nameEn` IN ('Rajkumar Mallik', 'Alok Behera', 'Ashish (Rocky)');
+--> statement-breakpoint
+UPDATE `leadership_members`
+SET
+  `imageUrl` = CASE `id`
+    WHEN 1 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T13-15-54-342Z-1-people-portrait-800x1000.webp'
+    WHEN 2 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T13-16-00-137Z-2-people-portrait-800x1000.webp'
+    WHEN 3 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T13-16-04-042Z-3-people-portrait-800x1000.webp'
+    WHEN 4 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T13-16-45-686Z-4-people-portrait-800x1000.webp'
+    WHEN 30001 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T13-16-09-590Z-30001-people-portrait-800x1000.webp'
+    WHEN 30011 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T13-16-41-352Z-30011-people-portrait-800x1000.webp'
+    WHEN 30002 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T13-16-16-427Z-30002-people-portrait-800x1000.webp'
+    WHEN 30003 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T13-16-20-189Z-30003-people-portrait-800x1000.webp'
+    WHEN 30004 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T13-16-24-755Z-30004-people-portrait-800x1000.webp'
+    WHEN 30005 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T13-16-29-414Z-30005-people-portrait-800x1000.webp'
+    WHEN 30006 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T13-16-33-332Z-30006-people-portrait-800x1000.webp'
+    WHEN 30007 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T13-16-37-504Z-30007-people-portrait-800x1000.webp'
+    ELSE `imageUrl`
+  END,
+  `nameEn` = CASE `id`
+    WHEN 1 THEN 'Mr. Abhimanyu Mallik'
+    WHEN 2 THEN 'Ms. Biswajita Mallik'
+    WHEN 3 THEN 'Mr. Amit Kumar Jena'
+    WHEN 4 THEN 'Mr. Sujit Sahu'
+    WHEN 30001 THEN 'Mr. Umakanta Mahanta'
+    WHEN 30011 THEN 'Mr. Manoj Kumar Mallik'
+    WHEN 30002 THEN 'Mr. Gouranga Charan Sahoo'
+    WHEN 30003 THEN 'Mr. Gurpreetsingh Nebhrani'
+    WHEN 30004 THEN 'Mr. Asis Kumar Samal'
+    WHEN 30005 THEN 'Mr. Prasant Behera'
+    WHEN 30006 THEN 'Ms. Samiksha Parekh'
+    WHEN 30007 THEN 'Ms. Farheen Ansari'
+    ELSE `nameEn`
+  END
+WHERE `id` IN (1,2,3,4,30001,30011,30002,30003,30004,30005,30006,30007)
+  AND `isPublished` = true;
+--> statement-breakpoint
+INSERT INTO `leadership_members` (`memberType`,`nameEn`,`nameOd`,`roleEn`,`roleOd`,`qualificationEn`,`qualificationOd`,`bioEn`,`bioOd`,`imageUrl`,`profileUrl`,`isPublished`,`sortOrder`)
+SELECT 'member','Mr. Kishore Kumar Parida',NULL,'Member','ସଦସ୍ୟ','B.Com, MBA',NULL,NULL,NULL,'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T13-24-03-477Z-kishore-kumar-parida-people-portrait-800x1000.webp',NULL,1,130
+FROM DUAL
+WHERE NOT EXISTS (
+  SELECT 1 FROM `leadership_members`
+  WHERE `nameEn` IN ('Kishore Kumar Parida', 'Mr. Kishore Kumar Parida')
+);

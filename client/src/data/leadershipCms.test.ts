@@ -42,7 +42,7 @@ describe("owner managed board and advisory members", () => {
     expect(migration).toContain("CREATE TABLE `leadership_members`");
     expect(migration).not.toMatch(/DROP TABLE|DROP COLUMN|TRUNCATE/i);
     expect(memberMigration).toContain("enum('board','member','advisor')");
-    expect(memberMigration).toContain("professional-800x1000.webp");
+    expect(memberMigration).toContain("people-portrait-800x1000.webp");
     expect(memberMigration).toContain("30011-manoj-kumar-mallik");
     expect(memberMigration).not.toMatch(/DROP TABLE|DROP COLUMN|TRUNCATE/i);
   });
@@ -100,6 +100,16 @@ describe("owner managed board and advisory members", () => {
     expect(memberMigration).toContain(
       "'Rajkumar Mallik', 'Alok Behera', 'Ashish (Rocky)'"
     );
+    expect(memberMigration).toContain("Mr. Gurpreetsingh Nebhrani");
+    expect(memberMigration).toContain("Ms. Biswajita Mallik");
+    expect(memberMigration).toContain("Ms. Samiksha Parekh");
+    expect(memberMigration).toContain("Ms. Farheen Ansari");
+    expect(memberMigration).not.toContain("CA Gurpreetsingh Nebhrani");
+    expect(memberMigration).toContain("Mr. Kishore Kumar Parida");
+    expect(memberMigration).toContain("'B.Com, MBA'");
+    expect(memberMigration).toContain(
+      "kishore-kumar-parida-people-portrait-800x1000.webp"
+    );
   });
 
   it("keeps public reads separate from protected Admin changes", () => {
@@ -122,6 +132,8 @@ describe("owner managed board and advisory members", () => {
     expect(admin).toContain("Advisory roles must stay separate");
     expect(admin).toContain('<option value="member">Members</option>');
     expect(admin).toContain("Display order");
+    expect(admin).toContain("Use Mr., Ms. or Mrs. as confirmed by the person");
+    expect(admin).toContain("Keep CA,");
     expect(admin).toContain(
       "Show this person on the public Board, Members and Advisors page"
     );
@@ -130,7 +142,8 @@ describe("owner managed board and advisory members", () => {
     expect(admin).toContain("canvas.width = 800");
     expect(admin).toContain("canvas.height = 1000");
     expect(admin).toContain('"image/webp"');
-    expect(admin).toContain("without cutting the original photo");
+    expect(admin).toContain("const scale = Math.max");
+    expect(admin).toContain("may crop the outer edges");
   });
 
   it("shows every published person in one Admin-controlled public sequence", () => {
