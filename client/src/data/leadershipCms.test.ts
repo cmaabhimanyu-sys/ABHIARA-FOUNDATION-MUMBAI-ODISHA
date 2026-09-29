@@ -116,7 +116,8 @@ describe("owner managed board and advisory members", () => {
       "kishore-kumar-parida-people-portrait-800x1000.webp"
     );
     expect(memberMigration).toContain("Ms. Sonalika Das");
-    expect(memberMigration).toContain("'Core Member'");
+    expect(memberMigration).toContain("`roleEn` = 'Member'");
+    expect(memberMigration).toContain("`roleOd` = 'ସଦସ୍ୟ'");
     expect(memberMigration).toContain(
       "sonalika-das-people-portrait-800x1000.webp"
     );

@@ -157,7 +157,7 @@ WHERE `id` = 30007
   AND `nameEn` IN ('Advocate Farheen Ansari', 'Ms. Farheen Ansari');
 --> statement-breakpoint
 INSERT INTO `leadership_members` (`memberType`,`nameEn`,`nameOd`,`roleEn`,`roleOd`,`qualificationEn`,`qualificationOd`,`bioEn`,`bioOd`,`imageUrl`,`profileUrl`,`isPublished`,`sortOrder`)
-SELECT 'member','Ms. Sonalika Das','ସୋନାଲିକା ଦାସ','Core Member','ମୁଖ୍ୟ ସଦସ୍ୟ',NULL,NULL,NULL,NULL,'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T16-18-24-397Z-sonalika-das-people-portrait-800x1000.webp',NULL,1,140
+SELECT 'member','Ms. Sonalika Das','ସୋନାଲିକା ଦାସ','Member','ସଦସ୍ୟ',NULL,NULL,NULL,NULL,'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T16-18-24-397Z-sonalika-das-people-portrait-800x1000.webp',NULL,1,140
 FROM DUAL
 WHERE NOT EXISTS (
   SELECT 1 FROM `leadership_members`
@@ -172,3 +172,9 @@ SET
   `qualificationOd` = 'ଅଧିବକ୍ତା, LLB'
 WHERE `id` = 4
   AND `nameEn` IN ('Sujit Sahu', 'Mr. Sujit Sahu');
+--> statement-breakpoint
+UPDATE `leadership_members`
+SET `roleEn` = 'Member',
+    `roleOd` = 'ସଦସ୍ୟ'
+WHERE `id` = 90001
+  AND `nameEn` = 'Ms. Sonalika Das';
