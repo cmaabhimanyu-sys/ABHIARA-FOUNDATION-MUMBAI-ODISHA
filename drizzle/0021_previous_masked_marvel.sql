@@ -98,3 +98,8 @@ SET `sortOrder` = CASE `id`
   ELSE `sortOrder`
 END
 WHERE `id` IN (1,2,3,4,30001,30011,30002,30003,30004,30005,30006,30007,30008,30009,30010);
+--> statement-breakpoint
+UPDATE `leadership_members`
+SET `isPublished` = false
+WHERE `id` IN (30008, 30009, 30010)
+  AND `nameEn` IN ('Rajkumar Mallik', 'Alok Behera', 'Ashish (Rocky)');

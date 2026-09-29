@@ -96,6 +96,10 @@ describe("owner managed board and advisory members", () => {
       expect(markerIndex).toBeGreaterThan(previousIndex);
       previousIndex = markerIndex;
     }
+    expect(memberMigration).toContain("`id` IN (30008, 30009, 30010)");
+    expect(memberMigration).toContain(
+      "'Rajkumar Mallik', 'Alok Behera', 'Ashish (Rocky)'"
+    );
   });
 
   it("keeps public reads separate from protected Admin changes", () => {
