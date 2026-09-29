@@ -71,3 +71,30 @@ SET
   `bioEn` = 'More than 25 years of experience in community development, child welfare and field operations across Odisha and Karnataka.',
   `bioOd` = 'ଓଡ଼ିଶା ଓ କର୍ଣ୍ଣାଟକରେ ସମୁଦାୟ ବିକାଶ, ଶିଶୁ କଲ୍ୟାଣ ଓ କ୍ଷେତ୍ର ପରିଚାଳନାରେ ୨୫ ବର୍ଷରୁ ଅଧିକ ଅନୁଭବ।'
 WHERE `id` = 30001 AND `nameEn` = 'Umakanta Mahanta';
+--> statement-breakpoint
+UPDATE `leadership_members`
+SET
+  `roleEn` = 'Head of Verification and Field Coordination, Odisha',
+  `roleOd` = 'ଓଡ଼ିଶା ଯାଞ୍ଚ ଓ କ୍ଷେତ୍ର ସମନ୍ୱୟ ମୁଖ୍ୟ'
+WHERE `id` = 30011 AND `nameEn` = 'Manoj Kumar Mallik';
+--> statement-breakpoint
+UPDATE `leadership_members`
+SET `sortOrder` = CASE `id`
+  WHEN 1 THEN 10
+  WHEN 2 THEN 20
+  WHEN 3 THEN 30
+  WHEN 4 THEN 40
+  WHEN 30001 THEN 50
+  WHEN 30011 THEN 60
+  WHEN 30002 THEN 70
+  WHEN 30003 THEN 80
+  WHEN 30004 THEN 90
+  WHEN 30005 THEN 100
+  WHEN 30006 THEN 110
+  WHEN 30007 THEN 120
+  WHEN 30008 THEN 130
+  WHEN 30009 THEN 140
+  WHEN 30010 THEN 150
+  ELSE `sortOrder`
+END
+WHERE `id` IN (1,2,3,4,30001,30011,30002,30003,30004,30005,30006,30007,30008,30009,30010);

@@ -78,6 +78,24 @@ describe("owner managed board and advisory members", () => {
     expect(memberMigration).not.toContain("9437903009");
     expect(memberMigration).not.toContain("ukmazad@gmail.com");
     expect(memberMigration).not.toContain("Marital status");
+    expect(memberMigration).toContain(
+      "Head of Verification and Field Coordination, Odisha"
+    );
+    expect(memberMigration).toContain("ଓଡ଼ିଶା ଯାଞ୍ଚ ଓ କ୍ଷେତ୍ର ସମନ୍ୱୟ ମୁଖ୍ୟ");
+    const requestedOrder = [
+      "WHEN 1 THEN 10",
+      "WHEN 2 THEN 20",
+      "WHEN 3 THEN 30",
+      "WHEN 4 THEN 40",
+      "WHEN 30001 THEN 50",
+      "WHEN 30011 THEN 60",
+    ];
+    let previousIndex = -1;
+    for (const marker of requestedOrder) {
+      const markerIndex = memberMigration.indexOf(marker);
+      expect(markerIndex).toBeGreaterThan(previousIndex);
+      previousIndex = markerIndex;
+    }
   });
 
   it("keeps public reads separate from protected Admin changes", () => {

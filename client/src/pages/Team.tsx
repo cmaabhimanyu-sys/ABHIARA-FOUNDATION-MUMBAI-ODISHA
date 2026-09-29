@@ -199,7 +199,10 @@ const GROUND_TEAM: PersonProfile[] = [
   {
     initials: "MM",
     name: { en: "Manoj Kumar Mallik", od: "ମନୋଜ କୁମାର ମଲ୍ଲିକ" },
-    role: { en: "Field Operations", od: "କ୍ଷେତ୍ର ପରିଚାଳନା" },
+    role: {
+      en: "Head of Verification and Field Coordination, Odisha",
+      od: "ଓଡ଼ିଶା ଯାଞ୍ଚ ଓ କ୍ଷେତ୍ର ସମନ୍ୱୟ ମୁଖ୍ୟ",
+    },
     qualification: { en: "MBA in Finance", od: "ଫାଇନାନ୍ସରେ MBA" },
     photo: "/images/team-manoj-kumar-mallik.jpeg",
     photoAlt: { en: "Manoj Kumar Mallik", od: "ମନୋଜ କୁମାର ମଲ୍ଲିକ" },
