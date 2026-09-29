@@ -69,6 +69,17 @@ describe("owner managed board and advisory members", () => {
     expect(memberMigration).toContain(
       "SET `isPublished` = false WHERE `id` IN (5, 6)"
     );
+    expect(memberMigration).toContain("more than 25 years of field experience");
+    expect(memberMigration).toContain("Diploma in Community Development");
+    expect(memberMigration).toContain(
+      "PG Diploma in Psychological Counselling"
+    );
+    expect(memberMigration).toContain(
+      "community development, sanitation, child welfare"
+    );
+    expect(memberMigration).not.toContain("9437903009");
+    expect(memberMigration).not.toContain("ukmazad@gmail.com");
+    expect(memberMigration).not.toContain("Marital status");
   });
 
   it("keeps public reads separate from protected Admin changes", () => {

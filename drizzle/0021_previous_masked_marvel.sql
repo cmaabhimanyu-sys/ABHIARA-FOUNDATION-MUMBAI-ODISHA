@@ -63,3 +63,11 @@ END
 WHERE `id` IN (1,2,3,4,5,6,30001,30002,30003,30004,30005,30006,30007,30011);
 --> statement-breakpoint
 UPDATE `leadership_members` SET `isPublished` = false WHERE `id` IN (5, 6) AND `nameEn` IN ('Sagar Jena', 'Bharat Panigrahy');
+--> statement-breakpoint
+UPDATE `leadership_members`
+SET
+  `qualificationEn` = 'B.A.; Diploma in Community Development; PG Diploma in Psychological Counselling',
+  `qualificationOd` = 'ବି.ଏ.; କମ୍ୟୁନିଟି ଡେଭଲପମେଣ୍ଟରେ ଡିପ୍ଲୋମା; ସାଇକୋଲୋଜିକାଲ କାଉନସେଲିଂରେ ପିଜି ଡିପ୍ଲୋମା',
+  `bioEn` = 'Umakanta has more than 25 years of field experience across Odisha and Karnataka. His work covers community development, sanitation, child welfare, psychological counselling, social justice, self help group training and community mobilisation. He has worked with community organisations in Dhenkanal, Bengaluru and Keonjhar and now supports programme planning, local coordination and responsible field delivery for Abhiara Foundation in Odisha.',
+  `bioOd` = 'ଉମାକାନ୍ତଙ୍କର ଓଡ଼ିଶା ଓ କର୍ଣ୍ଣାଟକରେ ୨୫ ବର୍ଷରୁ ଅଧିକ କ୍ଷେତ୍ର ଅନୁଭବ ରହିଛି। ସମୁଦାୟ ବିକାଶ, ପରିମଳ, ଶିଶୁ କଲ୍ୟାଣ, ମନୋବୈଜ୍ଞାନିକ ପରାମର୍ଶ, ସାମାଜିକ ନ୍ୟାୟ, ସ୍ୱୟଂ ସହାୟକ ଗୋଷ୍ଠୀ ପ୍ରଶିକ୍ଷଣ ଓ ସମୁଦାୟ ସଂଗଠନରେ ସେ କାମ କରିଛନ୍ତି। ଢେଙ୍କାନାଳ, ବେଙ୍ଗାଲୁରୁ ଓ କେନ୍ଦୁଝରର ସମୁଦାୟ ସଂଗଠନ ସହ କାମ କରିଥିବା ଉମାକାନ୍ତ ବର୍ତ୍ତମାନ ଓଡ଼ିଶାରେ ଅଭିଆରା ଫାଉଣ୍ଡେସନର କାର୍ଯ୍ୟକ୍ରମ ପରିକଳ୍ପନା, ସ୍ଥାନୀୟ ସମନ୍ୱୟ ଓ ଦାୟିତ୍ୱପୂର୍ଣ୍ଣ କ୍ଷେତ୍ର ପରିଚାଳନାରେ ସହଯୋଗ କରୁଛନ୍ତି।'
+WHERE `id` = 30001 AND `nameEn` = 'Umakanta Mahanta';

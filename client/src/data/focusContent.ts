@@ -557,8 +557,8 @@ export const BOARD_MEMBERS = [
 export const ODISHA_OPERATIONS = [
   {
     name: "Umakanta Mahanta",
-    roleEn: "Head of Operations, Odisha",
-    roleOd: "ଓଡ଼ିଶା କାର୍ଯ୍ୟ ପ୍ରମୁଖ",
+    roleEn: "Chief Operating Officer, Odisha",
+    roleOd: "ମୁଖ୍ୟ ପରିଚାଳନା ଅଧିକାରୀ, ଓଡ଼ିଶା",
   },
   {
     name: "Manoj Mallik",
