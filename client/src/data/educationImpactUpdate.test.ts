@@ -173,21 +173,16 @@ describe("education-first public website update", () => {
     expect(HEADER_NAV_GROUPS.map(group => group.en)).toEqual([
       "About",
       "Education & Learning",
-      "Natural Disaster",
-      "Animal Welfare",
-      "Medical Emergencies",
-      "Impact & Media",
-      "Board Members & Transparency",
+      "Other Activities",
+      "Impact & Transparency",
+      "Get Involved",
     ]);
     const groupedRoutes = HEADER_NAV_GROUPS.flatMap(group => [
       group.href,
       ...group.items.map(item => item.href),
     ]);
     for (const item of PRIMARY_NAV.filter(
-      item =>
-        item.href !== "/" &&
-        item.href !== "/donate" &&
-        item.href !== "/limited-verified-support"
+      item => item.href !== "/" && item.href !== "/donate"
     )) {
       expect(groupedRoutes).toContain(item.href);
     }
@@ -252,7 +247,7 @@ describe("education-first public website update", () => {
       PRIMARY_NAV.find(item => item.href === "/abhiara-vidyapitha")?.en
     ).toBe("Vision and Upcoming");
     expect(vision).toContain("Vision and Upcoming Initiatives");
-    expect(vision).toContain("Five plans under one future vision");
+    expect(vision).toContain("Future plans under one vision");
     expect(vision).toContain("FUTURE_INITIATIVES.map");
     expect(vision).toContain("Status: future plan");
     expect(vision).toContain("are not accepting enrolment or applications");
@@ -260,7 +255,8 @@ describe("education-first public website update", () => {
       "Abhiara Vidyapitha School",
       "Abhiara Elder Care Home",
       "Abhiara Livelihood Centre",
-      "Digital Learning and AI Basics",
+      "Computer Lab and AI Basics",
+      "Competitive Exam Support",
       "Wellness and Wellbeing",
     ]);
   });

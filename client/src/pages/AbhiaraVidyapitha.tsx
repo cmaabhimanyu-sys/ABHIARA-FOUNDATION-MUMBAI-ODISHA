@@ -70,8 +70,8 @@ export default function AbhiaraVidyapitha() {
               </p>
               <h2 className="mt-3 font-serif text-3xl font-bold md:text-5xl">
                 {t(
-                  "Five plans under one future vision",
-                  "ଏକ ଭବିଷ୍ୟତ ଦୃଷ୍ଟିକୋଣ ଅଧୀନରେ ପାଞ୍ଚଟି ପରିକଳ୍ପନା"
+                  "Future plans under one vision",
+                  "ଏକ ଦୃଷ୍ଟିକୋଣ ଅଧୀନରେ ଭବିଷ୍ୟତ ଯୋଜନା"
                 )}
               </h2>
               <p className="mt-4 font-sans text-sm leading-7 text-[#555]">

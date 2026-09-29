@@ -7,28 +7,18 @@ const footer = readFileSync("client/src/components/Footer.tsx", "utf8");
 const home = readFileSync("client/src/pages/Home.tsx", "utf8");
 
 describe("compact public navigation", () => {
-  it("uses seven clear sections plus separate Home and Donate actions", () => {
+  it("uses five clear sections plus separate Home and Donate actions", () => {
     expect(HEADER_NAV_GROUPS.map(group => group.en)).toEqual([
       "About",
       "Education & Learning",
-      "Natural Disaster",
-      "Animal Welfare",
-      "Medical Emergencies",
-      "Impact & Media",
-      "Board Members & Transparency",
+      "Other Activities",
+      "Impact & Transparency",
+      "Get Involved",
     ]);
-    expect(HEADER_NAV_GROUPS).toHaveLength(7);
-    for (const group of HEADER_NAV_GROUPS.filter(
-      item =>
-        !["disaster", "animals", "medical", "governance"].includes(item.key)
-    )) {
+    expect(HEADER_NAV_GROUPS).toHaveLength(5);
+    for (const group of HEADER_NAV_GROUPS) {
       expect(group.items.length).toBeGreaterThanOrEqual(3);
-      expect(group.items.length).toBeLessThanOrEqual(6);
-    }
-    for (const key of ["disaster", "animals", "medical", "governance"]) {
-      expect(HEADER_NAV_GROUPS.find(group => group.key === key)?.items).toEqual(
-        []
-      );
+      expect(group.items.length).toBeLessThanOrEqual(8);
     }
     expect(navbar).toContain("aria-label={t(");
     expect(navbar).toContain('"Abhiara Foundation home"');
@@ -96,17 +86,17 @@ describe("compact public navigation", () => {
     expect(navbar).not.toContain("lg:flex");
   });
 
-  it("gives disaster, animal welfare and medical emergencies their own top-level links", () => {
-    expect(
-      HEADER_NAV_GROUPS.find(group => group.key === "disaster")?.href
-    ).toBe("/disaster-relief");
-    expect(HEADER_NAV_GROUPS.find(group => group.key === "animals")?.href).toBe(
-      "/animal-welfare-support"
+  it("keeps all secondary support inside one Other Activities menu", () => {
+    const other = HEADER_NAV_GROUPS.find(group => group.key === "other");
+    expect(other?.href).toBe("/limited-verified-support");
+    expect(other?.items.map(item => item.href)).toEqual(
+      expect.arrayContaining([
+        "/elder-care-and-dignity",
+        "/medical-emergency-support",
+        "/disaster-relief",
+        "/animal-welfare-support",
+      ])
     );
-    expect(HEADER_NAV_GROUPS.find(group => group.key === "medical")?.href).toBe(
-      "/medical-emergency-support"
-    );
-    expect(navbar).toContain("if (!group.items.length)");
   });
 
   it("keeps trust, privacy, and future plans discoverable without crowding the top line", () => {
@@ -114,9 +104,7 @@ describe("compact public navigation", () => {
       group.items.map(item => item.href)
     );
     expect(allGroupedRoutes).toContain("/privacy");
-    expect(
-      HEADER_NAV_GROUPS.find(group => group.key === "governance")?.href
-    ).toBe("/board-and-transparency");
+    expect(allGroupedRoutes).toContain("/board-and-transparency");
     expect(allGroupedRoutes).toContain("/abhiara-vidyapitha");
     expect(allGroupedRoutes).toContain("/contact");
     expect(navbar).toContain("Donation policy");

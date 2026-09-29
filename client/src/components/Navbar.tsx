@@ -12,8 +12,12 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import { HEADER_NAV_GROUPS } from "@/data/focusContent";
 
-const isRouteActive = (location: string, href: string) =>
-  location === href || location.startsWith(`${href}/`);
+const isRouteActive = (location: string, href: string) => {
+  const [path, hash] = href.split("#");
+  const pathActive = location === path || location.startsWith(`${path}/`);
+  if (!pathActive || !hash || typeof window === "undefined") return pathActive;
+  return window.location.hash === `#${hash}`;
+};
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -31,8 +35,22 @@ export default function Navbar() {
     : HEADER_NAV_GROUPS.find(
         group =>
           isRouteActive(location, group.href) ||
-          group.items.some(item => isRouteActive(location, item.href))
+          group.items.some(
+            item =>
+              isRouteActive(location, item.href) ||
+              location === item.href.split("#")[0]
+          )
       )?.key;
+
+  const handleNavItemClick = (href: string) => {
+    setMobileOpen(false);
+    setExpandedMobileGroup(null);
+    const [path, hash] = href.split("#");
+    if (!hash || location !== path) return;
+    window.requestAnimationFrame(() => {
+      document.getElementById(hash)?.scrollIntoView({ block: "start" });
+    });
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -179,6 +197,7 @@ export default function Navbar() {
                         <DropdownMenuItem key={item.href} asChild>
                           <Link
                             href={item.href}
+                            onClick={() => handleNavItemClick(item.href)}
                             className={`block min-h-11 cursor-pointer rounded-lg px-3 py-3 font-sans text-[13px] leading-snug outline-none ${
                               itemActive
                                 ? "bg-[#FFF7E8] font-bold text-[#8A5700]"
@@ -370,6 +389,7 @@ export default function Navbar() {
                               <Link
                                 key={item.href}
                                 href={item.href}
+                                onClick={() => handleNavItemClick(item.href)}
                                 className={`flex min-h-11 items-center py-2.5 font-sans text-[14px] leading-snug ${
                                   itemActive
                                     ? "font-bold text-[#8A5700]"

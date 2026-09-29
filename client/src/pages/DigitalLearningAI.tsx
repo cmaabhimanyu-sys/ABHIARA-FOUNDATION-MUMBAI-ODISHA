@@ -1,13 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
-import {
-  ArrowRight,
-  BookOpen,
-  Laptop,
-  ShieldCheck,
-  Sparkles,
-  Users,
-} from "lucide-react";
+import { ArrowRight, BookOpen, Laptop, ShieldCheck, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -15,14 +8,19 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const LEARNING_AREAS = [
   {
+    id: "computer-lab",
     icon: Laptop,
-    title: { en: "Safe computer use", od: "ସୁରକ୍ଷିତ କମ୍ପ୍ୟୁଟର ବ୍ୟବହାର" },
+    title: {
+      en: "Computer Lab and AI Basics",
+      od: "କମ୍ପ୍ୟୁଟର ଲ୍ୟାବ ଓ AI ମୂଳ ଜ୍ଞାନ",
+    },
     body: {
-      en: "Basic use of computers, documents, online search and common digital tools.",
-      od: "କମ୍ପ୍ୟୁଟର, ଡକ୍ୟୁମେଣ୍ଟ, ଅନଲାଇନ ସନ୍ଧାନ ଓ ସାଧାରଣ ଡିଜିଟାଲ ଉପକରଣର ମୂଳ ବ୍ୟବହାର।",
+      en: "A planned supervised space for basic computer use, documents, online search, common digital tools and a simple introduction to AI.",
+      od: "କମ୍ପ୍ୟୁଟରର ମୂଳ ବ୍ୟବହାର, ଡକ୍ୟୁମେଣ୍ଟ, ଅନଲାଇନ ସନ୍ଧାନ, ସାଧାରଣ ଡିଜିଟାଲ ଉପକରଣ ଓ AI ର ସରଳ ପରିଚୟ ପାଇଁ ଏକ ପରିକଳ୍ପିତ ତତ୍ତ୍ୱାବଧାନ ଥିବା ସ୍ଥାନ।",
     },
   },
   {
+    id: "online-safety",
     icon: ShieldCheck,
     title: { en: "Online safety", od: "ଅନଲାଇନ ସୁରକ୍ଷା" },
     body: {
@@ -31,14 +29,19 @@ const LEARNING_AREAS = [
     },
   },
   {
-    icon: Sparkles,
-    title: { en: "AI basics", od: "AI ର ମୂଳ ଜ୍ଞାନ" },
+    id: "competitive-exams",
+    icon: BookOpen,
+    title: {
+      en: "Competitive Exam Support",
+      od: "ପ୍ରତିଯୋଗିତାମୂଳକ ପରୀକ୍ଷା ସହାୟତା",
+    },
     body: {
-      en: "A simple introduction to what AI can do, what it cannot do and why people must check its answers.",
-      od: "AI କଣ କରିପାରେ, କଣ କରିପାରେ ନାହିଁ ଏବଂ ଏହାର ଉତ୍ତର କାହିଁକି ଯାଞ୍ଚ କରିବା ଆବଶ୍ୟକ ତାହାର ସରଳ ପରିଚୟ।",
+      en: "A future plan for preparation books, basic digital practice and guidance for eligible older students. No coaching enrolment is open at present.",
+      od: "ଯୋଗ୍ୟ ବୟସ୍କ ଛାତ୍ରଛାତ୍ରୀଙ୍କ ପାଇଁ ପ୍ରସ୍ତୁତି ପୁସ୍ତକ, ମୂଳ ଡିଜିଟାଲ ଅଭ୍ୟାସ ଓ ମାର୍ଗଦର୍ଶନର ଭବିଷ୍ୟତ ଯୋଜନା। ବର୍ତ୍ତମାନ କୌଣସି କୋଚିଂ ନାମଲେଖା ଖୋଲା ନାହିଁ।",
     },
   },
   {
+    id: "guided-learning",
     icon: Users,
     title: { en: "Learning with guidance", od: "ମାର୍ଗଦର୍ଶନ ସହ ଶିକ୍ଷା" },
     body: {
@@ -52,19 +55,27 @@ export default function DigitalLearningAI() {
   const { t } = useLanguage();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const targetId = window.location.hash.slice(1);
+    const frame = window.requestAnimationFrame(() => {
+      if (targetId) {
+        document.getElementById(targetId)?.scrollIntoView({ block: "start" });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   return (
     <div className="min-h-screen bg-white text-[#1A1A1A]">
       <SEO
         title={t(
-          "Digital Learning and AI Basics | Abhiara Foundation",
-          "ଡିଜିଟାଲ ଶିକ୍ଷା ଓ AI ମୂଳ ଜ୍ଞାନ | ଅଭିଆରା ଫାଉଣ୍ଡେସନ"
+          "Digital Learning, Computer Lab and Competitive Exam Support | Abhiara Foundation",
+          "ଡିଜିଟାଲ ଶିକ୍ଷା, କମ୍ପ୍ୟୁଟର ଲ୍ୟାବ ଓ ପ୍ରତିଯୋଗିତାମୂଳକ ପରୀକ୍ଷା ସହାୟତା | ଅଭିଆରା ଫାଉଣ୍ଡେସନ"
         )}
         description={t(
-          "A future Abhiara Foundation learning plan for practical digital skills, online safety and basic AI awareness.",
-          "ବ୍ୟବହାରିକ ଡିଜିଟାଲ କୌଶଳ, ଅନଲାଇନ ସୁରକ୍ଷା ଓ AI ର ମୂଳ ଜ୍ଞାନ ପାଇଁ ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଭବିଷ୍ୟତ ଶିକ୍ଷା ପରିକଳ୍ପନା।"
+          "Future Abhiara Foundation plans for a supervised computer lab, basic AI learning, online safety and competitive exam support.",
+          "ତତ୍ତ୍ୱାବଧାନ ଥିବା କମ୍ପ୍ୟୁଟର ଲ୍ୟାବ, AI ର ମୂଳ ଶିକ୍ଷା, ଅନଲାଇନ ସୁରକ୍ଷା ଓ ପ୍ରତିଯୋଗିତାମୂଳକ ପରୀକ୍ଷା ସହାୟତା ପାଇଁ ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଭବିଷ୍ୟତ ଯୋଜନା।"
         )}
         url="https://www.abhiarafoundation.org/digital-learning-ai"
       />
@@ -77,14 +88,14 @@ export default function DigitalLearningAI() {
             </span>
             <h1 className="mt-6 max-w-4xl font-serif text-5xl font-bold text-white md:text-7xl">
               {t(
-                "Digital Learning and AI Basics",
-                "ଡିଜିଟାଲ ଶିକ୍ଷା ଓ AI ମୂଳ ଜ୍ଞାନ"
+                "Digital Learning and Future Skills",
+                "ଡିଜିଟାଲ ଶିକ୍ଷା ଓ ଭବିଷ୍ୟତ କୌଶଳ"
               )}
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/75">
               {t(
-                "This planned programme would introduce safe use of digital tools and explain AI in simple language for children and young people. It is not an active class today.",
-                "ଏହି ପରିକଳ୍ପିତ କାର୍ଯ୍ୟକ୍ରମରେ ଶିଶୁ ଓ ଯୁବମାନଙ୍କୁ ଡିଜିଟାଲ ଉପକରଣର ସୁରକ୍ଷିତ ବ୍ୟବହାର ଏବଂ ସରଳ ଭାଷାରେ AI ବିଷୟରେ ପରିଚୟ ଦିଆଯିବ। ଏହା ବର୍ତ୍ତମାନ ସକ୍ରିୟ ଶ୍ରେଣୀ ନୁହେଁ।"
+                "These planned education pathways cover a supervised computer lab, safe digital skills, basic AI learning and support for eligible students preparing for competitive examinations. They are not active classes today.",
+                "ଏହି ପରିକଳ୍ପିତ ଶିକ୍ଷା ପଥରେ ତତ୍ତ୍ୱାବଧାନ ଥିବା କମ୍ପ୍ୟୁଟର ଲ୍ୟାବ, ସୁରକ୍ଷିତ ଡିଜିଟାଲ କୌଶଳ, AI ର ମୂଳ ଶିକ୍ଷା ଓ ପ୍ରତିଯୋଗିତାମୂଳକ ପରୀକ୍ଷା ପ୍ରସ୍ତୁତି କରୁଥିବା ଯୋଗ୍ୟ ଛାତ୍ରଛାତ୍ରୀଙ୍କ ପାଇଁ ସହାୟତା ରହିଛି। ବର୍ତ୍ତମାନ ଏହି ଶ୍ରେଣୀଗୁଡ଼ିକ ସକ୍ରିୟ ନୁହେଁ।"
               )}
             </p>
           </div>
@@ -98,7 +109,8 @@ export default function DigitalLearningAI() {
                 return (
                   <article
                     key={item.title.en}
-                    className="border border-[#E8DCC6] bg-[#FFFDF8] p-7"
+                    id={item.id}
+                    className="scroll-mt-32 border border-[#E8DCC6] bg-[#FFFDF8] p-7"
                   >
                     <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#F5A623]">
                       <Icon size={23} aria-hidden="true" />

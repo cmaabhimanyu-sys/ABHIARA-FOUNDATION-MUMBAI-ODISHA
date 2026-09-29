@@ -85,22 +85,22 @@ describe("separate programme panels and galleries", () => {
     expect(support).toContain('galleryCategory: "animals"');
   });
 
-  it("keeps disaster, animal welfare and medical emergencies as separate top-level sections", () => {
-    expect(
-      HEADER_NAV_GROUPS.find(group => group.key === "disaster")?.href
-    ).toBe("/disaster-relief");
-    expect(HEADER_NAV_GROUPS.find(group => group.key === "animals")?.href).toBe(
-      "/animal-welfare-support"
+  it("keeps secondary causes as separate pages inside one Other Activities menu", () => {
+    const otherRoutes = HEADER_NAV_GROUPS.find(
+      group => group.key === "other"
+    )?.items.map(item => item.href);
+    expect(otherRoutes).toEqual(
+      expect.arrayContaining([
+        "/disaster-relief",
+        "/animal-welfare-support",
+        "/medical-emergency-support",
+      ])
     );
-    expect(HEADER_NAV_GROUPS.find(group => group.key === "medical")?.href).toBe(
-      "/medical-emergency-support"
-    );
     expect(
-      HEADER_NAV_GROUPS.find(group => group.key === "governance")?.href
-    ).toBe("/board-and-transparency");
-    expect(
-      HEADER_NAV_GROUPS.find(group => group.key === "governance")?.items
-    ).toEqual([]);
+      HEADER_NAV_GROUPS.find(group => group.key === "about")?.items.map(
+        item => item.href
+      )
+    ).toContain("/board-and-transparency");
   });
 
   it("does not expose internal owner, Admin or website-folder instructions publicly", () => {

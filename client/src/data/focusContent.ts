@@ -199,16 +199,15 @@ export const HEADER_NAV_GROUPS = [
       { href: "/our-story", en: "Founder Story", od: "ପ୍ରତିଷ୍ଠାତାଙ୍କ କାହାଣୀ" },
       {
         href: "/abhiara-vidyapitha",
-        en: "Vision and Upcoming",
-        od: "ଦୃଷ୍ଟିକୋଣ ଓ ଆଗାମୀ ଯୋଜନା",
+        en: "Vision and Future Plans",
+        od: "ଦୃଷ୍ଟିକୋଣ ଓ ଭବିଷ୍ୟତ ଯୋଜନା",
       },
       {
-        href: "/partners-and-supporters",
-        en: "Partners and Supporters",
-        od: "ସହଯୋଗୀ ଓ ସମର୍ଥକ",
+        href: "/board-and-transparency",
+        en: "People of Abhiara Foundation",
+        od: "ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଲୋକମାନେ",
       },
-      { href: "/volunteer", en: "Volunteer", od: "ସ୍ୱେଚ୍ଛାସେବୀ" },
-      { href: "/contact", en: "Contact", od: "ଯୋଗାଯୋଗ" },
+      { href: "/faq", en: "Questions and Answers", od: "ପ୍ରଶ୍ନ ଓ ଉତ୍ତର" },
     ],
   },
   {
@@ -229,8 +228,8 @@ export const HEADER_NAV_GROUPS = [
       },
       {
         href: "/rural-area-transformation",
-        en: "Rural Area Transformation",
-        od: "ଗ୍ରାମୀଣ ଅଞ୍ଚଳ ପରିବର୍ତ୍ତନ",
+        en: "Rural Education Work",
+        od: "ଗ୍ରାମୀଣ ଶିକ୍ଷା କାମ",
       },
       {
         href: "/abhiara-pratibha-samman",
@@ -238,43 +237,70 @@ export const HEADER_NAV_GROUPS = [
         od: "ଅଭିଆରା ପ୍ରତିଭା ସମ୍ମାନ",
       },
       {
-        href: "/digital-learning-ai",
-        en: "Digital Learning and AI Basics",
-        od: "ଡିଜିଟାଲ ଶିକ୍ଷା ଓ AI ମୂଳ ଜ୍ଞାନ",
+        href: "/digital-learning-ai#competitive-exams",
+        en: "Competitive Exam Support",
+        od: "ପ୍ରତିଯୋଗିତାମୂଳକ ପରୀକ୍ଷା ସହାୟତା",
+      },
+      {
+        href: "/digital-learning-ai#computer-lab",
+        en: "Computer Lab and AI Basics",
+        od: "କମ୍ପ୍ୟୁଟର ଲ୍ୟାବ ଓ AI ମୂଳ ଜ୍ଞାନ",
       },
       {
         href: "/rti-human-rights-awareness",
-        en: "RTI and Human Rights Awareness",
-        od: "RTI ଓ ମାନବାଧିକାର ସଚେତନତା",
+        en: "RTI and Rights Awareness",
+        od: "RTI ଓ ଅଧିକାର ସଚେତନତା",
       },
     ],
   },
   {
-    key: "disaster",
-    href: "/disaster-relief",
-    en: "Natural Disaster",
-    od: "ପ୍ରାକୃତିକ ବିପର୍ଯ୍ୟୟ",
-    items: [],
-  },
-  {
-    key: "animals",
-    href: "/animal-welfare-support",
-    en: "Animal Welfare",
-    od: "ପଶୁ କଲ୍ୟାଣ",
-    items: [],
-  },
-  {
-    key: "medical",
-    href: "/medical-emergency-support",
-    en: "Medical Emergencies",
-    od: "ଚିକିତ୍ସା ଜରୁରୀ ସହାୟତା",
-    items: [],
+    key: "other",
+    href: "/limited-verified-support",
+    en: "Other Activities",
+    od: "ଅନ୍ୟ କାର୍ଯ୍ୟକ୍ରମ",
+    items: [
+      {
+        href: "/limited-verified-support",
+        en: "Other Activities Overview",
+        od: "ଅନ୍ୟ କାର୍ଯ୍ୟକ୍ରମ ସାରାଂଶ",
+      },
+      {
+        href: "/elder-care-and-dignity",
+        en: "Elder Care and Dignity",
+        od: "ବୃଦ୍ଧ ସେବା ଓ ସମ୍ମାନ",
+      },
+      {
+        href: "/medical-emergency-support",
+        en: "Medical Emergency Support",
+        od: "ଚିକିତ୍ସା ଜରୁରୀ ସହାୟତା",
+      },
+      {
+        href: "/disaster-relief",
+        en: "Natural Disaster Relief",
+        od: "ପ୍ରାକୃତିକ ବିପର୍ଯ୍ୟୟ ସହାୟତା",
+      },
+      {
+        href: "/animal-welfare-support",
+        en: "Animal Welfare",
+        od: "ପଶୁ କଲ୍ୟାଣ",
+      },
+      {
+        href: "/wellness-and-wellbeing",
+        en: "Wellness and Wellbeing",
+        od: "ସ୍ୱାସ୍ଥ୍ୟ ଓ ସୁସ୍ଥତା",
+      },
+      {
+        href: "/birthday-with-purpose",
+        en: "Birthday with Purpose",
+        od: "ସେବା ସହ ଜନ୍ମଦିନ",
+      },
+    ],
   },
   {
     key: "impact",
     href: "/impact-gallery",
-    en: "Impact & Media",
-    od: "ପ୍ରଭାବ ଓ ମିଡିଆ",
+    en: "Impact & Transparency",
+    od: "ପ୍ରଭାବ ଓ ସ୍ୱଚ୍ଛତା",
     items: [
       { href: "/student-impact", en: "Student Impact", od: "ଛାତ୍ର ପ୍ରଭାବ" },
       {
@@ -292,11 +318,19 @@ export const HEADER_NAV_GROUPS = [
     ],
   },
   {
-    key: "governance",
-    href: "/board-and-transparency",
-    en: "Board Members & Transparency",
-    od: "ବୋର୍ଡ ସଦସ୍ୟ ଓ ସ୍ୱଚ୍ଛତା",
-    items: [],
+    key: "join",
+    href: "/volunteer",
+    en: "Get Involved",
+    od: "ଆମ ସହ ଯୋଗ ଦିଅନ୍ତୁ",
+    items: [
+      { href: "/volunteer", en: "Volunteer", od: "ସ୍ୱେଚ୍ଛାସେବୀ" },
+      {
+        href: "/partners-and-supporters",
+        en: "Partners and Supporters",
+        od: "ସହଯୋଗୀ ଓ ସମର୍ଥକ",
+      },
+      { href: "/contact", en: "Contact", od: "ଯୋଗାଯୋଗ" },
+    ],
   },
 ] as const;
 
@@ -468,12 +502,20 @@ export const FUTURE_INITIATIVES = [
       "ସମ୍ମାନ ସହ ଆୟ କରିବାର ସୁଯୋଗ ଆବଶ୍ୟକ ଥିବା ୪୦ ରୁ ୬୦ ବର୍ଷ ବୟସର ବୟସ୍କଙ୍କ ପାଇଁ ଭବିଷ୍ୟତ କୌଶଳ ଓ ଜୀବିକା କେନ୍ଦ୍ର।",
   },
   {
-    titleEn: "Digital Learning and AI Basics",
-    titleOd: "ଡିଜିଟାଲ ଶିକ୍ଷା ଓ AI ମୂଳ ଜ୍ଞାନ",
+    titleEn: "Computer Lab and AI Basics",
+    titleOd: "କମ୍ପ୍ୟୁଟର ଲ୍ୟାବ ଓ AI ମୂଳ ଜ୍ଞାନ",
     bodyEn:
-      "A future learning initiative for safe computer use, practical digital skills and a basic understanding of AI. It will begin only when trained facilitators, suitable devices, child safety measures and steady funding are in place.",
+      "A future supervised learning space for safe computer use, practical digital skills and a basic understanding of AI. It will begin only when trained facilitators, suitable devices, child safety measures and steady funding are in place.",
     bodyOd:
-      "ସୁରକ୍ଷିତ କମ୍ପ୍ୟୁଟର ବ୍ୟବହାର, ବ୍ୟବହାରିକ ଡିଜିଟାଲ କୌଶଳ ଓ AI ର ମୂଳ ବୁଝାମଣା ପାଇଁ ଏକ ଭବିଷ୍ୟତ ଶିକ୍ଷା ପରିକଳ୍ପନା। ପ୍ରଶିକ୍ଷିତ ଶିକ୍ଷକ, ଉପଯୁକ୍ତ ଉପକରଣ, ଶିଶୁ ସୁରକ୍ଷା ବ୍ୟବସ୍ଥା ଓ ସ୍ଥାୟୀ ଅର୍ଥ ଉପଲବ୍ଧ ହେଲେ ଏହା ଆରମ୍ଭ ହେବ।",
+      "ସୁରକ୍ଷିତ କମ୍ପ୍ୟୁଟର ବ୍ୟବହାର, ବ୍ୟବହାରିକ ଡିଜିଟାଲ କୌଶଳ ଓ AI ର ମୂଳ ବୁଝାମଣା ପାଇଁ ଏକ ଭବିଷ୍ୟତ ତତ୍ତ୍ୱାବଧାନ ଥିବା ଶିକ୍ଷା ସ୍ଥାନ। ପ୍ରଶିକ୍ଷିତ ଶିକ୍ଷକ, ଉପଯୁକ୍ତ ଉପକରଣ, ଶିଶୁ ସୁରକ୍ଷା ବ୍ୟବସ୍ଥା ଓ ସ୍ଥାୟୀ ଅର୍ଥ ଉପଲବ୍ଧ ହେଲେ ଏହା ଆରମ୍ଭ ହେବ।",
+  },
+  {
+    titleEn: "Competitive Exam Support",
+    titleOd: "ପ୍ରତିଯୋଗିତାମୂଳକ ପରୀକ୍ଷା ସହାୟତା",
+    bodyEn:
+      "A future education plan for preparation books, basic digital practice and guidance for eligible older students. No coaching enrolment is open at present.",
+    bodyOd:
+      "ଯୋଗ୍ୟ ବୟସ୍କ ଛାତ୍ରଛାତ୍ରୀଙ୍କ ପାଇଁ ପ୍ରସ୍ତୁତି ପୁସ୍ତକ, ମୂଳ ଡିଜିଟାଲ ଅଭ୍ୟାସ ଓ ମାର୍ଗଦର୍ଶନର ଭବିଷ୍ୟତ ଶିକ୍ଷା ଯୋଜନା। ବର୍ତ୍ତମାନ କୌଣସି କୋଚିଂ ନାମଲେଖା ଖୋଲା ନାହିଁ।",
   },
   {
     titleEn: "Wellness and Wellbeing",

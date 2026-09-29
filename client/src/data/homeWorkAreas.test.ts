@@ -60,11 +60,9 @@ describe("homepage programme panels and future digital learning", () => {
       "https://www.abhiarafoundation.org/digital-learning-ai"
     );
     expect(footer).toContain('href: "/digital-learning-ai"');
-    expect(digital).toContain("Digital Learning and AI Basics");
-    expect(digital).toContain(
-      "This planned programme would introduce safe use of digital tools"
-    );
-    expect(digital).toContain("It is not an active class today");
+    expect(digital).toContain("Computer Lab and AI Basics");
+    expect(digital).toContain("Competitive Exam Support");
+    expect(digital).toContain("They are not active classes today");
     expect(digital).toContain(
       "No enrolment, training application or certificate is available"
     );
@@ -72,12 +70,17 @@ describe("homepage programme panels and future digital learning", () => {
   });
 
   it("keeps the header compact while making digital learning discoverable", () => {
-    expect(HEADER_NAV_GROUPS).toHaveLength(7);
+    expect(HEADER_NAV_GROUPS).toHaveLength(5);
     expect(
       HEADER_NAV_GROUPS.find(group => group.key === "education")?.items.map(
         item => item.href
       )
-    ).toContain("/digital-learning-ai");
+    ).toEqual(
+      expect.arrayContaining([
+        "/digital-learning-ai#computer-lab",
+        "/digital-learning-ai#competitive-exams",
+      ])
+    );
   });
 
   it("keeps RTI and human rights records factual and certificate details private", () => {
