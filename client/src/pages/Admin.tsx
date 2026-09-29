@@ -231,6 +231,144 @@ function ImageUploader({
   );
 }
 
+async function standardizeLeadershipPortrait(file: File): Promise<File> {
+  if (!file.type.startsWith("image/")) {
+    throw new Error("Choose an image file.");
+  }
+
+  const objectUrl = URL.createObjectURL(file);
+  try {
+    const image = document.createElement("img");
+    image.decoding = "async";
+    await new Promise<void>((resolve, reject) => {
+      image.onload = () => resolve();
+      image.onerror = () => reject(new Error("This image could not be read."));
+      image.src = objectUrl;
+    });
+
+    const canvas = document.createElement("canvas");
+    canvas.width = 800;
+    canvas.height = 1000;
+    const context = canvas.getContext("2d");
+    if (!context) throw new Error("This browser cannot prepare the photo.");
+
+    context.fillStyle = "#F5EFE3";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    const scale = Math.min(
+      canvas.width / image.naturalWidth,
+      canvas.height / image.naturalHeight
+    );
+    const width = Math.round(image.naturalWidth * scale);
+    const height = Math.round(image.naturalHeight * scale);
+    const x = Math.round((canvas.width - width) / 2);
+    const y = Math.round((canvas.height - height) / 2);
+    context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = "high";
+    context.drawImage(image, x, y, width, height);
+
+    const blob = await new Promise<Blob>((resolve, reject) => {
+      canvas.toBlob(
+        result =>
+          result
+            ? resolve(result)
+            : reject(new Error("The professional photo could not be created.")),
+        "image/webp",
+        0.88
+      );
+    });
+    const stem = file.name.replace(/\.[^.]+$/, "").replace(/[^a-z0-9]+/gi, "-");
+    return new File([blob], `${stem}-professional-800x1000.webp`, {
+      type: "image/webp",
+    });
+  } finally {
+    URL.revokeObjectURL(objectUrl);
+  }
+}
+
+function LeadershipPortraitUploader({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (url: string) => void;
+}) {
+  const { uploadFile, isUploading } = useFileUpload();
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const handleFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+    if (file.size > 10 * 1024 * 1024) {
+      toast.error("Choose an image smaller than 10 MB.");
+      return;
+    }
+    try {
+      const prepared = await standardizeLeadershipPortrait(file);
+      if (prepared.size > 1024 * 1024) {
+        throw new Error("The prepared portrait is still larger than 1 MB.");
+      }
+      const url = await uploadFile(prepared);
+      onChange(url);
+      toast.success("Portrait resized to 800 × 1000 and uploaded.");
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : "Portrait upload failed."
+      );
+    }
+  };
+
+  return (
+    <div>
+      <label className="mb-1 block text-sm font-medium text-[#333]">
+        Public profile photo
+      </label>
+      <p className="mb-2 text-xs leading-5 text-[#666]">
+        Upload any clear portrait. It is automatically resized to 800 × 1000
+        WebP without cutting the original photo.
+      </p>
+      <div className="flex items-center gap-2">
+        <Input
+          value={value}
+          onChange={event => onChange(event.target.value)}
+          placeholder="Image URL or upload..."
+          className="flex-1 border border-gray-300 bg-white text-[#333] focus:border-[#F5A623]"
+        />
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          onClick={() => fileRef.current?.click()}
+          disabled={isUploading}
+          className="border-gray-200 text-[#333] hover:text-[#1A1A1A]"
+        >
+          {isUploading ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            <Upload className="h-4 w-4" />
+          )}
+        </Button>
+        <input
+          ref={fileRef}
+          type="file"
+          accept="image/*"
+          onChange={handleFile}
+          className="hidden"
+        />
+      </div>
+      {value && (
+        <img
+          src={value}
+          alt="Profile preview"
+          width={800}
+          height={1000}
+          className="mt-3 aspect-[4/5] w-32 border border-gray-200 bg-[#F5EFE3] object-cover"
+        />
+      )}
+    </div>
+  );
+}
+
 // ===== MEDIA UPLOAD COMPONENT (Photo + Video) =====
 function MediaUploader({
   value,
@@ -3677,12 +3815,11 @@ function LeadershipManager() {
             />
           </div>
           <div className="md:col-span-2">
-            <ImageUploader
+            <LeadershipPortraitUploader
               value={form.imageUrl}
               onChange={imageUrl =>
                 setForm(current => ({ ...current, imageUrl }))
               }
-              label="Public profile photo"
             />
           </div>
           <div className="md:col-span-2">
@@ -3738,8 +3875,9 @@ function LeadershipManager() {
             Board, Members and Advisors
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[#666]">
-            Manage the confirmed Directors, Members and Advisors shown on the
-            public website. Use Unpublish to hide a profile without deleting it.
+            Manage every person shown in one sequence on the public website. Use
+            Display order to set the sequence and Unpublish to hide a profile
+            without deleting it.
           </p>
         </div>
         <Button
@@ -3769,12 +3907,16 @@ function LeadershipManager() {
               key={member.id}
               className="overflow-hidden rounded-xl border border-gray-200 bg-white"
             >
-              <div className="flex h-52 items-center justify-center bg-[#F5EFE3] p-3">
+              <div className="flex aspect-[4/5] items-center justify-center overflow-hidden bg-[#F5EFE3]">
                 {member.imageUrl ? (
                   <img
                     src={member.imageUrl}
                     alt={member.nameEn}
-                    className="h-full w-full object-contain"
+                    width={800}
+                    height={1000}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
                   />
                 ) : (
                   <span className="font-serif text-4xl font-bold text-[#9A6100]">

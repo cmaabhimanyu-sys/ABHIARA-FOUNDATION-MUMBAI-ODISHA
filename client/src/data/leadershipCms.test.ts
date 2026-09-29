@@ -15,6 +15,7 @@ const controlCentre = readFileSync(
   "utf8"
 );
 const governance = readFileSync("client/src/pages/Governance.tsx", "utf8");
+const team = readFileSync("client/src/pages/Team.tsx", "utf8");
 const footer = readFileSync("client/src/components/Footer.tsx", "utf8");
 const ownerGuide = readFileSync("OWNER_ADMIN_GUIDE.md", "utf8");
 
@@ -41,10 +42,12 @@ describe("owner managed board and advisory members", () => {
     expect(migration).toContain("CREATE TABLE `leadership_members`");
     expect(migration).not.toMatch(/DROP TABLE|DROP COLUMN|TRUNCATE/i);
     expect(memberMigration).toContain("enum('board','member','advisor')");
+    expect(memberMigration).toContain("professional-800x1000.webp");
+    expect(memberMigration).toContain("30011-manoj-kumar-mallik");
     expect(memberMigration).not.toMatch(/DROP TABLE|DROP COLUMN|TRUNCATE/i);
   });
 
-  it("preserves the six approved profiles as published seed records", () => {
+  it("preserves the original profiles and records requested public removals", () => {
     for (const name of [
       "Abhimanyu Mallik",
       "Biswajita Mallik",
@@ -57,6 +60,15 @@ describe("owner managed board and advisory members", () => {
     }
     expect(migration).toContain("Founding Patron and Strategic Advisor");
     expect(migration).toContain("Founder and Director");
+    expect(migration).not.toContain(
+      "This is an advisory role, separate from the Board of Directors."
+    );
+    expect(team).not.toContain(
+      "This is an advisory role, separate from the Board of Directors."
+    );
+    expect(memberMigration).toContain(
+      "SET `isPublished` = false WHERE `id` IN (5, 6)"
+    );
   });
 
   it("keeps public reads separate from protected Admin changes", () => {
@@ -83,20 +95,29 @@ describe("owner managed board and advisory members", () => {
       "Show this person on the public Board, Members and Advisors page"
     );
     expect(admin).toContain("Unpublish");
+    expect(admin).toContain("standardizeLeadershipPortrait");
+    expect(admin).toContain("canvas.width = 800");
+    expect(admin).toContain("canvas.height = 1000");
+    expect(admin).toContain('"image/webp"');
+    expect(admin).toContain("without cutting the original photo");
   });
 
-  it("shows only published board and advisory profiles on the public page", () => {
+  it("shows every published person in one Admin-controlled public sequence", () => {
     expect(governance).toContain("trpc.cms.leadership.listPublished.useQuery");
-    expect(governance).toContain('member.memberType === "board"');
-    expect(governance).toContain('member.memberType === "advisor"');
-    expect(governance).toContain('member.memberType === "member"');
-    expect(governance).toContain('id="board"');
-    expect(governance).toContain('id="members"');
-    expect(governance).toContain('id="advisors"');
-    expect(governance).toContain("object-contain");
-    expect(governance).toContain(
-      "Advisors provide professional or programme guidance"
-    );
+    expect(governance).toContain("leadershipMembers.map");
+    expect(governance).toContain('id="people"');
+    expect(governance).toContain("one sequence");
+    expect(governance).not.toContain('member.memberType === "board"');
+    expect(governance).not.toContain('id="board"');
+    expect(governance).not.toContain('id="members"');
+    expect(governance).not.toContain('id="advisors"');
+    expect(governance).not.toContain("Only confirmed directors");
+    expect(governance).not.toContain("separate groups");
+    expect(governance).toContain("aspect-[4/5]");
+    expect(governance).toContain("object-cover");
+    expect(governance).toContain("width={800}");
+    expect(governance).toContain("height={1000}");
+    expect(governance).toContain('loading="lazy"');
     expect(governance).not.toContain("Statutory record");
     expect(governance).not.toContain("How accountability works");
     expect(footer).toContain("CIN U87300MH2026NPL471397");

@@ -88,7 +88,7 @@ const quickActions: Array<{
   {
     tab: "leadership",
     title: "Board, Members and Advisors",
-    body: "Add, edit, order, publish or unpublish confirmed directors, general members and advisors shown on the public website.",
+    body: "Add, edit, order, publish or unpublish every person shown in one sequence on the public website.",
     icon: Users,
     colour: "bg-indigo-50 text-indigo-800",
   },

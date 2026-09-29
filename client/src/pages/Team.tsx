@@ -111,8 +111,8 @@ const ADVISORS: PersonProfile[] = [
       od: "ଅମିତ କୁମାର ଜେନା, ପ୍ରତିଷ୍ଠାକାଳୀନ ପୃଷ୍ଠପୋଷକ ଓ ରଣନୀତିକ ପରାମର୍ଶଦାତା",
     },
     bio: {
-      en: "Amit supports the Foundation with strategic guidance and helps the team review priorities, partnerships and future direction. This is an advisory role, separate from the Board of Directors.",
-      od: "ଅମିତ ଫାଉଣ୍ଡେସନକୁ ରଣନୀତିକ ମାର୍ଗଦର୍ଶନ ଦିଅନ୍ତି ଏବଂ ପ୍ରାଥମିକତା, ସହଭାଗିତା ଓ ଭବିଷ୍ୟତ ଦିଗର ସମୀକ୍ଷାରେ ଦଳକୁ ସହଯୋଗ କରନ୍ତି। ଏହା ନିର୍ଦ୍ଦେଶକ ମଣ୍ଡଳରୁ ଅଲଗା ଏକ ପରାମର୍ଶଦାତା ଭୂମିକା।",
+      en: "Amit supports the Foundation with strategic guidance and helps the team review priorities, partnerships and future direction.",
+      od: "ଅମିତ ଫାଉଣ୍ଡେସନକୁ ରଣନୀତିକ ମାର୍ଗଦର୍ଶନ ଦିଅନ୍ତି ଏବଂ ପ୍ରାଥମିକତା, ସହଭାଗିତା ଓ ଭବିଷ୍ୟତ ଦିଗର ସମୀକ୍ଷାରେ ଦଳକୁ ସହଯୋଗ କରନ୍ତି।",
     },
   },
   {
@@ -220,8 +220,8 @@ const ORGANISATION_HIERARCHY: HierarchyLevel[] = [
       od: "ଏହା ଆଇନଗତ ପରିଚାଳନା ମଣ୍ଡଳ। ଫାଉଣ୍ଡେସନର ଉଦ୍ଦେଶ୍ୟ, ନୀତି, ଅନୁପାଳନ, ଆର୍ଥିକ ବ୍ୟବସ୍ଥା ଓ ମୁଖ୍ୟ କାର୍ଯ୍ୟକ୍ରମ ନିଷ୍ପତ୍ତି ଦେଖେ।",
     },
     scope: {
-      en: "Confirmed directors: Abhimanyu Mallik and Biswajita Mallik",
-      od: "ନିଶ୍ଚିତ ନିର୍ଦ୍ଦେଶକ: ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ ଓ ବିଶ୍ୱଜିତା ମଲ୍ଲିକ",
+      en: "Directors: Abhimanyu Mallik and Biswajita Mallik",
+      od: "ନିର୍ଦ୍ଦେଶକ: ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ ଓ ବିଶ୍ୱଜିତା ମଲ୍ଲିକ",
     },
   },
   {
@@ -388,8 +388,8 @@ export default function Team() {
           "ପରିଚାଳନା ମଣ୍ଡଳ ଓ ନେତୃତ୍ୱ, ଅଭିଆରା ଫାଉଣ୍ଡେସନ",
         )}
         description={t(
-          "Meet the confirmed directors, advisors and ground team of Abhiara Foundation.",
-          "ଅଭିଆରା ଫାଉଣ୍ଡେସନର ନିଶ୍ଚିତ ନିର୍ଦ୍ଦେଶକ, ପରାମର୍ଶଦାତା ଓ କ୍ଷେତ୍ର ଦଳକୁ ଜାଣନ୍ତୁ।",
+          "Meet the people associated with Abhiara Foundation.",
+          "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସହ ଜଡିତ ଲୋକମାନଙ୍କୁ ଜାଣନ୍ତୁ।",
         )}
         image="/images/team-abhimanyu-mallik.png"
         url="https://www.abhiarafoundation.com/team"
@@ -413,8 +413,8 @@ export default function Team() {
               </h1>
               <p className="font-sans text-[17px] text-[#555] max-w-xl leading-8 mb-8">
                 {t(
-                  "Meet the directors, advisors and ground team responsible for Abhiara Foundation's work. Only confirmed public roles are shown here.",
-                  "ଅଭିଆରା ଫାଉଣ୍ଡେସନର କାମ ପାଇଁ ଦାୟୀ ନିର୍ଦ୍ଦେଶକ, ପରାମର୍ଶଦାତା ଓ କ୍ଷେତ୍ର ଦଳକୁ ଜାଣନ୍ତୁ। ଏଠାରେ କେବଳ ନିଶ୍ଚିତ ସାର୍ବଜନୀନ ଭୂମିକା ଦିଆଯାଇଛି।",
+                  "Meet the people associated with Abhiara Foundation and read their current roles.",
+                  "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସହ ଜଡିତ ଲୋକମାନେ ଓ ସେମାନଙ୍କ ବର୍ତ୍ତମାନ ଭୂମିକା ବିଷୟରେ ଜାଣନ୍ତୁ।",
                 )}
               </p>
               <div className="flex flex-wrap gap-3" aria-label={t("Page sections", "ପୃଷ୍ଠା ବିଭାଗ")}>
@@ -476,8 +476,8 @@ export default function Team() {
               <div className="border-l-4 border-[#1A7F8E] bg-[#F4FAF9] px-6 py-5">
                 <p className="font-sans text-[14px] text-[#3F5653] leading-6">
                   {t(
-                    "Only official roles already confirmed in the Foundation's public records are shown on this page.",
-                    "ଫାଉଣ୍ଡେସନର ସାର୍ବଜନୀନ ରେକର୍ଡରେ ପୂର୍ବରୁ ନିଶ୍ଚିତ ହୋଇଥିବା ଅଧିକୃତ ଭୂମିକାମାନେ ମାତ୍ର ଏହି ପୃଷ୍ଠାରେ ଦିଆଯାଇଛି।",
+                    "Roles shown on this page follow the Foundation's public records.",
+                    "ଏହି ପୃଷ୍ଠାରେ ଦର୍ଶାଯାଇଥିବା ଭୂମିକାଗୁଡ଼ିକ ଫାଉଣ୍ଡେସନର ସାର୍ବଜନୀନ ରେକର୍ଡ ଅନୁସରଣ କରେ।",
                   )}
                 </p>
               </div>
@@ -555,8 +555,8 @@ export default function Team() {
               </h2>
               <p className="font-sans text-[16px] text-[#555] max-w-2xl mx-auto leading-7">
                 {t(
-                  "The Founding Patron and other advisors share strategic and practical guidance. They are listed separately from the Board of Directors.",
-                  "ପ୍ରତିଷ୍ଠାକାଳୀନ ପୃଷ୍ଠପୋଷକ ଓ ଅନ୍ୟ ପରାମର୍ଶଦାତାମାନେ ରଣନୀତିକ ଏବଂ ବ୍ୟବହାରିକ ପରାମର୍ଶ ଦିଅନ୍ତି। ସେମାନଙ୍କୁ ନିର୍ଦ୍ଦେଶକ ମଣ୍ଡଳରୁ ଅଲଗା ଭାବେ ଦର୍ଶାଯାଇଛି।",
+                  "The Founding Patron and other advisors share strategic and practical guidance.",
+                  "ପ୍ରତିଷ୍ଠାକାଳୀନ ପୃଷ୍ଠପୋଷକ ଓ ଅନ୍ୟ ପରାମର୍ଶଦାତାମାନେ ରଣନୀତିକ ଏବଂ ବ୍ୟବହାରିକ ପରାମର୍ଶ ଦିଅନ୍ତି।",
                 )}
               </p>
             </AnimatedSection>

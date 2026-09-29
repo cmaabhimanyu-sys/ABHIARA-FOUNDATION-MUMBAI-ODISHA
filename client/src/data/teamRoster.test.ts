@@ -101,7 +101,7 @@ describe("public board and leadership roster", () => {
     expect(boardData).not.toContain("Amit Kumar Jena");
     expect(amitProfile).toContain("Founding Patron and Strategic Advisor");
     expect(amitProfile).toContain("team-amit-kumar-jena.jpeg");
-    expect(amitProfile).toContain("separate from the Board of Directors");
+    expect(amitProfile).not.toContain("separate from the Board of Directors");
   });
 
   it("is bilingual and keeps leadership photographs full frame", () => {

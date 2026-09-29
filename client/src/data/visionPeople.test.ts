@@ -42,21 +42,19 @@ describe("vision, mission, values and people page", () => {
     expect(visionPage).toContain("ଆମ ଲୋକମାନେ");
   });
 
-  it("keeps the people section aligned with the verified public hierarchy", () => {
-    expect(visionPage).toContain("2 confirmed directors");
-    expect(visionPage).toContain("Published members");
-    expect(visionPage).toContain("Published advisors");
-    expect(visionPage).toContain("/board-and-transparency#board");
-    expect(visionPage).toContain("/board-and-transparency#members");
-    expect(visionPage).toContain("/board-and-transparency#advisors");
+  it("keeps the people section aligned with one ordered public roster", () => {
+    expect(visionPage).toContain("People of Abhiara Foundation");
+    expect(visionPage).toContain("One public roster");
+    expect(visionPage).toContain("/board-and-transparency#people");
     expect(visionPage).toContain("trpc.cms.leadership.listPublished.useQuery");
-    expect(visionPage).toContain("publishedBoardCount");
-    expect(visionPage).toContain("publishedMemberCount");
-    expect(visionPage).toContain("publishedAdvisorCount");
+    expect(visionPage).toContain("publishedPeopleCount");
+    expect(visionPage).toContain("public profiles");
+    expect(visionPage).not.toContain("confirmed directors");
+    expect(visionPage).not.toContain("Published advisors");
     expect(teamPage).toContain("Board of Directors");
     expect(teamPage).toContain("Advisory Support");
     expect(teamPage).toContain("Programme and Field Team");
-    expect(visionPage).toContain("team-amit-kumar-jena.jpeg");
+    expect(visionPage).toContain("team-bhubaneswar.jpeg");
   });
 
   it("removes unsupported future targets and fixed institutional promises", () => {
@@ -76,7 +74,7 @@ describe("vision, mission, values and people page", () => {
   });
 
   it("uses only registered local images and keeps every photograph full frame", () => {
-    expect(visionImages.length).toBeGreaterThanOrEqual(8);
+    expect(visionImages.length).toBeGreaterThanOrEqual(6);
 
     for (const file of visionImages) {
       expect(registeredFiles.has(file)).toBe(true);

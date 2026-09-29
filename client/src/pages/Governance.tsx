@@ -32,22 +32,26 @@ function MemberCard({
   return (
     <article className="overflow-hidden border border-[#E8DCC6] bg-white">
       {member.imageUrl ? (
-        <div className="flex h-72 items-center justify-center bg-[#F5EFE3] p-4">
+        <div className="aspect-[4/5] overflow-hidden bg-[#F5EFE3]">
           <img
             src={member.imageUrl}
             alt={`${name}, ${role}`}
-            className="h-full w-full object-contain"
+            width={800}
+            height={1000}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover"
           />
         </div>
       ) : (
-        <div className="flex h-72 items-center justify-center bg-[#F5EFE3]">
+        <div className="flex aspect-[4/5] items-center justify-center bg-[#F5EFE3]">
           <span className="font-serif text-5xl font-bold text-[#9A6100]">
             {initials}
           </span>
         </div>
       )}
       <div className="p-6">
-        <h3 className="font-serif text-2xl font-bold text-[#1A1A1A]">{name}</h3>
+        <h2 className="font-serif text-2xl font-bold text-[#1A1A1A]">{name}</h2>
         <p className="mt-1 font-sans text-sm font-bold text-[#9A6100]">
           {role}
         </p>
@@ -75,14 +79,6 @@ function MemberCard({
   );
 }
 
-function EmptyPeopleMessage({ text }: { text: string }) {
-  return (
-    <p className="mt-6 border border-[#E8DCC6] bg-white p-6 text-sm text-[#666]">
-      {text}
-    </p>
-  );
-}
-
 export default function Governance() {
   const { t, language } = useLanguage();
   const { data: leadershipMembers = [] } =
@@ -92,24 +88,14 @@ export default function Governance() {
     window.scrollTo(0, 0);
   }, []);
 
-  const boardMembers = leadershipMembers.filter(
-    (member: any) => member.memberType === "board"
-  );
-  const members = leadershipMembers.filter(
-    (member: any) => member.memberType === "member"
-  );
-  const advisors = leadershipMembers.filter(
-    (member: any) => member.memberType === "advisor"
-  );
-
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title={t(
-          "Board, Members and Advisors | Abhiara Foundation",
-          "ବୋର୍ଡ, ସଦସ୍ୟ ଓ ପରାମର୍ଶଦାତା | ଅଭିଆରା ଫାଉଣ୍ଡେସନ"
+        title={t("People of Abhiara Foundation", "ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଲୋକମାନେ")}
+        description={t(
+          "Public profiles of people associated with Abhiara Foundation, shown in one clear sequence.",
+          "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସହ ଜଡିତ ଲୋକମାନଙ୍କ ସାର୍ବଜନୀନ ପ୍ରୋଫାଇଲ ଗୋଟିଏ ସ୍ପଷ୍ଟ କ୍ରମରେ ଦର୍ଶାଯାଇଛି।"
         )}
-        description="Confirmed Directors, Members and Advisory Members of Abhiara Foundation."
         url="https://www.abhiarafoundation.org/board-and-transparency"
       />
       <Navbar />
@@ -117,111 +103,55 @@ export default function Governance() {
         <section className="bg-[#111111] pb-20 pt-32 text-white md:pt-40">
           <div className="container max-w-5xl">
             <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#F5A623]">
-              {t("Our people", "ଆମ ସଦସ୍ୟ")}
+              {t("Our people", "ଆମ ଲୋକମାନେ")}
             </p>
             <h1 className="mt-5 font-serif text-4xl font-bold text-white md:text-6xl">
-              {t("Board, Members and Advisors", "ବୋର୍ଡ, ସଦସ୍ୟ ଓ ପରାମର୍ଶଦାତା")}
+              {t("People of Abhiara Foundation", "ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଲୋକମାନେ")}
             </h1>
             <p className="mt-6 max-w-3xl font-sans text-lg leading-relaxed text-white/75">
               {t(
-                "Confirmed Directors, Members and Advisory Members are shown in separate groups so every approved Abhiara role remains clear.",
-                "ପ୍ରତ୍ୟେକ ଅନୁମୋଦିତ ଅଭିଆରା ଭୂମିକା ସ୍ପଷ୍ଟ ରହିବା ପାଇଁ ନିଶ୍ଚିତ ନିର୍ଦ୍ଦେଶକ, ସଦସ୍ୟ ଓ ପରାମର୍ଶଦାତାଙ୍କୁ ଅଲଗା ଗୋଷ୍ଠୀରେ ଦର୍ଶାଯାଇଛି।"
+                "Everyone associated with Abhiara Foundation is shown together in one sequence with their current role and public profile details.",
+                "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସହ ଜଡିତ ସମସ୍ତ ପ୍ରକାଶିତ ବ୍ୟକ୍ତିଙ୍କୁ ସେମାନଙ୍କର ବର୍ତ୍ତମାନ ଭୂମିକା ଓ ସାର୍ବଜନୀନ ପ୍ରୋଫାଇଲ ବିବରଣୀ ସହ ଗୋଟିଏ କ୍ରମରେ ଦର୍ଶାଯାଇଛି।"
               )}
             </p>
           </div>
         </section>
 
-        <section className="bg-[#FFFDF8] py-16 md:py-24">
-          <div className="container max-w-6xl space-y-16">
-            <section id="board" className="scroll-mt-28">
-              <h2 className="font-serif text-3xl font-bold md:text-4xl">
-                {t("Board of Directors", "ନିର୍ଦ୍ଦେଶକ ମଣ୍ଡଳ")}
+        <section
+          id="people"
+          className="scroll-mt-28 bg-[#FFFDF8] py-16 md:py-24"
+        >
+          <div className="container max-w-6xl">
+            <div className="max-w-3xl">
+              <h2 className="font-serif text-3xl font-bold text-[#1A1A1A] md:text-4xl">
+                {t("People associated with Abhiara", "ଅଭିଆରା ସହ ଜଡିତ ଲୋକମାନେ")}
               </h2>
               <p className="mt-3 text-sm leading-7 text-[#666]">
                 {t(
-                  "Only confirmed directors are listed in this section.",
-                  "ଏହି ବିଭାଗରେ କେବଳ ନିଶ୍ଚିତ ନିର୍ଦ୍ଦେଶକମାନଙ୍କୁ ଦର୍ଶାଯାଇଛି।"
+                  "Profiles follow the display order managed by the Foundation owner in Admin.",
+                  "ପ୍ରୋଫାଇଲଗୁଡ଼ିକ ଆଡମିନରେ ଫାଉଣ୍ଡେସନ ମାଲିକ ନିର୍ଦ୍ଧାରଣ କରିଥିବା ପ୍ରଦର୍ଶନ କ୍ରମ ଅନୁସରଣ କରେ।"
                 )}
               </p>
-              {boardMembers.length > 0 ? (
-                <div className="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {boardMembers.map((member: any) => (
-                    <MemberCard
-                      key={member.id}
-                      member={member}
-                      language={language}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <EmptyPeopleMessage
-                  text={t(
-                    "No Board profiles are published at present.",
-                    "ବର୍ତ୍ତମାନ କୌଣସି ବୋର୍ଡ ପ୍ରୋଫାଇଲ ପ୍ରକାଶିତ ହୋଇନାହିଁ।"
-                  )}
-                />
-              )}
-            </section>
+            </div>
 
-            <section id="members" className="scroll-mt-28">
-              <h2 className="font-serif text-3xl font-bold md:text-4xl">
-                {t("Members", "ସଦସ୍ୟ")}
-              </h2>
-              <p className="mt-3 text-sm leading-7 text-[#666]">
+            {leadershipMembers.length > 0 ? (
+              <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {leadershipMembers.map((member: any) => (
+                  <MemberCard
+                    key={member.id}
+                    member={member}
+                    language={language}
+                  />
+                ))}
+              </div>
+            ) : (
+              <p className="mt-8 border border-[#E8DCC6] bg-white p-6 text-sm text-[#666]">
                 {t(
-                  "Foundation members who support programme and organisational work are listed separately from Directors and Advisors.",
-                  "କାର୍ଯ୍ୟକ୍ରମ ଓ ସଂଗଠନ କାମରେ ସହଯୋଗ କରୁଥିବା ଫାଉଣ୍ଡେସନ ସଦସ୍ୟମାନଙ୍କୁ ନିର୍ଦ୍ଦେଶକ ଓ ପରାମର୍ଶଦାତାଙ୍କଠାରୁ ଅଲଗା ଭାବେ ଦର୍ଶାଯାଇଛି।"
+                  "No people profiles are published at present.",
+                  "ବର୍ତ୍ତମାନ କୌଣସି ବ୍ୟକ୍ତିଙ୍କ ପ୍ରୋଫାଇଲ ପ୍ରକାଶିତ ହୋଇନାହିଁ।"
                 )}
               </p>
-              {members.length > 0 ? (
-                <div className="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {members.map((member: any) => (
-                    <MemberCard
-                      key={member.id}
-                      member={member}
-                      language={language}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <EmptyPeopleMessage
-                  text={t(
-                    "No Member profiles are published at present.",
-                    "ବର୍ତ୍ତମାନ କୌଣସି ସଦସ୍ୟ ପ୍ରୋଫାଇଲ ପ୍ରକାଶିତ ହୋଇନାହିଁ।"
-                  )}
-                />
-              )}
-            </section>
-
-            <section id="advisors" className="scroll-mt-28">
-              <h2 className="font-serif text-3xl font-bold md:text-4xl">
-                {t("Advisory Members", "ପରାମର୍ଶଦାତା ସଦସ୍ୟ")}
-              </h2>
-              <p className="mt-3 text-sm leading-7 text-[#666]">
-                {t(
-                  "Advisors provide professional or programme guidance. They are not listed as directors.",
-                  "ପରାମର୍ଶଦାତାମାନେ ପେଶାଗତ କିମ୍ବା କାର୍ଯ୍ୟକ୍ରମ ମାର୍ଗଦର୍ଶନ ଦିଅନ୍ତି। ସେମାନଙ୍କୁ ନିର୍ଦ୍ଦେଶକ ଭାବେ ଦର୍ଶାଯାଏ ନାହିଁ।"
-                )}
-              </p>
-              {advisors.length > 0 ? (
-                <div className="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {advisors.map((member: any) => (
-                    <MemberCard
-                      key={member.id}
-                      member={member}
-                      language={language}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <EmptyPeopleMessage
-                  text={t(
-                    "No advisory profiles are published at present.",
-                    "ବର୍ତ୍ତମାନ କୌଣସି ପରାମର୍ଶଦାତା ପ୍ରୋଫାଇଲ ପ୍ରକାଶିତ ହୋଇନାହିଁ।"
-                  )}
-                />
-              )}
-            </section>
+            )}
           </div>
         </section>
       </main>

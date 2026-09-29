@@ -7,7 +7,6 @@ import {
   HandHeart,
   Handshake,
   Heart,
-  ShieldCheck,
   Users,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -159,52 +158,22 @@ const VALUES: ValueItem[] = [
 
 const PEOPLE_GROUPS: PeopleGroup[] = [
   {
-    title: { en: "Board of Directors", od: "ନିର୍ଦ୍ଦେଶକ ମଣ୍ଡଳ" },
-    label: { en: "Official governance", od: "ଅଧିକୃତ ପରିଚାଳନା" },
-    count: { en: "2 confirmed directors", od: "୨ ଜଣ ନିଶ୍ଚିତ ନିର୍ଦ୍ଦେଶକ" },
+    title: {
+      en: "People of Abhiara Foundation",
+      od: "ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଲୋକମାନେ",
+    },
+    label: { en: "One public roster", od: "ଗୋଟିଏ ସାର୍ବଜନୀନ ତାଲିକା" },
+    count: { en: "Public profiles", od: "ସାର୍ବଜନୀନ ପ୍ରୋଫାଇଲ" },
     body: {
-      en: "The Board is responsible for purpose, compliance, finances and major programme decisions.",
-      od: "ନିର୍ଦ୍ଦେଶକ ମଣ୍ଡଳ ଉଦ୍ଦେଶ୍ୟ, ଅନୁପାଳନ, ଆର୍ଥିକ ବ୍ୟବସ୍ଥା ଓ ମୁଖ୍ୟ କାର୍ଯ୍ୟକ୍ରମ ନିଷ୍ପତ୍ତି ପାଇଁ ଦାୟୀ।",
-    },
-    image: "/images/team-abhimanyu-mallik.png",
-    imageAlt: {
-      en: "Abhimanyu Mallik, Founder and Director",
-      od: "ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ, ପ୍ରତିଷ୍ଠାତା ଓ ନିର୍ଦ୍ଦେଶକ",
-    },
-    href: "/board-and-transparency#board",
-  },
-  {
-    title: { en: "Members", od: "ସଦସ୍ୟ" },
-    label: {
-      en: "Programme and organisational work",
-      od: "କାର୍ଯ୍ୟକ୍ରମ ଓ ସଂଗଠନ କାମ",
-    },
-    count: { en: "Published members", od: "ପ୍ରକାଶିତ ସଦସ୍ୟ" },
-    body: {
-      en: "Members support programme delivery, operations, legal work, compliance and field coordination.",
-      od: "ସଦସ୍ୟମାନେ କାର୍ଯ୍ୟକ୍ରମ ପରିଚାଳନା, କାର୍ଯ୍ୟ ସମନ୍ୱୟ, ଆଇନଗତ କାମ, ଅନୁପାଳନ ଓ କ୍ଷେତ୍ର ସହଯୋଗ କରନ୍ତି।",
+      en: "Everyone associated with the Foundation is shown together in one sequence with their current role and public profile details.",
+      od: "ଫାଉଣ୍ଡେସନ ସହ ଜଡିତ ସମସ୍ତ ବ୍ୟକ୍ତିଙ୍କୁ ସେମାନଙ୍କର ବର୍ତ୍ତମାନ ଭୂମିକା ଓ ସାର୍ବଜନୀନ ପ୍ରୋଫାଇଲ ବିବରଣୀ ସହ ଗୋଟିଏ କ୍ରମରେ ଦର୍ଶାଯାଇଛି।",
     },
     image: "/images/team-bhubaneswar.jpeg",
     imageAlt: {
       en: "Abhiara Foundation team during field work",
       od: "କ୍ଷେତ୍ର କାମ ସମୟରେ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଦଳ",
     },
-    href: "/board-and-transparency#members",
-  },
-  {
-    title: { en: "Advisors", od: "ପରାମର୍ଶଦାତା" },
-    label: { en: "Subject guidance", od: "ବିଷୟଗତ ପରାମର୍ଶ" },
-    count: { en: "Published advisors", od: "ପ୍ରକାଶିତ ପରାମର୍ଶଦାତା" },
-    body: {
-      en: "Advisors share strategic, legal, education, CSR and compliance knowledge. They are listed separately from the Board.",
-      od: "ପରାମର୍ଶଦାତାମାନେ ରଣନୀତି, ଆଇନ, ଶିକ୍ଷା, CSR ଓ ଅନୁପାଳନ ବିଷୟରେ ଜ୍ଞାନ ଦିଅନ୍ତି। ସେମାନଙ୍କୁ ମଣ୍ଡଳରୁ ଅଲଗା ଭାବେ ଦର୍ଶାଯାଇଛି।",
-    },
-    image: "/images/team-amit-kumar-jena.jpeg",
-    imageAlt: {
-      en: "Amit Kumar Jena, Founding Patron and Strategic Advisor",
-      od: "ଅମିତ କୁମାର ଜେନା, ପ୍ରତିଷ୍ଠାକାଳୀନ ପୃଷ୍ଠପୋଷକ ଓ ରଣନୀତିକ ପରାମର୍ଶଦାତା",
-    },
-    href: "/board-and-transparency#advisors",
+    href: "/board-and-transparency#people",
   },
 ];
 
@@ -212,15 +181,7 @@ export default function Vision() {
   const { t } = useLanguage();
   const { data: leadershipMembers = [] } =
     trpc.cms.leadership.listPublished.useQuery(undefined, { retry: false });
-  const publishedBoardCount = leadershipMembers.filter(
-    (member: any) => member.memberType === "board"
-  ).length;
-  const publishedMemberCount = leadershipMembers.filter(
-    (member: any) => member.memberType === "member"
-  ).length;
-  const publishedAdvisorCount = leadershipMembers.filter(
-    (member: any) => member.memberType === "advisor"
-  ).length;
+  const publishedPeopleCount = leadershipMembers.length;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -455,13 +416,13 @@ export default function Vision() {
               </h2>
               <p className="font-sans text-[16px] text-[#555] max-w-2xl mx-auto leading-7">
                 {t(
-                  "Governance, advice and field work are shown separately so the public can understand who is responsible for what.",
-                  "ପରିଚାଳନା, ପରାମର୍ଶ ଓ କ୍ଷେତ୍ର କାମକୁ ଅଲଗା ଭାବେ ଦର୍ଶାଯାଇଛି, ଯାହାଦ୍ୱାରା କିଏ କେଉଁ କାମ ପାଇଁ ଦାୟୀ ତାହା ସାଧାରଣ ଲୋକ ବୁଝିପାରିବେ।"
+                  "Everyone associated with Abhiara Foundation appears together in one public sequence with their current role.",
+                  "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସହ ଜଡିତ ସମସ୍ତ ବ୍ୟକ୍ତିଙ୍କୁ ସେମାନଙ୍କ ବର୍ତ୍ତମାନ ଭୂମିକା ସହ ଗୋଟିଏ ସାର୍ବଜନୀନ କ୍ରମରେ ଦର୍ଶାଯାଇଛି।"
                 )}
               </p>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div className="mx-auto grid max-w-2xl grid-cols-1 gap-6">
               {PEOPLE_GROUPS.map((group, index) => (
                 <AnimatedSection key={group.title.en} delay={index * 0.08}>
                   <article className="h-full bg-white border border-[#E8E1D1] overflow-hidden shadow-[0_12px_38px_rgba(26,32,28,0.06)] flex flex-col">
@@ -481,22 +442,12 @@ export default function Vision() {
                         {t(group.title.en, group.title.od)}
                       </h3>
                       <p className="font-sans text-[13px] font-semibold text-[#8B6914] mb-4">
-                        {index === 0 && publishedBoardCount > 0
+                        {publishedPeopleCount > 0
                           ? t(
-                              `${publishedBoardCount} confirmed directors`,
-                              `${publishedBoardCount} ଜଣ ନିଶ୍ଚିତ ନିର୍ଦ୍ଦେଶକ`
+                              `${publishedPeopleCount} public profiles`,
+                              `${publishedPeopleCount} ଜଣଙ୍କ ସାର୍ବଜନୀନ ପ୍ରୋଫାଇଲ`
                             )
-                          : index === 1 && publishedMemberCount > 0
-                            ? t(
-                                `${publishedMemberCount} published members`,
-                                `${publishedMemberCount} ଜଣ ପ୍ରକାଶିତ ସଦସ୍ୟ`
-                              )
-                            : index === 2 && publishedAdvisorCount > 0
-                              ? t(
-                                  `${publishedAdvisorCount} confirmed advisors`,
-                                  `${publishedAdvisorCount} ଜଣ ନିଶ୍ଚିତ ପରାମର୍ଶଦାତା`
-                                )
-                              : t(group.count.en, group.count.od)}
+                          : t(group.count.en, group.count.od)}
                       </p>
                       <p className="font-sans text-[14px] text-[#555] leading-6 mb-6 flex-1">
                         {t(group.body.en, group.body.od)}
@@ -505,10 +456,7 @@ export default function Vision() {
                         href={group.href}
                         className="inline-flex items-center gap-2 font-sans text-[13px] font-bold text-[#1A7F8E] hover:text-[#11636F] transition-colors active:scale-[0.97]"
                       >
-                        {t(
-                          "See confirmed profiles",
-                          "ନିଶ୍ଚିତ ପ୍ରୋଫାଇଲ ଦେଖନ୍ତୁ"
-                        )}{" "}
+                        {t("See all profiles", "ସମସ୍ତ ପ୍ରୋଫାଇଲ ଦେଖନ୍ତୁ")}{" "}
                         <ArrowRight size={15} />
                       </Link>
                     </div>
@@ -516,21 +464,6 @@ export default function Vision() {
                 </AnimatedSection>
               ))}
             </div>
-
-            <AnimatedSection className="max-w-4xl mx-auto mt-10">
-              <div className="bg-[#F4FAF9] border-l-4 border-[#1A7F8E] px-6 py-5 flex items-start gap-3">
-                <ShieldCheck
-                  size={20}
-                  className="text-[#1A7F8E] shrink-0 mt-0.5"
-                />
-                <p className="font-sans text-[14px] text-[#3F5653] leading-6">
-                  {t(
-                    "Only confirmed public roles are shown. Advisors, ground team members and volunteers are not shown as directors.",
-                    "କେବଳ ନିଶ୍ଚିତ ସାର୍ବଜନୀନ ଭୂମିକା ଦର୍ଶାଯାଇଛି। ପରାମର୍ଶଦାତା, କ୍ଷେତ୍ର ଦଳ ସଦସ୍ୟ ଓ ସ୍ୱେଚ୍ଛାସେବୀଙ୍କୁ ନିର୍ଦ୍ଦେଶକ ଭାବେ ଦର୍ଶାଯାଇନାହିଁ।"
-                  )}
-                </p>
-              </div>
-            </AnimatedSection>
           </div>
         </section>
 

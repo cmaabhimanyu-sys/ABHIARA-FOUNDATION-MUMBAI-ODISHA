@@ -23,3 +23,43 @@ INSERT INTO `leadership_members` (`memberType`,`nameEn`,`nameOd`,`roleEn`,`roleO
 INSERT INTO `leadership_members` (`memberType`,`nameEn`,`nameOd`,`roleEn`,`roleOd`,`qualificationEn`,`qualificationOd`,`bioEn`,`bioOd`,`imageUrl`,`profileUrl`,`isPublished`,`sortOrder`) SELECT 'member','Ashish (Rocky)','ଆଶିଷ (ରକି)','Core Team Member','ମୁଖ୍ୟ ଦଳ ସଦସ୍ୟ',NULL,NULL,'Supports community service and ground level activities.','ସମୁଦାୟ ସେବା ଓ କ୍ଷେତ୍ର କାର୍ଯ୍ୟରେ ସହଯୋଗ କରନ୍ତି।',NULL,NULL,1,93 FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM `leadership_members` WHERE `nameEn`='Ashish (Rocky)');
 --> statement-breakpoint
 INSERT INTO `leadership_members` (`memberType`,`nameEn`,`nameOd`,`roleEn`,`roleOd`,`qualificationEn`,`qualificationOd`,`bioEn`,`bioOd`,`imageUrl`,`profileUrl`,`isPublished`,`sortOrder`) SELECT 'member','Manoj Kumar Mallik','ମନୋଜ କୁମାର ମଲ୍ଲିକ','Field Operations','କ୍ଷେତ୍ର ପରିଚାଳନା','MBA in Finance','ଫାଇନାନ୍ସରେ MBA','Coordinates field activities and programme follow up in Odisha.','ଓଡ଼ିଶାରେ କ୍ଷେତ୍ର କାର୍ଯ୍ୟ ଓ କାର୍ଯ୍ୟକ୍ରମ ଅନୁସରଣରେ ସମନ୍ୱୟ କରନ୍ତି।','/images/team-manoj-kumar-mallik.jpeg',NULL,1,94 FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM `leadership_members` WHERE `nameEn`='Manoj Kumar Mallik');
+--> statement-breakpoint
+UPDATE `leadership_members` SET `imageUrl` = CASE `id`
+  WHEN 1 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-31-48-782Z-1-abhimanyu-mallik-professional-800x1000.webp'
+  WHEN 2 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-31-54-975Z-2-biswajita-mallik-professional-800x1000.webp'
+  WHEN 3 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-31-58-631Z-3-amit-kumar-jena-professional-800x1000.webp'
+  WHEN 4 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-32-31-729Z-4-sujit-sahu-professional-800x1000.webp'
+  WHEN 5 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-32-35-445Z-5-sagar-jena-professional-800x1000.webp'
+  WHEN 6 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-32-39-249Z-6-bharat-panigrahy-professional-800x1000.webp'
+  WHEN 30001 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-32-01-917Z-30001-umakanta-mahanta-professional-800x1000.webp'
+  WHEN 30002 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-32-06-404Z-30002-gouranga-charan-sahoo-professional-800x1000.webp'
+  WHEN 30003 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-32-10-263Z-30003-mr-gurpreetsingh-nebhrani-professional-800x1000.webp'
+  WHEN 30004 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-32-13-942Z-30004-ca-asis-kumar-samal-professional-800x1000.webp'
+  WHEN 30005 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-32-17-732Z-30005-prasant-behera-professional-800x1000.webp'
+  WHEN 30006 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-32-21-832Z-30006-samiksha-parekh-professional-800x1000.webp'
+  WHEN 30007 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-32-24-997Z-30007-advocate-farheen-ansari-professional-800x1000.webp'
+  WHEN 30011 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-32-28-107Z-30011-manoj-kumar-mallik-professional-800x1000.webp'
+  ELSE `imageUrl`
+END
+WHERE `id` IN (1,2,3,4,5,6,30001,30002,30003,30004,30005,30006,30007,30011);
+--> statement-breakpoint
+UPDATE `leadership_members` SET `imageUrl` = CASE `id`
+  WHEN 1 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-40-50-691Z-1-abhimanyu-mallik-professional-800x1000.webp'
+  WHEN 2 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-40-57-287Z-2-biswajita-mallik-professional-800x1000.webp'
+  WHEN 3 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-41-01-799Z-3-amit-kumar-jena-professional-800x1000.webp'
+  WHEN 4 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-41-41-024Z-4-sujit-sahu-professional-800x1000.webp'
+  WHEN 5 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-41-44-508Z-5-sagar-jena-professional-800x1000.webp'
+  WHEN 6 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-41-47-354Z-6-bharat-panigrahy-professional-800x1000.webp'
+  WHEN 30001 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-41-07-495Z-30001-umakanta-mahanta-professional-800x1000.webp'
+  WHEN 30002 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-41-12-448Z-30002-gouranga-charan-sahoo-professional-800x1000.webp'
+  WHEN 30003 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-41-16-161Z-30003-mr-gurpreetsingh-nebhrani-professional-800x1000.webp'
+  WHEN 30004 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-41-22-029Z-30004-ca-asis-kumar-samal-professional-800x1000.webp'
+  WHEN 30005 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-41-26-676Z-30005-prasant-behera-professional-800x1000.webp'
+  WHEN 30006 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-41-30-099Z-30006-samiksha-parekh-professional-800x1000.webp'
+  WHEN 30007 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-41-33-561Z-30007-advocate-farheen-ansari-professional-800x1000.webp'
+  WHEN 30011 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-29T01-41-37-145Z-30011-manoj-kumar-mallik-professional-800x1000.webp'
+  ELSE `imageUrl`
+END
+WHERE `id` IN (1,2,3,4,5,6,30001,30002,30003,30004,30005,30006,30007,30011);
+--> statement-breakpoint
+UPDATE `leadership_members` SET `isPublished` = false WHERE `id` IN (5, 6) AND `nameEn` IN ('Sagar Jena', 'Bharat Panigrahy');
