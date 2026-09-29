@@ -25,7 +25,6 @@ const publicPhotoPages = [
   "client/src/pages/PressMedia.tsx",
   "client/src/pages/OtherVerifiedSupport.tsx",
   "client/src/pages/SupportAreaPage.tsx",
-  "client/src/pages/StudentImpact.tsx",
 ].map(path => readFileSync(path, "utf8"));
 
 describe("owner-published impact photos", () => {
@@ -34,6 +33,10 @@ describe("owner-published impact photos", () => {
     expect(home).toContain("right.isHomepageFeatured");
     expect(home).not.toContain("FEATURED_HOME_PHOTO_ID");
     expect(home).not.toContain("FEATURED_HOME_PHOTO_PATH");
+    expect(featuredMigration).toContain(
+      "WHERE `id` IN (30019, 30020, 30021, 30022)"
+    );
+    expect(featuredMigration).toContain("`isPublished` = false");
     expect(home).toContain("const orderedHeroPhotos");
     expect(home).toContain("orderedHeroPhotos.map");
     expect(home).toContain("HERO_AREA_BY_PHOTO_CATEGORY");

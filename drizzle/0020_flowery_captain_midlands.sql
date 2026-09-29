@@ -21,3 +21,9 @@ UPDATE `gallery_photos` SET `title`='Children Seated Together in a Classroom', `
 UPDATE `gallery_photos` SET `title`='Classroom Learning Session With Teaching Materials', `description`='A classroom session shows children seated near a teaching table, with educational displays and artwork visible on the wall.' WHERE `id`=30048 AND `category`='education';
 --> statement-breakpoint
 UPDATE `gallery_photos` SET `title`='Open Air Learning Session', `description`='Books and learning materials were shared during an open air education session.' WHERE `id`=1 AND `category`='education';
+--> statement-breakpoint
+UPDATE `gallery_photos`
+SET `isPublished` = false,
+    `isHomepageFeatured` = false
+WHERE `id` IN (30019, 30020, 30021, 30022)
+  AND `category` = 'education';

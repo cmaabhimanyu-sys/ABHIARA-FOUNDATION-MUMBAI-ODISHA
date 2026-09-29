@@ -184,14 +184,13 @@ describe("Vercel Blob public media", () => {
     expect(mockDel).not.toHaveBeenCalled();
   });
 
-  it("uses owner-published gallery records on Student Impact and keeps only a reviewed continuity fallback", () => {
+  it("keeps Student Impact free of individual photos after the requested removal", () => {
     const page = readFileSync("client/src/pages/StudentImpact.tsx", "utf8");
     const cms = readFileSync("server/cms-router.ts", "utf8");
-    expect(page).toContain("trpc.cms.gallery.listPublished.useQuery");
+    expect(page).not.toContain("trpc.cms.gallery.listPublished.useQuery");
     expect(page).not.toContain("trpc.cms.media.listFolder.useQuery");
-    expect(page).toMatch(
-      /data-media-source=\{\s*publishedHigherEducationPhoto\s*\?\s*"published-gallery"\s*:\s*"local-fallback"\s*\}/
-    );
+    expect(page).not.toContain("education-higher-study-support");
+    expect(page).not.toContain("data-media-source");
     expect(cms).toMatch(/listFolder:\s*adminProcedure/);
     expect(cms).toContain("media: mediaRouter");
   });

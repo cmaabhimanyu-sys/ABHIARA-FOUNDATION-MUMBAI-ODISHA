@@ -115,7 +115,7 @@ describe("education-first public website update", () => {
     ).toBe(true);
   });
 
-  it("publishes the consent-approved higher-education photograph without personal identity details", () => {
+  it("keeps the removed higher-education student photograph out of public output", () => {
     const record = registry.images.find(
       image => filename(image) === "education-higher-study-support.jpeg"
     );
@@ -124,21 +124,14 @@ describe("education-first public website update", () => {
       "utf8"
     );
 
-    expect(record).toBeDefined();
+    expect(record).toBeUndefined();
     expect(
       existsSync("client/public/images/education-higher-study-support.jpeg")
-    ).toBe(true);
-    expect(record?.caption).toContain("Consent-approved photograph");
-    expect(record?.location).toBeUndefined();
-    expect(studentImpact).toContain("trpc.cms.gallery.listPublished.useQuery");
+    ).toBe(false);
     expect(studentImpact).not.toContain("trpc.cms.media.listFolder.useQuery");
-    expect(studentImpact).toMatch(
-      /data-media-source=\{\s*publishedHigherEducationPhoto\s*\?\s*"published-gallery"\s*:\s*"local-fallback"\s*\}/
-    );
-    expect(studentImpact).toContain(
-      "/images/education-higher-study-support.jpeg"
-    );
-    expect(studentImpact).toContain("object-contain");
+    expect(studentImpact).not.toContain("cms.gallery.listPublished");
+    expect(studentImpact).not.toContain("education-higher-study-support");
+    expect(studentImpact).not.toContain("Continuing into higher education");
     expect(`${JSON.stringify(record)}\n${studentImpact}`).not.toMatch(
       /Subhransu|Sekhar Prusty|M\.Sc|IIT Delhi/i
     );
