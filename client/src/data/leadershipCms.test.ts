@@ -104,6 +104,11 @@ describe("owner managed board and advisory members", () => {
     expect(memberMigration).toContain("Ms. Biswajita Mallik");
     expect(memberMigration).toContain("Ms. Samiksha Parekh");
     expect(memberMigration).toContain("Ms. Farheen Ansari");
+    expect(memberMigration).toContain("CS (Company Secretary) and LLB");
+    expect(memberMigration).toContain(
+      "Supports the Foundation with secretarial and legal work."
+    );
+    expect(memberMigration).not.toContain("Comany secreatary");
     expect(memberMigration).not.toContain("CA Gurpreetsingh Nebhrani");
     expect(memberMigration).toContain("Mr. Kishore Kumar Parida");
     expect(memberMigration).toContain("'B.Com, MBA'");

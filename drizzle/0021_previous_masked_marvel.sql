@@ -146,3 +146,12 @@ WHERE NOT EXISTS (
   SELECT 1 FROM `leadership_members`
   WHERE `nameEn` IN ('Kishore Kumar Parida', 'Mr. Kishore Kumar Parida')
 );
+--> statement-breakpoint
+UPDATE `leadership_members`
+SET
+  `qualificationEn` = 'CS (Company Secretary) and LLB',
+  `qualificationOd` = 'କମ୍ପାନୀ ସେକ୍ରେଟାରୀ (CS) ଏବଂ LLB',
+  `bioEn` = 'Supports the Foundation with secretarial and legal work.',
+  `bioOd` = 'ଫାଉଣ୍ଡେସନକୁ ସଚିବୀୟ ଏବଂ ଆଇନଗତ କାର୍ଯ୍ୟରେ ସହଯୋଗ କରନ୍ତି।'
+WHERE `id` = 30007
+  AND `nameEn` IN ('Advocate Farheen Ansari', 'Ms. Farheen Ansari');
