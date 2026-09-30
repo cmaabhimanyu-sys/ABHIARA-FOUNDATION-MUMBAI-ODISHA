@@ -12,7 +12,7 @@ INSERT INTO `leadership_members` (`memberType`,`nameEn`,`nameOd`,`roleEn`,`roleO
 --> statement-breakpoint
 INSERT INTO `leadership_members` (`memberType`,`nameEn`,`nameOd`,`roleEn`,`roleOd`,`qualificationEn`,`qualificationOd`,`bioEn`,`bioOd`,`imageUrl`,`profileUrl`,`isPublished`,`sortOrder`) SELECT 'member','Prasant Behera',NULL,'Member and Ground Support','ସଦସ୍ୟ ଓ କ୍ଷେତ୍ର ସହଯୋଗ','B.Com, CMA Finalist','ବି.କମ୍, CMA ଫାଇନାଲିଷ୍ଟ','Based in Bhubaneswar, Odisha, and supports ground level programme work.','ଭୁବନେଶ୍ୱର, ଓଡ଼ିଶାରେ ଆଧାରିତ ଏବଂ କ୍ଷେତ୍ର ସ୍ତରର କାର୍ଯ୍ୟକ୍ରମରେ ସହଯୋଗ କରନ୍ତି।','https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-28T13-43-16-782Z-prasant-behera.jpg',NULL,1,70 FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM `leadership_members` WHERE `nameEn`='Prasant Behera');
 --> statement-breakpoint
-INSERT INTO `leadership_members` (`memberType`,`nameEn`,`nameOd`,`roleEn`,`roleOd`,`qualificationEn`,`qualificationOd`,`bioEn`,`bioOd`,`imageUrl`,`profileUrl`,`isPublished`,`sortOrder`) SELECT 'member','Samiksha Parekh',NULL,'Consultant, Mumbai','ପରାମର୍ଶଦାତା, ମୁମ୍ବାଇ','Advocate','ଆଇନଜୀବୀ','Based in Mumbai. Advises the Foundation on responsible systems, CSR readiness and organisational compliance.','ମୁମ୍ବାଇରେ ଆଧାରିତ। ଦାୟିତ୍ୱପୂର୍ଣ୍ଣ ବ୍ୟବସ୍ଥା, CSR ପ୍ରସ୍ତୁତି ଓ ସଂଗଠନୀୟ ଅନୁପାଳନ ବିଷୟରେ ଫାଉଣ୍ଡେସନକୁ ପରାମର୍ଶ ଦିଅନ୍ତି।','https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-28T13-43-21-476Z-samiksha-parekh.png',NULL,1,80 FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM `leadership_members` WHERE `nameEn`='Samiksha Parekh');
+INSERT INTO `leadership_members` (`memberType`,`nameEn`,`nameOd`,`roleEn`,`roleOd`,`qualificationEn`,`qualificationOd`,`bioEn`,`bioOd`,`imageUrl`,`profileUrl`,`isPublished`,`sortOrder`) SELECT 'member','Samiksha Parekh',NULL,'Bombay High Court','ବମ୍ବେ ହାଇକୋର୍ଟ','Advocate, LLB, LLM (IPR)','ଆଇନଜୀବୀ, LLB, LLM (IPR)','Based in Mumbai. Advises the Foundation on responsible systems, CSR readiness and organisational compliance.','ମୁମ୍ବାଇରେ ଆଧାରିତ। ଦାୟିତ୍ୱପୂର୍ଣ୍ଣ ବ୍ୟବସ୍ଥା, CSR ପ୍ରସ୍ତୁତି ଓ ସଂଗଠନୀୟ ଅନୁପାଳନ ବିଷୟରେ ଫାଉଣ୍ଡେସନକୁ ପରାମର୍ଶ ଦିଅନ୍ତି।','https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-28T13-43-21-476Z-samiksha-parekh.png',NULL,1,80 FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM `leadership_members` WHERE `nameEn`='Samiksha Parekh');
 --> statement-breakpoint
 INSERT INTO `leadership_members` (`memberType`,`nameEn`,`nameOd`,`roleEn`,`roleOd`,`qualificationEn`,`qualificationOd`,`bioEn`,`bioOd`,`imageUrl`,`profileUrl`,`isPublished`,`sortOrder`) SELECT 'member','Advocate Farheen Ansari',NULL,'Secretarial and Legal Support','ସଚିବୀୟ ଓ ଆଇନଗତ ସହଯୋଗ','Advocate','ଆଇନଜୀବୀ','Supports the Foundation with secretarial and legal work.','ଫାଉଣ୍ଡେସନର ସଚିବୀୟ ଓ ଆଇନଗତ କାମରେ ସହଯୋଗ କରନ୍ତି।','https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/2026-09-28T13-43-28-531Z-farheen-ansari.png',NULL,1,90 FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM `leadership_members` WHERE `nameEn`='Advocate Farheen Ansari');
 --> statement-breakpoint
@@ -180,10 +180,10 @@ WHERE `id` = 90001
   AND `nameEn` = 'Ms. Sonalika Das';
 --> statement-breakpoint
 UPDATE `leadership_members`
-SET `qualificationEn` = 'Advocate',
-    `qualificationOd` = 'ଆଇନଜୀବୀ',
-    `roleEn` = 'Consultant, Mumbai',
-    `roleOd` = 'ପରାମର୍ଶଦାତା, ମୁମ୍ବାଇ'
+SET `qualificationEn` = 'Advocate, LLB, LLM (IPR)',
+    `qualificationOd` = 'ଆଇନଜୀବୀ, LLB, LLM (IPR)',
+    `roleEn` = 'Bombay High Court',
+    `roleOd` = 'ବମ୍ବେ ହାଇକୋର୍ଟ'
 WHERE `id` = 30006
   AND `nameEn` = 'Ms. Samiksha Parekh';
 --> statement-breakpoint

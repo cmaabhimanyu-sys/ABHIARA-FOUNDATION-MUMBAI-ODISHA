@@ -103,9 +103,12 @@ describe("owner managed board and advisory members", () => {
     expect(memberMigration).toContain("Mr. Gurpreetsingh Nebhrani");
     expect(memberMigration).toContain("Ms. Biswajita Mallik");
     expect(memberMigration).toContain("Ms. Samiksha Parekh");
-    expect(memberMigration).toContain("`qualificationEn` = 'Advocate'");
-    expect(memberMigration).toContain("`roleEn` = 'Consultant, Mumbai'");
-    expect(memberMigration).toContain("`roleOd` = 'ପରାମର୍ଶଦାତା, ମୁମ୍ବାଇ'");
+    expect(memberMigration).toContain(
+      "`qualificationEn` = 'Advocate, LLB, LLM (IPR)'"
+    );
+    expect(memberMigration).toContain("`roleEn` = 'Bombay High Court'");
+    expect(memberMigration).toContain("`roleOd` = 'ବମ୍ବେ ହାଇକୋର୍ଟ'");
+    expect(memberMigration).not.toContain("Consultant, Mumbai");
     expect(memberMigration).toContain("Ms. Farheen Ansari");
     expect(memberMigration).toContain("CS (Company Secretary) and LLB");
     expect(memberMigration).toContain(
@@ -188,7 +191,7 @@ describe("owner managed board and advisory members", () => {
     expect(governance).toContain("Our Core People");
     expect(governance).toContain("People of Abhiara Foundation");
     expect(governance).toContain('id="people"');
-    expect(governance).toContain("one sequence");
+    expect(governance).toContain("one clear sequence");
     expect(governance).not.toContain('member.memberType === "board"');
     expect(governance).not.toContain('id="board"');
     expect(governance).not.toContain('id="members"');
@@ -200,10 +203,10 @@ describe("owner managed board and advisory members", () => {
     expect(governance).toContain("xl:grid-cols-4");
     expect(governance).toContain("shadow-[0_14px_38px_rgba(58,42,21,0.09)]");
     expect(governance).toContain("object-cover");
-    expect(governance).toContain("hasLongRole");
-    expect(governance).toContain('hasLongRole ? "text-xs leading-5"');
-    expect(governance).toContain("min-h-6");
     expect(governance).toContain("min-h-12");
+    expect(governance).toContain("education or professional qualification");
+    expect(governance).not.toContain("member.roleEn");
+    expect(governance).not.toContain("member.roleOd");
     expect(governance).toContain("width={800}");
     expect(governance).toContain("height={1000}");
     expect(governance).toContain('loading="lazy"');
@@ -214,13 +217,8 @@ describe("owner managed board and advisory members", () => {
       "{qualification ||",
       publicCardContent
     );
-    const roleAfterQualification = governance.indexOf(
-      "{role}",
-      qualificationAfterName
-    );
     expect(publicCardContent).toBeGreaterThan(-1);
     expect(qualificationAfterName).toBeGreaterThan(publicCardContent);
-    expect(roleAfterQualification).toBeGreaterThan(qualificationAfterName);
     expect(governance).toContain("<details");
     expect(governance).toContain("View details");
     expect(governance).toContain("Close details");

@@ -15,14 +15,11 @@ function MemberCard({
 }) {
   const name =
     language === "od" ? member.nameOd || member.nameEn : member.nameEn;
-  const role =
-    language === "od" ? member.roleOd || member.roleEn : member.roleEn;
   const qualification =
     language === "od"
       ? member.qualificationOd || member.qualificationEn
       : member.qualificationEn;
   const bio = language === "od" ? member.bioOd || member.bioEn : member.bioEn;
-  const hasLongRole = String(role).length > 32;
   const initials = String(name)
     .split(/\s+/)
     .filter(Boolean)
@@ -36,7 +33,7 @@ function MemberCard({
         {member.imageUrl ? (
           <img
             src={member.imageUrl}
-            alt={`${name}, ${role}`}
+            alt={name}
             width={800}
             height={1000}
             loading="lazy"
@@ -53,15 +50,8 @@ function MemberCard({
         <h2 className="font-sans text-lg font-extrabold leading-snug text-[#B04A2B]">
           {name}
         </h2>
-        <p className="mt-2 min-h-6 font-sans text-sm font-semibold leading-6 text-[#555]">
+        <p className="mt-2 min-h-12 font-sans text-sm font-semibold leading-6 text-[#555]">
           {qualification || <span aria-hidden="true">&nbsp;</span>}
-        </p>
-        <p
-          className={`mt-2 min-h-12 font-sans font-bold text-[#1A1A1A] ${
-            hasLongRole ? "text-xs leading-5" : "text-sm leading-6"
-          }`}
-        >
-          {role}
         </p>
         {(bio || member.profileUrl) && (
           <details className="group mt-auto border-t border-[#E8DCC6] pt-4 text-left">
@@ -132,8 +122,8 @@ export default function Governance() {
             </h1>
             <p className="mt-6 max-w-3xl font-sans text-lg leading-relaxed text-white/75">
               {t(
-                "Everyone associated with Abhiara Foundation is shown together in one sequence with their current role and public profile details.",
-                "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସହ ଜଡିତ ସମସ୍ତ ପ୍ରକାଶିତ ବ୍ୟକ୍ତିଙ୍କୁ ସେମାନଙ୍କର ବର୍ତ୍ତମାନ ଭୂମିକା ଓ ସାର୍ବଜନୀନ ପ୍ରୋଫାଇଲ ବିବରଣୀ ସହ ଗୋଟିଏ କ୍ରମରେ ଦର୍ଶାଯାଇଛି।"
+                "Everyone associated with Abhiara Foundation is shown together in one clear sequence with public profile details.",
+                "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସହ ଜଡିତ ସମସ୍ତ ପ୍ରକାଶିତ ବ୍ୟକ୍ତିଙ୍କୁ ସାର୍ବଜନୀନ ପ୍ରୋଫାଇଲ ବିବରଣୀ ସହ ଗୋଟିଏ ସ୍ପଷ୍ଟ କ୍ରମରେ ଦର୍ଶାଯାଇଛି।"
               )}
             </p>
           </div>
@@ -150,8 +140,8 @@ export default function Governance() {
               </h2>
               <p className="mt-3 text-sm leading-7 text-[#666]">
                 {t(
-                  "Each profile shows the person’s current public role. Open the details to read more.",
-                  "ପ୍ରତ୍ୟେକ ପ୍ରୋଫାଇଲରେ ବ୍ୟକ୍ତିଙ୍କ ବର୍ତ୍ତମାନ ସାର୍ବଜନୀନ ଭୂମିକା ଦିଆଯାଇଛି। ଅଧିକ ପଢ଼ିବା ପାଇଁ ବିବରଣୀ ଖୋଲନ୍ତୁ।"
+                  "Each profile shows the person’s education or professional qualification when available. Open the details to read more.",
+                  "ଉପଲବ୍ଧ ଥିଲେ ପ୍ରତ୍ୟେକ ପ୍ରୋଫାଇଲରେ ବ୍ୟକ୍ତିଙ୍କ ଶିକ୍ଷା କିମ୍ବା ବୃତ୍ତିଗତ ଯୋଗ୍ୟତା ଦିଆଯାଇଛି। ଅଧିକ ପଢ଼ିବା ପାଇଁ ବିବରଣୀ ଖୋଲନ୍ତୁ।"
                 )}
               </p>
             </div>
