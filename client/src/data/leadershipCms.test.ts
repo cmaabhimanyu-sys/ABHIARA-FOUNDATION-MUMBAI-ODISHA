@@ -103,6 +103,9 @@ describe("owner managed board and advisory members", () => {
     expect(memberMigration).toContain("Mr. Gurpreetsingh Nebhrani");
     expect(memberMigration).toContain("Ms. Biswajita Mallik");
     expect(memberMigration).toContain("Ms. Samiksha Parekh");
+    expect(memberMigration).toContain("`qualificationEn` = 'Advocate'");
+    expect(memberMigration).toContain("`roleEn` = 'Consultant, Mumbai'");
+    expect(memberMigration).toContain("`roleOd` = 'ପରାମର୍ଶଦାତା, ମୁମ୍ବାଇ'");
     expect(memberMigration).toContain("Ms. Farheen Ansari");
     expect(memberMigration).toContain("CS (Company Secretary) and LLB");
     expect(memberMigration).toContain(
@@ -125,6 +128,18 @@ describe("owner managed board and advisory members", () => {
     expect(memberMigration).toContain(
       "'Founding Patron and Strategic Advisor'"
     );
+    for (const marker of [
+      "WHEN 30003 THEN 70",
+      "WHEN 30007 THEN 80",
+      "WHEN 30006 THEN 90",
+      "WHEN 30004 THEN 100",
+      "WHEN 30005 THEN 110",
+      "WHEN 30002 THEN 120",
+      "WHEN 60001 THEN 130",
+      "WHEN 90001 THEN 140",
+    ]) {
+      expect(memberMigration).toContain(marker);
+    }
     expect(team).toContain('en: "Advocate, LLB"');
   });
 
@@ -185,6 +200,10 @@ describe("owner managed board and advisory members", () => {
     expect(governance).toContain("xl:grid-cols-4");
     expect(governance).toContain("shadow-[0_14px_38px_rgba(58,42,21,0.09)]");
     expect(governance).toContain("object-cover");
+    expect(governance).toContain("hasLongRole");
+    expect(governance).toContain('hasLongRole ? "text-xs leading-5"');
+    expect(governance).toContain("min-h-6");
+    expect(governance).toContain("min-h-12");
     expect(governance).toContain("width={800}");
     expect(governance).toContain("height={1000}");
     expect(governance).toContain('loading="lazy"');
@@ -192,7 +211,7 @@ describe("owner managed board and advisory members", () => {
       '<div className="mt-7 flex flex-1 flex-col">'
     );
     const qualificationAfterName = governance.indexOf(
-      "{qualification && (",
+      "{qualification ||",
       publicCardContent
     );
     const roleAfterQualification = governance.indexOf(

@@ -22,6 +22,7 @@ function MemberCard({
       ? member.qualificationOd || member.qualificationEn
       : member.qualificationEn;
   const bio = language === "od" ? member.bioOd || member.bioEn : member.bioEn;
+  const hasLongRole = String(role).length > 32;
   const initials = String(name)
     .split(/\s+/)
     .filter(Boolean)
@@ -52,12 +53,14 @@ function MemberCard({
         <h2 className="font-sans text-lg font-extrabold leading-snug text-[#B04A2B]">
           {name}
         </h2>
-        {qualification && (
-          <p className="mt-2 font-sans text-sm font-semibold leading-6 text-[#555]">
-            {qualification}
-          </p>
-        )}
-        <p className="mt-2 font-sans text-sm font-bold leading-6 text-[#1A1A1A]">
+        <p className="mt-2 min-h-6 font-sans text-sm font-semibold leading-6 text-[#555]">
+          {qualification || <span aria-hidden="true">&nbsp;</span>}
+        </p>
+        <p
+          className={`mt-2 min-h-12 font-sans font-bold text-[#1A1A1A] ${
+            hasLongRole ? "text-xs leading-5" : "text-sm leading-6"
+          }`}
+        >
           {role}
         </p>
         {(bio || member.profileUrl) && (
