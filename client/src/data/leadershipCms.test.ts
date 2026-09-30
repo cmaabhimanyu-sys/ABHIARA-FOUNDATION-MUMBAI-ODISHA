@@ -180,12 +180,17 @@ describe("owner managed board and advisory members", () => {
     expect(governance).not.toContain('id="advisors"');
     expect(governance).not.toContain("Only confirmed directors");
     expect(governance).not.toContain("separate groups");
-    expect(governance).toContain("aspect-[4/5]");
+    expect(governance).toContain("rounded-full");
+    expect(governance).toContain("text-center");
+    expect(governance).toContain("xl:grid-cols-4");
+    expect(governance).toContain("shadow-[0_14px_38px_rgba(58,42,21,0.09)]");
     expect(governance).toContain("object-cover");
     expect(governance).toContain("width={800}");
     expect(governance).toContain("height={1000}");
     expect(governance).toContain('loading="lazy"');
-    const publicCardContent = governance.indexOf('<div className="p-6">');
+    const publicCardContent = governance.indexOf(
+      '<div className="mt-7 flex flex-1 flex-col">'
+    );
     const qualificationAfterName = governance.indexOf(
       "{qualification && (",
       publicCardContent

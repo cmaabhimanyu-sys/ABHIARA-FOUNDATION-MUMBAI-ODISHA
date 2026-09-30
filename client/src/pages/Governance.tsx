@@ -30,9 +30,9 @@ function MemberCard({
     .join("");
 
   return (
-    <article className="overflow-hidden border border-[#E8DCC6] bg-white">
-      {member.imageUrl ? (
-        <div className="aspect-[4/5] overflow-hidden bg-[#F5EFE3]">
+    <article className="flex h-full min-h-[390px] flex-col bg-white px-6 pb-6 pt-8 text-center shadow-[0_14px_38px_rgba(58,42,21,0.09)] transition-transform duration-200 ease-out hover:-translate-y-1">
+      <div className="mx-auto flex h-40 w-40 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#F5EFE3] ring-4 ring-white outline outline-1 outline-[#E5D8C2] md:h-44 md:w-44">
+        {member.imageUrl ? (
           <img
             src={member.imageUrl}
             alt={`${name}, ${role}`}
@@ -42,26 +42,26 @@ function MemberCard({
             decoding="async"
             className="h-full w-full object-cover"
           />
-        </div>
-      ) : (
-        <div className="flex aspect-[4/5] items-center justify-center bg-[#F5EFE3]">
-          <span className="font-serif text-5xl font-bold text-[#9A6100]">
+        ) : (
+          <span className="font-serif text-4xl font-bold text-[#9A6100]">
             {initials}
           </span>
-        </div>
-      )}
-      <div className="p-6">
-        <h2 className="font-serif text-2xl font-bold text-[#1A1A1A]">{name}</h2>
+        )}
+      </div>
+      <div className="mt-7 flex flex-1 flex-col">
+        <h2 className="font-sans text-lg font-extrabold leading-snug text-[#B04A2B]">
+          {name}
+        </h2>
         {qualification && (
           <p className="mt-2 font-sans text-sm font-semibold leading-6 text-[#555]">
             {qualification}
           </p>
         )}
-        <p className="mt-1 font-sans text-sm font-bold text-[#9A6100]">
+        <p className="mt-2 font-sans text-sm font-bold leading-6 text-[#1A1A1A]">
           {role}
         </p>
         {(bio || member.profileUrl) && (
-          <details className="group mt-5 border-t border-[#E8DCC6] pt-4">
+          <details className="group mt-auto border-t border-[#E8DCC6] pt-4 text-left">
             <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-sans text-sm font-bold text-[#8A5700] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A623]">
               <span className="group-open:hidden">
                 {language === "od" ? "ବିବରଣୀ ଦେଖନ୍ତୁ" : "View details"}
@@ -154,7 +154,7 @@ export default function Governance() {
             </div>
 
             {leadershipMembers.length > 0 ? (
-              <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {leadershipMembers.map((member: any) => (
                   <MemberCard
                     key={member.id}
