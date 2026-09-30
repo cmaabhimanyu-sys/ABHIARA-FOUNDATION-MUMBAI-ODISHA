@@ -78,8 +78,8 @@ const SECONDARY = [
   },
   {
     href: "/privacy",
-    en: "Privacy and Child Safeguarding",
-    od: "ଗୋପନୀୟତା ଓ ଶିଶୁ ସୁରକ୍ଷା",
+    en: "Privacy and Safeguarding",
+    od: "ଗୋପନୀୟତା ଓ ସୁରକ୍ଷା",
   },
   { href: "/terms", en: "Terms", od: "ନିୟମ" },
   { href: "/faq", en: "Frequently Asked Questions", od: "ସାଧାରଣ ପ୍ରଶ୍ନ" },

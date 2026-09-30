@@ -333,8 +333,8 @@ export const HEADER_NAV_GROUPS = [
       { href: "/press-and-media", en: "Press and Media", od: "ପ୍ରେସ ଓ ମିଡିଆ" },
       {
         href: "/privacy",
-        en: "Privacy and Child Safeguarding",
-        od: "ଗୋପନୀୟତା ଓ ଶିଶୁ ସୁରକ୍ଷା",
+        en: "Privacy and Safeguarding",
+        od: "ଗୋପନୀୟତା ଓ ସୁରକ୍ଷା",
       },
     ],
   },

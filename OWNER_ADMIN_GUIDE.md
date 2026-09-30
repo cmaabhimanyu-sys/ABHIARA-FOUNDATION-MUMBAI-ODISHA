@@ -80,6 +80,10 @@ Rules:
 - Confirm that permission for public use has been recorded for beneficiary, programme, press, elder, disaster, medical and animal welfare photos
 - Never upload Aadhaar, bank passbooks, school records, home addresses, personal phone numbers, vehicle numbers or payment details
 - Keep names and private family circumstances out of filenames and descriptions
+- For a recognisable elderly person, record consent for the specific public photo, video or story. Ask the person directly wherever they can decide for themselves. Family, caregiver or institution permission does not replace the person’s own consent.
+- Do not publish an elderly person’s identity documents, bank or pension details, exact address, phone number, diagnosis, prescription, disability details, or private family and financial circumstances.
+- If an elderly person cannot provide informed consent, keep the content private unless an authorised representative’s permission and the Foundation’s safeguarding approval are both recorded.
+- Remove or unpublish elderly media from future public use if consent is withdrawn.
 
 For every impact photo:
 
@@ -119,7 +123,7 @@ Before adding it:
 - Watch the complete video
 - Check the title, thumbnail, speech and background signs
 - Confirm permission for any recognisable person
-- Do not publish private child details, school records, phone numbers, addresses, bank details or family hardship information
+- Do not publish private child or elderly details, school or health records, phone numbers, addresses, bank or pension details, identity documents or family hardship information
 - Use the Education or Documentary category for a video that may appear in Press and Media
 
 ### 5. Social Links

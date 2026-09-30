@@ -185,8 +185,8 @@ const PUBLIC_DIRECTORY = [
       { href: "/faq", en: "Frequently Asked Questions", od: "ସାଧାରଣ ପ୍ରଶ୍ନ" },
       {
         href: "/privacy",
-        en: "Privacy and Child Safeguarding",
-        od: "ଗୋପନୀୟତା ଓ ଶିଶୁ ସୁରକ୍ଷା",
+        en: "Privacy and Safeguarding",
+        od: "ଗୋପନୀୟତା ଓ ସୁରକ୍ଷା",
       },
       {
         href: "/donation-and-refund-policy",
