@@ -593,6 +593,102 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="border-y border-[#E8D6B2] bg-[#FFFDF8] py-16 md:py-24">
+          <div className="container">
+            <AnimatedSection className="mb-10 max-w-3xl">
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#9A6100]">
+                {t("CSR & Support", "CSR ଓ ସହାୟତା")}
+              </p>
+              <h2 className="mt-3 font-serif text-3xl font-bold text-[#1A1A1A] md:text-5xl">
+                {t(
+                  "Institutional support that helps education continue.",
+                  "ଶିକ୍ଷା ଜାରି ରଖିବାରେ ସହାୟକ ସଂସ୍ଥାଗତ ସମର୍ଥନ।"
+                )}
+              </h2>
+            </AnimatedSection>
+
+            <div className="grid gap-6 lg:grid-cols-[1.35fr_0.65fr]">
+              <AnimatedSection>
+                <article className="grid h-full gap-7 border border-[#E8D6B2] bg-white p-7 md:grid-cols-[0.7fr_1.3fr] md:items-center md:p-9">
+                  <div className="flex min-h-36 items-center justify-center bg-[#FAFAFA] p-5">
+                    <img
+                      src="/images/csr-fynd-foundation-mumbai.png"
+                      alt={t("Fynd Foundation logo", "Fynd Foundation ଲୋଗୋ")}
+                      className="h-auto w-full max-w-[300px]"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div>
+                    <p className="font-mono text-[9px] font-bold uppercase tracking-[0.16em] text-[#9A6100]">
+                      {t(
+                        "Current institutional supporter",
+                        "ବର୍ତ୍ତମାନ ସଂସ୍ଥାଗତ ସମର୍ଥକ"
+                      )}
+                    </p>
+                    <h3 className="mt-3 font-serif text-2xl font-bold text-[#1A1A1A] md:text-3xl">
+                      Fynd Foundation, Mumbai
+                    </h3>
+                    <p className="mt-4 font-sans text-sm leading-7 text-[#555]">
+                      {t(
+                        "Fynd Foundation supports Abhiara Foundation’s education programme in Odisha for orphaned children and children from underprivileged families. This is institutional support and is not represented as CSR expenditure, CSR implementation or CSR eligibility.",
+                        "Fynd Foundation ଓଡ଼ିଶାରେ ଅନାଥ ଶିଶୁ ଓ ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଶିଶୁଙ୍କ ପାଇଁ ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଶିକ୍ଷା କାର୍ଯ୍ୟକ୍ରମକୁ ସହାୟତା କରୁଛି। ଏହା ସଂସ୍ଥାଗତ ସହାୟତା ଏବଂ CSR ଖର୍ଚ୍ଚ, CSR କାର୍ଯ୍ୟନ୍ୱୟନ ବା CSR ଯୋଗ୍ୟତା ଭାବେ ଦେଖାଯାଏ ନାହିଁ।"
+                      )}
+                    </p>
+                    <div className="mt-6 flex flex-wrap gap-4">
+                      <Link
+                        href="/partners-and-supporters"
+                        className="inline-flex items-center gap-2 text-sm font-bold text-[#8A5700]"
+                      >
+                        {t(
+                          "See partners and supporters",
+                          "ସହଯୋଗୀ ଓ ସମର୍ଥକ ଦେଖନ୍ତୁ"
+                        )}
+                        <ArrowRight size={15} aria-hidden="true" />
+                      </Link>
+                      <Link
+                        href="/blog/fynd-foundation-supports-education-programme"
+                        className="inline-flex items-center gap-2 text-sm font-bold text-[#1A1A1A]"
+                      >
+                        {t("Read the support story", "ସହାୟତା କାହାଣୀ ପଢ଼ନ୍ତୁ")}
+                        <ArrowRight size={15} aria-hidden="true" />
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              </AnimatedSection>
+
+              <AnimatedSection direction="right">
+                <Link
+                  href="/blog"
+                  className="group flex h-full flex-col border border-[#111111] bg-[#111111] p-8 text-white hover:border-[#F5A623]"
+                >
+                  <BookOpen
+                    size={29}
+                    className="text-[#F5A623]"
+                    aria-hidden="true"
+                  />
+                  <p className="mt-7 font-mono text-[9px] font-bold uppercase tracking-[0.16em] text-[#F5A623]">
+                    {t("Blog", "ଲେଖା ଓ କାହାଣୀ")}
+                  </p>
+                  <h3 className="mt-3 font-serif text-3xl font-bold text-white">
+                    {t("Stories from Abhiara’s work", "ଅଭିଆରାର କାମର କାହାଣୀ")}
+                  </h3>
+                  <p className="mt-4 flex-1 font-sans text-sm leading-7 text-white/70">
+                    {t(
+                      "Read factual bilingual stories about education, institutional support and verified ground activities.",
+                      "ଶିକ୍ଷା, ସଂସ୍ଥାଗତ ସହାୟତା ଓ ଯାଞ୍ଚ ହୋଇଥିବା କ୍ଷେତ୍ର କାମ ବିଷୟରେ ତଥ୍ୟଭିତ୍ତିକ ଦ୍ୱିଭାଷୀ କାହାଣୀ ପଢ଼ନ୍ତୁ।"
+                    )}
+                  </p>
+                  <span className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#F5A623]">
+                    {t("Open the Blog", "ବ୍ଲଗ ଖୋଲନ୍ତୁ")}
+                    <ArrowRight size={15} aria-hidden="true" />
+                  </span>
+                </Link>
+              </AnimatedSection>
+            </div>
+          </div>
+        </section>
+
         {impactPhotos.length > 0 && (
           <section
             className="bg-[#111111] py-14 text-white md:py-20"

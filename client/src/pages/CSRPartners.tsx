@@ -9,8 +9,133 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function CSRPartners() {
   const { t } = useLanguage();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  return <div className="min-h-screen bg-white"><SEO title={t("Partners and Supporters | Abhiara Foundation", "ସହଯୋଗୀ ଓ ସମର୍ଥକ | ଅଭିଆରା ଫାଉଣ୍ଡେସନ")} description="Institutional support for Abhiara Shiksha Sathi, with documented programme records and privacy-safe reporting." url="https://www.abhiarafoundation.org/partners-and-supporters" /><Navbar /><main id="main-content"><section className="bg-[#111111] pt-32 pb-20 text-white md:pt-40"><div className="container max-w-5xl"><p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#F5A623]">{t("Institutional support", "ସଂସ୍ଥାଗତ ସହାୟତା")}</p><h1 className="mt-5 font-serif text-4xl font-bold md:text-6xl">{t("Partners and Supporters", "ସହଯୋଗୀ ଓ ସମର୍ଥକ")}</h1><p className="mt-6 max-w-3xl font-sans text-lg leading-relaxed text-white/75">{t("We work with institutions and supporters who want to help verified children continue school. We keep clear records, use official payment channels and report responsibly.", "ସ୍ପଷ୍ଟ ରେକର୍ଡ, ଅଧିକୃତ ପେମେଣ୍ଟ ମାଧ୍ୟମ ଓ ଦାୟିତ୍ୱପୂର୍ଣ୍ଣ ରିପୋର୍ଟିଂ ମାଧ୍ୟମରେ ଯାଞ୍ଚ ହୋଇଥିବା ଶିଶୁଙ୍କ ଶିକ୍ଷା ଜାରି ରଖିବାକୁ ଇଚ୍ଛୁକ ସଂସ୍ଥା ଓ ସମର୍ଥକଙ୍କ ସହ ଆମେ କାମ କରୁ।")}</p></div></section><section className="bg-[#FFFDF8] py-16 md:py-24"><div className="container max-w-5xl"><AnimatedSection><div className="grid items-center gap-8 border border-[#E8D6B2] bg-white p-7 md:grid-cols-[0.7fr_1.3fr] md:p-10"><div className="flex min-h-[170px] items-center justify-center border border-gray-100 p-6"><img src="/images/csr-fynd-foundation-mumbai.png" alt="Fynd Foundation logo" className="h-auto w-full max-w-[320px]" /></div><div><p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#9A6100]">{t("Current institutional supporter", "ବର୍ତ୍ତମାନ ସଂସ୍ଥାଗତ ସମର୍ଥକ")}</p><h2 className="mt-3 font-serif text-3xl font-bold">Fynd Foundation, Mumbai</h2><p className="mt-4 font-sans text-base leading-relaxed text-[#555]">{t("Fynd Foundation supports Abhiara Foundation’s education programme in Odisha for orphaned children and children from underprivileged families. This is institutional support. It is not represented as CSR expenditure, CSR implementation or CSR eligibility.", "Fynd Foundation ଓଡ଼ିଶାରେ ଅନାଥ ଶିଶୁ ଓ ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଶିଶୁଙ୍କ ପାଇଁ ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଶିକ୍ଷା କାର୍ଯ୍ୟକ୍ରମକୁ ସମର୍ଥନ କରେ। ଏହା ସଂସ୍ଥାଗତ ସହାୟତା ଏବଂ CSR ଖର୍ଚ୍ଚ, CSR କାର୍ଯ୍ୟନ୍ୱୟନ ବା CSR ଯୋଗ୍ୟତା ଭାବେ ଦେଖାଯାଏ ନାହିଁ।")}</p></div></div></AnimatedSection><div className="mt-10 grid gap-5 md:grid-cols-3">{[{ icon: Handshake, title: t("Programme-linked support", "କାର୍ଯ୍ୟକ୍ରମ ସହ ଯୋଡ଼ା ସହାୟତା"), body: t("Support is for a clear education need and depends on how much support the programme can take on.", "ସହାୟତା ନିର୍ଦ୍ଦିଷ୍ଟ ଶିକ୍ଷା ଉଦ୍ଦେଶ୍ୟ ଓ ଉପଲବ୍ଧ କାର୍ଯ୍ୟକ୍ରମ କ୍ଷମତା ସହ ଯୋଡ଼ା।") }, { icon: FileCheck2, title: t("Documented records", "ରେକର୍ଡ ଭିତ୍ତିକ ତଥ୍ୟ"), body: t("The Foundation maintains approvals, payment records and programme follow-up.", "ଫାଉଣ୍ଡେସନ ଅନୁମୋଦନ, ପେମେଣ୍ଟ ରେକର୍ଡ ଓ କାର୍ଯ୍ୟକ୍ରମ ଅନୁସରଣ ରଖେ।") }, { icon: ShieldCheck, title: t("Privacy-safe reporting", "ଗୋପନୀୟତା ସୁରକ୍ଷିତ ରିପୋର୍ଟ"), body: t("Reports use combined information and do not show private child records.", "ରିପୋର୍ଟରେ ସାମୂହିକ ତଥ୍ୟ ରହେ ଓ ବ୍ୟକ୍ତିଗତ ଶିଶୁ ରେକର୍ଡ ପ୍ରକାଶ ହୁଏ ନାହିଁ।") }].map((item) => <article key={item.title} className="border border-gray-200 p-6"><item.icon className="text-[#B56A22]" /><h3 className="mt-5 font-serif text-xl font-bold">{item.title}</h3><p className="mt-3 font-sans text-sm leading-relaxed text-[#555]">{item.body}</p></article>)}</div><Link href="/contact" className="mt-10 inline-flex items-center gap-2 rounded bg-[#111111] px-6 py-3 font-sans text-sm font-bold text-white">{t("Talk to the Foundation", "ଫାଉଣ୍ଡେସନ ସହ କଥା ହୁଅନ୍ତୁ")} <ArrowRight size={15} /></Link></div></section></main><Footer /></div>;
+
+  const standards = [
+    {
+      icon: Handshake,
+      title: t("Programme-linked support", "କାର୍ଯ୍ୟକ୍ରମ ସହ ଯୋଡ଼ା ସହାୟତା"),
+      body: t(
+        "Support is for a clear education need and depends on how much support the programme can take on.",
+        "ସହାୟତା ନିର୍ଦ୍ଦିଷ୍ଟ ଶିକ୍ଷା ଉଦ୍ଦେଶ୍ୟ ଓ ଉପଲବ୍ଧ କାର୍ଯ୍ୟକ୍ରମ କ୍ଷମତା ସହ ଯୋଡ଼ା।"
+      ),
+    },
+    {
+      icon: FileCheck2,
+      title: t("Documented records", "ରେକର୍ଡ ଭିତ୍ତିକ ତଥ୍ୟ"),
+      body: t(
+        "The Foundation maintains approvals, payment records and programme follow-up.",
+        "ଫାଉଣ୍ଡେସନ ଅନୁମୋଦନ, ପେମେଣ୍ଟ ରେକର୍ଡ ଓ କାର୍ଯ୍ୟକ୍ରମ ଅନୁସରଣ ରଖେ।"
+      ),
+    },
+    {
+      icon: ShieldCheck,
+      title: t("Privacy-safe reporting", "ଗୋପନୀୟତା ସୁରକ୍ଷିତ ରିପୋର୍ଟ"),
+      body: t(
+        "Reports use combined information and do not show private child records.",
+        "ରିପୋର୍ଟରେ ସାମୂହିକ ତଥ୍ୟ ରହେ ଓ ବ୍ୟକ୍ତିଗତ ଶିଶୁ ରେକର୍ଡ ପ୍ରକାଶ ହୁଏ ନାହିଁ।"
+      ),
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      <SEO
+        title={t(
+          "CSR & Support | Abhiara Foundation",
+          "CSR ଓ ସହାୟତା | ଅଭିଆରା ଫାଉଣ୍ଡେସନ"
+        )}
+        description="Institutional support for Abhiara Shiksha Sathi, with documented programme records and privacy-safe reporting."
+        url="https://www.abhiarafoundation.org/partners-and-supporters"
+      />
+      <Navbar />
+      <main id="main-content">
+        <section className="bg-[#111111] pb-20 pt-32 text-white md:pt-40">
+          <div className="container max-w-5xl">
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#F5A623]">
+              {t("CSR & Support", "CSR ଓ ସହାୟତା")}
+            </p>
+            <h1 className="mt-5 font-serif text-4xl font-bold text-white md:text-6xl">
+              {t("Partners and Supporters", "ସହଯୋଗୀ ଓ ସମର୍ଥକ")}
+            </h1>
+            <p className="mt-6 max-w-3xl font-sans text-lg leading-relaxed text-white/75">
+              {t(
+                "We work with institutions and supporters who want to help verified children continue school. We keep clear records, use official payment channels and report responsibly.",
+                "ସ୍ପଷ୍ଟ ରେକର୍ଡ, ଅଧିକୃତ ପେମେଣ୍ଟ ମାଧ୍ୟମ ଓ ଦାୟିତ୍ୱପୂର୍ଣ୍ଣ ରିପୋର୍ଟିଂ ମାଧ୍ୟମରେ ଯାଞ୍ଚ ହୋଇଥିବା ଶିଶୁଙ୍କ ଶିକ୍ଷା ଜାରି ରଖିବାକୁ ଇଚ୍ଛୁକ ସଂସ୍ଥା ଓ ସମର୍ଥକଙ୍କ ସହ ଆମେ କାମ କରୁ।"
+              )}
+            </p>
+          </div>
+        </section>
+
+        <section className="bg-[#FFFDF8] py-16 md:py-24">
+          <div className="container max-w-5xl">
+            <AnimatedSection>
+              <div className="grid items-center gap-8 border border-[#E8D6B2] bg-white p-7 md:grid-cols-[0.7fr_1.3fr] md:p-10">
+                <div className="flex min-h-[170px] items-center justify-center border border-gray-100 p-6">
+                  <img
+                    src="/images/csr-fynd-foundation-mumbai.png"
+                    alt="Fynd Foundation logo"
+                    className="h-auto w-full max-w-[320px]"
+                  />
+                </div>
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#9A6100]">
+                    {t(
+                      "Current institutional supporter",
+                      "ବର୍ତ୍ତମାନ ସଂସ୍ଥାଗତ ସମର୍ଥକ"
+                    )}
+                  </p>
+                  <h2 className="mt-3 font-serif text-3xl font-bold">
+                    Fynd Foundation, Mumbai
+                  </h2>
+                  <p className="mt-4 font-sans text-base leading-relaxed text-[#555]">
+                    {t(
+                      "Fynd Foundation supports Abhiara Foundation’s education programme in Odisha for orphaned children and children from underprivileged families. This is institutional support. It is not represented as CSR expenditure, CSR implementation or CSR eligibility.",
+                      "Fynd Foundation ଓଡ଼ିଶାରେ ଅନାଥ ଶିଶୁ ଓ ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଶିଶୁଙ୍କ ପାଇଁ ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଶିକ୍ଷା କାର୍ଯ୍ୟକ୍ରମକୁ ସମର୍ଥନ କରେ। ଏହା ସଂସ୍ଥାଗତ ସହାୟତା ଏବଂ CSR ଖର୍ଚ୍ଚ, CSR କାର୍ଯ୍ୟନ୍ୱୟନ ବା CSR ଯୋଗ୍ୟତା ଭାବେ ଦେଖାଯାଏ ନାହିଁ।"
+                    )}
+                  </p>
+                  <Link
+                    href="/blog/fynd-foundation-supports-education-programme"
+                    className="mt-6 inline-flex items-center gap-2 font-sans text-sm font-bold text-[#8A5700]"
+                  >
+                    {t("Read the support story", "ସହାୟତା କାହାଣୀ ପଢ଼ନ୍ତୁ")}
+                    <ArrowRight size={15} />
+                  </Link>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
+              {standards.map(item => (
+                <article
+                  key={item.title}
+                  className="border border-gray-200 p-6"
+                >
+                  <item.icon className="text-[#B56A22]" />
+                  <h3 className="mt-5 font-serif text-xl font-bold">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 font-sans text-sm leading-relaxed text-[#555]">
+                    {item.body}
+                  </p>
+                </article>
+              ))}
+            </div>
+
+            <Link
+              href="/contact"
+              className="mt-10 inline-flex items-center gap-2 rounded bg-[#111111] px-6 py-3 font-sans text-sm font-bold text-white"
+            >
+              {t("Talk to the Foundation", "ଫାଉଣ୍ଡେସନ ସହ କଥା ହୁଅନ୍ତୁ")}
+              <ArrowRight size={15} />
+            </Link>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
 }

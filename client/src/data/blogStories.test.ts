@@ -14,7 +14,7 @@ describe("verified public blog stories", () => {
     expect(new Set(BLOG_STORIES.map(story => story.slug)).size).toBe(
       BLOG_STORIES.length
     );
-    expect(BLOG_STORIES.length).toBe(5);
+    expect(BLOG_STORIES.length).toBe(6);
     for (const story of BLOG_STORIES) {
       expect(STORY_CATEGORY_LABELS[story.category]).toBeDefined();
     }
@@ -27,8 +27,14 @@ describe("verified public blog stories", () => {
         true
       );
       expect(
-        story.evidenceHref.startsWith("/impact#") ||
-          story.evidenceHref === "/our-story"
+        [
+          "/our-story",
+          "/partners-and-supporters",
+          "/abhiara-pratibha-samman",
+          "/disaster-relief",
+          "/impact-gallery",
+          "/elder-care-and-dignity",
+        ].includes(story.evidenceHref)
       ).toBe(true);
     }
   });
@@ -88,9 +94,27 @@ describe("verified public blog stories", () => {
     expect(founderCopy).toContain("approved programme budget");
   });
 
-  it("keeps the retired blog out of the focused sitemap and redirects it to public reports", () => {
+  it("records Fynd Foundation only as an institutional education supporter", () => {
+    const story = BLOG_STORIES.find(
+      item => item.slug === "fynd-foundation-supports-education-programme"
+    );
+    expect(story?.category).toBe("supporters");
+    expect(story?.image).toBe("/images/csr-fynd-foundation-mumbai.png");
+    expect(story?.evidenceHref).toBe("/partners-and-supporters");
+    const publicCopy = JSON.stringify(story).toLowerCase();
+    expect(publicCopy).toContain("institutional support");
+    expect(publicCopy).toContain("education programme in odisha");
+    expect(publicCopy).toContain("not represent it as csr expenditure");
+    expect(publicCopy).not.toContain("csr partner");
+    expect(publicCopy).not.toContain("csr success");
+    expect(publicCopy).not.toMatch(/₹|amount|donor data|child name:/);
+  });
+
+  it("publishes the restored Blog and every factual story on the official domain", () => {
     const sitemap = readFileSync("client/public/sitemap.xml", "utf8");
     const app = readFileSync("client/src/App.tsx", "utf8");
+    const blog = readFileSync("client/src/pages/Blog.tsx", "utf8");
+    const article = readFileSync("client/src/pages/BlogArticle.tsx", "utf8");
     expect(
       sitemap.trimStart().startsWith('<?xml version="1.0" encoding="UTF-8"?>')
     ).toBe(true);
@@ -99,15 +123,24 @@ describe("verified public blog stories", () => {
     expect(sitemap).toContain(
       "https://www.abhiarafoundation.org/monthly-reports</loc>"
     );
-    expect(sitemap).not.toContain("/blog</loc>");
+    expect(sitemap).toContain("https://www.abhiarafoundation.org/blog</loc>");
     for (const story of BLOG_STORIES) {
-      expect(sitemap).not.toContain(`/blog/${story.slug}`);
+      expect(sitemap).toContain(
+        `https://www.abhiarafoundation.org/blog/${story.slug}</loc>`
+      );
     }
-    expect(app).toMatch(
-      /<Route path="\/blog\/:slug">\s*<Redirect to="\/monthly-reports" \/>\s*<\/Route>/
+    expect(app).toContain('const Blog = lazy(() => import("./pages/Blog"))');
+    expect(app).toContain(
+      'const BlogArticle = lazy(() => import("./pages/BlogArticle"))'
     );
-    expect(app).toMatch(
-      /<Route path="\/blog">\s*<Redirect to="\/monthly-reports" \/>\s*<\/Route>/
+    expect(app).toContain('<Route path="/blog" component={Blog} />');
+    expect(app).toContain(
+      '<Route path="/blog/:slug" component={BlogArticle} />'
     );
+    expect(app).not.toMatch(/path="\/blog[^\n]*Redirect/);
+    expect(`${blog}\n${article}`).toContain(
+      "https://www.abhiarafoundation.org/blog"
+    );
+    expect(`${blog}\n${article}`).not.toContain("abhiarafoundation.com");
   });
 });

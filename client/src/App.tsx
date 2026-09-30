@@ -45,6 +45,8 @@ const DonationPolicy = lazy(() => import("./pages/DonationPolicy"));
 const OurStory = lazy(() => import("./pages/OurStory"));
 const BirthdayWithPurpose = lazy(() => import("./pages/BirthdayWithPurpose"));
 const PressMedia = lazy(() => import("./pages/PressMedia"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogArticle = lazy(() => import("./pages/BlogArticle"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const Terms = lazy(() => import("./pages/Terms"));
 const Privacy = lazy(() => import("./pages/Privacy"));
@@ -110,6 +112,8 @@ function Router() {
         <Route path="/our-story" component={OurStory} />
         <Route path="/birthday-with-purpose" component={BirthdayWithPurpose} />
         <Route path="/press-and-media" component={PressMedia} />
+        <Route path="/blog/:slug" component={BlogArticle} />
+        <Route path="/blog" component={Blog} />
         <Route path="/faq" component={FAQ} />
         <Route path="/terms" component={Terms} />
         <Route path="/privacy" component={Privacy} />
@@ -138,12 +142,6 @@ function Router() {
         </Route>
         <Route path="/rti-and-human-rights">
           <Redirect to="/rti-human-rights-awareness" />
-        </Route>
-        <Route path="/blog/:slug">
-          <Redirect to="/monthly-reports" />
-        </Route>
-        <Route path="/blog">
-          <Redirect to="/monthly-reports" />
         </Route>
         <Route path="/csr-partners">
           <Redirect to="/partners-and-supporters" />

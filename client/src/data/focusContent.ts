@@ -179,6 +179,7 @@ export const PRIMARY_NAV = [
   },
   { href: "/student-impact", en: "Student Impact", od: "ଛାତ୍ର ପ୍ରଭାବ" },
   { href: "/monthly-reports", en: "Monthly Reports", od: "ମାସିକ ରିପୋର୍ଟ" },
+  { href: "/blog", en: "Blog", od: "ଲେଖା ଓ କାହାଣୀ" },
   {
     href: "/limited-verified-support",
     en: "Limited Verified Support",
@@ -328,6 +329,7 @@ export const HEADER_NAV_GROUPS = [
         od: "ପ୍ରଭାବ ଫଟୋ ଭଣ୍ଡାର",
       },
       { href: "/monthly-reports", en: "Monthly Reports", od: "ମାସିକ ରିପୋର୍ଟ" },
+      { href: "/blog", en: "Blog and Stories", od: "ଲେଖା ଓ କାହାଣୀ" },
       { href: "/press-and-media", en: "Press and Media", od: "ପ୍ରେସ ଓ ମିଡିଆ" },
       {
         href: "/privacy",
@@ -355,17 +357,22 @@ export const HEADER_NAV_GROUPS = [
     ],
   },
   {
-    key: "join",
-    href: "/volunteer",
-    en: "Get Involved",
-    od: "ଆମ ସହ ଯୋଗ ଦିଅନ୍ତୁ",
+    key: "support",
+    href: "/partners-and-supporters",
+    en: "CSR & Support",
+    od: "CSR ଓ ସହାୟତା",
     items: [
-      { href: "/volunteer", en: "Volunteer", od: "ସ୍ୱେଚ୍ଛାସେବୀ" },
       {
         href: "/partners-and-supporters",
         en: "Partners and Supporters",
         od: "ସହଯୋଗୀ ଓ ସମର୍ଥକ",
       },
+      {
+        href: "/blog/fynd-foundation-supports-education-programme",
+        en: "Fynd Foundation Support Story",
+        od: "Fynd Foundation ସହାୟତା କାହାଣୀ",
+      },
+      { href: "/volunteer", en: "Volunteer", od: "ସ୍ୱେଚ୍ଛାସେବୀ" },
       { href: "/contact", en: "Contact", od: "ଯୋଗାଯୋଗ" },
     ],
   },

@@ -6,6 +6,7 @@ export type LocalizedText = {
 export type StoryCategory =
   | "founder"
   | "education"
+  | "supporters"
   | "jeevan-sathi"
   | "relief"
   | "events";
@@ -37,6 +38,7 @@ export const STORY_CATEGORY_LABELS: Record<StoryCategory, LocalizedText> = {
     od: "ପ୍ରତିଷ୍ଠାତାଙ୍କ କାହାଣୀ / ଆମ କାହାଣୀ",
   },
   education: { en: "Education Support", od: "ଶିକ୍ଷା ସହାୟତା" },
+  supporters: { en: "Institutional Support", od: "ସଂସ୍ଥାଗତ ସହାୟତା" },
   "jeevan-sathi": { en: "Jeevan Sathi", od: "ଜୀବନ ସାଥୀ" },
   relief: { en: "Emergency Relief", od: "ଜରୁରୀ ସହାୟତା" },
   events: { en: "Events and Activities", od: "କାର୍ଯ୍ୟକ୍ରମ ଓ କାର୍ଯ୍ୟକଳାପ" },
@@ -101,6 +103,54 @@ export const BLOG_STORIES: BlogStory[] = [
     authorRole: { en: "Public information", od: "ସାର୍ବଜନିକ ସୂଚନା" },
   },
   {
+    slug: "fynd-foundation-supports-education-programme",
+    category: "supporters",
+    title: {
+      en: "Fynd Foundation supports Abhiara’s education programme",
+      od: "Fynd Foundation ଅଭିଆରାର ଶିକ୍ଷା କାର୍ଯ୍ୟକ୍ରମକୁ ସହାୟତା କରୁଛି",
+    },
+    excerpt: {
+      en: "Fynd Foundation, Mumbai supports Abhiara Foundation’s education programme in Odisha for orphaned children and children from underprivileged families.",
+      od: "Fynd Foundation, Mumbai ଓଡ଼ିଶାରେ ଅନାଥ ଶିଶୁ ଓ ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଶିଶୁଙ୍କ ପାଇଁ ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଶିକ୍ଷା କାର୍ଯ୍ୟକ୍ରମକୁ ସହାୟତା କରୁଛି।",
+    },
+    paragraphs: [
+      {
+        en: "Fynd Foundation, Mumbai supports Abhiara Foundation’s education programme in Odisha for orphaned children and children from underprivileged families.",
+        od: "Fynd Foundation, Mumbai ଓଡ଼ିଶାରେ ଅନାଥ ଶିଶୁ ଓ ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଶିଶୁଙ୍କ ପାଇଁ ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଶିକ୍ଷା କାର୍ଯ୍ୟକ୍ରମକୁ ସହାୟତା କରୁଛି।",
+      },
+      {
+        en: "The support is linked to Abhiara Shiksha Sathi. Under this programme, approved education help may include tuition, school bags, books, stationery, uniforms, examination needs and learning materials according to verified need.",
+        od: "ଏହି ସହାୟତା ଅଭିଆରା ଶିକ୍ଷା ସାଥୀ ସହ ଯୋଡ଼ା। ଏହି କାର୍ଯ୍ୟକ୍ରମରେ ଯାଞ୍ଚ ହୋଇଥିବା ଆବଶ୍ୟକତା ଅନୁସାରେ ଅନୁମୋଦିତ ଶିକ୍ଷା ସହାୟତାରେ ଟ୍ୟୁସନ, ସ୍କୁଲ ବ୍ୟାଗ, ପୁସ୍ତକ, ଷ୍ଟେସନେରୀ, ୟୁନିଫର୍ମ, ପରୀକ୍ଷା ଆବଶ୍ୟକତା ଓ ପଢ଼ା ସାମଗ୍ରୀ ରହିପାରେ।",
+      },
+      {
+        en: "The Foundation maintains programme approvals, payment records and follow-up. Public updates use combined information and do not publish child names, identity documents, exact addresses or private hardship histories.",
+        od: "ଫାଉଣ୍ଡେସନ କାର୍ଯ୍ୟକ୍ରମ ଅନୁମୋଦନ, ପେମେଣ୍ଟ ରେକର୍ଡ ଓ ଅନୁସରଣ ରଖେ। ସାର୍ବଜନିକ ଅଦ୍ୟତନରେ ସାମୂହିକ ତଥ୍ୟ ବ୍ୟବହାର ହୁଏ ଏବଂ ଶିଶୁଙ୍କ ନାମ, ପରିଚୟ ପତ୍ର, ସଠିକ ଠିକଣା ବା ବ୍ୟକ୍ତିଗତ କଷ୍ଟର ବିବରଣୀ ପ୍ରକାଶ ହୁଏ ନାହିଁ।",
+      },
+      {
+        en: "This is recorded as institutional support. Abhiara Foundation does not represent it as CSR expenditure, CSR implementation or CSR eligibility.",
+        od: "ଏହା ସଂସ୍ଥାଗତ ସହାୟତା ଭାବେ ରେକର୍ଡ ହୋଇଛି। ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଏହାକୁ CSR ଖର୍ଚ୍ଚ, CSR କାର୍ଯ୍ୟନ୍ୱୟନ ବା CSR ଯୋଗ୍ୟତା ଭାବେ ଦେଖାଏ ନାହିଁ।",
+      },
+    ],
+    dateISO: "2026-09-30",
+    date: { en: "Current support record", od: "ବର୍ତ୍ତମାନ ସହାୟତା ରେକର୍ଡ" },
+    location: { en: "Mumbai and Odisha, India", od: "ମୁମ୍ବାଇ ଓ ଓଡ଼ିଶା, ଭାରତ" },
+    result: {
+      en: "Institutional support for the education programme in Odisha",
+      od: "ଓଡ଼ିଶାର ଶିକ୍ଷା କାର୍ଯ୍ୟକ୍ରମ ପାଇଁ ସଂସ୍ଥାଗତ ସହାୟତା",
+    },
+    resultLabel: { en: "Support record", od: "ସହାୟତା ରେକର୍ଡ" },
+    image: "/images/csr-fynd-foundation-mumbai.png",
+    imageAlt: {
+      en: "Fynd Foundation logo",
+      od: "Fynd Foundation ଲୋଗୋ",
+    },
+    evidenceHref: "/partners-and-supporters",
+    evidenceLabel: {
+      en: "See partners and supporters",
+      od: "ସହଯୋଗୀ ଓ ସମର୍ଥକ ଦେଖନ୍ତୁ",
+    },
+  },
+  {
     slug: "pratibha-samman-2026",
     category: "education",
     title: {
@@ -137,7 +187,7 @@ export const BLOG_STORIES: BlogStory[] = [
       en: "Students, teachers, guests, and Abhiara Foundation team at Pratibha Samman 2026",
       od: "ପ୍ରତିଭା ସମ୍ମାନ ୨୦୨୬ରେ ଛାତ୍ରଛାତ୍ରୀ, ଶିକ୍ଷକ, ଅତିଥି ଓ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଦଳ",
     },
-    evidenceHref: "/impact#june-2026",
+    evidenceHref: "/abhiara-pratibha-samman",
   },
   {
     slug: "fire-relief-kankili",
@@ -179,7 +229,7 @@ export const BLOG_STORIES: BlogStory[] = [
       en: "Abhiara Foundation handing supplies to a fire-affected family in Kankili",
       od: "କଙ୍କିଲିର ଅଗ୍ନିକାଣ୍ଡ ପ୍ରଭାବିତ ପରିବାରକୁ ସାମଗ୍ରୀ ଦେଉଛି ଅଭିଆରା ଫାଉଣ୍ଡେସନ",
     },
-    evidenceHref: "/impact#june-2026",
+    evidenceHref: "/disaster-relief",
   },
   {
     slug: "pana-sankranti-water-camps",
@@ -221,7 +271,7 @@ export const BLOG_STORIES: BlogStory[] = [
       en: "Volunteers serving drinking water at a Pana Sankranti camp",
       od: "ପଣା ସଂକ୍ରାନ୍ତି ଜଳଛତ୍ରରେ ପାନୀୟ ଜଳ ଦେଉଥିବା ସ୍ୱେଚ୍ଛାସେବୀ",
     },
-    evidenceHref: "/impact#april-2026",
+    evidenceHref: "/impact-gallery",
   },
   {
     slug: "hope-is-life-old-age-home-visit",
@@ -260,7 +310,7 @@ export const BLOG_STORIES: BlogStory[] = [
       en: "Abhiara Foundation team spending time with elderly residents in Puri",
       od: "ପୁରୀର ବୃଦ୍ଧ ବାସିନ୍ଦାଙ୍କ ସହ ସମୟ ବିତାଉଥିବା ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଦଳ",
     },
-    evidenceHref: "/impact#october-2025",
+    evidenceHref: "/elder-care-and-dignity",
   },
 ];
 

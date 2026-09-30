@@ -81,6 +81,14 @@ describe("homepage programme panels and future digital learning", () => {
         "/digital-learning-ai#competitive-exams",
       ])
     );
+    expect(
+      HEADER_NAV_GROUPS.find(group => group.key === "impact")?.items.map(
+        item => item.href
+      )
+    ).toContain("/blog");
+    expect(HEADER_NAV_GROUPS.find(group => group.key === "support")?.en).toBe(
+      "CSR & Support"
+    );
   });
 
   it("keeps RTI and human rights records factual and certificate details private", () => {

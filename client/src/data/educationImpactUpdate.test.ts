@@ -151,13 +151,14 @@ describe("education-first public website update", () => {
   });
 
   it("uses the exact focused navigation and one primary education programme", () => {
-    expect(PRIMARY_NAV).toHaveLength(13);
+    expect(PRIMARY_NAV).toHaveLength(14);
     expect(PRIMARY_NAV.map(item => item.href)).toEqual([
       "/",
       "/shiksha-sathi",
       "/how-we-support-a-child",
       "/student-impact",
       "/monthly-reports",
+      "/blog",
       "/limited-verified-support",
       "/abhiara-vidyapitha",
       "/partners-and-supporters",
@@ -173,7 +174,7 @@ describe("education-first public website update", () => {
       "Other Activities",
       "Impact & Transparency",
       "Board & Presence",
-      "Get Involved",
+      "CSR & Support",
     ]);
     const groupedRoutes = HEADER_NAV_GROUPS.flatMap(group => [
       group.href,
@@ -235,10 +236,17 @@ describe("education-first public website update", () => {
 
   it("keeps Fynd Foundation as an institutional supporter without CSR claims", () => {
     const partners = readFileSync("client/src/pages/CSRPartners.tsx", "utf8");
+    const story = readFileSync("client/src/data/blogStories.ts", "utf8");
+    const home = readFileSync("client/src/pages/Home.tsx", "utf8");
     expect(partners).toContain("Fynd Foundation, Mumbai");
     expect(partners).toContain("/images/csr-fynd-foundation-mumbai.png");
     expect(partners).toContain("not represented as CSR expenditure");
     expect(partners).not.toContain("CSR implementation partner");
+    expect(story).toContain("fynd-foundation-supports-education-programme");
+    expect(story).toContain("institutional support");
+    expect(story).not.toContain("CSR implementation partner");
+    expect(home).toContain("Current institutional supporter");
+    expect(home).toContain("not represented as CSR expenditure");
   });
 
   it("keeps five future initiatives together and clearly marked as upcoming", () => {
@@ -278,8 +286,9 @@ describe("education-first public website update", () => {
       /<Route path="\/programs">\s*<Redirect to="\/shiksha-sathi" \/>\s*<\/Route>/
     );
     expect(app).toContain('<Route path="/donate" component={Donate} />');
-    expect(app).toMatch(
-      /<Route path="\/blog">\s*<Redirect to="\/monthly-reports" \/>\s*<\/Route>/
+    expect(app).toContain('<Route path="/blog" component={Blog} />');
+    expect(app).toContain(
+      '<Route path="/blog/:slug" component={BlogArticle} />'
     );
   });
 });

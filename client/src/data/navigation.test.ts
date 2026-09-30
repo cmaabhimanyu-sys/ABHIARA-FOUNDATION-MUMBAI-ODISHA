@@ -14,7 +14,7 @@ describe("compact public navigation", () => {
       "Other Activities",
       "Impact & Transparency",
       "Board & Presence",
-      "Get Involved",
+      "CSR & Support",
     ]);
     expect(HEADER_NAV_GROUPS).toHaveLength(6);
     for (const group of HEADER_NAV_GROUPS) {
@@ -118,7 +118,30 @@ describe("compact public navigation", () => {
       )
     ).toEqual(["/board-and-transparency", "/our-presence"]);
     expect(allGroupedRoutes).toContain("/abhiara-vidyapitha");
+    expect(allGroupedRoutes).toContain("/blog");
     expect(allGroupedRoutes).toContain("/contact");
     expect(navbar).toContain("Donation policy");
+  });
+
+  it("makes CSR support, the Fynd story and Blog visible in main navigation and Home", () => {
+    const support = HEADER_NAV_GROUPS.find(group => group.key === "support");
+    expect(support?.href).toBe("/partners-and-supporters");
+    expect(support?.items.map(item => item.href)).toEqual([
+      "/partners-and-supporters",
+      "/blog/fynd-foundation-supports-education-programme",
+      "/volunteer",
+      "/contact",
+    ]);
+    expect(
+      HEADER_NAV_GROUPS.find(group => group.key === "impact")?.items.map(
+        item => item.href
+      )
+    ).toContain("/blog");
+    expect(home).toContain('t("CSR & Support", "CSR ଓ ସହାୟତା")');
+    expect(home).toContain("Fynd Foundation, Mumbai");
+    expect(home).toContain(
+      'href="/blog/fynd-foundation-supports-education-programme"'
+    );
+    expect(home).toContain('href="/blog"');
   });
 });
