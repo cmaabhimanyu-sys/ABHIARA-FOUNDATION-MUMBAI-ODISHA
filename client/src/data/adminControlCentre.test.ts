@@ -68,7 +68,9 @@ describe("beginner-friendly owner control centre", () => {
     expect(admin).not.toContain("Record Donation");
     expect(admin).not.toContain("Add Donation");
     expect(admin).toContain("trpc.cms.leadership.list.useQuery");
-    expect(admin).toContain("Board members must match");
+    expect(admin).toContain(
+      "Only registered directors belong in the Board of Directors"
+    );
     expect(controlCentre).toContain("official company documents");
   });
 

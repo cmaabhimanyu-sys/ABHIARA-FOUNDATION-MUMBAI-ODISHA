@@ -574,21 +574,25 @@ export const FUTURE_INITIATIVES = [
 export const BOARD_MEMBERS = [
   {
     name: "Abhimanyu Mallik",
-    roleEn: "Founder and Director",
+    roleEn: "Founder & Director",
     roleOd: "ପ୍ରତିଷ୍ଠାତା ଓ ନିର୍ଦ୍ଦେଶକ",
   },
-  { name: "Biswajita Mallik", roleEn: "Director", roleOd: "ନିର୍ଦ୍ଦେଶକ" },
+  {
+    name: "Biswajita Mallik",
+    roleEn: "Co-Founder and Director",
+    roleOd: "ସହ-ପ୍ରତିଷ୍ଠାତା ଓ ନିର୍ଦ୍ଦେଶିକା",
+  },
 ] as const;
 
 export const ODISHA_OPERATIONS = [
   {
     name: "Umakanta Mahanta",
-    roleEn: "Chief Operating Officer, Odisha",
-    roleOd: "ମୁଖ୍ୟ ପରିଚାଳନା ଅଧିକାରୀ, ଓଡ଼ିଶା",
+    roleEn: "President, Odisha Division",
+    roleOd: "ସଭାପତି, ଓଡ଼ିଶା ବିଭାଗ",
   },
   {
-    name: "Manoj Mallik",
-    roleEn: "Verification and Field Coordination",
-    roleOd: "ଯାଞ୍ଚ ଓ କ୍ଷେତ୍ର ସମନ୍ୱୟ",
+    name: "Manoj Kumar Mallik",
+    roleEn: "Vice President, Odisha Division",
+    roleOd: "ଉପସଭାପତି, ଓଡ଼ିଶା ବିଭାଗ",
   },
 ] as const;

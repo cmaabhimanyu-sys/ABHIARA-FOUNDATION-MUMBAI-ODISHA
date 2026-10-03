@@ -165,12 +165,18 @@ export type GalleryPhoto = typeof galleryPhotos.$inferSelect;
 export type InsertGalleryPhoto = typeof galleryPhotos.$inferInsert;
 
 /**
- * Leadership members — owner-managed Board, Member and Advisory profiles.
+ * Leadership members — owner-managed Board, Advisory, Odisha Division and Core Member profiles.
  * Board membership must match the Foundation's official company records.
  */
 export const leadershipMembers = mysqlTable("leadership_members", {
   id: int("id").autoincrement().primaryKey(),
-  memberType: mysqlEnum("memberType", ["board", "member", "advisor"]).notNull(),
+  memberType: mysqlEnum("memberType", [
+    "board",
+    "auditor",
+    "advisor",
+    "odisha",
+    "member",
+  ]).notNull(),
   nameEn: varchar("nameEn", { length: 255 }).notNull(),
   nameOd: varchar("nameOd", { length: 255 }),
   roleEn: varchar("roleEn", { length: 255 }).notNull(),
@@ -179,6 +185,7 @@ export const leadershipMembers = mysqlTable("leadership_members", {
   qualificationOd: varchar("qualificationOd", { length: 500 }),
   bioEn: text("bioEn"),
   bioOd: text("bioOd"),
+  bioIsPublic: boolean("bioIsPublic").default(false).notNull(),
   imageUrl: text("imageUrl"),
   profileUrl: text("profileUrl"),
   isPublished: boolean("isPublished").default(false).notNull(),

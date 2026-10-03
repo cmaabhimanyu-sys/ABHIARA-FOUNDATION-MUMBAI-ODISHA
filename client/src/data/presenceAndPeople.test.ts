@@ -51,12 +51,12 @@ describe("board, people, and public presence", () => {
     expect(sitemap).toContain("https://www.abhiarafoundation.org/our-presence");
   });
 
-  it("keeps every published person in one sequence with expandable details", () => {
-    expect(people).toContain("leadershipMembers.map");
-    expect(people).toContain("<details");
-    expect(people).toContain("View details");
-    expect(people).toContain("Close details");
-    expect(people).not.toContain('member.memberType === "board"');
+  it("shows four CMS-managed sections with visible roles and qualifications", () => {
+    expect(people).toContain("groupPublishedPeople(leadershipMembers)");
+    expect(people).toContain("section.members.map");
+    expect(people).toContain("member.roleEn");
+    expect(people).toContain("member.qualificationEn");
+    expect(people).toContain("section.titleOd");
     expect(people).not.toContain("managed by the Foundation owner in Admin");
   });
 });

@@ -42,9 +42,9 @@ describe("vision, mission, values and people page", () => {
     expect(visionPage).toContain("ଆମ ଲୋକମାନେ");
   });
 
-  it("keeps the people section aligned with one ordered public roster", () => {
+  it("keeps the people section aligned with five public groups", () => {
     expect(visionPage).toContain("People of Abhiara Foundation");
-    expect(visionPage).toContain("One public roster");
+    expect(visionPage).toContain("Five public sections");
     expect(visionPage).toContain("/board-and-transparency#people");
     expect(visionPage).toContain("trpc.cms.leadership.listPublished.useQuery");
     expect(visionPage).toContain("publishedPeopleCount");

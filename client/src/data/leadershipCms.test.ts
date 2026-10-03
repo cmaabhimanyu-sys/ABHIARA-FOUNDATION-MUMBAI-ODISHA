@@ -1,235 +1,177 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
+import { groupPublishedPeople, PEOPLE_SECTIONS } from "./peopleSections";
 
-const schema = readFileSync("drizzle/schema.ts", "utf8");
-const migration = readFileSync("drizzle/0019_blue_darwin.sql", "utf8");
-const memberMigration = readFileSync(
-  "drizzle/0021_previous_masked_marvel.sql",
-  "utf8"
-);
-const cmsDb = readFileSync("server/cms-db.ts", "utf8");
-const cmsRouter = readFileSync("server/cms-router.ts", "utf8");
-const admin = readFileSync("client/src/pages/Admin.tsx", "utf8");
-const controlCentre = readFileSync(
-  "client/src/components/AdminControlCentre.tsx",
-  "utf8"
-);
-const governance = readFileSync("client/src/pages/Governance.tsx", "utf8");
-const team = readFileSync("client/src/pages/Team.tsx", "utf8");
-const footer = readFileSync("client/src/components/Footer.tsx", "utf8");
-const ownerGuide = readFileSync("OWNER_ADMIN_GUIDE.md", "utf8");
+const read = (path: string) => readFileSync(path, "utf8");
+const schema = read("drizzle/schema.ts");
+const earlierMigration = read("drizzle/0021_previous_masked_marvel.sql");
+const rosterMigration = read("drizzle/0022_lush_microchip.sql");
+const bioMigration = read("drizzle/0023_magenta_changeling.sql");
+const auditorMigration = read("drizzle/0024_old_sally_floyd.sql");
+const cmsDb = read("server/cms-db.ts");
+const cmsRouter = read("server/cms-router.ts");
+const admin = read("client/src/pages/Admin.tsx");
+const governance = read("client/src/pages/Governance.tsx");
+const ownerGuide = read("OWNER_ADMIN_GUIDE.md");
 
-describe("owner managed board and advisory members", () => {
-  it("uses a dedicated additive leadership table with bilingual public fields", () => {
-    expect(schema).toContain('mysqlTable("leadership_members"');
-    expect(schema).toContain('"member"');
-    for (const field of [
-      "nameEn",
-      "nameOd",
-      "roleEn",
-      "roleOd",
-      "qualificationEn",
-      "qualificationOd",
-      "bioEn",
-      "bioOd",
-      "imageUrl",
-      "profileUrl",
-      "isPublished",
-      "sortOrder",
-    ]) {
-      expect(schema).toContain(field);
-    }
-    expect(migration).toContain("CREATE TABLE `leadership_members`");
-    expect(migration).not.toMatch(/DROP TABLE|DROP COLUMN|TRUNCATE/i);
-    expect(memberMigration).toContain("enum('board','member','advisor')");
-    expect(memberMigration).toContain("people-portrait-800x1000.webp");
-    expect(memberMigration).toContain("30011-manoj-kumar-mallik");
-    expect(memberMigration).not.toMatch(/DROP TABLE|DROP COLUMN|TRUNCATE/i);
-  });
+const publishedRoster = [
+  [1, "board", "Mr. Abhimanyu Mallik"],
+  [2, "board", "Ms. Biswajita Mallik"],
+  [91004, "auditor", "R B R & Associates"],
+  [4, "advisor", "Mr. Sujit Sahu"],
+  [91001, "advisor", "Mr. Subhasis Sahoo, CMA"],
+  [3, "advisor", "Mr. Amit Kumar Jena"],
+  [30001, "odisha", "Mr. Umakanta Mahanta"],
+  [30011, "odisha", "Mr. Manoj Kumar Mallik"],
+  [30003, "member", "Mr. Gurpreetsingh Nebhrani"],
+  [30007, "member", "Ms. Farheen Ansari"],
+  [30006, "member", "Ms. Samiksha Parekh"],
+  [30004, "member", "Mr. Asis Kumar Samal"],
+  [30005, "member", "Mr. Prasant Behera"],
+  [30002, "member", "Mr. Gouranga Charan Sahoo"],
+  [60001, "member", "Mr. Kishore Kumar Parida"],
+  [90001, "member", "Ms. Sonalika Das"],
+  [91002, "member", "Mr. Ashish Kumar Swain"],
+  [91003, "member", "Mr. Viky Sangoi"],
+] as const;
 
-  it("preserves the original profiles and records requested public removals", () => {
-    for (const name of [
-      "Abhimanyu Mallik",
-      "Biswajita Mallik",
-      "Amit Kumar Jena",
-      "Sujit Sahu",
-      "Sagar Jena",
-      "Bharat Panigrahy",
-    ]) {
-      expect(migration).toContain(name);
-    }
-    expect(migration).toContain("Founding Patron and Strategic Advisor");
-    expect(migration).toContain("Founder and Director");
-    expect(migration).not.toContain(
-      "This is an advisory role, separate from the Board of Directors."
+describe("owner-managed People roster", () => {
+  it("models five bilingual groups without dropping earlier records", () => {
+    expect(schema).toContain('"odisha"');
+    expect(rosterMigration).toContain(
+      "enum('board','advisor','odisha','member')"
     );
-    expect(team).not.toContain(
-      "This is an advisory role, separate from the Board of Directors."
+    expect(rosterMigration).not.toMatch(/DROP TABLE|DROP COLUMN|TRUNCATE/i);
+    expect(rosterMigration).toContain(
+      "Unpublished historical records remain untouched"
     );
-    expect(memberMigration).toContain(
+    expect(earlierMigration).toContain(
       "SET `isPublished` = false WHERE `id` IN (5, 6)"
     );
-    expect(memberMigration).toContain("More than 25 years of experience");
-    expect(memberMigration).toContain("`qualificationEn` = NULL");
-    expect(memberMigration).toContain("`qualificationOd` = NULL");
-    expect(memberMigration).toContain(
-      "community development, child welfare and field operations"
+    expect(earlierMigration).toContain("`id` IN (30008, 30009, 30010)");
+    expect(PEOPLE_SECTIONS.map(section => section.titleEn)).toEqual([
+      "Board of Directors",
+      "Independent Statutory Auditor",
+      "Guiding Patron & Advisors",
+      "Odisha Division Leadership",
+      "Core Members",
+    ]);
+    expect(PEOPLE_SECTIONS.every(section => section.titleOd.length > 0)).toBe(
+      true
     );
-    expect(memberMigration).not.toContain("9437903009");
-    expect(memberMigration).not.toContain("ukmazad@gmail.com");
-    expect(memberMigration).not.toContain("Marital status");
-    expect(memberMigration).toContain(
-      "Head of Verification and Field Coordination, Odisha"
-    );
-    expect(memberMigration).toContain("ଓଡ଼ିଶା ଯାଞ୍ଚ ଓ କ୍ଷେତ୍ର ସମନ୍ୱୟ ମୁଖ୍ୟ");
-    const requestedOrder = [
-      "WHEN 1 THEN 10",
-      "WHEN 2 THEN 20",
-      "WHEN 3 THEN 30",
-      "WHEN 4 THEN 40",
-      "WHEN 30001 THEN 50",
-      "WHEN 30011 THEN 60",
-    ];
-    let previousIndex = -1;
-    for (const marker of requestedOrder) {
-      const markerIndex = memberMigration.indexOf(marker);
-      expect(markerIndex).toBeGreaterThan(previousIndex);
-      previousIndex = markerIndex;
-    }
-    expect(memberMigration).toContain("`id` IN (30008, 30009, 30010)");
-    expect(memberMigration).toContain(
-      "'Rajkumar Mallik', 'Alok Behera', 'Ashish (Rocky)'"
-    );
-    expect(memberMigration).toContain("Mr. Gurpreetsingh Nebhrani");
-    expect(memberMigration).toContain("Ms. Biswajita Mallik");
-    expect(memberMigration).toContain("Ms. Samiksha Parekh");
-    expect(memberMigration).toContain(
-      "`qualificationEn` = 'Advocate, LLB, LLM (IPR)'"
-    );
-    expect(memberMigration).toContain("`roleEn` = 'Bombay High Court'");
-    expect(memberMigration).toContain("`roleOd` = 'ବମ୍ବେ ହାଇକୋର୍ଟ'");
-    expect(memberMigration).not.toContain("Consultant, Mumbai");
-    expect(memberMigration).toContain("Ms. Farheen Ansari");
-    expect(memberMigration).toContain("CS (Company Secretary) and LLB");
-    expect(memberMigration).toContain(
-      "Supports the Foundation with secretarial and legal work."
-    );
-    expect(memberMigration).not.toContain("Comany secreatary");
-    expect(memberMigration).not.toContain("CA Gurpreetsingh Nebhrani");
-    expect(memberMigration).toContain("Mr. Kishore Kumar Parida");
-    expect(memberMigration).toContain("'B.Com, MBA'");
-    expect(memberMigration).toContain(
-      "kishore-kumar-parida-people-portrait-800x1000.webp"
-    );
-    expect(memberMigration).toContain("Ms. Sonalika Das");
-    expect(memberMigration).toContain("`roleEn` = 'Member'");
-    expect(memberMigration).toContain("`roleOd` = 'ସଦସ୍ୟ'");
-    expect(memberMigration).toContain(
-      "sonalika-das-people-portrait-800x1000.webp"
-    );
-    expect(memberMigration).toContain("'Advocate, LLB'");
-    expect(memberMigration).toContain(
-      "'Founding Patron and Strategic Advisor'"
-    );
-    for (const marker of [
-      "WHEN 30003 THEN 70",
-      "WHEN 30007 THEN 80",
-      "WHEN 30006 THEN 90",
-      "WHEN 30004 THEN 100",
-      "WHEN 30005 THEN 110",
-      "WHEN 30002 THEN 120",
-      "WHEN 60001 THEN 130",
-      "WHEN 90001 THEN 140",
-    ]) {
-      expect(memberMigration).toContain(marker);
-    }
-    expect(team).toContain('en: "Advocate, LLB"');
   });
 
-  it("keeps public reads separate from protected Admin changes", () => {
+  it("keeps the approved 18 records and stated qualifications and duties", () => {
+    const historicalAndCurrent =
+      earlierMigration + rosterMigration + auditorMigration;
+    expect(publishedRoster).toHaveLength(18);
+    for (const [id, section, name] of publishedRoster) {
+      expect(Number(id)).toBeGreaterThan(0);
+      expect(["board", "auditor", "advisor", "odisha", "member"]).toContain(
+        section
+      );
+      expect(historicalAndCurrent).toContain(name);
+    }
+    for (const exactText of [
+      "Co-Founder & Director",
+      "Official Director; not involved in day-to-day activities.",
+      "Guiding Patron & Legal Advisor",
+      "Senior Advisor, Education & Community Engagement",
+      "President, Odisha Division",
+      "B.A., Diploma in Community Development, PG Diploma in Psychological Counselling",
+      "More than 25 years of experience in community development, child welfare and field operations across Odisha and Karnataka.",
+      "Vice President, Odisha Division",
+      "Leads verification and field coordination; supports the President in Odisha operations.",
+      "CS and LLB",
+      "WHEN 90001 THEN 'Graduation'",
+      "M.S. Pharm",
+      "MBA in Finance",
+      "Advocate, LLB, LLM (IPR)",
+    ])
+      expect(historicalAndCurrent).toContain(exactText);
+    expect(rosterMigration).not.toContain("Consultant, Mumbai");
+    expect(rosterMigration).not.toContain("CSR readiness");
+    expect(rosterMigration).not.toContain("Rotary Club of Bhubaneswar North");
+  });
+
+  it("groups ordered people without assuming hardcoded individual cards", () => {
+    const sample = publishedRoster.map(([id, memberType, name], index) => ({
+      id,
+      memberType,
+      name,
+      sortOrder: (index + 1) * 10,
+    }));
+    const groups = groupPublishedPeople([...sample].reverse());
+    expect(groups.map(group => group.members.length)).toEqual([2, 1, 3, 2, 10]);
+    expect(
+      groups.flatMap(group => group.members.map(member => member.name))
+    ).toEqual(publishedRoster.map(([, , name]) => name));
+    expect(groups[4]?.members[9]?.name).toBe("Mr. Viky Sangoi");
+  });
+
+  it("separates public reading from protected owner mutations", () => {
     expect(cmsDb).toContain("getLeadershipMembers");
     expect(cmsDb).toContain("createLeadershipMember");
     expect(cmsDb).toContain("updateLeadershipMember");
-    expect(cmsDb).toContain("deleteLeadershipMember");
     expect(cmsRouter).toMatch(/list:\s*adminProcedure/);
     expect(cmsRouter).toMatch(/listPublished:\s*publicProcedure/);
-    expect(cmsRouter).toContain("leadership: leadershipRouter");
-  });
-
-  it("gives the owner complete member controls with legal role guidance", () => {
-    expect(controlCentre).toContain("Board, Members and Advisors");
-    expect(admin).toContain('label: "Board, Members and Advisors"');
-    expect(admin).toContain("trpc.cms.leadership.create.useMutation");
-    expect(admin).toContain("trpc.cms.leadership.update.useMutation");
-    expect(admin).toContain("trpc.cms.leadership.delete.useMutation");
-    expect(admin).toContain("Board members must match");
-    expect(admin).toContain("Advisory roles must stay separate");
-    expect(admin).toContain('<option value="member">Members</option>');
-    expect(admin).toContain("Display order");
-    expect(admin).toContain(
-      "Use Mr. for men and Ms. for women as the standard public title"
+    expect(cmsRouter).toContain(
+      '"board", "auditor", "advisor", "odisha", "member"'
     );
-    expect(admin).toContain(
-      "Use Mrs. only when the person confirms that preference"
-    );
-    expect(admin).toContain("Keep CA,");
-    expect(admin).toContain(
-      "Show this person on the public Board, Members and Advisors page"
-    );
-    expect(admin).toContain("Unpublish");
-    expect(admin).toContain("standardizeLeadershipPortrait");
+    for (const option of [
+      'value="board"',
+      'value="auditor"',
+      'value="advisor"',
+      'value="odisha"',
+      'value="member"',
+    ]) {
+      expect(admin).toContain(option);
+    }
+    expect(admin).toContain('folder: "leadership"');
+    expect(admin).toContain("trpc.cms.media.upload.useMutation");
     expect(admin).toContain("canvas.width = 800");
     expect(admin).toContain("canvas.height = 1000");
-    expect(admin).toContain('"image/webp"');
-    expect(admin).toContain("const scale = Math.max");
-    expect(admin).toContain("may crop the outer edges");
+    expect(ownerGuide).toContain("abhiara-images/leadership/");
   });
 
-  it("shows every published person in one Admin-controlled public sequence", () => {
-    expect(governance).toContain("trpc.cms.leadership.listPublished.useQuery");
-    expect(governance).toContain("leadershipMembers.map");
-    expect(governance).toContain("Our Core People");
-    expect(governance).toContain("People of Abhiara Foundation");
-    expect(governance).toContain('id="people"');
-    expect(governance).toContain("one clear sequence");
-    expect(governance).not.toContain('member.memberType === "board"');
-    expect(governance).not.toContain('id="board"');
-    expect(governance).not.toContain('id="members"');
-    expect(governance).not.toContain('id="advisors"');
-    expect(governance).not.toContain("Only confirmed directors");
-    expect(governance).not.toContain("separate groups");
+  it("shows the correct role, qualification and optional note in every public section", () => {
+    expect(governance).toContain("groupPublishedPeople(leadershipMembers)");
+    expect(governance).toContain("section.members.map");
+    expect(governance).toContain("member.roleEn");
+    expect(governance).toContain("member.roleOd");
+    expect(governance).toContain("member.qualificationEn");
+    expect(governance).toContain("{member.bioIsPublic && bio && (");
     expect(governance).toContain("rounded-full");
-    expect(governance).toContain("text-center");
+    expect(governance).toContain("object-center");
+    expect(governance).toContain(
+      'member.id === 1 ? "scale-[2] object-[center_25%] origin-[50%_25%]"'
+    );
     expect(governance).toContain("xl:grid-cols-4");
-    expect(governance).toContain("shadow-[0_14px_38px_rgba(58,42,21,0.09)]");
-    expect(governance).toContain("object-cover");
-    expect(governance).toContain("min-h-12");
-    expect(governance).toContain("education or professional qualification");
-    expect(governance).not.toContain("member.roleEn");
-    expect(governance).not.toContain("member.roleOd");
-    expect(governance).toContain("width={800}");
-    expect(governance).toContain("height={1000}");
-    expect(governance).toContain('loading="lazy"');
-    const publicCardContent = governance.indexOf(
-      '<div className="mt-7 flex flex-1 flex-col">'
+    expect(governance).not.toContain("Aadhaar");
+    expect(governance).not.toContain("Bombay High Court");
+    expect(bioMigration).toContain("`id` IN (2, 30001, 30011)");
+    expect(cmsDb).toContain(
+      "row.bioIsPublic ? row : { ...row, bioEn: null, bioOd: null }"
     );
-    const qualificationAfterName = governance.indexOf(
-      "{qualification ||",
-      publicCardContent
+    expect(admin).toContain("Show this approved short biography");
+    expect(ownerGuide).toContain("other saved biographies remain in Admin");
+  });
+
+  it("separates the auditor and does not expose the signed consent or invent a filing number", () => {
+    expect(auditorMigration).toContain("Appointed Statutory Auditor");
+    expect(auditorMigration).toContain("138415W");
+    expect(auditorMigration).toContain("CA Sandeep Gurav, Partner");
+    expect(auditorMigration).toContain("independent of the Board");
+    expect(auditorMigration).toContain(
+      "WHEN 91003 THEN 'https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/leadership/"
     );
-    expect(publicCardContent).toBeGreaterThan(-1);
-    expect(qualificationAfterName).toBeGreaterThan(publicCardContent);
-    expect(governance).toContain("<details");
-    expect(governance).toContain("View details");
-    expect(governance).toContain("Close details");
-    expect(governance).not.toContain(
-      "managed by the Foundation owner in Admin"
+    expect(auditorMigration).not.toContain("WHEN 91004 THEN");
+    expect(auditorMigration).not.toContain("profileUrl");
+    expect(admin).toContain("Written consent from the audit firm is required");
+    expect(admin).toContain("auditorMediaApproved");
+    expect(governance).not.toContain("AuditorConsent.pdf");
+    expect(auditorMigration).not.toMatch(
+      /ADT-1|SRN|114697|9930031099|rbroffice@/
     );
-    expect(governance).not.toContain("Statutory record");
-    expect(governance).not.toContain("How accountability works");
-    expect(footer).toContain("CIN U87300MH2026NPL471397");
-    expect(footer).toContain("NGO DARPAN MH/2026/1110513");
-    expect(ownerGuide).toContain("Board, Members and Advisors");
-    expect(ownerGuide).toContain("official company records");
   });
 });

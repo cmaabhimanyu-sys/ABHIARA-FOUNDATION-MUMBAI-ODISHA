@@ -1,6 +1,7 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import { getOwnerLoginUrl, OAUTH_SUPPORTED_ORIGIN } from "@/const";
+import { PEOPLE_SECTIONS } from "@/data/peopleSections";
 import { useState, useRef, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -290,8 +291,8 @@ function LeadershipPortraitUploader({
   value: string;
   onChange: (url: string) => void;
 }) {
-  const { uploadFile, isUploading } = useFileUpload();
-  const fileRef = useRef<HTMLInputElement>(null);
+  const uploadMutation = trpc.cms.media.upload.useMutation();
+  const isUploading = uploadMutation.isPending;
 
   const handleFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -306,9 +307,24 @@ function LeadershipPortraitUploader({
       if (prepared.size > 1024 * 1024) {
         throw new Error("The prepared portrait is still larger than 1 MB.");
       }
-      const url = await uploadFile(prepared);
+      const dataUrl = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result));
+        reader.onerror = reject;
+        reader.readAsDataURL(prepared);
+      });
+      const { url } = await uploadMutation.mutateAsync({
+        folder: "leadership",
+        fileName: prepared.name,
+        fileBase64: dataUrl.split(",")[1],
+        contentType: "image/webp",
+        altText: `Portrait of ${file.name.replace(/\.[^.]+$/, "")}`,
+        consentConfirmed: true,
+      });
       onChange(url);
-      toast.success("Portrait resized to 800 × 1000 and uploaded.");
+      toast.success(
+        "Portrait resized to 800 × 1000 and uploaded to Vercel Blob."
+      );
     } catch (error) {
       toast.error(
         error instanceof Error ? error.message : "Portrait upload failed."
@@ -318,7 +334,10 @@ function LeadershipPortraitUploader({
 
   return (
     <div>
-      <label className="mb-1 block text-sm font-medium text-[#333]">
+      <label
+        htmlFor="leadership-portrait-upload"
+        className="mb-1 block text-sm font-medium text-[#333]"
+      >
         Public profile photo
       </label>
       <p className="mb-2 text-xs leading-5 text-[#666]">
@@ -326,34 +345,26 @@ function LeadershipPortraitUploader({
         WebP and may crop the outer edges to keep every public profile
         consistent.
       </p>
-      <div className="flex items-center gap-2">
+      <div className="space-y-2">
         <Input
           value={value}
           onChange={event => onChange(event.target.value)}
           placeholder="Image URL or upload..."
           className="flex-1 border border-gray-300 bg-white text-[#333] focus:border-[#F5A623]"
         />
-        <Button
-          type="button"
-          variant="outline"
-          size="sm"
-          onClick={() => fileRef.current?.click()}
-          disabled={isUploading}
-          className="border-gray-200 text-[#333] hover:text-[#1A1A1A]"
-        >
-          {isUploading ? (
-            <Loader2 className="h-4 w-4 animate-spin" />
-          ) : (
-            <Upload className="h-4 w-4" />
-          )}
-        </Button>
         <input
-          ref={fileRef}
+          id="leadership-portrait-upload"
           type="file"
           accept="image/*"
           onChange={handleFile}
-          className="hidden"
+          disabled={isUploading}
+          className="block w-full rounded-md border border-gray-300 bg-white p-2 text-sm text-[#333] file:mr-3 file:rounded file:border-0 file:bg-[#F5A623] file:px-3 file:py-2 file:font-bold file:text-[#1A1A1A]"
         />
+        {isUploading && (
+          <p className="text-xs text-[#666]">
+            Uploading portrait to Vercel Blob…
+          </p>
+        )}
       </div>
       {value && (
         <img
@@ -3538,13 +3549,19 @@ function PressMediaManager({ onOpen }: { onOpen: (tab: Tab) => void }) {
   );
 }
 
-type LeadershipMemberType = "board" | "member" | "advisor";
+type LeadershipMemberType =
+  | "board"
+  | "auditor"
+  | "advisor"
+  | "odisha"
+  | "member";
 
 function LeadershipManager() {
   const utils = trpc.useUtils();
   const { data: members = [], isLoading } = trpc.cms.leadership.list.useQuery();
   const [showForm, setShowForm] = useState(false);
   const [editId, setEditId] = useState<number | null>(null);
+  const [auditorMediaApproved, setAuditorMediaApproved] = useState(false);
   const [form, setForm] = useState({
     memberType: "board" as LeadershipMemberType,
     nameEn: "",
@@ -3555,6 +3572,7 @@ function LeadershipManager() {
     qualificationOd: "",
     bioEn: "",
     bioOd: "",
+    bioIsPublic: false,
     imageUrl: "",
     profileUrl: "",
     sortOrder: 0,
@@ -3562,6 +3580,7 @@ function LeadershipManager() {
   });
 
   const resetForm = () => {
+    setAuditorMediaApproved(false);
     setForm({
       memberType: "board",
       nameEn: "",
@@ -3572,6 +3591,7 @@ function LeadershipManager() {
       qualificationOd: "",
       bioEn: "",
       bioOd: "",
+      bioIsPublic: false,
       imageUrl: "",
       profileUrl: "",
       sortOrder: 0,
@@ -3608,6 +3628,7 @@ function LeadershipManager() {
   });
 
   const startEdit = (member: any) => {
+    setAuditorMediaApproved(false);
     setForm({
       memberType: member.memberType,
       nameEn: member.nameEn,
@@ -3618,6 +3639,7 @@ function LeadershipManager() {
       qualificationOd: member.qualificationOd || "",
       bioEn: member.bioEn || "",
       bioOd: member.bioOd || "",
+      bioIsPublic: Boolean(member.bioIsPublic),
       imageUrl: member.imageUrl || "",
       profileUrl: member.profileUrl || "",
       sortOrder: member.sortOrder || 0,
@@ -3636,6 +3658,16 @@ function LeadershipManager() {
       toast.error("Profile link must begin with https://");
       return;
     }
+    if (
+      form.memberType === "auditor" &&
+      !auditorMediaApproved &&
+      (form.imageUrl.trim() || form.profileUrl.trim())
+    ) {
+      toast.error(
+        "Written consent from the audit firm is required for a partner photo or profile link."
+      );
+      return;
+    }
     const payload = {
       memberType: form.memberType,
       nameEn: form.nameEn.trim(),
@@ -3646,6 +3678,7 @@ function LeadershipManager() {
       qualificationOd: form.qualificationOd.trim() || undefined,
       bioEn: form.bioEn.trim() || undefined,
       bioOd: form.bioOd.trim() || undefined,
+      bioIsPublic: form.bioIsPublic,
       imageUrl: form.imageUrl.trim() || undefined,
       profileUrl: form.profileUrl.trim() || undefined,
       sortOrder: Number(form.sortOrder) || 0,
@@ -3671,13 +3704,15 @@ function LeadershipManager() {
             <ArrowLeft className="mr-1 h-4 w-4" /> Back
           </Button>
           <h2 className="font-serif text-2xl font-bold text-[#1A1A1A]">
-            {editId ? "Edit Member" : "Add Member"}
+            {editId ? "Edit public record" : "Add public record"}
           </h2>
         </div>
         <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-950">
-          Board members must match the Foundation&apos;s official company
-          records. General Members and Advisory roles must stay separate from
-          the Board of Directors.
+          Only registered directors belong in the Board of Directors. Choose the
+          correct section for every other person. Use Independent Statutory
+          Auditor only when the appointment and firm details have been checked.
+          Published roles and qualifications appear on the public page. Short
+          biographies appear only if separately approved below.
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <div>
@@ -3695,8 +3730,10 @@ function LeadershipManager() {
               className="h-10 w-full rounded-md border border-gray-300 bg-white px-3 text-sm"
             >
               <option value="board">Board of Directors</option>
-              <option value="member">Members</option>
-              <option value="advisor">Advisory Members</option>
+              <option value="auditor">Independent Statutory Auditor</option>
+              <option value="advisor">Guiding Patron &amp; Advisors</option>
+              <option value="odisha">Odisha Division Leadership</option>
+              <option value="member">Core Members</option>
             </select>
           </div>
           <div>
@@ -3819,29 +3856,63 @@ function LeadershipManager() {
               rows={5}
             />
           </div>
-          <div className="md:col-span-2">
-            <LeadershipPortraitUploader
-              value={form.imageUrl}
-              onChange={imageUrl =>
-                setForm(current => ({ ...current, imageUrl }))
-              }
-            />
-          </div>
-          <div className="md:col-span-2">
-            <label className="mb-1 block text-sm font-medium text-[#333]">
-              Public profile link
-            </label>
-            <Input
-              value={form.profileUrl}
+          <label className="flex items-start gap-3 rounded-lg border border-gray-200 p-4 text-sm text-[#333] md:col-span-2">
+            <input
+              type="checkbox"
+              checked={form.bioIsPublic}
               onChange={event =>
                 setForm(current => ({
                   ...current,
-                  profileUrl: event.target.value,
+                  bioIsPublic: event.target.checked,
                 }))
               }
-              placeholder="https://www.linkedin.com/in/..."
+              className="mt-1"
             />
-          </div>
+            Show this approved short biography on the public People card. Leave
+            unchecked to keep the text only in Admin.
+          </label>
+          {form.memberType === "auditor" && (
+            <label className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950 md:col-span-2">
+              <input
+                type="checkbox"
+                checked={auditorMediaApproved}
+                onChange={event =>
+                  setAuditorMediaApproved(event.target.checked)
+                }
+                className="mt-1"
+              />
+              I have written permission from the audit firm to publish a
+              partner’s photo or profile link. The firm name is shown by
+              default.
+            </label>
+          )}
+          {(form.memberType !== "auditor" || auditorMediaApproved) && (
+            <>
+              <div className="md:col-span-2">
+                <LeadershipPortraitUploader
+                  value={form.imageUrl}
+                  onChange={imageUrl =>
+                    setForm(current => ({ ...current, imageUrl }))
+                  }
+                />
+              </div>
+              <div className="md:col-span-2">
+                <label className="mb-1 block text-sm font-medium text-[#333]">
+                  Public profile link
+                </label>
+                <Input
+                  value={form.profileUrl}
+                  onChange={event =>
+                    setForm(current => ({
+                      ...current,
+                      profileUrl: event.target.value,
+                    }))
+                  }
+                  placeholder="https://www.linkedin.com/in/..."
+                />
+              </div>
+            </>
+          )}
         </div>
         <label className="flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-950">
           <input
@@ -3866,7 +3937,7 @@ function LeadershipManager() {
           {(createMut.isPending || updateMut.isPending) && (
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
           )}
-          Save Member
+          Save record
         </Button>
       </div>
     );
@@ -3880,9 +3951,10 @@ function LeadershipManager() {
             Board, Members and Advisors
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[#666]">
-            Manage every person shown in one sequence on the public website. Use
-            Display order to set the sequence and Unpublish to hide a profile
-            without deleting it.
+            Manage five separate public sections. The statutory auditor is
+            independent, not part of the Foundation team. Use Display order
+            within each section and Unpublish to hide a record without deleting
+            it.
           </p>
         </div>
         <Button
@@ -3893,7 +3965,7 @@ function LeadershipManager() {
           }}
           className="shrink-0 bg-[#F5A623] text-[#1A1A1A] hover:bg-[#E8960E]"
         >
-          <Plus className="mr-2 h-4 w-4" /> Add Member
+          <Plus className="mr-2 h-4 w-4" /> Add public record
         </Button>
       </div>
 
@@ -3903,7 +3975,7 @@ function LeadershipManager() {
         </div>
       ) : members.length === 0 ? (
         <p className="rounded-lg border border-dashed border-gray-300 p-8 text-center text-sm text-[#777]">
-          No board, general or advisory members have been added yet.
+          No public people or auditor records have been added yet.
         </p>
       ) : (
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -3935,11 +4007,9 @@ function LeadershipManager() {
               </div>
               <div className="p-5">
                 <p className="font-mono text-[9px] font-bold uppercase tracking-[0.16em] text-[#9A6100]">
-                  {member.memberType === "board"
-                    ? "Board of Directors"
-                    : member.memberType === "member"
-                      ? "Members"
-                      : "Advisory Members"}
+                  {PEOPLE_SECTIONS.find(
+                    section => section.type === member.memberType
+                  )?.titleEn ?? "Public record"}
                 </p>
                 <h3 className="mt-2 font-serif text-xl font-bold text-[#1A1A1A]">
                   {member.nameEn}

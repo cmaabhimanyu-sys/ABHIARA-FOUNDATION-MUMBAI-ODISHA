@@ -162,11 +162,11 @@ const PEOPLE_GROUPS: PeopleGroup[] = [
       en: "People of Abhiara Foundation",
       od: "ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଲୋକମାନେ",
     },
-    label: { en: "One public roster", od: "ଗୋଟିଏ ସାର୍ବଜନୀନ ତାଲିକା" },
+    label: { en: "Five public sections", od: "ପାଞ୍ଚଟି ସାର୍ବଜନୀନ ବିଭାଗ" },
     count: { en: "Public profiles", od: "ସାର୍ବଜନୀନ ପ୍ରୋଫାଇଲ" },
     body: {
-      en: "Everyone associated with the Foundation is shown together in one sequence with their current role and public profile details.",
-      od: "ଫାଉଣ୍ଡେସନ ସହ ଜଡିତ ସମସ୍ତ ବ୍ୟକ୍ତିଙ୍କୁ ସେମାନଙ୍କର ବର୍ତ୍ତମାନ ଭୂମିକା ଓ ସାର୍ବଜନୀନ ପ୍ରୋଫାଇଲ ବିବରଣୀ ସହ ଗୋଟିଏ କ୍ରମରେ ଦର୍ଶାଯାଇଛି।",
+      en: "Meet the directors, independent statutory auditor, advisors, Odisha Division leaders and Core Members associated with the Foundation.",
+      od: "ଫାଉଣ୍ଡେସନ ସହ ଜଡ଼ିତ ନିର୍ଦ୍ଦେଶକ, ସ୍ୱାଧୀନ ବୈଧାନିକ ଲେଖାପରୀକ୍ଷକ, ପରାମର୍ଶଦାତା, ଓଡ଼ିଶା ବିଭାଗର ନେତୃତ୍ୱ ଓ ମୁଖ୍ୟ ସଦସ୍ୟମାନଙ୍କୁ ଜାଣନ୍ତୁ।",
     },
     image: "/images/team-bhubaneswar.jpeg",
     imageAlt: {

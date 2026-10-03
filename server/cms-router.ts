@@ -274,7 +274,7 @@ const leadershipRouter = router({
   create: adminProcedure
     .input(
       z.object({
-        memberType: z.enum(["board", "member", "advisor"]),
+        memberType: z.enum(["board", "auditor", "advisor", "odisha", "member"]),
         nameEn: z.string().min(2).max(255),
         nameOd: z.string().max(255).optional(),
         roleEn: z.string().min(2).max(255),
@@ -283,6 +283,7 @@ const leadershipRouter = router({
         qualificationOd: z.string().max(500).optional(),
         bioEn: z.string().max(2000).optional(),
         bioOd: z.string().max(2000).optional(),
+        bioIsPublic: z.boolean().default(false),
         imageUrl: z.string().max(2000).optional(),
         profileUrl: z
           .string()
@@ -301,7 +302,9 @@ const leadershipRouter = router({
     .input(
       z.object({
         id: z.number(),
-        memberType: z.enum(["board", "member", "advisor"]).optional(),
+        memberType: z
+          .enum(["board", "auditor", "advisor", "odisha", "member"])
+          .optional(),
         nameEn: z.string().min(2).max(255).optional(),
         nameOd: z.string().max(255).optional(),
         roleEn: z.string().min(2).max(255).optional(),
@@ -310,6 +313,7 @@ const leadershipRouter = router({
         qualificationOd: z.string().max(500).optional(),
         bioEn: z.string().max(2000).optional(),
         bioOd: z.string().max(2000).optional(),
+        bioIsPublic: z.boolean().optional(),
         imageUrl: z.string().max(2000).optional(),
         profileUrl: z
           .string()

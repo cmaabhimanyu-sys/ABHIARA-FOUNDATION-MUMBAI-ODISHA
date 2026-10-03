@@ -88,7 +88,7 @@ const quickActions: Array<{
   {
     tab: "leadership",
     title: "Board, Members and Advisors",
-    body: "Add, edit, order, publish or unpublish every person shown in one sequence on the public website.",
+    body: "Manage five public sections. The independent statutory auditor has a separate section after the Board.",
     icon: Users,
     colour: "bg-indigo-50 text-indigo-800",
   },

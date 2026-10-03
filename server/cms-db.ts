@@ -181,7 +181,10 @@ export async function getLeadershipMembers(publishedOnly = false) {
     .from(leadershipMembers)
     .orderBy(asc(leadershipMembers.sortOrder), asc(leadershipMembers.id));
   if (publishedOnly) {
-    return query.where(eq(leadershipMembers.isPublished, true));
+    const rows = await query.where(eq(leadershipMembers.isPublished, true));
+    return rows.map(row =>
+      row.bioIsPublic ? row : { ...row, bioEn: null, bioOd: null }
+    );
   }
   return query;
 }
