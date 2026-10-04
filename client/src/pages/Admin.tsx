@@ -2,6 +2,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import { getOwnerLoginUrl, OAUTH_SUPPORTED_ORIGIN } from "@/const";
 import { PEOPLE_SECTIONS } from "@/data/peopleSections";
+import { selectStudentImpactPhoto } from "@/data/studentImpactPhoto";
 import {
   EDUCATION_SNAPSHOT_KEY,
   parseEducationSnapshot,
@@ -3255,6 +3256,7 @@ function VercelMediaManager() {
   const { data: media, isLoading: mediaLoading } =
     trpc.cms.media.listFolder.useQuery({ folder });
   const { data: galleryItems = [] } = trpc.cms.gallery.list.useQuery();
+  const studentImpactPhoto = selectStudentImpactPhoto(galleryItems);
   const publishMutation = trpc.cms.gallery.create.useMutation({
     onSuccess: async () => {
       await utils.cms.gallery.list.invalidate();
@@ -3615,7 +3617,7 @@ function VercelMediaManager() {
           <p className="mt-4 text-sm text-[#777]">Loading photos…</p>
         ) : media?.images.length ? (
           <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {media.images.map((image, index) => (
+            {media.images.map(image => (
               <article
                 key={image.pathname}
                 className="overflow-hidden rounded-lg border border-gray-200 bg-white"
@@ -3628,9 +3630,9 @@ function VercelMediaManager() {
                   />
                 </div>
                 <div className="p-4">
-                  {folder === "beneficiaries" && index === 0 && (
+                  {studentImpactPhoto?.imageUrl === image.url && (
                     <p className="mb-2 text-xs font-bold uppercase tracking-wider text-[#9A6100]">
-                      Currently used on Student Impact
+                      Shown on Student Impact
                     </p>
                   )}
                   <p className="break-all text-xs text-[#666]">

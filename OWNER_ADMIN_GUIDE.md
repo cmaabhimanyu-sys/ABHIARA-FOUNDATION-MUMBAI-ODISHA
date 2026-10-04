@@ -101,6 +101,8 @@ For every impact photo:
 
 A published photo may appear in the homepage rolling photo section, Impact Gallery, Press and Media, and its matching cause page. A draft stays private.
 
+**Student Impact photo:** the most recently added, published photo in the **Education** website category also appears on Student Impact with its public caption. It can come from Beneficiary photos or Programme photos. To replace it, upload and publish a newer reviewed education photo. To remove it, unpublish that photo under **Impact Photos**; the page then shows the previous published education photo, if any. Check recorded guardian consent for every recognisable child before publishing and remove a photo if permission is withdrawn. A distribution photo documents materials given, not a measured change in learning.
+
 ### 3. Impact Photos
 
 Use **Impact Photos** to manage every uploaded public photo.

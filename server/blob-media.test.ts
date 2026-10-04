@@ -184,10 +184,11 @@ describe("Vercel Blob public media", () => {
     expect(mockDel).not.toHaveBeenCalled();
   });
 
-  it("keeps Student Impact free of individual photos after the requested removal", () => {
+  it("only uses consent-reviewed published education media on Student Impact and keeps the withdrawn photo absent", () => {
     const page = readFileSync("client/src/pages/StudentImpact.tsx", "utf8");
     const cms = readFileSync("server/cms-router.ts", "utf8");
-    expect(page).not.toContain("trpc.cms.gallery.listPublished.useQuery");
+    expect(page).toContain("trpc.cms.gallery.listPublished.useQuery");
+    expect(page).toContain("selectStudentImpactPhoto(gallery)");
     expect(page).not.toContain("trpc.cms.media.listFolder.useQuery");
     expect(page).not.toContain("education-higher-study-support");
     expect(page).not.toContain("data-media-source");

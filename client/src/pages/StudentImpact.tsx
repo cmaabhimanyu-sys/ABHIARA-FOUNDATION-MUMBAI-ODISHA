@@ -6,6 +6,10 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { MONTHLY_REPORT } from "@/data/focusContent";
+import {
+  publicPhotoText,
+  selectStudentImpactPhoto,
+} from "@/data/studentImpactPhoto";
 import { parseVerifiedEducationCounts } from "@/data/verifiedEducationCounts";
 import { trpc } from "@/lib/trpc";
 import {
@@ -30,6 +34,11 @@ export default function StudentImpact() {
       (item: any) => item.settingKey === EDUCATION_SNAPSHOT_KEY
     )?.settingValue
   );
+  const { data: gallery = [] } = trpc.cms.gallery.listPublished.useQuery(
+    undefined,
+    { retry: false }
+  );
+  const educationPhoto = selectStudentImpactPhoto(gallery);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -147,6 +156,54 @@ export default function StudentImpact() {
                   "ଏହି ଦୁଇଟି ଅଲଗା କାମ। କେତେକ ଶିଶୁ ଉଭୟ ଗୋଷ୍ଠୀରେ ଥାଇପାରନ୍ତି, ତେଣୁ ସଂଖ୍ୟା ଦୁଇଟିକୁ ମିଶାଇ ମୋଟ ଦର୍ଶାଯିବ ନାହିଁ। ଏଗୁଡ଼ିକ ଫାଉଣ୍ଡେସନ ଦେଇଥିବା କାର୍ଯ୍ୟକ୍ରମ ତଥ୍ୟ, ମାସିକ ଟ୍ୟୁସନ ପାଇଥିବା ଶିଶୁଙ୍କ ସଂଖ୍ୟା ନୁହେଁ।"
                 )}
               </p>
+            </div>
+          </section>
+        )}
+        {educationPhoto && (
+          <section className="border-b border-[#E8DCC6] bg-white py-14 md:py-20">
+            <div className="container max-w-6xl">
+              <div className="grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-12">
+                <div className="flex items-center justify-center bg-[#F5EFE3] p-3">
+                  <img
+                    src={educationPhoto.imageUrl}
+                    alt={publicPhotoText(
+                      educationPhoto.title,
+                      language === "od"
+                    )}
+                    loading="eager"
+                    className="max-h-[36rem] w-full object-contain"
+                  />
+                </div>
+                <div>
+                  <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#9A6100]">
+                    {t("Education work in pictures", "ଫଟୋରେ ଶିକ୍ଷା କାମ")}
+                  </p>
+                  <h2 className="mt-3 font-serif text-3xl font-bold text-[#1A1A1A]">
+                    {publicPhotoText(educationPhoto.title, language === "od")}
+                  </h2>
+                  {educationPhoto.description && (
+                    <p className="mt-5 text-base leading-8 text-[#555]">
+                      {publicPhotoText(
+                        educationPhoto.description,
+                        language === "od"
+                      )}
+                    </p>
+                  )}
+                  <p className="mt-5 text-sm leading-7 text-[#555]">
+                    {t(
+                      "This photograph documents a material distribution. It does not measure changes in learning or represent every child counted above.",
+                      "ଏହି ଫଟୋ ଶିକ୍ଷା ସାମଗ୍ରୀ ବଣ୍ଟନକୁ ଦେଖାଏ। ଏହା ପଢ଼ାରେ ହୋଇଥିବା ପରିବର୍ତ୍ତନକୁ ମାପେ ନାହିଁ କିମ୍ବା ଉପରୋକ୍ତ ସଂଖ୍ୟାର ସମସ୍ତ ଶିଶୁଙ୍କୁ ଦର୍ଶାଏ ନାହିଁ।"
+                    )}
+                  </p>
+                  <Link
+                    href="/impact-gallery"
+                    className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#8A5700] underline underline-offset-4"
+                  >
+                    {t("See more education photos", "ଅଧିକ ଶିକ୍ଷା ଫଟୋ ଦେଖନ୍ତୁ")}
+                    <ArrowRight size={15} aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
             </div>
           </section>
         )}

@@ -128,7 +128,8 @@ describe("education-first public website update", () => {
       existsSync("client/public/images/education-higher-study-support.jpeg")
     ).toBe(false);
     expect(studentImpact).not.toContain("trpc.cms.media.listFolder.useQuery");
-    expect(studentImpact).not.toContain("cms.gallery.listPublished");
+    expect(studentImpact).toContain("cms.gallery.listPublished.useQuery");
+    expect(studentImpact).toContain("selectStudentImpactPhoto(gallery)");
     expect(studentImpact).not.toContain("education-higher-study-support");
     expect(studentImpact).not.toContain("Continuing into higher education");
     expect(`${JSON.stringify(record)}\n${studentImpact}`).not.toMatch(
