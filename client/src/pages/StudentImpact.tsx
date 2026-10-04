@@ -8,9 +8,15 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { MONTHLY_REPORT } from "@/data/focusContent";
 import { parseVerifiedEducationCounts } from "@/data/verifiedEducationCounts";
 import { trpc } from "@/lib/trpc";
+import {
+  EDUCATION_SNAPSHOT_KEY,
+  formatEducationFigure,
+  formatEducationSnapshotDate,
+  parseEducationSnapshot,
+} from "@shared/educationSnapshot";
 
 export default function StudentImpact() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { data: publicSettings = [] } = trpc.cms.settings.listPublic.useQuery(
     undefined,
     { retry: false }
@@ -19,6 +25,11 @@ export default function StudentImpact() {
     (item: any) => item.settingKey === "stat_students_verified_monthly_counts"
   )?.settingValue;
   const counts = parseVerifiedEducationCounts(savedCounts);
+  const snapshot = parseEducationSnapshot(
+    publicSettings.find(
+      (item: any) => item.settingKey === EDUCATION_SNAPSHOT_KEY
+    )?.settingValue
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -55,6 +66,90 @@ export default function StudentImpact() {
             </p>
           </div>
         </section>
+        {snapshot && (
+          <section className="border-b border-[#E8DCC6] bg-[#FFFDF8] py-14 md:py-20">
+            <div className="container max-w-6xl">
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#9A6100]">
+                {t("Foundation-reported figures", "ଫାଉଣ୍ଡେସନ ଦେଇଥିବା ସଂଖ୍ୟା")}
+              </p>
+              <h2 className="mt-3 font-serif text-3xl font-bold text-[#1A1A1A]">
+                {t("Education work so far", "ଏପର୍ଯ୍ୟନ୍ତ ଶିକ୍ଷା କାମ")}
+              </h2>
+              <p className="mt-3 text-sm text-[#555]">
+                {t(
+                  "Reported by Abhiara Foundation on",
+                  "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ଦେଇଥିବା ତଥ୍ୟ, ତାରିଖ:"
+                )}{" "}
+                <time dateTime={snapshot.reportedOn}>
+                  {formatEducationSnapshotDate(
+                    snapshot.reportedOn,
+                    language === "od"
+                  )}
+                </time>
+              </p>
+              <div className="mt-7 grid gap-5 md:grid-cols-2">
+                <article className="border border-[#E8DCC6] bg-white p-7">
+                  <GraduationCap
+                    size={26}
+                    className="text-[#9A6100]"
+                    aria-hidden="true"
+                  />
+                  <p className="mt-4 font-serif text-4xl font-bold text-[#1A1A1A]">
+                    {formatEducationFigure(
+                      snapshot.onboarded,
+                      language === "od"
+                    )}
+                  </p>
+                  <h3 className="mt-2 font-serif text-xl font-bold text-[#1A1A1A]">
+                    {t(
+                      "Children onboarded for education support",
+                      "ଶିକ୍ଷା ସହାୟତା ପାଇଁ ନାମଲେଖା ହୋଇଥିବା ଶିଶୁ"
+                    )}
+                  </h3>
+                  {snapshot.mostlyOrphaned && (
+                    <p className="mt-3 text-sm leading-7 text-[#555]">
+                      {t(
+                        "The Foundation reports that most children in this group are orphaned.",
+                        "ଏହି ଶିଶୁମାନଙ୍କ ମଧ୍ୟରୁ ଅଧିକାଂଶ ଅନାଥ ବୋଲି ଫାଉଣ୍ଡେସନ ଜଣାଇଛି।"
+                      )}
+                    </p>
+                  )}
+                </article>
+                <article className="border border-[#E8DCC6] bg-white p-7">
+                  <BookOpen
+                    size={26}
+                    className="text-[#9A6100]"
+                    aria-hidden="true"
+                  />
+                  <p className="mt-4 font-serif text-4xl font-bold text-[#1A1A1A]">
+                    {formatEducationFigure(
+                      snapshot.materials,
+                      language === "od"
+                    )}
+                  </p>
+                  <h3 className="mt-2 font-serif text-xl font-bold text-[#1A1A1A]">
+                    {t(
+                      "School students who received learning materials",
+                      "ପଢ଼ା ସାମଗ୍ରୀ ପାଇଥିବା ସ୍କୁଲ ଛାତ୍ରଛାତ୍ରୀ"
+                    )}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-[#555]">
+                    {t(
+                      "Books, dictionaries, pens and other school materials were distributed.",
+                      "ବହି, ଶବ୍ଦକୋଷ, କଲମ ଓ ଅନ୍ୟ ସ୍କୁଲ ସାମଗ୍ରୀ ବଣ୍ଟନ କରାଯାଇଛି।"
+                    )}
+                  </p>
+                </article>
+              </div>
+              <p className="mt-5 text-sm leading-7 text-[#555]">
+                {t(
+                  "These are different activities. Some children may be in both groups, so the figures must not be added together. The figures are Foundation-reported programme milestones, not a monthly tuition count.",
+                  "ଏହି ଦୁଇଟି ଅଲଗା କାମ। କେତେକ ଶିଶୁ ଉଭୟ ଗୋଷ୍ଠୀରେ ଥାଇପାରନ୍ତି, ତେଣୁ ସଂଖ୍ୟା ଦୁଇଟିକୁ ମିଶାଇ ମୋଟ ଦର୍ଶାଯିବ ନାହିଁ। ଏଗୁଡ଼ିକ ଫାଉଣ୍ଡେସନ ଦେଇଥିବା କାର୍ଯ୍ୟକ୍ରମ ତଥ୍ୟ, ମାସିକ ଟ୍ୟୁସନ ପାଇଥିବା ଶିଶୁଙ୍କ ସଂଖ୍ୟା ନୁହେଁ।"
+                )}
+              </p>
+            </div>
+          </section>
+        )}
         <section className="py-16 md:py-24">
           <div className="container max-w-6xl">
             <h2 className="font-serif text-3xl font-bold">
@@ -108,8 +203,8 @@ export default function StudentImpact() {
             ) : (
               <p className="mt-7 border-l-4 border-[#B56A22] bg-[#FFFDF8] p-6 text-sm leading-7 text-[#555]">
                 {t(
-                  "A dated, checked breakdown of monthly tuition and one-time learning materials recipients has not yet been published. An earlier undated aggregate is not presented as a current beneficiary count.",
-                  "ମାସିକ ଟ୍ୟୁସନ ଓ ଏକକାଳୀନ ପଢ଼ା ସାମଗ୍ରୀ ପାଇଥିବା ଶିଶୁଙ୍କର ତାରିଖ ସହିତ ଯାଞ୍ଚ ହୋଇଥିବା ଅଲଗା ସଂଖ୍ୟା ଏପର୍ଯ୍ୟନ୍ତ ପ୍ରକାଶିତ ହୋଇନାହିଁ। ପୁରୁଣା ତାରିଖବିହୀନ ସାମୂହିକ ସଂଖ୍ୟାକୁ ବର୍ତ୍ତମାନର ଶିଶୁ ସଂଖ୍ୟା ଭାବେ ଦର୍ଶାଯାଉ ନାହିଁ।"
+                  "A dated, checked breakdown of monthly tuition and one-time learning materials recipients has not yet been published. The Foundation-reported programme figures above are not a month-end breakdown.",
+                  "ମାସିକ ଟ୍ୟୁସନ ଓ ଏକକାଳୀନ ପଢ଼ା ସାମଗ୍ରୀ ପାଇଥିବା ଶିଶୁଙ୍କର ତାରିଖ ସହିତ ଯାଞ୍ଚ ହୋଇଥିବା ଅଲଗା ସଂଖ୍ୟା ଏପର୍ଯ୍ୟନ୍ତ ପ୍ରକାଶିତ ହୋଇନାହିଁ। ଉପରେ ଫାଉଣ୍ଡେସନ ଦେଇଥିବା କାର୍ଯ୍ୟକ୍ରମ ସଂଖ୍ୟା ମାସ ଶେଷର ଅଲଗା ହିସାବ ନୁହେଁ।"
                 )}
               </p>
             )}

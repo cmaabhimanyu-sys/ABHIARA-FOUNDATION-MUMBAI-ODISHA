@@ -2,6 +2,10 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import { getOwnerLoginUrl, OAUTH_SUPPORTED_ORIGIN } from "@/const";
 import { PEOPLE_SECTIONS } from "@/data/peopleSections";
+import {
+  EDUCATION_SNAPSHOT_KEY,
+  parseEducationSnapshot,
+} from "@shared/educationSnapshot";
 import { useState, useRef, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -2075,6 +2079,12 @@ function SiteSettingsManager() {
     recurring: "",
     oneTime: "",
   });
+  const [educationSnapshot, setEducationSnapshot] = useState({
+    reportedOn: "",
+    onboarded: "",
+    materials: "",
+    mostlyOrphaned: false,
+  });
   const upsertMut = trpc.cms.settings.upsert.useMutation({
     onSuccess: async () => {
       await Promise.all([
@@ -2111,6 +2121,18 @@ function SiteSettingsManager() {
     } catch {
       setEducationCounts({ month: "", recurring: "", oneTime: "" });
     }
+    const snapshot = parseEducationSnapshot(
+      items.find((item: any) => item.settingKey === EDUCATION_SNAPSHOT_KEY)
+        ?.settingValue
+    );
+    setEducationSnapshot(
+      snapshot ?? {
+        reportedOn: "",
+        onboarded: "",
+        materials: "",
+        mostlyOrphaned: false,
+      }
+    );
   }, [items]);
 
   const saveField = (field: (typeof PUBLIC_DETAIL_FIELDS)[number]) => {
@@ -2170,6 +2192,29 @@ function SiteSettingsManager() {
         oneTime: Number(educationCounts.oneTime),
       }),
       label: "Reviewed education counts by support type and month",
+      category: "stats",
+    });
+  };
+
+  const saveEducationSnapshot = () => {
+    const snapshot = parseEducationSnapshot(
+      JSON.stringify({
+        reportedOn: educationSnapshot.reportedOn.trim(),
+        onboarded: educationSnapshot.onboarded.trim(),
+        materials: educationSnapshot.materials.trim(),
+        mostlyOrphaned: educationSnapshot.mostlyOrphaned,
+      })
+    );
+    if (!snapshot) {
+      toast.error(
+        "Use a real reporting date and two separate figures like 50+ and 300+."
+      );
+      return;
+    }
+    upsertMut.mutate({
+      settingKey: EDUCATION_SNAPSHOT_KEY,
+      settingValue: JSON.stringify(snapshot),
+      label: "Foundation-reported education programme milestones",
       category: "stats",
     });
   };
@@ -2291,6 +2336,86 @@ function SiteSettingsManager() {
               className="mt-5 bg-[#F5A623] font-bold text-[#1A1A1A] hover:bg-[#E8960E]"
             >
               Publish reviewed counts
+            </Button>
+          </section>
+          <section
+            className="mt-8 rounded-xl border border-[#D8C7A5] bg-[#FFFDF8] p-6"
+            aria-label="Education programme milestones"
+          >
+            <h3 className="font-serif text-xl font-bold text-[#1A1A1A]">
+              Publish education programme milestones
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-[#555]">
+              Record the Foundation's reported number of children onboarded and
+              school students given books or learning materials. These are
+              different groups from the monthly tuition counts above. A child
+              may appear in both groups; do not add them together. Save the date
+              and both figures at once.
+            </p>
+            <div className="mt-5 grid gap-4 md:grid-cols-3">
+              {[
+                {
+                  key: "reportedOn",
+                  label: "Reported on (YYYY-MM-DD)",
+                  placeholder: "2026-10-04",
+                },
+                {
+                  key: "onboarded",
+                  label: "Children onboarded",
+                  placeholder: "50+",
+                },
+                {
+                  key: "materials",
+                  label: "School students given materials",
+                  placeholder: "300+",
+                },
+              ].map(field => (
+                <label
+                  key={field.key}
+                  className="text-sm font-semibold text-[#333]"
+                >
+                  {field.label}
+                  <Input
+                    value={
+                      educationSnapshot[
+                        field.key as "reportedOn" | "onboarded" | "materials"
+                      ]
+                    }
+                    onChange={event =>
+                      setEducationSnapshot(current => ({
+                        ...current,
+                        [field.key]: event.target.value,
+                      }))
+                    }
+                    placeholder={field.placeholder}
+                    className="mt-2 bg-white"
+                    maxLength={20}
+                  />
+                </label>
+              ))}
+            </div>
+            <label className="mt-5 flex items-start gap-3 text-sm text-[#333]">
+              <input
+                type="checkbox"
+                checked={educationSnapshot.mostlyOrphaned}
+                onChange={event =>
+                  setEducationSnapshot(current => ({
+                    ...current,
+                    mostlyOrphaned: event.target.checked,
+                  }))
+                }
+                className="mt-1 h-4 w-4 accent-[#9A6100]"
+              />
+              The Foundation confirms most children in the onboarded group are
+              orphaned. Leave unchecked if this statement is not current.
+            </label>
+            <Button
+              type="button"
+              onClick={saveEducationSnapshot}
+              disabled={upsertMut.isPending}
+              className="mt-5 bg-[#F5A623] font-bold text-[#1A1A1A] hover:bg-[#E8960E]"
+            >
+              Publish programme milestones
             </Button>
           </section>
         </>

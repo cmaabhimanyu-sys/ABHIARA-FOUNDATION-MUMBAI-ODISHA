@@ -42,6 +42,12 @@ import {
   PUBLIC_TAGLINE_DESCRIPTION_OD,
 } from "@/data/focusContent";
 import { trpc } from "@/lib/trpc";
+import {
+  EDUCATION_SNAPSHOT_KEY,
+  formatEducationFigure,
+  formatEducationSnapshotDate,
+  parseEducationSnapshot,
+} from "@shared/educationSnapshot";
 
 const HOME_WORK_ICONS = {
   education: GraduationCap,
@@ -117,6 +123,15 @@ const HERO_DONATION_CAUSES: Record<string, string> = {
 
 export default function Home() {
   const { t, language } = useLanguage();
+  const { data: publicSettings = [] } = trpc.cms.settings.listPublic.useQuery(
+    undefined,
+    { retry: false }
+  );
+  const educationSnapshot = parseEducationSnapshot(
+    publicSettings.find(
+      (item: any) => item.settingKey === EDUCATION_SNAPSHOT_KEY
+    )?.settingValue
+  );
   const { data: publishedImpactPhotos = [] } =
     trpc.cms.gallery.listPublished.useQuery(undefined, { retry: false });
   const impactPhotos = publishedImpactPhotos
@@ -440,6 +455,67 @@ export default function Home() {
                 )}
               </p>
             </AnimatedSection>
+            {educationSnapshot && (
+              <AnimatedSection className="mb-12 border border-[#E8DCC6] bg-[#FFFDF8] p-6 md:p-8">
+                <div className="grid items-center gap-6 md:grid-cols-[1fr_1fr_1fr]">
+                  <div>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#9A6100]">
+                      {t("Education work", "ଶିକ୍ଷା କାମ")}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-[#555]">
+                      {t(
+                        "Foundation-reported figures",
+                        "ଫାଉଣ୍ଡେସନ ଦେଇଥିବା ସଂଖ୍ୟା"
+                      )}{" "}
+                      <time dateTime={educationSnapshot.reportedOn}>
+                        {formatEducationSnapshotDate(
+                          educationSnapshot.reportedOn,
+                          language === "od"
+                        )}
+                      </time>
+                    </p>
+                    <Link
+                      href="/student-impact"
+                      className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-[#8A5700] underline underline-offset-4"
+                    >
+                      {t(
+                        "See what these figures mean",
+                        "ଏହି ସଂଖ୍ୟାର ଅର୍ଥ ଜାଣନ୍ତୁ"
+                      )}
+                      <ArrowRight size={15} aria-hidden="true" />
+                    </Link>
+                  </div>
+                  <div className="border-t border-[#E8DCC6] pt-5 md:border-l md:border-t-0 md:pl-6 md:pt-0">
+                    <p className="font-serif text-3xl font-bold text-[#1A1A1A]">
+                      {formatEducationFigure(
+                        educationSnapshot.onboarded,
+                        language === "od"
+                      )}
+                    </p>
+                    <p className="mt-1 text-sm leading-6 text-[#555]">
+                      {t(
+                        "Children onboarded for education support",
+                        "ଶିକ୍ଷା ସହାୟତା ପାଇଁ ନାମଲେଖା ହୋଇଥିବା ଶିଶୁ"
+                      )}
+                    </p>
+                  </div>
+                  <div className="border-t border-[#E8DCC6] pt-5 md:border-l md:border-t-0 md:pl-6 md:pt-0">
+                    <p className="font-serif text-3xl font-bold text-[#1A1A1A]">
+                      {formatEducationFigure(
+                        educationSnapshot.materials,
+                        language === "od"
+                      )}
+                    </p>
+                    <p className="mt-1 text-sm leading-6 text-[#555]">
+                      {t(
+                        "School students given books and learning materials",
+                        "ବହି ଓ ପଢ଼ା ସାମଗ୍ରୀ ପାଇଥିବା ସ୍କୁଲ ଛାତ୍ରଛାତ୍ରୀ"
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            )}
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {ACTIVE_SUPPORT.map((item, index) => (
                 <AnimatedSection key={item.titleEn} delay={index * 0.04}>

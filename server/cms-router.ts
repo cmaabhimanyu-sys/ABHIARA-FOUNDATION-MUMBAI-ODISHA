@@ -1,6 +1,11 @@
 import { adminProcedure, publicProcedure, router } from "./_core/trpc.js";
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { storagePut } from "./storage.js";
+import {
+  EDUCATION_SNAPSHOT_KEY,
+  parseEducationSnapshot,
+} from "../shared/educationSnapshot.js";
 import {
   deletePublicBlobImage,
   isBlobMediaConfigured,
@@ -51,6 +56,7 @@ import {
 } from "./cms-db.js";
 
 const PUBLIC_SETTING_KEYS = new Set([
+  EDUCATION_SNAPSHOT_KEY,
   "stat_students_verified_monthly_counts",
   "stat_elders_visited",
   "stat_families_supported",
@@ -77,8 +83,11 @@ const PUBLIC_SETTING_KEYS = new Set([
 
 async function getPublicSiteSettings() {
   const settings = await getSiteSettings();
-  return settings.filter(setting =>
-    PUBLIC_SETTING_KEYS.has(setting.settingKey)
+  return settings.filter(
+    setting =>
+      PUBLIC_SETTING_KEYS.has(setting.settingKey) &&
+      (setting.settingKey !== EDUCATION_SNAPSHOT_KEY ||
+        parseEducationSnapshot(setting.settingValue) !== null)
   );
 }
 
@@ -478,7 +487,19 @@ const settingsRouter = router({
         category: z.string().default("general"),
       })
     )
-    .mutation(({ input }) => upsertSiteSetting(input)),
+    .mutation(({ input }) => {
+      if (
+        input.settingKey === EDUCATION_SNAPSHOT_KEY &&
+        !parseEducationSnapshot(input.settingValue)
+      ) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message:
+            "Enter a valid date and two separate 50+ style education figures.",
+        });
+      }
+      return upsertSiteSetting(input);
+    }),
   delete: adminProcedure
     .input(z.object({ id: z.number() }))
     .mutation(({ input }) => deleteSiteSetting(input.id)),

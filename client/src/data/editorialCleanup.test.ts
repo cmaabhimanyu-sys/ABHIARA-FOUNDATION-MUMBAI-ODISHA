@@ -55,7 +55,8 @@ describe("education-first editorial cleanup", () => {
     expect(faq).not.toMatch(
       /support more than 50 children|୫୦ ରୁ ଅଧିକ ଶିଶୁଙ୍କୁ/
     );
-    expect(faq).toContain("Dated, reviewed counts");
+    expect(faq).toContain("Foundation-reported programme figures");
+    expect(faq).toContain("any checked monthly counts");
   });
 
   it("retires duplicate legacy pages without losing their safe route redirects", () => {

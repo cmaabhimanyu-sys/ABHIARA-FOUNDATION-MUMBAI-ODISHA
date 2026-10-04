@@ -146,13 +146,16 @@ The website checks that each link uses the matching social platform. These links
 Use this to update only reviewed public values:
 
 - Dated education counts, split into **monthly tuition recipients** and **one-time learning materials recipients**
+- Dated, Foundation-reported **programme milestones** for children onboarded and school students given books or materials
 - Verified activities
 - Families supported in verified cases
 - Districts represented in public records
 - Public email address
 - Public WhatsApp channel link
 
-For education counts, enter the **last day of one completed reporting month** and two checked whole-number counts, then press **Publish reviewed counts**. The three values publish together. Count distinct children within each type. A child may appear in both types, so **do not add the two counts into a total**. The older undated aggregate is retained in Admin for reference but is not shown as a current total on Student Impact. Keep the source list private and update the public record when a new month has been checked.
+For monthly education counts, enter the **last day of one completed reporting month** and two checked whole-number counts, then press **Publish reviewed counts**. The three values publish together. Count distinct children within each type. A child may appear in both types, so **do not add the two counts into a total**. This month-end breakdown has not yet been supplied and must not be inferred from programme milestones.
+
+The separate **Publish education programme milestones** form contains the Foundation's 4 October 2026 statement: **50+ children onboarded** (most are orphaned) and **300+ school students given books, dictionaries, pens or other learning materials**. Update the date and both `+` figures together after checking the Foundation's records. Uncheck the orphan-majority statement if it no longer applies. These are reported programme figures, not audited results or monthly tuition numbers. Some children may appear in both groups, so do not add them together. The older undated aggregate is retained in Admin for reference and is not published as a separate current total. Keep source lists private.
 
 Only values used by an approved public page are displayed. Legal details, payment settings and protected records remain locked.
 

@@ -121,6 +121,13 @@ describe("public privacy boundaries", () => {
         settingValue: '{"month":"2026-09-30","recurring":12,"oneTime":25}',
         category: "stats",
       },
+      {
+        id: 6,
+        settingKey: "stat_education_programme_snapshot",
+        settingValue:
+          '{"reportedOn":"2026-10-04","onboarded":"50+","materials":"300+","mostlyOrphaned":true}',
+        category: "stats",
+      },
     ]);
   });
 
@@ -167,6 +174,7 @@ describe("public privacy boundaries", () => {
     expect(settings.map(setting => setting.settingKey)).toEqual([
       "email_address",
       "stat_students_verified_monthly_counts",
+      "stat_education_programme_snapshot",
     ]);
     await expect(caller.cms.settings.list()).rejects.toThrow();
     await expect(caller.cms.activities.list()).rejects.toThrow();
