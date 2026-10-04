@@ -37,8 +37,8 @@ export const FOUNDER_STORY = {
         od: "ଗ୍ରାମରୁ ଆରମ୍ଭ",
       },
       body: {
-        en: "Founder Abhimanyu Mallik grew up in his home village of Raisar in Kendrapara district, Odisha. He faced the same shortage of opportunity and guidance that many children from underprivileged families still face today.",
-        od: "ପ୍ରତିଷ୍ଠାତା ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ ଓଡ଼ିଶାର କେନ୍ଦ୍ରାପଡ଼ା ଜିଲ୍ଲାର ନିଜ ଗାଁ ରାଇସରରେ ବଢ଼ିଥିଲେ। ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଅନେକ ଶିଶୁ ଆଜି ଯେଉଁ ସୁଯୋଗ ଓ ମାର୍ଗଦର୍ଶନର ଅଭାବ ଦେଖୁଛନ୍ତି, ସେ ମଧ୍ୟ ସେହି ଅଭାବ ଅନୁଭବ କରିଥିଲେ।",
+        en: "Founder Abhimanyu Mallik grew up in his home village of Raisar in Kendrapara district, Odisha. He faced limited opportunities, a lack of guidance and financial difficulties.",
+        od: "ପ୍ରତିଷ୍ଠାତା ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ ଓଡ଼ିଶାର କେନ୍ଦ୍ରାପଡ଼ା ଜିଲ୍ଲାର ନିଜ ଗାଁ ରାଇସରରେ ବଢ଼ିଥିଲେ। ସେ ସୁଯୋଗ ଓ ମାର୍ଗଦର୍ଶନର ଅଭାବ ସହ ଆର୍ଥିକ ଅସୁବିଧାର ମଧ୍ୟ ସମ୍ମୁଖୀନ ହୋଇଥିଲେ।",
       },
     },
     {
@@ -51,8 +51,8 @@ export const FOUNDER_STORY = {
         od: "ନିଜ କାର୍ଯ୍ୟଜୀବନ ଗଢ଼ିବା",
       },
       body: {
-        en: "He built his career in Odisha and later moved to Mumbai to continue his professional work. His rural background provides context for the Foundation's education focus.",
-        od: "ସେ ଓଡ଼ିଶାରେ ନିଜ କାର୍ଯ୍ୟଜୀବନ ଗଢ଼ିଥିଲେ ଏବଂ ପରେ ପେଶାଗତ କାମ ଜାରି ରଖିବା ପାଇଁ ମୁମ୍ବାଇ ଯାଇଥିଲେ। ତାଙ୍କ ଗ୍ରାମୀଣ ପୃଷ୍ଠଭୂମି ଫାଉଣ୍ଡେସନର ଶିକ୍ଷା କେନ୍ଦ୍ରିତ କାମର ପରିପ୍ରେକ୍ଷ୍ୟ ଦେଇଥାଏ।",
+        en: "Family, friends and relatives supported him along the way. He built his career in Odisha and later moved to Mumbai to continue his professional work. Their help influenced his decision to give back to society through Abhiara Foundation's education work.",
+        od: "ଏହି ଯାତ୍ରାରେ ପରିବାର, ସାଙ୍ଗ ଓ ସମ୍ପର୍କୀୟମାନେ ତାଙ୍କୁ ସହାୟତା କରିଥିଲେ। ସେ ଓଡ଼ିଶାରେ ନିଜ କାର୍ଯ୍ୟଜୀବନ ଗଢ଼ିଥିଲେ ଏବଂ ପରେ ପେଶାଗତ କାମ ଜାରି ରଖିବା ପାଇଁ ମୁମ୍ବାଇ ଯାଇଥିଲେ। ସେମାନଙ୍କ ସହାୟତା ତାଙ୍କୁ ଅଭିଆରା ଫାଉଣ୍ଡେସନର ଶିକ୍ଷା କାର୍ଯ୍ୟ ମାଧ୍ୟମରେ ସମାଜକୁ ସହାୟତା ଫେରାଇବାକୁ ପ୍ରେରିତ କରିଥିଲା।",
       },
     },
     {

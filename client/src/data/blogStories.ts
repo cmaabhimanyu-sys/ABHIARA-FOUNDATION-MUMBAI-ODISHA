@@ -59,12 +59,12 @@ export const BLOG_STORIES: BlogStory[] = [
     },
     paragraphs: [
       {
-        en: "Founder Abhimanyu Mallik grew up in his home village of Raisar in Kendrapara district, Odisha. He built his career in Odisha and later moved to Mumbai.",
-        od: "ପ୍ରତିଷ୍ଠାତା ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ ଓଡ଼ିଶାର କେନ୍ଦ୍ରାପଡ଼ା ଜିଲ୍ଲାର ନିଜ ଗାଁ ରାଇସରରେ ବଢ଼ିଥିଲେ। ସେ ଓଡ଼ିଶାରେ ନିଜ କାର୍ଯ୍ୟଜୀବନ ଗଢ଼ିଥିଲେ ଏବଂ ପରେ ମୁମ୍ବାଇ ଯାଇଥିଲେ।",
+        en: "Founder Abhimanyu Mallik grew up in his home village of Raisar in Kendrapara district, Odisha. He faced limited opportunities, a lack of guidance and financial difficulties. Family, friends and relatives supported him as he built his career in Odisha and later moved to Mumbai.",
+        od: "ପ୍ରତିଷ୍ଠାତା ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ ଓଡ଼ିଶାର କେନ୍ଦ୍ରାପଡ଼ା ଜିଲ୍ଲାର ନିଜ ଗାଁ ରାଇସରରେ ବଢ଼ିଥିଲେ। ସେ ସୁଯୋଗ ଓ ମାର୍ଗଦର୍ଶନର ଅଭାବ ସହ ଆର୍ଥିକ ଅସୁବିଧାର ମଧ୍ୟ ସମ୍ମୁଖୀନ ହୋଇଥିଲେ। ଓଡ଼ିଶାରେ କାର୍ଯ୍ୟଜୀବନ ଗଢ଼ି ପରେ ମୁମ୍ବାଇ ଯିବା ପର୍ଯ୍ୟନ୍ତ ପରିବାର, ସାଙ୍ଗ ଓ ସମ୍ପର୍କୀୟମାନେ ତାଙ୍କୁ ସହାୟତା କରିଥିଲେ।",
       },
       {
-        en: "The Foundation was established to organise education support through defined eligibility, verification, approval and record keeping processes.",
-        od: "ନିର୍ଦ୍ଧାରିତ ଯୋଗ୍ୟତା, ଯାଞ୍ଚ, ଅନୁମୋଦନ ଓ ରେକର୍ଡ ରଖିବା ପ୍ରକ୍ରିୟା ମାଧ୍ୟମରେ ଶିକ୍ଷା ସହାୟତା ସଂଗଠିତ କରିବା ପାଇଁ ଫାଉଣ୍ଡେସନ ସ୍ଥାପିତ ହୋଇଛି।",
+        en: "Their help influenced his decision to give back to society. Abhiara Foundation organises education support through defined eligibility, verification, approval and record keeping processes.",
+        od: "ସେମାନଙ୍କ ସହାୟତା ତାଙ୍କୁ ସମାଜକୁ ସହାୟତା ଫେରାଇବାକୁ ପ୍ରେରିତ କରିଥିଲା। ଅଭିଆରା ଫାଉଣ୍ଡେସନ ନିର୍ଦ୍ଧାରିତ ଯୋଗ୍ୟତା, ଯାଞ୍ଚ, ଅନୁମୋଦନ ଓ ରେକର୍ଡ ରଖିବା ପ୍ରକ୍ରିୟା ମାଧ୍ୟମରେ ଶିକ୍ଷା ସହାୟତା ସଂଗଠିତ କରେ।",
       },
       {
         en: "Education is the main programme area. Support may include tuition, school materials and other approved needs that help a child continue learning.",

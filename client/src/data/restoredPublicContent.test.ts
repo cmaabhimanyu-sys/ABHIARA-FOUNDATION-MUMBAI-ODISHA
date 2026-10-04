@@ -51,6 +51,12 @@ describe("restored purpose and reviewed history", () => {
     );
     expect(founderCopy).toContain("his home village of Raisar");
     expect(founderCopy).not.toContain("small rural village");
+    expect(founderCopy).toContain("financial difficulties");
+    expect(founderCopy).toContain(
+      "Family, friends and relatives supported him"
+    );
+    expect(founderCopy).toContain("give back to society");
+    expect(home).toContain("family, friends and relatives helped him");
     expect(founderCopy).toContain(
       "Raisar village, Kendrapara district, Odisha"
     );
