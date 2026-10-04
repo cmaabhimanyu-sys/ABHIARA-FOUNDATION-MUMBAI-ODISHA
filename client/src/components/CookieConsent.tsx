@@ -1,14 +1,18 @@
 /**
- * Cookie Consent Banner. DPDP / GDPR Compliant (Light Theme)
- * Shows on first visit, stores consent in localStorage
+ * Optional analytics preference banner. Required website functions remain available.
+ * Stores the choice locally and never loads optional trackers before permission.
  * Bilingual: English + Odia
  */
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Cookie, X } from "lucide-react";
-
-const CONSENT_KEY = "abhiara_cookie_consent";
+import {
+  CONSENT_KEY,
+  hasAnalyticsConsent,
+  startOptionalAnalytics,
+  stopOptionalAnalytics,
+} from "@/lib/analyticsConsent";
 
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
@@ -16,20 +20,42 @@ export default function CookieConsent() {
 
   useEffect(() => {
     const consent = localStorage.getItem(CONSENT_KEY);
+    if (hasAnalyticsConsent(consent)) startOptionalAnalytics();
     if (!consent) {
       const timer = setTimeout(() => setVisible(true), 1500);
-      return () => clearTimeout(timer);
+      const reopen = () => setVisible(true);
+      window.addEventListener("abhiara:cookie-settings", reopen);
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener("abhiara:cookie-settings", reopen);
+      };
     }
+    const reopen = () => setVisible(true);
+    window.addEventListener("abhiara:cookie-settings", reopen);
+    return () => window.removeEventListener("abhiara:cookie-settings", reopen);
   }, []);
 
   const acceptAll = () => {
-    localStorage.setItem(CONSENT_KEY, JSON.stringify({ accepted: true, date: new Date().toISOString() }));
+    localStorage.setItem(
+      CONSENT_KEY,
+      JSON.stringify({ accepted: true, date: new Date().toISOString() })
+    );
+    startOptionalAnalytics();
     setVisible(false);
   };
 
   const acceptEssential = () => {
-    localStorage.setItem(CONSENT_KEY, JSON.stringify({ accepted: "essential", date: new Date().toISOString() }));
+    const alreadyRunning = document.querySelector(
+      "script[data-abhiara-analytics]"
+    );
+    localStorage.setItem(
+      CONSENT_KEY,
+      JSON.stringify({ accepted: "essential", date: new Date().toISOString() })
+    );
+    stopOptionalAnalytics();
     setVisible(false);
+    // Unload trackers already active in the page when a visitor changes their choice.
+    if (alreadyRunning) window.location.reload();
   };
 
   if (!visible) return null;
@@ -52,9 +78,11 @@ export default function CookieConsent() {
               {t(
                 "We use required cookies for basic website functions. If you allow all cookies, we may also use analytics to understand how the website is used.",
                 "ୱେବସାଇଟର ମୂଳ କାମ ପାଇଁ ଆମେ ଆବଶ୍ୟକ କୁକି ବ୍ୟବହାର କରୁ। ଆପଣ ସମସ୍ତ କୁକିକୁ ଅନୁମତି ଦେଲେ, ୱେବସାଇଟ କିପରି ବ୍ୟବହାର ହେଉଛି ବୁଝିବା ପାଇଁ ଆମେ ବିଶ୍ଳେଷଣ କୁକି ମଧ୍ୟ ବ୍ୟବହାର କରିପାରୁ।"
-              )}
-              {" "}
-              <Link href="/privacy" className="text-[#F5A623] hover:text-[#F5A623] underline transition-colors">
+              )}{" "}
+              <Link
+                href="/privacy"
+                className="text-[#F5A623] hover:text-[#F5A623] underline transition-colors"
+              >
                 {t("Privacy Policy", "ଗୋପନୀୟତା ନୀତି")}
               </Link>
             </p>
@@ -80,7 +108,10 @@ export default function CookieConsent() {
           <button
             onClick={acceptEssential}
             className="text-gray-400 hover:text-[#1A1A1A] transition-colors flex-shrink-0"
-            aria-label="Close cookie banner"
+            aria-label={t(
+              "Close and use required cookies only",
+              "ବନ୍ଦ କରି କେବଳ ଆବଶ୍ୟକ କୁକି ବ୍ୟବହାର କରନ୍ତୁ"
+            )}
           >
             <X size={18} />
           </button>

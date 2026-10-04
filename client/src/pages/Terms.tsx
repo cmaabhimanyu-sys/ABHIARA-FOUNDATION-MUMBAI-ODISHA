@@ -10,7 +10,9 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Terms() {
   const { t } = useLanguage();
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#FAFAFA]">
@@ -24,13 +26,15 @@ export default function Terms() {
       {/* Hero */}
       <section className="pt-28 pb-16 bg-[#FAFAFA]">
         <div className="container text-center">
-          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#F5A623] mb-4">LEGAL</p>
+          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#F5A623] mb-4">
+            LEGAL
+          </p>
           <h1 className="font-serif text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-4">
             {t("Terms & Conditions", "ନିୟମ ଓ ସର୍ତ୍ତାବଳୀ")}
           </h1>
           <div className="w-16 h-0.5 bg-gradient-to-r from-[#F5A623] to-[#1A1A1A] mx-auto mb-4" />
           <p className="font-mono text-[10px] tracking-wider uppercase text-[#888]">
-            {t("Last updated: September 2026", "ଶେଷ ଅଦ୍ୟତନ: ସେପ୍ଟେମ୍ବର ୨୦୨୬")}
+            {t("Last updated: October 2026", "ଶେଷ ଅଦ୍ୟତନ: ଅକ୍ଟୋବର ୨୦୨୬")}
           </p>
         </div>
       </section>
@@ -39,8 +43,9 @@ export default function Terms() {
       <section className="py-16 section-light">
         <div className="container max-w-3xl">
           <div className="prose prose-lg max-w-none">
-
-            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">1. {t("About Us", "ଆମ ବିଷୟରେ")}</h2>
+            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">
+              1. {t("About Us", "ଆମ ବିଷୟରେ")}
+            </h2>
             <p className="font-sans text-[17px] text-[#333] leading-relaxed mb-6">
               {t(
                 "Abhiara Foundation is a Section 8 not-for-profit company incorporated under the Companies Act, 2013 with CIN U87300MH2026NPL471397. Our registered office is in Mumbai, Maharashtra. Our main public programme is Abhiara Shiksha Sathi. It helps orphaned children and children from underprivileged families stay in school after their needs are checked. An adult may email an education request from any Indian state for case by case review.",
@@ -48,7 +53,9 @@ export default function Terms() {
               )}
             </p>
 
-            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">2. {t("Acceptance of Terms", "ସର୍ତ୍ତ ଗ୍ରହଣ")}</h2>
+            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">
+              2. {t("Acceptance of Terms", "ସର୍ତ୍ତ ଗ୍ରହଣ")}
+            </h2>
             <p className="font-sans text-[17px] text-[#333] leading-relaxed mb-6">
               {t(
                 "By accessing and using this website (abhiarafoundation.org), you agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, please do not use this website.",
@@ -56,7 +63,9 @@ export default function Terms() {
               )}
             </p>
 
-            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">3. {t("Use of Website", "ୱେବସାଇଟ ବ୍ୟବହାର")}</h2>
+            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">
+              3. {t("Use of Website", "ୱେବସାଇଟ ବ୍ୟବହାର")}
+            </h2>
             <p className="font-sans text-[17px] text-[#333] leading-relaxed mb-6">
               {t(
                 "This website tells you about Abhiara Foundation's work and programmes. Please do not use it for anything wrong or harmful. All the words, photos, logos, and design on this website belong to Abhiara Foundation.",
@@ -64,7 +73,9 @@ export default function Terms() {
               )}
             </p>
 
-            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">4. {t("Donations & Contributions", "ଦାନ ଓ ଅବଦାନ")}</h2>
+            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">
+              4. {t("Donations & Contributions", "ଦାନ ଓ ଅବଦାନ")}
+            </h2>
             <p className="font-sans text-[17px] text-[#333] leading-relaxed mb-6">
               {t(
                 "All donations are voluntary. Our 12AB and 80G applications are pending. Donations made now are not eligible for an 80G tax deduction. We can provide a Donation Acknowledgement on request. Foreign contributions are not accepted at present. Please donate only through the official website, Foundation bank account or authorised UPI channel. The Foundation never asks donors to transfer programme funds to personal accounts. Refund requests are reviewed under the published Donation and Refund Policy.",
@@ -72,15 +83,19 @@ export default function Terms() {
               )}
             </p>
 
-            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">5. {t("Disclaimer", "ଦାୟିତ୍ୱ ମୁକ୍ତି")}</h2>
+            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">
+              5. {t("Disclaimer", "ଦାୟିତ୍ୱ ମୁକ୍ତି")}
+            </h2>
             <p className="font-sans text-[17px] text-[#333] leading-relaxed mb-6">
               {t(
-                "The information on this website is provided 'as is' without any warranties, express or implied. Abhiara Foundation makes no representations about the accuracy or completeness of the information. We reserve the right to modify the content of this website at any time without notice. Abhiara Foundation shall not be liable for any loss or damage arising from the use of this website.",
-                "ଏହି ୱେବସାଇଟରେ ସୂଚନା 'ଯେପରି ଅଛି' ସେପରି ପ୍ରଦାନ କରାଯାଇଛି, କୌଣସି ୱାରେଣ୍ଟି ବିନା। ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସୂଚନାର ସଠିକତା ବା ସମ୍ପୂର୍ଣ୍ଣତା ବିଷୟରେ କୌଣସି ପ୍ରତିନିଧିତ୍ୱ କରେ ନାହିଁ। ଆମେ ବିନା ସୂଚନାରେ ଏହି ୱେବସାଇଟର ବିଷୟବସ୍ତୁ ପରିବର୍ତ୍ତନ କରିବାର ଅଧିକାର ସଂରକ୍ଷଣ କରୁ।"
+                "Programme information is reviewed before publication, but activities and available support can change. An education request does not guarantee assistance. For a current record or a correction, email the Foundation.",
+                "କାର୍ଯ୍ୟକ୍ରମ ସୂଚନା ପ୍ରକାଶ ପୂର୍ବରୁ ସମୀକ୍ଷା କରାଯାଏ, କିନ୍ତୁ କାମ ଓ ଉପଲବ୍ଧ ସହାୟତା ବଦଳିପାରେ। ଶିକ୍ଷା ଅନୁରୋଧ କଲେ ସହାୟତା ନିଶ୍ଚିତ ନୁହେଁ। ବର୍ତ୍ତମାନର ରେକର୍ଡ ବା ସଂଶୋଧନ ପାଇଁ ଫାଉଣ୍ଡେସନକୁ ଇମେଲ କରନ୍ତୁ।"
               )}
             </p>
 
-            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">6. {t("Third-Party Links", "ତୃତୀୟ ପକ୍ଷ ଲିଙ୍କ")}</h2>
+            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">
+              6. {t("Third-Party Links", "ତୃତୀୟ ପକ୍ଷ ଲିଙ୍କ")}
+            </h2>
             <p className="font-sans text-[17px] text-[#333] leading-relaxed mb-6">
               {t(
                 "This website may contain links to third-party websites. These links are provided for convenience only and do not signify endorsement. Abhiara Foundation is not responsible for the content or privacy practices of linked websites.",
@@ -88,7 +103,9 @@ export default function Terms() {
               )}
             </p>
 
-            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">7. {t("Governing Law", "ପ୍ରଯୋଜ୍ୟ ଆଇନ")}</h2>
+            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">
+              7. {t("Governing Law", "ପ୍ରଯୋଜ୍ୟ ଆଇନ")}
+            </h2>
             <p className="font-sans text-[17px] text-[#333] leading-relaxed mb-6">
               {t(
                 "These terms shall be governed by and construed in accordance with the laws of India. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the courts in Mumbai, Maharashtra.",
@@ -96,30 +113,36 @@ export default function Terms() {
               )}
             </p>
 
-            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">8. {t("Grievance Redressal", "ଅଭିଯୋଗ ନିବାରଣ")}</h2>
+            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">
+              8. {t("Grievance Redressal", "ଅଭିଯୋଗ ନିବାରଣ")}
+            </h2>
             <p className="font-sans text-[17px] text-[#333] leading-relaxed mb-6">
               {t(
-                "For any grievances, complaints, or concerns regarding this website or Abhiara Foundation's activities, please contact our Grievance Officer:",
-                "ଏହି ୱେବସାଇଟ ବା ଅଭିଆରା ଫାଉଣ୍ଡେସନର କାର୍ଯ୍ୟକଳାପ ସମ୍ବନ୍ଧରେ କୌଣସି ଅଭିଯୋଗ, ଅସନ୍ତୋଷ ବା ଚିନ୍ତା ପାଇଁ, ଦୟାକରି ଆମର ଅଭିଯୋଗ ଅଧିକାରୀଙ୍କ ସହ ଯୋଗାଯୋଗ କରନ୍ତୁ:"
+                "For a concern about the website, a programme or safeguarding, email the Foundation. We review each message and reply when we can.",
+                "ୱେବସାଇଟ, କାର୍ଯ୍ୟକ୍ରମ ବା ସୁରକ୍ଷା ସମ୍ବନ୍ଧୀୟ ଚିନ୍ତା ଥିଲେ ଫାଉଣ୍ଡେସନକୁ ଇମେଲ କରନ୍ତୁ। ଆମେ ପ୍ରତ୍ୟେକ ସନ୍ଦେଶ ସମୀକ୍ଷା କରି ସମ୍ଭବ ହେଲେ ଉତ୍ତର ଦେଉ।"
               )}
             </p>
             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm mb-6">
               <p className="font-sans text-[17px] text-[#333] leading-relaxed">
-                <strong>{t("Grievance Officer", "ଅଭିଯୋଗ ଅଧିକାରୀ")}:</strong> Abhimanyu Mallik<br />
-                <strong>{t("Designation", "ପଦବୀ")}:</strong> {t("Founder & Director", "ପ୍ରତିଷ୍ଠାତା ଓ ନିର୍ଦ୍ଦେଶକ")}<br />
-                <strong>{t("Email", "ଇମେଲ")}:</strong> info@abhiarafoundation.org<br />
-                <strong>{t("Response Time", "ଉତ୍ତର ସମୟ")}:</strong> {t("Within 48 hours of receiving the complaint", "ଅଭିଯୋଗ ପ୍ରାପ୍ତ ହେବାର ୪୮ ଘଣ୍ଟା ମଧ୍ୟରେ")}
+                <strong>{t("Email", "ଇମେଲ")}:</strong>{" "}
+                <a
+                  className="underline"
+                  href="mailto:info@abhiarafoundation.org"
+                >
+                  info@abhiarafoundation.org
+                </a>
               </p>
             </div>
 
-            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">9. {t("Contact", "ଯୋଗାଯୋଗ")}</h2>
+            <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">
+              9. {t("Contact", "ଯୋଗାଯୋଗ")}
+            </h2>
             <p className="font-sans text-[17px] text-[#333] leading-relaxed mb-6">
               {t(
                 "If you have any questions about these Terms & Conditions, please write to us at info@abhiarafoundation.org.",
                 "ଯଦି ଆପଣଙ୍କର ଏହି ନିୟମ ଓ ସର୍ତ୍ତାବଳୀ ବିଷୟରେ କୌଣସି ପ୍ରଶ୍ନ ଅଛି, ଦୟାକରି ଆମକୁ info@abhiarafoundation.org ରେ ଲେଖନ୍ତୁ।"
               )}
             </p>
-
           </div>
         </div>
       </section>

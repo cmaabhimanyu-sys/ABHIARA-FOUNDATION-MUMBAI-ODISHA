@@ -2,7 +2,6 @@ import { existsSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { MONTHLY_IMPACT_REPORTS } from "./monthlyImpact";
 import {
-  BUDGET_PRIORITIES,
   CORE_STATEMENT,
   EDUCATION_REQUEST_BODY,
   EDUCATION_REQUEST_EMAIL,
@@ -224,9 +223,7 @@ describe("education-first public website update", () => {
     expect(EDUCATION_REQUEST_BODY).toContain("Child's initials only");
     expect(EDUCATION_REQUEST_BODY).toContain("Please do not attach Aadhaar");
     expect(EDUCATION_REQUEST_BODY).not.toContain("Child's full name");
-    expect(BUDGET_PRIORITIES[0].share).toBe("70 to 75%");
-    expect(BUDGET_PRIORITIES[1].share).toBe("20 to 25%");
-    expect(BUDGET_PRIORITIES[2].share).toBe("5 to 10%");
+    expect(focusedPublicFiles).not.toMatch(/70 to 75%|20 to 25%|5 to 10%/);
     expect(focusedPublicFiles).toContain("Limited Verified Support");
     expect(focusedPublicFiles).toContain("not a standing public programme");
     expect(focusedPublicFiles).not.toMatch(

@@ -150,19 +150,28 @@ export default function Home() {
     };
   });
   const [activeHeroIndex, setActiveHeroIndex] = useState(0);
-  const [heroPaused, setHeroPaused] = useState(false);
+  const [heroPaused, setHeroPaused] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+  const [heroHoverPaused, setHeroHoverPaused] = useState(false);
   const [activeImpactIndex, setActiveImpactIndex] = useState(0);
-  const [impactPaused, setImpactPaused] = useState(false);
+  const [impactPaused, setImpactPaused] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   useEffect(() => {
-    if (heroSlides.length < 2 || heroPaused) return;
+    if (heroSlides.length < 2 || heroPaused || heroHoverPaused) return;
     const timer = window.setInterval(() => {
       setActiveHeroIndex(current => (current + 1) % heroSlides.length);
     }, 5600);
     return () => window.clearInterval(timer);
-  }, [heroPaused, heroSlides.length]);
+  }, [heroPaused, heroHoverPaused, heroSlides.length]);
   useEffect(() => {
     if (activeHeroIndex >= heroSlides.length) {
       setActiveHeroIndex(0);
@@ -213,12 +222,12 @@ export default function Home() {
             "Abhiara Foundation programmes",
             "ଅଭିଆରା ଫାଉଣ୍ଡେସନ କାର୍ଯ୍ୟକ୍ରମ"
           )}
-          onMouseEnter={() => setHeroPaused(true)}
-          onMouseLeave={() => setHeroPaused(false)}
-          onFocusCapture={() => setHeroPaused(true)}
+          onMouseEnter={() => setHeroHoverPaused(true)}
+          onMouseLeave={() => setHeroHoverPaused(false)}
+          onFocusCapture={() => setHeroHoverPaused(true)}
           onBlurCapture={event => {
             if (!event.currentTarget.contains(event.relatedTarget)) {
-              setHeroPaused(false);
+              setHeroHoverPaused(false);
             }
           }}
         >
@@ -247,7 +256,21 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/20" />
 
           <div className="container relative z-10 flex min-h-[650px] items-center py-16 md:min-h-[700px]">
-            {heroSlides.map((slide, index) => {
+            {(heroSlides.length
+              ? heroSlides
+              : [
+                  {
+                    key: "education-mission",
+                    areaKey: "education" as const,
+                    category: HOME_IMPACT_CATEGORIES.education,
+                    photo: null,
+                    titleEn: "Education is our main work.",
+                    titleOd: "ଶିକ୍ଷା ଆମର ମୁଖ୍ୟ କାମ।",
+                    bodyEn: CORE_STATEMENT,
+                    bodyOd: CORE_STATEMENT_OD,
+                  },
+                ]
+            ).map((slide, index) => {
               const Icon = HOME_WORK_ICONS[slide.areaKey];
               const isActive = index === activeHeroIndex;
               const isFeatured = index === 0;
@@ -284,7 +307,7 @@ export default function Home() {
                     <h1 className="max-w-4xl font-serif text-4xl font-bold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-7xl">
                       {isFeatured
                         ? t(PUBLIC_TAGLINE, "ଶିକ୍ଷା ପ୍ରଥମ। ଦୟା ସଦା।")
-                        : slide.photo.title || t(slide.titleEn, slide.titleOd)}
+                        : t(slide.titleEn, slide.titleOd)}
                     </h1>
                     <p className="mt-6 max-w-2xl font-sans text-base leading-7 text-white/80 md:text-lg">
                       {isFeatured
@@ -292,8 +315,7 @@ export default function Home() {
                             PUBLIC_TAGLINE_DESCRIPTION,
                             PUBLIC_TAGLINE_DESCRIPTION_OD
                           )
-                        : slide.photo.description ||
-                          t(slide.bodyEn, slide.bodyOd)}
+                        : t(slide.bodyEn, slide.bodyOd)}
                     </p>
                     <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                       <Link
@@ -316,77 +338,87 @@ export default function Home() {
             })}
           </div>
 
-          <button
-            type="button"
-            onClick={() =>
-              setActiveHeroIndex(
-                current => (current - 1 + heroSlides.length) % heroSlides.length
-              )
-            }
-            aria-label={t("Previous programme", "ପୂର୍ବ କାର୍ଯ୍ୟକ୍ରମ")}
-            className="absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/35 bg-black/40 text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623] md:left-6"
-          >
-            <ChevronLeft size={22} />
-          </button>
-          <button
-            type="button"
-            onClick={() =>
-              setActiveHeroIndex(current => (current + 1) % heroSlides.length)
-            }
-            aria-label={t("Next programme", "ପରବର୍ତ୍ତୀ କାର୍ଯ୍ୟକ୍ରମ")}
-            className="absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/35 bg-black/40 text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623] md:right-6"
-          >
-            <ChevronRight size={22} />
-          </button>
-
-          <div className="absolute inset-x-0 bottom-4 z-20">
-            <div className="container flex items-center justify-between gap-4">
-              <div className="flex flex-wrap items-center gap-2">
-                {heroSlides
-                  .map((slide, index) => (
-                    <button
-                      key={slide.key}
-                      type="button"
-                      onClick={() => setActiveHeroIndex(index)}
-                      aria-label={t(
-                        `Show photo ${index + 1}`,
-                        `ଫଟୋ ${index + 1} ଦେଖନ୍ତୁ`
-                      )}
-                      aria-current={
-                        index === activeHeroIndex ? "true" : undefined
-                      }
-                      className={`h-2.5 rounded-full transition-all ${
-                        index === activeHeroIndex
-                          ? "w-9 bg-[#F5A623]"
-                          : "w-2.5 bg-white/45 hover:bg-white/75"
-                      }`}
-                    />
-                  ))
-                  .slice(0, 8)}
-                {heroSlides.length > 8 && (
-                  <span className="font-mono text-[9px] text-white/65">
-                    +{heroSlides.length - 8}
-                  </span>
-                )}
-              </div>
+          {heroSlides.length > 1 && (
+            <>
               <button
                 type="button"
-                onClick={() => setHeroPaused(current => !current)}
-                aria-label={
-                  heroPaused
-                    ? t("Play programme carousel", "କାର୍ଯ୍ୟକ୍ରମ ସ୍ଲାଇଡ ଚଳାନ୍ତୁ")
-                    : t(
-                        "Pause programme carousel",
-                        "କାର୍ଯ୍ୟକ୍ରମ ସ୍ଲାଇଡ ବିରତ କରନ୍ତୁ"
-                      )
+                onClick={() =>
+                  setActiveHeroIndex(
+                    current =>
+                      (current - 1 + heroSlides.length) % heroSlides.length
+                  )
                 }
-                className="inline-flex min-h-10 items-center gap-2 rounded-full border border-white/30 bg-black/40 px-4 font-sans text-xs font-bold text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623]"
+                aria-label={t("Previous programme", "ପୂର୍ବ କାର୍ଯ୍ୟକ୍ରମ")}
+                className="absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/35 bg-black/40 text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623] md:left-6"
               >
-                {heroPaused ? <Play size={14} /> : <Pause size={14} />}
-                {heroPaused ? t("Play", "ଚଳାନ୍ତୁ") : t("Pause", "ବିରତ")}
+                <ChevronLeft size={22} />
               </button>
-            </div>
-          </div>
+              <button
+                type="button"
+                onClick={() =>
+                  setActiveHeroIndex(
+                    current => (current + 1) % heroSlides.length
+                  )
+                }
+                aria-label={t("Next programme", "ପରବର୍ତ୍ତୀ କାର୍ଯ୍ୟକ୍ରମ")}
+                className="absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/35 bg-black/40 text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623] md:right-6"
+              >
+                <ChevronRight size={22} />
+              </button>
+
+              <div className="absolute inset-x-0 bottom-4 z-20">
+                <div className="container flex items-center justify-between gap-4">
+                  <div className="flex flex-wrap items-center gap-2">
+                    {heroSlides
+                      .map((slide, index) => (
+                        <button
+                          key={slide.key}
+                          type="button"
+                          onClick={() => setActiveHeroIndex(index)}
+                          aria-label={t(
+                            `Show photo ${index + 1}`,
+                            `ଫଟୋ ${index + 1} ଦେଖନ୍ତୁ`
+                          )}
+                          aria-current={
+                            index === activeHeroIndex ? "true" : undefined
+                          }
+                          className={`h-2.5 rounded-full transition-all ${
+                            index === activeHeroIndex
+                              ? "w-9 bg-[#F5A623]"
+                              : "w-2.5 bg-white/45 hover:bg-white/75"
+                          }`}
+                        />
+                      ))
+                      .slice(0, 8)}
+                    {heroSlides.length > 8 && (
+                      <span className="font-mono text-[9px] text-white/65">
+                        +{heroSlides.length - 8}
+                      </span>
+                    )}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setHeroPaused(current => !current)}
+                    aria-label={
+                      heroPaused
+                        ? t(
+                            "Play programme carousel",
+                            "କାର୍ଯ୍ୟକ୍ରମ ସ୍ଲାଇଡ ଚଳାନ୍ତୁ"
+                          )
+                        : t(
+                            "Pause programme carousel",
+                            "କାର୍ଯ୍ୟକ୍ରମ ସ୍ଲାଇଡ ବିରତ କରନ୍ତୁ"
+                          )
+                    }
+                    className="inline-flex min-h-10 items-center gap-2 rounded-full border border-white/30 bg-black/40 px-4 font-sans text-xs font-bold text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623]"
+                  >
+                    {heroPaused ? <Play size={14} /> : <Pause size={14} />}
+                    {heroPaused ? t("Play", "ଚଳାନ୍ତୁ") : t("Pause", "ବିରତ")}
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
         </section>
 
         <section className="bg-white py-16 md:py-24">
@@ -466,8 +498,8 @@ export default function Home() {
                   icon: Users,
                   title: t("Board and People", "ବୋର୍ଡ ଓ ଆମ ଲୋକମାନେ"),
                   body: t(
-                    "Meet the people associated with Abhiara Foundation in one public sequence.",
-                    "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସହ ଜଡିତ ଲୋକମାନଙ୍କୁ ଗୋଟିଏ ସାର୍ବଜନୀନ କ୍ରମରେ ଦେଖନ୍ତୁ।"
+                    "Meet our Board, independent auditor, advisors, Odisha leaders and core members.",
+                    "ଆମ ନିର୍ଦ୍ଦେଶକ ମଣ୍ଡଳ, ସ୍ୱାଧୀନ ଅଡିଟର, ପରାମର୍ଶଦାତା, ଓଡ଼ିଶା ନେତୃତ୍ୱ ଓ ମୂଳ ସଦସ୍ୟମାନଙ୍କୁ ଜାଣନ୍ତୁ।"
                   ),
                   href: "/board-and-transparency",
                 },

@@ -11,7 +11,7 @@ const publicSources = [
   "client/src/pages/Vision.tsx",
   "client/src/pages/DigitalLearningAI.tsx",
   "client/src/pages/Volunteer.tsx",
-  "client/src/pages/Activities.tsx",
+  "client/src/pages/MonthlyReports.tsx",
   "client/src/i18n/translations.ts",
 ]
   .map(read)

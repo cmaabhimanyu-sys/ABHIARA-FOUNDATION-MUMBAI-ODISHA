@@ -1,7 +1,16 @@
 /** Abhiara Foundation volunteer page. */
 import { useEffect } from "react";
 import { Link } from "wouter";
-import { ArrowRight, BookOpen, CalendarDays, Camera, HeartHandshake, Mail, MapPin, Users } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  CalendarDays,
+  Languages,
+  HeartHandshake,
+  Mail,
+  MapPin,
+  Users,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -19,15 +28,21 @@ export default function Volunteer() {
   const waysToHelp = [
     {
       icon: BookOpen,
-      title: t("Help children with studies", "ପିଲାମାନଙ୍କ ପାଠପଢ଼ାରେ ସାହାଯ୍ୟ କରନ୍ତୁ"),
+      title: t(
+        "Help children with studies",
+        "ପିଲାମାନଙ୍କ ପାଠପଢ଼ାରେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+      ),
       text: t(
-        "When a study visit is planned, you can help children with reading, homework, or school activities.",
-        "ପାଠପଢ଼ା ପାଇଁ ଯେତେବେଳେ ଭେଟ ହୁଏ, ଆପଣ ପିଲାମାନଙ୍କୁ ପଢ଼ିବା, ଘର କାମ କିମ୍ବା ସ୍କୁଲ କାମରେ ସାହାଯ୍ୟ କରିପାରିବେ।"
+        "If the Foundation approves and supervises a study visit, you may help with reading or school activities.",
+        "ଫାଉଣ୍ଡେସନ ଅନୁମୋଦନ ଓ ତଦାରଖରେ ପାଠପଢ଼ା ଭେଟ ହେଲେ, ଆପଣ ପଢ଼ିବା ବା ସ୍କୁଲ କାମରେ ସାହାଯ୍ୟ କରିପାରିବେ।"
       ),
     },
     {
       icon: CalendarDays,
-      title: t("Help prepare learning materials", "ପଢ଼ା ସାମଗ୍ରୀ ପ୍ରସ୍ତୁତିରେ ସାହାଯ୍ୟ କରନ୍ତୁ"),
+      title: t(
+        "Help prepare learning materials",
+        "ପଢ଼ା ସାମଗ୍ରୀ ପ୍ରସ୍ତୁତିରେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+      ),
       text: t(
         "You can help sort books, prepare study kits, or support an approved education activity.",
         "ଆପଣ ପୁସ୍ତକ ଛାଣିବା, ପଢ଼ା କିଟ ପ୍ରସ୍ତୁତି ବା ଅନୁମୋଦିତ ଶିକ୍ଷା କାର୍ଯ୍ୟରେ ସାହାଯ୍ୟ କରିପାରିବେ।"
@@ -42,28 +57,44 @@ export default function Volunteer() {
       ),
     },
     {
-      icon: Camera,
-      title: t("Help with photos or language", "ଫଟୋ କିମ୍ବା ଭାଷାରେ ସାହାଯ୍ୟ କରନ୍ତୁ"),
+      icon: Languages,
+      title: t("Help with translation", "ଅନୁବାଦରେ ସାହାଯ୍ୟ କରନ୍ତୁ"),
       text: t(
-        "You can help translate between Odia and English. Photos of children may be taken only after guardian consent and Foundation approval.",
-        "ଆପଣ ଓଡ଼ିଆ ଓ ଇଂରାଜୀ ଅନୁବାଦରେ ସାହାଯ୍ୟ କରିପାରିବେ। ଅଭିଭାବକ ସମ୍ମତି ଓ ଫାଉଣ୍ଡେସନ ଅନୁମୋଦନ ପରେ ମାତ୍ର ଶିଶୁଙ୍କ ଫଟୋ ନିଆଯାଇପାରିବ।"
+        "Help make approved information clear in Odia and English. Do not collect or share private child details.",
+        "ଅନୁମୋଦିତ ସୂଚନାକୁ ଓଡ଼ିଆ ଓ ଇଂରାଜୀରେ ସ୍ପଷ୍ଟ କରିବାରେ ସାହାଯ୍ୟ କରନ୍ତୁ। ଶିଶୁଙ୍କ ବ୍ୟକ୍ତିଗତ ବିବରଣୀ ସଂଗ୍ରହ ବା ସେୟାର କରନ୍ତୁ ନାହିଁ।"
       ),
     },
   ];
 
   const simpleGuidance = [
-    t("Speak kindly and treat every person with respect.", "ଭଲ ଭାବରେ କଥା କହନ୍ତୁ ଏବଂ ସମସ୍ତଙ୍କୁ ସମ୍ମାନ ଦିଅନ୍ତୁ।"),
-    t("Follow the local team's guidance during an activity.", "କାର୍ଯ୍ୟକ୍ରମ ସମୟରେ ସ୍ଥାନୀୟ ଦଳର କଥା ମାନନ୍ତୁ।"),
-    t("Ask before taking a photo or sharing someone's story.", "କାହାର ଫଟୋ ନେବା କିମ୍ବା କଥା ସେୟାର କରିବା ପୂର୍ବରୁ ଅନୁମତି ନିଅନ୍ତୁ।"),
+    t(
+      "Speak kindly and treat every person with respect.",
+      "ଭଲ ଭାବରେ କଥା କହନ୍ତୁ ଏବଂ ସମସ୍ତଙ୍କୁ ସମ୍ମାନ ଦିଅନ୍ତୁ।"
+    ),
+    t(
+      "Follow the local team's guidance during an activity.",
+      "କାର୍ଯ୍ୟକ୍ରମ ସମୟରେ ସ୍ଥାନୀୟ ଦଳର କଥା ମାନନ୍ତୁ।"
+    ),
+    t(
+      "Do not contact a child privately or arrange an unsupervised visit. Tell the Foundation if you notice a safety concern.",
+      "ଶିଶୁଙ୍କ ସହ ଅଲଗାରେ ଯୋଗାଯୋଗ ବା ବିନା ତଦାରଖରେ ଭେଟ କରନ୍ତୁ ନାହିଁ। ସୁରକ୍ଷା ନେଇ ଚିନ୍ତା ଥିଲେ ଫାଉଣ୍ଡେସନକୁ ଜଣାନ୍ତୁ।"
+    ),
+    t(
+      "Do not take or share a child's photo without recorded guardian permission and Foundation review.",
+      "ଅଭିଭାବକଙ୍କ ସମ୍ମତି ଓ ଫାଉଣ୍ଡେସନର ସମୀକ୍ଷା ରେକର୍ଡ ନଥିଲେ ଶିଶୁଙ୍କ ଫଟୋ ନିଅନ୍ତୁ ବା ସେୟାର କରନ୍ତୁ ନାହିଁ।"
+    ),
   ];
 
   return (
     <div className="min-h-screen bg-[#FAFAFA]">
       <SEO
-        title={t("Volunteer with Abhiara Foundation", "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସହ ସ୍ୱେଚ୍ଛାସେବୀ ହୁଅନ୍ତୁ")}
+        title={t(
+          "Volunteer with Abhiara Foundation",
+          "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସହ ସ୍ୱେଚ୍ଛାସେବୀ ହୁଅନ୍ତୁ"
+        )}
         description={t(
-          "Give some time when you can. Help with studies, local activities, village visits, photos, or translation.",
-          "ସମୟ ଥିଲେ କିଛି ସମୟ ଦିଅନ୍ତୁ। ପାଠପଢ଼ା, ସ୍ଥାନୀୟ କାର୍ଯ୍ୟକ୍ରମ, ଗାଁ ଭେଟ, ଫଟୋ କିମ୍ବା ଅନୁବାଦରେ ସାହାଯ୍ୟ କରନ୍ତୁ।"
+          "Give some time when you can. Help with approved studies, learning materials or translation.",
+          "ସମୟ ଥିଲେ ଅନୁମୋଦିତ ପାଠପଢ଼ା, ଶିକ୍ଷା ସାମଗ୍ରୀ ବା ଅନୁବାଦରେ ସାହାଯ୍ୟ କରନ୍ତୁ।"
         )}
         url="https://www.abhiarafoundation.org/volunteer"
       />
@@ -94,7 +125,9 @@ export default function Volunteer() {
               className="mb-6 font-serif text-4xl font-bold leading-tight text-white md:text-6xl"
             >
               {t("Volunteer with ", "ସ୍ୱେଚ୍ଛାସେବୀ ଭାବେ ")}
-              <span className="text-[#F5A623]">{t("Abhiara", "ଅଭିଆରା ସହ ଯୋଗ ଦିଅନ୍ତୁ")}</span>
+              <span className="text-[#F5A623]">
+                {t("Abhiara", "ଅଭିଆରା ସହ ଯୋଗ ଦିଅନ୍ତୁ")}
+              </span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -117,7 +150,10 @@ export default function Volunteer() {
                 {t("HOW YOU CAN HELP", "ଆପଣ କିପରି ସାହାଯ୍ୟ କରିପାରିବେ")}
               </p>
               <h2 className="font-serif text-3xl font-bold text-[#1A1A1A] md:text-4xl">
-                {t("Choose what feels right for you", "ଆପଣଙ୍କୁ ଯାହା ଭଲ ଲାଗେ ତାହା ବାଛନ୍ତୁ")}
+                {t(
+                  "Choose what feels right for you",
+                  "ଆପଣଙ୍କୁ ଯାହା ଭଲ ଲାଗେ ତାହା ବାଛନ୍ତୁ"
+                )}
               </h2>
               <p className="mx-auto mt-4 max-w-xl font-sans text-[16px] leading-7 text-[#555]">
                 {t(
@@ -131,9 +167,17 @@ export default function Volunteer() {
               {waysToHelp.map((item, index) => (
                 <AnimatedSection key={item.title} delay={index * 0.05}>
                   <article className="h-full border border-[#E7E0D6] bg-white p-6 md:p-7">
-                    <item.icon size={28} className="mb-4 text-[#F5A623]" aria-hidden="true" />
-                    <h3 className="mb-3 font-serif text-xl font-bold text-[#1A1A1A]">{item.title}</h3>
-                    <p className="font-sans text-[15px] leading-7 text-[#555]">{item.text}</p>
+                    <item.icon
+                      size={28}
+                      className="mb-4 text-[#F5A623]"
+                      aria-hidden="true"
+                    />
+                    <h3 className="mb-3 font-serif text-xl font-bold text-[#1A1A1A]">
+                      {item.title}
+                    </h3>
+                    <p className="font-sans text-[15px] leading-7 text-[#555]">
+                      {item.text}
+                    </p>
                   </article>
                 </AnimatedSection>
               ))}
@@ -144,7 +188,11 @@ export default function Volunteer() {
         <section className="bg-[#FFF7EA] py-14 md:py-16">
           <div className="container grid items-center gap-10 md:grid-cols-[0.9fr_1.1fr]">
             <AnimatedSection>
-              <HeartHandshake size={34} className="mb-4 text-[#F5A623]" aria-hidden="true" />
+              <HeartHandshake
+                size={34}
+                className="mb-4 text-[#F5A623]"
+                aria-hidden="true"
+              />
               <h2 className="mb-4 font-serif text-3xl font-bold text-[#1A1A1A]">
                 {t("A few simple things", "କିଛି ସରଳ କଥା")}
               </h2>
@@ -157,9 +205,16 @@ export default function Volunteer() {
             </AnimatedSection>
             <AnimatedSection delay={0.08}>
               <ul className="space-y-4">
-                {simpleGuidance.map((item) => (
-                  <li key={item} className="flex gap-3 bg-white p-4 font-sans text-[15px] leading-6 text-[#444]">
-                    <Users size={18} className="mt-0.5 shrink-0 text-[#F5A623]" aria-hidden="true" />
+                {simpleGuidance.map(item => (
+                  <li
+                    key={item}
+                    className="flex gap-3 bg-white p-4 font-sans text-[15px] leading-6 text-[#444]"
+                  >
+                    <Users
+                      size={18}
+                      className="mt-0.5 shrink-0 text-[#F5A623]"
+                      aria-hidden="true"
+                    />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -175,7 +230,10 @@ export default function Volunteer() {
                 {t("READY TO HELP", "ସାହାଯ୍ୟ କରିବାକୁ ପ୍ରସ୍ତୁତ")}
               </p>
               <h2 className="mx-auto mb-5 max-w-2xl font-serif text-3xl font-bold text-white md:text-4xl">
-                {t("Tell us how you would like to volunteer", "ଆପଣ କିପରି ସ୍ୱେଚ୍ଛାସେବୀ ହେବାକୁ ଚାହୁଁଛନ୍ତି ଆମକୁ କୁହନ୍ତୁ")}
+                {t(
+                  "Tell us how you would like to volunteer",
+                  "ଆପଣ କିପରି ସ୍ୱେଚ୍ଛାସେବୀ ହେବାକୁ ଚାହୁଁଛନ୍ତି ଆମକୁ କୁହନ୍ତୁ"
+                )}
               </h2>
               <p className="mx-auto mb-8 max-w-xl font-sans text-[16px] leading-7 text-white/70">
                 {t(

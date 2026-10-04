@@ -34,10 +34,7 @@ export default function Privacy() {
           </h1>
           <div className="w-16 h-0.5 bg-gradient-to-r from-[#F5A623] to-[#1A1A1A] mx-auto mb-4" />
           <p className="font-mono text-[10px] tracking-wider uppercase text-[#888]">
-            {t(
-              "Last updated: 30 September 2026",
-              "ଶେଷ ଅଦ୍ୟତନ: ୩୦ ସେପ୍ଟେମ୍ବର ୨୦୨୬"
-            )}
+            {t("Last updated: 4 October 2026", "ଶେଷ ଅଦ୍ୟତନ: ୪ ଅକ୍ଟୋବର ୨୦୨୬")}
           </p>
         </div>
       </section>
@@ -74,8 +71,8 @@ export default function Privacy() {
               </li>
               <li className="font-sans text-[17px] text-[#333]">
                 {t(
-                  "Usage data: Browser type, IP address, pages visited, and time spent on the website (collected automatically)",
-                  "ବ୍ୟବହାର ତଥ୍ୟ: ବ୍ରାଉଜର ପ୍ରକାର, IP ଠିକଣା, ପରିଦର୍ଶନ ହୋଇଥିବା ପୃଷ୍ଠା, ଏବଂ ୱେବସାଇଟରେ ବିତାଇଥିବା ସମୟ (ସ୍ୱୟଂଚାଳିତ ଭାବେ ସଂଗ୍ରହ)"
+                  "Website use: our hosting service processes technical request information. Optional analytics may record pages visited only after you allow it in the cookie settings.",
+                  "ୱେବସାଇଟ ବ୍ୟବହାର: ଆମର ହୋଷ୍ଟିଂ ସେବା ୱେବ ଅନୁରୋଧର ବୈଷୟିକ ତଥ୍ୟ ପ୍ରକ୍ରିୟା କରେ। କୁକି ସେଟିଂରେ ଆପଣ ଅନୁମତି ଦେଲେ ମାତ୍ର ଇଚ୍ଛାଧୀନ ବିଶ୍ଳେଷଣ ପରିଦର୍ଶିତ ପୃଷ୍ଠା ରେକର୍ଡ କରିପାରେ।"
                 )}
               </li>
               <li className="font-sans text-[17px] text-[#333]">
@@ -131,8 +128,8 @@ export default function Privacy() {
             </h2>
             <p className="font-sans text-[17px] text-[#333] leading-relaxed mb-6">
               {t(
-                "We take care to keep your personal information safe. We do not sell or share your details with anyone. If we work with other service providers, they are also bound to keep your information private.",
-                "ଆମେ ଆପଣଙ୍କ ବ୍ୟକ୍ତିଗତ ତଥ୍ୟକୁ ଅନଧିକୃତ ପ୍ରବେଶ, ପରିବର୍ତ୍ତନ, ପ୍ରକାଶ ବା ବିନାଶରୁ ସୁରକ୍ଷା ପାଇଁ ଉପଯୁକ୍ତ ବୈଷୟିକ ଏବଂ ସାଂଗଠନିକ ବ୍ୟବସ୍ଥା କାର୍ଯ୍ୟକାରୀ କରୁ। ଆମେ ଆପଣଙ୍କ ବ୍ୟକ୍ତିଗତ ସୂଚନା ତୃତୀୟ ପକ୍ଷଙ୍କୁ ବିକ୍ରି, ବାଣିଜ୍ୟ ବା ଭଡ଼ା ଦେଉ ନାହୁଁ।"
+                "We do not sell personal information. Website hosting, the general contact form provider and payment services may process information needed for their functions. We share programme information with an institutional supporter only when there is a clear purpose and the appropriate permission. We do not publish private case records.",
+                "ଆମେ ବ୍ୟକ୍ତିଗତ ତଥ୍ୟ ବିକ୍ରି କରୁ ନାହୁଁ। ୱେବସାଇଟ ହୋଷ୍ଟିଂ, ସାଧାରଣ ଯୋଗାଯୋଗ ଫର୍ମ ଓ ପେମେଣ୍ଟ ସେବା ସେମାନଙ୍କ କାମ ପାଇଁ ଆବଶ୍ୟକ ତଥ୍ୟ ପ୍ରକ୍ରିୟା କରିପାରନ୍ତି। ସ୍ପଷ୍ଟ ଉଦ୍ଦେଶ୍ୟ ଓ ଉପଯୁକ୍ତ ସମ୍ମତି ଥିଲେ ମାତ୍ର ସଂସ୍ଥାଗତ ସହଯୋଗୀଙ୍କ ସହ କାର୍ଯ୍ୟକ୍ରମ ସୂଚନା ସେୟାର କରୁ। ବ୍ୟକ୍ତିଗତ ମାମଲା ରେକର୍ଡ ପ୍ରକାଶ କରୁ ନାହୁଁ।"
               )}
             </p>
 
@@ -141,10 +138,19 @@ export default function Privacy() {
             </h2>
             <p className="font-sans text-[17px] text-[#333] leading-relaxed mb-6">
               {t(
-                "This website uses cookies to enhance your browsing experience. Cookies are small text files stored on your device. You can control cookie settings through your browser. Essential cookies are required for the website to function properly. Analytics cookies help us understand how visitors use our website.",
-                "ଏହି ୱେବସାଇଟ ଆପଣଙ୍କ ବ୍ରାଉଜିଂ ଅନୁଭବ ବୃଦ୍ଧି ପାଇଁ କୁକିଜ ବ୍ୟବହାର କରେ। କୁକିଜ ହେଉଛି ଆପଣଙ୍କ ଡିଭାଇସରେ ସଂରକ୍ଷିତ ଛୋଟ ଟେକ୍ସଟ ଫାଇଲ। ଆପଣ ଆପଣଙ୍କ ବ୍ରାଉଜର ମାଧ୍ୟମରେ କୁକି ସେଟିଂସ ନିୟନ୍ତ୍ରଣ କରିପାରିବେ।"
+                "Required storage keeps the website working and remembers your language and cookie choice. We load Google Analytics or the configured site analytics only if you choose Allow all. Choose Required only to keep optional analytics off. You can reopen the cookie choices below. Your browser can also clear stored information.",
+                "ଆବଶ୍ୟକ ସଂରକ୍ଷଣ ୱେବସାଇଟ ଚଲାଇବା ସହ ଆପଣଙ୍କ ଭାଷା ଓ କୁକି ପସନ୍ଦ ମନେ ରଖେ। ଆପଣ ‘ସମସ୍ତକୁ ଅନୁମତି ଦିଅନ୍ତୁ’ ବାଛିଲେ ମାତ୍ର ଗୁଗୁଲ ଆନାଲିଟିକ୍ସ ବା ନିର୍ଦ୍ଧାରିତ ୱେବସାଇଟ ବିଶ୍ଳେଷଣ ଚାଲୁ ହୁଏ। ବିଶ୍ଳେଷଣ ବନ୍ଦ ରଖିବାକୁ ‘କେବଳ ଆବଶ୍ୟକ’ ବାଛନ୍ତୁ। ନିମ୍ନରେ ଆପଣ ପୁଣି କୁକି ପସନ୍ଦ ଖୋଲିପାରିବେ। ବ୍ରାଉଜରରୁ ସଂରକ୍ଷିତ ତଥ୍ୟ ମଧ୍ୟ ମିଟାଇପାରିବେ।"
               )}
             </p>
+            <button
+              type="button"
+              onClick={() =>
+                window.dispatchEvent(new Event("abhiara:cookie-settings"))
+              }
+              className="mb-8 rounded border border-[#9A6100] px-5 py-2 text-sm font-semibold text-[#714700] hover:bg-[#FFF2D8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+            >
+              {t("Change cookie choice", "କୁକି ପସନ୍ଦ ବଦଳାନ୍ତୁ")}
+            </button>
 
             <h2 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-4">
               6. {t("Your Rights", "ଆପଣଙ୍କ ଅଧିକାର")}

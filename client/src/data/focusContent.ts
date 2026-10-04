@@ -429,36 +429,6 @@ export const ACTIVE_SUPPORT = [
   },
 ] as const;
 
-export const BUDGET_PRIORITIES = [
-  {
-    share: "70 to 75%",
-    titleEn: "Education for orphaned and underprivileged children",
-    titleOd: "ଅନାଥ ଓ ସୁବିଧାବଞ୍ଚିତ ଶିଶୁଙ୍କ ଶିକ୍ଷା",
-    bodyEn:
-      "Abhiara Shiksha Sathi remains the Foundation’s primary programme and first budget priority.",
-    bodyOd:
-      "ଅଭିଆରା ଶିକ୍ଷା ସାଥୀ ଫାଉଣ୍ଡେସନର ପ୍ରମୁଖ କାର୍ଯ୍ୟକ୍ରମ ଓ ପ୍ରଥମ ବଜେଟ ପ୍ରାଥମିକତା।",
-  },
-  {
-    share: "20 to 25%",
-    titleEn: "Limited verified emergency support",
-    titleOd: "ସୀମିତ ଯାଞ୍ଚ ହୋଇଥିବା ଜରୁରୀ ସହାୟତା",
-    bodyEn:
-      "Case-based support may include medical emergencies, local disasters, vulnerable elders and children with visual impairment.",
-    bodyOd:
-      "ମାମଲା ଭିତ୍ତିକ ସହାୟତାରେ ଚିକିତ୍ସା ଜରୁରୀ ସ୍ଥିତି, ସ୍ଥାନୀୟ ବିପର୍ଯ୍ୟୟ, ଅସହାୟ ବୃଦ୍ଧ ଓ ଦୃଷ୍ଟିବାଧିତ ଶିଶୁ ରହିପାରନ୍ତି।",
-  },
-  {
-    share: "5 to 10%",
-    titleEn: "Animal care and emergency rescue",
-    titleOd: "ପଶୁ ସେବା ଓ ଜରୁରୀ ଉଦ୍ଧାର",
-    bodyEn:
-      "A defined compassion budget may support urgent feeding, treatment or coordination with local rescuers.",
-    bodyOd:
-      "ନିର୍ଦ୍ଦିଷ୍ଟ ଦୟା ବଜେଟରୁ ଜରୁରୀ ଖାଦ୍ୟ, ଚିକିତ୍ସା ବା ସ୍ଥାନୀୟ ଉଦ୍ଧାରକାରୀଙ୍କ ସହ ସମନ୍ୱୟ ହୋଇପାରେ।",
-  },
-] as const;
-
 export const LIMITED_SUPPORT = [
   {
     titleEn: "Vulnerable elder support",

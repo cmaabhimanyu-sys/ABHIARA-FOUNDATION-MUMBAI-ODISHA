@@ -322,6 +322,7 @@ export default function Contact() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <input
                           type="text"
+                          aria-label={t("Your name", "ଆପଣଙ୍କ ନାମ")}
                           required
                           value={contactForm.name}
                           onChange={e =>
@@ -335,6 +336,7 @@ export default function Contact() {
                         />
                         <input
                           type="email"
+                          aria-label={t("Your email", "ଆପଣଙ୍କ ଇମେଲ")}
                           required
                           value={contactForm.email}
                           onChange={e =>
@@ -348,6 +350,7 @@ export default function Contact() {
                         />
                       </div>
                       <select
+                        aria-label={t("Reason for contact", "ଯୋଗାଯୋଗର କାରଣ")}
                         value={contactForm.type}
                         onChange={e =>
                           setContactForm(prev => ({
@@ -372,6 +375,7 @@ export default function Contact() {
                       </select>
                       <input
                         type="text"
+                        aria-label={t("Subject, optional", "ବିଷୟ, ଇଚ୍ଛାଧୀନ")}
                         value={contactForm.subject}
                         onChange={e =>
                           setContactForm(prev => ({
@@ -383,6 +387,7 @@ export default function Contact() {
                         placeholder={t("Subject, optional", "ବିଷୟ, ଇଚ୍ଛାଧୀନ")}
                       />
                       <textarea
+                        aria-label={t("Your message", "ଆପଣଙ୍କ ସନ୍ଦେଶ")}
                         required
                         rows={4}
                         value={contactForm.message}

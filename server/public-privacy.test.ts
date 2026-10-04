@@ -180,7 +180,8 @@ describe("public privacy boundaries", () => {
       "client/src/pages/OurStory.tsx",
       "client/src/pages/FAQ.tsx",
       "client/src/pages/Home.tsx",
-      "client/src/pages/Activities.tsx",
+      "client/src/pages/MonthlyReports.tsx",
+      "client/src/pages/ImpactGallery.tsx",
       "client/src/pages/Team.tsx",
     ]
       .map(path => readFileSync(path, "utf8"))

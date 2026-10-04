@@ -1,11 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
-import {
-  BUDGET_PRIORITIES,
-  FOUNDATION_PROMISE,
-  LIMITED_SUPPORT,
-} from "@/data/focusContent";
+import { FOUNDATION_PROMISE, LIMITED_SUPPORT } from "@/data/focusContent";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -95,35 +91,6 @@ export default function LimitedVerifiedSupport() {
               )}
               <ArrowRight size={16} />
             </Link>
-            <div className="mt-14">
-              <h2 className="font-serif text-3xl font-bold">
-                {t("Budget priorities", "ବଜେଟ ପ୍ରାଥମିକତା")}
-              </h2>
-              <p className="mt-3 max-w-3xl font-sans text-sm leading-relaxed text-[#555]">
-                {t(
-                  "We provide support only after verification, when funds are available and approval is recorded. These ranges guide our budget. They do not guarantee support.",
-                  "ସମସ୍ତ ସହାୟତା ଯାଞ୍ଚ, ଉପଲବ୍ଧ ବଜେଟ ଓ ରେକର୍ଡ ଭିତ୍ତିକ ଅନୁମୋଦନ ଉପରେ ନିର୍ଭର କରେ। ଏହି ସୀମା ଆଭ୍ୟନ୍ତରୀଣ ଶୃଙ୍ଖଳା ପାଇଁ ଏବଂ କୌଣସି ନିଶ୍ଚିତ ଅଧିକାର ସୃଷ୍ଟି କରେ ନାହିଁ।"
-                )}
-              </p>
-              <div className="mt-7 grid gap-4 md:grid-cols-3">
-                {BUDGET_PRIORITIES.map(item => (
-                  <article
-                    key={item.share}
-                    className="bg-[#111111] p-6 text-white"
-                  >
-                    <p className="font-serif text-3xl font-bold text-[#F5A623]">
-                      {item.share}
-                    </p>
-                    <h3 className="mt-4 font-serif text-lg font-bold text-white">
-                      {t(item.titleEn, item.titleOd)}
-                    </h3>
-                    <p className="mt-2 font-sans text-xs leading-relaxed text-white/70">
-                      {t(item.bodyEn, item.bodyOd)}
-                    </p>
-                  </article>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
       </main>

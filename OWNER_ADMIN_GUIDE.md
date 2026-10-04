@@ -14,7 +14,7 @@ You do not need to open GitHub, edit code, or work inside Vercel for routine web
 
 ## Start with Press and Media
 
-Open **Press and Media** in the left menu. It has four tools for updating public information:
+Open **Press and Media** in the left menu. It has five tools for updating public information:
 
 1. **Add report content** for a verified activity record.
 2. **Upload and publish impact photos** through Photo Library.
@@ -115,6 +115,8 @@ Use **Impact Photos** to manage every uploaded public photo.
 - To permanently delete the stored file, open **Photo Library**, choose its folder and press **Delete**. A warning appears before deletion.
 
 The homepage and public galleries read only published records. Uploading a file alone never makes it public.
+
+**Review photos already online:** The published-photo flag records website visibility, not the location of a signed consent form. Review the underlying permission record for recognisable children and older people, including photos that predate the current Admin workflow. If a record cannot be found or consent for public use has been withdrawn, use **Unpublish** until permission and safeguarding review are resolved. Keep signed permissions and beneficiary details in a restricted owner file, never in public image descriptions or the website repository.
 
 ### 4. Public Videos
 
