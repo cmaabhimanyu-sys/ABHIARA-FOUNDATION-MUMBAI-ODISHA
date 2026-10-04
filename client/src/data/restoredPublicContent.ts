@@ -19,8 +19,8 @@ export const FOUNDER_STORY = {
     od: "ପ୍ରତିଷ୍ଠାତାଙ୍କ କାହାଣୀ",
   },
   title: {
-    en: "From Raisar, a small rural village in Kendrapara district, Odisha, to Mumbai",
-    od: "ଓଡ଼ିଶାର କେନ୍ଦ୍ରାପଡ଼ା ଜିଲ୍ଲାର ଛୋଟ ଗ୍ରାମ ରାଇସରରୁ ମୁମ୍ବାଇ",
+    en: "From Raisar, a village in Kendrapara district, Odisha, to Mumbai",
+    od: "ଓଡ଼ିଶାର କେନ୍ଦ୍ରାପଡ଼ା ଜିଲ୍ଲାର ରାଇସର ଗାଁରୁ ମୁମ୍ବାଇ",
   },
   introduction: {
     en: "Abhiara Foundation is a Section 8 not for profit company established to organise verified education support for orphaned and underprivileged children.",
@@ -37,8 +37,8 @@ export const FOUNDER_STORY = {
         od: "ଗ୍ରାମରୁ ଆରମ୍ଭ",
       },
       body: {
-        en: "Founder Abhimanyu Mallik grew up in Raisar, a rural village in Kendrapara, Odisha. He faced the same shortage of opportunity and guidance that many children from underprivileged families still face today.",
-        od: "ପ୍ରତିଷ୍ଠାତା ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ ଓଡ଼ିଶାର କେନ୍ଦ୍ରାପଡ଼ା ଜିଲ୍ଲାର ଗ୍ରାମୀଣ ରାଇସରରେ ବଢ଼ିଥିଲେ। ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଅନେକ ଶିଶୁ ଆଜି ଯେଉଁ ସୁଯୋଗ ଓ ମାର୍ଗଦର୍ଶନର ଅଭାବ ଦେଖୁଛନ୍ତି, ସେ ମଧ୍ୟ ସେହି ଅଭାବ ଅନୁଭବ କରିଥିଲେ।",
+        en: "Founder Abhimanyu Mallik grew up in his home village of Raisar in Kendrapara district, Odisha. He faced the same shortage of opportunity and guidance that many children from underprivileged families still face today.",
+        od: "ପ୍ରତିଷ୍ଠାତା ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ ଓଡ଼ିଶାର କେନ୍ଦ୍ରାପଡ଼ା ଜିଲ୍ଲାର ନିଜ ଗାଁ ରାଇସରରେ ବଢ଼ିଥିଲେ। ସୁବିଧାବଞ୍ଚିତ ପରିବାରର ଅନେକ ଶିଶୁ ଆଜି ଯେଉଁ ସୁଯୋଗ ଓ ମାର୍ଗଦର୍ଶନର ଅଭାବ ଦେଖୁଛନ୍ତି, ସେ ମଧ୍ୟ ସେହି ଅଭାବ ଅନୁଭବ କରିଥିଲେ।",
       },
     },
     {

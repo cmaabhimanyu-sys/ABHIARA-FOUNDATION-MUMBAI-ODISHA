@@ -47,8 +47,10 @@ describe("restored purpose and reviewed history", () => {
     expect(founderCopy).toContain("rather than private personal stories");
     expect(founderCopy).toContain("programme standard");
     expect(founderCopy).toContain(
-      "From Raisar, a small rural village in Kendrapara district, Odisha, to Mumbai"
+      "From Raisar, a village in Kendrapara district, Odisha, to Mumbai"
     );
+    expect(founderCopy).toContain("his home village of Raisar");
+    expect(founderCopy).not.toContain("small rural village");
     expect(founderCopy).toContain(
       "Raisar village, Kendrapara district, Odisha"
     );

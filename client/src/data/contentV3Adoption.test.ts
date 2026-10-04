@@ -61,7 +61,9 @@ describe("safe adoption of the supplied content proposal", () => {
   });
 
   it("keeps the approved founder, legal and future-plan facts", () => {
-    expect(founder).toContain("Raisar, a rural village in Kendrapara, Odisha");
+    expect(founder).toContain(
+      "his home village of Raisar in Kendrapara district, Odisha"
+    );
     expect(founder).toContain("built his career in Odisha");
     expect(founder).toContain("later moved to Mumbai");
     expect(governance).toContain("U87300MH2026NPL471397");
