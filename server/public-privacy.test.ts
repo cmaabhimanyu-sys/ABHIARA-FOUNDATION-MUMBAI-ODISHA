@@ -115,6 +115,12 @@ describe("public privacy boundaries", () => {
         settingValue: "never-public",
         category: "internal",
       },
+      {
+        id: 5,
+        settingKey: "stat_students_verified_monthly_counts",
+        settingValue: '{"month":"2026-09-30","recurring":12,"oneTime":25}',
+        category: "stats",
+      },
     ]);
   });
 
@@ -159,8 +165,8 @@ describe("public privacy boundaries", () => {
     const settings = await caller.cms.settings.listPublic();
 
     expect(settings.map(setting => setting.settingKey)).toEqual([
-      "stat_students_reached",
       "email_address",
+      "stat_students_verified_monthly_counts",
     ]);
     await expect(caller.cms.settings.list()).rejects.toThrow();
     await expect(caller.cms.activities.list()).rejects.toThrow();

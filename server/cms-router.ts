@@ -51,7 +51,7 @@ import {
 } from "./cms-db.js";
 
 const PUBLIC_SETTING_KEYS = new Set([
-  "stat_students_reached",
+  "stat_students_verified_monthly_counts",
   "stat_elders_visited",
   "stat_families_supported",
   "stat_activities_completed",

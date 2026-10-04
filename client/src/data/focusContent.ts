@@ -197,8 +197,8 @@ export const PRIMARY_NAV = [
   },
   {
     href: "/board-and-transparency",
-    en: "Board, Members and Advisors",
-    od: "ବୋର୍ଡ, ସଦସ୍ୟ ଓ ପରାମର୍ଶଦାତା",
+    en: "Leadership & Governance",
+    od: "ନେତୃତ୍ୱ ଓ ଶାସନ",
   },
   {
     href: "/our-presence",
@@ -497,8 +497,10 @@ export const LIMITED_SUPPORT = [
 export const MONTHLY_REPORT = {
   periodEn: "Current programme record",
   periodOd: "ବର୍ତ୍ତମାନ କାର୍ଯ୍ୟକ୍ରମ ରେକର୍ଡ",
-  childrenEn: "50+ children actively supported under Abhiara Shiksha Sathi",
-  childrenOd: "ଅଭିଆରା ଶିକ୍ଷା ସାଥୀ ଅଧୀନରେ ୫୦+ ଶିଶୁ ସକ୍ରିୟ ସହାୟତାରେ",
+  childrenEn:
+    "A dated count of monthly tuition recipients and one-time materials recipients has not yet been published.",
+  childrenOd:
+    "ମାସିକ ଟ୍ୟୁସନ ଓ ଏକକାଳୀନ ପଢ଼ା ସାମଗ୍ରୀ ପାଇଥିବା ଶିଶୁଙ୍କର ତାରିଖ ସହିତ ସଂଖ୍ୟା ଏପର୍ଯ୍ୟନ୍ତ ପ୍ରକାଶିତ ହୋଇନାହିଁ।",
   districtsEn:
     "Location details are held in programme records and are not published child by child.",
   districtsOd:

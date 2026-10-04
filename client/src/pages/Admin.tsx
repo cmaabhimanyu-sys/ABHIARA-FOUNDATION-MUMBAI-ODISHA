@@ -2023,10 +2023,11 @@ function SocialLinksManager() {
 const PUBLIC_DETAIL_FIELDS = [
   {
     key: "stat_students_reached",
-    label: "Children currently supported",
+    label:
+      "Historical aggregate count (not shown publicly without a dated breakdown)",
     placeholder: "50+",
     category: "stats",
-    help: "Shown on the homepage and public reports.",
+    help: "Retained for existing records. Use the dated monthly fields below for any new public child counts; do not add one-time and recurring recipients together.",
   },
   {
     key: "stat_activities_completed",
@@ -2069,6 +2070,11 @@ function SiteSettingsManager() {
   const utils = trpc.useUtils();
   const { data: items = [], isLoading } = trpc.cms.settings.list.useQuery();
   const [values, setValues] = useState<Record<string, string>>({});
+  const [educationCounts, setEducationCounts] = useState({
+    month: "",
+    recurring: "",
+    oneTime: "",
+  });
   const upsertMut = trpc.cms.settings.upsert.useMutation({
     onSuccess: async () => {
       await Promise.all([
@@ -2088,6 +2094,23 @@ function SiteSettingsManager() {
           ?.settingValue || "";
     }
     setValues(next);
+    const saved = items.find(
+      (item: any) => item.settingKey === "stat_students_verified_monthly_counts"
+    )?.settingValue;
+    try {
+      const parsed = saved ? JSON.parse(saved) : null;
+      setEducationCounts({
+        month: typeof parsed?.month === "string" ? parsed.month : "",
+        recurring: Number.isSafeInteger(parsed?.recurring)
+          ? String(parsed.recurring)
+          : "",
+        oneTime: Number.isSafeInteger(parsed?.oneTime)
+          ? String(parsed.oneTime)
+          : "",
+      });
+    } catch {
+      setEducationCounts({ month: "", recurring: "", oneTime: "" });
+    }
   }, [items]);
 
   const saveField = (field: (typeof PUBLIC_DETAIL_FIELDS)[number]) => {
@@ -2115,6 +2138,42 @@ function SiteSettingsManager() {
     });
   };
 
+  const saveEducationCounts = () => {
+    const month = educationCounts.month.trim();
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(month);
+    const monthEnd = match
+      ? new Date(Date.UTC(Number(match[1]), Number(match[2]), 0))
+          .toISOString()
+          .slice(0, 10)
+      : "";
+    if (monthEnd !== month || Date.parse(month) > Date.now()) {
+      toast.error(
+        "Use a real, completed reporting month end in YYYY-MM-DD format."
+      );
+      return;
+    }
+    if (
+      ![educationCounts.recurring, educationCounts.oneTime].every(value =>
+        /^\d{1,6}$/.test(value.trim())
+      )
+    ) {
+      toast.error(
+        "Enter both checked whole-number counts, including zero when applicable."
+      );
+      return;
+    }
+    upsertMut.mutate({
+      settingKey: "stat_students_verified_monthly_counts",
+      settingValue: JSON.stringify({
+        month,
+        recurring: Number(educationCounts.recurring),
+        oneTime: Number(educationCounts.oneTime),
+      }),
+      label: "Reviewed education counts by support type and month",
+      category: "stats",
+    });
+  };
+
   return (
     <div>
       <div className="mb-6">
@@ -2130,46 +2189,111 @@ function SiteSettingsManager() {
       {isLoading ? (
         <p className="text-sm text-[#666]">Loading public details…</p>
       ) : (
-        <div className="grid gap-4 md:grid-cols-2">
-          {PUBLIC_DETAIL_FIELDS.map(field => (
-            <article
-              key={field.key}
-              className="rounded-xl border border-gray-200 bg-white p-5"
-            >
-              <label
-                htmlFor={field.key}
-                className="block text-sm font-bold text-[#1A1A1A]"
+        <>
+          <div className="grid gap-4 md:grid-cols-2">
+            {PUBLIC_DETAIL_FIELDS.map(field => (
+              <article
+                key={field.key}
+                className="rounded-xl border border-gray-200 bg-white p-5"
               >
-                {field.label}
-              </label>
-              <p className="mt-1 text-xs leading-relaxed text-[#777]">
-                {field.help}
-              </p>
-              <div className="mt-4 flex gap-2">
-                <Input
-                  id={field.key}
-                  value={values[field.key] || ""}
-                  onChange={event =>
-                    setValues(current => ({
-                      ...current,
-                      [field.key]: event.target.value,
-                    }))
-                  }
-                  placeholder={field.placeholder}
-                  maxLength={200}
-                />
-                <Button
-                  type="button"
-                  onClick={() => saveField(field)}
-                  disabled={upsertMut.isPending}
-                  className="bg-[#F5A623] font-bold text-[#1A1A1A] hover:bg-[#E8960E]"
+                <label
+                  htmlFor={field.key}
+                  className="block text-sm font-bold text-[#1A1A1A]"
                 >
-                  Save
-                </Button>
-              </div>
-            </article>
-          ))}
-        </div>
+                  {field.label}
+                </label>
+                <p className="mt-1 text-xs leading-relaxed text-[#777]">
+                  {field.help}
+                </p>
+                <div className="mt-4 flex gap-2">
+                  <Input
+                    id={field.key}
+                    value={values[field.key] || ""}
+                    onChange={event =>
+                      setValues(current => ({
+                        ...current,
+                        [field.key]: event.target.value,
+                      }))
+                    }
+                    placeholder={field.placeholder}
+                    maxLength={200}
+                  />
+                  <Button
+                    type="button"
+                    onClick={() => saveField(field)}
+                    disabled={upsertMut.isPending}
+                    className="bg-[#F5A623] font-bold text-[#1A1A1A] hover:bg-[#E8960E]"
+                  >
+                    Save
+                  </Button>
+                </div>
+              </article>
+            ))}
+          </div>
+          <section
+            className="mt-8 rounded-xl border border-[#D8C7A5] bg-[#FFFDF8] p-6"
+            aria-label="Dated education counts"
+          >
+            <h3 className="font-serif text-xl font-bold text-[#1A1A1A]">
+              Publish dated education counts
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-[#555]">
+              After checking programme records, enter distinct children
+              receiving monthly tuition and distinct children receiving one-time
+              learning materials for the same completed month. A child may be in
+              both groups; do not add them together. All three fields publish in
+              one save.
+            </p>
+            <div className="mt-5 grid gap-4 md:grid-cols-3">
+              {[
+                {
+                  key: "month",
+                  label: "Reporting month end (YYYY-MM-DD)",
+                  placeholder: "2026-09-30",
+                },
+                {
+                  key: "recurring",
+                  label: "Monthly tuition recipients",
+                  placeholder: "Checked whole number",
+                },
+                {
+                  key: "oneTime",
+                  label: "One-time materials recipients",
+                  placeholder: "Checked whole number",
+                },
+              ].map(field => (
+                <label
+                  key={field.key}
+                  className="text-sm font-semibold text-[#333]"
+                >
+                  {field.label}
+                  <Input
+                    value={
+                      educationCounts[field.key as keyof typeof educationCounts]
+                    }
+                    onChange={event =>
+                      setEducationCounts(current => ({
+                        ...current,
+                        [field.key]: event.target.value,
+                      }))
+                    }
+                    placeholder={field.placeholder}
+                    className="mt-2 bg-white"
+                    maxLength={20}
+                  />
+                </label>
+              ))}
+            </div>
+            <Button
+              type="button"
+              onClick={saveEducationCounts}
+              disabled={upsertMut.isPending}
+              className="mt-5 bg-[#F5A623] font-bold text-[#1A1A1A] hover:bg-[#E8960E]"
+            >
+              Publish reviewed counts
+            </Button>
+          </section>
+        </>
       )}
     </div>
   );

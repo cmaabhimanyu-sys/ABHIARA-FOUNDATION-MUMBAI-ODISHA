@@ -208,7 +208,12 @@ describe("beginner-friendly owner control centre", () => {
 
   it("keeps reviewed public settings narrow and removes unsupported broad archive counters", () => {
     expect(home).not.toContain("stat_students_reached");
-    expect(studentImpact).toContain("stat_students_reached");
+    expect(studentImpact).toContain("stat_students_verified_monthly_counts");
+    expect(studentImpact).toContain("parseVerifiedEducationCounts");
+    expect(studentImpact).not.toContain(
+      'settingKey === "stat_students_reached"'
+    );
+    expect(admin).toContain("Publish reviewed counts");
     expect(otherSupport).not.toContain("stat_activities_completed");
     expect(otherSupport).not.toContain("stat_families_supported");
     expect(otherSupport).not.toContain("stat_districts");

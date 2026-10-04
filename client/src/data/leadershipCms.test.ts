@@ -8,6 +8,7 @@ const earlierMigration = read("drizzle/0021_previous_masked_marvel.sql");
 const rosterMigration = read("drizzle/0022_lush_microchip.sql");
 const bioMigration = read("drizzle/0023_magenta_changeling.sql");
 const auditorMigration = read("drizzle/0024_old_sally_floyd.sql");
+const noteReviewMigration = read("drizzle/0025_people_public_note_review.sql");
 const cmsDb = read("server/cms-db.ts");
 const cmsRouter = read("server/cms-router.ts");
 const admin = read("client/src/pages/Admin.tsx");
@@ -74,7 +75,6 @@ describe("owner-managed People roster", () => {
     }
     for (const exactText of [
       "Co-Founder & Director",
-      "Official Director; not involved in day-to-day activities.",
       "Guiding Patron & Legal Advisor",
       "Senior Advisor, Education & Community Engagement",
       "President, Odisha Division",
@@ -92,6 +92,8 @@ describe("owner-managed People roster", () => {
     expect(rosterMigration).not.toContain("Consultant, Mumbai");
     expect(rosterMigration).not.toContain("CSR readiness");
     expect(rosterMigration).not.toContain("Rotary Club of Bhubaneswar North");
+    expect(noteReviewMigration).toContain("`id` = 2");
+    expect(noteReviewMigration).toContain("`bioIsPublic` = FALSE");
   });
 
   it("groups ordered people without assuming hardcoded individual cards", () => {

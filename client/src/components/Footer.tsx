@@ -91,6 +91,65 @@ const SECONDARY = [
   { href: "/admin", en: "Owner Login", od: "ମାଲିକ ଲଗଇନ୍" },
 ] as const;
 
+const FOOTER_GROUPS = [
+  {
+    en: "Education",
+    od: "ଶିକ୍ଷା",
+    hrefs: [
+      "/shiksha-sathi",
+      "/how-we-support-a-child",
+      "/student-impact",
+      "/rural-area-transformation",
+      "/abhiara-pratibha-samman",
+      "/digital-learning-ai",
+      "/rti-human-rights-awareness",
+    ],
+  },
+  {
+    en: "Impact and updates",
+    od: "ପ୍ରଭାବ ଓ ଅପଡେଟ",
+    hrefs: [
+      "/monthly-reports",
+      "/blog",
+      "/limited-verified-support",
+      "/elder-care-and-dignity",
+      "/impact-gallery",
+      "/other-verified-support",
+      "/disaster-relief",
+      "/medical-emergency-support",
+      "/animal-welfare-support",
+      "/wellness-and-wellbeing",
+      "/press-and-media",
+    ],
+  },
+  {
+    en: "Governance",
+    od: "ଶାସନ ଓ ନୀତି",
+    hrefs: [
+      "/our-story",
+      "/abhiara-vidyapitha",
+      "/board-and-transparency",
+      "/our-presence",
+      "/privacy",
+      "/terms",
+      "/faq",
+      "/admin",
+    ],
+  },
+  {
+    en: "Support and contact",
+    od: "ସହଯୋଗ ଓ ଯୋଗାଯୋଗ",
+    hrefs: [
+      "/partners-and-supporters",
+      "/donate",
+      "/volunteer",
+      "/contact",
+      "/birthday-with-purpose",
+      "/donation-and-refund-policy",
+    ],
+  },
+] as const;
+
 export default function Footer() {
   const { language, t } = useLanguage();
   const { data: publicSettings = [] } = trpc.cms.settings.listPublic.useQuery(
@@ -101,7 +160,10 @@ export default function Footer() {
     undefined,
     { retry: false }
   );
-  const links = PRIMARY_NAV.filter(item => item.href !== "/");
+  const links = [
+    ...PRIMARY_NAV.filter(item => item.href !== "/"),
+    ...SECONDARY,
+  ];
   const setting = (key: string, fallback: string) =>
     publicSettings.find((item: any) => item.settingKey === key)?.settingValue ||
     fallback;
@@ -190,31 +252,35 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
-            <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F5A623]">
-              {t("Explore", "ଦେଖନ୍ତୁ")}
-            </p>
-            <div className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
-              {links.map(item => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="py-1 font-sans text-[13px] text-white/70 hover:text-[#F5A623]"
-                >
-                  {language === "od" ? item.od : item.en}
-                </Link>
-              ))}
-              {SECONDARY.map(item => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="py-1 font-sans text-[13px] text-white/70 hover:text-[#F5A623]"
-                >
-                  {language === "od" ? item.od : item.en}
-                </Link>
-              ))}
-            </div>
-          </div>
+          <nav
+            aria-label={t("Explore Abhiara", "ଅଭିଆରା ବିଷୟରେ ଜାଣନ୍ତୁ")}
+            className="grid gap-x-8 gap-y-8 sm:grid-cols-2"
+          >
+            {FOOTER_GROUPS.map(group => {
+              const destinations = new Set<string>(group.hrefs);
+              return (
+                <div key={group.en}>
+                  <h2 className="mb-3 font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-[#F5A623]">
+                    {t(group.en, group.od)}
+                  </h2>
+                  <ul className="space-y-1">
+                    {links
+                      .filter(item => destinations.has(item.href))
+                      .map(item => (
+                        <li key={item.href}>
+                          <Link
+                            href={item.href}
+                            className="inline-block py-1 font-sans text-[13px] text-white/75 hover:text-[#F5A623] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A623]"
+                          >
+                            {language === "od" ? item.od : item.en}
+                          </Link>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </nav>
 
           <div>
             <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F5A623]">

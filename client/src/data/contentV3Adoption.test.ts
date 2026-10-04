@@ -64,8 +64,12 @@ describe("safe adoption of the supplied content proposal", () => {
     expect(founder).toContain("Raisar, a rural village in Kendrapara, Odisha");
     expect(founder).toContain("built his career in Odisha");
     expect(founder).toContain("later moved to Mumbai");
-    expect(governance).not.toContain("U87300MH2026NPL471397");
-    expect(governance).not.toContain("MH/2026/1110513");
+    expect(governance).toContain("U87300MH2026NPL471397");
+    expect(governance).toContain("MH/2026/1110513");
+    expect(governance).toContain(
+      "Application pending; approval is not claimed"
+    );
+    expect(governance).toContain("No document-backed status published");
     expect(footer).toContain("U87300MH2026NPL471397");
     expect(footer).toContain("MH/2026/1110513");
     expect(footer).toContain("12AB and 80G applications pending");

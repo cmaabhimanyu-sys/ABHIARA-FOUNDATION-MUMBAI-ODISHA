@@ -106,7 +106,10 @@ export default function MonthlyReports() {
           "Monthly Reports | Abhiara Foundation",
           "ମାସିକ ରିପୋର୍ଟ | ଅଭିଆରା ଫାଉଣ୍ଡେସନ"
         )}
-        description="Monthly aggregate reporting and reviewed historical education records for Abhiara Shiksha Sathi."
+        description={t(
+          "Financial publication status, education programme updates and reviewed historical records for Abhiara Shiksha Sathi.",
+          "ଅଭିଆରା ଶିକ୍ଷା ସାଥୀର ଆର୍ଥିକ ପ୍ରକାଶ ସ୍ଥିତି, ଶିକ୍ଷା କାର୍ଯ୍ୟକ୍ରମ ଅପଡେଟ ଓ ସମୀକ୍ଷିତ ପୁରୁଣା ରେକର୍ଡ।"
+        )}
         url="https://www.abhiarafoundation.org/monthly-reports"
       />
       <Navbar />
@@ -121,14 +124,74 @@ export default function MonthlyReports() {
             </h1>
             <p className="mt-6 max-w-3xl font-sans text-lg leading-relaxed text-white/75">
               {t(
-                "Each report clearly shows what was approved, given and reviewed, while keeping children's private information safe.",
-                "ପ୍ରତ୍ୟେକ ସାର୍ବଜନିକ ରିପୋର୍ଟ ଏକେ ଧରଣର ଢାଞ୍ଚା ଅନୁସରେ, ଯାହାଦ୍ୱାରା ବ୍ୟକ୍ତିଗତ ଶିଶୁ ସୂଚନା ପ୍ରକାଶ ବିନା କଣ ଅନୁମୋଦିତ, ଦିଆଯାଇଥିଲା ଓ ସମୀକ୍ଷା ହୋଇଥିଲା ବୁଝିହେବ।"
+                "Financial summaries, programme updates and photographs are different records. We keep them separate so you can see what is available without exposing a child's private information.",
+                "ଆର୍ଥିକ ସାରାଂଶ, କାର୍ଯ୍ୟକ୍ରମ ଅପଡେଟ ଓ ଫଟୋ ଭିନ୍ନ ରେକର୍ଡ। ଶିଶୁଙ୍କ ବ୍ୟକ୍ତିଗତ ସୂଚନା ପ୍ରକାଶ ବିନା କଣ ଉପଲବ୍ଧ ତାହା ସ୍ପଷ୍ଟ କରିବାକୁ ଆମେ ସେଗୁଡ଼ିକୁ ଅଲଗା ରଖୁ।"
               )}
             </p>
+            <nav
+              aria-label={t("Report sections", "ରିପୋର୍ଟ ଭାଗ")}
+              className="mt-7 flex flex-wrap gap-3 text-sm"
+            >
+              {[
+                [
+                  "#financial-summaries",
+                  "Financial summaries",
+                  "ଆର୍ଥିକ ସାରାଂଶ",
+                ],
+                [
+                  "#programme-updates",
+                  "Programme updates",
+                  "କାର୍ଯ୍ୟକ୍ରମ ଅପଡେଟ",
+                ],
+                ["#photo-archive", "Photo archive", "ଫଟୋ ସଂଗ୍ରହ"],
+              ].map(([href, en, od]) => (
+                <a
+                  key={href}
+                  href={href}
+                  className="rounded-full border border-white/40 px-4 py-2 text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A623]"
+                >
+                  {t(en, od)}
+                </a>
+              ))}
+            </nav>
           </div>
         </section>
 
-        <section className="py-16 md:py-24">
+        <section
+          id="financial-summaries"
+          className="scroll-mt-28 border-b border-[#E8DCC6] bg-white py-16 md:py-20"
+        >
+          <div className="container max-w-6xl">
+            <p className="font-mono text-xs uppercase tracking-[0.16em] text-[#9A6100]">
+              {t("Financial disclosure", "ଆର୍ଥିକ ସୂଚନା")}
+            </p>
+            <h2 className="mt-3 font-serif text-3xl font-bold text-[#1A1A1A] md:text-4xl">
+              {t("Monthly financial summaries", "ମାସିକ ଆର୍ଥିକ ସାରାଂଶ")}
+            </h2>
+            <div className="mt-7 max-w-4xl border-l-4 border-[#B56A22] bg-[#FFFDF8] p-6 md:p-8">
+              <p className="text-base font-semibold text-[#333]">
+                {t(
+                  "No reconciled monthly financial summary has been published here yet.",
+                  "ଏଠାରେ ଏପର୍ଯ୍ୟନ୍ତ ମେଳ ହୋଇଥିବା ମାସିକ ଆର୍ଥିକ ସାରାଂଶ ପ୍ରକାଶିତ ହୋଇନାହିଁ।"
+                )}
+              </p>
+              <p className="mt-3 text-sm leading-7 text-[#555]">
+                {t(
+                  "A future dated summary should show opening balance, contributions received, programme spending, administration costs and closing balance, after reconciliation. It will be labelled unaudited unless an independent audit has been completed. No amount is implied by the programme updates below.",
+                  "ଭବିଷ୍ୟତରେ ତାରିଖ ସହ ମେଳ ହୋଇଥିବା ସାରାଂଶରେ ପ୍ରାରମ୍ଭିକ ଜମା, ମିଳିଥିବା ଅନୁଦାନ, କାର୍ଯ୍ୟକ୍ରମ ଖର୍ଚ୍ଚ, ପ୍ରଶାସନିକ ଖର୍ଚ୍ଚ ଓ ଶେଷ ଜମା ଦର୍ଶାଯିବ। ସ୍ୱାଧୀନ ଅଡିଟ ସମ୍ପୂର୍ଣ୍ଣ ହୋଇନଥିଲେ ଏହାକୁ ଅଡିଟ ହୋଇନଥିବା ସାରାଂଶ ଭାବେ ଚିହ୍ନିତ କରାଯିବ। ତଳର କାର୍ଯ୍ୟକ୍ରମ ଅପଡେଟରୁ କୌଣସି ରାଶି ଧାରଣା କରାଯିବ ନାହିଁ।"
+                )}
+              </p>
+              <p className="mt-3 text-sm leading-7 text-[#555]">
+                {t(
+                  "A child's photo review does not hold up an anonymised financial summary. Financial records must still be checked and reconciled before publication.",
+                  "ଶିଶୁଙ୍କ ଫଟୋ ସମୀକ୍ଷା ନାମବିହୀନ ଆର୍ଥିକ ସାରାଂଶକୁ ଅଟକାଏ ନାହିଁ। ତଥାପି ପ୍ରକାଶ ପୂର୍ବରୁ ଆର୍ଥିକ ରେକର୍ଡ ଯାଞ୍ଚ ଓ ମେଳ ହେବା ଆବଶ୍ୟକ।"
+                )}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="programme-updates" className="scroll-mt-28 py-16 md:py-24">
           <div className="container max-w-6xl">
             <div className="mb-9">
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#9A6100]">
@@ -138,7 +201,7 @@ export default function MonthlyReports() {
                 )}
               </p>
               <h2 className="mt-3 font-serif text-3xl font-bold md:text-4xl">
-                {t("Verified field reports", "ଯାଞ୍ଚ ହୋଇଥିବା କ୍ଷେତ୍ର ରିପୋର୍ଟ")}
+                {t("Programme updates", "କାର୍ଯ୍ୟକ୍ରମ ଅପଡେଟ")}
               </h2>
             </div>
             {isLoading ? (
@@ -191,8 +254,8 @@ export default function MonthlyReports() {
             ) : (
               <p className="rounded-xl border border-dashed border-[#D8C7A5] bg-white p-7 text-sm text-[#666]">
                 {t(
-                  "No current education report published by the Foundation has completed public media review. Reviewed earlier education records are below.",
-                  "ବର୍ତ୍ତମାନ କୌଣସି ମାଲିକ ପ୍ରକାଶିତ ଶିକ୍ଷା ରିପୋର୍ଟ ସାର୍ବଜନିକ ମିଡିଆ ସମୀକ୍ଷା ସମ୍ପୂର୍ଣ୍ଣ କରିନାହିଁ। ସମୀକ୍ଷା ହୋଇଥିବା ପୁରୁଣା ଶିକ୍ଷା ରେକର୍ଡ ତଳେ ଦିଆଯାଇଛି।"
+                  "No new education programme update is published here yet. Reviewed earlier records are below. Programme media review does not prevent a separate financial summary from being published after financial reconciliation.",
+                  "ଏଠାରେ ଏପର୍ଯ୍ୟନ୍ତ ନୂଆ ଶିକ୍ଷା କାର୍ଯ୍ୟକ୍ରମ ଅପଡେଟ ପ୍ରକାଶିତ ହୋଇନାହିଁ। ସମୀକ୍ଷିତ ପୁରୁଣା ରେକର୍ଡ ତଳେ ଅଛି। କାର୍ଯ୍ୟକ୍ରମ ମିଡିଆ ସମୀକ୍ଷା ଆର୍ଥିକ ମେଳ ପରେ ଅଲଗା ସାରାଂଶ ପ୍ରକାଶକୁ ଅଟକାଏ ନାହିଁ।"
                 )}
               </p>
             )}
@@ -261,58 +324,67 @@ export default function MonthlyReports() {
           </div>
         </section>
 
-        {(educationPhotos.length > 0 || educationVideos.length > 0) && (
-          <section className="bg-white py-16">
-            <div className="container max-w-6xl">
-              <h2 className="font-serif text-3xl font-bold">
-                {t("Supporting media", "ସହାୟକ ମିଡିଆ")}
-              </h2>
-              {educationPhotos.length > 0 && (
-                <div className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {educationPhotos.map((item: any) => (
-                    <figure
-                      key={item.id}
-                      className="overflow-hidden rounded-xl border border-gray-200 bg-[#F5EFE3]"
-                    >
-                      <div className="flex min-h-64 items-center">
-                        <img
-                          src={item.imageUrl}
-                          alt={item.title}
-                          className="max-h-[420px] w-full object-contain"
-                          loading="lazy"
-                        />
-                      </div>
-                      <figcaption className="bg-white p-4">
-                        <p className="font-serif font-bold">{item.title}</p>
-                        {item.description && (
-                          <p className="mt-1 text-xs leading-relaxed text-[#666]">
-                            {item.description}
-                          </p>
-                        )}
-                      </figcaption>
-                    </figure>
-                  ))}
-                </div>
+        <section id="photo-archive" className="scroll-mt-28 bg-white py-16">
+          <div className="container max-w-6xl">
+            <h2 className="font-serif text-3xl font-bold">
+              {t(
+                "Reviewed photo and video archive",
+                "ସମୀକ୍ଷିତ ଫଟୋ ଓ ଭିଡିଓ ସଂଗ୍ରହ"
               )}
-              {educationVideos.length > 0 && (
-                <div className="mt-7 grid gap-3 md:grid-cols-2">
-                  {educationVideos.map((item: any) => (
-                    <a
-                      key={item.id}
-                      href={item.youtubeUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center justify-between gap-4 rounded-xl border border-gray-200 p-5 font-sans text-sm font-bold hover:border-[#F5A623]"
-                    >
-                      {item.title}
-                      <ExternalLink size={16} />
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-          </section>
-        )}
+            </h2>
+            {educationPhotos.length === 0 && educationVideos.length === 0 && (
+              <p className="mt-5 text-sm text-[#555]">
+                {t(
+                  "No reviewed education media is available in this archive yet.",
+                  "ଏହି ସଂଗ୍ରହରେ ଏପର୍ଯ୍ୟନ୍ତ ସମୀକ୍ଷିତ ଶିକ୍ଷା ମିଡିଆ ଉପଲବ୍ଧ ନାହିଁ।"
+                )}
+              </p>
+            )}
+            {educationPhotos.length > 0 && (
+              <div className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {educationPhotos.map((item: any) => (
+                  <figure
+                    key={item.id}
+                    className="overflow-hidden rounded-xl border border-gray-200 bg-[#F5EFE3]"
+                  >
+                    <div className="flex min-h-64 items-center">
+                      <img
+                        src={item.imageUrl}
+                        alt={item.title}
+                        className="max-h-[420px] w-full object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                    <figcaption className="bg-white p-4">
+                      <p className="font-serif font-bold">{item.title}</p>
+                      {item.description && (
+                        <p className="mt-1 text-xs leading-relaxed text-[#666]">
+                          {item.description}
+                        </p>
+                      )}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
+            {educationVideos.length > 0 && (
+              <div className="mt-7 grid gap-3 md:grid-cols-2">
+                {educationVideos.map((item: any) => (
+                  <a
+                    key={item.id}
+                    href={item.youtubeUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center justify-between gap-4 rounded-xl border border-gray-200 p-5 font-sans text-sm font-bold hover:border-[#F5A623]"
+                  >
+                    {item.title}
+                    <ExternalLink size={16} />
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
 
         <section className="bg-[#111111] py-16 text-white md:py-20">
           <div className="container max-w-5xl">

@@ -46,7 +46,7 @@ Enter:
 - What support was provided
 - The activity date or report month
 - A district or broad location
-- An aggregate result, such as `50+ children`
+- An aggregate result only when its date, definition and source programme record have been checked
 - One approved photo, if suitable
 
 Published education reports appear on:
@@ -54,6 +54,8 @@ Published education reports appear on:
 **https://www.abhiarafoundation.org/monthly-reports**
 
 They can also appear in the Press and Media public record. Records in other categories appear in the verified-support archive. They are not shown as regular programmes.
+
+**Programme updates and photos are not financial statements.** The public Monthly Reports page has separate financial, programme and photo sections. No reconciled financial amounts are published there yet. A photograph review does not hold up a separate anonymised financial summary, but a financial summary needs source records, reconciliation and a final review. Never put donor names, child identifiers, bank accounts, payment IDs or private bills into a public report. Do not describe an internal summary as audited; an audited annual report is a different document. Publishing monthly financial amounts is **not yet an Admin feature**. Ask the authorised maintainer to add a controlled publishing workflow after the books and disclosure format have been agreed.
 
 ### 2. Photo Library
 
@@ -141,12 +143,14 @@ The website checks that each link uses the matching social platform. These links
 
 Use this to update only reviewed public values:
 
-- Children actively supported
+- Dated education counts, split into **monthly tuition recipients** and **one-time learning materials recipients**
 - Verified activities
 - Families supported in verified cases
 - Districts represented in public records
 - Public email address
 - Public WhatsApp channel link
+
+For education counts, enter the **last day of one completed reporting month** and two checked whole-number counts, then press **Publish reviewed counts**. The three values publish together. Count distinct children within each type. A child may appear in both types, so **do not add the two counts into a total**. The older undated aggregate is retained in Admin for reference but is not shown as a current total on Student Impact. Keep the source list private and update the public record when a new month has been checked.
 
 Only values used by an approved public page are displayed. Legal details, payment settings and protected records remain locked.
 
@@ -163,6 +167,7 @@ Use **Board, Members and Advisors** to manage every approved Abhiara person show
 - Use **Mr.** for men and **Ms.** for women as the standard public title. Use **Mrs.** only when the person confirms that preference. Keep professional qualifications in the qualification field, except where the approved public name explicitly includes a suffix such as CMA.
 - Add an approved public profile photo and an HTTPS public profile link where available. Use a centred head and shoulders photo. The Admin uploader prepares an 800 × 1000 WebP portrait and stores it in **Vercel Blob**, under `abhiara-images/leadership/`.
 - Public cards show the role and qualification. Use **Show this approved short biography** only for an expressly reviewed note; other saved biographies remain in Admin and are omitted from the public API. Do not put private contact details in any public field.
+- Do not add a daily-operations disclaimer to a director's profile unless the director asks for that specific wording. Ms. Biswajita Mallik's Board role is **Co-Founder & Director**; the former note has been removed.
 - Use **Display order** to control the order **within** each of the five sections. The sections always appear Board, Independent Auditor, Advisors, Odisha Division, then Core Members.
 - Use **Publish** or **Unpublish** to show or hide a profile without deleting it.
 - Use **Delete** only when the profile should be removed from the owner records.
