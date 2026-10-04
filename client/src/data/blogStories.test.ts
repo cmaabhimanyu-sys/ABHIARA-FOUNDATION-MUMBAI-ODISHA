@@ -97,6 +97,12 @@ describe("verified public blog stories", () => {
       "family, friends and relatives supported him"
     );
     expect(founderCopy).toContain("give back to society");
+    expect(founderCopy).toContain(
+      "members, advisors, volunteers and institutional supporters"
+    );
+    expect(founderCopy).toContain(
+      "may email an education request for case-by-case review"
+    );
   });
 
   it("records Fynd Foundation only as an institutional education supporter", () => {

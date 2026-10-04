@@ -42,7 +42,12 @@ describe("restored purpose and reviewed history", () => {
     expect(founderCopy).toContain("moved to Mumbai");
     expect(founderCopy).toContain("structured education support");
     expect(founderCopy).toContain(
-      "Directors, advisors, volunteers and supporters"
+      "Members, advisors, volunteers and institutional supporters"
+    );
+    expect(founderCopy).toContain("Families anywhere in India can email");
+    expect(founderCopy).toContain("case-by-case review");
+    expect(founderCopy).toContain(
+      "subject to verification and available funds"
     );
     expect(founderCopy).toContain("rather than private personal stories");
     expect(founderCopy).toContain("programme standard");
@@ -57,6 +62,8 @@ describe("restored purpose and reviewed history", () => {
     );
     expect(founderCopy).toContain("give back to society");
     expect(home).toContain("family, friends and relatives helped him");
+    expect(home).toContain("members and institutional supporters");
+    expect(home).toContain("email education requests for case-by-case review");
     expect(founderCopy).toContain(
       "Raisar village, Kendrapara district, Odisha"
     );

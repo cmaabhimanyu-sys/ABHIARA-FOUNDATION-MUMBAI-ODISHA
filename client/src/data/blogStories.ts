@@ -63,8 +63,8 @@ export const BLOG_STORIES: BlogStory[] = [
         od: "ପ୍ରତିଷ୍ଠାତା ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ ଓଡ଼ିଶାର କେନ୍ଦ୍ରାପଡ଼ା ଜିଲ୍ଲାର ନିଜ ଗାଁ ରାଇସରରେ ବଢ଼ିଥିଲେ। ସେ ସୁଯୋଗ ଓ ମାର୍ଗଦର୍ଶନର ଅଭାବ ସହ ଆର୍ଥିକ ଅସୁବିଧାର ମଧ୍ୟ ସମ୍ମୁଖୀନ ହୋଇଥିଲେ। ଓଡ଼ିଶାରେ କାର୍ଯ୍ୟଜୀବନ ଗଢ଼ି ପରେ ମୁମ୍ବାଇ ଯିବା ପର୍ଯ୍ୟନ୍ତ ପରିବାର, ସାଙ୍ଗ ଓ ସମ୍ପର୍କୀୟମାନେ ତାଙ୍କୁ ସହାୟତା କରିଥିଲେ।",
       },
       {
-        en: "Their help influenced his decision to give back to society. Abhiara Foundation organises education support through defined eligibility, verification, approval and record keeping processes.",
-        od: "ସେମାନଙ୍କ ସହାୟତା ତାଙ୍କୁ ସମାଜକୁ ସହାୟତା ଫେରାଇବାକୁ ପ୍ରେରିତ କରିଥିଲା। ଅଭିଆରା ଫାଉଣ୍ଡେସନ ନିର୍ଦ୍ଧାରିତ ଯୋଗ୍ୟତା, ଯାଞ୍ଚ, ଅନୁମୋଦନ ଓ ରେକର୍ଡ ରଖିବା ପ୍ରକ୍ରିୟା ମାଧ୍ୟମରେ ଶିକ୍ଷା ସହାୟତା ସଂଗଠିତ କରେ।",
+        en: "Their help influenced his decision to give back to society. Today, Abhiara Foundation's members, advisors, volunteers and institutional supporters contribute to its education work. Families from any Indian state may email an education request for case-by-case review. Support depends on verified need and available funds.",
+        od: "ସେମାନଙ୍କ ସହାୟତା ତାଙ୍କୁ ସମାଜକୁ ସହାୟତା ଫେରାଇବାକୁ ପ୍ରେରିତ କରିଥିଲା। ଆଜି ଅଭିଆରା ଫାଉଣ୍ଡେସନର ସଦସ୍ୟ, ପରାମର୍ଶଦାତା, ସ୍ୱେଚ୍ଛାସେବୀ ଓ ସଂସ୍ଥାଗତ ସମର୍ଥକମାନେ ଏହାର ଶିକ୍ଷା କାର୍ଯ୍ୟରେ ଯୋଗ ଦେଉଛନ୍ତି। ଭାରତର ଯେକୌଣସି ରାଜ୍ୟର ପରିବାର ଶିକ୍ଷା ସହାୟତା ପାଇଁ ଇମେଲ କରିପାରିବେ। ଯାଞ୍ଚ ହୋଇଥିବା ଆବଶ୍ୟକତା ଓ ଉପଲବ୍ଧ ଅର୍ଥ ଅନୁସାରେ ପ୍ରତ୍ୟେକ ଅନୁରୋଧକୁ ଅଲଗା ଭାବେ ସମୀକ୍ଷା କରାଯାଏ।",
       },
       {
         en: "Education is the main programme area. Support may include tuition, school materials and other approved needs that help a child continue learning.",

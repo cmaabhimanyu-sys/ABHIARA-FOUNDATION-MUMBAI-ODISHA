@@ -82,12 +82,12 @@ export const FOUNDER_STORY = {
   },
   sharedBeginning: {
     title: {
-      en: "Support for the organisation",
-      od: "ସଂଗଠନ ପାଇଁ ସହାୟତା",
+      en: "A shared effort",
+      od: "ମିଳିତ ପ୍ରୟାସ",
     },
     body: {
-      en: "Directors, advisors, volunteers and supporters contribute through defined roles. Public information focuses on programme work, governance and verified results rather than private personal stories.",
-      od: "ନିର୍ଦ୍ଦେଶକ, ପରାମର୍ଶଦାତା, ସ୍ୱେଚ୍ଛାସେବୀ ଓ ସମର୍ଥକମାନେ ନିର୍ଦ୍ଧାରିତ ଭୂମିକାରେ ଯୋଗଦାନ କରନ୍ତି। ସାର୍ବଜନିକ ସୂଚନା ବ୍ୟକ୍ତିଗତ କାହାଣୀ ପରିବର୍ତ୍ତେ କାର୍ଯ୍ୟକ୍ରମ, ପରିଚାଳନା ଓ ଯାଞ୍ଚ ହୋଇଥିବା ଫଳାଫଳ ଉପରେ କେନ୍ଦ୍ରିତ ରହେ।",
+      en: "Members, advisors, volunteers and institutional supporters help Abhiara Foundation organise education support for orphaned and underprivileged children. Families anywhere in India can email an education request for case-by-case review, subject to verification and available funds. Public information focuses on programme work and verified results rather than private personal stories.",
+      od: "ସଦସ୍ୟ, ପରାମର୍ଶଦାତା, ସ୍ୱେଚ୍ଛାସେବୀ ଓ ସଂସ୍ଥାଗତ ସମର୍ଥକମାନେ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସହ ମିଶି ଅନାଥ ଓ ସୁବିଧାବଞ୍ଚିତ ଶିଶୁଙ୍କ ଶିକ୍ଷା ପାଇଁ କାମ କରନ୍ତି। ଭାରତର ଯେକୌଣସି ରାଜ୍ୟର ପରିବାର ଶିକ୍ଷା ସହାୟତା ପାଇଁ ଇମେଲ କରିପାରିବେ। ଯାଞ୍ଚ ଓ ଉପଲବ୍ଧ ଅର୍ଥ ଅନୁସାରେ ପ୍ରତ୍ୟେକ ଅନୁରୋଧକୁ ଅଲଗା ଭାବେ ସମୀକ୍ଷା କରାଯାଏ। ସାର୍ବଜନିକ ସୂଚନାରେ ବ୍ୟକ୍ତିଗତ କାହାଣୀ ନୁହେଁ, କାର୍ଯ୍ୟକ୍ରମ ଓ ଯାଞ୍ଚ ହୋଇଥିବା ଫଳାଫଳକୁ ଗୁରୁତ୍ୱ ଦିଆଯାଏ।",
     },
   },
   why: [

@@ -1045,8 +1045,8 @@ export default function Home() {
                   </h3>
                   <p className="mt-4 font-sans text-sm leading-7 text-white/70">
                     {t(
-                      "Abhimanyu Mallik grew up in his home village of Raisar in Kendrapara district, Odisha. He faced financial difficulties and limited guidance, while family, friends and relatives helped him move forward. After building his career in Odisha and moving to Mumbai, he helped establish Abhiara Foundation to support children's education.",
-                      "ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ ଓଡ଼ିଶାର କେନ୍ଦ୍ରାପଡ଼ା ଜିଲ୍ଲାର ନିଜ ଗାଁ ରାଇସରରେ ବଢ଼ିଥିଲେ। ଆର୍ଥିକ ଅସୁବିଧା ଓ ମାର୍ଗଦର୍ଶନର ଅଭାବ ମଧ୍ୟରେ ପରିବାର, ସାଙ୍ଗ ଓ ସମ୍ପର୍କୀୟମାନେ ତାଙ୍କୁ ସହାୟତା କରିଥିଲେ। ଓଡ଼ିଶାରେ କାର୍ଯ୍ୟଜୀବନ ଗଢ଼ି ମୁମ୍ବାଇ ଯିବା ପରେ, ଶିଶୁଙ୍କ ଶିକ୍ଷାକୁ ସହାୟତା କରିବା ପାଇଁ ସେ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସ୍ଥାପନାରେ ଭାଗ ନେଇଥିଲେ।"
+                      "Abhimanyu Mallik grew up in his home village of Raisar in Kendrapara district, Odisha. He faced financial difficulties and limited guidance, while family, friends and relatives helped him move forward. After building his career in Odisha and moving to Mumbai, he helped establish Abhiara Foundation. Today, members and institutional supporters contribute to its education work. Families across India can email education requests for case-by-case review.",
+                      "ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ ଓଡ଼ିଶାର କେନ୍ଦ୍ରାପଡ଼ା ଜିଲ୍ଲାର ନିଜ ଗାଁ ରାଇସରରେ ବଢ଼ିଥିଲେ। ଆର୍ଥିକ ଅସୁବିଧା ଓ ମାର୍ଗଦର୍ଶନର ଅଭାବ ମଧ୍ୟରେ ପରିବାର, ସାଙ୍ଗ ଓ ସମ୍ପର୍କୀୟମାନେ ତାଙ୍କୁ ସହାୟତା କରିଥିଲେ। ଓଡ଼ିଶାରେ କାର୍ଯ୍ୟଜୀବନ ଗଢ଼ି ମୁମ୍ବାଇ ଯିବା ପରେ ସେ ଅଭିଆରା ଫାଉଣ୍ଡେସନ ସ୍ଥାପନାରେ ଭାଗ ନେଇଥିଲେ। ଆଜି ସଦସ୍ୟ ଓ ସଂସ୍ଥାଗତ ସମର୍ଥକମାନେ ଏହାର ଶିକ୍ଷା କାର୍ଯ୍ୟରେ ଯୋଗ ଦେଉଛନ୍ତି। ଭାରତର ଯେକୌଣସି ରାଜ୍ୟର ପରିବାର ଶିକ୍ଷା ସହାୟତା ପାଇଁ ଇମେଲ କରିପାରିବେ। ପ୍ରତ୍ୟେକ ଅନୁରୋଧକୁ ଅଲଗା ଭାବେ ସମୀକ୍ଷା କରାଯାଏ।"
                     )}
                   </p>
                   <span className="mt-6 inline-flex items-center gap-2 font-sans text-sm font-bold text-[#F5A623]">
