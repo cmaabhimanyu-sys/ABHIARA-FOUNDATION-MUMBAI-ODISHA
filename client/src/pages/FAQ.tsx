@@ -123,9 +123,9 @@ const FAQ_GROUPS: FaqGroup[] = [
         questionEn: "Can I choose a programme for my donation?",
         questionOd: "ମୁଁ ମୋ ଦାନ ପାଇଁ ଏକ କାର୍ଯ୍ୟକ୍ରମ ବାଛିପାରିବି କି?",
         answerEn:
-          "Yes. You can choose from the causes shown on the donation page. We record your preference and use the donation within that work where the need is genuine.",
+          "Yes. Choose a cause shown on the donation page or the General Fund. A cause-specific donation stays with that cause for verified needs and reasonable programme costs. We will not move it to another cause without your consent. General Fund donations may support any approved programme.",
         answerOd:
-          "ହଁ। ଦାନ ପୃଷ୍ଠାରେ ଥିବା କାରଣଗୁଡ଼ିକ ମଧ୍ୟରୁ ଆପଣ ବାଛିପାରିବେ। ଆମେ ଆପଣଙ୍କ ପସନ୍ଦ ଲେଖି ରଖୁ ଏବଂ ସେହି କାମର ସତ୍ୟ ଆବଶ୍ୟକତା ଅନୁଯାୟୀ ଦାନ ବ୍ୟବହାର କରୁ।",
+          "ହଁ। ଦାନ ପୃଷ୍ଠାରେ ଥିବା ଏକ କାରଣ ବା ସାଧାରଣ ପାଣ୍ଠି ବାଛନ୍ତୁ। ନିର୍ଦ୍ଦିଷ୍ଟ କାରଣର ଦାନ ସେହି କାରଣର ଯାଞ୍ଚ ହୋଇଥିବା ଆବଶ୍ୟକତା ଓ ଯୁକ୍ତିସଙ୍ଗତ କାର୍ଯ୍ୟକ୍ରମ ଖର୍ଚ୍ଚ ପାଇଁ ରହିବ। ଆପଣଙ୍କ ସମ୍ମତି ବିନା ତାହା ଅନ୍ୟ କାରଣକୁ ସ୍ଥାନାନ୍ତର କରିବୁ ନାହିଁ। ସାଧାରଣ ପାଣ୍ଠିର ଦାନ ଯେକୌଣସି ଅନୁମୋଦିତ କାର୍ଯ୍ୟକ୍ରମକୁ ସହାୟତା କରିପାରେ।",
       },
       {
         questionEn: "How does Abhiara protect people’s privacy?",

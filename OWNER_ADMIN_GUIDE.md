@@ -189,6 +189,8 @@ This is a read-only payment record.
 
 It shows only completed payments that have a verified payment ID. There is no button to create a donation manually, so test or fake donation records cannot be added through the dashboard.
 
+For refund requests, use the published **Donation and Refund Policy**. Check the payment reference against the actual payment record and reply from the official Foundation email. The published target is to acknowledge within **3 working days** and communicate a decision within **10 working days after sufficient verification information is received**. Review later requests too, especially duplicates and unauthorised payments. A verified duplicate or Foundation error is refundable. Ordinarily refund to the original payment method; do not deduct payment charges for a verified duplicate or Foundation error. Never request a card PIN, password or one-time password. A Donation Acknowledgement is not an 80G certificate. Admin's Successful Donations view is read-only and does not issue refunds.
+
 ### 9. Volunteer Applications and Contact Messages
 
 Review genuine submissions received through the website forms. Do not copy personal details into public reports.
