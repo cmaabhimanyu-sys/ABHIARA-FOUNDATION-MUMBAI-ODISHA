@@ -144,10 +144,7 @@ describe("owner-managed People roster", () => {
     expect(governance).toContain("member.qualificationEn");
     expect(governance).toContain("{member.bioIsPublic && bio && (");
     expect(governance).toContain("rounded-full");
-    expect(governance).toContain("object-center");
-    expect(governance).toContain(
-      'member.id === 1 ? "scale-[2] object-[center_25%] origin-[50%_25%]"'
-    );
+    expect(governance).toContain("peoplePortraitFraming(member)");
     expect(governance).toContain("xl:grid-cols-4");
     expect(governance).not.toContain("Aadhaar");
     expect(governance).not.toContain("Bombay High Court");
