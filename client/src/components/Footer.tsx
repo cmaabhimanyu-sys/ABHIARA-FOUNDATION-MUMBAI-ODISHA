@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import {
   Facebook,
   Instagram,
@@ -152,6 +152,7 @@ const FOOTER_GROUPS = [
 
 export default function Footer() {
   const { language, t } = useLanguage();
+  const [location] = useLocation();
   const { data: publicSettings = [] } = trpc.cms.settings.listPublic.useQuery(
     undefined,
     { retry: false }
@@ -184,161 +185,163 @@ export default function Footer() {
   }));
 
   return (
-    <footer
-      className="border-t border-gray-200 bg-[#111111] text-white"
-      role="contentinfo"
-    >
-      <div className="container py-14 md:py-16">
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_1.5fr_1fr]">
-          <div>
-            <Link
-              href="/"
-              aria-label={t(
-                "Abhiara Foundation home",
-                "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ମୁଖ୍ୟ ପୃଷ୍ଠା"
-              )}
-              className="mb-6 inline-flex items-center gap-4 rounded-xl outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[#F5A623] focus-visible:ring-offset-4 focus-visible:ring-offset-[#111111]"
-            >
-              <img
-                src="/abhiara-mark.png"
-                alt=""
-                aria-hidden="true"
-                className="h-16 w-12 object-contain drop-shadow-[0_6px_16px_rgba(245,166,35,0.18)] md:h-20 md:w-16"
-                loading="lazy"
-              />
-              <span>
-                <span className="block font-serif text-2xl font-bold leading-none text-white md:text-3xl">
-                  {t("Abhiara Foundation", "ଅଭିଆରା ଫାଉଣ୍ଡେସନ")}
+    <>
+      <footer
+        className="border-t border-gray-200 bg-[#111111] text-white"
+        role="contentinfo"
+      >
+        <div className="container py-14 md:py-16">
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_1.5fr_1fr]">
+            <div>
+              <Link
+                href="/"
+                aria-label={t(
+                  "Abhiara Foundation home",
+                  "ଅଭିଆରା ଫାଉଣ୍ଡେସନ ମୁଖ୍ୟ ପୃଷ୍ଠା"
+                )}
+                className="mb-6 inline-flex items-center gap-4 rounded-xl outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[#F5A623] focus-visible:ring-offset-4 focus-visible:ring-offset-[#111111]"
+              >
+                <img
+                  src="/abhiara-mark.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="h-16 w-12 object-contain drop-shadow-[0_6px_16px_rgba(245,166,35,0.18)] md:h-20 md:w-16"
+                  loading="lazy"
+                />
+                <span>
+                  <span className="block font-serif text-2xl font-bold leading-none text-white md:text-3xl">
+                    {t("Abhiara Foundation", "ଅଭିଆରା ଫାଉଣ୍ଡେସନ")}
+                  </span>
+                  <span className="mt-2 block font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-[#F5A623] md:text-[10px]">
+                    {t("Fearless Ray of Light", "ନିର୍ଭୀକ ଆଲୋକର କିରଣ")}
+                  </span>
                 </span>
-                <span className="mt-2 block font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-[#F5A623] md:text-[10px]">
-                  {t("Fearless Ray of Light", "ନିର୍ଭୀକ ଆଲୋକର କିରଣ")}
-                </span>
-              </span>
-            </Link>
-            <p className="max-w-sm font-serif text-lg font-bold text-white">
-              {t(PUBLIC_TAGLINE, "ଶିକ୍ଷା ପ୍ରଥମ। ଦୟା ସଦା।")}
-            </p>
-            <p className="mt-2 max-w-sm font-sans text-sm leading-relaxed text-white/70">
-              {t(PUBLIC_TAGLINE_DESCRIPTION, PUBLIC_TAGLINE_DESCRIPTION_OD)}
-            </p>
-            <p className="mt-5 max-w-sm font-sans text-xs leading-relaxed text-white/60">
-              {t(SOCIAL_FOLLOW_MESSAGE.en, SOCIAL_FOLLOW_MESSAGE.od)}
-            </p>
-            <div className="mt-5 flex gap-3">
-              {socialLinks.map(item => (
+              </Link>
+              <p className="max-w-sm font-serif text-lg font-bold text-white">
+                {t(PUBLIC_TAGLINE, "ଶିକ୍ଷା ପ୍ରଥମ। ଦୟା ସଦା।")}
+              </p>
+              <p className="mt-2 max-w-sm font-sans text-sm leading-relaxed text-white/70">
+                {t(PUBLIC_TAGLINE_DESCRIPTION, PUBLIC_TAGLINE_DESCRIPTION_OD)}
+              </p>
+              <p className="mt-5 max-w-sm font-sans text-xs leading-relaxed text-white/60">
+                {t(SOCIAL_FOLLOW_MESSAGE.en, SOCIAL_FOLLOW_MESSAGE.od)}
+              </p>
+              <div className="mt-5 flex gap-3">
+                {socialLinks.map(item => (
+                  <a
+                    key={item.platform}
+                    aria-label={item.platform}
+                    href={item.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-full border border-white/20 p-2 hover:border-[#F5A623] hover:text-[#F5A623]"
+                  >
+                    <item.icon size={16} />
+                  </a>
+                ))}
                 <a
-                  key={item.platform}
-                  aria-label={item.platform}
-                  href={item.url}
+                  aria-label={t(
+                    "Founder Abhimanyu Mallik on LinkedIn",
+                    "ଲିଙ୍କଡଇନରେ ପ୍ରତିଷ୍ଠାତା ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ"
+                  )}
+                  href={FOUNDER_LINKEDIN_URL}
                   target="_blank"
                   rel="noreferrer"
                   className="rounded-full border border-white/20 p-2 hover:border-[#F5A623] hover:text-[#F5A623]"
                 >
-                  <item.icon size={16} />
+                  <Linkedin size={16} />
                 </a>
-              ))}
-              <a
-                aria-label={t(
-                  "Founder Abhimanyu Mallik on LinkedIn",
-                  "ଲିଙ୍କଡଇନରେ ପ୍ରତିଷ୍ଠାତା ଅଭିମନ୍ୟୁ ମଲ୍ଲିକ"
-                )}
-                href={FOUNDER_LINKEDIN_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-white/20 p-2 hover:border-[#F5A623] hover:text-[#F5A623]"
-              >
-                <Linkedin size={16} />
-              </a>
+              </div>
+            </div>
+
+            <nav
+              aria-label={t("Explore Abhiara", "ଅଭିଆରା ବିଷୟରେ ଜାଣନ୍ତୁ")}
+              className="grid gap-x-8 gap-y-8 sm:grid-cols-2"
+            >
+              {FOOTER_GROUPS.map(group => {
+                const destinations = new Set<string>(group.hrefs);
+                return (
+                  <div key={group.en}>
+                    <h2 className="mb-3 font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-[#F5A623]">
+                      {t(group.en, group.od)}
+                    </h2>
+                    <ul className="space-y-1">
+                      {links
+                        .filter(item => destinations.has(item.href))
+                        .map(item => (
+                          <li key={item.href}>
+                            <Link
+                              href={item.href}
+                              className="inline-block py-1 font-sans text-[13px] text-white/75 hover:text-[#F5A623] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A623]"
+                            >
+                              {language === "od" ? item.od : item.en}
+                            </Link>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                );
+              })}
+            </nav>
+
+            <div>
+              <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F5A623]">
+                {t("Public information", "ସାର୍ବଜନିକ ସୂଚନା")}
+              </p>
+              <div className="space-y-2 font-sans text-[13px] text-white/70">
+                <p>
+                  {t(
+                    "Section 8 not-for-profit company",
+                    "ଧାରା ୮ ଅଣଲାଭକାରୀ କମ୍ପାନୀ"
+                  )}
+                </p>
+                <p>CIN U87300MH2026NPL471397</p>
+                <p>NGO DARPAN MH/2026/1110513</p>
+                <p>
+                  {t(
+                    "12AB and 80G applications pending",
+                    "12AB ଓ 80G ଆବେଦନ ବିଚାରାଧୀନ"
+                  )}
+                </p>
+                <p>
+                  {t(
+                    "Foreign contributions are not accepted at present",
+                    "ବର୍ତ୍ତମାନ ବିଦେଶୀ ଅନୁଦାନ ଗ୍ରହଣ କରାଯାଉ ନାହିଁ"
+                  )}
+                </p>
+                <a
+                  href={`mailto:${publicEmail}`}
+                  className="flex items-center gap-2 pt-2 text-white hover:text-[#F5A623]"
+                >
+                  <Mail size={15} /> {publicEmail}
+                </a>
+                <a
+                  href={whatsappChannel}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2 text-white hover:text-[#25D366]"
+                >
+                  <MessageCircle size={15} />{" "}
+                  {t("WhatsApp Channel", "ହ୍ୱାଟସଆପ ଚ୍ୟାନେଲ")}
+                </a>
+              </div>
             </div>
           </div>
 
-          <nav
-            aria-label={t("Explore Abhiara", "ଅଭିଆରା ବିଷୟରେ ଜାଣନ୍ତୁ")}
-            className="grid gap-x-8 gap-y-8 sm:grid-cols-2"
-          >
-            {FOOTER_GROUPS.map(group => {
-              const destinations = new Set<string>(group.hrefs);
-              return (
-                <div key={group.en}>
-                  <h2 className="mb-3 font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-[#F5A623]">
-                    {t(group.en, group.od)}
-                  </h2>
-                  <ul className="space-y-1">
-                    {links
-                      .filter(item => destinations.has(item.href))
-                      .map(item => (
-                        <li key={item.href}>
-                          <Link
-                            href={item.href}
-                            className="inline-block py-1 font-sans text-[13px] text-white/75 hover:text-[#F5A623] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A623]"
-                          >
-                            {language === "od" ? item.od : item.en}
-                          </Link>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-              );
-            })}
-          </nav>
-
-          <div>
-            <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F5A623]">
-              {t("Public information", "ସାର୍ବଜନିକ ସୂଚନା")}
+          <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 font-sans text-[11px] text-white/50 md:flex-row md:items-center md:justify-between">
+            <p>
+              © {new Date().getFullYear()} Abhiara Foundation.{" "}
+              {t("All rights reserved.", "ସର୍ବ ସ୍ୱତ୍ୱ ସଂରକ୍ଷିତ।")}
             </p>
-            <div className="space-y-2 font-sans text-[13px] text-white/70">
-              <p>
-                {t(
-                  "Section 8 not-for-profit company",
-                  "ଧାରା ୮ ଅଣଲାଭକାରୀ କମ୍ପାନୀ"
-                )}
-              </p>
-              <p>CIN U87300MH2026NPL471397</p>
-              <p>NGO DARPAN MH/2026/1110513</p>
-              <p>
-                {t(
-                  "12AB and 80G applications pending",
-                  "12AB ଓ 80G ଆବେଦନ ବିଚାରାଧୀନ"
-                )}
-              </p>
-              <p>
-                {t(
-                  "Foreign contributions are not accepted at present",
-                  "ବର୍ତ୍ତମାନ ବିଦେଶୀ ଅନୁଦାନ ଗ୍ରହଣ କରାଯାଉ ନାହିଁ"
-                )}
-              </p>
-              <a
-                href={`mailto:${publicEmail}`}
-                className="flex items-center gap-2 pt-2 text-white hover:text-[#F5A623]"
-              >
-                <Mail size={15} /> {publicEmail}
-              </a>
-              <a
-                href={whatsappChannel}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 text-white hover:text-[#25D366]"
-              >
-                <MessageCircle size={15} />{" "}
-                {t("WhatsApp Channel", "ହ୍ୱାଟସଆପ ଚ୍ୟାନେଲ")}
-              </a>
-            </div>
+            <p>
+              {t(
+                "Registered office: Mumbai. Programme operations: Odisha.",
+                "ପଞ୍ଜୀକୃତ କାର୍ଯ୍ୟାଳୟ: ମୁମ୍ବାଇ। କାର୍ଯ୍ୟକ୍ରମ ପରିଚାଳନା: ଓଡ଼ିଶା।"
+              )}
+            </p>
           </div>
         </div>
-
-        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 font-sans text-[11px] text-white/50 md:flex-row md:items-center md:justify-between">
-          <p>
-            © {new Date().getFullYear()} Abhiara Foundation.{" "}
-            {t("All rights reserved.", "ସର୍ବ ସ୍ୱତ୍ୱ ସଂରକ୍ଷିତ।")}
-          </p>
-          <p>
-            {t(
-              "Registered office: Mumbai. Programme operations: Odisha.",
-              "ପଞ୍ଜୀକୃତ କାର୍ଯ୍ୟାଳୟ: ମୁମ୍ବାଇ। କାର୍ଯ୍ୟକ୍ରମ ପରିଚାଳନା: ଓଡ଼ିଶା।"
-            )}
-          </p>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 }

@@ -30,6 +30,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import SEO from "@/components/SEO";
+import MustafapurImpactStory from "@/components/MustafapurImpactStory";
+import PratappurImpactStory from "@/components/PratappurImpactStory";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   ACTIVE_SUPPORT,
@@ -42,6 +44,7 @@ import {
   PUBLIC_TAGLINE_DESCRIPTION_OD,
 } from "@/data/focusContent";
 import { trpc } from "@/lib/trpc";
+import { impactProgrammeContext } from "@/data/impactProgrammeContext";
 import {
   EDUCATION_SNAPSHOT_KEY,
   formatEducationFigure,
@@ -156,11 +159,17 @@ export default function Home() {
     const category =
       HOME_IMPACT_CATEGORIES[photo.category] ||
       HOME_IMPACT_CATEGORIES.community;
+    const englishContext = impactProgrammeContext(photo, "en");
+    const odiaContext = impactProgrammeContext(photo, "od");
     return {
       ...area,
+      titleEn: englishContext.programme,
+      titleOd: odiaContext.programme,
+      bodyEn: englishContext.description,
+      bodyOd: odiaContext.description,
       key: `photo-${photo.id ?? index}`,
       areaKey,
-      category,
+      category: { ...category, href: englishContext.href },
       photo,
     };
   });
@@ -255,16 +264,26 @@ export default function Home() {
           />
           {heroSlides.map((slide, index) =>
             slide.photo ? (
-              <img
+              <div
                 key={slide.key}
-                src={slide.photo.imageUrl}
-                alt=""
-                aria-hidden="true"
-                loading="eager"
-                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+                className={`absolute inset-0 transition-opacity duration-700 ${
                   index === activeHeroIndex ? "opacity-100" : "opacity-0"
                 }`}
-              />
+                aria-hidden="true"
+              >
+                <img
+                  src={slide.photo.imageUrl}
+                  alt=""
+                  loading={index === activeHeroIndex ? "eager" : "lazy"}
+                  className="absolute inset-0 h-full w-full scale-110 object-cover opacity-20 blur-2xl"
+                />
+                <img
+                  src={slide.photo.imageUrl}
+                  alt=""
+                  loading={index === activeHeroIndex ? "eager" : "lazy"}
+                  className="absolute inset-0 h-full w-full object-contain object-center md:object-right"
+                />
+              </div>
             ) : null
           )}
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/10" />
@@ -686,6 +705,8 @@ export default function Home() {
                 );
               })}
             </div>
+            <MustafapurImpactStory compact />
+            <PratappurImpactStory compact />
             <div className="mt-8 text-center">
               <Link
                 href="/limited-verified-support"
@@ -831,12 +852,10 @@ export default function Home() {
 
             {(() => {
               const photo = impactPhotos[activeImpactIndex] as any;
-              const category =
-                HOME_IMPACT_CATEGORIES[photo.category] ||
-                HOME_IMPACT_CATEGORIES.community;
+              const context = impactProgrammeContext(photo, language);
               return (
                 <div
-                  className="relative isolate min-h-[590px] overflow-hidden border-y border-white/15 bg-black md:min-h-[680px]"
+                  className="container grid overflow-hidden rounded-xl border border-white/20 bg-[#1E1D1A] md:grid-cols-[minmax(0,3fr)_minmax(260px,1fr)]"
                   role="region"
                   aria-roledescription="carousel"
                   aria-label={t(
@@ -844,104 +863,110 @@ export default function Home() {
                     "ଅଭିଆରା ଫାଉଣ୍ଡେସନ କାର୍ଯ୍ୟକ୍ରମ ଫଟୋ"
                   )}
                 >
-                  <img
-                    src={photo.imageUrl}
-                    alt=""
-                    aria-hidden="true"
-                    loading="eager"
-                    className="absolute inset-0 h-full w-full scale-110 object-cover opacity-45 blur-2xl"
-                  />
-                  <div className="absolute inset-0 bg-black/45" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/90" />
-                  <img
-                    src={photo.imageUrl}
-                    alt={photo.title}
-                    loading="eager"
-                    className="absolute inset-0 h-full w-full object-contain p-3 md:p-6"
-                  />
-                  <div
-                    className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/25 to-transparent"
-                    aria-hidden="true"
-                  />
-                  <div
-                    className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"
-                    aria-hidden="true"
-                  />
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setActiveImpactIndex(current =>
-                        current === 0 ? impactPhotos.length - 1 : current - 1
-                      )
-                    }
-                    className="absolute left-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/45 bg-black/55 text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623] md:left-6"
-                    aria-label={t("Previous photo", "ପୂର୍ବ ଫଟୋ")}
-                  >
-                    <ChevronLeft size={24} aria-hidden="true" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setActiveImpactIndex(
-                        current => (current + 1) % impactPhotos.length
-                      )
-                    }
-                    className="absolute right-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/45 bg-black/55 text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623] md:right-6"
-                    aria-label={t("Next photo", "ପରବର୍ତ୍ତୀ ଫଟୋ")}
-                  >
-                    <ChevronRight size={24} aria-hidden="true" />
-                  </button>
-
-                  <div className="absolute right-4 top-4 z-20 rounded-full border border-white/30 bg-black/60 px-3 py-1.5 font-mono text-[10px] font-bold text-white backdrop-blur-sm md:right-7 md:top-7">
-                    {activeImpactIndex + 1} / {impactPhotos.length}
+                  <div className="relative isolate flex h-[360px] items-center justify-center overflow-hidden bg-[#39352C] sm:h-[520px] md:h-[600px]">
+                    <img
+                      src={photo.imageUrl}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full scale-110 object-cover opacity-20 blur-2xl"
+                    />
+                    <img
+                      src={photo.imageUrl}
+                      alt={context.title}
+                      loading="eager"
+                      className="relative z-10 h-full w-full object-contain p-1 sm:p-2"
+                    />
                   </div>
-
-                  <div className="absolute inset-x-0 bottom-0 z-10">
-                    <div className="container flex flex-col gap-5 pb-7 pt-28 md:flex-row md:items-end md:justify-between md:pb-10">
-                      <div className="max-w-2xl" aria-live="polite">
-                        <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#F5A623]">
-                          {t(category.en, category.od)}
+                  <div
+                    className="flex flex-col justify-between gap-6 border-t border-white/15 p-5 md:border-l md:border-t-0 md:p-7"
+                    aria-live="polite"
+                  >
+                    <div>
+                      <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#F5A623]">
+                        {context.programme}
+                      </p>
+                      <h3 className="mt-2 font-serif text-lg font-bold leading-snug text-white md:text-xl">
+                        {context.title}
+                      </h3>
+                      {!context.hasActivityDescription && (
+                        <p className="mt-3 text-xs font-semibold text-white/70">
+                          {t("About this programme", "ଏହି କାର୍ଯ୍ୟକ୍ରମ ବିଷୟରେ")}
                         </p>
-                        <h3 className="mt-3 font-serif text-3xl font-bold leading-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] md:text-4xl">
-                          {photo.title}
-                        </h3>
-                        {photo.description && (
-                          <p className="mt-3 max-w-xl text-sm leading-6 text-white drop-shadow-[0_1px_5px_rgba(0,0,0,0.95)] md:text-base">
-                            {photo.description}
-                          </p>
-                        )}
-                        {(photo.location || photo.dateTaken) && (
-                          <p className="mt-3 text-xs font-medium leading-6 text-white/85">
-                            {[photo.location, photo.dateTaken]
-                              .filter(Boolean)
-                              .join(" · ")}
-                          </p>
-                        )}
-                        <div className="mt-4 flex flex-wrap gap-3">
-                          <Link
-                            href={category.href}
-                            className="inline-flex items-center gap-2 rounded border border-white/55 bg-black/35 px-5 py-3 text-sm font-bold text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623]"
-                          >
-                            {t(
-                              "Read about this work",
-                              "ଏହି କାମ ବିଷୟରେ ପଢ଼ନ୍ତୁ"
-                            )}
-                            <ArrowRight size={15} aria-hidden="true" />
-                          </Link>
-                        </div>
-                      </div>
-                      {impactPhotos.length > 1 && (
+                      )}
+                      <p className="mt-3 text-sm leading-6 text-white/80">
+                        {context.description}
+                      </p>
+                      {(context.location || context.date) && (
+                        <dl className="mt-3 space-y-1 text-xs leading-5 text-white/70">
+                          {context.location && (
+                            <div>
+                              <dt className="inline font-semibold">
+                                {t("Place", "ସ୍ଥାନ")}:{" "}
+                              </dt>
+                              <dd className="inline">{context.location}</dd>
+                            </div>
+                          )}
+                          {context.date && (
+                            <div>
+                              <dt className="inline font-semibold">
+                                {t("Date", "ତାରିଖ")}:{" "}
+                              </dt>
+                              <dd className="inline">{context.date}</dd>
+                            </div>
+                          )}
+                        </dl>
+                      )}
+                      <Link
+                        href={context.href}
+                        className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#F5A623] underline-offset-4 hover:underline"
+                      >
+                        {t("Read about this work", "ଏହି କାମ ବିଷୟରେ ପଢ଼ନ୍ତୁ")}
+                        <ArrowRight size={15} aria-hidden="true" />
+                      </Link>
+                    </div>
+                    {impactPhotos.length > 1 && (
+                      <div className="flex flex-wrap items-center gap-2 border-t border-white/15 pt-4">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setActiveImpactIndex(
+                              current =>
+                                (current - 1 + impactPhotos.length) %
+                                impactPhotos.length
+                            )
+                          }
+                          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/35 text-white hover:border-[#F5A623]"
+                          aria-label={t("Previous photo", "ପୂର୍ବ ଫଟୋ")}
+                        >
+                          <ChevronLeft size={20} aria-hidden="true" />
+                        </button>
+                        <span className="min-w-14 text-center text-xs font-semibold tabular-nums text-white/80">
+                          {activeImpactIndex + 1} / {impactPhotos.length}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setActiveImpactIndex(
+                              current => (current + 1) % impactPhotos.length
+                            )
+                          }
+                          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/35 text-white hover:border-[#F5A623]"
+                          aria-label={t("Next photo", "ପରବର୍ତ୍ତୀ ଫଟୋ")}
+                        >
+                          <ChevronRight size={20} aria-hidden="true" />
+                        </button>
                         <button
                           type="button"
                           onClick={() => setImpactPaused(current => !current)}
-                          className="inline-flex h-11 shrink-0 items-center justify-center gap-2 self-start rounded-full border border-white/35 bg-black/45 px-4 text-xs font-bold text-white backdrop-blur-sm hover:border-[#F5A623] hover:text-[#F5A623] md:self-end"
+                          className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-white/35 px-4 text-xs font-bold text-white hover:border-[#F5A623]"
                           aria-label={t(
                             impactPaused
                               ? "Play photo carousel"
                               : "Pause photo carousel",
                             impactPaused ? "ଫଟୋ ଚଳାନ୍ତୁ" : "ଫଟୋ ବନ୍ଦ କରନ୍ତୁ"
                           )}
+                          aria-pressed={impactPaused}
                         >
                           {impactPaused ? (
                             <Play size={16} aria-hidden="true" />
@@ -953,8 +978,8 @@ export default function Home() {
                             impactPaused ? "ଚଳାନ୍ତୁ" : "ବନ୍ଦ"
                           )}
                         </button>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               );

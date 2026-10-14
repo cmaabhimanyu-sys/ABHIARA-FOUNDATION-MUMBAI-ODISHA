@@ -15,8 +15,10 @@ vi.mock("@vercel/blob", () => ({
 
 import {
   BLOB_MEDIA_ROOT,
+  deleteApprovedStoryVideo,
   deletePublicBlobImage,
   listPublicBlobImages,
+  uploadApprovedStoryVideo,
   uploadPublicBlobImage,
 } from "./blobMedia";
 
@@ -43,6 +45,72 @@ describe("Vercel Blob public media", () => {
   afterEach(() => {
     delete process.env.BLOB_READ_WRITE_TOKEN;
     delete process.env.BLOB_STORE_ID;
+  });
+
+  it("requires permissions and a small genuine MP4 under the public story-video folder", async () => {
+    const mp4 = Buffer.concat([
+      Buffer.from([0, 0, 0, 24]),
+      Buffer.from("ftypisom"),
+      Buffer.alloc(40),
+    ]);
+    await expect(
+      uploadApprovedStoryVideo({
+        fileName: "story.mp4",
+        fileBase64: mp4.toString("base64"),
+        consentConfirmed: false,
+      })
+    ).rejects.toThrow(/permission/i);
+    await expect(
+      uploadApprovedStoryVideo({
+        fileName: "story.mov",
+        fileBase64: mp4.toString("base64"),
+        consentConfirmed: true,
+      })
+    ).rejects.toThrow(/MP4/i);
+    await expect(
+      uploadApprovedStoryVideo({
+        fileName: "story.mp4",
+        fileBase64: Buffer.alloc(40).toString("base64"),
+        consentConfirmed: true,
+      })
+    ).rejects.toThrow(/valid MP4/i);
+    await expect(
+      uploadApprovedStoryVideo({
+        fileName: "story.mp4",
+        fileBase64: Buffer.concat([mp4, Buffer.alloc(2_400_001)]).toString(
+          "base64"
+        ),
+        consentConfirmed: true,
+      })
+    ).rejects.toThrow(/2.4 MB/i);
+    expect(mockPut).not.toHaveBeenCalled();
+    const result = await uploadApprovedStoryVideo({
+      fileName: "School story.mp4",
+      fileBase64: mp4.toString("base64"),
+      consentConfirmed: true,
+    });
+    expect(result.pathname).toMatch(
+      /^abhiara-images\/programme-videos\/\d{4}-.*-school-story\.mp4$/
+    );
+    expect(mockPut).toHaveBeenCalledWith(
+      result.pathname,
+      expect.any(Buffer),
+      expect.objectContaining({ contentType: "video/mp4", access: "public" })
+    );
+  });
+
+  it("never deletes outside Abhiara's exact public video folder", async () => {
+    await expect(
+      deleteApprovedStoryVideo(
+        "https://other.example.com/abhiara-images/programme-videos/story.mp4"
+      )
+    ).rejects.toThrow(/outside/i);
+    await expect(
+      deleteApprovedStoryVideo(
+        "https://cxjy0gqflcaufkda.public.blob.vercel-storage.com/abhiara-images/beneficiaries/story.mp4"
+      )
+    ).rejects.toThrow(/outside/i);
+    expect(mockDel).not.toHaveBeenCalled();
   });
 
   it("lists only images from the approved beneficiary prefix and returns the newest first", async () => {
@@ -188,7 +256,7 @@ describe("Vercel Blob public media", () => {
     const page = readFileSync("client/src/pages/StudentImpact.tsx", "utf8");
     const cms = readFileSync("server/cms-router.ts", "utf8");
     expect(page).toContain("trpc.cms.gallery.listPublished.useQuery");
-    expect(page).toContain("selectStudentImpactPhoto(gallery)");
+    expect(page).toContain("selectStudentImpactPhotos(gallery)");
     expect(page).not.toContain("trpc.cms.media.listFolder.useQuery");
     expect(page).not.toContain("education-higher-study-support");
     expect(page).not.toContain("data-media-source");

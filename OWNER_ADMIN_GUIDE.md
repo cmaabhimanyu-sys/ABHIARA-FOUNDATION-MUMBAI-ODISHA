@@ -101,6 +101,16 @@ For every impact photo:
 
 A published photo may appear in the homepage rolling photo section, Impact Gallery, Press and Media, and its matching cause page. A draft stays private.
 
+**Upload a programme album:** Open **Photo Library → Upload a programme album**. Choose the destination, select 1–20 distinct JPEG/PNG/WebP files (each below 1 MB), and enter one bilingual programme title, activity caption, month/date and broad location using `English | ଓଡ଼ିଆ`. Confirm guardian/adult media permissions and safeguarding review for every selected photo. Tick **Publish this album** and press **Upload and publish album**, or leave it unticked for drafts. The files go to Vercel Blob and create individual, editable **Impact Photos** records; activity/beneficiary totals are not created or multiplied. Uploads run sequentially. On an error, keep this page open and press **Resume unfinished photos**; saved files are reused and existing caption records are reconciled. Do not reload or leave the page mid-upload—the retry state is only retained in this open page. Programme details lock once a photo has been stored, so retries cannot mix albums. After completion, press **Start another album**. If you closed an interrupted page, check Photo Library and Impact Photos before reselecting files to avoid duplicate uploads. Blob URLs are public even for draft records, so never upload unreviewed private media as a draft.
+
+**Rolling media across public pages:** Reviewed, published programme photographs appear automatically near the top of public pages, below the main navigation. The homepage already has its own photo carousel, and Impact Gallery has its own complete photo collections, so neither repeats this strip. The strip can also link to owner-published Education or Documentary YouTube videos once one is approved. No video is embedded or shown before an approved video exists. Visitors can pause or move through the media. Press clippings, certificates and documents are excluded. To remove a photograph, unpublish it under **Impact Photos**. Only keep recognisable children or older people published while the recorded permissions remain valid.
+
+**Impact Gallery collections:** Photos remain in your existing Impact Photos CMS. The gallery arranges published images under education learning, books and school materials, recognition, and the other existing programme categories. It does not automatically publish files. Press proofs remain discoverable on **Press and Media**. You can edit public titles and descriptions under **Impact Photos**; use `English | ଓଡ଼ିଆ` for both languages. Visitors can open each full photo without cropping.
+
+**Programme content beside each photo:** The homepage and public-page rolling photographs now show the programme name, activity title, short factual description, and the recorded date and broad place when available. Open **Impact Photos → Edit** to change the title, description, category, date or location. Use `English | ଓଡ଼ିଆ` for new titles, descriptions and locations. Describe what was actually done, not a personal hardship story or an unmeasured outcome. For example: `Books and dictionaries were distributed. | ପୁସ୍ତକ ଓ ଅଭିଧାନ ବଣ୍ଟନ କରାଯାଇଥିଲା।` Do not fill a missing activity date with the upload date. If no activity caption exists, the carousel shows a short general programme explanation labeled **About this programme**, not an invented event description. Known older captions are translated automatically; supply both languages for new records. Photos remain full-frame and the text stays in the smaller side panel.
+
+**Donate page illustrations:** The two education scenes on Donate are labeled AI illustrations. They depict fictional children and are not programme evidence or records of anyone's donation. Keep actual impact proof in Impact Gallery, Student Impact and monthly reports.
+
 **Student Impact photo:** the most recently added, published photo in the **Education** website category also appears on Student Impact with its public caption. It can come from Beneficiary photos or Programme photos. To replace it, upload and publish a newer reviewed education photo. To remove it, unpublish that photo under **Impact Photos**; the page then shows the previous published education photo, if any. Check recorded guardian consent for every recognisable child before publishing and remove a photo if permission is withdrawn. A distribution photo documents materials given, not a measured change in learning.
 
 ### 3. Impact Photos
@@ -122,15 +132,16 @@ The homepage and public galleries read only published records. Uploading a file 
 
 ### 4. Public Videos
 
-Paste a reviewed YouTube link instead of uploading a large video file.
+Open **Admin → Public Videos → Add Video**. Paste a reviewed YouTube link **or** acknowledge the recorded permissions and use **Choose a reviewed MP4 video** to upload a compressed file under 2.4 MB to `abhiara-images/programme-videos/` in Vercel Blob. Once the URL appears, enter an English/Odia title and description separated by `|`, select **Education**, and press **Add Video**. Uploading the file alone does not publish the CMS entry; the Blob URL itself is public, so do not upload drafts without permission. The video plays only after a visitor clicks Play on **Press and Media**. The top media strip and Student Impact link appear when a reviewed Education or Documentary video is published. Public media never autoplay.
 
 Before adding it:
 
 - Watch the complete video
-- Check the title, thumbnail, speech and background signs
-- Confirm permission for any recognisable person
+- Check the title, thumbnail, speech, background signs, music rights and any on-screen payment QR
+- Confirm recorded permission for every recognisable person, including guardian permission for children, and permission to display any other organisation's logo
 - Do not publish private child or elderly details, school or health records, phone numbers, addresses, bank or pension details, identity documents or family hardship information
-- Use the Education or Documentary category for a video that may appear in Press and Media
+- For the October 2026 story footage, use only the **corrected longer cut**; do not upload the original longer source with its inaccurate all-orphaned statement
+- Use **Edit** to revise title or caption. **Delete** removes both an Abhiara-hosted MP4 file and its public record; a YouTube link only removes its record. Keep signed consent documents outside the website repository. If consent is withdrawn, delete the affected hosted video as soon as possible, including its Blob object.
 
 ### 5. Social Links
 
@@ -160,6 +171,14 @@ For monthly education counts, enter the **last day of one completed reporting mo
 The separate **Publish education programme milestones** form contains the Foundation's 4 October 2026 statement: **50+ children onboarded** (most are orphaned) and **300+ school students given books, dictionaries, pens or other learning materials**. Update the date and both `+` figures together after checking the Foundation's records. Uncheck the orphan-majority statement if it no longer applies. These are reported programme figures, not audited results or monthly tuition numbers. Some children may appear in both groups, so do not add them together. The older undated aggregate is retained in Admin for reference and is not published as a separate current total. Keep source lists private.
 
 Only values used by an approved public page are displayed. Legal details, payment settings and protected records remain locked.
+
+### Mustafapur flood-relief activity
+
+The August 2026 update is one **Activities** record, ID **93001**, under **Community**. Its text is shown on Disaster Relief, with a compact entry on Home. Edit its title, description, month, broad location and beneficiary summary in **Admin → Activities** using `English | ଓଡ଼ିଆ`. Unpublishing the record removes both story placements. The reported scope is **one flood-affected village under Mustafapur Panchayat, Dhamnagar, Bhadrak, Odisha; around 100 people; snacks and food distributed**. Do not change this into an exact headcount, a district-wide reach, an audited figure or a CSR/Fynd-funded claim. Photograph counts are not beneficiary counts and must not multiply the around-100 figure. Photos are separate Impact Photos records and require their own permissions and safeguarding review; the story does not publish an attached photograph automatically.
+
+### Pratappur and nearby villages flood-relief activity
+
+The separate **August 2026** Pratappur/Bari/Jajpur update is **Activities record 93002**, under **Community**, shown on Disaster Relief and compactly on Home. The owner-reported scope is **nearly six villages reached; food packets and snacks distributed to flood-affected families**. No people count was supplied. Keep this separate from Mustafapur's one village/around-100 figure; do not add photo counts, infer an exact six-village count, use an attachment timestamp as the event date, or attribute Fynd/CSR funding. Edit or unpublish in Activities. New photos require their own recorded permissions and privacy review. A supplied newspaper clipping is a Press and Media proof, not an extra relief event or a programme-gallery photograph; do not invent its outlet, publication date or URL.
 
 ### 7. Board, Members and Advisors
 

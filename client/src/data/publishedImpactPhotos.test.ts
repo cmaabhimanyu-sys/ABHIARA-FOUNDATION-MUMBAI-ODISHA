@@ -47,6 +47,7 @@ describe("owner-published impact photos", () => {
     expect(home).toContain("Explore this programme");
     expect(home).toContain("Donate for this work");
     expect(home).toContain("Pause programme carousel");
+    expect(home).toContain("object-contain object-center md:object-right");
     expect(home).not.toContain(
       "Building Skills. Strengthening Rural Livelihoods."
     );
@@ -65,11 +66,13 @@ describe("owner-published impact photos", () => {
     expect(home).toContain("HOME_IMPACT_CATEGORIES");
     expect(home).toContain("Read about this work");
     expect(home).toContain("Open Impact Gallery");
-    expect(home).toContain("from-black/95 via-black/25 to-transparent");
-    expect(home).toContain("from-black/70 via-black/30 to-transparent");
-    expect(home).toContain('className="max-w-2xl"');
-    expect(home).not.toContain("bg-black/70 p-5");
-    expect(home).toContain("drop-shadow");
+    expect(home).toContain("md:grid-cols-[minmax(0,3fr)_minmax(260px,1fr)]");
+    expect(home).toContain("md:h-[600px]");
+    expect(home).toContain(
+      'className="relative z-10 h-full w-full object-contain p-1 sm:p-2"'
+    );
+    expect(home).not.toContain("from-black/95 via-black/25 to-transparent");
+    expect(home).not.toContain("from-black/70 via-black/30 to-transparent");
     expect(home.indexOf("HOME_WORK_AREAS.map")).toBeLessThan(
       home.indexOf("Our programmes in pictures")
     );

@@ -6,7 +6,10 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { groupPublishedPeople, PEOPLE_SECTIONS } from "@/data/peopleSections";
-import { peoplePortraitFraming } from "@/data/peoplePortraitFraming";
+import {
+  peoplePortraitObjectPosition,
+  peoplePortraitTransform,
+} from "@/data/peoplePortraitFraming";
 import { trpc } from "@/lib/trpc";
 
 const publicStatuses = [
@@ -111,7 +114,11 @@ function MemberCard({
             height={1000}
             loading="lazy"
             decoding="async"
-            className={`h-full w-full object-cover ${peoplePortraitFraming(member)}`}
+            className="h-full w-full object-cover object-center"
+            style={{
+              objectPosition: peoplePortraitObjectPosition(member),
+              transform: peoplePortraitTransform(member),
+            }}
           />
         ) : (
           <span

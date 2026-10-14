@@ -3,6 +3,8 @@ import { trpc } from "@/lib/trpc";
 import { getOwnerLoginUrl, OAUTH_SUPPORTED_ORIGIN } from "@/const";
 import { PEOPLE_SECTIONS } from "@/data/peopleSections";
 import { selectStudentImpactPhoto } from "@/data/studentImpactPhoto";
+import { isAbhiaraHostedVideo, isApprovedVideoUrl } from "@shared/publicVideo";
+import ProgrammeAlbumUploader from "@/components/ProgrammeAlbumUploader";
 import {
   EDUCATION_SNAPSHOT_KEY,
   parseEducationSnapshot,
@@ -1639,6 +1641,14 @@ function BlogManager() {
 function YoutubeManager() {
   const utils = trpc.useUtils();
   const { data: items = [], isLoading } = trpc.cms.youtube.list.useQuery();
+  const [consentConfirmed, setConsentConfirmed] = useState(false);
+  const uploadVideo = trpc.cms.media.uploadVideo.useMutation({
+    onSuccess: result => {
+      setForm(current => ({ ...current, youtubeUrl: result.url }));
+      toast.success("Video uploaded. Enter its title and publish below.");
+    },
+    onError: error => toast.error(error.message),
+  });
   const createMut = trpc.cms.youtube.create.useMutation({
     onSuccess: () => {
       utils.cms.youtube.list.invalidate();
@@ -1677,8 +1687,10 @@ function YoutubeManager() {
       | "other",
   });
 
-  const resetForm = () =>
+  const resetForm = () => {
+    setConsentConfirmed(false);
     setForm({ title: "", youtubeUrl: "", description: "", category: "event" });
+  };
 
   const getYoutubeId = (url: string) => {
     const match = url.match(
@@ -1700,11 +1712,11 @@ function YoutubeManager() {
 
   const handleSubmit = () => {
     if (!form.title || !form.youtubeUrl) {
-      toast.error("Title and YouTube URL are required");
+      toast.error("Title and video URL are required");
       return;
     }
-    if (!getYoutubeId(form.youtubeUrl)) {
-      toast.error("Invalid YouTube URL");
+    if (!isApprovedVideoUrl(form.youtubeUrl)) {
+      toast.error("Use an approved YouTube or Foundation-hosted video URL");
       return;
     }
     if (editId) {
@@ -1712,6 +1724,30 @@ function YoutubeManager() {
     } else {
       createMut.mutate({ ...form, isPublished: true });
     }
+  };
+  const handleVideoUpload = (file: File | undefined) => {
+    if (!file) return;
+    if (!consentConfirmed) {
+      toast.error(
+        "Confirm recorded permissions and safeguarding review first."
+      );
+      return;
+    }
+    if (file.type !== "video/mp4" || file.size > 2_400_000) {
+      toast.error("Choose a reviewed MP4 smaller than 2.4 MB.");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onerror = () => toast.error("Unable to read the selected video.");
+    reader.onload = () => {
+      uploadVideo.mutate({
+        fileName: file.name,
+        fileBase64: String(reader.result).split(",")[1] || "",
+        contentType: "video/mp4",
+        consentConfirmed: true,
+      });
+    };
+    reader.readAsDataURL(file);
   };
 
   if (showForm) {
@@ -1731,7 +1767,7 @@ function YoutubeManager() {
             <ArrowLeft className="h-4 w-4 mr-1" /> Back
           </Button>
           <h3 className="text-lg font-semibold text-[#1A1A1A]">
-            {editId ? "Edit Video" : "Add YouTube Video"}
+            {editId ? "Edit Video" : "Add public video"}
           </h3>
         </div>
         <Input
@@ -1743,9 +1779,51 @@ function YoutubeManager() {
         <Input
           value={form.youtubeUrl}
           onChange={e => setForm(f => ({ ...f, youtubeUrl: e.target.value }))}
-          placeholder="YouTube URL (paste full link) *"
+          placeholder="Approved YouTube URL or uploaded Vercel MP4 URL *"
           className="bg-white border border-gray-300 text-[#333] focus:border-[#F5A623]"
         />
+        <div className="space-y-2 border border-gray-200 bg-[#FFFDF8] p-4 text-sm text-[#333]">
+          <p className="font-semibold">
+            Or upload a reviewed MP4 to Vercel Blob
+          </p>
+          <label className="flex items-start gap-2">
+            <input
+              type="checkbox"
+              checked={consentConfirmed}
+              onChange={event => setConsentConfirmed(event.target.checked)}
+              className="mt-1"
+            />
+            <span>
+              I have recorded public-video permissions for everyone
+              identifiable, including children, and reviewed the audio, music,
+              branding and safety.
+            </span>
+          </label>
+          <input
+            type="file"
+            accept="video/mp4,.mp4"
+            aria-label="Choose a reviewed MP4 video"
+            disabled={uploadVideo.isPending}
+            onChange={event => {
+              handleVideoUpload(event.target.files?.[0]);
+              event.target.value = "";
+            }}
+            className="block w-full text-sm"
+          />
+          <p className="text-xs text-[#666]">
+            Maximum 2.4 MB. Upload first, then enter a title and select Add
+            Video. The file becomes public after upload. Delete its record to
+            remove the hosted file too.
+          </p>
+        </div>
+        {isAbhiaraHostedVideo(form.youtubeUrl) && (
+          <video
+            controls
+            preload="none"
+            src={form.youtubeUrl}
+            className="max-h-64 w-full max-w-md bg-black"
+          />
+        )}
         {form.youtubeUrl && getYoutubeId(form.youtubeUrl) && (
           <div className="rounded-lg overflow-hidden bg-black aspect-video max-w-md">
             <iframe
@@ -1792,7 +1870,7 @@ function YoutubeManager() {
     <div>
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-semibold text-[#1A1A1A]">
-          YouTube Videos ({items.length})
+          Public videos ({items.length})
         </h3>
         <Button
           onClick={() => {
@@ -1810,10 +1888,10 @@ function YoutubeManager() {
       ) : items.length === 0 ? (
         <div className="text-center py-8">
           <p className="text-[#666] mb-2">
-            No videos yet. Click "Add Video" to embed one.
+            No videos yet. Click "Add Video" to publish one.
           </p>
           <p className="text-[#aaa] text-xs">
-            YouTube videos will be embedded on the Activities page.
+            Approved YouTube links and hosted MP4s appear in Press and Media.
           </p>
         </div>
       ) : (
@@ -1824,11 +1902,20 @@ function YoutubeManager() {
               className="bg-white border border-gray-200 rounded-lg overflow-hidden"
             >
               <div className="aspect-video bg-black">
-                <iframe
-                  src={`https://www.youtube.com/embed/${getYoutubeId(item.youtubeUrl)}`}
-                  className="w-full h-full"
-                  allowFullScreen
-                />
+                {isAbhiaraHostedVideo(item.youtubeUrl) ? (
+                  <video
+                    controls
+                    preload="none"
+                    src={item.youtubeUrl}
+                    className="h-full w-full object-contain"
+                  />
+                ) : (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${getYoutubeId(item.youtubeUrl)}`}
+                    className="w-full h-full"
+                    allowFullScreen
+                  />
+                )}
               </div>
               <div className="p-3 flex items-center justify-between">
                 <div>
@@ -3421,6 +3508,8 @@ function VercelMediaManager() {
             ? "The Vercel photo library is connected and ready."
             : "The photo library is not connected to this Vercel deployment yet. Ask the website administrator to check the Vercel Blob connection before uploading."}
       </div>
+
+      <ProgrammeAlbumUploader />
 
       <div className="grid gap-4 rounded-xl border border-gray-200 bg-gray-50 p-5 md:grid-cols-2">
         <div>

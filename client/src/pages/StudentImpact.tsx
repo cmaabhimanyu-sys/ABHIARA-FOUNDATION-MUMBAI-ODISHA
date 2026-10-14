@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
-import { ArrowRight, BookOpen, GraduationCap, LockKeyhole } from "lucide-react";
+import { ArrowRight, BookOpen, GraduationCap } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { MONTHLY_REPORT } from "@/data/focusContent";
 import {
   publicPhotoText,
-  selectStudentImpactPhoto,
+  selectStudentImpactPhotos,
 } from "@/data/studentImpactPhoto";
 import { parseVerifiedEducationCounts } from "@/data/verifiedEducationCounts";
+import { rollingImpactVideos } from "@/data/rollingImpactPhotos";
 import { trpc } from "@/lib/trpc";
 import {
   EDUCATION_SNAPSHOT_KEY,
@@ -18,6 +18,7 @@ import {
   formatEducationSnapshotDate,
   parseEducationSnapshot,
 } from "@shared/educationSnapshot";
+import { isAbhiaraHostedVideo } from "@shared/publicVideo";
 
 export default function StudentImpact() {
   const { t, language } = useLanguage();
@@ -38,7 +39,13 @@ export default function StudentImpact() {
     undefined,
     { retry: false }
   );
-  const educationPhoto = selectStudentImpactPhoto(gallery);
+  const educationPhotos = selectStudentImpactPhotos(gallery);
+  const { data: publishedVideos = [] } =
+    trpc.cms.youtube.listPublished.useQuery(undefined, { retry: false });
+  const educationVideos = rollingImpactVideos(publishedVideos).filter(
+    video =>
+      video.category === "education" && isAbhiaraHostedVideo(video.youtubeUrl)
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -59,7 +66,7 @@ export default function StudentImpact() {
       />
       <Navbar />
       <main id="main-content">
-        <section className="bg-[#FAF4E8] pb-20 pt-32 md:pt-40">
+        <section className="bg-[#FAF4E8] pb-12 pt-32 md:pt-40">
           <div className="container max-w-5xl">
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#9A6100]">
               {t("Aggregate public record", "ସାମୂହିକ ସାର୍ବଜନିକ ରେକର୍ଡ")}
@@ -69,12 +76,106 @@ export default function StudentImpact() {
             </h1>
             <p className="mt-6 max-w-3xl font-sans text-lg leading-relaxed text-[#555]">
               {t(
-                "We report progress without using a child's situation as publicity. Private names, addresses, school details and sensitive family records are not published.",
-                "ଆମେ ଶିଶୁଙ୍କ ପରିସ୍ଥିତିକୁ ପ୍ରଚାର ପାଇଁ ବ୍ୟବହାର ନକରି ଅଗ୍ରଗତି ଦେଉଛୁ। ବ୍ୟକ୍ତିଗତ ନାମ, ଠିକଣା, ସ୍କୁଲ ବିବରଣୀ ଓ ସମ୍ବେଦନଶୀଳ ପରିବାରିକ ରେକର୍ଡ ପ୍ରକାଶ ହୁଏ ନାହିଁ।"
+                "A look at our education work through published photographs and dated programme figures.",
+                "ପ୍ରକାଶିତ ଫଟୋ ଓ ତାରିଖ ସହ କାର୍ଯ୍ୟକ୍ରମ ସଂଖ୍ୟାରେ ଆମ ଶିକ୍ଷା କାମକୁ ଦେଖନ୍ତୁ।"
               )}
             </p>
           </div>
         </section>
+        {educationPhotos.length > 0 && (
+          <section className="border-b border-[#E8DCC6] bg-white py-12 md:py-16">
+            <div className="container max-w-6xl">
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#9A6100]">
+                {t("Education work in pictures", "ଫଟୋରେ ଶିକ୍ଷା କାମ")}
+              </p>
+              <h2 className="mt-3 font-serif text-3xl font-bold text-[#1A1A1A]">
+                {t("From our programmes", "ଆମ କାର୍ଯ୍ୟକ୍ରମରୁ")}
+              </h2>
+              <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {educationPhotos.map((photo, index) => (
+                  <figure
+                    key={photo.id}
+                    className={`flex flex-col overflow-hidden border border-[#E8DCC6] bg-[#FAF4E8] ${index === 0 ? "sm:col-span-2 lg:row-span-2" : ""}`}
+                  >
+                    <div
+                      className={`flex items-center justify-center bg-[#F4EFE6] p-2 ${index === 0 ? "min-h-72 flex-1" : "h-52"}`}
+                    >
+                      <img
+                        src={photo.imageUrl}
+                        alt={publicPhotoText(photo.title, language === "od")}
+                        loading="eager"
+                        className={`w-full object-contain ${index === 0 ? "max-h-[38rem]" : "max-h-48"}`}
+                      />
+                    </div>
+                    <figcaption className="px-4 py-3 text-sm font-semibold leading-6 text-[#28221B]">
+                      {publicPhotoText(photo.title, language === "od")}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+              <div className="mt-6 flex flex-wrap gap-x-7 gap-y-3">
+                <Link
+                  href="/impact-gallery"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[#8A5700] underline underline-offset-4"
+                >
+                  {t("All education photos", "ସମସ୍ତ ଶିକ୍ଷା ଫଟୋ")}
+                  <ArrowRight size={15} aria-hidden="true" />
+                </Link>
+              </div>
+              <p className="mt-4 text-xs leading-6 text-[#65594D]">
+                {t(
+                  "Photos show activities, not measured learning outcomes. Children's private details are not published.",
+                  "ଫଟୋ କାର୍ଯ୍ୟକ୍ରମକୁ ଦେଖାଏ, ପଢ଼ାର ଫଳ ମାପେ ନାହିଁ। ଶିଶୁଙ୍କ ବ୍ୟକ୍ତିଗତ ତଥ୍ୟ ପ୍ରକାଶ କରାଯାଏ ନାହିଁ।"
+                )}
+              </p>
+              {educationVideos.length > 0 && (
+                <div className="mt-12 border-t border-[#E8DCC6] pt-9">
+                  <h2 className="font-serif text-3xl font-bold text-[#1A1A1A]">
+                    {t("Stories in video", "ଭିଡିଓରେ ଆମ କାମ")}
+                  </h2>
+                  <div className="mt-6 grid gap-5 md:grid-cols-2">
+                    {educationVideos.map(video => (
+                      <figure
+                        key={video.id}
+                        className="overflow-hidden border border-[#E8DCC6] bg-[#FFFDF8]"
+                      >
+                        <video
+                          className="aspect-video w-full bg-[#1A1A1A] object-contain"
+                          controls
+                          playsInline
+                          preload="none"
+                          aria-label={publicPhotoText(
+                            video.title,
+                            language === "od"
+                          )}
+                        >
+                          <source src={video.youtubeUrl} type="video/mp4" />
+                          {t(
+                            "Your browser cannot play this video.",
+                            "ଆପଣଙ୍କ ବ୍ରାଉଜର ଏହି ଭିଡିଓ ଚଳାଇପାରୁ ନାହିଁ।"
+                          )}
+                        </video>
+                        <figcaption className="p-4 text-sm font-semibold leading-6 text-[#28221B]">
+                          {publicPhotoText(video.title, language === "od")}
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                  <Link
+                    href="/press-and-media#public-videos"
+                    className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#8A5700] underline underline-offset-4"
+                  >
+                    {t(
+                      "See all public videos",
+                      "ସମସ୍ତ ସାର୍ବଜନିକ ଭିଡିଓ ଦେଖନ୍ତୁ"
+                    )}
+                    <ArrowRight size={15} aria-hidden="true" />
+                  </Link>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
         {snapshot && (
           <section className="border-b border-[#E8DCC6] bg-[#FFFDF8] py-14 md:py-20">
             <div className="container max-w-6xl">
@@ -152,62 +253,14 @@ export default function StudentImpact() {
               </div>
               <p className="mt-5 text-sm leading-7 text-[#555]">
                 {t(
-                  "These are different activities. Some children may be in both groups, so the figures must not be added together. The figures are Foundation-reported programme milestones, not a monthly tuition count.",
-                  "ଏହି ଦୁଇଟି ଅଲଗା କାମ। କେତେକ ଶିଶୁ ଉଭୟ ଗୋଷ୍ଠୀରେ ଥାଇପାରନ୍ତି, ତେଣୁ ସଂଖ୍ୟା ଦୁଇଟିକୁ ମିଶାଇ ମୋଟ ଦର୍ଶାଯିବ ନାହିଁ। ଏଗୁଡ଼ିକ ଫାଉଣ୍ଡେସନ ଦେଇଥିବା କାର୍ଯ୍ୟକ୍ରମ ତଥ୍ୟ, ମାସିକ ଟ୍ୟୁସନ ପାଇଥିବା ଶିଶୁଙ୍କ ସଂଖ୍ୟା ନୁହେଁ।"
+                  "Foundation-reported programme figures, not monthly tuition counts. The groups may overlap; do not add them together.",
+                  "ଏଗୁଡ଼ିକ ଫାଉଣ୍ଡେସନ ଦେଇଥିବା କାର୍ଯ୍ୟକ୍ରମ ସଂଖ୍ୟା, ମାସିକ ଟ୍ୟୁସନ ସଂଖ୍ୟା ନୁହେଁ। କେତେକ ଶିଶୁ ଉଭୟ ଗୋଷ୍ଠୀରେ ଥାଇପାରନ୍ତି; ସଂଖ୍ୟା ମିଶାନ୍ତୁ ନାହିଁ।"
                 )}
               </p>
             </div>
           </section>
         )}
-        {educationPhoto && (
-          <section className="border-b border-[#E8DCC6] bg-white py-14 md:py-20">
-            <div className="container max-w-6xl">
-              <div className="grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-12">
-                <div className="flex items-center justify-center bg-[#F5EFE3] p-3">
-                  <img
-                    src={educationPhoto.imageUrl}
-                    alt={publicPhotoText(
-                      educationPhoto.title,
-                      language === "od"
-                    )}
-                    loading="eager"
-                    className="max-h-[36rem] w-full object-contain"
-                  />
-                </div>
-                <div>
-                  <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#9A6100]">
-                    {t("Education work in pictures", "ଫଟୋରେ ଶିକ୍ଷା କାମ")}
-                  </p>
-                  <h2 className="mt-3 font-serif text-3xl font-bold text-[#1A1A1A]">
-                    {publicPhotoText(educationPhoto.title, language === "od")}
-                  </h2>
-                  {educationPhoto.description && (
-                    <p className="mt-5 text-base leading-8 text-[#555]">
-                      {publicPhotoText(
-                        educationPhoto.description,
-                        language === "od"
-                      )}
-                    </p>
-                  )}
-                  <p className="mt-5 text-sm leading-7 text-[#555]">
-                    {t(
-                      "This photograph documents a material distribution. It does not measure changes in learning or represent every child counted above.",
-                      "ଏହି ଫଟୋ ଶିକ୍ଷା ସାମଗ୍ରୀ ବଣ୍ଟନକୁ ଦେଖାଏ। ଏହା ପଢ଼ାରେ ହୋଇଥିବା ପରିବର୍ତ୍ତନକୁ ମାପେ ନାହିଁ କିମ୍ବା ଉପରୋକ୍ତ ସଂଖ୍ୟାର ସମସ୍ତ ଶିଶୁଙ୍କୁ ଦର୍ଶାଏ ନାହିଁ।"
-                    )}
-                  </p>
-                  <Link
-                    href="/impact-gallery"
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#8A5700] underline underline-offset-4"
-                  >
-                    {t("See more education photos", "ଅଧିକ ଶିକ୍ଷା ଫଟୋ ଦେଖନ୍ତୁ")}
-                    <ArrowRight size={15} aria-hidden="true" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-        <section className="py-16 md:py-24">
+        <section className="py-12 md:py-16">
           <div className="container max-w-6xl">
             <h2 className="font-serif text-3xl font-bold">
               {t(
@@ -252,47 +305,38 @@ export default function StudentImpact() {
                 </div>
                 <p className="mt-5 text-sm leading-7 text-[#555]">
                   {t(
-                    "Each figure counts distinct children within its own support type for the stated month. A child may appear in both categories; these numbers must not be added into a combined total.",
-                    "ପ୍ରତ୍ୟେକ ସଂଖ୍ୟା ଦର୍ଶାଇଥିବା ମାସର ନିଜ ନିଜ ସହାୟତା ପ୍ରକାରରେ ଭିନ୍ନ ଶିଶୁଙ୍କୁ ଗଣେ। ଜଣେ ଶିଶୁ ଦୁଇଟି ବର୍ଗରେ ଥାଇପାରନ୍ତି; ଏହି ସଂଖ୍ୟାକୁ ମିଶାଇ ମୋଟ ବୋଲି ଦେଖାଇବା ଉଚିତ ନୁହେଁ।"
+                    "These are separate counts for the stated month. A child may appear in both; do not add them together.",
+                    "ଏହା ଦର୍ଶାଇଥିବା ମାସର ଅଲଗା ସଂଖ୍ୟା। ଜଣେ ଶିଶୁ ଉଭୟରେ ଥାଇପାରନ୍ତି; ସଂଖ୍ୟା ମିଶାନ୍ତୁ ନାହିଁ।"
                   )}
                 </p>
               </>
             ) : (
-              <p className="mt-7 border-l-4 border-[#B56A22] bg-[#FFFDF8] p-6 text-sm leading-7 text-[#555]">
+              <p className="mt-5 text-sm leading-7 text-[#555]">
                 {t(
-                  "A dated, checked breakdown of monthly tuition and one-time learning materials recipients has not yet been published. The Foundation-reported programme figures above are not a month-end breakdown.",
-                  "ମାସିକ ଟ୍ୟୁସନ ଓ ଏକକାଳୀନ ପଢ଼ା ସାମଗ୍ରୀ ପାଇଥିବା ଶିଶୁଙ୍କର ତାରିଖ ସହିତ ଯାଞ୍ଚ ହୋଇଥିବା ଅଲଗା ସଂଖ୍ୟା ଏପର୍ଯ୍ୟନ୍ତ ପ୍ରକାଶିତ ହୋଇନାହିଁ। ଉପରେ ଫାଉଣ୍ଡେସନ ଦେଇଥିବା କାର୍ଯ୍ୟକ୍ରମ ସଂଖ୍ୟା ମାସ ଶେଷର ଅଲଗା ହିସାବ ନୁହେଁ।"
+                  "A checked monthly breakdown has not yet been published. The figures above are programme milestones, not month-end counts.",
+                  "ଯାଞ୍ଚ ହୋଇଥିବା ମାସିକ ଅଲଗା ସଂଖ୍ୟା ଏପର୍ଯ୍ୟନ୍ତ ପ୍ରକାଶିତ ହୋଇନାହିଁ। ଉପର ସଂଖ୍ୟା କାର୍ଯ୍ୟକ୍ରମ ତଥ୍ୟ, ମାସ ଶେଷର ହିସାବ ନୁହେଁ।"
                 )}
               </p>
             )}
-            <div className="mt-10 grid gap-6 lg:grid-cols-2">
-              <article className="bg-[#111111] p-8 text-white">
-                <h2 className="font-serif text-2xl font-bold text-white">
-                  {t("What support includes", "ସହାୟତାରେ କଣ ରହେ")}
-                </h2>
-                <p className="mt-4 font-sans text-sm leading-7 text-white/80">
-                  {t(MONTHLY_REPORT.supportEn, MONTHLY_REPORT.supportOd)}
-                </p>
-              </article>
-              <article className="border border-[#E8D6B2] bg-[#FFFDF8] p-8">
-                <div className="flex items-center gap-3">
-                  <LockKeyhole className="text-[#9A6100]" />
-                  <h2 className="font-serif text-2xl font-bold">
-                    {t("Safeguarding rule", "ସୁରକ୍ଷା ନିୟମ")}
-                  </h2>
-                </div>
-                <p className="mt-4 font-sans text-sm leading-7 text-[#555]">
-                  {t(MONTHLY_REPORT.mediaEn, MONTHLY_REPORT.mediaOd)}
-                </p>
-              </article>
+            <div className="mt-7 flex flex-wrap gap-x-8 gap-y-4">
+              <Link
+                href="/monthly-reports"
+                className="inline-flex items-center gap-2 text-sm font-bold text-[#8A5700] underline underline-offset-4"
+              >
+                {t("Read monthly reports", "ମାସିକ ରିପୋର୍ଟ ପଢ଼ନ୍ତୁ")}
+                <ArrowRight size={15} aria-hidden="true" />
+              </Link>
+              <Link
+                href="/how-we-support-a-child"
+                className="inline-flex items-center gap-2 text-sm font-bold text-[#8A5700] underline underline-offset-4"
+              >
+                {t(
+                  "How to request education support",
+                  "ଶିକ୍ଷା ସହାୟତା କିପରି ମାଗିବେ"
+                )}
+                <ArrowRight size={15} aria-hidden="true" />
+              </Link>
             </div>
-            <Link
-              href="/monthly-reports"
-              className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#8A5700] underline underline-offset-4"
-            >
-              {t("Read monthly reports", "ମାସିକ ରିପୋର୍ଟ ପଢ଼ନ୍ତୁ")}{" "}
-              <ArrowRight size={15} />
-            </Link>
           </div>
         </section>
       </main>

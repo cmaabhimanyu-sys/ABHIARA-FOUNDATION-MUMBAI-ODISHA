@@ -33,6 +33,8 @@ import {
   SOCIAL_PLATFORM_FALLBACKS,
 } from "@/data/socialPlatforms";
 import { trpc } from "@/lib/trpc";
+import { isAbhiaraHostedVideo, isApprovedVideoUrl } from "@shared/publicVideo";
+import { publicPhotoText } from "@/data/studentImpactPhoto";
 
 const SOCIAL_ICONS: Record<
   (typeof SOCIAL_PLATFORM_FALLBACKS)[number]["platform"],
@@ -243,7 +245,8 @@ export default function PressMedia() {
     .map((item: any) => ({ ...item, youtubeId: getYoutubeId(item.youtubeUrl) }))
     .filter(
       (item: any) =>
-        item.youtubeId && ["education", "documentary"].includes(item.category)
+        isApprovedVideoUrl(item.youtubeUrl) &&
+        ["education", "documentary"].includes(item.category)
     );
   const socialLinks = resolvePublicSocialLinks(activeSocialLinks);
   const publicEmail =
@@ -485,7 +488,10 @@ export default function PressMedia() {
           </div>
         </section>
 
-        <section className="bg-[#111111] py-16 text-white md:py-24">
+        <section
+          id="public-videos"
+          className="scroll-mt-28 bg-[#111111] py-16 text-white md:py-24"
+        >
           <div className="container max-w-6xl">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#F5A623]">
               {t("Public videos", "ସାର୍ବଜନିକ ଭିଡିଓ")}
@@ -505,24 +511,45 @@ export default function PressMedia() {
                     className="overflow-hidden border border-white/15 bg-white/5"
                   >
                     <div className="p-6">
-                      <Youtube size={24} className="text-[#F5A623]" />
+                      <Play
+                        size={24}
+                        className="text-[#F5A623]"
+                        aria-hidden="true"
+                      />
                       <h3 className="font-serif text-xl font-bold text-white">
-                        {video.title}
+                        {publicPhotoText(video.title, language === "od")}
                       </h3>
                       {video.description && (
                         <p className="mt-2 text-sm leading-7 text-white/65">
-                          {video.description}
+                          {publicPhotoText(
+                            video.description,
+                            language === "od"
+                          )}
                         </p>
                       )}
-                      <a
-                        href={video.youtubeUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#F5A623]"
-                      >
-                        {t("Watch on YouTube", "ୟୁଟ୍ୟୁବରେ ଦେଖନ୍ତୁ")}
-                        <ExternalLink size={14} />
-                      </a>
+                      {isAbhiaraHostedVideo(video.youtubeUrl) ? (
+                        <video
+                          controls
+                          playsInline
+                          preload="none"
+                          src={video.youtubeUrl}
+                          aria-label={publicPhotoText(
+                            video.title,
+                            language === "od"
+                          )}
+                          className="mt-5 max-h-[30rem] w-full bg-black object-contain"
+                        />
+                      ) : (
+                        <a
+                          href={video.youtubeUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#F5A623]"
+                        >
+                          {t("Watch on YouTube", "ୟୁଟ୍ୟୁବରେ ଦେଖନ୍ତୁ")}
+                          <ExternalLink size={14} aria-hidden="true" />
+                        </a>
+                      )}
                     </div>
                   </article>
                 ))}

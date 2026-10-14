@@ -280,7 +280,16 @@ export async function getYoutubeVideos(publishedOnly = false) {
   }
   return query;
 }
-
+export async function getYoutubeVideoById(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db
+    .select()
+    .from(youtubeVideos)
+    .where(eq(youtubeVideos.id, id))
+    .limit(1);
+  return result[0];
+}
 export async function createYoutubeVideo(data: InsertYoutubeVideo) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");

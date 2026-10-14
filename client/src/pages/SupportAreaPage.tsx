@@ -14,6 +14,9 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { trpc } from "@/lib/trpc";
+import MustafapurImpactStory from "@/components/MustafapurImpactStory";
+import PratappurImpactStory from "@/components/PratappurImpactStory";
+import { impactPublicText } from "@/data/impactPhotoCollections";
 
 export type SupportAreaKey = "disaster" | "medical" | "animal";
 
@@ -157,7 +160,7 @@ export const SUPPORT_AREA_CONFIGS: Record<SupportAreaKey, SupportAreaConfig> = {
 };
 
 export default function SupportAreaPage({ area }: { area: SupportAreaKey }) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const config = SUPPORT_AREA_CONFIGS[area];
   const Icon = config.icon;
   const { data: publishedMedia = [], isLoading } =
@@ -197,6 +200,9 @@ export default function SupportAreaPage({ area }: { area: SupportAreaKey }) {
             </p>
           </div>
         </section>
+
+        {area === "disaster" && <MustafapurImpactStory />}
+        {area === "disaster" && <PratappurImpactStory />}
 
         <section className="py-16 md:py-24">
           <div className="container max-w-6xl">
@@ -269,18 +275,22 @@ export default function SupportAreaPage({ area }: { area: SupportAreaKey }) {
                       <div className="aspect-[4/3] bg-[#F5F0E8] p-2">
                         <img
                           src={image.imageUrl}
-                          alt={image.title}
+                          alt={impactPublicText(image.title, language, "title")}
                           className="h-full w-full object-contain"
                           loading="lazy"
                         />
                       </div>
                       <figcaption className="p-4">
                         <p className="font-serif text-base font-bold">
-                          {image.title}
+                          {impactPublicText(image.title, language, "title")}
                         </p>
                         {image.description && (
                           <p className="mt-2 text-xs leading-6 text-[#666]">
-                            {image.description}
+                            {impactPublicText(
+                              image.description,
+                              language,
+                              "description"
+                            )}
                           </p>
                         )}
                       </figcaption>

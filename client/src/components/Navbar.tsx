@@ -3,6 +3,7 @@ import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { AnimatePresence, motion } from "framer-motion";
 import LanguageToggle from "@/components/LanguageToggle";
+import ImpactRibbon from "@/components/ImpactRibbon";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -255,6 +256,10 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
+
+      {location !== "/" && location !== "/impact-gallery" && (
+        <ImpactRibbon compact />
+      )}
 
       <AnimatePresence>
         {mobileOpen && (

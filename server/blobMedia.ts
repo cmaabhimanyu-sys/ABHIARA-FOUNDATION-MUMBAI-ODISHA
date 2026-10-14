@@ -1,4 +1,8 @@
 import { del, list, put } from "@vercel/blob";
+import {
+  isAbhiaraHostedVideo,
+  STORY_VIDEO_FOLDER,
+} from "../shared/publicVideo.js";
 
 export const BLOB_MEDIA_ROOT = "abhiara-images";
 export const BLOB_MEDIA_STORE_ID =
@@ -173,4 +177,50 @@ export async function deletePublicBlobImage(
   }
   await del(pathname, { storeId: BLOB_MEDIA_STORE_ID });
   return { success: true } as const;
+}
+
+const MAX_VIDEO_BYTES = 2_400_000;
+
+export async function uploadApprovedStoryVideo(input: {
+  fileName: string;
+  fileBase64: string;
+  consentConfirmed: boolean;
+}) {
+  if (!input.consentConfirmed) {
+    throw new Error(
+      "Recorded media permissions and safeguarding review are required."
+    );
+  }
+  if (!/\.mp4$/i.test(input.fileName)) {
+    throw new Error("Only MP4 videos are allowed.");
+  }
+  if (!isBlobMediaConfigured()) {
+    throw new Error("Vercel Blob is not connected to this deployment.");
+  }
+  const buffer = Buffer.from(input.fileBase64, "base64");
+  if (
+    buffer.length < 32 ||
+    buffer.length > MAX_VIDEO_BYTES ||
+    buffer.toString("ascii", 4, 8) !== "ftyp"
+  ) {
+    throw new Error("The video must be a valid MP4 smaller than 2.4 MB.");
+  }
+  const stamp = new Date().toISOString().replace(/[:.]/g, "-");
+  const pathname = `${STORY_VIDEO_FOLDER}${stamp}-${cleanFileStem(input.fileName)}.mp4`;
+  const blob = await put(pathname, buffer, {
+    storeId: BLOB_MEDIA_STORE_ID,
+    access: "public",
+    addRandomSuffix: false,
+    allowOverwrite: false,
+    cacheControlMaxAge: 31_536_000,
+    contentType: "video/mp4",
+  });
+  return { url: blob.url, pathname: blob.pathname };
+}
+
+export async function deleteApprovedStoryVideo(url: string) {
+  if (!isAbhiaraHostedVideo(url)) {
+    throw new Error("This URL is outside the approved programme-video folder.");
+  }
+  await del(url, { storeId: BLOB_MEDIA_STORE_ID });
 }

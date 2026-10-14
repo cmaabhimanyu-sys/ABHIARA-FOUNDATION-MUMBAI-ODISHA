@@ -129,7 +129,7 @@ describe("education-first public website update", () => {
     ).toBe(false);
     expect(studentImpact).not.toContain("trpc.cms.media.listFolder.useQuery");
     expect(studentImpact).toContain("cms.gallery.listPublished.useQuery");
-    expect(studentImpact).toContain("selectStudentImpactPhoto(gallery)");
+    expect(studentImpact).toContain("selectStudentImpactPhotos(gallery)");
     expect(studentImpact).not.toContain("education-higher-study-support");
     expect(studentImpact).not.toContain("Continuing into higher education");
     expect(`${JSON.stringify(record)}\n${studentImpact}`).not.toMatch(

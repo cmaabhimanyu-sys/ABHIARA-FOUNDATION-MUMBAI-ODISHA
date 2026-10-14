@@ -3,15 +3,21 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { storagePut } from "./storage.js";
 import {
+  isAbhiaraHostedVideo,
+  isApprovedVideoUrl,
+} from "../shared/publicVideo.js";
+import {
   EDUCATION_SNAPSHOT_KEY,
   parseEducationSnapshot,
 } from "../shared/educationSnapshot.js";
 import {
+  deleteApprovedStoryVideo,
   deletePublicBlobImage,
   isBlobMediaConfigured,
   listPublicBlobImages,
   PUBLIC_IMAGE_FOLDERS,
   uploadPublicBlobImage,
+  uploadApprovedStoryVideo,
 } from "./blobMedia.js";
 import {
   getActivities,
@@ -30,6 +36,7 @@ import {
   updateBlogPost,
   deleteBlogPost,
   getYoutubeVideos,
+  getYoutubeVideoById,
   createYoutubeVideo,
   updateYoutubeVideo,
   deleteYoutubeVideo,
@@ -146,6 +153,16 @@ const mediaRouter = router({
       })
     )
     .mutation(({ input }) => uploadPublicBlobImage(input)),
+  uploadVideo: adminProcedure
+    .input(
+      z.object({
+        fileName: z.string().min(1).max(120),
+        fileBase64: z.string().min(1).max(3_300_000),
+        contentType: z.literal("video/mp4"),
+        consentConfirmed: z.literal(true),
+      })
+    )
+    .mutation(({ input }) => uploadApprovedStoryVideo(input)),
   delete: adminProcedure
     .input(
       z.object({
@@ -405,7 +422,12 @@ const youtubeRouter = router({
     .input(
       z.object({
         title: z.string().min(1),
-        youtubeUrl: z.string().min(1),
+        youtubeUrl: z
+          .string()
+          .refine(
+            isApprovedVideoUrl,
+            "Use an approved YouTube or Foundation-hosted video URL."
+          ),
         description: z.string().optional(),
         category: z.enum([
           "education",
@@ -424,7 +446,10 @@ const youtubeRouter = router({
       z.object({
         id: z.number(),
         title: z.string().optional(),
-        youtubeUrl: z.string().optional(),
+        youtubeUrl: z
+          .string()
+          .refine(isApprovedVideoUrl, "Use an approved video URL.")
+          .optional(),
         description: z.string().optional(),
         category: z
           .enum(["education", "elderly", "event", "documentary", "other"])
@@ -439,7 +464,13 @@ const youtubeRouter = router({
     }),
   delete: adminProcedure
     .input(z.object({ id: z.number() }))
-    .mutation(({ input }) => deleteYoutubeVideo(input.id)),
+    .mutation(async ({ input }) => {
+      const video = await getYoutubeVideoById(input.id);
+      if (video && isAbhiaraHostedVideo(video.youtubeUrl)) {
+        await deleteApprovedStoryVideo(video.youtubeUrl);
+      }
+      return deleteYoutubeVideo(input.id);
+    }),
 });
 
 // ===== SOCIAL LINKS ROUTER =====

@@ -319,6 +319,32 @@ export default function Donate() {
           <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-7 lg:gap-10 items-start">
             <AnimatedSection direction="left">
               <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                <div className="grid grid-cols-2 gap-1 bg-[#F1E9DC] p-1">
+                  <img
+                    src="/illustrations/donate-learning-under-tree.webp"
+                    alt={t(
+                      "Illustration of children learning with a teacher outdoors",
+                      "ଶିକ୍ଷକଙ୍କ ସହ ବାହାରେ ପଢ଼ୁଥିବା ଶିଶୁମାନଙ୍କ କଳ୍ପିତ ଚିତ୍ର"
+                    )}
+                    className="aspect-[4/3] h-full w-full object-contain"
+                    loading="eager"
+                  />
+                  <img
+                    src="/illustrations/donate-rural-classroom.webp"
+                    alt={t(
+                      "Illustration of children studying in a classroom",
+                      "ଶ୍ରେଣୀକକ୍ଷରେ ପଢ଼ୁଥିବା ଶିଶୁମାନଙ୍କ କଳ୍ପିତ ଚିତ୍ର"
+                    )}
+                    className="aspect-[4/3] h-full w-full object-contain"
+                    loading="eager"
+                  />
+                </div>
+                <p className="border-b border-gray-100 px-5 py-2 text-xs leading-5 text-[#555]">
+                  {t(
+                    "AI illustrations of learning, not photographs of Abhiara programme children or evidence of a donation's use.",
+                    "ଏଗୁଡ଼ିକ ପାଠପଢ଼ାର AI କଳ୍ପିତ ଚିତ୍ର। ଅଭିଆରା କାର୍ଯ୍ୟକ୍ରମର ଶିଶୁଙ୍କ ଫଟୋ ବା ଦାନ ବ୍ୟବହାରର ପ୍ରମାଣ ନୁହେଁ।"
+                  )}
+                </p>
                 <div className="p-5 md:p-6">
                   <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#F5A623] mb-2">
                     {t("YOUR SUPPORT HELPS", "ଆପଣଙ୍କ ସହାୟତା")}

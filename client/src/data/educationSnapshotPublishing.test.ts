@@ -37,8 +37,10 @@ describe("Foundation-reported education milestones", () => {
     expect(student).toContain(
       "Books, dictionaries, pens and other school materials were distributed."
     );
-    expect(student).toContain("the figures must not be added together");
-    expect(student).toContain("not a monthly tuition count");
+    expect(student).toContain(
+      "The groups may overlap; do not add them together."
+    );
+    expect(student).toContain("not monthly tuition counts");
     expect(student).toContain("ଅଧିକାଂଶ ଅନାଥ");
   });
 

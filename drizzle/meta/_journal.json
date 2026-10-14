@@ -190,6 +190,20 @@
       "when": 1791090647537,
       "tag": "0026_owner_education_milestones",
       "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "5",
+      "when": 1791973700097,
+      "tag": "0027_mustafapur_food_support",
+      "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "5",
+      "when": 1791977525121,
+      "tag": "0028_pratappur_food_relief",
+      "breakpoints": true
     }
   ]
 }
