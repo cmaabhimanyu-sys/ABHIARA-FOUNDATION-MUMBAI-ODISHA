@@ -158,6 +158,7 @@ The website checks that each link uses the matching social platform. These links
 
 Use this to update only reviewed public values:
 
+- **Student register update:** exact registered-student count, date shared, selected Odisha districts and public visibility
 - Dated education counts, split into **monthly tuition recipients** and **one-time learning materials recipients**
 - Dated, Foundation-reported **programme milestones** for children onboarded and school students given books or materials
 - Verified activities
@@ -165,6 +166,10 @@ Use this to update only reviewed public values:
 - Districts represented in public records
 - Public email address
 - Public WhatsApp channel link
+
+**Main education impact — current student register:** Open **Public Details → ଛାତ୍ରଛାତ୍ରୀ ରେଜିଷ୍ଟର ଅପଡେଟ / Student register update**. The 14 October 2026 owner-shared update lists **51 students** and five districts in recorded addresses: **Kendrapara, Dhenkanal, Keonjhar, Jajpur and Mayurbhanj**. Update the whole-number student count, the date the update was shared and the district selections together. The district total is calculated from those selections; it is not a separate field. Confirm that the aggregates were checked against the private register, tick **Publish**, and save. Home and Student Impact then refresh automatically. To hide the summary, uncheck **Publish** and save. Keep names, full addresses, identity records and the register file outside this public CMS and the source repository. These are **registered students and district representation**, not a claim that all students receive monthly tuition or that learning outcomes have been measured. Do not add the 51 students to the 300+ materials recipients; the groups may overlap. The districts here describe the education register only—not the full Foundation's operational reach or an Odisha-only eligibility rule.
+
+**ଓଡ଼ିଆ:** ଏଠାରେ କେବଳ ମୋଟ ଛାତ୍ରଛାତ୍ରୀ ସଂଖ୍ୟା, ଅପଡେଟ ତାରିଖ ଓ ଜିଲ୍ଲା ଦିଅନ୍ତୁ। ନାମ, ପୂର୍ଣ୍ଣ ଠିକଣା ବା ରେଜିଷ୍ଟର ଫାଇଲ ପ୍ରକାଶ କରନ୍ତୁ ନାହିଁ। ରେକର୍ଡ ସହ ଯାଞ୍ଚ କରି ପ୍ରକାଶ ବିକଳ୍ପ ବାଛି ସଞ୍ଚୟ କରନ୍ତୁ। ସାରାଂଶ ଲୁଚାଇବା ପାଇଁ ପ୍ରକାଶ ବିକଳ୍ପ ହଟାଇ ସଞ୍ଚୟ କରନ୍ତୁ।
 
 For monthly education counts, enter the **last day of one completed reporting month** and two checked whole-number counts, then press **Publish reviewed counts**. The three values publish together. Count distinct children within each type. A child may appear in both types, so **do not add the two counts into a total**. This month-end breakdown has not yet been supplied and must not be inferred from programme milestones.
 

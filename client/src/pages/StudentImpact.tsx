@@ -4,6 +4,8 @@ import { ArrowRight, BookOpen, GraduationCap } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import EducationRegisterImpact from "@/components/EducationRegisterImpact";
+import { publishedEducationRegister } from "@shared/educationRegister";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   publicPhotoText,
@@ -26,6 +28,7 @@ export default function StudentImpact() {
     undefined,
     { retry: false }
   );
+  const educationRegister = publishedEducationRegister(publicSettings);
   const savedCounts = publicSettings.find(
     (item: any) => item.settingKey === "stat_students_verified_monthly_counts"
   )?.settingValue;
@@ -82,6 +85,9 @@ export default function StudentImpact() {
             </p>
           </div>
         </section>
+        <div className="container max-w-6xl">
+          <EducationRegisterImpact snapshot={educationRegister} />
+        </div>
         {educationPhotos.length > 0 && (
           <section className="border-b border-[#E8DCC6] bg-white py-12 md:py-16">
             <div className="container max-w-6xl">
@@ -183,7 +189,13 @@ export default function StudentImpact() {
                 {t("Foundation-reported figures", "ଫାଉଣ୍ଡେସନ ଦେଇଥିବା ସଂଖ୍ୟା")}
               </p>
               <h2 className="mt-3 font-serif text-3xl font-bold text-[#1A1A1A]">
-                {t("Education work so far", "ଏପର୍ଯ୍ୟନ୍ତ ଶିକ୍ଷା କାମ")}
+                {educationRegister &&
+                educationRegister.reportedOn > snapshot.reportedOn
+                  ? t(
+                      "Earlier programme milestones",
+                      "ପୂର୍ବରୁ ଦିଆଯାଇଥିବା କାର୍ଯ୍ୟକ୍ରମ ତଥ୍ୟ"
+                    )
+                  : t("Education work so far", "ଏପର୍ଯ୍ୟନ୍ତ ଶିକ୍ଷା କାମ")}
               </h2>
               <p className="mt-3 text-sm text-[#555]">
                 {t(

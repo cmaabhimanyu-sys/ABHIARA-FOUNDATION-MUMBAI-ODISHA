@@ -11,6 +11,11 @@ import {
   parseEducationSnapshot,
 } from "../shared/educationSnapshot.js";
 import {
+  EDUCATION_REGISTER_KEY,
+  EDUCATION_REGISTER_LABEL,
+  parseEducationRegister,
+} from "../shared/educationRegister.js";
+import {
   deleteApprovedStoryVideo,
   deletePublicBlobImage,
   isBlobMediaConfigured,
@@ -64,6 +69,7 @@ import {
 
 const PUBLIC_SETTING_KEYS = new Set([
   EDUCATION_SNAPSHOT_KEY,
+  EDUCATION_REGISTER_KEY,
   "stat_students_verified_monthly_counts",
   "stat_elders_visited",
   "stat_families_supported",
@@ -90,12 +96,29 @@ const PUBLIC_SETTING_KEYS = new Set([
 
 async function getPublicSiteSettings() {
   const settings = await getSiteSettings();
-  return settings.filter(
-    setting =>
-      PUBLIC_SETTING_KEYS.has(setting.settingKey) &&
-      (setting.settingKey !== EDUCATION_SNAPSHOT_KEY ||
-        parseEducationSnapshot(setting.settingValue) !== null)
-  );
+  return settings
+    .filter(
+      setting =>
+        PUBLIC_SETTING_KEYS.has(setting.settingKey) &&
+        (setting.settingKey !== EDUCATION_SNAPSHOT_KEY ||
+          parseEducationSnapshot(setting.settingValue) !== null) &&
+        (setting.settingKey !== EDUCATION_REGISTER_KEY ||
+          parseEducationRegister(setting.settingValue)?.isPublished === true)
+    )
+    .map(setting =>
+      setting.settingKey === EDUCATION_REGISTER_KEY
+        ? {
+            id: setting.id,
+            settingKey: EDUCATION_REGISTER_KEY,
+            settingValue: JSON.stringify(
+              parseEducationRegister(setting.settingValue)
+            ),
+            label: EDUCATION_REGISTER_LABEL,
+            category: "stats",
+            updatedAt: setting.updatedAt,
+          }
+        : setting
+    );
 }
 
 // ===== FILE UPLOAD =====
@@ -527,6 +550,22 @@ const settingsRouter = router({
           code: "BAD_REQUEST",
           message:
             "Enter a valid date and two separate 50+ style education figures.",
+        });
+      }
+      if (input.settingKey === EDUCATION_REGISTER_KEY) {
+        const snapshot = parseEducationRegister(input.settingValue);
+        if (!snapshot) {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message:
+              "Use a valid reporting date, whole-number register count, distinct Odisha districts and publication choice. Do not include personal records.",
+          });
+        }
+        return upsertSiteSetting({
+          settingKey: EDUCATION_REGISTER_KEY,
+          settingValue: JSON.stringify(snapshot),
+          label: EDUCATION_REGISTER_LABEL,
+          category: "stats",
         });
       }
       return upsertSiteSetting(input);

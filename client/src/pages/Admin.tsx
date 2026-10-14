@@ -5,6 +5,7 @@ import { PEOPLE_SECTIONS } from "@/data/peopleSections";
 import { selectStudentImpactPhoto } from "@/data/studentImpactPhoto";
 import { isAbhiaraHostedVideo, isApprovedVideoUrl } from "@shared/publicVideo";
 import ProgrammeAlbumUploader from "@/components/ProgrammeAlbumUploader";
+import EducationRegisterEditor from "@/components/EducationRegisterEditor";
 import {
   EDUCATION_SNAPSHOT_KEY,
   parseEducationSnapshot,
@@ -2323,6 +2324,7 @@ function SiteSettingsManager() {
         <p className="text-sm text-[#666]">Loading public details…</p>
       ) : (
         <>
+          <EducationRegisterEditor />
           <div className="grid gap-4 md:grid-cols-2">
             {PUBLIC_DETAIL_FIELDS.map(field => (
               <article

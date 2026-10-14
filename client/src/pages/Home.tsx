@@ -32,6 +32,8 @@ import AnimatedSection from "@/components/AnimatedSection";
 import SEO from "@/components/SEO";
 import MustafapurImpactStory from "@/components/MustafapurImpactStory";
 import PratappurImpactStory from "@/components/PratappurImpactStory";
+import EducationRegisterImpact from "@/components/EducationRegisterImpact";
+import { publishedEducationRegister } from "@shared/educationRegister";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   ACTIVE_SUPPORT,
@@ -130,6 +132,7 @@ export default function Home() {
     undefined,
     { retry: false }
   );
+  const educationRegister = publishedEducationRegister(publicSettings);
   const educationSnapshot = parseEducationSnapshot(
     publicSettings.find(
       (item: any) => item.settingKey === EDUCATION_SNAPSHOT_KEY
@@ -228,7 +231,7 @@ export default function Home() {
   }, [publishedImpactPhotos, activeHeroIndex, activeImpactIndex]);
 
   return (
-    <div className="min-h-screen bg-[#FFFDF8] text-[#1A1A1A]">
+    <div className="min-h-screen overflow-x-clip bg-[#FFFDF8] text-[#1A1A1A]">
       <SEO
         title={t(
           "Abhiara Foundation | Education first. Compassion always.",
@@ -474,7 +477,12 @@ export default function Home() {
                 )}
               </p>
             </AnimatedSection>
-            {educationSnapshot && (
+            <EducationRegisterImpact
+              snapshot={educationRegister}
+              compact
+              materialsSnapshot={educationSnapshot}
+            />
+            {educationSnapshot && !educationRegister && (
               <AnimatedSection className="mb-12 border border-[#E8DCC6] bg-[#FFFDF8] p-6 md:p-8">
                 <div className="grid items-center gap-6 md:grid-cols-[1fr_1fr_1fr]">
                   <div>
