@@ -9,18 +9,17 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import ProgrammeAlbumCard from "@/components/ProgrammeAlbumCard";
+import ProgrammeAlbumViewer, {
+  type ProgrammeAlbumSelection,
+} from "@/components/ProgrammeAlbumViewer";
+import { groupProgrammePhotos } from "@/data/programmePhotoAlbums";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   IMPACT_COLLECTIONS,
   impactCollection,
-  impactPublicText,
   publishedImpactPhotos,
+  type ImpactRecord,
   type ImpactCollection,
 } from "@/data/impactPhotoCollections";
 import { trpc } from "@/lib/trpc";
@@ -35,13 +34,7 @@ type PhotoCategory =
 type GalleryFilter = "all" | PhotoCategory;
 type CollectionFilter = "all" | ImpactCollection;
 
-type GalleryPhoto = {
-  id: number;
-  url: string;
-  title: string;
-  description?: string | null;
-  location?: string | null;
-  dateTaken?: string | null;
+type GalleryPhoto = ImpactRecord & {
   category: PhotoCategory;
   collection: ImpactCollection;
 };
@@ -83,7 +76,7 @@ export default function ImpactGallery() {
   const [activeFilter, setActiveFilter] = useState<GalleryFilter>("all");
   const [activeCollection, setActiveCollection] =
     useState<CollectionFilter>("all");
-  const [selectedPhoto, setSelectedPhoto] = useState<GalleryPhoto | null>(null);
+  const [selection, setSelection] = useState<ProgrammeAlbumSelection>(null);
   const { data: publishedMedia = [], isLoading } =
     trpc.cms.gallery.listPublished.useQuery(undefined, { retry: false });
 
@@ -94,21 +87,13 @@ export default function ImpactGallery() {
   const photos = useMemo<GalleryPhoto[]>(
     () =>
       publishedImpactPhotos(publishedMedia).map(item => ({
-        id: item.id,
-        url: item.imageUrl,
-        title: impactPublicText(item.title, language, "title"),
-        description: impactPublicText(
-          item.description,
-          language,
-          "description"
-        ),
-        location: item.location,
-        dateTaken: item.dateTaken,
+        ...item,
         category: publicCategory(item.category),
         collection: impactCollection(item),
       })),
-    [publishedMedia, language]
+    [publishedMedia]
   );
+  const albums = useMemo(() => groupProgrammePhotos(photos), [photos]);
 
   const counts = useMemo(() => {
     const next: Record<GalleryFilter, number> = {
@@ -155,6 +140,9 @@ export default function ImpactGallery() {
           photos: visiblePhotos.filter(
             photo => photo.collection === collection.key
           ),
+          albums: groupProgrammePhotos(
+            visiblePhotos.filter(photo => photo.collection === collection.key)
+          ),
         }))
         .filter(group => group.photos.length),
     [collections, visiblePhotos]
@@ -191,8 +179,8 @@ export default function ImpactGallery() {
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/75">
               {t(
-                "See published photos from education, elder care and community activities. Choose a cause or collection, then open any photo to see it in full.",
-                "ଶିକ୍ଷା, ବୃଦ୍ଧ ସେବା ଓ ସମୁଦାୟ କାମର ପ୍ରକାଶିତ ଫଟୋ ଦେଖନ୍ତୁ। କାରଣ ବାଛନ୍ତୁ, ତାପରେ ଫଟୋକୁ ପୂରା ଦେଖିବା ପାଇଁ ଖୋଲନ୍ତୁ।"
+                "Explore education, elder care and community work by programme. Each album shows a short activity story and selected photos; open it to see the complete photo set.",
+                "କାର୍ଯ୍ୟକ୍ରମ ଅନୁଯାୟୀ ଶିକ୍ଷା, ବୃଦ୍ଧ ସେବା ଓ ସମୁଦାୟ କାମ ଦେଖନ୍ତୁ। ପ୍ରତ୍ୟେକ ଆଲବମରେ କାମର ସଂକ୍ଷିପ୍ତ ବିବରଣୀ ଓ ବଛା ଫଟୋ ଅଛି; ସମସ୍ତ ଫଟୋ ଦେଖିବା ପାଇଁ ଆଲବମ ଖୋଲନ୍ତୁ।"
               )}
             </p>
           </div>
@@ -314,51 +302,24 @@ export default function ImpactGallery() {
                         {t(group.en, group.od)}
                       </h2>
                       <span className="shrink-0 text-sm text-[#6F5D45]">
-                        {group.photos.length} {t("photos", "ଫଟୋ")}
+                        {group.albums.length.toLocaleString(
+                          language === "od" ? "or-IN" : "en-IN"
+                        )}{" "}
+                        {t("albums", "ଆଲବମ")} ·{" "}
+                        {group.photos.length.toLocaleString(
+                          language === "od" ? "or-IN" : "en-IN"
+                        )}{" "}
+                        {t("photos", "ଫଟୋ")}
                       </span>
                     </div>
-                    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                      {group.photos.map((photo, index) => (
-                        <article
-                          key={photo.id}
-                          data-category={photo.category}
-                          className="overflow-hidden border border-[#E8DCC6] bg-[#FFFDF8]"
-                        >
-                          <button
-                            type="button"
-                            onClick={() => setSelectedPhoto(photo)}
-                            aria-label={t(
-                              `View full photo: ${photo.title}`,
-                              `ପୂରା ଫଟୋ ଦେଖନ୍ତୁ: ${photo.title}`
-                            )}
-                            className="flex aspect-[4/3] w-full items-center justify-center bg-[#F5EFE3] p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#B56A22]"
-                          >
-                            <img
-                              src={photo.url}
-                              alt={photo.title}
-                              className="h-full w-full object-contain"
-                              loading={index < 4 ? "eager" : "lazy"}
-                              decoding="async"
-                            />
-                          </button>
-                          <div className="p-4">
-                            <h3 className="font-serif text-base font-bold">
-                              {photo.title}
-                            </h3>
-                            {photo.description && (
-                              <p className="mt-2 text-xs leading-6 text-[#666]">
-                                {photo.description}
-                              </p>
-                            )}
-                            {(photo.location || photo.dateTaken) && (
-                              <p className="mt-2 text-[11px] text-[#7A6A54]">
-                                {[photo.location, photo.dateTaken]
-                                  .filter(Boolean)
-                                  .join(" · ")}
-                              </p>
-                            )}
-                          </div>
-                        </article>
+                    <div className="space-y-6">
+                      {group.albums.map((album, index) => (
+                        <ProgrammeAlbumCard
+                          key={album.key}
+                          album={album}
+                          eager={index < 3}
+                          onOpen={(key, index) => setSelection({ key, index })}
+                        />
                       ))}
                     </div>
                   </section>
@@ -411,38 +372,11 @@ export default function ImpactGallery() {
           </div>
         </section>
       </main>
-      <Dialog
-        open={Boolean(selectedPhoto)}
-        onOpenChange={open => {
-          if (!open) setSelectedPhoto(null);
-        }}
-      >
-        {selectedPhoto && (
-          <DialogContent className="max-h-[95vh] max-w-[min(96vw,1100px)] overflow-y-auto bg-white text-[#1A1A1A]">
-            <DialogTitle className="pr-8 font-serif text-xl leading-7">
-              {selectedPhoto.title}
-            </DialogTitle>
-            <DialogDescription className="text-sm leading-6 text-[#555]">
-              {selectedPhoto.description ||
-                t("Published activity photo", "ପ୍ରକାଶିତ କାର୍ଯ୍ୟକ୍ରମ ଫଟୋ")}
-            </DialogDescription>
-            <div className="flex min-h-0 items-center justify-center bg-[#F5EFE3] p-2">
-              <img
-                src={selectedPhoto.url}
-                alt={selectedPhoto.title}
-                className="max-h-[70vh] max-w-full object-contain"
-              />
-            </div>
-            {(selectedPhoto.location || selectedPhoto.dateTaken) && (
-              <p className="text-xs text-[#665D4F]">
-                {[selectedPhoto.location, selectedPhoto.dateTaken]
-                  .filter(Boolean)
-                  .join(" · ")}
-              </p>
-            )}
-          </DialogContent>
-        )}
-      </Dialog>
+      <ProgrammeAlbumViewer
+        albums={albums}
+        selection={selection}
+        onSelectionChange={setSelection}
+      />
       <Footer />
     </div>
   );

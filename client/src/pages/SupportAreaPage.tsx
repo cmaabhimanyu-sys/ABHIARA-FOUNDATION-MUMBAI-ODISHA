@@ -1,4 +1,4 @@
-import { useEffect, type ComponentType } from "react";
+import { useEffect, useMemo, useState, type ComponentType } from "react";
 import { Link } from "wouter";
 import {
   ArrowRight,
@@ -16,7 +16,11 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { trpc } from "@/lib/trpc";
 import MustafapurImpactStory from "@/components/MustafapurImpactStory";
 import PratappurImpactStory from "@/components/PratappurImpactStory";
-import { impactPublicText } from "@/data/impactPhotoCollections";
+import ProgrammeAlbumCard from "@/components/ProgrammeAlbumCard";
+import ProgrammeAlbumViewer, {
+  type ProgrammeAlbumSelection,
+} from "@/components/ProgrammeAlbumViewer";
+import { groupProgrammePhotos } from "@/data/programmePhotoAlbums";
 
 export type SupportAreaKey = "disaster" | "medical" | "animal";
 
@@ -160,15 +164,18 @@ export const SUPPORT_AREA_CONFIGS: Record<SupportAreaKey, SupportAreaConfig> = {
 };
 
 export default function SupportAreaPage({ area }: { area: SupportAreaKey }) {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const config = SUPPORT_AREA_CONFIGS[area];
   const Icon = config.icon;
+  const [selection, setSelection] = useState<ProgrammeAlbumSelection>(null);
   const { data: publishedMedia = [], isLoading } =
     trpc.cms.gallery.listPublished.useQuery(undefined, { retry: false });
-  const images = publishedMedia.filter(
-    (item: any) =>
-      (!item.mediaType || item.mediaType === "photo") &&
-      item.category === config.galleryCategory
+  const albums = useMemo(
+    () =>
+      groupProgrammePhotos(
+        publishedMedia.filter(item => item.category === config.galleryCategory)
+      ),
+    [publishedMedia, config.galleryCategory]
   );
 
   useEffect(() => {
@@ -265,36 +272,14 @@ export default function SupportAreaPage({ area }: { area: SupportAreaKey }) {
                 <p className="mt-7 text-sm text-[#666]">
                   {t("Loading photos…", "ଫଟୋ ଲୋଡ ହେଉଛି…")}
                 </p>
-              ) : images.length ? (
-                <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {images.map((image: any) => (
-                    <figure
-                      key={image.id}
-                      className="overflow-hidden border border-[#E8DCC6] bg-[#FFFDF8]"
-                    >
-                      <div className="aspect-[4/3] bg-[#F5F0E8] p-2">
-                        <img
-                          src={image.imageUrl}
-                          alt={impactPublicText(image.title, language, "title")}
-                          className="h-full w-full object-contain"
-                          loading="lazy"
-                        />
-                      </div>
-                      <figcaption className="p-4">
-                        <p className="font-serif text-base font-bold">
-                          {impactPublicText(image.title, language, "title")}
-                        </p>
-                        {image.description && (
-                          <p className="mt-2 text-xs leading-6 text-[#666]">
-                            {impactPublicText(
-                              image.description,
-                              language,
-                              "description"
-                            )}
-                          </p>
-                        )}
-                      </figcaption>
-                    </figure>
+              ) : albums.length ? (
+                <div className="mt-7 space-y-6">
+                  {albums.map(album => (
+                    <ProgrammeAlbumCard
+                      key={album.key}
+                      album={album}
+                      onOpen={(key, index) => setSelection({ key, index })}
+                    />
                   ))}
                 </div>
               ) : (
@@ -333,6 +318,11 @@ export default function SupportAreaPage({ area }: { area: SupportAreaKey }) {
           </div>
         </section>
       </main>
+      <ProgrammeAlbumViewer
+        albums={albums}
+        selection={selection}
+        onSelectionChange={setSelection}
+      />
       <Footer />
     </div>
   );

@@ -70,8 +70,15 @@ describe("separate programme panels and galleries", () => {
   it("uses a separate gallery query and cause filter on every programme page", () => {
     for (const page of [education, rural, elder, pratibha, support]) {
       expect(page).toContain("trpc.cms.gallery.listPublished.useQuery");
+    }
+    for (const page of [education, rural, elder, pratibha]) {
       expect(page).toContain("object-contain");
     }
+    expect(support).toContain("ProgrammeAlbumCard");
+    expect(support).toContain("item.category === config.galleryCategory");
+    expect(read("client/src/components/ProgrammeAlbumCard.tsx")).toContain(
+      "object-contain"
+    );
     expect(education).toContain('item.category === "education"');
     expect(education).toContain("!/Pratibha Samman/i.test");
     expect(rural).toContain('item.category === "education"');

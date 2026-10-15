@@ -47,6 +47,7 @@ import {
 } from "@/data/focusContent";
 import { trpc } from "@/lib/trpc";
 import { impactProgrammeContext } from "@/data/impactProgrammeContext";
+import { programmePreviewPhotos } from "@/data/programmePhotoAlbums";
 import {
   EDUCATION_SNAPSHOT_KEY,
   formatEducationFigure,
@@ -140,7 +141,7 @@ export default function Home() {
   );
   const { data: publishedImpactPhotos = [] } =
     trpc.cms.gallery.listPublished.useQuery(undefined, { retry: false });
-  const impactPhotos = publishedImpactPhotos
+  const eligibleImpactPhotos = publishedImpactPhotos
     .filter(
       (photo: any) =>
         (!photo.mediaType || photo.mediaType === "photo") && photo.imageUrl
@@ -149,10 +150,14 @@ export default function Home() {
       (photo: any) =>
         !/press|newspaper|certificate|clipping/i.test(photo.title || "")
     );
-  const orderedHeroPhotos = [...impactPhotos].sort(
-    (left: any, right: any) =>
-      Number(Boolean(right.isHomepageFeatured)) -
-      Number(Boolean(left.isHomepageFeatured))
+  const impactPhotos = programmePreviewPhotos(eligibleImpactPhotos, 1);
+  const orderedHeroPhotos = programmePreviewPhotos(
+    [...eligibleImpactPhotos].sort(
+      (left: any, right: any) =>
+        Number(Boolean(right.isHomepageFeatured)) -
+        Number(Boolean(left.isHomepageFeatured))
+    ),
+    1
   );
   const heroSlides = orderedHeroPhotos.map((photo: any, index: number) => {
     const areaKey = (HERO_AREA_BY_PHOTO_CATEGORY[photo.category] ||

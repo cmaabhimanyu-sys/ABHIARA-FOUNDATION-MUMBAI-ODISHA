@@ -129,12 +129,21 @@ describe("published impact-photo collections", () => {
 
   it("opens complete programme photos with an accessible viewer", () => {
     const gallery = read("client/src/pages/ImpactGallery.tsx");
+    const card = read("client/src/components/ProgrammeAlbumCard.tsx");
+    const viewer = read("client/src/components/ProgrammeAlbumViewer.tsx");
     expect(gallery).toContain("publishedImpactPhotos(publishedMedia)");
-    expect(gallery).toContain(
-      'impactPublicText(item.title, language, "title")'
-    );
-    expect(gallery).toContain("DialogContent");
-    expect(gallery).toContain("object-contain");
+    expect(gallery).toContain("groupProgrammePhotos");
+    expect(gallery).toContain("ProgrammeAlbumCard");
+    expect(gallery).toContain("ProgrammeAlbumViewer");
+    expect(card).toContain('impactPublicText(albumTitle, language, "title")');
+    expect(card).toContain("photos.slice(0, 5)");
+    expect(card).toContain("object-contain");
+    expect(viewer).toContain("DialogContent");
+    expect(viewer).toContain("object-contain");
+    expect(viewer).toContain("Next album photo");
+    expect(viewer).toContain("Previous album photo");
+    expect(viewer).toContain("ArrowLeft");
+    expect(viewer).not.toContain("autoPlay");
     expect(gallery).toContain('href="/press-and-media"');
   });
 

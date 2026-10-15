@@ -1,3 +1,5 @@
+import { programmePreviewPhotos } from "./programmePhotoAlbums";
+
 type EducationPhoto = {
   id: number;
   category: string;
@@ -24,11 +26,14 @@ export function selectStudentImpactPhotos<
     )
     .sort((a, b) => b.id - a.id);
   const used = new Set<string>();
-  const unique = eligible.filter(photo => {
-    if (used.has(photo.imageUrl)) return false;
-    used.add(photo.imageUrl);
-    return true;
-  });
+  const unique = programmePreviewPhotos(
+    eligible.filter(photo => {
+      if (used.has(photo.imageUrl)) return false;
+      used.add(photo.imageUrl);
+      return true;
+    }),
+    2
+  );
   if (!unique.length) return [];
   const result = [unique[0]];
   const chosen = new Set([unique[0].id]);

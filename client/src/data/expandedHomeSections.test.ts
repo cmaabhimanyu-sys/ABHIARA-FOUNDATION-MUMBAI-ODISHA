@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 const read = (path: string) => readFileSync(path, "utf8");
 const app = read("client/src/App.tsx");
 const gallery = read("client/src/pages/ImpactGallery.tsx");
+const albumCard = read("client/src/components/ProgrammeAlbumCard.tsx");
 const wellness = read("client/src/pages/WellnessWellbeing.tsx");
 const donate = read("client/src/pages/Donate.tsx");
 const navbar = read("client/src/components/Navbar.tsx");
@@ -26,7 +27,8 @@ describe("expanded homepage discovery and general giving", () => {
     expect(gallery).toContain(
       "We do not show names, identity records, bank details or private family information"
     );
-    expect(gallery).toContain("object-contain");
+    expect(gallery).toContain("ProgrammeAlbumCard");
+    expect(albumCard).toContain("object-contain");
     expect(sitemap).toContain(
       "https://www.abhiarafoundation.org/impact-gallery"
     );
@@ -51,7 +53,8 @@ describe("expanded homepage discovery and general giving", () => {
     expect(gallery).toContain("aria-pressed={active}");
     expect(gallery).toContain("counts[filter.key]");
     expect(gallery).toContain("visiblePhotos.length");
-    expect(gallery).toContain("data-category={photo.category}");
+    expect(albumCard).toContain("data-category={");
+    expect(albumCard).toContain("cover.category");
     expect(gallery).toContain(
       "No ${activeLabel.en.toLowerCase()} photo is available yet."
     );

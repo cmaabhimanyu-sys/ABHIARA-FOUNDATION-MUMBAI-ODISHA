@@ -63,12 +63,17 @@ describe("Mustafapur flood-relief programme story", () => {
     );
     const home = readFileSync("client/src/pages/Home.tsx", "utf8");
     const page = readFileSync("client/src/pages/SupportAreaPage.tsx", "utf8");
+    const card = readFileSync(
+      "client/src/components/ProgrammeAlbumCard.tsx",
+      "utf8"
+    );
     expect(story).toContain("trpc.cms.activities.listPublished.useQuery");
     expect(story).toContain("if (!story) return null");
     expect(story).toContain("activityPublicText");
     expect(home).toContain("<MustafapurImpactStory compact />");
     expect(page).toContain('area === "disaster" && <MustafapurImpactStory />');
-    expect(page).toContain("object-contain");
+    expect(page).toContain("ProgrammeAlbumCard");
+    expect(card).toContain("object-contain");
     expect(story).not.toContain("<img");
     expect(story).not.toContain(".reduce(");
   });

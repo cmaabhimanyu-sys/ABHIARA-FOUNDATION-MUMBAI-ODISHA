@@ -1,4 +1,5 @@
 import { isApprovedVideoUrl } from "@shared/publicVideo";
+import { programmePreviewPhotos } from "./programmePhotoAlbums";
 
 export type RibbonPhoto = {
   id: number;
@@ -13,14 +14,17 @@ export type RibbonPhoto = {
 export function rollingImpactPhotos<T extends RibbonPhoto>(
   items: readonly T[]
 ): T[] {
-  return items.filter(
-    photo =>
-      photo.isPublished !== false &&
-      Boolean(photo.imageUrl) &&
-      (!photo.mediaType || photo.mediaType === "photo") &&
-      !/press|newspaper|certificate|clipping|passbook|aadhaar/i.test(
-        photo.title
-      )
+  return programmePreviewPhotos(
+    items.filter(
+      photo =>
+        photo.isPublished !== false &&
+        Boolean(photo.imageUrl) &&
+        (!photo.mediaType || photo.mediaType === "photo") &&
+        !/press|newspaper|certificate|clipping|passbook|aadhaar/i.test(
+          photo.title
+        )
+    ),
+    1
   );
 }
 
