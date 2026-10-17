@@ -9,6 +9,7 @@ const rosterMigration = read("drizzle/0022_lush_microchip.sql");
 const bioMigration = read("drizzle/0023_magenta_changeling.sql");
 const auditorMigration = read("drizzle/0024_old_sally_floyd.sql");
 const noteReviewMigration = read("drizzle/0025_people_public_note_review.sql");
+const honorificMigration = read("drizzle/0030_biswajita_honorific.sql");
 const cmsDb = read("server/cms-db.ts");
 const cmsRouter = read("server/cms-router.ts");
 const admin = read("client/src/pages/Admin.tsx");
@@ -17,7 +18,7 @@ const ownerGuide = read("OWNER_ADMIN_GUIDE.md");
 
 const publishedRoster = [
   [1, "board", "Mr. Abhimanyu Mallik"],
-  [2, "board", "Ms. Biswajita Mallik"],
+  [2, "board", "Mrs. Biswajita Mallik"],
   [91004, "auditor", "R B R & Associates"],
   [4, "advisor", "Mr. Sujit Sahu"],
   [91001, "advisor", "Mr. Subhasis Sahoo, CMA"],
@@ -64,7 +65,10 @@ describe("owner-managed People roster", () => {
 
   it("keeps the approved 18 records and stated qualifications and duties", () => {
     const historicalAndCurrent =
-      earlierMigration + rosterMigration + auditorMigration;
+      earlierMigration +
+      rosterMigration +
+      auditorMigration +
+      honorificMigration;
     expect(publishedRoster).toHaveLength(18);
     for (const [id, section, name] of publishedRoster) {
       expect(Number(id)).toBeGreaterThan(0);
@@ -94,6 +98,18 @@ describe("owner-managed People roster", () => {
     expect(rosterMigration).not.toContain("Rotary Club of Bhubaneswar North");
     expect(noteReviewMigration).toContain("`id` = 2");
     expect(noteReviewMigration).toContain("`bioIsPublic` = FALSE");
+  });
+
+  it("uses the owner-requested Mrs. honorific without changing any other Board fields", () => {
+    expect(honorificMigration).toContain("'Mrs. Biswajita Mallik'");
+    expect(honorificMigration).toContain("'ଶ୍ରୀମତୀ ବିଶ୍ୱଜିତା ମଲ୍ଲିକ'");
+    expect(honorificMigration).toContain("WHERE `id` = 2");
+    expect(honorificMigration).toContain("AND `memberType` = 'board'");
+    const setClause = honorificMigration.split("SET ")[1].split("WHERE")[0];
+    expect(
+      Array.from(setClause.matchAll(/`(\w+)`\s*=/g), match => match[1])
+    ).toEqual(["nameEn", "nameOd"]);
+    expect(ownerGuide).toContain("Mrs. Biswajita Mallik");
   });
 
   it("groups ordered people without assuming hardcoded individual cards", () => {

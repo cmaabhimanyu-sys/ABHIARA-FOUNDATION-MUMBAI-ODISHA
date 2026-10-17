@@ -204,7 +204,7 @@ Use **Board, Members and Advisors** to manage every approved Abhiara person show
 - Use **Mr.** for men and **Ms.** for women as the standard public title. Use **Mrs.** only when the person confirms that preference. Keep professional qualifications in the qualification field, except where the approved public name explicitly includes a suffix such as CMA.
 - Add an approved public profile photo and an HTTPS public profile link where available. Use a centred head and shoulders photo. The Admin uploader prepares an 800 × 1000 WebP portrait and stores it in **Vercel Blob**, under `abhiara-images/leadership/`.
 - Public cards show the role and qualification. Use **Show this approved short biography** only for an expressly reviewed note; other saved biographies remain in Admin and are omitted from the public API. Do not put private contact details in any public field.
-- Do not add a daily-operations disclaimer to a director's profile unless the director asks for that specific wording. Ms. Biswajita Mallik's Board role is **Co-Founder & Director**; the former note has been removed.
+- Do not add a daily-operations disclaimer to a director's profile unless the director asks for that specific wording. Mrs. Biswajita Mallik's Board role is **Co-Founder & Director**; the former note has been removed.
 - Use **Display order** to control the order **within** each of the five sections. The sections always appear Board, Independent Auditor, Advisors, Odisha Division, then Core Members.
 - Use **Publish** or **Unpublish** to show or hide a profile without deleting it.
 - Use **Delete** only when the profile should be removed from the owner records.
